@@ -29,9 +29,21 @@ class Categorie
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="categorie")
+     */
+    private $promotions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Partenaire::class, mappedBy="categorie")
+     */
+    private $partenaires;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->promotions = new ArrayCollection();
+        $this->partenaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +88,63 @@ class Categorie
             if ($article->getCategorie() === $this) {
                 $article->setCategorie(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Promotion>
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions[] = $promotion;
+            $promotion->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getCategorie() === $this) {
+                $promotion->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partenaire>
+     */
+    public function getPartenaires(): Collection
+    {
+        return $this->partenaires;
+    }
+
+    public function addPartenaire(Partenaire $partenaire): self
+    {
+        if (!$this->partenaires->contains($partenaire)) {
+            $this->partenaires[] = $partenaire;
+            $partenaire->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartenaire(Partenaire $partenaire): self
+    {
+        if ($this->partenaires->removeElement($partenaire)) {
+            $partenaire->removeCategorie($this);
         }
 
         return $this;
