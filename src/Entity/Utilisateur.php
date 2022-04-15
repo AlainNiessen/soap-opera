@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -75,6 +77,28 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateurDeliver")
      */
     private $adresseDeliver;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="utilisateurs")
+     */
+    private $articles;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="utilisateur")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Facture::class, mappedBy="utilisateur")
+     */
+    private $factures;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+        $this->factures = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -257,6 +281,90 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAdresseDeliver(?Adresse $adresseDeliver): self
     {
         $this->adresseDeliver = $adresseDeliver;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        $this->articles->removeElement($article);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getUtilisateur() === $this) {
+                $commentaire->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Facture>
+     */
+    public function getFactures(): Collection
+    {
+        return $this->factures;
+    }
+
+    public function addFacture(Facture $facture): self
+    {
+        if (!$this->factures->contains($facture)) {
+            $this->factures[] = $facture;
+            $facture->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): self
+    {
+        if ($this->factures->removeElement($facture)) {
+            // set the owning side to null (unless already changed)
+            if ($facture->getUtilisateur() === $this) {
+                $facture->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
