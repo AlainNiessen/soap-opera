@@ -13,8 +13,21 @@ html {
 
 body {
     width: 100%;
+    color: map-get($map: $colors, $key: 'text');
+}
+
+img {
+    width: 100%;
 }
 
 h1 {
-    font-weight: normal;
+    font-size: nth($fontsize, 1);    
+}
+
+h2 {
+    font-size: nth($fontsize, 2);
+}
+
+h3 {
+    font-size: nth($fontsize, 3);
 }
