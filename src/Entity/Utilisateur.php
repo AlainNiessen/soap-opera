@@ -65,6 +65,17 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $inscriptionToken;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateursHome")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $adresseHome;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateurDeliver")
+     */
+    private $adresseDeliver;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -222,6 +233,30 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInscriptionToken(?string $inscriptionToken): self
     {
         $this->inscriptionToken = $inscriptionToken;
+
+        return $this;
+    }
+
+    public function getAdresseHome(): ?Adresse
+    {
+        return $this->adresseHome;
+    }
+
+    public function setAdresseHome(?Adresse $adresseHome): self
+    {
+        $this->adresseHome = $adresseHome;
+
+        return $this;
+    }
+
+    public function getAdresseDeliver(): ?Adresse
+    {
+        return $this->adresseDeliver;
+    }
+
+    public function setAdresseDeliver(?Adresse $adresseDeliver): self
+    {
+        $this->adresseDeliver = $adresseDeliver;
 
         return $this;
     }

@@ -29,6 +29,11 @@ class Partenaire
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="partenaire")
+     */
+    private $adresse;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -71,6 +76,18 @@ class Partenaire
     public function removeCategorie(Categorie $categorie): self
     {
         $this->categorie->removeElement($categorie);
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?Adresse $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
