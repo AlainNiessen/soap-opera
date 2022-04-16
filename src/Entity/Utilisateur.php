@@ -93,6 +93,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $factures;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="utilisateurs")
+     */
+    private $langue;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -365,6 +370,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
                 $facture->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
 
         return $this;
     }

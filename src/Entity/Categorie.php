@@ -44,12 +44,18 @@ class Categorie
      */
     private $traductionCategories;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="categorie")
+     */
+    private $images;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->promotions = new ArrayCollection();
         $this->partenaires = new ArrayCollection();
         $this->traductionCategories = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,6 +186,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($traductionCategory->getCategorie() === $this) {
                 $traductionCategory->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getCategorie() === $this) {
+                $image->setCategorie(null);
             }
         }
 

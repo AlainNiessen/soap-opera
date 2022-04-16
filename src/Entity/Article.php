@@ -59,12 +59,18 @@ class Article
      */
     private $traductionArticles;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article")
+     */
+    private $images;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
         $this->utilisateurs = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->traductionArticles = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -231,6 +237,36 @@ class Article
             // set the owning side to null (unless already changed)
             if ($traductionArticle->getArticle() === $this) {
                 $traductionArticle->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getArticle() === $this) {
+                $image->setArticle(null);
             }
         }
 

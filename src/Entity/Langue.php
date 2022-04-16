@@ -69,6 +69,11 @@ class Langue
      */
     private $traductionEvents;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="langue")
+     */
+    private $utilisateurs;
+
     public function __construct()
     {
         $this->traductionCategories = new ArrayCollection();
@@ -79,6 +84,7 @@ class Langue
         $this->traductionArticles = new ArrayCollection();
         $this->traductionAdresses = new ArrayCollection();
         $this->traductionEvents = new ArrayCollection();
+        $this->utilisateurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -344,6 +350,36 @@ class Langue
             // set the owning side to null (unless already changed)
             if ($traductionEvent->getLangue() === $this) {
                 $traductionEvent->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Utilisateur>
+     */
+    public function getUtilisateurs(): Collection
+    {
+        return $this->utilisateurs;
+    }
+
+    public function addUtilisateur(Utilisateur $utilisateur): self
+    {
+        if (!$this->utilisateurs->contains($utilisateur)) {
+            $this->utilisateurs[] = $utilisateur;
+            $utilisateur->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUtilisateur(Utilisateur $utilisateur): self
+    {
+        if ($this->utilisateurs->removeElement($utilisateur)) {
+            // set the owning side to null (unless already changed)
+            if ($utilisateur->getLangue() === $this) {
+                $utilisateur->setLangue(null);
             }
         }
 
