@@ -39,11 +39,17 @@ class Categorie
      */
     private $partenaires;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionCategorie::class, mappedBy="categorie")
+     */
+    private $traductionCategories;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->promotions = new ArrayCollection();
         $this->partenaires = new ArrayCollection();
+        $this->traductionCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +151,36 @@ class Categorie
     {
         if ($this->partenaires->removeElement($partenaire)) {
             $partenaire->removeCategorie($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionCategorie>
+     */
+    public function getTraductionCategories(): Collection
+    {
+        return $this->traductionCategories;
+    }
+
+    public function addTraductionCategory(TraductionCategorie $traductionCategory): self
+    {
+        if (!$this->traductionCategories->contains($traductionCategory)) {
+            $this->traductionCategories[] = $traductionCategory;
+            $traductionCategory->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionCategory(TraductionCategorie $traductionCategory): self
+    {
+        if ($this->traductionCategories->removeElement($traductionCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionCategory->getCategorie() === $this) {
+                $traductionCategory->setCategorie(null);
+            }
         }
 
         return $this;

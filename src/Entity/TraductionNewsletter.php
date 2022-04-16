@@ -27,6 +27,18 @@ class TraductionNewsletter
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionNewsletters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $langue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Newsletter::class, inversedBy="traductionNewsletters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $newsletter;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class TraductionNewsletter
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getNewsletter(): ?Newsletter
+    {
+        return $this->newsletter;
+    }
+
+    public function setNewsletter(?Newsletter $newsletter): self
+    {
+        $this->newsletter = $newsletter;
 
         return $this;
     }

@@ -27,6 +27,18 @@ class TraductionCategorie
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionCategories")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $langue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="traductionCategories")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class TraductionCategorie
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

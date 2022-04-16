@@ -32,6 +32,18 @@ class TraductionAdresse
      */
     private $pays;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionAdresses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $langue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="traductionAdresses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $adresse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +81,30 @@ class TraductionAdresse
     public function setPays(string $pays): self
     {
         $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?Adresse $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

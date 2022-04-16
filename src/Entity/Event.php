@@ -65,9 +65,15 @@ class Event
      */
     private $typeEvent;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionEvent::class, mappedBy="event")
+     */
+    private $traductionEvents;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->traductionEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +203,36 @@ class Event
     public function setTypeEvent(?TypeEvent $typeEvent): self
     {
         $this->typeEvent = $typeEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionEvent>
+     */
+    public function getTraductionEvents(): Collection
+    {
+        return $this->traductionEvents;
+    }
+
+    public function addTraductionEvent(TraductionEvent $traductionEvent): self
+    {
+        if (!$this->traductionEvents->contains($traductionEvent)) {
+            $this->traductionEvents[] = $traductionEvent;
+            $traductionEvent->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionEvent(TraductionEvent $traductionEvent): self
+    {
+        if ($this->traductionEvents->removeElement($traductionEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionEvent->getEvent() === $this) {
+                $traductionEvent->setEvent(null);
+            }
+        }
 
         return $this;
     }

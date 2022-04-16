@@ -27,6 +27,18 @@ class TraductionTypeEvent
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionTypeEvents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $langue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeEvent::class, inversedBy="traductionTypeEvents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $typeEvent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class TraductionTypeEvent
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getTypeEvent(): ?TypeEvent
+    {
+        return $this->typeEvent;
+    }
+
+    public function setTypeEvent(?TypeEvent $typeEvent): self
+    {
+        $this->typeEvent = $typeEvent;
 
         return $this;
     }

@@ -24,9 +24,15 @@ class TypeEvent
      */
     private $events;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionTypeEvent::class, mappedBy="typeEvent")
+     */
+    private $traductionTypeEvents;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->traductionTypeEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,6 +64,36 @@ class TypeEvent
             // set the owning side to null (unless already changed)
             if ($event->getTypeEvent() === $this) {
                 $event->setTypeEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionTypeEvent>
+     */
+    public function getTraductionTypeEvents(): Collection
+    {
+        return $this->traductionTypeEvents;
+    }
+
+    public function addTraductionTypeEvent(TraductionTypeEvent $traductionTypeEvent): self
+    {
+        if (!$this->traductionTypeEvents->contains($traductionTypeEvent)) {
+            $this->traductionTypeEvents[] = $traductionTypeEvent;
+            $traductionTypeEvent->setTypeEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionTypeEvent(TraductionTypeEvent $traductionTypeEvent): self
+    {
+        if ($this->traductionTypeEvents->removeElement($traductionTypeEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionTypeEvent->getTypeEvent() === $this) {
+                $traductionTypeEvent->setTypeEvent(null);
             }
         }
 

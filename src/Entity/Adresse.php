@@ -44,11 +44,17 @@ class Adresse
      */
     private $utilisateurDeliver;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionAdresse::class, mappedBy="adresse")
+     */
+    private $traductionAdresses;
+
     public function __construct()
     {
         $this->partenaire = new ArrayCollection();
         $this->utilisateursHome = new ArrayCollection();
         $this->utilisateurDeliver = new ArrayCollection();
+        $this->traductionAdresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +170,36 @@ class Adresse
             // set the owning side to null (unless already changed)
             if ($utilisateurDeliver->getAdresseDeliver() === $this) {
                 $utilisateurDeliver->setAdresseDeliver(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionAdresse>
+     */
+    public function getTraductionAdresses(): Collection
+    {
+        return $this->traductionAdresses;
+    }
+
+    public function addTraductionAdress(TraductionAdresse $traductionAdress): self
+    {
+        if (!$this->traductionAdresses->contains($traductionAdress)) {
+            $this->traductionAdresses[] = $traductionAdress;
+            $traductionAdress->setAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionAdress(TraductionAdresse $traductionAdress): self
+    {
+        if ($this->traductionAdresses->removeElement($traductionAdress)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionAdress->getAdresse() === $this) {
+                $traductionAdress->setAdresse(null);
             }
         }
 

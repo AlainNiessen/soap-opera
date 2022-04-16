@@ -27,6 +27,18 @@ class TraductionPromotion
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionPromotions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $langue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="traductionPromotions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $promotion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class TraductionPromotion
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLangue(): ?Langue
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?Langue $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotion
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotion $promotion): self
+    {
+        $this->promotion = $promotion;
 
         return $this;
     }

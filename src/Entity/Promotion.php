@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PromotionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,16 @@ class Promotion
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="promotions")
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionPromotion::class, mappedBy="promotion")
+     */
+    private $traductionPromotions;
+
+    public function __construct()
+    {
+        $this->traductionPromotions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +149,36 @@ class Promotion
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionPromotion>
+     */
+    public function getTraductionPromotions(): Collection
+    {
+        return $this->traductionPromotions;
+    }
+
+    public function addTraductionPromotion(TraductionPromotion $traductionPromotion): self
+    {
+        if (!$this->traductionPromotions->contains($traductionPromotion)) {
+            $this->traductionPromotions[] = $traductionPromotion;
+            $traductionPromotion->setPromotion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionPromotion(TraductionPromotion $traductionPromotion): self
+    {
+        if ($this->traductionPromotions->removeElement($traductionPromotion)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionPromotion->getPromotion() === $this) {
+                $traductionPromotion->setPromotion(null);
+            }
+        }
 
         return $this;
     }

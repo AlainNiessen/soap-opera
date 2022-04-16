@@ -34,9 +34,15 @@ class Partenaire
      */
     private $adresse;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionPartenaire::class, mappedBy="partenaire")
+     */
+    private $traductionPartenaires;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
+        $this->traductionPartenaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +94,36 @@ class Partenaire
     public function setAdresse(?Adresse $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionPartenaire>
+     */
+    public function getTraductionPartenaires(): Collection
+    {
+        return $this->traductionPartenaires;
+    }
+
+    public function addTraductionPartenaire(TraductionPartenaire $traductionPartenaire): self
+    {
+        if (!$this->traductionPartenaires->contains($traductionPartenaire)) {
+            $this->traductionPartenaires[] = $traductionPartenaire;
+            $traductionPartenaire->setPartenaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionPartenaire(TraductionPartenaire $traductionPartenaire): self
+    {
+        if ($this->traductionPartenaires->removeElement($traductionPartenaire)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionPartenaire->getPartenaire() === $this) {
+                $traductionPartenaire->setPartenaire(null);
+            }
+        }
 
         return $this;
     }
