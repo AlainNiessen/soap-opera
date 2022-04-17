@@ -28,6 +28,27 @@ class DetailCommandeArticle
      */
     private $facture;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotal;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="detailCommandeArticles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $article;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotalHorsTva;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTva;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +74,54 @@ class DetailCommandeArticle
     public function setFacture(?Facture $facture): self
     {
         $this->facture = $facture;
+
+        return $this;
+    }
+
+    public function getMontantTotal(): ?int
+    {
+        return $this->montantTotal;
+    }
+
+    public function setMontantTotal(int $montantTotal): self
+    {
+        $this->montantTotal = $montantTotal;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    public function getMontantTotalHorsTva(): ?int
+    {
+        return $this->montantTotalHorsTva;
+    }
+
+    public function setMontantTotalHorsTva(int $montantTotalHorsTva): self
+    {
+        $this->montantTotalHorsTva = $montantTotalHorsTva;
+
+        return $this;
+    }
+
+    public function getMontantTva(): ?int
+    {
+        return $this->montantTva;
+    }
+
+    public function setMontantTva(int $montantTva): self
+    {
+        $this->montantTva = $montantTva;
 
         return $this;
     }

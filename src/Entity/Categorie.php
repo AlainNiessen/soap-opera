@@ -49,6 +49,11 @@ class Categorie
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomBackend;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -218,6 +223,18 @@ class Categorie
                 $image->setCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomBackend(): ?string
+    {
+        return $this->nomBackend;
+    }
+
+    public function setNomBackend(string $nomBackend): self
+    {
+        $this->nomBackend = $nomBackend;
 
         return $this;
     }

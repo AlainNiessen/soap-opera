@@ -24,11 +24,7 @@ class Article
      */
     private $montantHorsTva;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $montantTva;
-
+    
     /**
      * @ORM\Column(type="boolean")
      */
@@ -64,6 +60,51 @@ class Article
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomBackend;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nombreVentes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DetailCommandeArticle::class, mappedBy="article")
+     */
+    private $detailCommandeArticles;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $tauxTva;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Odeur::class, inversedBy="articles")
+     */
+    private $odeur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Huile::class, inversedBy="articles")
+     */
+    private $huile;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=HuileEssentiel::class, inversedBy="articles")
+     */
+    private $huileEssentiell;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Beurre::class, inversedBy="articles")
+     */
+    private $beurre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=IngredientSupplementaire::class, inversedBy="articles")
+     */
+    private $ingredientSupplementaire;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
@@ -71,6 +112,11 @@ class Article
         $this->commentaires = new ArrayCollection();
         $this->traductionArticles = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->detailCommandeArticles = new ArrayCollection();
+        $this->huile = new ArrayCollection();
+        $this->huileEssentiell = new ArrayCollection();
+        $this->beurre = new ArrayCollection();
+        $this->ingredientSupplementaire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,18 +132,6 @@ class Article
     public function setMontantHorsTva(int $montantHorsTva): self
     {
         $this->montantHorsTva = $montantHorsTva;
-
-        return $this;
-    }
-
-    public function getMontantTva(): ?int
-    {
-        return $this->montantTva;
-    }
-
-    public function setMontantTva(int $montantTva): self
-    {
-        $this->montantTva = $montantTva;
 
         return $this;
     }
@@ -269,6 +303,180 @@ class Article
                 $image->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomBackend(): ?string
+    {
+        return $this->nomBackend;
+    }
+
+    public function setNomBackend(string $nomBackend): self
+    {
+        $this->nomBackend = $nomBackend;
+
+        return $this;
+    }
+
+    public function getNombreVentes(): ?int
+    {
+        return $this->nombreVentes;
+    }
+
+    public function setNombreVentes(int $nombreVentes): self
+    {
+        $this->nombreVentes = $nombreVentes;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DetailCommandeArticle>
+     */
+    public function getDetailCommandeArticles(): Collection
+    {
+        return $this->detailCommandeArticles;
+    }
+
+    public function addDetailCommandeArticle(DetailCommandeArticle $detailCommandeArticle): self
+    {
+        if (!$this->detailCommandeArticles->contains($detailCommandeArticle)) {
+            $this->detailCommandeArticles[] = $detailCommandeArticle;
+            $detailCommandeArticle->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailCommandeArticle(DetailCommandeArticle $detailCommandeArticle): self
+    {
+        if ($this->detailCommandeArticles->removeElement($detailCommandeArticle)) {
+            // set the owning side to null (unless already changed)
+            if ($detailCommandeArticle->getArticle() === $this) {
+                $detailCommandeArticle->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTauxTva(): ?int
+    {
+        return $this->tauxTva;
+    }
+
+    public function setTauxTva(int $tauxTva): self
+    {
+        $this->tauxTva = $tauxTva;
+
+        return $this;
+    }
+
+    public function getOdeur(): ?Odeur
+    {
+        return $this->odeur;
+    }
+
+    public function setOdeur(?Odeur $odeur): self
+    {
+        $this->odeur = $odeur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Huile>
+     */
+    public function getHuile(): Collection
+    {
+        return $this->huile;
+    }
+
+    public function addHuile(Huile $huile): self
+    {
+        if (!$this->huile->contains($huile)) {
+            $this->huile[] = $huile;
+        }
+
+        return $this;
+    }
+
+    public function removeHuile(Huile $huile): self
+    {
+        $this->huile->removeElement($huile);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, HuileEssentiel>
+     */
+    public function getHuileEssentiell(): Collection
+    {
+        return $this->huileEssentiell;
+    }
+
+    public function addHuileEssentiell(HuileEssentiel $huileEssentiell): self
+    {
+        if (!$this->huileEssentiell->contains($huileEssentiell)) {
+            $this->huileEssentiell[] = $huileEssentiell;
+        }
+
+        return $this;
+    }
+
+    public function removeHuileEssentiell(HuileEssentiel $huileEssentiell): self
+    {
+        $this->huileEssentiell->removeElement($huileEssentiell);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Beurre>
+     */
+    public function getBeurre(): Collection
+    {
+        return $this->beurre;
+    }
+
+    public function addBeurre(Beurre $beurre): self
+    {
+        if (!$this->beurre->contains($beurre)) {
+            $this->beurre[] = $beurre;
+        }
+
+        return $this;
+    }
+
+    public function removeBeurre(Beurre $beurre): self
+    {
+        $this->beurre->removeElement($beurre);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, IngredientSupplementaire>
+     */
+    public function getIngredientSupplementaire(): Collection
+    {
+        return $this->ingredientSupplementaire;
+    }
+
+    public function addIngredientSupplementaire(IngredientSupplementaire $ingredientSupplementaire): self
+    {
+        if (!$this->ingredientSupplementaire->contains($ingredientSupplementaire)) {
+            $this->ingredientSupplementaire[] = $ingredientSupplementaire;
+        }
+
+        return $this;
+    }
+
+    public function removeIngredientSupplementaire(IngredientSupplementaire $ingredientSupplementaire): self
+    {
+        $this->ingredientSupplementaire->removeElement($ingredientSupplementaire);
 
         return $this;
     }

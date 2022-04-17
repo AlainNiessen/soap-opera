@@ -29,6 +29,11 @@ class TypeEvent
      */
     private $traductionTypeEvents;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomBackend;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -96,6 +101,18 @@ class TypeEvent
                 $traductionTypeEvent->setTypeEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomBackend(): ?string
+    {
+        return $this->nomBackend;
+    }
+
+    public function setNomBackend(string $nomBackend): self
+    {
+        $this->nomBackend = $nomBackend;
 
         return $this;
     }

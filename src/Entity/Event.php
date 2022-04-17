@@ -39,11 +39,7 @@ class Event
      */
     private $dateEnd;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $montant;
-
+    
     /**
      * @ORM\Column(type="integer")
      */
@@ -74,6 +70,16 @@ class Event
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="event")
      */
     private $images;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantHorsTva;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $tauxTva;
 
     public function __construct()
     {
@@ -131,18 +137,6 @@ class Event
     public function setDateEnd(\DateTimeInterface $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
-
-        return $this;
-    }
-
-    public function getMontant(): ?int
-    {
-        return $this->montant;
-    }
-
-    public function setMontant(int $montant): self
-    {
-        $this->montant = $montant;
 
         return $this;
     }
@@ -269,6 +263,30 @@ class Event
                 $image->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMontantHorsTva(): ?int
+    {
+        return $this->montantHorsTva;
+    }
+
+    public function setMontantHorsTva(int $montantHorsTva): self
+    {
+        $this->montantHorsTva = $montantHorsTva;
+
+        return $this;
+    }
+
+    public function getTauxTva(): ?int
+    {
+        return $this->tauxTva;
+    }
+
+    public function setTauxTva(int $tauxTva): self
+    {
+        $this->tauxTva = $tauxTva;
 
         return $this;
     }

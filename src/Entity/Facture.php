@@ -45,6 +45,21 @@ class Facture
      */
     private $reservations;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotal;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotalTva;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotalHorsTva;
+
     public function __construct()
     {
         $this->detailCommandeArticles = new ArrayCollection();
@@ -148,6 +163,42 @@ class Facture
                 $reservation->setFacture(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMontantTotal(): ?int
+    {
+        return $this->montantTotal;
+    }
+
+    public function setMontantTotal(int $montantTotal): self
+    {
+        $this->montantTotal = $montantTotal;
+
+        return $this;
+    }
+
+    public function getMontantTotalTva(): ?int
+    {
+        return $this->montantTotalTva;
+    }
+
+    public function setMontantTotalTva(int $montantTotalTva): self
+    {
+        $this->montantTotalTva = $montantTotalTva;
+
+        return $this;
+    }
+
+    public function getMontantTotalHorsTva(): ?int
+    {
+        return $this->montantTotalHorsTva;
+    }
+
+    public function setMontantTotalHorsTva(int $montantTotalHorsTva): self
+    {
+        $this->montantTotalHorsTva = $montantTotalHorsTva;
 
         return $this;
     }

@@ -74,6 +74,34 @@ class Langue
      */
     private $utilisateurs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionOdeur::class, mappedBy="langue")
+     */
+    private $traductionOdeurs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionHuile::class, mappedBy="langue")
+     */
+    private $traductionHuiles;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionHuileEssentiel::class, mappedBy="langue")
+     */
+    private $traductionHuileEssentiels;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionBeurre::class, mappedBy="langue")
+     */
+    private $traductionBeurres;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionIngredientSupplementaire::class, mappedBy="langue")
+     */
+    private $traductionIngredientSupplementaires;
+
+    
+
+    
     public function __construct()
     {
         $this->traductionCategories = new ArrayCollection();
@@ -85,6 +113,11 @@ class Langue
         $this->traductionAdresses = new ArrayCollection();
         $this->traductionEvents = new ArrayCollection();
         $this->utilisateurs = new ArrayCollection();
+        $this->traductionOdeurs = new ArrayCollection();
+        $this->traductionHuiles = new ArrayCollection();
+        $this->traductionHuileEssentiels = new ArrayCollection();
+        $this->traductionBeurres = new ArrayCollection();
+        $this->traductionIngredientSupplementaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -385,4 +418,156 @@ class Langue
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, TraductionOdeur>
+     */
+    public function getTraductionOdeurs(): Collection
+    {
+        return $this->traductionOdeurs;
+    }
+
+    public function addTraductionOdeur(TraductionOdeur $traductionOdeur): self
+    {
+        if (!$this->traductionOdeurs->contains($traductionOdeur)) {
+            $this->traductionOdeurs[] = $traductionOdeur;
+            $traductionOdeur->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionOdeur(TraductionOdeur $traductionOdeur): self
+    {
+        if ($this->traductionOdeurs->removeElement($traductionOdeur)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionOdeur->getLangue() === $this) {
+                $traductionOdeur->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionHuile>
+     */
+    public function getTraductionHuiles(): Collection
+    {
+        return $this->traductionHuiles;
+    }
+
+    public function addTraductionHuile(TraductionHuile $traductionHuile): self
+    {
+        if (!$this->traductionHuiles->contains($traductionHuile)) {
+            $this->traductionHuiles[] = $traductionHuile;
+            $traductionHuile->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionHuile(TraductionHuile $traductionHuile): self
+    {
+        if ($this->traductionHuiles->removeElement($traductionHuile)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionHuile->getLangue() === $this) {
+                $traductionHuile->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionHuileEssentiel>
+     */
+    public function getTraductionHuileEssentiels(): Collection
+    {
+        return $this->traductionHuileEssentiels;
+    }
+
+    public function addTraductionHuileEssentiel(TraductionHuileEssentiel $traductionHuileEssentiel): self
+    {
+        if (!$this->traductionHuileEssentiels->contains($traductionHuileEssentiel)) {
+            $this->traductionHuileEssentiels[] = $traductionHuileEssentiel;
+            $traductionHuileEssentiel->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionHuileEssentiel(TraductionHuileEssentiel $traductionHuileEssentiel): self
+    {
+        if ($this->traductionHuileEssentiels->removeElement($traductionHuileEssentiel)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionHuileEssentiel->getLangue() === $this) {
+                $traductionHuileEssentiel->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionBeurre>
+     */
+    public function getTraductionBeurres(): Collection
+    {
+        return $this->traductionBeurres;
+    }
+
+    public function addTraductionBeurre(TraductionBeurre $traductionBeurre): self
+    {
+        if (!$this->traductionBeurres->contains($traductionBeurre)) {
+            $this->traductionBeurres[] = $traductionBeurre;
+            $traductionBeurre->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionBeurre(TraductionBeurre $traductionBeurre): self
+    {
+        if ($this->traductionBeurres->removeElement($traductionBeurre)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionBeurre->getLangue() === $this) {
+                $traductionBeurre->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionIngredientSupplementaire>
+     */
+    public function getTraductionIngredientSupplementaires(): Collection
+    {
+        return $this->traductionIngredientSupplementaires;
+    }
+
+    public function addTraductionIngredientSupplementaire(TraductionIngredientSupplementaire $traductionIngredientSupplementaire): self
+    {
+        if (!$this->traductionIngredientSupplementaires->contains($traductionIngredientSupplementaire)) {
+            $this->traductionIngredientSupplementaires[] = $traductionIngredientSupplementaire;
+            $traductionIngredientSupplementaire->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionIngredientSupplementaire(TraductionIngredientSupplementaire $traductionIngredientSupplementaire): self
+    {
+        if ($this->traductionIngredientSupplementaires->removeElement($traductionIngredientSupplementaire)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionIngredientSupplementaire->getLangue() === $this) {
+                $traductionIngredientSupplementaire->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

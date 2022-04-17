@@ -34,6 +34,21 @@ class Reservation
      */
     private $facture;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotalHorsTva;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTva;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $montantTotal;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +86,42 @@ class Reservation
     public function setFacture(?Facture $facture): self
     {
         $this->facture = $facture;
+
+        return $this;
+    }
+
+    public function getMontantTotalHorsTva(): ?int
+    {
+        return $this->montantTotalHorsTva;
+    }
+
+    public function setMontantTotalHorsTva(int $montantTotalHorsTva): self
+    {
+        $this->montantTotalHorsTva = $montantTotalHorsTva;
+
+        return $this;
+    }
+
+    public function getMontantTva(): ?int
+    {
+        return $this->montantTva;
+    }
+
+    public function setMontantTva(int $montantTva): self
+    {
+        $this->montantTva = $montantTva;
+
+        return $this;
+    }
+
+    public function getMontantTotal(): ?int
+    {
+        return $this->montantTotal;
+    }
+
+    public function setMontantTotal(int $montantTotal): self
+    {
+        $this->montantTotal = $montantTotal;
 
         return $this;
     }
