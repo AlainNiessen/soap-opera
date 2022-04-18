@@ -7,12 +7,62 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {# 'css/app' must match the first argument to addEntry() in webpack.config.js #}
-            {# Renders a link tag (if your module requires any CSS)
-            <link rel="stylesheet" href="/build/app.css"> #}
+            {# Renders a link tag (if your module requires any CSS) <link rel="stylesheet" href="/build/app.css"> #}
             {{ encore_entry_link_tags('css/app') }}
         {% endblock %}            
     </head>
     <body>
+        <header>
+            <section class="l-topbar"> 
+                <div class="wrapper">
+                    <div class="l-topbar-logo">
+                        <a href="{{ path('home') }}" class="l-topbar-logo-img"><img src="{{ asset('images/logo.png') }}"></a>                   
+                    </div>
+                    <div class="l-topbar-hamburgerMenu">                    
+                        <div class="l-topbar-hamburger"> 
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                        </div>
+                        <nav class="l-topbar-navbar">
+                            <ul>                
+                                <li class="l-menu-list-element"> 
+                                    <a href="{{ path('home') }}">Home</a>
+                                </li>
+                                <li class="l-menu-list-element">
+                                    <a href="#">Unsere Produkte</a>
+                                </li>
+                                <li class="l-menu-list-element">
+                                    <a href="#">Sonderangebote</a>
+                                </li>
+                                <li class="l-menu-list-element">
+                                    <a href="#">Veranstaltungen</a>
+                                </li>
+                                <li class="l-menu-list-element">
+                                    <a href="#" class="interruption">Unsere Philisophie</a>
+                                </li>                           
+                                <li class="l-menu-list-element"> 
+                                    <a href="#">Kontakt</a>
+                                </li>
+                                <li class="l-menu-list-element">
+                                    <a href="#">Registrierung</a>
+                                </li>                                                     
+                                <li class="l-menu-list-element">
+                                    <a href="#">Anmeldung</a>
+                                </li>                                                     
+                            </ul>         
+                        </nav>
+                    </div>
+                </div>      
+            </section> 
+        </header>         
+
+
+
+
+
+
+
         {% block body %}{% endblock %}
         {% block javascripts %}
             {# Renders app.js & a webpack runtime.js file
