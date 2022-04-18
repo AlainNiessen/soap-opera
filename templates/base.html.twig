@@ -28,29 +28,29 @@
                         </div>
                         <nav class="l-topbar-menu-navbar" id="l-topbar-navbar">
                             <ul>                
-                                <li class="l-menu-list-element"> 
-                                    <a href="{{ path('home') }}">Home</a>
+                                <li> 
+                                    <a href="{{ path('home') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('home')) %} activeElement {% endif %}">Home</a>
                                 </li>
-                                <li class="l-menu-list-element">
-                                    <a href="#">Unsere Produkte</a>
+                                <li >
+                                    <a href="{{ path('app_article') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('app_article')) %} activeElement {% endif %}">Unsere Produkte</a>
                                 </li>
-                                <li class="l-menu-list-element">
-                                    <a href="#">Sonderangebote</a>
+                                <li >
+                                    <a href="#" class="l-menu-list-element">Sonderangebote</a>
                                 </li>
-                                <li class="l-menu-list-element">
-                                    <a href="#">Veranstaltungen</a>
+                                <li >
+                                    <a href="#" class="l-menu-list-element">Veranstaltungen</a>
                                 </li>
-                                <li class="l-menu-list-element">
-                                    <a href="#" class="interruption">Unsere Philosophie</a>
+                                <li >
+                                    <a href="#" class="l-menu-list-element">Unsere Philosophie</a>
                                 </li>                           
-                                <li class="l-menu-list-element"> 
-                                    <a href="#">Kontakt</a>
+                                <li > 
+                                    <a href="#" class="l-menu-list-element">Kontakt</a>
                                 </li>
-                                <li class="l-menu-list-element">
-                                    <a href="#">Registrierung</a>
+                                <li >
+                                    <a href="#" class="l-menu-list-element">Registrierung</a>
                                 </li>                                                     
-                                <li class="l-menu-list-element">
-                                    <a href="#">Anmeldung</a>
+                                <li >
+                                    <a href="#" class="l-menu-list-element">Anmeldung</a>
                                 </li>                                                     
                             </ul>         
                         </nav>

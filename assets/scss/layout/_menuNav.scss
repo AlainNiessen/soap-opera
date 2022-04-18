@@ -90,7 +90,7 @@
             margin: 1.1rem 0;
             a {
                 position: relative; // for hover animation
-                color: map-get($map: $colors, $key: 'text');
+                color: map-get($map: $colors, $key: 'text');                                          
                 &::after {
                     content: '';
                     position: absolute;
@@ -99,22 +99,14 @@
                     width: 100%;
                     height: 0.2em;
                     background-color: map-get($map: $colors, $key: 'bg-2');
-                    -webkit-transition: transform 250ms;
-                    -moz-transition: transform 250ms;
-                    -o-transition: transform 250ms;
-                    transition: transform 250ms;
-                    -webkit-transform: scaleX(0);
-                    -moz-transform: scaleX(0);
-                    -o-transform: scaleX(0);
-                    transform: scaleX(0);
+                    opacity: 0;
+                    
                   }
-                &:hover::after {
-                    -webkit-transform: scaleX(1);
-                    -moz-transform: scaleX(1);
-                    -o-transform: scaleX(1);
-                    transform: scaleX(1);
+                &:hover::after, &.activeElement::after {
+                    opacity: 1;
                 }
-            }            
+            }   
+                   
         }
     }
 }
