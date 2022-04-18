@@ -31,3 +31,21 @@ h2 {
 h3 {
     font-size: nth($fontsize, 3);
 }
+
+a {
+    text-decoration: none;
+}
+
+//WRAPPER Mobile
+.wrapper {
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+//MEDIA QUERY BREAKPOINT LARGE PC
+@media screen and (min-width: 1400px) {
+    .wrapper {
+        max-width: 1200px;
+    }
+}
