@@ -27,6 +27,7 @@
                             <span class="line3"></span>
                         </div>
                         <nav class="l-topbar-menu-navbar" id="l-topbar-navbar">
+                        {# checking app.request.pathInfo for highlighting the active menu element #}
                             <ul>                
                                 <li> 
                                     <a href="{{ path('home') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('home')) %} activeElement {% endif %}">Home</a>
