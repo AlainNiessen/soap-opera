@@ -1,0 +1,25 @@
+// FOOTER GENERAL STYLE
+.l-footer {
+    background-color: map-get($map: $colors, $key: 'bg-2');    
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .l-footer-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: map-get($map: $colors, $key: 'text');
+        p {
+            a {
+                color: map-get($map: $colors, $key: 'main1');
+                font-size: 1.1rem;
+                &:hover {
+                    color: map-get($map: $colors, $key: 'text');
+                }
+            }
+        }
+    }
+}

@@ -61,15 +61,20 @@
                     </div>
                 </div>      
             </section> 
-        </header>         
-
-
-
-
-
-
-
+        </header>
         {% block body %}{% endblock %}
+        <footer class="l-footer">
+            <div class="wrapper">
+                <section class="l-footer-text">
+                    <p>
+                        Copyright <i class="far fa-copyright"></i> 2021-2022 by Alain Niessen
+                    </p>                
+                    <p>
+                        Icons by <a href="https://www.freepik.com" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/de/" title="Flaticon" target="_blank">Flaticon</a> and <a href="https://fontawesome.com/" title="Fontawesome" target="_blank">Fontawesome</a>
+                    </p>
+                </section>
+            </div>
+        </footer>
         {% block javascripts %}
             {# Renders app.js & a webpack runtime.js file
             <script src="/build/runtime.js" defer></script>

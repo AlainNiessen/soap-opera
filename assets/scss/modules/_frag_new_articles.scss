@@ -1,0 +1,46 @@
+// FRAGMENT NEW ARTICLES 
+.m-new { 
+    margin: 2rem 0;    
+    h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+.m-new-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.m-new-box {
+    width: 100%;
+    max-width: 15rem;
+    margin: 0.5rem auto;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(166, 217, 230);
+}
+
+//MEDIA QUERY BREAKPOINT SMARTPHONE
+@media screen and (min-width: 576px) {    
+    .m-new-container {
+        max-width: 50rem;
+        margin: 0 auto;
+    }
+    .m-new-box {
+        max-width: 9rem; 
+        height: 9rem;
+    }
+}
+
+//MEDIA QUERY BREAKPOINT TABLETTE
+@media screen and (min-width: 768px) {
+    .m-new-box {      
+        max-width: 12rem;     
+        height: 12rem;      
+    }    
+}
