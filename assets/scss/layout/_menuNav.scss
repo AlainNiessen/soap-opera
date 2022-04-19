@@ -61,6 +61,9 @@
             }
         }
     }
+    .l-topbar-menu-navbar {
+        top: 20rem;
+    }
 } 
 
 //NAVBAR WITH ANIMATION
@@ -69,7 +72,7 @@
     height: 80vh;
     background-color: map-get($map: $colors, $key: 'main1');
     position: absolute;
-    top: 20rem;
+    top: 15rem;
     left: 100%; //start position for animation
     z-index: 2;
     display: flex;
@@ -105,8 +108,7 @@
                 &:hover::after, &.activeElement::after {
                     opacity: 1;
                 }
-            }   
-                   
+            }                    
         }
     }
 }
@@ -134,9 +136,9 @@
                 }
             }        
         }
-    }
-    
+    }    
 }
+
 //MEDIA QUERY BREAKPOINT PC
 @media screen and (min-width: 992px) {
     .l-topbar-menu {       

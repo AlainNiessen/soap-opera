@@ -20,6 +20,10 @@ img {
     width: 100%;
 }
 
+h1, h2, h3, h4 {
+    font-weight: normal;
+}
+
 h1 {
     font-size: nth($fontsize, 1);    
 }
