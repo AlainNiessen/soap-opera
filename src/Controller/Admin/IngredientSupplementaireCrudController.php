@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\IngredientSupplementaire;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class IngredientSupplementaireCrudController extends AbstractCrudController
@@ -12,14 +13,10 @@ class IngredientSupplementaireCrudController extends AbstractCrudController
         return IngredientSupplementaire::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield TextField::new('nomBackend', 'Name für Adminbereich');
     }
-    */
+    
 }
