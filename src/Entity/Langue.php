@@ -60,11 +60,6 @@ class Langue
     private $traductionArticles;
 
     /**
-     * @ORM\OneToMany(targetEntity=TraductionAdresse::class, mappedBy="langue")
-     */
-    private $traductionAdresses;
-
-    /**
      * @ORM\OneToMany(targetEntity=TraductionEvent::class, mappedBy="langue")
      */
     private $traductionEvents;
@@ -110,7 +105,6 @@ class Langue
         $this->traductionPartenaires = new ArrayCollection();
         $this->traductionPromotions = new ArrayCollection();
         $this->traductionArticles = new ArrayCollection();
-        $this->traductionAdresses = new ArrayCollection();
         $this->traductionEvents = new ArrayCollection();
         $this->utilisateurs = new ArrayCollection();
         $this->traductionOdeurs = new ArrayCollection();
@@ -327,37 +321,7 @@ class Langue
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, TraductionAdresse>
-     */
-    public function getTraductionAdresses(): Collection
-    {
-        return $this->traductionAdresses;
-    }
-
-    public function addTraductionAdress(TraductionAdresse $traductionAdress): self
-    {
-        if (!$this->traductionAdresses->contains($traductionAdress)) {
-            $this->traductionAdresses[] = $traductionAdress;
-            $traductionAdress->setLangue($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTraductionAdress(TraductionAdresse $traductionAdress): self
-    {
-        if ($this->traductionAdresses->removeElement($traductionAdress)) {
-            // set the owning side to null (unless already changed)
-            if ($traductionAdress->getLangue() === $this) {
-                $traductionAdress->setLangue(null);
-            }
-        }
-
-        return $this;
-    }
+    }    
 
     /**
      * @return Collection<int, TraductionEvent>

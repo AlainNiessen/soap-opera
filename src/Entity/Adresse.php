@@ -42,19 +42,29 @@ class Adresse
     /**
      * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="adresseDeliver")
      */
-    private $utilisateurDeliver;
+    private $utilisateurDeliver;    
 
     /**
-     * @ORM\OneToMany(targetEntity=TraductionAdresse::class, mappedBy="adresse")
+     * @ORM\Column(type="string", length=255)
      */
-    private $traductionAdresses;
+    private $rue;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pays;
 
     public function __construct()
     {
         $this->partenaire = new ArrayCollection();
         $this->utilisateursHome = new ArrayCollection();
         $this->utilisateurDeliver = new ArrayCollection();
-        $this->traductionAdresses = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -176,32 +186,40 @@ class Adresse
         return $this;
     }
 
-    /**
-     * @return Collection<int, TraductionAdresse>
-     */
-    public function getTraductionAdresses(): Collection
+    
+
+    public function getRue(): ?string
     {
-        return $this->traductionAdresses;
+        return $this->rue;
     }
 
-    public function addTraductionAdress(TraductionAdresse $traductionAdress): self
+    public function setRue(string $rue): self
     {
-        if (!$this->traductionAdresses->contains($traductionAdress)) {
-            $this->traductionAdresses[] = $traductionAdress;
-            $traductionAdress->setAdresse($this);
-        }
+        $this->rue = $rue;
 
         return $this;
     }
 
-    public function removeTraductionAdress(TraductionAdresse $traductionAdress): self
+    public function getVille(): ?string
     {
-        if ($this->traductionAdresses->removeElement($traductionAdress)) {
-            // set the owning side to null (unless already changed)
-            if ($traductionAdress->getAdresse() === $this) {
-                $traductionAdress->setAdresse(null);
-            }
-        }
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(string $pays): self
+    {
+        $this->pays = $pays;
 
         return $this;
     }
