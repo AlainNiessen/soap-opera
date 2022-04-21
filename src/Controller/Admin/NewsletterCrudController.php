@@ -13,6 +13,8 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class NewsletterCrudController extends AbstractCrudController
 {
+    private $params;
+
     public function __construct(ParameterBagInterface $params)
    {
             $this->params = $params;

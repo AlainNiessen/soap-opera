@@ -6,16 +6,23 @@ use App\Entity\Event;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class EventCrudController extends AbstractCrudController
 {
+    private $params;
+
+    public function __construct(ParameterBagInterface $params)
+    {
+             $this->params = $params;
+     }
+
     public static function getEntityFqcn(): string
     {
         return Event::class;
