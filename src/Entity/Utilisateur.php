@@ -98,6 +98,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $langue;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->nom.' '.$this->prenom;
+    }
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();

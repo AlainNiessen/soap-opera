@@ -1,0 +1,20 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        image_nom:
+            uri_prefix: '%app.path.image_nom%'
+            upload_destination: '%kernel.project_dir%/public%app.path.image_nom%'
+            # generating unique name for images
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        newsletter_documentPDF:
+            uri_prefix: '%app.path.newsletter.documentPDF%'
+            upload_destination: '%kernel.project_dir%/public%app.path.newsletter.documentPDF%'
+            # generating unique name for pdf
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        event_documentPDF:
+            uri_prefix: '%app.path.event.documentPDF%'
+            upload_destination: '%kernel.project_dir%/public%app.path.event.documentPDF%'
+            # generating unique name for pdf
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+

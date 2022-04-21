@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\TraductionPartenaire;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class TraductionPartenaireCrudController extends AbstractCrudController
@@ -17,6 +18,8 @@ class TraductionPartenaireCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('description', 'Beschreibung');
+        yield AssociationField::new('langue', 'Sprache zuordnen');
+        yield AssociationField::new('partenaire', 'Partner zuordnen');
     }
     
 }

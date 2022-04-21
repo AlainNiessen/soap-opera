@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class EventCrudController extends AbstractCrudController
@@ -30,6 +31,7 @@ class EventCrudController extends AbstractCrudController
         yield PercentField::new('tauxTva', 'MwSt'); 
         yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl'); 
         yield ImageField::new('documentPDF', 'PDF hinzufügen')->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']]);
+        yield AssociationField::new('typeEvent', 'Veranstaltungstyp zuordnen');
     }
     
 }

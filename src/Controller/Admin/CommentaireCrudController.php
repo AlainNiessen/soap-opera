@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CommentaireCrudController extends AbstractCrudController
@@ -23,6 +24,8 @@ class CommentaireCrudController extends AbstractCrudController
         yield DateTimeField::new('dateCommentaire', 'Datum');
         yield BooleanField::new('commentaireInfructueux', 'Freischaltung');
         yield IntegerField::new('nombreEtoiles', 'Anzahl Sterne');
+        yield AssociationField::new('article', 'Artikel zuordnen');
+        yield AssociationField::new('utilisateur', 'Nutzer zuordnen');
 
     }
     

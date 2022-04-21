@@ -29,6 +29,12 @@ class PositionImage
      */
     private $images;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->position;
+    }
+
     public function __construct()
     {
         $this->images = new ArrayCollection();

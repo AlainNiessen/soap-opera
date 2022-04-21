@@ -34,6 +34,12 @@ class HuileEssentiel
      */
     private $traductionHuileEssentiels;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->nomBackend;
+    }
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();

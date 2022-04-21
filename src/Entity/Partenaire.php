@@ -44,6 +44,12 @@ class Partenaire
      */
     private $images;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();

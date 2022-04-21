@@ -59,6 +59,12 @@ class Adresse
      */
     private $pays;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->rue.', '.$this->numeroRue.' | '.$this->codePostal.' - '.$this->ville.' | '.$this->ville;
+    }
+
     public function __construct()
     {
         $this->partenaire = new ArrayCollection();

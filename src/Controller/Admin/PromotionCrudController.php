@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class PromotionCrudController extends AbstractCrudController
@@ -25,6 +26,8 @@ class PromotionCrudController extends AbstractCrudController
         yield DateTimeField::new('dateStart', 'Start Promotion');
         yield DateTimeField::new('dateEnd', 'Ende Promotion');
         yield PercentField::new('Pourcentage', 'Prozentsatz');
+        yield AssociationField::new('article', 'Artikel zuordnen');
+        yield AssociationField::new('categorie', 'Kategorie zuordnen');
     }
     
 }

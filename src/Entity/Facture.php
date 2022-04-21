@@ -60,6 +60,12 @@ class Facture
      */
     private $montantTotalHorsTva;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->id;
+    }
+
     public function __construct()
     {
         $this->detailCommandeArticles = new ArrayCollection();

@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class UtilisateurCrudController extends AbstractCrudController
@@ -27,6 +28,9 @@ class UtilisateurCrudController extends AbstractCrudController
         yield TextField::new('prenom', 'Vorname');
         yield DateTimeField::new('dateNaissance', 'Geburtsdatum');
         yield DateTimeField::new('dateInscription', 'Einschreibedatum');
-        yield BooleanField::new('inscriptionValide', 'Einschreibebestätigung');                      
+        yield BooleanField::new('inscriptionValide', 'Einschreibebestätigung');
+        yield AssociationField::new('langue', 'Sprache zuordnen');                      
+        yield AssociationField::new('adresseHome', 'Wohnadresse zuordnen');                      
+        yield AssociationField::new('adresseDeliver', 'Lieferadresse zuordnen');                      
     }    
 }

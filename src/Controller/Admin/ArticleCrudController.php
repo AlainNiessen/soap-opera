@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -25,6 +26,7 @@ class ArticleCrudController extends AbstractCrudController
         yield PercentField::new('tauxTva', 'MwSt');
         yield BooleanField::new('enAvant', 'Wird angezeigt?');
         yield IntegerField::new('nombreVentes', 'Anzahl Verkäufe');  
-    }
-    
+        yield AssociationField::new('categorie', 'Kategorie zuordnen');
+        yield AssociationField::new('odeur', 'Duft zuordnen');
+    }   
 }

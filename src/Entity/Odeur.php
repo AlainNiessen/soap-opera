@@ -34,6 +34,12 @@ class Odeur
      */
     private $traductionOdeurs;
 
+    // function for display in admin interface
+    public function __toString(): string
+    {
+        return $this->nomBackend;
+    }
+
     
     public function __construct()
     {
