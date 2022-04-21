@@ -8,13 +8,13 @@ vich_uploader:
             # generating unique name for images
             namer: Vich\UploaderBundle\Naming\UniqidNamer
         newsletter_documentPDF:
-            uri_prefix: '%app.path.newsletter.documentPDF%'
-            upload_destination: '%kernel.project_dir%/public%app.path.newsletter.documentPDF%'
+            uri_prefix: '%app.path.newsletter_documentPDF%'
+            upload_destination: '%kernel.project_dir%/public%app.path.newsletter_documentPDF%'
             # generating unique name for pdf
             namer: Vich\UploaderBundle\Naming\UniqidNamer
         event_documentPDF:
-            uri_prefix: '%app.path.event.documentPDF%'
-            upload_destination: '%kernel.project_dir%/public%app.path.event.documentPDF%'
+            uri_prefix: '%app.path.event_documentPDF%'
+            upload_destination: '%kernel.project_dir%/public%app.path.event_documentPDF%'
             # generating unique name for pdf
             namer: Vich\UploaderBundle\Naming\UniqidNamer
 

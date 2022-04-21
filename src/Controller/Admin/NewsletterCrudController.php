@@ -5,10 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Newsletter;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class NewsletterCrudController extends AbstractCrudController
 {
@@ -21,11 +21,16 @@ class NewsletterCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('nomBackend', 'Name für Adminbereich');
+        yield TextField::new('documentPDF', 'PDF')
+                ->onlyOnIndex();
         yield DateTimeField::new('dateNewsletter', 'Datum');
         yield Field::new('documentFile')
                 ->setFormType(VichImageType::class)                
                 ->setLabel('PDF hinzufügen')
-                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']]);
+                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']])
+                ->onlyOnForms();
+                
+                
     }
     
 }

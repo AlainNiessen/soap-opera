@@ -23,6 +23,11 @@ class Event
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomBackend;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $dateAffichageStart;
@@ -106,6 +111,18 @@ class Event
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getNomBackend(): ?string
+    {
+        return $this->nomBackend;
+    }
+
+    public function setNomBackend(string $nomBackend): self
+    {
+        $this->nomBackend = $nomBackend;
+
+        return $this;
     }
 
     public function getDateAffichageStart(): ?\DateTimeInterface

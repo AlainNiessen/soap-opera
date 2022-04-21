@@ -7,8 +7,8 @@ parameters:
     # upload direction for images 
     images_directory: '%kernel.project_dir%/public/uploads'
     app.path.image_nom: /uploads/images
-    app.path.newsletter.documentPDF: /uploads/newsletterPDF
-    app.path.event.documentPDF: /uploads/eventPDF
+    app.path.newsletter_documentPDF: /uploads/newsletterPDF
+    app.path.event_documentPDF: /uploads/eventPDF
 
 services:
     # default configuration for services in *this* file

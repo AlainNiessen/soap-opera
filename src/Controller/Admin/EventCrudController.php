@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -29,9 +31,16 @@ class EventCrudController extends AbstractCrudController
         yield DateTimeField::new('dateEnd', 'Ende Veranstaltung');
         yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')->setCurrency('EUR')->setNumDecimals(2); 
         yield PercentField::new('tauxTva', 'MwSt'); 
-        yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl'); 
-        yield ImageField::new('documentPDF', 'PDF hinzufügen')->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']]);
+        yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl');
+        yield TextField::new('documentPDF', 'PDF')
+                            ->onlyOnIndex();
+        yield Field::new('documentFile')
+                            ->setFormType(VichImageType::class)                
+                            ->setLabel('PDF hinzufügen')
+                            ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']])
+                            ->onlyOnForms() ;  
         yield AssociationField::new('typeEvent', 'Veranstaltungstyp zuordnen');
+        
     }
     
 }
