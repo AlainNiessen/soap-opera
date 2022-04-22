@@ -46,17 +46,17 @@ class Facture
     private $reservations;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTotal;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTotalTva;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTotalHorsTva;
 
@@ -173,36 +173,36 @@ class Facture
         return $this;
     }
 
-    public function getMontantTotal(): ?int
+    public function getMontantTotal(): ?float
     {
         return $this->montantTotal;
     }
 
-    public function setMontantTotal(int $montantTotal): self
+    public function setMontantTotal(float $montantTotal): self
     {
         $this->montantTotal = $montantTotal;
 
         return $this;
     }
 
-    public function getMontantTotalTva(): ?int
+    public function getMontantTotalTva(): ?float
     {
         return $this->montantTotalTva;
     }
 
-    public function setMontantTotalTva(int $montantTotalTva): self
+    public function setMontantTotalTva(float $montantTotalTva): self
     {
         $this->montantTotalTva = $montantTotalTva;
 
         return $this;
     }
 
-    public function getMontantTotalHorsTva(): ?int
+    public function getMontantTotalHorsTva(): ?float
     {
         return $this->montantTotalHorsTva;
     }
 
-    public function setMontantTotalHorsTva(int $montantTotalHorsTva): self
+    public function setMontantTotalHorsTva(float $montantTotalHorsTva): self
     {
         $this->montantTotalHorsTva = $montantTotalHorsTva;
 

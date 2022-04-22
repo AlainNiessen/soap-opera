@@ -29,7 +29,7 @@ class DetailCommandeArticle
     private $facture;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTotal;
 
@@ -40,12 +40,12 @@ class DetailCommandeArticle
     private $article;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTotalHorsTva;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantTva;
 
@@ -78,12 +78,12 @@ class DetailCommandeArticle
         return $this;
     }
 
-    public function getMontantTotal(): ?int
+    public function getMontantTotal(): ?float
     {
         return $this->montantTotal;
     }
 
-    public function setMontantTotal(int $montantTotal): self
+    public function setMontantTotal(float $montantTotal): self
     {
         $this->montantTotal = $montantTotal;
 
@@ -102,24 +102,24 @@ class DetailCommandeArticle
         return $this;
     }
 
-    public function getMontantTotalHorsTva(): ?int
+    public function getMontantTotalHorsTva(): ?float
     {
         return $this->montantTotalHorsTva;
     }
 
-    public function setMontantTotalHorsTva(int $montantTotalHorsTva): self
+    public function setMontantTotalHorsTva(float $montantTotalHorsTva): self
     {
         $this->montantTotalHorsTva = $montantTotalHorsTva;
 
         return $this;
     }
 
-    public function getMontantTva(): ?int
+    public function getMontantTva(): ?float
     {
         return $this->montantTva;
     }
 
-    public function setMontantTva(int $montantTva): self
+    public function setMontantTva(float $montantTva): self
     {
         $this->montantTva = $montantTva;
 

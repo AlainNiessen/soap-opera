@@ -10,11 +10,11 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220422092523 extends AbstractMigration
+final class Version20220422131854 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Changement montant et tva de integer en float';
+        return 'Correction type montant et tva pour article';
     }
 
     public function up(Schema $schema): void

@@ -23,13 +23,16 @@ class FactureCrudController extends AbstractCrudController
         yield BooleanField::new('statutPaiement', 'Bezahlt?');        
         yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents(); 
         yield MoneyField::new('montantTotalTva', 'Gesamtbetrag MwSt')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents(); 
         yield MoneyField::new('montantTotal', 'Gesamtbetrag')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents(); 
         yield AssociationField::new('utilisateur', 'Nutzer zuordnen');
     }    
 }

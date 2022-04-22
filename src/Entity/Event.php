@@ -92,12 +92,12 @@ class Event
     private $images;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantHorsTva;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $tauxTva;
 
@@ -299,24 +299,24 @@ class Event
         return $this;
     }
 
-    public function getMontantHorsTva(): ?int
+    public function getMontantHorsTva(): ?float
     {
         return $this->montantHorsTva;
     }
 
-    public function setMontantHorsTva(int $montantHorsTva): self
+    public function setMontantHorsTva(float $montantHorsTva): self
     {
         $this->montantHorsTva = $montantHorsTva;
 
         return $this;
     }
 
-    public function getTauxTva(): ?int
+    public function getTauxTva(): ?float
     {
         return $this->tauxTva;
     }
 
-    public function setTauxTva(int $tauxTva): self
+    public function setTauxTva(float $tauxTva): self
     {
         $this->tauxTva = $tauxTva;
 

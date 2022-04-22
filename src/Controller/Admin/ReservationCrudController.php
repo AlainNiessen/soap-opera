@@ -21,13 +21,16 @@ class ReservationCrudController extends AbstractCrudController
         yield DateTimeField::new('dateReservation', 'Datum Reservierung');       
         yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents();  
         yield MoneyField::new('montantTva', 'Betrag MwSt')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents();  
         yield MoneyField::new('montantTotal', 'Gesamtbetrag')
                             ->setCurrency('EUR')
-                            ->setNumDecimals(2);
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents();  
         yield AssociationField::new('event', 'Veranstaltung zuordnen');
         yield AssociationField::new('facture', 'Rechnung zuordnen');
     }

@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
@@ -29,7 +28,7 @@ class ArticleCrudController extends AbstractCrudController
                             ->setStoredAsCents();        
         yield PercentField::new('tauxTva', 'MwSt')
                             ->setNumDecimals(2)
-                            ->setStoredAsFractional(false);;
+                            ->setStoredAsFractional(true);
         yield BooleanField::new('enAvant', 'Wird angezeigt?');
         yield IntegerField::new('nombreVentes', 'Anzahl Verkäufe');  
         yield AssociationField::new('categorie', 'Kategorie zuordnen');

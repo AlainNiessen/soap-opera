@@ -36,8 +36,13 @@ class EventCrudController extends AbstractCrudController
         yield DateTimeField::new('dateAffichageEnd', 'Ende Anzeige Veranstaltung');
         yield DateTimeField::new('dateStart', 'Start Veranstaltung');
         yield DateTimeField::new('dateEnd', 'Ende Veranstaltung');
-        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')->setCurrency('EUR')->setNumDecimals(2); 
-        yield PercentField::new('tauxTva', 'MwSt'); 
+        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')
+                            ->setCurrency('EUR')
+                            ->setNumDecimals(2)
+                            ->setStoredAsCents(); 
+        yield PercentField::new('tauxTva', 'MwSt')
+                            ->setNumDecimals(2)
+                            ->setStoredAsFractional(true); 
         yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl');
         yield TextField::new('documentPDF', 'PDF')
                             //VA AFFICHER DANS LA LISTE SOUS 'PDF' UN LIEN VERS LE PDF
