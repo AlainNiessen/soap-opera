@@ -40,7 +40,7 @@ class EventCrudController extends AbstractCrudController
         yield PercentField::new('tauxTva', 'MwSt'); 
         yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl');
         yield TextField::new('documentPDF', 'PDF')
-                            //will display under PDF a link to the pdf-file
+                            //VA AFFICHER DANS LA LISTE SOUS 'PDF' UN LIEN VERS LE PDF
                             ->setTemplatePath('admin/pdf.html.twig')
                             ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'));
         yield Field::new('documentFile')

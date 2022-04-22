@@ -25,7 +25,7 @@
     background-color: rgb(166, 217, 230);
 }
 
-//MEDIA QUERY BREAKPOINT SMARTPHONE
+//MEDIA QUERY 
 @media screen and (min-width: 576px) {    
     .m-bestseller-container {
         max-width: 50rem;
@@ -37,7 +37,7 @@
     }
 }
 
-//MEDIA QUERY BREAKPOINT TABLETTE
+
 @media screen and (min-width: 768px) {
     .m-bestseller-box {      
         max-width: 12rem;     

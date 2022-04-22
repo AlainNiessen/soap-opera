@@ -35,9 +35,10 @@ class NewsletterCrudController extends AbstractCrudController
                 ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
                 ->onlyOnIndex();
         yield DateTimeField::new('dateNewsletter', 'Datum');
-        yield Field::new('documentFile')
-                ->setFormType(VichImageType::class)                
-                ->setLabel('PDF')              
-                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']]);               
+        yield Field::new('documentFile', 'PDF')
+                ->setFormType(VichImageType::class)                          
+                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']])
+                ->onlyOnForms();
+                          
     }    
 }

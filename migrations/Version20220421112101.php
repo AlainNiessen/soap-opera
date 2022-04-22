@@ -14,7 +14,7 @@ final class Version20220421112101 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Adding update_at to image';
+        return 'Ajout update_at dans la table image';
     }
 
     public function up(Schema $schema): void

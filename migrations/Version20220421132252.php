@@ -14,7 +14,7 @@ final class Version20220421132252 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Adding nom backend to event';
+        return 'Ajout nom backend dans event';
     }
 
     public function up(Schema $schema): void

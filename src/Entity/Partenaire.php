@@ -44,7 +44,7 @@ class Partenaire
      */
     private $images;
 
-    // function for display in admin interface
+    // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
         return $this->nom;

@@ -21,9 +21,15 @@ class FactureCrudController extends AbstractCrudController
     {
         yield DateTimeField::new('dateFacture', 'Datum Rechnung');
         yield BooleanField::new('statutPaiement', 'Bezahlt?');        
-        yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')->setCurrency('EUR')->setNumDecimals(2);
-        yield MoneyField::new('montantTotalTva', 'Gesamtbetrag MwSt')->setCurrency('EUR')->setNumDecimals(2);
-        yield MoneyField::new('montantTotal', 'Gesamtbetrag')->setCurrency('EUR')->setNumDecimals(2);
+        yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')
+                            ->setCurrency('EUR')
+                            ->setNumDecimals(2);
+        yield MoneyField::new('montantTotalTva', 'Gesamtbetrag MwSt')
+                            ->setCurrency('EUR')
+                            ->setNumDecimals(2);
+        yield MoneyField::new('montantTotal', 'Gesamtbetrag')
+                            ->setCurrency('EUR')
+                            ->setNumDecimals(2);
         yield AssociationField::new('utilisateur', 'Nutzer zuordnen');
     }    
 }

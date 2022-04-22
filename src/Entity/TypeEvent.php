@@ -34,6 +34,12 @@ class TypeEvent
      */
     private $nomBackend;
 
+    // AFFICHAGE DANS INTERFACE ADMIN
+    public function __toString(): string
+    {
+        return $this->nomBackend;
+    }
+
     public function __construct()
     {
         $this->events = new ArrayCollection();

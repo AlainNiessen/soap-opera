@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-// BASIC TAGS
+// BASE
 html {
     font-size: 16px;
     font-family: 'AvenirNext LT Pro', 'sans-serif';
@@ -47,7 +47,7 @@ a {
     margin: 0 auto;
 }
 
-//MEDIA QUERY BREAKPOINT LARGE PC
+//MEDIA QUERY 
 @media screen and (min-width: 1400px) {
     .wrapper {
         max-width: 1200px;

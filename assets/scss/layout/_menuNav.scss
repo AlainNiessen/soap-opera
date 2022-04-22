@@ -1,4 +1,4 @@
-//HAMURGER MENU WITH ANIMATION
+//HAMURGER MENU AVEC ANIMATION
 .l-topbar-menu {
     .l-topbar-menu-hamburger {
         width: 2rem;
@@ -66,20 +66,20 @@
     }
 } 
 
-//NAVBAR WITH ANIMATION
+//NAVBAR AVEC ANIMATION
 .l-topbar-menu-navbar {
     width: 100%;
     height: 80vh;
     background-color: map-get($map: $colors, $key: 'main1');
     position: absolute;
     top: 15rem;
-    left: 100%; //start position for animation
+    left: 100%; // POINT DE DÉPART POUR ANIMATION
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    transition: all 250ms; // will transform with transition (menu from left 100% to 0)
+    transition: all 250ms; 
     &.active {
         left: 0;
     }
@@ -92,7 +92,7 @@
         li {
             margin: 1.1rem 0;
             a {
-                position: relative; // for hover animation
+                position: relative; // POUR ANIMATION HOVER
                 color: map-get($map: $colors, $key: 'text');                                          
                 &::after {
                     content: '';
@@ -113,7 +113,7 @@
     }
 }
 
-//MEDIA QUERY BREAKPOINT TABLETTE
+//MEDIA QUERY 
 @media screen and (min-width: 768px) {
     .l-topbar-menu {
         width: 100%;
@@ -139,7 +139,7 @@
     }    
 }
 
-//MEDIA QUERY BREAKPOINT PC
+
 @media screen and (min-width: 992px) {
     .l-topbar-menu {       
         .l-topbar-menu-navbar {            

@@ -22,7 +22,9 @@ class ArticleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('nomBackend', 'Name für Adminbereich');
-        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')->setCurrency('EUR')->setNumDecimals(2);        
+        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')
+                            ->setCurrency('EUR')
+                            ->setNumDecimals(2);        
         yield PercentField::new('tauxTva', 'MwSt');
         yield BooleanField::new('enAvant', 'Wird angezeigt?');
         yield IntegerField::new('nombreVentes', 'Anzahl Verkäufe');  

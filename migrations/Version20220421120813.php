@@ -14,7 +14,7 @@ final class Version20220421120813 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Adding updated_at to Event';
+        return 'Ajout updated_at dans la table Event';
     }
 
     public function up(Schema $schema): void

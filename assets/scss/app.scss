@@ -1,16 +1,16 @@
-// IMPORT SCSS-FILES FROM FOLDER "BASE"
+// IMPORT SCSS-FILES DU DOSSIER "BASE"
 @import "base/var";
 @import "base/grid";
 @import "base/font";
 @import "base/base";
 
-//IMPORT LAYOUT FILES FROM FOLDER "LAYOUT"
+//IMPORT LAYOUT FILES DU DOSSIER "LAYOUT"
 @import "layout/header";
 @import "layout/menuNav";
 @import "layout/footer";
 
 
-//IMPORT MODULES FROM FOLDER "MODULES"
+//IMPORT MODULES DU DOSSIER "MODULES"
 @import "modules/frag_recherche";
 @import "modules/frag_bestseller";
 @import "modules/frag_new_articles";

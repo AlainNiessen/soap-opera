@@ -1,18 +1,18 @@
-//Variable map for colors
+// COULEURS
 $colors: (
     'main1': white,
     'text': #575757,
     'bg-2': #ffcf76,    
 );
 
-//Variable list for font-size titles (h1, h2,...)
+// FONT-SIZE
 $fontsize: (
     2rem,
     1.6rem,
     1.1rem
 );
 
-//Variables for grid system - loop in grid.scss
+// VARIABLES POUR LE SYSTEME DE GRILLE
 $grid-columns: 12;
 
 $screen-sizes: (
@@ -20,5 +20,5 @@ $screen-sizes: (
     'md': 768px, 
     'lg': 992px, 
     'xl': 1200px, 
-    'xxl': 1400px //(breakpoints inspired by https://www.mediaevent.de/css/breakpoints.html)
+    'xxl': 1400px //(inspiré par https://www.mediaevent.de/css/breakpoints.html)
 );

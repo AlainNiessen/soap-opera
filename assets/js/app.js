@@ -1,2 +1,2 @@
-//IMPORT JS FILES FROM FOLDER MODULES
+//IMPORT MODULES JS
 import "./modules/animations.js"

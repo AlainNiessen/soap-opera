@@ -14,7 +14,7 @@ final class Version20220421120948 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Setting document_pdf nullable true';
+        return 'Changer document_pdf nullable true';
     }
 
     public function up(Schema $schema): void

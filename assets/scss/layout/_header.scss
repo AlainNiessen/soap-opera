@@ -1,4 +1,4 @@
-//HEADER GENERAL STYLE
+//HEADER 
 .l-topbar {
     height: 20rem;
     .wrapper {
@@ -16,7 +16,7 @@
     }
 }
 
-//MEDIA QUERY BREAKPOINT TABLETTE
+//MEDIA QUERY 
 @media screen and (min-width: 768px) {
     .l-topbar {
         height: 15rem;
