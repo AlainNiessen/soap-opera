@@ -20,7 +20,7 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float", scale=2)
      */
     private $montantHorsTva;
 
@@ -76,7 +76,7 @@ class Article
     private $detailCommandeArticles;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")  
      */
     private $tauxTva;
 

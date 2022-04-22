@@ -46,7 +46,7 @@ class EventCrudController extends AbstractCrudController
         yield Field::new('documentFile')
                             ->setFormType(VichImageType::class)                
                             ->setLabel('PDF hinzufügen')
-                            ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']])
+                            ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'PDF einsehen'])
                             ->onlyOnForms();  
         yield AssociationField::new('typeEvent', 'Veranstaltungstyp zuordnen');
         

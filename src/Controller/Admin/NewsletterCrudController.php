@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Newsletter;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -30,14 +29,14 @@ class NewsletterCrudController extends AbstractCrudController
     {
         yield TextField::new('nomBackend', 'Name für Adminbereich');
         yield TextField::new('documentPDF', 'PDF')
-                //will display under PDF a link to the pdf-file
+                //VA AFFICHER DANS LA LISTE SOUS 'PDF' UN LIEN VERS LE PDF
                 ->setTemplatePath('admin/pdf.html.twig')
                 ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
                 ->onlyOnIndex();
         yield DateTimeField::new('dateNewsletter', 'Datum');
         yield Field::new('documentFile', 'PDF')
                 ->setFormType(VichImageType::class)                          
-                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf']])
+                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'PDF einsehen'])
                 ->onlyOnForms();
                           
     }    
