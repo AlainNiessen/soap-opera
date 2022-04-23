@@ -41,6 +41,5 @@ class TraductionEventCrudController extends AbstractCrudController
                             ->onlyOnForms();  
         yield AssociationField::new('langue', 'Sprache zuordnen');
         yield AssociationField::new('event', 'Veranstaltung zuordnen');
-    }
-    
+    }    
 }
