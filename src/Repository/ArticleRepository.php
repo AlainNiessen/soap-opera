@@ -108,6 +108,26 @@ class ArticleRepository extends ServiceEntityRepository
         ;       
     }
     
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+    
+    //fonction de recherche articles par categorie
+    public function findArticlesByCategory($idCategorie)
+    {
+        //préparation lier les tables 
+        $queryBuilder =  $this  ->createQueryBuilder('a')
+                                ->leftJoin('a.categorie', 'c')
+                                ->addSelect('c')
+                                ->andWhere('c.id LIKE :idCategorie')
+                                ->setParameter('idCategorie', $idCategorie);      
+    
+        return $queryBuilder                    
+                    ->getQuery()
+                    ->getResult();
+        ;       
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Article

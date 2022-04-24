@@ -1,13 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Liste Artikel{% endblock %}
 
 {% block body %}
 
-{% for article in articles %}
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
 
-<h1>{{ article.categorie.nomBackend }}</h1>
-
-{% endfor %}
+<section class="m-liste-articles">
+    {# message en cas où il n'y a pas de résultat #}
+    {#{% for message in app.flashes('noPrest') %}
+        <div class="alert alert-danger text-center">
+            {{ message }}
+        </div>
+    {% endfor %}#}
+    {% if articles is defined and articles is not null and articles is not empty %}
+        <div class="m-liste-articles-result">
+            <div class="row">
+            {% for article in articles %} 
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="m-article-content">
+                        {% for image in article.images %}                           
+                            <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="Logo Prestataire" title="Logo Prestataire">                            
+                        {% endfor %}
+                        <div class="m-article-info">
+                            <h4>{{ article.traductionArticles[0].nom}}</h4>
+                            <a href="#" class="submit-btn"><i class="fas fa-search"></i></a>
+                        </div> 
+                    </div>                   
+                </div>
+            {% endfor %}
+            {#{{ knp_pagination_render(prestataires) }}#}
+            </div>
+        </div>
+    {% endif %}
+</section>
 
 {% endblock %}
