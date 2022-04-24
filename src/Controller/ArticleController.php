@@ -29,7 +29,7 @@ class ArticleController extends AbstractController
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articles = $repositoryArticle -> findArticlesSearchBar();     
+        $articles = $repositoryArticle -> findArticlesSearchBar($tabWords);     
 
         dd($articles);
 
