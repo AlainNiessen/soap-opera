@@ -36,7 +36,7 @@ class TraductionNewsletterCrudController extends AbstractCrudController
                 ->onlyOnIndex();        
         yield Field::new('documentFile', 'PDF')
                 ->setFormType(VichImageType::class)                          
-                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'PDF einsehen'])
+                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'Ouvrir le fichier'])
                 ->onlyOnForms();
         yield AssociationField::new('langue', 'Sprache zuordnen');
         yield AssociationField::new('newsletter', 'Newsletter zuordnen');

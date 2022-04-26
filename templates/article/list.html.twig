@@ -29,11 +29,11 @@
                         </div> 
                     </div>                   
                 </div>
-            {% endfor %}
-            {#{{ knp_pagination_render(prestataires) }}#}
-            </div>
-        </div>
-    {% endif %}
+            {% endfor %}              
+            </div>   
+            {{ knp_pagination_render(articles) }}          
+        </div>        
+    {% endif %}  
 </section>
 
 {% endblock %}

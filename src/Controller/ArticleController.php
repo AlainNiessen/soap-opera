@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
@@ -18,8 +19,8 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/recherche", name="article_recherche", methods={"POST", "GET"})
      */
-    public function requestArticleSearchBar(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    public function requestArticleSearchBar(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
+    {       
         //récupération des données rentrées dans le fomulaire
         $mots = $request -> request -> get('mots');
 
@@ -30,10 +31,23 @@ class ArticleController extends AbstractController
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articles = $repositoryArticle -> findArticlesSearchBar($tabWords);     
+        $queryArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
 
+      
+
+        //installation d'un système de pagination
+        $articlesSearchPag = $paginator->paginate(
+            $queryArticles,
+            $request->query->getInt('page', 1),
+            6
+        ); 
+                
+        // configuration du système de pagination (template)  
+        $articlesSearchPag->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
+        
+        
         return $this->render('article/list.html.twig', [
-            'articles' => $articles
+            'articles' => $articlesSearchPag
         ]);
     }
     
@@ -41,18 +55,30 @@ class ArticleController extends AbstractController
     // ROUTE RECHERCHE ARTICLES - PAR CATEGORIE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/categorie/{id}", name="article_recherche_cat")
+     * @Route("/article/recherche/categorie-{id}/", name="article_recherche_cat")
      */
-    public function requestArticleCategory($id, EntityManagerInterface $entityManager): Response
+    public function requestArticleCategory($id, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
         
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articles = $repositoryArticle -> findArticlesByCategory($id);
+        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);
+     
+
+        //installation d'un système de pagination
+        $articlesCatPag = $paginator->paginate(
+            $articlesCat,
+            $request->query->getInt('page', 1),
+            6
+        ); 
+        // configuration du système de pagination (template)  
+        $articlesCatPag->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
+        
+        
 
         return $this->render('article/list.html.twig', [
-            'articles' => $articles
+            'articles' => $articlesCatPag
         ]);
     }
 }

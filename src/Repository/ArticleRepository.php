@@ -52,6 +52,7 @@ class ArticleRepository extends ServiceEntityRepository
     //fonction de recherche articles via barre de recherche
     public function findArticlesSearchBar($keywords = [])
     {
+       
         //préparation lier les tables 
         $queryBuilder =  $this  ->createQueryBuilder('a')
                                 ->leftJoin('a.traductionArticles', 'at')
@@ -75,36 +76,32 @@ class ArticleRepository extends ServiceEntityRepository
                                 ->leftJoin('a.ingredientSupplementaire', 'ai')
                                 ->addSelect('ai')
                                 ->leftJoin('ai.traductionIngredientSupplementaires', 'ait')
-                                ->addSelect('ait');
-                                
+                                ->addSelect('ait');                                
         
         // si le tableau de mot de clés n'est pas vide
         if(count($keywords) > 0) {
+            $arr = [];    
             // boucle sur le tableau pour conditionner la requête
-            foreach($keywords as $keyword) {
-                $queryBuilder
-                    ->andWhere('at.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('at.description LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('ot.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('ht.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('het.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('bt.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%')
-                    ->orWhere('ait.nom LIKE :keyword')
-                    ->setParameter('keyword', '%'.$keyword.'%');
-            }
+            foreach($keywords as $keyword) {                          
+                $arr[] = $queryBuilder->expr()->orX("at.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("at.description LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("ot.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("ht.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("het.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("bt.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("ait.nom LIKE '%".$keyword."%'");               
+            }        
+            $queryBuilder->andWhere(join(' OR ', $arr));      
             
         }
 
+      
+
         //si rien a été rempli => pas des if => return automatique des tous les articles 
-        return $queryBuilder                    
+        return $queryBuilder                                      
                     ->getQuery()
                     ->getResult();
+                   
         ;       
     }
     
