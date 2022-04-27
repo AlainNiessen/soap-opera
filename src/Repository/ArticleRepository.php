@@ -91,16 +91,18 @@ class ArticleRepository extends ServiceEntityRepository
                 $arr[] = $queryBuilder->expr()->orX("bt.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ait.nom LIKE '%".$keyword."%'");               
             }        
-            $queryBuilder->andWhere(join(' OR ', $arr));      
+            $queryBuilder->andWhere(join(' OR ', $arr));     
             
         }
+       
 
       
 
         //si rien a été rempli => pas des if => return automatique des tous les articles 
-        return $queryBuilder                                      
+        return $queryBuilder 
                     ->getQuery()
-                    ->getResult();
+                    ->getResult();                                     
+                    
                    
         ;       
     }

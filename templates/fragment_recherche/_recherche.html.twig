@@ -15,7 +15,7 @@
             </div>
         </section>
         <section class="m-recherche-barre">
-            <form class="m-recherche-barre-form" method="post" action="{{ path('article_recherche') }}">
+            <form class="m-recherche-barre-form" method="post" action="{{ path('article_recherche', {pag: 1}) }}">
                 <div class="m-recherche-barre-box">
                     <input type="text" name="mots">
                     <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>

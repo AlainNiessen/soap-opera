@@ -10,44 +10,70 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
+
+
+
 
 class ArticleController extends AbstractController
 {
+    //stockage du tableau avec les valeurs de recherche dans la Session
+    private $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
     //----------------------------------------------
     // ROUTE RECHERCHE ARTICLES - BARRE DE RECHERCHE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche", name="article_recherche", methods={"POST", "GET"})
+     * @Route("/article/recherche/{pag}", name="article_recherche", methods={"POST", "GET"})
      */
-    public function requestArticleSearchBar(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
-    {       
+    public function requestArticleSearchBar($pag, Request $request, EntityManagerInterface $entityManager): Response
+    {   
+        $interPag = intval($pag);     
         //récupération des données rentrées dans le fomulaire
-        $mots = $request -> request -> get('mots');
+        $mots = $request -> request -> get('mots');        
 
         //transform string en tableau
-        $tabWords = explode(" ", trim($mots));
+        $tabWords = explode(" ", trim($mots));               
 
-        //passage du tableau à la fonction de requete
+        // récupération des articles
+        
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        // fonction de requête sur base de données récupérées       
-        $queryArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
+        // récupération des articles      
+        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords); 
 
-      
-
-        //installation d'un système de pagination
-        $articlesSearchPag = $paginator->paginate(
-            $queryArticles,
-            $request->query->getInt('page', 1),
-            6
-        ); 
-                
-        // configuration du système de pagination (template)  
-        $articlesSearchPag->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         
+        // récupération du nombre des articles
+        $nombreArticles = count($tabArticles);
+        // dd($nombreArticles);
+        // définition nombre des articles par page
+        $limit = 6;
+        //définition start and end pour le tableau à transférer pour la pagination
+        $startCount = $interPag * $limit - $limit;
+
+        if($interPag * $limit >= count($tabArticles)):
+            $endCount = count($tabArticles);
+        else:
+            $endCount = $interPag * $limit;
+        endif;
+
+        //nombre de pages de résultat
+        $nombreLiens = ceil($nombreArticles / $limit);
+        //définition limite affichage pagination
+        $limitPagination = $interPag + 2;      
+      
+        $pagination = array_slice($tabArticles, $startCount, $endCount);
+           
         
         return $this->render('article/list.html.twig', [
-            'articles' => $articlesSearchPag
+            'articles' => $pagination,
+            'nombreLiens' => $nombreLiens,
+            'pag'=> $interPag,
+            'limitPagination' => $limitPagination
         ]);
     }
     
