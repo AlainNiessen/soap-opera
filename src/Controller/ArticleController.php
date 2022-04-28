@@ -3,32 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Categorie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RequestStack;
-
-
 
 
 class ArticleController extends AbstractController
 {
-    //stockage du tableau avec les valeurs de recherche dans la Session
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack)
-    {
-        $this->requestStack = $requestStack;
-    }
+    
     //----------------------------------------------
     // ROUTE RECHERCHE ARTICLES - BARRE DE RECHERCHE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/{pagBar}", name="article_recherche", methods={"POST", "GET"})
+     * @Route("/article/recherche/page={pagBar}", name="article_recherche", methods={"POST", "GET"})
      */
     public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager): Response
     {   
@@ -93,9 +82,9 @@ class ArticleController extends AbstractController
     // ROUTE RECHERCHE ARTICLES - PAR CATEGORIE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/categorie-{id}/{pagCat}", name="article_recherche_cat")
+     * @Route("/article/recherche/categorie-{id}/page={pagCat}", name="article_recherche_cat")
      */
-    public function requestArticleCategory($id, $pagCat, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
+    public function requestArticleCategory($id, $pagCat, EntityManagerInterface $entityManager): Response
     {
         //récupération de la pagination
         $interPag = intval($pagCat);
