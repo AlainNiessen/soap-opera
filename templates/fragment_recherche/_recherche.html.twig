@@ -4,7 +4,7 @@
             <div class="row">
                 {% for categorie in categories %}
                     <div class=" col-4 col-sm-4 col-md-2">
-                        <a href="{{ path('article_recherche_cat', {id: categorie.id}) }}">
+                        <a href="{{ path('article_recherche_cat', {id: categorie.id, pagCat: 1}) }}">
                             <div class="m-recherche-categorie-box">
                                 <div class="deco-point"></div>
                                 <h4>{{ categorie.traductionCategories[0].nom }}</h4>
@@ -15,10 +15,10 @@
             </div>
         </section>
         <section class="m-recherche-barre">
-            <form class="m-recherche-barre-form" method="post" action="{{ path('article_recherche', {pag: 1}) }}">
+            <form class="m-recherche-barre-form" method="post" action="{{ path('article_recherche', {pagBar: 1}) }}">
                 <div class="m-recherche-barre-box">
                     <input type="text" name="mots">
-                    <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>
+                    <button type="submit" name="submit" class="submit-btn"><i class="fas fa-search"></i></button>
                 </div>
             </form>
         </section>

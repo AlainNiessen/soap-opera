@@ -59,6 +59,32 @@
         }
     }    
 }
+//navigation
+.move {
+    margin: 0 .5rem;
+}
+.pagination {
+    li {
+        a {
+            background-color: map-get($map: $colors, $key: 'main1');
+            color: map-get($map: $colors, $key: 'text');
+            border-color: map-get($map: $colors, $key: 'text');
+            &:focus, &:hover {                 
+                background-color: map-get($map: $colors, $key: 'bg-2');
+                border-color: map-get($map: $colors, $key: 'text');                    
+            }            
+        }
+    }
+}
+.page-item {
+    &.active {
+        .page-link {            
+            color: map-get($map: $colors, $key: 'main1');
+            background-color: map-get($map: $colors, $key: 'text') !important;
+            border: solid 0.05rem map-get($map: $colors, $key: 'text') !important;                 
+        }
+    }
+}
 
 //media query
 //Media Query for smartphone => tablette

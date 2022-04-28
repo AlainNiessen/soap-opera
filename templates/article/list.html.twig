@@ -33,51 +33,109 @@
             </div> 
                    
         </div>
-        {# systéme de pagination #} 
-        <div class="container-pagination">
-            <ul class="pagination">
-            {# si la pagination est entre 1 et 4 => affichage +5 et la possibilité d'avancer #}
-            {% if pag > 0 and pag < 5 %}           
-                {% for i in range(1, nombreLiens) %}
-                    {% if i == pag %} 
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}" class="activePag">{{ i }}</a></li>
-                    {% else %}
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                <li>...</li>
-                <li><a href="{{ path('article_recherche', {pag: pag + 1}) }}">></a></li>
-                <li><a href="{{ path('article_recherche', {pag: nombreLiens}) }}">>>|</a></li>            
-            {# si la pagination est entre 5 et n'est pas plus grand que le nombre liens moins 5 => affichage +5 et possibilité de reculer ou avancer #}
-            {% elseif pag >= 5 and pag < nombreLiens - limitPagination %}
-                <li><a href="{{ path('article_recherche', {pag: 1}) }}" title="résultats antérieurs">|<<</a></li>
-                <li><a href="{{ path('article_recherche', {pag: pag - 1}) }}"><</a></li>
-                <li>...</li>
-                {% for i in range(pag - 2, limitPagination) %}
-                    {% if i == pag %} 
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}" class="activePag">{{ i }}</a></li>
-                    {% else %}
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                <li>...</li>
-                <li><a href="{{ path('article_recherche', {pag: pag + 1}) }}" title="résultats suivants">></a></li>
-                <li><a href="{{ path('article_recherche', {pag: nombreLiens}) }}" title="derniers résultats">>>|</a></li>
-                {# si la pagination est entre les 5 dernières liens => just la possibilité de reculer #}
-            {% elseif pag >= nombreLiens - limitPagination and pag <= nombreLiens %}
-                <li><a href="{{ path('article_recherche', {pag: 1}) }}">|<<</a></li>
-                <li><a href="{{ path('article_recherche', {pag: pag - 1}) }}"><</a></li>
-                <li>...</li>
-                {% for i in range(pag - 2, limitPagination) %}
-                    {% if i == pag %} 
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}" class="activePag">{{ i }}</a></li>
-                    {% else %}
-                        <li><a href="{{ path('article_recherche', {pag: i}) }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            <ul>
-        </div>      
+        {# systéme de pagination #}
+        {% if pagBar is defined and pagBar is not null and pagBar is not empty %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                {# si la pagination est entre 1 et 4 => affichage +5 et la possibilité d'avancer #}
+                {% if pagBar > 0 and pagBar < 5 %}           
+                    {% for i in range(1, nombreLiens) %}
+                        {% if i == pagBar %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="move">...</li>
+                    {% if pagBar == nombreLiens %}
+                    <li class="page-item disabled"><a href="{{ path('article_recherche', {pagBar: pagBar + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item disabled"><a href="{{ path('article_recherche', {pagBar: nombreLiens}) }}" class="page-link">>>|</a></li>
+                    {% else %} 
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: pagBar + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: nombreLiens}) }}" class="page-link">>>|</a></li> 
+                    {% endif %}          
+                {# si la pagination est entre 5 et n'est pas plus grand que le nombre liens moins 5 => affichage +5 et possibilité de reculer ou avancer #}
+                {% elseif pagBar >= 5 and pagBar < nombreLiens - limitPagination %}
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: 1}) }}" class="page-link"><<</a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: pagBar - 1}) }}" class="page-link"><</a></li>
+                    <li class="move">...</li>
+                    {% for i in range(pagBar - 2, limitPagination) %}
+                        {% if i == pagBar %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="move">...</li>
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: pagBar + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: nombreLiens}) }}" class="page-link">>>|</a></li>
+                    {# si la pagination est entre les 5 dernières liens => just la possibilité de reculer #}
+                {% elseif pagBar >= nombreLiens - limitPagination and pagBar <= nombreLiens %}
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: 1}) }}" class="page-link">|<<</a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche', {pagBar: pagBar - 1}) }}" class="page-link"><</a></li>
+                    <li class="move">...</li>
+                    {% for i in range(pagBar - 2, limitPagination) %}
+                        {% if i == pagBar %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche', {pagBar: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <ul>
+            </nav> 
+        {% endif %}     
+        {% if pagCat is defined and pagCat is not null and pagCat is not empty %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                {# si la pagination est entre 1 et 4 => affichage +5 et la possibilité d'avancer #}
+                {% if pagCat > 0 and pagCat < 5 %}           
+                    {% for i in range(1, nombreLiens) %}
+                        {% if i == pagCat %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="move">...</li>
+                    {% if pagCat == nombreLiens %}
+                    <li class="page-item disabled"><a href="{{ path('article_recherche_cat', {id: id, pagCat: pagCat + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item disabled"><a href="{{ path('article_recherche_cat', {id: id, pagCat: nombreLiens}) }}" class="page-link">>>|</a></li>
+                    {% else %} 
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: pagCat + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: nombreLiens}) }}" class="page-link">>>|</a></li> 
+                    {% endif %}          
+                {# si la pagination est entre 5 et n'est pas plus grand que le nombre liens moins 5 => affichage +5 et possibilité de reculer ou avancer #}
+                {% elseif pagCat >= 5 and pagCat < nombreLiens - limitPagination %}
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: 1}) }}" class="page-link"><<</a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: pagCat - 1}) }}" class="page-link"><</a></li>
+                    <li class="move">...</li>
+                    {% for i in range(pagCat - 2, limitPagination) %}
+                        {% if i == pagCat %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="move">...</li>
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: pagCat + 1}) }}" class="page-link">></a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: nombreLiens}) }}" class="page-link">>>|</a></li>
+                    {# si la pagination est entre les 5 dernières liens => just la possibilité de reculer #}
+                {% elseif pagCat >= nombreLiens - limitPagination and pagCat <= nombreLiens %}
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: 1}) }}" class="page-link">|<<</a></li>
+                    <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: pagCat - 1}) }}" class="page-link"><</a></li>
+                    <li class="move">...</li>
+                    {% for i in range(pagCat - 2, limitPagination) %}
+                        {% if i == pagCat %} 
+                            <li class="page-item active"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="{{ path('article_recherche_cat', {id: id, pagCat: i}) }}" class="page-link">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <ul>
+            </nav> 
+        {% endif %}     
     {% endif %}  
 </section>
 

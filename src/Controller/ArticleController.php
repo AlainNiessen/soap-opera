@@ -28,30 +28,42 @@ class ArticleController extends AbstractController
     // ROUTE RECHERCHE ARTICLES - BARRE DE RECHERCHE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/{pag}", name="article_recherche", methods={"POST", "GET"})
+     * @Route("/article/recherche/{pagBar}", name="article_recherche", methods={"POST", "GET"})
      */
-    public function requestArticleSearchBar($pag, Request $request, EntityManagerInterface $entityManager): Response
+    public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager): Response
     {   
-        $interPag = intval($pag);     
-        //récupération des données rentrées dans le fomulaire
-        $mots = $request -> request -> get('mots');        
-
-        //transform string en tableau
-        $tabWords = explode(" ", trim($mots));               
-
-        // récupération des articles
+        //récupération de la pagination
+        $interPag = intval($pagBar);
         
+        //check si la barre de recherche a été utilisé
+        // si oui => 
+        if(isset($_POST['mots'])):
+            //récupération des données rentrées dans le fomulaire
+            $mots = $request -> request -> get('mots');
+            //transform string en tableau
+            $tabWords = explode(" ", trim($mots));  
+            //stockage du tableau dans la session
+            $session = $request->getSession();
+            $session -> set('tabWords', $tabWords);
+        // si non (par exemple en venant de la pagination) =>
+        else:
+            //récupération du tableau stocké dans la Session
+            $session = $request->getSession();
+            $tabWords = $session -> get('tabWords');
+        endif;        
+        
+        // récupération des articles        
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // récupération des articles      
-        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords); 
-
+        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
         
         // récupération du nombre des articles
         $nombreArticles = count($tabArticles);
-        // dd($nombreArticles);
+
         // définition nombre des articles par page
         $limit = 6;
+        
         //définition start and end pour le tableau à transférer pour la pagination
         $startCount = $interPag * $limit - $limit;
 
@@ -72,7 +84,7 @@ class ArticleController extends AbstractController
         return $this->render('article/list.html.twig', [
             'articles' => $pagination,
             'nombreLiens' => $nombreLiens,
-            'pag'=> $interPag,
+            'pagBar'=> $interPag,
             'limitPagination' => $limitPagination
         ]);
     }
@@ -81,30 +93,47 @@ class ArticleController extends AbstractController
     // ROUTE RECHERCHE ARTICLES - PAR CATEGORIE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/categorie-{id}/", name="article_recherche_cat")
+     * @Route("/article/recherche/categorie-{id}/{pagCat}", name="article_recherche_cat")
      */
-    public function requestArticleCategory($id, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
+    public function requestArticleCategory($id, $pagCat, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
+        //récupération de la pagination
+        $interPag = intval($pagCat);
         
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);
-     
+        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);        
 
-        //installation d'un système de pagination
-        $articlesCatPag = $paginator->paginate(
-            $articlesCat,
-            $request->query->getInt('page', 1),
-            6
-        ); 
-        // configuration du système de pagination (template)  
-        $articlesCatPag->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
+        // récupération du nombre des articles
+        $nombreArticles = count($articlesCat);
+
+        // définition nombre des articles par page
+        $limit = 6;
         
+        //définition start and end pour le tableau à transférer pour la pagination
+        $startCount = $interPag * $limit - $limit;
+
+        if($interPag * $limit >= count($articlesCat)):
+            $endCount = count($articlesCat);
+        else:
+            $endCount = $interPag * $limit;
+        endif;
+
+        //nombre de pages de résultat
+        $nombreLiens = ceil($nombreArticles / $limit);
+        //définition limite affichage pagination
+        $limitPagination = $interPag + 2;      
+      
+        $pagination = array_slice($articlesCat, $startCount, $endCount);      
         
 
         return $this->render('article/list.html.twig', [
-            'articles' => $articlesCatPag
+            'articles' => $pagination,
+            'nombreLiens' => $nombreLiens,
+            'pagCat'=> $interPag,
+            'limitPagination' => $limitPagination,
+            'id' => $id
         ]);
     }
 }
