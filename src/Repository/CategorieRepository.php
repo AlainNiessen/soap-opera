@@ -45,22 +45,28 @@ class CategorieRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Categorie[] Returns an array of Categorie objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * @return Categorie[] Returns an array of Categorie objects
     */
+    
+    //fonction de récupération des noms des catégories pour construire le menu de recherche
+    public function findAllCatgoriesLang($lang)
+    {
+        //préparation lier les tables 
+        $queryBuilder =  $this  ->createQueryBuilder('c')
+                                ->join('c.traductionCategories', 'ct')
+                                ->addSelect('ct')
+                                ->join('ct.langue', 'ctl')
+                                ->addSelect('ctl')
+                                ->andWhere('ctl.codeLangue LIKE :lang')
+                                ->setParameter('lang', $lang);      
+
+        return $queryBuilder                    
+                    ->getQuery()
+                    ->getResult();
+        ;       
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Categorie
