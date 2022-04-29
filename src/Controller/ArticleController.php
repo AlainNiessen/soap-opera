@@ -17,7 +17,7 @@ class ArticleController extends AbstractController
     // ROUTE RECHERCHE ARTICLES - BARRE DE RECHERCHE
     //----------------------------------------------
     /**
-     * @Route("/article/recherche/page={pagBar}", name="article_recherche", methods={"POST", "GET"})
+     * @Route("/article/recherche/page={pagBar}", name="article_recherche", methods={"GET", "POST"})
      */
     public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager): Response
     {   
@@ -26,9 +26,9 @@ class ArticleController extends AbstractController
         
         //check si la barre de recherche a été utilisé
         // si oui => 
-        if(isset($_POST['mots'])):
+        if(isset($_GET['mots'])):
             //récupération des données rentrées dans le fomulaire
-            $mots = $request -> request -> get('mots');
+            $mots = $request -> query -> get('mots');
             //transform string en tableau
             $tabWords = explode(" ", trim($mots));  
             //stockage du tableau dans la session
@@ -39,7 +39,7 @@ class ArticleController extends AbstractController
             //récupération du tableau stocké dans la Session
             $session = $request->getSession();
             $tabWords = $session -> get('tabWords');
-        endif;        
+        endif; 
         
         // récupération des articles        
         //définition repository article
