@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail Artikel{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-article-detail">
+    <div class="wrapper">
+        <section class="m-article-detail-intro">
+            <h1>{{ article.traductionArticles[0].nom }}</h1>
+
+        </section>
+
+
+
+
+
+    </div>
+</section>
+
+
+
+{% endblock %}

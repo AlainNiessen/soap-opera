@@ -156,4 +156,21 @@ class ArticleController extends AbstractController
             'id' => $id
         ]);
     }
+
+    //----------------------------------------------
+    // ROUTE DETAIL ARTICLE
+    //----------------------------------------------
+    /**
+     * @Route("/article/detail/{id}", name="article_detail")
+     */
+    public function requestArticleDetail(Article $article, Request $request, EntityManagerInterface $entityManager): Response
+    {   
+        //récupération de l'article via la requété automatique et son ID passé dans la route 
+
+        //redirect vers le detail de l'article
+        return $this->render('article/detail.html.twig', [
+            'article' => $article     
+           
+        ]);
+    }
 }

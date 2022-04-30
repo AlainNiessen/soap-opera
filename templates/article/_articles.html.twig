@@ -7,7 +7,7 @@
                 {% endfor %}
                 <div class="m-article-info">
                     <h4>{{ article.traductionArticles[0].nom}}</h4>
-                    <a href="#" class="submit-btn"><i class="fas fa-search"></i></a>
+                    <a href="{{ path('article_detail', {id: article.id})}}" class="submit-btn"><i class="fas fa-search"></i></a>
                 </div> 
             </div>                   
         </div>
