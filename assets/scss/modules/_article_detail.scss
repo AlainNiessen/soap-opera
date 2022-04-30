@@ -1,0 +1,113 @@
+//article detail
+.m-article-detail-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .m-article-detail-intro-img {
+        display: flex;    
+        justify-content: center;
+        align-items: center;    
+    }
+}
+
+.m-article-detail-info {
+    width: 100%;
+    max-width: 90%;
+    margin: 2rem auto;
+    height: 25rem;
+    background-color: map-get($map: $colors, $key: 'main1');
+    border: 0.1rem solid map-get($map: $colors, $key: 'text');
+    position: relative;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);      
+    .container-onglets {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        border-bottom: 0.1rem solid map-get($map: $colors, $key: 'text');
+        color: map-get($map: $colors, $key: 'text');
+        .onglets {
+            width: 33.33%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: .7rem;
+            font-weight: 700;
+            cursor: pointer;           
+            &:not(:nth-child(3)) {
+                border-right: 0.1rem solid map-get($map: $colors, $key: 'text');
+            }
+        }
+    }
+    .contenu {
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        opacity: 0;        
+        h3, p {
+            padding: 1rem 1.5rem .5rem ;
+            
+        }
+        hr {
+            width: 30%;
+            margin-left: 1.5rem;
+            background-color: map-get($map: $colors, $key: 'text');
+            border: none;
+        }
+    }
+}
+//animation sur système onglet
+.act {
+    background-color: map-get($map: $colors, $key: 'bg-2');
+}
+.activeContenu {    
+    z-index: 9999;
+    animation: fade 1s forwards;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.m-article-detail-info-prix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//media query
+@media screen and (min-width: 576px) {
+    .m-article-detail-info {
+        .container-onglets {
+            .onglets {
+                font-size: 1rem;
+            }
+
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .m-article-detail-intro {
+        .m-article-detail-intro-img {
+            img {
+                width: 70%;
+            }
+        }
+    }
+}  
+
+
+@media screen and (min-width: 992px) {
+    .m-article-detail-intro {
+        .m-article-detail-intro-img {
+            img {
+                width: 50%;
+            }
+        }
+    }
+}    

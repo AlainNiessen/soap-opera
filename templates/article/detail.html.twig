@@ -20,6 +20,33 @@
                 {% endfor %}
             </div>
         </section>
+        <section class="m-article-detail-info">        
+            <div class="container-onglets">
+                <div class="onglets act" data-anim="1">Beschreibung</div>
+                <div class="onglets" data-anim="2">Zutaten</div>
+                <div class="onglets" data-anim="3">Bewertungen</div>
+            </div>
+            <div class="contenu activeContenu" data-anim="1">            
+                <h3>Beschreibung</h3>           
+                <hr>  
+                <p>{{ article.traductionArticles[0].description }}</p>
+                <p>Kategorie: {{ article.categorie.traductionCategories[0].nom }}  
+                <div class="m-article-detail-info-prix">
+                    <h3>Prix: {{ prix }}</h3>
+                    <a href="#" class="btn btn-outline-info">In den Warenkorb</i></a>
+                </div>      
+            </div>
+            <div class="contenu" data-anim="2">            
+                <h3>Zutaten</h3>           
+                <hr> 
+                <p>JOJO</p>
+            </div>               
+            <div class="contenu" data-anim="3">
+                <h3>Bewertungen</h3>
+                <hr>
+                <p>JIJI</p>
+            </div>
+        </section>
     </div>
 </section>
 

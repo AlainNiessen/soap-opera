@@ -25,7 +25,9 @@ class PromotionCrudController extends AbstractCrudController
         yield DateTimeField::new('dateAffichageEnd', 'Ende Anzeige Promotion');
         yield DateTimeField::new('dateStart', 'Start Promotion');
         yield DateTimeField::new('dateEnd', 'Ende Promotion');
-        yield PercentField::new('Pourcentage', 'Prozentsatz');
+        yield PercentField::new('Pourcentage', 'Prozentsatz')
+                            ->setNumDecimals(2)
+                            ->setStoredAsFractional(true);
         yield AssociationField::new('article', 'Artikel zuordnen');
         yield AssociationField::new('categorie', 'Kategorie zuordnen');
     }

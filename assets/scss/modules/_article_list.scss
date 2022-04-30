@@ -36,22 +36,7 @@
                 align-items: center;                
                 color: map-get($map: $colors, $key: 'text');
                 background-color:rgba(255, 255, 255, 0.7);
-                text-align: center;
-                .submit-btn {
-                    height: 2.5rem;
-                    max-width: 5rem;
-                    background-color: map-get($map: $colors, $key: 'main1');
-                    border: 0.1rem solid map-get($map: $colors, $key: 'text');
-                    padding-left: 2rem;
-                    padding-right: 2rem;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    i {
-                        font-size: 1rem;
-                        color: map-get($map: $colors, $key: 'text');
-                    }
-                }
+                text-align: center;                
                 &:hover {
                     background-color: map-get($map: $colors, $key: 'main1');
                 }                

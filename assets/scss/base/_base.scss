@@ -47,6 +47,24 @@ a {
     margin: 0 auto;
 }
 
+//buttons
+.btn-outline-info {
+    color: map-get($map: $colors, $key: 'text');
+    border-color: map-get($map: $colors, $key: 'text');
+    &:hover {
+        color: map-get($map: $colors, $key: 'text');
+        background-color: map-get($map: $colors, $key: 'bg-2');
+        border-color: map-get($map: $colors, $key: 'bg-2');
+    }
+    i {
+        font-size: 1rem;
+    }
+}
+
+.detail-btn {
+    width: 5rem;
+}
+
 //MEDIA QUERY 
 @media screen and (min-width: 1400px) {
     .wrapper {

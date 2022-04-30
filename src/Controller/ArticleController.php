@@ -166,11 +166,13 @@ class ArticleController extends AbstractController
     public function requestArticleDetail(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {   
         //récupération de l'article via la requété automatique et son ID passé dans la route 
-
+        //calcul du prix
+        $prixArticle = (($article -> getMontantHorsTva() + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
+        $prixArticle = number_format($prixArticle, 2, ',', '.').' €';
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
-            'article' => $article     
-           
+            'article' => $article,
+            'prix' => $prixArticle         
         ]);
     }
 }
