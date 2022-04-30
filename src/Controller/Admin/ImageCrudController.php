@@ -33,10 +33,12 @@ class ImageCrudController extends AbstractCrudController
 
         
         $fields = [                
-            BooleanField::new('layoutWebsite', 'Handelt es sich um ein Foto für das Layout der Webseite?'),
+            BooleanField::new('layoutWebsite', 'Foto für das Layout der Webseite?'),            
             AssociationField::new('positionImage', 'Position auf Webseite definieren'),
             AssociationField::new('categorie', 'Kategorie zuordnen'),
             AssociationField::new('article', 'Artikel zuordnen'),
+            BooleanField::new('coverListArticle', 'Foto für die Listenansicht?'),
+            BooleanField::new('coverDetailArticle', 'Foto für die Detailansicht?'),
             AssociationField::new('partenaire', 'Partner zuordnen'),
             AssociationField::new('event', 'Veranstaltung zuordnen'),
         ];

@@ -39,6 +39,11 @@ class TraductionArticle
      */
     private $article;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slogan;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +93,18 @@ class TraductionArticle
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getSlogan(): ?string
+    {
+        return $this->slogan;
+    }
+
+    public function setSlogan(?string $slogan): self
+    {
+        $this->slogan = $slogan;
 
         return $this;
     }

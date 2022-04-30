@@ -67,6 +67,16 @@ class Image
      */
     private $positionImage;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $coverListArticle;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $coverDetailArticle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -182,6 +192,32 @@ class Image
     public function setUpdatedAt(\DateTimeInterface $updatedAt = null): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCoverListArticle(): ?bool
+    {
+        return $this->coverListArticle;
+    }
+
+    public function setCoverListArticle(?bool $coverListArticle): self
+    {
+        $this->coverListArticle = $coverListArticle;
+
+        return $this;
+    }
+
+    
+
+    public function getCoverDetailArticle(): ?bool
+    {
+        return $this->coverDetailArticle;
+    }
+
+    public function setCoverDetailArticle(?bool $coverDetailArticle): self
+    {
+        $this->coverDetailArticle = $coverDetailArticle;
 
         return $this;
     }

@@ -2,11 +2,14 @@
     {% for article in articles %} 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="m-article-content">
-                {% for image in article.images %}                           
-                    <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="Logo Prestataire" title="Logo Prestataire">                            
+                {% for image in article.images %}
+                    {% if image.coverListArticle == true %}                           
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ article.traductionArticles[0].nom}}" title="{{ article.traductionArticles[0].nom}}">                            
+                    {% endif %}
                 {% endfor %}
                 <div class="m-article-info">
-                    <h4>{{ article.traductionArticles[0].nom}}</h4>
+                    <h3>{{ article.traductionArticles[0].nom }}</h3>
+                    <p>{{ article.traductionArticles[0].slogan }}</p>
                     <a href="{{ path('article_detail', {id: article.id})}}" class="submit-btn"><i class="fas fa-search"></i></a>
                 </div> 
             </div>                   

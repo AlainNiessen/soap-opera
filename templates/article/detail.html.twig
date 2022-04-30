@@ -11,13 +11,15 @@
     <div class="wrapper">
         <section class="m-article-detail-intro">
             <h1>{{ article.traductionArticles[0].nom }}</h1>
-
+            <p>{{ article.traductionArticles[0].slogan }}</p>
+            <div class="m-article-detail-intro-img">
+                {% for image in article.images %}
+                    {% if image.coverDetailArticle == true %}                           
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ article.traductionArticles[0].nom}}" title="{{ article.traductionArticles[0].nom}}">                            
+                    {% endif %}
+                {% endfor %}
+            </div>
         </section>
-
-
-
-
-
     </div>
 </section>
 
