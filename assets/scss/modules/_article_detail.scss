@@ -15,7 +15,7 @@
     width: 100%;
     max-width: 90%;
     margin: 2rem auto;
-    height: 25rem;
+    height: 35rem;
     background-color: map-get($map: $colors, $key: 'main1');
     border: 0.1rem solid map-get($map: $colors, $key: 'text');
     position: relative;
@@ -43,16 +43,17 @@
         width: 100%;
         height: 80%;
         position: absolute;
-        opacity: 0;        
-        h3, p {
-            padding: 1rem 1.5rem .5rem ;
-            
-        }
-        hr {
-            width: 30%;
-            margin-left: 1.5rem;
-            background-color: map-get($map: $colors, $key: 'text');
-            border: none;
+        opacity: 0;
+        padding: 2rem;
+        .contenu-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem;
+        }        
+        h3 {
+            font-weight: bold;            
         }
     }
 }
@@ -73,12 +74,17 @@
         opacity: 1;
     }
 }
+.m-article-detail-info-box {
+    margin-bottom: 2rem;
+}
 
-.m-article-detail-info-prix {
+.m-article-detail-info-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 
 //media query
 @media screen and (min-width: 576px) {

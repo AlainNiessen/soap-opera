@@ -61,9 +61,6 @@
             }
         }
     }
-    .l-topbar-menu-navbar {
-        top: 20rem;
-    }
 } 
 
 //NAVBAR AVEC ANIMATION
@@ -72,23 +69,17 @@
     height: 80vh;
     background-color: map-get($map: $colors, $key: 'main1');
     position: absolute;
-    top: 15rem;
-    left: 100%; // POINT DE DÉPART POUR ANIMATION
+    top: 20rem;
+    left: 0; // POINT DE DÉPART POUR ANIMATION
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    transition: all 250ms; 
-    &.active {
-        left: 0;
-    }
+    display: none;      
     ul {
         width: 50%;
         list-style: none;   
         display: flex;
         flex-direction: column;
         align-items: center; 
+        padding: 0;
         li {
             margin: 1.1rem 0;
             a {
@@ -110,6 +101,31 @@
                 }
             }                    
         }
+    }
+    &.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        animation: menu-in 300ms ease-out;
+    }
+}
+
+//animation menu fade in
+@keyframes menu-in {
+    from {
+        transform: translate(-500px);
+        -webkit-transform: translate(-500px);
+        -moz-transform: translate(-500px);
+        -ms-transform: translate(-500px);
+        -o-transform: translate(-500px);
+}   
+    to {
+        transform: translate(0px);
+        -webkit-transform: translate(0px);
+        -moz-transform: translate(0px);
+        -ms-transform: translate(0px);
+        -o-transform: translate(0px);
     }
 }
 

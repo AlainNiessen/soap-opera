@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionHuileEssentiel;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
+use App\Entity\HuileEssentiel;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionHuileEssentiel;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method TraductionHuileEssentiel|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +47,26 @@ class TraductionHuileEssentielRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionHuileEssentiel[] Returns an array of TraductionHuileEssentiel objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return TraductionHuileEssentiel[] Returns an array of TraductionHuileEssentiel objects
+    */
+    public function findTraductionHuileEss(HuileEssentiel $huileEss, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID
+        $huileEssID = $huileEss -> getId();
+        $langueID = $langue -> getId();
+
+
+        return $this->createQueryBuilder('the')
+                    -> andWhere('the.huileEssentiel = :huileEssID')
+                    -> setParameter('huileEssID', $huileEssID)
+                    -> andWhere('the.langue = :langueID')
+                    -> setParameter('langueID', $langueID)            
+                    -> getQuery()
+                    -> getResult()
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionHuileEssentiel

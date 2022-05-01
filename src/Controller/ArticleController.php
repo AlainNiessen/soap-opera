@@ -2,13 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Beurre;
+use App\Entity\Langue;
 use App\Entity\Article;
+use App\Entity\TraductionHuile;
+use App\Entity\TraductionBeurre;
+use App\Entity\TraductionHuileEssentiel;
+use App\Entity\TraductionIngredientSupplementaire;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
@@ -166,13 +172,66 @@ class ArticleController extends AbstractController
     public function requestArticleDetail(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {   
         //récupération de l'article via la requété automatique et son ID passé dans la route 
+        
+        //récupération langue
+        $lang = $request-> getLocale();
+        //définition repository beurre
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);
+        // fonction de requête sur base de données récupérées       
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
+
+        //récupération des ingrédients de l'article
+        //1) beurre
+        $beurres = $article-> getBeurre();
+        $resultBeurres = [];
+        //définition repository traduction beurre
+        $repositoryTraductionBeurre = $entityManager -> getRepository(TraductionBeurre::class);
+        // fonction de requête sur base de données récupérées 
+        foreach($beurres as $beurre) {
+            $resultBeurres[] = $repositoryTraductionBeurre -> findTraductionBeurre($beurre, $langue);
+        }  
+        
+        //2) huiles
+        $huiles = $article -> getHuile();
+        $resultHuiles = [];
+        //définition repository traduction huile
+        $repositoryTraductionHuile = $entityManager -> getRepository(TraductionHuile::class);
+        // fonction de requête sur base de données récupérées 
+        foreach($huiles as $huile) {
+            $resultHuiles[] = $repositoryTraductionHuile -> findTraductionHuile($huile, $langue);
+        } 
+
+        //3) huiles essentiels
+        $huilesEss = $article -> getHuileEssentiell();
+        $resultHuilesEss = [];
+        //définition repository traduction huile essentiel
+        $repositoryTraductionHuileEss = $entityManager -> getRepository(TraductionHuileEssentiel::class);
+        // fonction de requête sur base de données récupérées 
+        foreach($huilesEss as $huileEss) {
+            $resultHuilesEss[] = $repositoryTraductionHuileEss -> findTraductionHuileEss($huileEss, $langue);
+        } 
+
+        //4) ingrédients supplémentaires
+        $ingredientsSupp = $article -> getIngredientSupplementaire();
+        $resultIngredientsSupp = [];
+        //définition repository traduction huile essentiel
+        $repositoryIngredientsSupp = $entityManager -> getRepository(TraductionIngredientSupplementaire::class);
+        // fonction de requête sur base de données récupérées 
+        foreach($ingredientsSupp as $ingredientSupp) {
+            $resultIngredientsSupp[] = $repositoryIngredientsSupp -> findTraductionIngredientSupp($ingredientSupp, $langue);
+        }         
+
         //calcul du prix
         $prixArticle = (($article -> getMontantHorsTva() + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
         $prixArticle = number_format($prixArticle, 2, ',', '.').' €';
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
             'article' => $article,
-            'prix' => $prixArticle         
+            'prix' => $prixArticle,
+            'beurres' => $resultBeurres,
+            'huiles' => $resultHuiles,
+            'huilesEss' => $resultHuilesEss,
+            'ingredientsSupp' => $resultIngredientsSupp     
         ]);
     }
 }

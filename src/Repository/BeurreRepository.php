@@ -3,10 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Beurre;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
+use App\Entity\Article;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Beurre|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +47,28 @@ class BeurreRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Beurre[] Returns an array of Beurre objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Beurre[] Returns an array of Beurre objects
+    */
+    
+    public function findBeurreFromArticle(Article $article, Langue $langue)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $langueID = $langue -> getId();
+        return $this    -> createQueryBuilder('b')
+                        -> join('b.traductionBeurres', 'bt')
+                        -> addSelect('bt')
+                        -> addSelect('bt.nom')
+                        -> join('bt.langue', 'btl')
+                        -> addSelect('btl')
+                        -> andWhere(':article MEMBER OF b.articles')
+                        -> setParameter('article', $article)
+                        -> andWhere('bt.langue = :langue')
+                        -> setParameter('langue', $langueID)            
+                        -> getQuery()
+                        -> getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Beurre

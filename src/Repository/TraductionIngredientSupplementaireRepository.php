@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\IngredientSupplementaire;
+use App\Entity\Langue;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\TraductionIngredientSupplementaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
-use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method TraductionIngredientSupplementaire|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +47,26 @@ class TraductionIngredientSupplementaireRepository extends ServiceEntityReposito
         }
     }
 
-    // /**
-    //  * @return TraductionIngredientSupplementaire[] Returns an array of TraductionIngredientSupplementaire objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return TraductionIngredientSupplementaire[] Returns an array of TraductionIngredientSupplementaire objects
+    */
+    public function findTraductionIngredientSupp(IngredientSupplementaire $ingredientSupp, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID
+        $ingredientSuppID = $ingredientSupp -> getId();
+        $langueID = $langue -> getId();
+
+
+        return $this->createQueryBuilder('tis')
+                    -> andWhere('tis.ingredientSupplementaire = :ingredientSuppID')
+                    -> setParameter('ingredientSuppID', $ingredientSuppID)
+                    -> andWhere('tis.langue = :langueID')
+                    -> setParameter('langueID', $langueID)            
+                    -> getQuery()
+                    -> getResult()
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionIngredientSupplementaire
