@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionCategorie;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
+use App\Entity\Categorie;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionCategorie;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method TraductionCategorie|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +47,26 @@ class TraductionCategorieRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionCategorie[] Returns an array of TraductionCategorie objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return TraductionCategorie Returns an object of TraductionCategorie
+    */
+    
+    public function findTraductionCategorie(Categorie $categorie, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+        $categorieID = $categorie -> getId();
+
+        return $this    -> createQueryBuilder('tc')                    
+                        -> andWhere('tc.langue = :langueID')
+                        -> setParameter('langueID', $langueID)
+                        -> andWhere('tc.categorie = :categorieID')
+                        -> setParameter('categorieID', $categorieID)                               
+                        -> getQuery()
+                        -> getSingleResult();
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionCategorie

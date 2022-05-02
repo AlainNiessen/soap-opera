@@ -7,12 +7,14 @@ use App\Entity\Langue;
 use App\Entity\Article;
 use App\Entity\TraductionHuile;
 use App\Entity\TraductionBeurre;
+use App\Entity\TraductionArticle;
+use App\Entity\TraductionCategorie;
 use App\Entity\TraductionHuileEssentiel;
-use App\Entity\TraductionIngredientSupplementaire;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\TraductionIngredientSupplementaire;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -180,58 +182,75 @@ class ArticleController extends AbstractController
         // fonction de requête sur base de données récupérées       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
 
+        //récupération des informations sur article dans la langue
+        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+        $resultTraductionArticle = $repositoryTraductionArticle -> findTraductionArticle($article -> getId(), $langue);
+
+        //récupération categorie de l'article dans la langue
+        $categorieArticle = $article -> getCategorie();
+        $repositoryTraductionCategorie = $entityManager -> getRepository(TraductionCategorie::class);
+        $resultTraductionCategorie = $repositoryTraductionCategorie -> findTraductionCategorie($categorieArticle, $langue);
+        
+
         //récupération des ingrédients de l'article
         //1) beurre
-        $beurres = $article-> getBeurre();
-        $resultBeurres = [];
-        //définition repository traduction beurre
-        $repositoryTraductionBeurre = $entityManager -> getRepository(TraductionBeurre::class);
-        // fonction de requête sur base de données récupérées 
-        foreach($beurres as $beurre) {
-            $resultBeurres[] = $repositoryTraductionBeurre -> findTraductionBeurre($beurre, $langue);
-        }  
+        $beurres = $article-> getBeurre();        
+        if(!$beurres -> isEmpty()):
+            //définition repository traduction beurre
+            $repositoryTraductionBeurre = $entityManager -> getRepository(TraductionBeurre::class);
+            // fonction de requête sur base de données récupérées 
+            $resultTraductionBeurres = $repositoryTraductionBeurre -> findTraductionBeurre($beurres, $langue);
+        else:
+            $resultTraductionBeurres = [];
+        endif;  
+         
         
         //2) huiles
         $huiles = $article -> getHuile();
-        $resultHuiles = [];
-        //définition repository traduction huile
-        $repositoryTraductionHuile = $entityManager -> getRepository(TraductionHuile::class);
-        // fonction de requête sur base de données récupérées 
-        foreach($huiles as $huile) {
-            $resultHuiles[] = $repositoryTraductionHuile -> findTraductionHuile($huile, $langue);
-        } 
+        if(!$huiles -> isEmpty()):
+            //définition repository traduction huile
+            $repositoryTraductionHuile = $entityManager -> getRepository(TraductionHuile::class);
+            // fonction de requête sur base de données récupérées 
+            $resultTraductionHuiles = $repositoryTraductionHuile -> findTraductionHuile($huiles, $langue);
+        else:
+            $resultTraductionHuiles = [];
+        endif;        
 
         //3) huiles essentiels
         $huilesEss = $article -> getHuileEssentiell();
-        $resultHuilesEss = [];
-        //définition repository traduction huile essentiel
-        $repositoryTraductionHuileEss = $entityManager -> getRepository(TraductionHuileEssentiel::class);
-        // fonction de requête sur base de données récupérées 
-        foreach($huilesEss as $huileEss) {
-            $resultHuilesEss[] = $repositoryTraductionHuileEss -> findTraductionHuileEss($huileEss, $langue);
-        } 
+        if(!$huilesEss -> isEmpty()):
+            //définition repository traduction huile essentiel
+            $repositoryTraductionHuileEss = $entityManager -> getRepository(TraductionHuileEssentiel::class);
+            // fonction de requête sur base de données récupérées 
+            $resultTraductionHuilesEss = $repositoryTraductionHuileEss -> findTraductionHuileEss($huilesEss, $langue);    
+        else:
+            $resultTraductionHuilesEss = [];
+        endif;    
 
         //4) ingrédients supplémentaires
         $ingredientsSupp = $article -> getIngredientSupplementaire();
-        $resultIngredientsSupp = [];
-        //définition repository traduction huile essentiel
-        $repositoryIngredientsSupp = $entityManager -> getRepository(TraductionIngredientSupplementaire::class);
-        // fonction de requête sur base de données récupérées 
-        foreach($ingredientsSupp as $ingredientSupp) {
-            $resultIngredientsSupp[] = $repositoryIngredientsSupp -> findTraductionIngredientSupp($ingredientSupp, $langue);
-        }         
+        if(!$ingredientsSupp -> isEmpty()):
+            //définition repository traduction huile essentiel
+            $repositoryIngredientsSupp = $entityManager -> getRepository(TraductionIngredientSupplementaire::class);
+            // fonction de requête sur base de données récupérées 
+            $resultTraductionIngredientsSupp = $repositoryIngredientsSupp -> findTraductionIngredientSupp($ingredientsSupp, $langue);
+        else:
+            $resultTraductionIngredientsSupp = [];
+        endif;              
 
         //calcul du prix
         $prixArticle = (($article -> getMontantHorsTva() + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
         $prixArticle = number_format($prixArticle, 2, ',', '.').' €';
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
+            'traductionArticle' => $resultTraductionArticle,
             'article' => $article,
+            'traductionCategorie' => $resultTraductionCategorie,
             'prix' => $prixArticle,
-            'beurres' => $resultBeurres,
-            'huiles' => $resultHuiles,
-            'huilesEss' => $resultHuilesEss,
-            'ingredientsSupp' => $resultIngredientsSupp     
+            'traductionBeurres' => $resultTraductionBeurres,
+            'traductionHuiles' => $resultTraductionHuiles,
+            'traductionHuilesEss' => $resultTraductionHuilesEss,
+            'traductionIngredientsSupp' => $resultTraductionIngredientsSupp     
         ]);
     }
 }

@@ -50,21 +50,30 @@ class TraductionIngredientSupplementaireRepository extends ServiceEntityReposito
     /**
     * @return TraductionIngredientSupplementaire[] Returns an array of TraductionIngredientSupplementaire objects
     */
-    public function findTraductionIngredientSupp(IngredientSupplementaire $ingredientSupp, Langue $langue)
+    public function findTraductionIngredientSupp($ingredientsSupp, Langue $langue)
     {
-        //récupération de ID
-        $ingredientSuppID = $ingredientSupp -> getId();
+        //récupération de ID langue       
         $langueID = $langue -> getId();
 
+        $queryBuilder =  $this  -> createQueryBuilder('tis')
+                                -> andWhere('tis.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
 
-        return $this->createQueryBuilder('tis')
-                    -> andWhere('tis.ingredientSupplementaire = :ingredientSuppID')
-                    -> setParameter('ingredientSuppID', $ingredientSuppID)
-                    -> andWhere('tis.langue = :langueID')
-                    -> setParameter('langueID', $langueID)            
-                    -> getQuery()
-                    -> getResult()
-           
+                                if(count($ingredientsSupp) > 0) {
+                                    $arr = []; 
+                                    foreach($ingredientsSupp as $ingredientSupp) {
+                                        //récupération de ID huile
+                                        $ingredientSuppID = $ingredientSupp -> getId();
+
+                                        $arr[] = $queryBuilder->expr()->orX("tis.ingredientSupplementaire = $ingredientSuppID");                                    
+                                    }
+                                    $queryBuilder->andWhere(join(' OR ', $arr));
+                                }
+                    
+                    
+                                return $queryBuilder 
+                                ->getQuery()
+                                ->getResult();           
         ;
     }
 

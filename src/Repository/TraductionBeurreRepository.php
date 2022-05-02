@@ -51,20 +51,29 @@ class TraductionBeurreRepository extends ServiceEntityRepository
     * @return TraductionBeurre[] Returns an array of TraductionBeurre objects
     */
     
-    public function findTraductionBeurre(Beurre $beurre, Langue $langue)
+    public function findTraductionBeurre($beurres, Langue $langue)
     {
-        //récupération de ID
-        $beurreID = $beurre -> getId();
+        //récupération de ID langue
         $langueID = $langue -> getId();
 
+        $queryBuilder =  $this  -> createQueryBuilder('tb')                    
+                                -> andWhere('tb.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
 
-        return $this->createQueryBuilder('tb')
-                    -> andWhere('tb.beurre = :beurreID')
-                    -> setParameter('beurreID', $beurreID)
-                    -> andWhere('tb.langue = :langueID')
-                    -> setParameter('langueID', $langueID)            
-                    -> getQuery()
-                    -> getResult()
+                                if(count($beurres) > 0) {
+                                    $arr = []; 
+                                    foreach($beurres as $beurre) {
+                                        //récupération de ID beurre
+                                        $beurreID = $beurre -> getId();
+
+                                        $arr[] = $queryBuilder->expr()->orX("tb.beurre = $beurreID");                                    
+                                    }
+                                    $queryBuilder->andWhere(join(' OR ', $arr));
+                                }
+                                
+                                return $queryBuilder 
+                                        ->getQuery()
+                                        ->getResult(); 
            
         ;
     }

@@ -10,12 +10,12 @@
 <section class="m-article-detail">
     <div class="wrapper">
         <section class="m-article-detail-intro">
-            <h1>{{ article.traductionArticles[0].nom }}</h1>
-            <p>{{ article.traductionArticles[0].slogan }}</p>
+            <h1>{{ traductionArticle.nom }}</h1>
+            <p>{{ traductionArticle.slogan }}</p>
             <div class="m-article-detail-intro-img">
                 {% for image in article.images %}
                     {% if image.coverDetailArticle == true %}                           
-                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ article.traductionArticles[0].nom}}" title="{{ article.traductionArticles[0].nom}}">                            
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticle.nom}}" title="{{ traductionArticle.nom}}">                            
                     {% endif %}
                 {% endfor %}
             </div>
@@ -29,11 +29,11 @@
             <div class="contenu activeContenu" data-anim="1">
                 <div class="m-article-detail-info-box">
                     <h3>Allgemeine Beschreibung:</h3>               
-                    <p>{{ article.traductionArticles[0].description }}</p>
+                    <p>{{ traductionArticle.description }}</p>
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>Kategorie:</h3>
-                    <p>{{ article.categorie.traductionCategories[0].nom }}</p> 
+                    <p>{{ traductionCategorie.nom }}</p> 
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>Preis:</h3>
@@ -48,12 +48,10 @@
                     <div class="col-6">           
                         <div class="contenu-box">
                             <h3>Butter:</h3>
-                            {% if beurres is defined and beurres is not null and beurres is not empty %}
+                            {% if traductionBeurres is defined and traductionBeurres is not null and traductionBeurres is not empty %}
                                 <ul>
-                                {% for beurre in beurres %}
-                                        {% for value in beurre %}
-                                            <li>{{ value.nom }}</li>
-                                        {% endfor %}
+                                {% for beurre in traductionBeurres %}                                        
+                                    <li>{{ beurre.nom }}</li>                                      
                                 {% endfor %}
                                 </ul>
                             {% else %}
@@ -64,12 +62,10 @@
                     <div class="col-6"> 
                         <div class="contenu-box">
                             <h3>Öle:</h3>
-                            {% if huiles is defined and huiles is not null and huiles is not empty %}
+                            {% if traductionHuiles is defined and traductionHuiles is not null and traductionHuiles is not empty %}
                                 <ul>
-                                {% for huile in huiles %}
-                                    {% for value in huile %}
-                                            <li>{{ value.nom }}</li>
-                                        {% endfor %}
+                                {% for huile in traductionHuiles %}                                  
+                                    <li>{{ huile.nom }}</li>                                        
                                 {% endfor %}
                                 </ul>
                             {% else %}
@@ -80,12 +76,10 @@
                     <div class="col-6"> 
                         <div class="contenu-box">
                             <h3>Ätherische Öle:</h3>
-                            {% if huilesEss is defined and huilesEss is not null and huilesEss is not empty %}
+                            {% if traductionHuilesEss is defined and traductionHuilesEss is not null and traductionHuilesEss is not empty %}
                                 <ul>
-                                {% for huileEss in huilesEss %}
-                                    {% for value in huileEss %}
-                                            <li>{{ value.nom }}</li>
-                                        {% endfor %}
+                                {% for huileEss in traductionHuilesEss %}                                   
+                                    <li>{{ huileEss.nom }}</li>
                                 {% endfor %}
                                 </ul>
                             {% else %}
@@ -96,12 +90,10 @@
                     <div class="col-6"> 
                         <div class="contenu-box">
                             <h3>Sonstige Zutaten:</h3>
-                            {% if ingredientsSupp is defined and ingredientsSupp is not null and ingredientsSupp is not empty %}
+                            {% if traductionIngredientsSupp is defined and traductionIngredientsSupp is not null and traductionIngredientsSupp is not empty %}
                                 <ul>
-                                {% for ingredientSupp in ingredientsSupp %}
-                                    {% for value in ingredientSupp %}
-                                            <li>{{ value.nom }}</li>
-                                        {% endfor %}
+                                {% for ingredientSupp in traductionIngredientsSupp %}                                 
+                                    <li>{{ ingredientSupp.nom }}</li>                                        
                                 {% endfor %}
                                 </ul>
                             {% else %}
@@ -119,7 +111,4 @@
         </section>
     </div>
 </section>
-
-
-
 {% endblock %}

@@ -51,20 +51,30 @@ class TraductionHuileRepository extends ServiceEntityRepository
     * @return TraductionHuile[] Returns an array of TraductionHuile objects
     */
     
-    public function findTraductionHuile(Huile $huile, Langue $langue)
+    public function findTraductionHuile($huiles, Langue $langue)
     {
-        //récupération de ID
-        $huileID = $huile -> getId();
+        //récupération de ID langue        
         $langueID = $langue -> getId();
 
+        $queryBuilder =  $this  -> createQueryBuilder('th')                    
+                                -> andWhere('th.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
 
-        return $this->createQueryBuilder('th')
-                    -> andWhere('th.huile = :huileID')
-                    -> setParameter('huileID', $huileID)
-                    -> andWhere('th.langue = :langueID')
-                    -> setParameter('langueID', $langueID)            
-                    -> getQuery()
-                    -> getResult()
+                                if(count($huiles) > 0) {
+                                    $arr = []; 
+                                    foreach($huiles as $huile) {
+                                        //récupération de ID huile
+                                        $huileID = $huile -> getId();
+
+                                        $arr[] = $queryBuilder->expr()->orX("th.huile = $huileID");                                    
+                                    }
+                                    $queryBuilder->andWhere(join(' OR ', $arr));
+                                }   
+                    
+                    
+                                return $queryBuilder 
+                                ->getQuery()
+                                ->getResult(); 
            
         ;
     }

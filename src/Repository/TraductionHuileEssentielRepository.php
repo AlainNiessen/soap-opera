@@ -50,21 +50,31 @@ class TraductionHuileEssentielRepository extends ServiceEntityRepository
     /**
     * @return TraductionHuileEssentiel[] Returns an array of TraductionHuileEssentiel objects
     */
-    public function findTraductionHuileEss(HuileEssentiel $huileEss, Langue $langue)
+    public function findTraductionHuileEss($huilesEss, Langue $langue)
     {
-        //récupération de ID
-        $huileEssID = $huileEss -> getId();
+        //récupération de ID langue        
         $langueID = $langue -> getId();
 
 
-        return $this->createQueryBuilder('the')
-                    -> andWhere('the.huileEssentiel = :huileEssID')
-                    -> setParameter('huileEssID', $huileEssID)
-                    -> andWhere('the.langue = :langueID')
-                    -> setParameter('langueID', $langueID)            
-                    -> getQuery()
-                    -> getResult()
-           
+        $queryBuilder = $this   -> createQueryBuilder('the')                    
+                                -> andWhere('the.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
+                                
+                                if(count($huilesEss) > 0) {
+                                    $arr = []; 
+                                    foreach($huilesEss as $huileEss) {
+                                        //récupération de ID huile essentiel
+                                        $huileEssID = $huileEss -> getId();
+
+                                        $arr[] = $queryBuilder->expr()->orX("the.huileEssentiel = $huileEssID");                                    
+                                    }
+                                    $queryBuilder->andWhere(join(' OR ', $arr));
+                                }
+                    
+                    
+                                return $queryBuilder 
+                                            ->getQuery()
+                                            ->getResult();           
         ;
     }
 

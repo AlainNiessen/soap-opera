@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionArticle;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionArticle;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method TraductionArticle|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +46,25 @@ class TraductionArticleRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionArticle[] Returns an array of TraductionArticle objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return TraductionArticle Returns an object of TraductionArticle
+    */
+    
+    public function findTraductionArticle($articleID, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+
+        return $this    -> createQueryBuilder('ta')                    
+                        -> andWhere('ta.langue = :langueID')
+                        -> setParameter('langueID', $langueID)
+                        -> andWhere('ta.article = :articleID')
+                        -> setParameter('articleID', $articleID)                               
+                        -> getQuery()
+                        -> getSingleResult();
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionArticle
