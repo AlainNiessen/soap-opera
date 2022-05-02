@@ -51,11 +51,10 @@ class TraductionCategorieRepository extends ServiceEntityRepository
     * @return TraductionCategorie Returns an object of TraductionCategorie
     */
     
-    public function findTraductionCategorie(Categorie $categorie, Langue $langue)
+    public function findTraductionCategorie($categorieID, Langue $langue)
     {
         //récupération de ID langue
         $langueID = $langue -> getId();
-        $categorieID = $categorie -> getId();
 
         return $this    -> createQueryBuilder('tc')                    
                         -> andWhere('tc.langue = :langueID')

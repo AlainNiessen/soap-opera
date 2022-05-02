@@ -189,7 +189,7 @@ class ArticleController extends AbstractController
         //récupération categorie de l'article dans la langue
         $categorieArticle = $article -> getCategorie();
         $repositoryTraductionCategorie = $entityManager -> getRepository(TraductionCategorie::class);
-        $resultTraductionCategorie = $repositoryTraductionCategorie -> findTraductionCategorie($categorieArticle, $langue);
+        $resultTraductionCategorie = $repositoryTraductionCategorie -> findTraductionCategorie($categorieArticle -> getId(), $langue);
         
 
         //récupération des ingrédients de l'article
