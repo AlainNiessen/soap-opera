@@ -13,7 +13,7 @@
             <h1>{{ traductionArticle.nom }}</h1>
             <p>{{ traductionArticle.slogan }}</p>
             <div class="m-article-detail-intro-img">
-                {% for image in article.images %}
+                {% for image in traductionArticle.article.images %}
                     {% if image.coverDetailArticle == true %}                           
                         <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticle.nom}}" title="{{ traductionArticle.nom}}">                            
                     {% endif %}

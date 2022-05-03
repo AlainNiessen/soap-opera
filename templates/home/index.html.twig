@@ -7,10 +7,55 @@
 {# rendering fragment recherche #}
 {{ render(path('recherche')) }}
 
-{# rendering fragment bestseller #}
-{{ render(path('bestseller')) }}
-
-{# rendering fragment new articles #}
-{{ render(path('new_articles')) }}
+<section class="m-list-articles">
+    <div class="wrapper">
+    <h1>Unsere Bestseller</h1>
+        <div class="m-list-articles-result">
+            <div class="row">
+                {% for traductionArticleBestseller in traductionArticlesBestseller %} 
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="m-article-content">
+                            {% for image in traductionArticleBestseller.article.images %}
+                                {% if image.coverListArticle == true %}                           
+                                    <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticleBestseller.nom}}" title="{{ traductionArticleBestseller.nom}}">                            
+                                {% endif %}
+                            {% endfor %}
+                            <div class="m-article-info">
+                                <h3>{{ traductionArticleBestseller.nom }}</h3>
+                                <p>{{ traductionArticleBestseller.slogan }}</p>
+                                <a href="{{ path('article_detail', {id: traductionArticleBestseller.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                            </div> 
+                        </div>                   
+                    </div>
+                {% endfor %}              
+            </div>
+        </div>
+    </div>
+</section>
+<section class="m-list-articles">
+    <div class="wrapper">
+    <h1>Unsere Neuigkeiten</h1>
+        <div class="m-list-articles-result">
+            <div class="row">
+                {% for traductionArticleNew in traductionArticlesNew %} 
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="m-article-content">
+                            {% for image in traductionArticleNew.article.images %}
+                                {% if image.coverListArticle == true %}                           
+                                    <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticleNew.nom}}" title="{{ traductionArticleNew.nom}}">                            
+                                {% endif %}
+                            {% endfor %}
+                            <div class="m-article-info">
+                                <h3>{{ traductionArticleNew.nom }}</h3>
+                                <p>{{ traductionArticleNew.slogan }}</p>
+                                <a href="{{ path('article_detail', {id: traductionArticleNew.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                            </div> 
+                        </div>                   
+                    </div>
+                {% endfor %}              
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

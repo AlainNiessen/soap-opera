@@ -7,7 +7,7 @@
 {# rendering fragment recherche #}
 {{ render(path('recherche')) }}
 
-<section class="m-liste-articles js-list">
+<section class="m-list-articles js-list">
     {# message en cas où il n'y a pas de résultat #}
     {#{% for message in app.flashes('noPrest') %}
         <div class="alert alert-danger text-center">
@@ -15,8 +15,8 @@
         </div>
     {% endfor %}#}
     <div class="wrapper">
-        {% if articles is defined and articles is not null and articles is not empty %}
-            <div class="m-liste-articles-result" id="js-list-content">
+        {% if traductionArticles is defined and traductionArticles is not null and traductionArticles is not empty %}
+            <div class="m-list-articles-result" id="js-list-content">
                 {% include 'article/_articles.html.twig' %}                   
             </div>
             {# systéme de pagination #}

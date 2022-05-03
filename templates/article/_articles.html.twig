@@ -1,16 +1,16 @@
 <div class="row">
-    {% for article in articles %} 
+    {% for traductionArticle in traductionArticles %} 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="m-article-content">
-                {% for image in article.images %}
+                {% for image in traductionArticle.article.images %}
                     {% if image.coverListArticle == true %}                           
-                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ article.traductionArticles[0].nom}}" title="{{ article.traductionArticles[0].nom}}">                            
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticle.nom}}" title="{{ traductionArticle.nom}}">                            
                     {% endif %}
                 {% endfor %}
                 <div class="m-article-info">
-                    <h3>{{ article.traductionArticles[0].nom }}</h3>
-                    <p>{{ article.traductionArticles[0].slogan }}</p>
-                    <a href="{{ path('article_detail', {id: article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                    <h3>{{ traductionArticle.nom }}</h3>
+                    <p>{{ traductionArticle.slogan }}</p>
+                    <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
                 </div> 
             </div>                   
         </div>

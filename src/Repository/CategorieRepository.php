@@ -44,28 +44,7 @@ class CategorieRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
-    /**
-    * @return Categorie[] Returns an array of Categorie objects
-    */
     
-    //fonction de récupération des noms des catégories pour construire le menu de recherche
-    public function findAllCatgoriesLang($lang)
-    {
-        //préparation lier les tables 
-        $queryBuilder =  $this  ->createQueryBuilder('c')
-                                ->join('c.traductionCategories', 'ct')
-                                ->addSelect('ct')
-                                ->join('ct.langue', 'ctl')
-                                ->addSelect('ctl')
-                                ->andWhere('ctl.codeLangue LIKE :lang')
-                                ->setParameter('lang', $lang);      
-
-        return $queryBuilder                    
-                    ->getQuery()
-                    ->getResult();
-        ;       
-    }
     
 
     /*

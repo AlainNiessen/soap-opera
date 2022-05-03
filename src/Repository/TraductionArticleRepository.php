@@ -66,6 +66,38 @@ class TraductionArticleRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+    * @return TraductionArticle[] Returns an an array of objects of TraductionArticle
+    */
+    
+    public function findTraductionArticles($articles, Langue $langue)
+    {
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+
+        $queryBuilder =  $this   -> createQueryBuilder('ta')                    
+                                -> andWhere('ta.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
+
+                            if(count($articles) > 0) {
+                                $arr = []; 
+                                foreach($articles as $article) {
+                                    //récupération de ID huile
+                                    $articleID = $article -> getId();
+
+                                    $arr[] = $queryBuilder->expr()->orX("ta.article = $articleID");                                    
+                                }
+                                $queryBuilder->andWhere(join(' OR ', $arr));
+                            }   
+                
+                
+                            return $queryBuilder 
+                            ->getQuery()
+                            ->getResult(); 
+           
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?TraductionArticle
     {

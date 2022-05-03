@@ -126,6 +126,38 @@ class ArticleRepository extends ServiceEntityRepository
                     ->getResult();
         ;       
     }
+
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+    
+    //fonction de recherche articles par categorie
+    public function findArticlesBestseller($value)
+    {
+        //préparation lier les tables 
+        return $this -> createQueryBuilder('a')
+                     -> orderBy('a.nombreVentes', 'DESC')
+                     -> setMaxResults($value) 
+                     -> getQuery()
+                     -> getResult();
+        ;       
+    }
+
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+    
+    //fonction de recherche articles par categorie
+    public function findNewArticles($value)
+    {
+        //préparation lier les tables 
+        return $this -> createQueryBuilder('a')
+                     -> orderBy('a.dateCreation', 'DESC')
+                     -> setMaxResults($value) 
+                     -> getQuery()
+                     -> getResult();
+        ;       
+    }
     
 
     /*

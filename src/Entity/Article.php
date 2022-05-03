@@ -105,6 +105,11 @@ class Article
      */
     private $ingredientSupplementaire;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateCreation;
+
      // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -483,6 +488,18 @@ class Article
     public function removeIngredientSupplementaire(IngredientSupplementaire $ingredientSupplementaire): self
     {
         $this->ingredientSupplementaire->removeElement($ingredientSupplementaire);
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }

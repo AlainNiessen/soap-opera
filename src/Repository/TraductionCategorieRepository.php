@@ -67,6 +67,38 @@ class TraductionCategorieRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+    * @return Categorie[] Returns an array of Categorie objects
+    */
+    
+    //fonction de récupération des noms des catégories pour construire le menu de recherche
+    public function findTraductionCategories($categories, Langue $langue)
+    {
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+
+        $queryBuilder =  $this  -> createQueryBuilder('tc')                    
+                                -> andWhere('tc.langue = :langueID')
+                                -> setParameter('langueID', $langueID);
+
+                            if(count($categories) > 0) {
+                                $arr = []; 
+                                foreach($categories as $categorie) {
+                                    //récupération de ID huile
+                                    $categorieID = $categorie -> getId();
+
+                                    $arr[] = $queryBuilder->expr()->orX("tc.categorie = $categorieID");                                    
+                                }
+                                $queryBuilder->andWhere(join(' OR ', $arr));
+                            }   
+                
+                
+                            return $queryBuilder 
+                            ->getQuery()
+                            ->getResult(); 
+        ;       
+    }
+
     /*
     public function findOneBySomeField($value): ?TraductionCategorie
     {

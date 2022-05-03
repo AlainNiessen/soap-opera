@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Beurre;
 use App\Entity\Langue;
 use App\Entity\Article;
 use App\Entity\TraductionHuile;
@@ -47,16 +46,27 @@ class ArticleController extends AbstractController
             //récupération du tableau stocké dans la Session
             $session = $request->getSession();
             $tabWords = $session -> get('tabWords');
-        endif; 
+        endif;
+        
+        //récupération langue
+        $lang = $request-> getLocale();
+        //définition repository beurre
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);
+        // fonction de requête sur base de données récupérées       
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
         // récupération des articles        
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // récupération des articles      
         $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
-        
+
+        //récupération des informations sur les articles dans la langue
+        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue);
+       
         // récupération du nombre des articles
-        $nombreArticles = count($tabArticles);
+        $nombreArticles = count($resultTraductionArticles);
 
         // définition nombre des articles par page
         $limit = 6;
@@ -64,8 +74,8 @@ class ArticleController extends AbstractController
         //définition start and end pour le tableau à transférer pour la pagination
         $startCount = $interPag * $limit - $limit;
 
-        if($interPag * $limit >= count($tabArticles)):
-            $endCount = count($tabArticles);
+        if($interPag * $limit >= count($resultTraductionArticles)):
+            $endCount = count($resultTraductionArticles);
         else:
             $endCount = $interPag * $limit;
         endif;
@@ -75,17 +85,17 @@ class ArticleController extends AbstractController
         //définition limite affichage pagination
         $limitPagination = $interPag + 2;      
       
-        $pagination = array_slice($tabArticles, $startCount, $endCount);
-
+        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
+       
         // si il s'agit d'une requête AJAX
         // re-rendering le contenu et la navigation sans rechargement du site
         if($request -> isXmlHttpRequest()) {
             return new JsonResponse([
                 'content' => $this -> renderView('article/_articles.html.twig', [
-                    'articles' => $pagination
+                    'traductionArticles' => $pagination
                 ]),
                 'navigationBar' => $this -> renderView('article/_navigationBar.html.twig', [
-                    'articles' => $pagination,
+                    'traductionArticles' => $pagination,
                     'nombreLiens' => $nombreLiens,
                     'pagBar'=> $interPag,
                     'limitPagination' => $limitPagination
@@ -94,7 +104,7 @@ class ArticleController extends AbstractController
         }           
         
         return $this->render('article/list.html.twig', [
-            'articles' => $pagination,
+            'traductionArticles' => $pagination,
             'nombreLiens' => $nombreLiens,
             'pagBar'=> $interPag,
             'limitPagination' => $limitPagination
@@ -111,14 +121,25 @@ class ArticleController extends AbstractController
     {
         //récupération de la pagination
         $interPag = intval($pagCat);
+
+        //récupération langue
+        $lang = $request-> getLocale();
+        //définition repository beurre
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);
+        // fonction de requête sur base de données récupérées       
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);        
+        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);   
+        
+        //récupération des informations sur les articles dans la langue
+        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($articlesCat, $langue);
 
         // récupération du nombre des articles
-        $nombreArticles = count($articlesCat);
+        $nombreArticles = count($resultTraductionArticles);
 
         // définition nombre des articles par page
         $limit = 6;
@@ -126,8 +147,8 @@ class ArticleController extends AbstractController
         //définition start and end pour le tableau à transférer pour la pagination
         $startCount = $interPag * $limit - $limit;
 
-        if($interPag * $limit >= count($articlesCat)):
-            $endCount = count($articlesCat);
+        if($interPag * $limit >= count($resultTraductionArticles)):
+            $endCount = count($resultTraductionArticles);
         else:
             $endCount = $interPag * $limit;
         endif;
@@ -137,17 +158,17 @@ class ArticleController extends AbstractController
         //définition limite affichage pagination
         $limitPagination = $interPag + 2;      
       
-        $pagination = array_slice($articlesCat, $startCount, $endCount);
+        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
 
         // si il s'agit d'une requête AJAX
         // re-rendering le contenu et la navigation sans rechargement du site
         if($request -> isXmlHttpRequest()) {
             return new JsonResponse([
                 'content' => $this -> renderView('article/_articles.html.twig', [
-                    'articles' => $pagination                    
+                    'traductionArticles' => $pagination                    
                 ]),
                 'navigationCat' => $this -> renderView('article/_navigationCat.html.twig', [
-                    'articles' => $pagination,
+                    'traductionArticles' => $pagination,
                     'nombreLiens' => $nombreLiens,
                     'pagCat'=> $interPag,
                     'limitPagination' => $limitPagination,
@@ -157,7 +178,7 @@ class ArticleController extends AbstractController
         }          
 
         return $this->render('article/list.html.twig', [
-            'articles' => $pagination,
+            'traductionArticles' => $pagination,
             'nombreLiens' => $nombreLiens,
             'pagCat'=> $interPag,
             'limitPagination' => $limitPagination,
@@ -244,7 +265,6 @@ class ArticleController extends AbstractController
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
             'traductionArticle' => $resultTraductionArticle,
-            'article' => $article,
             'traductionCategorie' => $resultTraductionCategorie,
             'prix' => $prixArticle,
             'traductionBeurres' => $resultTraductionBeurres,

@@ -1,5 +1,5 @@
 // liste de articles
-.m-liste-articles {
+.m-list-articles {
     width: 100%;
     background-color: map-get($map: $colors, $key: 'main1');    
     h1 {
@@ -7,7 +7,7 @@
         padding-top: 2rem;
         color: map-get($map: $colors, $key: 'text');
     }
-    .m-liste-articles-result {
+    .m-list-articles-result {
         width: 100%;        
         .m-article-content {
             position: relative;
