@@ -1,7 +1,8 @@
 // liste de articles
 .m-list-articles {
     width: 100%;
-    background-color: map-get($map: $colors, $key: 'main1');    
+    background-color: map-get($map: $colors, $key: 'main1'); 
+    margin-bottom: 3rem;   
     h1 {
         text-align: center;
         padding-top: 2rem;
