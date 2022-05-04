@@ -13,7 +13,7 @@
         <div class="m-list-articles-result">
             <div class="row">
                 {% for traductionArticleBestseller in traductionArticlesBestseller %} 
-                    <div class="col-12 col-md-4 col-lg-4">
+                    <div class="col-12">
                         <div class="m-article-content">
                             {% for image in traductionArticleBestseller.article.images %}
                                 {% if image.coverListArticle == true %}                           
@@ -38,7 +38,7 @@
         <div class="m-list-articles-result">
             <div class="row">
                 {% for traductionArticleNew in traductionArticlesNew %} 
-                    <div class="col-12 col-md-4 col-lg-4">
+                    <div class="col-12">
                         <div class="m-article-content">
                             {% for image in traductionArticleNew.article.images %}
                                 {% if image.coverListArticle == true %}                           

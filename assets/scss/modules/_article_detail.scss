@@ -14,7 +14,7 @@
 .m-article-detail-info {
     width: 100%;
     max-width: 90%;
-    margin: 2rem auto;
+    margin: 4rem auto 3rem auto;
     height: 35rem;
     background-color: map-get($map: $colors, $key: 'main1');
     border: 0.1rem solid map-get($map: $colors, $key: 'text');
@@ -22,7 +22,7 @@
     box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);      
     .container-onglets {
         width: 100%;
-        height: 20%;
+        height: 10%;
         display: flex;
         border-bottom: 0.1rem solid map-get($map: $colors, $key: 'text');
         color: map-get($map: $colors, $key: 'text');
@@ -41,7 +41,7 @@
     }
     .contenu {
         width: 100%;
-        height: 80%;
+        height: 90%;
         position: absolute;
         opacity: 0;
         padding: 2rem;
@@ -49,8 +49,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            margin: 2rem;
+            align-items: flex-start;
+            ul {
+                li {
+                    margin: .5rem 0;
+                }
+            }
         }        
         h3 {
             font-weight: bold;            

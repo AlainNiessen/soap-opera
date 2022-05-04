@@ -26,10 +26,11 @@
                 <div class="onglets" data-anim="2">Zutaten</div>
                 <div class="onglets" data-anim="3">Bewertungen</div>
             </div>
-            <div class="contenu activeContenu" data-anim="1">
+            <div class="contenu overflow-y activeContenu" data-anim="1">
                 <div class="m-article-detail-info-box">
-                    <h3>Allgemeine Beschreibung:</h3>               
-                    <p>{{ traductionArticle.description }}</p>
+                    <h3>Allgemeine Beschreibung:</h3> 
+                    {# raw => effacer les balises HTML (div) #}              
+                    <p>{{ traductionArticle.description|raw }}</p>
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>Kategorie:</h3>
@@ -43,64 +44,30 @@
                     <a href="#" class="btn btn-outline-info">In den Warenkorb</i></a>
                 </div>      
             </div>
-            <div class="contenu" data-anim="2">
-                <div class="row"> 
-                    <div class="col-6">           
-                        <div class="contenu-box">
-                            <h3>Butter:</h3>
-                            {% if traductionBeurres is defined and traductionBeurres is not null and traductionBeurres is not empty %}
-                                <ul>
-                                {% for beurre in traductionBeurres %}                                        
-                                    <li>{{ beurre.nom }}</li>                                      
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p>/</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-6"> 
-                        <div class="contenu-box">
-                            <h3>Öle:</h3>
-                            {% if traductionHuiles is defined and traductionHuiles is not null and traductionHuiles is not empty %}
-                                <ul>
-                                {% for huile in traductionHuiles %}                                  
-                                    <li>{{ huile.nom }}</li>                                        
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p>/</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-6"> 
-                        <div class="contenu-box">
-                            <h3>Ätherische Öle:</h3>
-                            {% if traductionHuilesEss is defined and traductionHuilesEss is not null and traductionHuilesEss is not empty %}
-                                <ul>
-                                {% for huileEss in traductionHuilesEss %}                                   
-                                    <li>{{ huileEss.nom }}</li>
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p>/</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-6"> 
-                        <div class="contenu-box">
-                            <h3>Sonstige Zutaten:</h3>
-                            {% if traductionIngredientsSupp is defined and traductionIngredientsSupp is not null and traductionIngredientsSupp is not empty %}
-                                <ul>
-                                {% for ingredientSupp in traductionIngredientsSupp %}                                 
-                                    <li>{{ ingredientSupp.nom }}</li>                                        
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p>/</p>
-                            {% endif %}
-                        </div>
-                    </div>
+            <div class="contenu" data-anim="2">                          
+                <div class="contenu-box">
+                    <h3>Dieser Artikel enhält:</h3>
+                        <ul>
+                    {% if traductionBeurres is defined and traductionBeurres is not null and traductionBeurres is not empty %}
+                        {% for beurre in traductionBeurres %}                                        
+                            <li>{{ beurre.nom }}</li>                                      
+                        {% endfor %}                   
+                    {% endif %}                
+                    {% if traductionHuiles is defined and traductionHuiles is not null and traductionHuiles is not empty %}                        
+                        {% for huile in traductionHuiles %}                                  
+                            <li>{{ huile.nom }}</li>                                        
+                        {% endfor %}                        
+                    {% endif %}                       
+                    {% if traductionHuilesEss is defined and traductionHuilesEss is not null and traductionHuilesEss is not empty %}                        
+                        {% for huileEss in traductionHuilesEss %}                                   
+                            <li>{{ huileEss.nom }}</li>
+                        {% endfor %}                   
+                    {% endif %}                        
+                    {% if traductionIngredientsSupp is defined and traductionIngredientsSupp is not null and traductionIngredientsSupp is not empty %}                        
+                        {% for ingredientSupp in traductionIngredientsSupp %}                                 
+                            <li>{{ ingredientSupp.nom }}</li>                                        
+                        {% endfor %}                   
+                    {% endif %}  
                 </div>
             </div>               
             <div class="contenu" data-anim="3">
