@@ -98,6 +98,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $langue;
 
+    private $plainPassword;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -389,6 +391,17 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->langue = $langue;
 
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
         return $this;
     }
 }

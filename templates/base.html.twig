@@ -51,7 +51,7 @@
                                     <a href="#" class="l-menu-list-element">Kontakt</a>
                                 </li>
                                 <li >
-                                    <a href="#" class="l-menu-list-element">Registrierung</a>
+                                    <a href="{{ path('registration') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('registration')) %} activeElement {% endif %}">Registrierung</a>
                                 </li>                                                     
                                 <li >
                                     <a href="#" class="l-menu-list-element">Anmeldung</a>

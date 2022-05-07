@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Einschreibung{% endblock %}
+
+{% block body %}
+ <div class="formulaire">    
+    <div class="info-box-inscription">
+        <h1>Einschreibung</h1>        
+        <p>bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.</p>
+    </div>    
+    {{ form_start(formInscription) }}
+    {{ form_row(formInscription) }}
+    {{ form_end(formInscription) }}
+</div>
+{% endblock %}
