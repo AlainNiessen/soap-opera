@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
@@ -22,6 +23,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * @Assert\Email(message = "Bitte geben Sie eine valide E-Mail Adresse an")
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -38,16 +42,28 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Der Name muss mindestens {{ limit }} Zeichen lang sein!")
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Der Vorname muss mindestens {{ limit }} Zeichen lang sein!")
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
 
     /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="datetime")
      */
     private $dateNaissance;
@@ -68,12 +84,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $inscriptionToken;
 
     /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateursHome")
      * @ORM\JoinColumn(nullable=false)
      */
     private $adresseHome;
 
     /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateurDeliver")
      */
     private $adresseDeliver;
@@ -98,6 +118,19 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $langue;
 
+    //mot de passe clair qui doit contenir au moins une lettre, un chiffre et un caractére spécial et au moins 6 caractéres  
+    // doit contenir (match = false => ne peut pas contenir)
+    /**
+     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "Das Passwort muss mindestens {{ limit }} Zeichen lang sein!")
+     * @Assert\Regex(
+     *      "/^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)/",
+     *      match = true, 
+     *      message="Das Passwort muss mindestens einen Buchstaben, eine Ziffer und ein Sonderzeichen enthalten!")
+     */ 
     private $plainPassword;
 
     // AFFICHAGE DANS INTERFACE ADMIN

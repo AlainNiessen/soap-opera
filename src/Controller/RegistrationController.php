@@ -19,10 +19,23 @@ class RegistrationController extends AbstractController
         //création nouveau utilisateur
         $utilisateur = new Utilisateur();
 
-        //création formulaire pour première étape utilisateur
+        //création formulaire 
         $formInscription = $this->createForm(InscriptionUtilisateurType::class, $utilisateur);
         $formInscription ->handleRequest($request);
 
+        //si le formulaire a été submit et valid
+        if($formInscription -> isSubmitted() && $formInscription -> isValid()) {
+            //récupération des données du formulaire
+            $data = $formInscription -> getData();
+            dd($data);
+            // hasher the plain password
+            // $utilisateur->setPassword(
+            //     $encoder->hashPassword(
+            //         $utilisateur,
+            //         $formUtilisateur->get('plainPassword')->getData()
+            //     )
+            // );
+            }
 
        return $this->render('registration/inscriptionUtilisateur.html.twig', [
             'formInscription' => $formInscription -> createView()

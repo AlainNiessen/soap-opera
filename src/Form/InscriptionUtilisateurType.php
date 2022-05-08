@@ -63,7 +63,7 @@ class InscriptionUtilisateurType extends AbstractType
                 ]),
                 new Length([
                     'min' => 6,
-                    'minMessage' => 'Das passwort muss mindestens {{ limit }} Zeichen lang sein!'
+                    'minMessage' => 'Das Passwort muss mindestens {{ limit }} Zeichen lang sein!'
                 ]),
                 new Regex([
                     'pattern' => '/^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)/',
@@ -73,7 +73,7 @@ class InscriptionUtilisateurType extends AbstractType
             ],
             //champs confirmation du mot de passe
             'second_options'=>[
-                'label'=>'bestätigen Sie Ihr Password',
+                'label'=>'Bestätigen Sie bitte Ihr Passwort',
                 'attr'=>[
                     'class'=>'form-control',
                 ]
@@ -92,6 +92,10 @@ class InscriptionUtilisateurType extends AbstractType
                 new NotNull([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
+                new Length([
+                    'min' => 2,
+                    'minMessage' => 'Der Name muss mindestens {{ limit }} Zeichen lang sein!'
+                ])
             ],
         ])  
           
@@ -108,6 +112,10 @@ class InscriptionUtilisateurType extends AbstractType
                 new NotNull([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
+                new Length([
+                    'min' => 2,
+                    'minMessage' => 'Der Vorname muss mindestens {{ limit }} Zeichen lang sein!'
+                ])
             ],
         ])
         ->add('dateNaissance', BirthdayType::class, [
@@ -127,10 +135,26 @@ class InscriptionUtilisateurType extends AbstractType
             ],
         ])
         ->add('adresseHome', AdresseType::class, [
-            'label' => 'Wohnadresse'
+            'label' => 'Wohnadresse',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Dieses Feld muss ausgefüllt werden!'
+                ]),
+                new NotNull([
+                    'message' => 'Dieses Feld muss ausgefüllt werden!'
+                ]),
+            ],
         ])
         ->add('adresseDeliver', AdresseType::class, [
-            'label' => 'Lieferadresse'
+            'label' => 'Lieferadresse',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Dieses Feld muss ausgefüllt werden!'
+                ]),
+                new NotNull([
+                    'message' => 'Dieses Feld muss ausgefüllt werden!'
+                ]),
+            ],
         ])
         ->add('langue', EntityType::class,[
             'label'=> 'Sprache',
