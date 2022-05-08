@@ -32,9 +32,6 @@ class AdresseType extends AbstractType
                 new NotBlank([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
                 new Length([
                     'min' => 2,
                     'minMessage' => 'Die Straße muss mindestens {{ limit }} Zeichen lang sein!',
@@ -51,9 +48,6 @@ class AdresseType extends AbstractType
                 new NotBlank([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
             ],
         ])
         ->add('codePostal', TextType::class,[
@@ -64,9 +58,6 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
                 new Length([
@@ -92,9 +83,6 @@ class AdresseType extends AbstractType
                 new NotBlank([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
                 new Length([
                     'min' => 2,
                     'minMessage' => 'Die Stadt muss mindestens {{ limit }} Zeichen lang sein!',
@@ -110,9 +98,6 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
                     'message' => 'Dieses Feld muss ausgefüllt werden!'
                 ]),
             ],

@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Email;
 
 class InscriptionUtilisateurType extends AbstractType
 {
@@ -31,14 +32,7 @@ class InscriptionUtilisateurType extends AbstractType
             'attr'=>[
                 'class'=>'form-control',
             ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-            ],
+            
         ])           
         
         ->add('plainPassword', RepeatedType::class, [
@@ -53,24 +47,7 @@ class InscriptionUtilisateurType extends AbstractType
                 'attr'=>[
                     'class'=>'form-control',
                 ]
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new Length([
-                    'min' => 6,
-                    'minMessage' => 'Das Passwort muss mindestens {{ limit }} Zeichen lang sein!'
-                ]),
-                new Regex([
-                    'pattern' => '/^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)/',
-                    'match' => true,
-                    'message' => 'Das Passwort muss mindestens einen Buchstaben, eine Ziffer und ein Sonderzeichen enthalten!'                        
-                ])
-            ],
+            ],            
             //champs confirmation du mot de passe
             'second_options'=>[
                 'label'=>'Bestätigen Sie bitte Ihr Passwort',
@@ -84,19 +61,7 @@ class InscriptionUtilisateurType extends AbstractType
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new Length([
-                    'min' => 2,
-                    'minMessage' => 'Der Name muss mindestens {{ limit }} Zeichen lang sein!'
-                ])
-            ],
+            ]
         ])  
           
         ->add('prenom', TextType::class, [
@@ -104,19 +69,7 @@ class InscriptionUtilisateurType extends AbstractType
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new Length([
-                    'min' => 2,
-                    'minMessage' => 'Der Vorname muss mindestens {{ limit }} Zeichen lang sein!'
-                ])
-            ],
+            ]
         ])
         ->add('dateNaissance', BirthdayType::class, [
             'label' => 'Geburtsdatum',
@@ -124,36 +77,18 @@ class InscriptionUtilisateurType extends AbstractType
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-            ],
+            ]
         ])
         ->add('adresseHome', AdresseType::class, [
             'label' => 'Wohnadresse',
             'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
+                new NotBlank()                
             ],
         ])
         ->add('adresseDeliver', AdresseType::class, [
             'label' => 'Lieferadresse',
             'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
+                new NotBlank()                
             ],
         ])
         ->add('langue', EntityType::class,[
@@ -165,15 +100,7 @@ class InscriptionUtilisateurType extends AbstractType
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-                new NotNull([
-                    'message' => 'Dieses Feld muss ausgefüllt werden!'
-                ]),
-            ],            
+            ]            
         ])
            
         ->add('submit', SubmitType::class,[
@@ -189,6 +116,7 @@ class InscriptionUtilisateurType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
+            
         ]);
     }
 }

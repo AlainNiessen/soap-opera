@@ -23,9 +23,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @Assert\Email(message = "Bitte geben Sie eine valide E-Mail Adresse an")
+     * @Assert\Email (message = "Die Emailadresse '{{ value }}' ist keine korrekte Emailadresse!")
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -43,7 +42,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 2,
      *      minMessage = "Der Name muss mindestens {{ limit }} Zeichen lang sein!")
@@ -53,7 +51,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 2,
      *      minMessage = "Der Vorname muss mindestens {{ limit }} Zeichen lang sein!")
@@ -63,7 +60,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="datetime")
      */
     private $dateNaissance;
@@ -84,16 +80,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $inscriptionToken;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateursHome")
      * @ORM\JoinColumn(nullable=false)
      */
     private $adresseHome;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="utilisateurDeliver")
      */
     private $adresseDeliver;
@@ -122,7 +114,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     // doit contenir (match = false => ne peut pas contenir)
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 6,
      *      minMessage = "Das Passwort muss mindestens {{ limit }} Zeichen lang sein!")

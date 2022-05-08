@@ -22,14 +22,12 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="string", length=255)
      */
     private $numeroRue;
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 4,
      *      max = 5,
@@ -60,7 +58,6 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 2,
      *      minMessage = "Die Straße muss mindestens {{ limit }} Zeichen lang sein!")
@@ -70,7 +67,6 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @Assert\Length(
      *      min = 6,
      *      minMessage = "Die Stadt muss mindestens {{ limit }} Zeichen lang sein!")
@@ -80,7 +76,6 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
-     * @Assert\NotNull (message = "Dieses Feld muss ausgefüllt werden!")
      * @ORM\Column(type="string", length=255)
      */
     private $pays;
