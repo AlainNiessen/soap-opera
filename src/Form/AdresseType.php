@@ -18,8 +18,6 @@ class AdresseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $countries = Countries::getNames();
-
         $builder
         
         ->add('rue', TextType::class,[
@@ -90,7 +88,7 @@ class AdresseType extends AbstractType
             ],
         ])
         ->add('pays', CountryType::class,[
-            'preferred_choices' => ['DE', 'BE'],
+            'preferred_choices' => ['BE', 'DE'],
             'label'=> 'Land',
             'required'=>true,
             'attr'=>[
