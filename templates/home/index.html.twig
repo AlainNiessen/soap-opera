@@ -9,6 +9,12 @@
 
 <section class="m-list-articles">
     <div class="wrapper">
+    {# insertion message de réussite / erreur / notice #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success message">
+            {{ message }}
+        </div>
+    {% endfor %}
     <h1>Unsere Bestseller</h1>
         <div class="m-list-articles-result">
             <div class="row">

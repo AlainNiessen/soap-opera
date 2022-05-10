@@ -1,0 +1,4 @@
+<h2>Hallo {{ salutation }}</h2>
+<p>Wir bitten dich, deine Einschreibung mit dem unteren Link zu bestätigen!</p>
+{# ici on n'utilise pas path mais url#}
+<a href="{{ url('validation_registration', {"token": token}) }}">Validation</a>

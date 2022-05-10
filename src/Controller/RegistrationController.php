@@ -5,9 +5,13 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Adresse;
 use App\Entity\Utilisateur;
+use Symfony\Component\Mime\Address;
 use App\Form\InscriptionUtilisateurType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UtilisateurRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +22,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         //création nouveau utilisateur
         $utilisateur = new Utilisateur();
@@ -56,7 +60,7 @@ class RegistrationController extends AbstractController
             $tabRefDeliver = [];
 
             // vérification si il y en a des adresses dans la BD
-            // si non => boucle sur les adresses
+            // si oui => boucle sur les adresses
             if(!empty($adresses)):
                 foreach($adresses as $adresse):
                     // si l'adresse du formulaire existe déjà 
@@ -89,7 +93,7 @@ class RegistrationController extends AbstractController
 
                     $utilisateur -> setAdresseHome($adresseNew);  
                 endif;
-            // si oui => création d'une première adresse
+            // si non => création d'une première adresse
             else:
                 $adresseNew = new Adresse();
                 $adresseNew->setNumeroRue($utilisateur->getAdresseHome()->getNumeroRue());
@@ -117,14 +121,14 @@ class RegistrationController extends AbstractController
                     $adresse->getCodePostal()   == $utilisateur->getAdresseDeliver()->getCodePostal()  &&
                     $adresse->getVille()        == $utilisateur->getAdresseDeliver()->getVille()       &&  
                     $adresse->getPays()         == $utilisateur->getAdresseDeliver()->getPays()):         
-                        //si oui => attribution de l'adresse de la BD au nouveau utilisateur
+                        // attribution de l'adresse de la BD au nouveau utilisateur
                         $utilisateur -> setAdresseDeliver($adresse);
                 else:
                     // stockage de l'adresse dans le tableau de référence
                     $tabRefDeliver[] = $adresse;                                       
                 endif;
             endforeach;
-
+            // si l'adresse du formulaire n'existe pas encore
             if(count($adresses) == count($tabRefDeliver)):
                 //si non => création nouvelle adresse dans la BD et attribution par après à l'utilisateur
                 $adresseNew = new Adresse();
@@ -146,14 +150,26 @@ class RegistrationController extends AbstractController
             $entityManager -> persist($utilisateur);
             //insertion BD
             $entityManager -> flush();
-        endif;
 
+            //validation par mail après enregistrement de l'utilisateur
+            $email = (new TemplatedEmail())
+            ->from('alain_niessen@hotmail.com') //de qui
+            ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
+            ->subject('Einschreibungsbestätigung') //sujet
+            ->htmlTemplate('emails/signup.html.twig') //création template email signup
+            ->context([
+                //passage des informations au template twig (token)
+                'token' => $utilisateur -> getInscriptionToken(),
+                'salutation' => $utilisateur -> getPrenom()               
+            ]);
+            // envoi du mail
+            $mailer -> send($email);  
 
-
-            
-
-            
-        
+            //ajout d'un message de réussite 
+            $this -> addFlash('success', 'Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!'); 
+                
+            return $this->redirectToRoute('home');
+        endif;       
 
        return $this->render('registration/inscriptionUtilisateur.html.twig', [
             'formInscription' => $formInscription -> createView()
@@ -163,5 +179,36 @@ class RegistrationController extends AbstractController
     //fonction de génération TOKEN
     private function generateToken() {        
         return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
+    }
+
+    /**
+     * @Route("/registration/validation/{token}", name="validation_registration")
+     */
+    public function validation($token, UtilisateurRepository $repository, EntityManagerInterface $entityManager) :Response
+    {
+        
+        //récupération de l'utilisateur avec le token
+        $utilisateur = $repository -> findOneBy(["inscriptionToken" => $token]);
+
+        //si il y en a un utilisateur correspondant avec le token
+        if($utilisateur) {
+
+            //remettre pour l'utilisateur le token à null et la confirmation de l'inscription à true dans la BD
+            $utilisateur->setInscriptionToken(null);
+            $utilisateur->setInscriptionValide(true);
+            //préparation insertion changement utilisateur 
+            $entityManager -> persist($utilisateur);
+            //insertion danas la BD
+            $entityManager -> flush();
+                        
+            //ajout d'un message de réussite 
+            $this -> addFlash('success', 'Geschafft! Du bist nun eingeschrieben!'); 
+                
+            return $this->redirectToRoute('home');
+        } else {
+            //ajout d'un message d'erreur pour la première partie de l'inscription
+            $this -> addFlash('error', 'Faute');
+            return $this->redirectToRoute('home');
+        }
     }
 }
