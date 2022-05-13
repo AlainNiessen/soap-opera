@@ -50,12 +50,21 @@
                                 <li > 
                                     <a href="#" class="l-menu-list-element">Kontakt</a>
                                 </li>
+                                {% if app.user %}
+                                <li > 
+                                    <a href="#" class="l-menu-list-element">Eigener Bereich</a>
+                                </li>
+                                <li >
+                                    <a href="{{ path('logout') }}" class="l-menu-list-element">Abmelden</a>
+                                </li> 
+                                {% else %}
                                 <li >
                                     <a href="{{ path('registration') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('registration')) %} activeElement {% endif %}">Registrierung</a>
                                 </li>                                                     
                                 <li >
-                                    <a href="#" class="l-menu-list-element">Anmeldung</a>
-                                </li>                                                     
+                                    <a href="{{ path('login') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('login')) %} activeElement {% endif %}">Anmeldung</a>
+                                </li> 
+                                {% endif %}                                                    
                             </ul>         
                         </nav>
                     </div>
