@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passwort ändern{% endblock %}
+
+{% block body %}
+<div class="formulaire"> 
+    <div class="wrapper"> 
+    {# insertion message de réussite / erreur / notice #}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger message">
+            {{ message }}
+        </div>
+    {% endfor %}       
+        <div class="info-box-authentification">
+            <h1>Geben Sie Ihre Emailadresse an</h1>
+            <p>Es wird Ihnen eine Email zugeschickt, in der Sie die Passwortänderung bestätigen müssen.</p>
+        </div>
+        {{ form_start(formPasswordResetEmail, {'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-container">
+                {{ form_row(formPasswordResetEmail.email) }}
+            </div> 
+            {{ form_row(formPasswordResetEmail.submit) }}
+           
+        {{ form_end(formPasswordResetEmail) }}       
+    </div>
+</div>
+{% endblock %}
