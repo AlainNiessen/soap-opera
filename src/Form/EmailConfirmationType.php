@@ -35,8 +35,7 @@ class EmailConfirmationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
-            // enable/disable CSRF protection for this form
-            'csrf_protection' => false,
+            
         ]);
     }
 }
