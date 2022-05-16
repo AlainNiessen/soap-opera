@@ -4,7 +4,13 @@
 
 {% block body %}
  <div class="formulaire"> 
-    <div class="wrapper">   
+    <div class="wrapper"> 
+        {# insertion message de réussite / erreur / notice #}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning message">
+                {{ message }}
+            </div>
+        {% endfor %}  
         <div class="info-box-inscription">
             <h1>Einschreibung</h1>        
             <p>Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.</p>

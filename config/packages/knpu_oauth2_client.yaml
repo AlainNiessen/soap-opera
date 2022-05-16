@@ -1,0 +1,12 @@
+knpu_oauth2_client:
+    clients:
+        google:
+            # activation du type GOOGLE
+            type: google
+            # variables globales définies dans le fichier .env
+            client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
+            # nom du redirect route
+            redirect_route: connect_google_check
+            redirect_params: {}
+            
