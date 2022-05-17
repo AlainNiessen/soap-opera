@@ -45,8 +45,10 @@
             <button class="btn btn-lg btn-primary login-btn" type="submit">
                 Anmeldung
             </button>
-            </div>
         </form>
+        <div class="google-auth">
+            <a href="{{ path('connect_google_start') }}" class="btn btn-primary">Anmeldung mit Google</a>
+        </div>
     </div>
 </div>
 {% endblock %}
