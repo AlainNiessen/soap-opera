@@ -37,6 +37,8 @@ class GoogleController extends AbstractController
      */
     public function connectCheckAction(Request $request, ClientRegistry $clientRegistry)
     {
+        // test si il y a un utilisateur
+        // le vrai traitement dans GoogleAuthenticator 
         if(!$this -> getUser()):
             return new JsonResponse(['status' => false, "message" => 'hello']);
         else:
