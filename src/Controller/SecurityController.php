@@ -137,6 +137,18 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/login/no_acces", name="no_acces")
+     */
+    //cette route sera appelé dans le cas où on essaie d'accéder à l'interface administration sans avoir les droits (ROLE_ADMIN)
+    public function noAccess(): Response
+    {
+        //ajout d'un message pas accés
+        $this -> addFlash('error', 'Sie haben nicht die Berechtigung für diesen Bereich!'); 
+        //et redirection vers la page d'accueil        
+        return $this->redirectToRoute('login');       
+    }
+
+    /**
      * @Route("/logout", name="logout")
      */
     public function logout(): void

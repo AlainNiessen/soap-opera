@@ -44,7 +44,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 class DashboardController extends AbstractDashboardController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin_s_op", name="admin_s_op")
      */
     public function index(): Response
     {
@@ -59,49 +59,74 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-       // RETOUR A LA PAGE ACCUEIL
-       yield MenuItem::linktoRoute('Zurück zur Webseite', 'fas fa-home', 'home');
-       // POINTS DE MENU TRIÉS PAR SECTIONS
-       yield MenuItem::section('Nutzer');
-       yield MenuItem::linkToCrud('Nutzer', 'fas fa-user', Utilisateur::class);
-       yield MenuItem::linkToCrud('Partner', 'fas fa-user', Partenaire::class);
-       yield MenuItem::linkToCrud('Adressen', 'fas fa-address-card', Adresse::class);
-       yield MenuItem::linkToCrud('Kommentare', 'fas fa-comment', Commentaire::class);
-       yield MenuItem::linkToCrud('Newsletter', 'fas fa-envelope-open-text', Newsletter::class);
-       yield MenuItem::section('Artikel');
-       yield MenuItem::linkToCrud('Artikel', 'fas fa-warehouse', Article::class);
-       yield MenuItem::linkToCrud('Zutaten-Butter', 'fas fa-plus', Beurre::class);
-       yield MenuItem::linkToCrud('Zutaten-Öle', 'fas fa-plus', Huile::class);
-       yield MenuItem::linkToCrud('Zutaten-Ätherische Öle', 'fas fa-plus', HuileEssentiel::class);
-       yield MenuItem::linkToCrud('Zutaten-Düfte', 'fas fa-plus', Odeur::class);
-       yield MenuItem::linkToCrud('Zutaten-Zusätze', 'fas fa-plus', IngredientSupplementaire::class);
-       yield MenuItem::linkToCrud('Kategorien', 'fas fa-arrow-right', Categorie::class);
-       yield MenuItem::linkToCrud('Promotionen', 'fas fa-percent', Promotion::class);
-       yield MenuItem::section('Veranstaltungen');
-       yield MenuItem::linkToCrud('Veranstaltungen', 'fas fa-calendar', Event::class);
-       yield MenuItem::linkToCrud('Veranstaltungstyp', 'fas fa-calendar', TypeEvent::class);
-       yield MenuItem::section('Buchhaltung');
-       yield MenuItem::linkToCrud('Detail-Bestellungen', 'fas fa-barcode', DetailCommandeArticle::class);
-       yield MenuItem::linkToCrud('Reservierungen', 'fas fa-barcode', Reservation::class);       
-       yield MenuItem::linkToCrud('Rechnungen', 'fas fa-barcode', Facture::class);       
-       yield MenuItem::section('Fotos');
-       yield MenuItem::linkToCrud('Fotos', 'fas fa-image', Image::class);
-       yield MenuItem::linkToCrud('Position Fotos', 'fas fa-image', PositionImage::class);
-       yield MenuItem::section('Übersetzungen');
-       yield MenuItem::linkToCrud('Sprachen', 'fas fa-language', Langue::class);       
-       yield MenuItem::linkToCrud('Übersetzungen Artikel', 'fas fa-globe', TraductionArticle::class);
-       yield MenuItem::linkToCrud('Übersetzungen Butter', 'fas fa-globe', TraductionBeurre::class);
-       yield MenuItem::linkToCrud('Übersetzungen Kategorie', 'fas fa-globe', TraductionCategorie::class);
-       yield MenuItem::linkToCrud('Übersetzungen Veranstaltung', 'fas fa-globe', TraductionEvent::class);
-       yield MenuItem::linkToCrud('Übersetzungen Öl', 'fas fa-globe', TraductionHuile::class);
-       yield MenuItem::linkToCrud('Übersetzungen Ätherisches Öl', 'fas fa-globe', TraductionHuileEssentiel::class);
-       yield MenuItem::linkToCrud('Übersetzungen Zusatz', 'fas fa-globe', TraductionIngredientSupplementaire::class);
-       yield MenuItem::linkToCrud('Übersetzungen Newsletter', 'fas fa-globe', TraductionNewsletter::class);
-       yield MenuItem::linkToCrud('Übersetzungen Düfte', 'fas fa-globe', TraductionOdeur::class);
-       yield MenuItem::linkToCrud('Übersetzungen Partner', 'fas fa-globe', TraductionPartenaire::class);
-       yield MenuItem::linkToCrud('Übersetzungen Promotion', 'fas fa-globe', TraductionPromotion::class);
-       yield MenuItem::linkToCrud('Übersetzungen Veranstaltungstyp', 'fas fa-globe', TraductionTypeEvent::class);
-       
+        if ($this->isGranted('ROLE_SUPER_ADMIN')):
+            return [
+                MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+                // RETOUR A LA PAGE ACCUEIL
+                MenuItem::linktoRoute('Zurück zur Webseite', 'fas fa-home', 'home'),
+                    // POINTS DE MENU TRIÉS PAR SUBMENUS
+                MenuItem::subMenu('Nutzer') -> setSubItems([
+                    MenuItem::linkToCrud('Nutzer', 'fas fa-user', Utilisateur::class),
+                    MenuItem::linkToCrud('Partner', 'fas fa-user', Partenaire::class),
+                    MenuItem::linkToCrud('Trans Partner', 'fas fa-globe', TraductionPartenaire::class),
+                    MenuItem::linkToCrud('Adressen', 'fas fa-address-card', Adresse::class),
+                    MenuItem::linkToCrud('Kommentare', 'fas fa-comment', Commentaire::class),
+                    MenuItem::linkToCrud('Newsletter', 'fas fa-envelope-open-text', Newsletter::class),
+                    MenuItem::linkToCrud('Trans Newsletter', 'fas fa-globe', TraductionNewsletter::class),
+                    MenuItem::linkToCrud('Sprachen', 'fas fa-language', Langue::class)
+                ]),
+            
+                MenuItem::subMenu('Artikel') -> setSubItems([
+                        MenuItem::linkToCrud('Artikel', 'fas fa-warehouse', Article::class),
+                        MenuItem::linkToCrud('Trans Artikel', 'fas fa-globe', TraductionArticle::class),                        
+                        MenuItem::linkToCrud('Kategorien', 'fas fa-arrow-right', Categorie::class),
+                        MenuItem::linkToCrud('Trans Kategorie', 'fas fa-globe', TraductionCategorie::class),
+                        MenuItem::linkToCrud('Promotionen', 'fas fa-percent', Promotion::class),
+                        MenuItem::linkToCrud('Trans Promotion', 'fas fa-globe', TraductionPromotion::class)   
+                ]),
+
+                MenuItem::subMenu('Zutaten-Artikel') -> setSubItems([
+                        MenuItem::linkToCrud('Butter', 'fas fa-plus', Beurre::class),
+                        MenuItem::linkToCrud('Trans Butter', 'fas fa-globe', TraductionBeurre::class),
+                        MenuItem::linkToCrud('Öle', 'fas fa-plus', Huile::class),
+                        MenuItem::linkToCrud('Trans Öle', 'fas fa-globe', TraductionHuile::class),
+                        MenuItem::linkToCrud('Ätherische Öle', 'fas fa-plus', HuileEssentiel::class),
+                        MenuItem::linkToCrud('Trans Ätherisches Öle', 'fas fa-globe', TraductionHuileEssentiel::class),
+                        MenuItem::linkToCrud('Düfte', 'fas fa-plus', Odeur::class),
+                        MenuItem::linkToCrud('Trans Düfte', 'fas fa-globe', TraductionOdeur::class),
+                        MenuItem::linkToCrud('Zusätze', 'fas fa-plus', IngredientSupplementaire::class),
+                        MenuItem::linkToCrud('Trans Zusätze', 'fas fa-globe', TraductionIngredientSupplementaire::class)                          
+                ]),
+                
+                MenuItem::subMenu('Veranstaltungen') -> setSubItems([
+                        MenuItem::linkToCrud('Veranstaltungen', 'fas fa-calendar', Event::class),
+                        MenuItem::linkToCrud('Trans Veranstaltung', 'fas fa-globe', TraductionEvent::class),
+                        MenuItem::linkToCrud('Typ', 'fas fa-calendar', TypeEvent::class),
+                        MenuItem::linkToCrud('Trans Typ', 'fas fa-globe', TraductionTypeEvent::class)
+                ]),
+                
+                MenuItem::subMenu('Buchhaltung') -> setSubItems([
+                        MenuItem::linkToCrud('Detail-Bestellungen', 'fas fa-barcode', DetailCommandeArticle::class),
+                        MenuItem::linkToCrud('Reservierungen', 'fas fa-barcode', Reservation::class),       
+                        MenuItem::linkToCrud('Rechnungen', 'fas fa-barcode', Facture::class) 
+                ]),
+                        
+                MenuItem::subMenu('Fotos') -> setSubItems([
+                        MenuItem::linkToCrud('Fotos', 'fas fa-image', Image::class),
+                        MenuItem::linkToCrud('Position Fotos', 'fas fa-image', PositionImage::class)    
+                ])
+            ]; 
+        elseif ($this->isGranted('ROLE_FINANCE_ADMIN')):
+            return [
+                MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+                // RETOUR A LA PAGE ACCUEIL
+                MenuItem::linktoRoute('Zurück zur Webseite', 'fas fa-home', 'home'), 
+                MenuItem::subMenu('Buchhaltung') -> setSubItems([
+                    MenuItem::linkToCrud('Detail-Bestellungen', 'fas fa-barcode', DetailCommandeArticle::class),
+                    MenuItem::linkToCrud('Reservierungen', 'fas fa-barcode', Reservation::class),       
+                    MenuItem::linkToCrud('Rechnungen', 'fas fa-barcode', Facture::class) 
+                ])
+            ];
+        endif;
     }
 }

@@ -37,8 +37,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin_s_op, roles: [ROLE_SUPER_ADMIN, ROLE_FINANCE_ADMIN] }
         # - { path: ^/profile, roles: ROLE_USER }
+    # redirection Utilisateur en cas de access denied
+    access_denied_url: /login/no_acces
 
 when@test:
     security:

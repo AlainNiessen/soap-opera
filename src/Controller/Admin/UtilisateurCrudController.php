@@ -23,7 +23,7 @@ class UtilisateurCrudController extends AbstractCrudController
     {
         yield EmailField::new('email', 'E-Mail');
         yield ArrayField::new('roles', 'Rolle');
-        yield TextField::new('password', 'Passwort');
+        yield TextField::new('plainPassword', 'Passwort');
         yield TextField::new('nom', 'Name');
         yield TextField::new('prenom', 'Vorname');
         yield DateTimeField::new('dateNaissance', 'Geburtsdatum');

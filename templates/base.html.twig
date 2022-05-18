@@ -50,13 +50,20 @@
                                 <li > 
                                     <a href="#" class="l-menu-list-element">Kontakt</a>
                                 </li>
-                                {% if app.user %}
+                                {% if is_granted('ROLE_USER') and (is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_FINANCE_ADMIN')) %}
+                                <li > 
+                                    <a href="{{ path('admin_s_op') }}" class="l-menu-list-element">AdminBereich</a>
+                                </li>
+                                <li >
+                                    <a href="{{ path('logout') }}" class="l-menu-list-element">Abmelden</a>
+                                </li>
+                                {% elseif is_granted('ROLE_USER')%} 
                                 <li > 
                                     <a href="#" class="l-menu-list-element">Eigener Bereich</a>
                                 </li>
                                 <li >
                                     <a href="{{ path('logout') }}" class="l-menu-list-element">Abmelden</a>
-                                </li> 
+                                </li>
                                 {% else %}
                                 <li >
                                     <a href="{{ path('registration') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('registration')) %} activeElement {% endif %}">Registrierung</a>
