@@ -129,6 +129,14 @@
     }
 }
 
+//LANGUES
+.l-menu-list-flags {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
 //MEDIA QUERY 
 @media screen and (min-width: 768px) {
     .l-topbar-menu {
@@ -144,15 +152,19 @@
                 width: 100%;
                 flex-direction: row;
                 justify-content: space-between;
-                li, a {
-                    display: inline-block;
-                }
                 a {
                     font-size: 0.8rem;
                 }
             }        
         }
-    }    
+    }  
+    .l-menu-list-flags {
+        width: 5rem;
+        height: 1rem;
+        svg {
+            margin: 0 .3rem;
+        }
+    }  
 }
 
 

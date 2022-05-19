@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Anmelden{% endblock %}
+{% block title %}{% trans %}Anmelden{% endtrans %}{% endblock %}
 
 {% block body %}
 <div class="formulaire"> 
@@ -12,22 +12,22 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    Sie sind eingeloggt als {{ app.user.username }}, <a href="{{ path('app_logout') }}">Abmelden</a>
+                    {% trans %}Sie sind eingeloggt als{% endtrans %} {{ app.user.username }}, <a href="{{ path('app_logout') }}">{% trans %}Abmelden{% endtrans %}</a>
                 </div>
             {% endif %}
 
             <div class="info-box-authentification">
-                <h1>Melden Sie sich an!</h1>
+                <h1>{% trans %}Melden Sie sich an!{% endtrans %}</h1>
             </div>
             <div class="form-container">
-                <label for="inputEmail">Email</label>
+                <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             </div>
             <div class="form-container">
-                <label for="inputPassword">Passwort</label>
+                <label for="inputPassword">{% trans %}Passwort{% endtrans %}</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                 <div class="mb-3">
-                    <a href="{{ path('reset_password') }}">Passwort vergessen?</a>
+                    <a href="{{ path('reset_password') }}">{% trans %}Passwort vergessen?{% endtrans %}</a>
                 </div>
             </div>
             {# hidden input pour insérer la variable back_to_your_page #}
@@ -38,16 +38,16 @@
 
             <div class="form-container">
                 <label>
-                    <input type="checkbox" name="_remember_me"> Angemeldet bleiben?
+                    <input type="checkbox" name="_remember_me"> {% trans %}Angemeldet bleiben?{% endtrans %}
                 </label>
             </div>
                 
             <button class="btn btn-lg btn-primary login-btn" type="submit">
-                Anmeldung
+                {% trans %}Anmeldung{% endtrans %}
             </button>
         </form>
         <div class="google-auth">
-            <a href="{{ path('connect_google_start') }}" class="btn btn-primary">Anmeldung mit Google</a>
+            <a href="{{ path('connect_google_start') }}" class="btn btn-primary">{% trans %}Anmeldung mit Google{% endtrans %}</a>
         </div>
     </div>
 </div>

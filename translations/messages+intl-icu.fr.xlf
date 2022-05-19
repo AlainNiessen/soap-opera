@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="de" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="N6LFtiP" resname="Einschreibungsbestätigung">
+        <source>Einschreibungsbestätigung</source>
+        <target>Confirmation d'inscription</target>
+      </trans-unit>
+      <trans-unit id="21Mzdqy" resname="Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!">
+        <source>Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!</source>
+        <target>Bon travail! Vous recevrez sous peu un e-mail vous demandant de confirmer votre inscription !</target>
+      </trans-unit>
+      <trans-unit id="3xRulzq" resname="Geschafft! Du bist nun eingeschrieben!">
+        <source>Geschafft! Du bist nun eingeschrieben!</source>
+        <target>C'est fait! Vous êtes désormais inscrit !</target>
+      </trans-unit>
+      <trans-unit id="Cnx9ZQT" resname="Ein Fehler ist aufgetreten">
+        <source>Ein Fehler ist aufgetreten</source>
+        <target>Une erreur est survenue</target>
+      </trans-unit>
+      <trans-unit id="VHLtJqI" resname="Bitte geben Sie eine existierende Emailadresse an oder legen Sie ein Konto an, falls Sie noch nicht registriert sind!">
+        <source>Bitte geben Sie eine existierende Emailadresse an oder legen Sie ein Konto an, falls Sie noch nicht registriert sind!</source>
+        <target>Veuillez saisir une adresse e-mail existante ou créer un compte si vous n'êtes pas encore inscrit !</target>
+      </trans-unit>
+      <trans-unit id="Ci_T8xn" resname="Passwort ändern!">
+        <source>Passwort ändern!</source>
+        <target>Changer le mot de passe!</target>
+      </trans-unit>
+      <trans-unit id="7P7H7Mm" resname="Du wirst in Kürze eine Email erhalten, in der du dein Passwort anpassen kannst!">
+        <source>Du wirst in Kürze eine Email erhalten, in der du dein Passwort anpassen kannst!</source>
+        <target>Vous recevrez sous peu un e-mail où vous pourrez changer votre mot de passe !</target>
+      </trans-unit>
+      <trans-unit id="TATCJBR" resname="Gut gemacht! Dein Passwort wurde erfolgreich geändert!">
+        <source>Gut gemacht! Dein Passwort wurde erfolgreich geändert!</source>
+        <target>Bon travail! Votre mot de passe a été changé avec succès!</target>
+      </trans-unit>
+      <trans-unit id="rSEIZPa" resname="Sie haben nicht die Berechtigung für diesen Bereich!">
+        <source>Sie haben nicht die Berechtigung für diesen Bereich!</source>
+        <target>Vous n'avez pas la permission pour cette zone !</target>
+      </trans-unit>
+      <trans-unit id="3otkqZQ" resname="PDF anschauen">
+        <source>PDF anschauen</source>
+        <target>Afficher le PDF</target>
+      </trans-unit>
+      <trans-unit id="tbRwWCF" resname="Liste Artikel">
+        <source>Liste Artikel</source>
+        <target>List articles</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="aeyL1tT" resname="Sonderangebote">
+        <source>Sonderangebote</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="Az8NC0U" resname="Veranstaltungen">
+        <source>Veranstaltungen</source>
+        <target>Événements</target>
+      </trans-unit>
+      <trans-unit id="tTiRajf" resname="Unsere Philosophie">
+        <source>Unsere Philosophie</source>
+        <target>Notre Philosophie</target>
+      </trans-unit>
+      <trans-unit id="Ml7s_dM" resname="Kontakt">
+        <source>Kontakt</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="QEtDRvf" resname="Adminbereich">
+        <source>Adminbereich</source>
+        <target>Interface Admin</target>
+      </trans-unit>
+      <trans-unit id="VF_L4zv" resname="Abmelden">
+        <source>Abmelden</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="LvNCAGP" resname="Eigener Bereich">
+        <source>Eigener Bereich</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="Vm.i0E_" resname="Registrierung">
+        <source>Registrierung</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="Mt32rgu" resname="Anmeldung">
+        <source>Anmeldung</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="Nj.eEpz" resname="Icons von">
+        <source>Icons von</source>
+        <target>Icons de</target>
+      </trans-unit>
+      <trans-unit id="Q85gIrk" resname="von">
+        <source>von</source>
+        <target>de</target>
+      </trans-unit>
+      <trans-unit id="hWzJnYc" resname="und">
+        <source>und</source>
+        <target>et</target>
+      </trans-unit>
+      <trans-unit id="dTaS7Da" resname="Hallo">
+        <source>Hallo</source>
+        <target>Salut</target>
+      </trans-unit>
+      <trans-unit id="srNl0OH" resname="Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:">
+        <source>Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:</source>
+        <target>Souhaitez-vous changer votre mot de passe ? Veuillez utiliser le lien suivant pour cela :</target>
+      </trans-unit>
+      <trans-unit id="X5AGiMm" resname="Bestätigung">
+        <source>Bestätigung</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="M9gPgAX" resname="Wir bitten dich, deine Einschreibung mit dem unteren Link zu bestätigen!">
+        <source>Wir bitten dich, deine Einschreibung mit dem unteren Link zu bestätigen!</source>
+        <target>Nous vous prions de bien vouloir confirmer votre inscription avec le lien ci-dessous !</target>
+      </trans-unit>
+      <trans-unit id="7w17rT2" resname="Unsere Bestseller">
+        <source>Unsere Bestseller</source>
+        <target>Nos best-sellers</target>
+      </trans-unit>
+      <trans-unit id="irGIgJn" resname="Unsere Neuigkeiten">
+        <source>Unsere Neuigkeiten</source>
+        <target>Nos nouveautés</target>
+      </trans-unit>
+      <trans-unit id="utR0OF." resname="Einschreibung">
+        <source>Einschreibung</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="Ryk3RBr" resname="Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.">
+        <source>Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.</source>
+        <target>Merci de remplir tous les champs. Vous recevrez alors un email dans lequel vous devrez confirmer votre inscription.</target>
+      </trans-unit>
+      <trans-unit id="KJB3Dfj" resname="Login-Daten">
+        <source>Login-Daten</source>
+        <target>Données de connexion</target>
+      </trans-unit>
+      <trans-unit id="Fc5zL.." resname="Persönliche Informationen">
+        <source>Persönliche Informationen</source>
+        <target>Informations personnelles</target>
+      </trans-unit>
+      <trans-unit id="adImmhI" resname="Wohnadresse">
+        <source>Wohnadresse</source>
+        <target>Adresse résidentielle</target>
+      </trans-unit>
+      <trans-unit id="zHaX9yW" resname="Lieferadresse">
+        <source>Lieferadresse</source>
+        <target>Adresse de livraison</target>
+      </trans-unit>
+      <trans-unit id="xgo2frz" resname="Wählen Sie eine Sprache aus">
+        <source>Wählen Sie eine Sprache aus</source>
+        <target>Choisissez une langue</target>
+      </trans-unit>
+      <trans-unit id="TabP5k8" resname="Passwort ändern">
+        <source>Passwort ändern</source>
+        <target>Changer le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="hFqdI4B" resname="Geben Sie Ihre Emailadresse an">
+        <source>Geben Sie Ihre Emailadresse an</source>
+        <target>Entrez votre adresse email</target>
+      </trans-unit>
+      <trans-unit id="sbTx.J8" resname="Es wird Ihnen eine Email zugeschickt, in der Sie die Passwortänderung bestätigen müssen.">
+        <source>Es wird Ihnen eine Email zugeschickt, in der Sie die Passwortänderung bestätigen müssen.</source>
+        <target>Un email vous sera envoyé dans lequel vous devrez confirmer le changement de mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="oymjImO" resname="Anmelden">
+        <source>Anmelden</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="AORDCot" resname="Sie sind eingeloggt als">
+        <source>Sie sind eingeloggt als</source>
+        <target>Vous êtes connecté en tant que</target>
+      </trans-unit>
+      <trans-unit id="z.JvOJI" resname="Melden Sie sich an!">
+        <source>Melden Sie sich an!</source>
+        <target>Veuillez vous connecter !</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="o2wQFXD" resname="Passwort">
+        <source>Passwort</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="eO_T4uw" resname="Passwort vergessen?">
+        <source>Passwort vergessen?</source>
+        <target>Mot de passe oublié?</target>
+      </trans-unit>
+      <trans-unit id="imVYHlR" resname="Angemeldet bleiben?">
+        <source>Angemeldet bleiben?</source>
+        <target>Rester connecté ?</target>
+      </trans-unit>
+      <trans-unit id="ZpOEmbO" resname="Anmeldung mit Google">
+        <source>Anmeldung mit Google</source>
+        <target>Connectez-vous avec Google</target>
+      </trans-unit>
+      <trans-unit id="wvhYRXi" resname="Geben Sie Ihr neues Passwort ein!">
+        <source>Geben Sie Ihr neues Passwort ein!</source>
+        <target>Entrez votre nouveau mot de passe!</target>
+      </trans-unit>
+      <trans-unit id="VOSLDRB" resname="Sie müssen Ihr Passwort auch bestätigen.">
+        <source>Sie müssen Ihr Passwort auch bestätigen.</source>
+        <target>Vous devez également confirmer votre mot de passe.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

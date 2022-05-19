@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Einschreibung{% endblock %}
+{% block title %}{% trans %}Einschreibung{% endtrans %}{% endblock %}
 
 {% block body %}
  <div class="formulaire"> 
@@ -12,18 +12,18 @@
             </div>
         {% endfor %}  
         <div class="info-box-inscription">
-            <h1>Einschreibung</h1>        
-            <p>Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.</p>
+            <h1>{% trans %}Einschreibung{% endtrans %}</h1>        
+            <p>{% trans %}Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.{% endtrans %}</p>
         </div>    
         {{ form_start(formInscription, {'attr': {'novalidate': 'novalidate'}}) }}
         
         <div class="form-container">
-            <h3>Login-Daten</h3>
+            <h3>{% trans %}Login-Daten{% endtrans %}</h3>
             {{ form_row(formInscription.email) }}
             {{ form_row(formInscription.plainPassword) }}
         </div>
         <div class="form-container">
-            <h3>Persönliche Informationen</h3>
+            <h3>{% trans %}Persönliche Informationen{% endtrans %}</h3>
             <div class="form-flex-container">
                 {{ form_row(formInscription.nom) }}
                 {{ form_row(formInscription.prenom) }}
@@ -31,7 +31,7 @@
             {{ form_row(formInscription.dateNaissance) }}
         </div>
         <div class="form-container">
-            <h3>Wohnadresse</h3>
+            <h3>{% trans %}Wohnadresse{% endtrans %}</h3>
             <div class="form-flex-container">
                 {{ form_row(formInscription.adresseHome.rue, {'attr': {'novalidate': 'novalidate'}}) }}
                 {{ form_row(formInscription.adresseHome.numeroRue, {'attr': {'novalidate': 'novalidate'}}) }}
@@ -43,7 +43,7 @@
             {{ form_row(formInscription.adresseHome.pays) }}
         </div>
             <div class="form-container">
-            <h3>Lieferadresse</h3>
+            <h3>{% trans %}Lieferadresse{% endtrans %}</h3>
             <div class="form-flex-container">
                 {{ form_row(formInscription.adresseDeliver.rue) }}
                 {{ form_row(formInscription.adresseDeliver.numeroRue) }}
@@ -55,7 +55,7 @@
             {{ form_row(formInscription.adresseDeliver.pays) }}
         </div>
         <div class="form-container">
-            <h3>Wählen Sie eine Sprache aus</h3>
+            <h3>{% trans %}Wählen Sie eine Sprache aus{% endtrans %}</h3>
             {{ form_row(formInscription.langue) }}
         </div>
         {{ form_row(formInscription.submit) }}

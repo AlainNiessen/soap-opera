@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Passwort ändern{% endblock %}
+{% block title %}{% trans %}Passwort ändern{% endtrans %}{% endblock %}
 
 {% block body %}
 <div class="formulaire"> 
@@ -12,8 +12,8 @@
         </div>
     {% endfor %}       
         <div class="info-box-authentification">
-            <h1>Geben Sie Ihre Emailadresse an</h1>
-            <p>Es wird Ihnen eine Email zugeschickt, in der Sie die Passwortänderung bestätigen müssen.</p>
+            <h1>{% trans %}Geben Sie Ihre Emailadresse an{% endtrans %}</h1>
+            <p>{% trans %}Es wird Ihnen eine Email zugeschickt, in der Sie die Passwortänderung bestätigen müssen.{% endtrans %}</p>
         </div>
         {{ form_start(formPasswordResetEmail, {'attr': {'novalidate': 'novalidate'}}) }}
             <div class="form-container">

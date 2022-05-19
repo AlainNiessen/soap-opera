@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}{% trans %}Home{% endtrans %}{% endblock %}
 
 {% block body %}
 
@@ -20,7 +20,7 @@
             {{ message }}
         </div>
     {% endfor %}
-    <h1>Unsere Bestseller</h1>
+    <h1>{% trans %}Unsere Bestseller{% endtrans %}</h1>
         <div class="m-list-articles-result">
             <div class="row">
                 {% for traductionArticleBestseller in traductionArticlesBestseller %} 
@@ -45,7 +45,7 @@
 </section>
 <section class="m-list-articles">
     <div class="wrapper">
-    <h1>Unsere Neuigkeiten</h1>
+    <h1>{% trans %}Unsere Neuigkeiten{% endtrans %}</h1>
         <div class="m-list-articles-result">
             <div class="row">
                 {% for traductionArticleNew in traductionArticlesNew %} 
