@@ -16,13 +16,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         //création nouveau utilisateur
         $utilisateur = new Utilisateur();
@@ -151,11 +152,13 @@ class RegistrationController extends AbstractController
             //insertion BD
             $entityManager -> flush();
 
+            //sujet à traduire
+            $messageSubject = $translator -> trans('Einschreibungsbestätigung');
             //validation par mail après enregistrement de l'utilisateur
             $email = (new TemplatedEmail())
             ->from('alain_niessen@hotmail.com') //de qui
             ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
-            ->subject('Einschreibungsbestätigung') //sujet
+            ->subject($messageSubject) //sujet
             ->htmlTemplate('emails/signup.html.twig') //création template email signup
             ->context([
                 //passage des informations au template twig (token)
@@ -165,8 +168,9 @@ class RegistrationController extends AbstractController
             // envoi du mail
             $mailer -> send($email);  
 
-            //ajout d'un message de réussite 
-            $this -> addFlash('success', 'Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!'); 
+            //ajout d'un message de réussite
+            $messageEnvoiMail = $translator -> trans('Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!');
+            $this -> addFlash('success', $messageEnvoiMail); 
                 
             return $this->redirectToRoute('home');
         endif;       
@@ -184,7 +188,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration/validation/{token}", name="validation_registration")
      */
-    public function validation($token, UtilisateurRepository $repository, EntityManagerInterface $entityManager) :Response
+    public function validation($token, UtilisateurRepository $repository, EntityManagerInterface $entityManager, TranslatorInterface $translator) :Response
     {
         
         //récupération de l'utilisateur avec le token
@@ -202,12 +206,14 @@ class RegistrationController extends AbstractController
             $entityManager -> flush();
                         
             //ajout d'un message de réussite 
-            $this -> addFlash('success', 'Geschafft! Du bist nun eingeschrieben!'); 
+            $messageInscription = $translator -> trans('Geschafft! Du bist nun eingeschrieben!');
+            $this -> addFlash('success', $messageInscription); 
                 
             return $this->redirectToRoute('home');
         } else {
             //ajout d'un message d'erreur pour la première partie de l'inscription
-            $this -> addFlash('error', 'Faute');
+            $messageErreur = $translator -> trans('Ein Fehler ist aufgetreten');
+            $this -> addFlash('error', $messageErreur);
             return $this->redirectToRoute('home');
         }
     }

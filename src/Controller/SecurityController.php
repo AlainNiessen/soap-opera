@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -44,7 +45,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset_password/email", name="reset_password", methods="GET|POST")
      */
-    public function resetPasswordEmail(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function resetPasswordEmail(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         
         //création formulaire 
@@ -63,17 +64,19 @@ class SecurityController extends AbstractController
             if(!$utilisateur):
 
                 //message erreur et redirect vers formulaire
-                $this -> addFlash('error', 'Bitte geben Sie eine existierende Emailadresse an oder legen Sie ein Konto an, falls Sie noch nicht registriert sind!');
+                $messageEmail = $translator -> trans('Bitte geben Sie eine existierende Emailadresse an oder legen Sie ein Konto an, falls Sie noch nicht registriert sind!');
+                $this -> addFlash('error', $messageEmail);
                 
                 return $this->render('security/passwordReset.html.twig', [
                     'formPasswordReset' => $formPasswordResetEmail -> createView()
                 ]);
             else: 
                 //envoie d'un mail pour confirmer le changement de mot de passe
+                $messageSujetPass = $translator -> trans('Passwort ändern!');
                 $email = (new TemplatedEmail())
                 ->from('alain_niessen@hotmail.com') //de qui
                 ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
-                ->subject('Passwort ändern!') //sujet
+                ->subject($messageSujetPass) //sujet
                 ->htmlTemplate('emails/password.html.twig') //création template email signup
                 ->context([
                     //passage des informations au template twig (token)
@@ -84,7 +87,8 @@ class SecurityController extends AbstractController
                 $mailer -> send($email); 
                 
                 //ajout d'un message de réussite 
-                $this -> addFlash('success', 'Du wirst in Kürze eine Email erhalten, in der du dein Passwort anpassen kannst!'); 
+                $messageEmailPass = $translator -> trans('Du wirst in Kürze eine Email erhalten, in der du dein Passwort anpassen kannst!');
+                $this -> addFlash('success', $messageEmailPass); 
                     
                 return $this->redirectToRoute('home');
 
@@ -99,7 +103,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset_password/validation/{id}", name="validation_password_reset")
      */
-    public function resetPasswordValidation($id, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder): Response
+    public function resetPasswordValidation($id, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder, TranslatorInterface $translator): Response
     {
         // Récupération utilisateur
         //définition repository utilisateur
@@ -126,7 +130,8 @@ class SecurityController extends AbstractController
             $entityManager -> flush();
 
             //ajout d'un message de réussite 
-            $this -> addFlash('success', 'Gut gemacht! Dein Passwort wurde erfolgreich geändert!'); 
+            $messageChangePass = $translator -> trans('Gut gemacht! Dein Passwort wurde erfolgreich geändert!');
+            $this -> addFlash('success', $messageChangePass); 
                 
             return $this->redirectToRoute('home');
         endif;
@@ -140,10 +145,11 @@ class SecurityController extends AbstractController
      * @Route("/login/no_acces", name="no_acces")
      */
     //cette route sera appelé dans le cas où on essaie d'accéder à l'interface administration sans avoir les droits (ROLE_ADMIN)
-    public function noAccess(): Response
+    public function noAcces(TranslatorInterface $translator): Response
     {
         //ajout d'un message pas accés
-        $this -> addFlash('error', 'Sie haben nicht die Berechtigung für diesen Bereich!'); 
+        $messageNoAcces = $translator -> trans('Sie haben nicht die Berechtigung für diesen Bereich!');
+        $this -> addFlash('error', $messageNoAcces); 
         //et redirection vers la page d'accueil        
         return $this->redirectToRoute('login');       
     }

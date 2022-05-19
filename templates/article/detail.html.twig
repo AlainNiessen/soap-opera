@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detail Artikel{% endblock %}
+{% block title %{% trans %}}Detail Artikel{% endtrans %}{% endblock %}
 
 {% block body %}
 
@@ -22,31 +22,31 @@
         </section>
         <section class="m-article-detail-info">        
             <div class="container-onglets">
-                <div class="onglets act" data-anim="1">Beschreibung</div>
-                <div class="onglets" data-anim="2">Zutaten</div>
-                <div class="onglets" data-anim="3">Bewertungen</div>
+                <div class="onglets act" data-anim="1">{% trans %}Beschreibung{% endtrans %}</div>
+                <div class="onglets" data-anim="2">{% trans %}Zutaten{% endtrans %}</div>
+                <div class="onglets" data-anim="3">{% trans %}Bewertungen{% endtrans %}</div>
             </div>
             <div class="contenu overflow-y activeContenu" data-anim="1">
                 <div class="m-article-detail-info-box">
-                    <h3>Allgemeine Beschreibung:</h3> 
+                    <h3>{% trans %}Allgemeine Beschreibung:{% endtrans %}</h3> 
                     {# raw => effacer les balises HTML (div) #}              
                     <p>{{ traductionArticle.description|raw }}</p>
                 </div>
                 <div class="m-article-detail-info-box">
-                    <h3>Kategorie:</h3>
+                    <h3>{% trans %}Kategorie:{% endtrans %}</h3>
                     <p>{{ traductionCategorie.nom }}</p> 
                 </div>
                 <div class="m-article-detail-info-box">
-                    <h3>Preis:</h3>
+                    <h3>{% trans %}Preis:{% endtrans %}</h3>
                     <p>{{ prix }}</p> 
                 </div>
                 <div class="m-article-detail-info-btn">
-                    <a href="#" class="btn btn-outline-info">In den Warenkorb</i></a>
+                    <a href="#" class="btn btn-outline-info">{% trans %}In den Warenkorb{% endtrans %}</i></a>
                 </div>      
             </div>
             <div class="contenu" data-anim="2">                          
                 <div class="contenu-box">
-                    <h3>Dieser Artikel enhält:</h3>
+                    <h3>{% trans %}Dieser Artikel enhält:{% endtrans %}</h3>
                         <ul>
                     {% if traductionBeurres is defined and traductionBeurres is not null and traductionBeurres is not empty %}
                         {% for beurre in traductionBeurres %}                                        
@@ -71,7 +71,7 @@
                 </div>
             </div>               
             <div class="contenu" data-anim="3">
-                <h3>Bewertungen</h3>
+                <h3>{% trans %}Bewertungen{% endtrans %}</h3>
                 <hr>
                 <p>JIJI</p>
             </div>
