@@ -105,7 +105,7 @@
         <source>Hallo</source>
         <target>Salut</target>
       </trans-unit>
-      <trans-unit id="srNl0OH" resname="Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:">
+      <trans-unit id="L1aAwKo" resname="Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:">
         <source>Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:</source>
         <target>Souhaitez-vous changer votre mot de passe ? Veuillez utiliser le lien suivant pour cela :</target>
       </trans-unit>
@@ -204,6 +204,42 @@
       <trans-unit id="VOSLDRB" resname="Sie müssen Ihr Passwort auch bestätigen.">
         <source>Sie müssen Ihr Passwort auch bestätigen.</source>
         <target>Vous devez également confirmer votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="C9NDfTI" resname="Detail Artikel">
+        <source>Detail Artikel</source>
+        <target>Détail article</target>
+      </trans-unit>
+      <trans-unit id="6SYvAH3" resname="Beschreibung">
+        <source>Beschreibung</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="TZ.Nn.q" resname="Zutaten">
+        <source>Zutaten</source>
+        <target>Ingrédients</target>
+      </trans-unit>
+      <trans-unit id="IEmtTcn" resname="Bewertungen">
+        <source>Bewertungen</source>
+        <target>Commentaires</target>
+      </trans-unit>
+      <trans-unit id="OxgGZbK" resname="Allgemeine Beschreibung:">
+        <source>Allgemeine Beschreibung:</source>
+        <target>Description générale:</target>
+      </trans-unit>
+      <trans-unit id="02rWWHc" resname="Kategorie:">
+        <source>Kategorie:</source>
+        <target>Catégorie:</target>
+      </trans-unit>
+      <trans-unit id="oXhgFhl" resname="Preis:">
+        <source>Preis:</source>
+        <target>Prix:</target>
+      </trans-unit>
+      <trans-unit id="koSXQIm" resname="In den Warenkorb">
+        <source>In den Warenkorb</source>
+        <target>Dans le panier</target>
+      </trans-unit>
+      <trans-unit id="3ppnmMI" resname="Dieser Artikel enhält:">
+        <source>Dieser Artikel enhält:</source>
+        <target>Cet article contient :</target>
       </trans-unit>
     </body>
   </file>

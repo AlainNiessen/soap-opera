@@ -135,6 +135,10 @@
     height: 2rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    svg {
+        flex: 0 0 30%;
+    }
 }
 
 //MEDIA QUERY 
@@ -159,10 +163,11 @@
         }
     }  
     .l-menu-list-flags {
-        width: 5rem;
-        height: 1rem;
+        width: 4rem;
+        height: 1,5rem;
         svg {
-            margin: 0 .3rem;
+            flex: 0 0 50%;
+            margin: 0 0.3rem;
         }
     }  
 }
@@ -177,5 +182,8 @@
                 }
             }        
         }
-    }    
+    }  
+    .l-menu-list-flags {
+        height: 2rem;
+    }   
 }
