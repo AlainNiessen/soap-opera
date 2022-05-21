@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="hQgNJSE" resname="menu.tra_partenaire">
         <source>menu.tra_partenaire</source>
-        <target>TRAD-Partenaires</target>
+        <target>TRAD-Partenaire</target>
       </trans-unit>
       <trans-unit id="LcfkpeT" resname="menu.adresse">
         <source>menu.adresse</source>
@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="EeU8sTS" resname="menu.tra_article">
         <source>menu.tra_article</source>
-        <target>TRAD-Articles</target>
+        <target>TRAD-Article</target>
       </trans-unit>
       <trans-unit id="_Yx.7An" resname="menu.categorie">
         <source>menu.categorie</source>
@@ -59,7 +59,7 @@
       </trans-unit>
       <trans-unit id="Zvs.3or" resname="menu.tra_categorie">
         <source>menu.tra_categorie</source>
-        <target>TRAD-Catégories</target>
+        <target>TRAD-Catégorie</target>
       </trans-unit>
       <trans-unit id="Hl6UZry" resname="menu.promotion">
         <source>menu.promotion</source>
@@ -67,7 +67,7 @@
       </trans-unit>
       <trans-unit id="in9vlgd" resname="menu.tra_promotion">
         <source>menu.tra_promotion</source>
-        <target>TRAD-Promotions</target>
+        <target>TRAD-Promotion</target>
       </trans-unit>
       <trans-unit id="1NAWmAf" resname="menu.beurre">
         <source>menu.beurre</source>
@@ -83,7 +83,7 @@
       </trans-unit>
       <trans-unit id="MoaRx55" resname="menu.tra_huile">
         <source>menu.tra_huile</source>
-        <target>TRAD-Huiles</target>
+        <target>TRAD-Huile</target>
       </trans-unit>
       <trans-unit id="UgO0IIe" resname="menu.huile_ess">
         <source>menu.huile_ess</source>
@@ -91,7 +91,7 @@
       </trans-unit>
       <trans-unit id="4iuz4gu" resname="menu.tra_huile_ess">
         <source>menu.tra_huile_ess</source>
-        <target>TRAD-Huiles-Ess</target>
+        <target>TRAD-Huile-Ess</target>
       </trans-unit>
       <trans-unit id="PdHQCGM" resname="menu.odeur">
         <source>menu.odeur</source>
@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="VVxY3A7" resname="menu.tra_odeur">
         <source>menu.tra_odeur</source>
-        <target>TRAD-Odeurs</target>
+        <target>TRAD-Odeur</target>
       </trans-unit>
       <trans-unit id="yznIQTn" resname="menu.ingredient">
         <source>menu.ingredient</source>
@@ -107,7 +107,7 @@
       </trans-unit>
       <trans-unit id="lKSDDMt" resname="menu.tra_ingredient">
         <source>menu.tra_ingredient</source>
-        <target>TRAD-Divers</target>
+        <target>TRAD-Diver</target>
       </trans-unit>
       <trans-unit id="NFs1_eO" resname="menu.event">
         <source>menu.event</source>
@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="zMWaza0" resname="menu.typ">
         <source>menu.typ</source>
-        <target>Type</target>
+        <target>Types</target>
       </trans-unit>
       <trans-unit id="O41vRil" resname="menu.tra_typ">
         <source>menu.tra_typ</source>
@@ -147,11 +147,11 @@
       </trans-unit>
       <trans-unit id="2dVVN6k" resname="menu.pos_image">
         <source>menu.pos_image</source>
-        <target>Position images</target>
+        <target>Position Images</target>
       </trans-unit>
       <trans-unit id="M_qpeIP" resname="menu.ing_article">
         <source>menu.ing_article</source>
-        <target>Ingrédients article</target>
+        <target>Ingrédients Article</target>
       </trans-unit>
       <trans-unit id="pyHye.B" resname="option.adresse_rue">
         <source>option.adresse_rue</source>
@@ -720,6 +720,126 @@
       <trans-unit id="4t4QxZD" resname="option.utilisateur_adresseDeliver">
         <source>option.utilisateur_adresseDeliver</source>
         <target>Adresse de livraison</target>
+      </trans-unit>
+      <trans-unit id="Adresse" resname="Adresse">
+        <source>Adresse</source>
+        <target>Adresses</target>
+      </trans-unit>
+      <trans-unit id="Article" resname="Article">
+        <source>Article</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="Beurre" resname="Beurre">
+        <source>Beurre</source>
+        <target>Beurres</target>
+      </trans-unit>
+      <trans-unit id="HuileEssentiel" resname="HuileEssentiel">
+        <source>HuileEssentiel</source>
+        <target>Huiles essentiels</target>
+      </trans-unit>
+      <trans-unit id="Odeur" resname="Odeur">
+        <source>Odeur</source>
+        <target>Odeurs</target>
+      </trans-unit>
+      <trans-unit id="IngredientSupplementaire" resname="IngredientSupplementaire">
+        <source>IngredientSupplementaire</source>
+        <target>Ingrédients Supplémentaires</target>
+      </trans-unit>
+      <trans-unit id="Commentaire" resname="Commentaire">
+        <source>Commentaire</source>
+        <target>Commentaires</target>
+      </trans-unit>
+      <trans-unit id="Categorie" resname="Categorie">
+        <source>Categorie</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="DetailCommandeArticle" resname="DetailCommandeArticle">
+        <source>DetailCommandeArticle</source>
+        <target>Commandes</target>
+      </trans-unit>
+      <trans-unit id="Event" resname="Event">
+        <source>Event</source>
+        <target>Événements</target>
+      </trans-unit>
+      <trans-unit id="Facture" resname="Facture">
+        <source>Facture</source>
+        <target>Factures</target>
+      </trans-unit>
+      <trans-unit id="Image" resname="Image">
+        <source>Image</source>
+        <target>Images</target>
+      </trans-unit>
+      <trans-unit id="Langue" resname="Langue">
+        <source>Langue</source>
+        <target>Langues</target>
+      </trans-unit>
+      <trans-unit id="Partenaire" resname="Partenaire">
+        <source>Partenaire</source>
+        <target>Partenaires</target>
+      </trans-unit>
+      <trans-unit id="PositionImage" resname="PositionImage">
+        <source>PositionImage</source>
+        <target>Positions Image</target>
+      </trans-unit>
+      <trans-unit id="Reservation" resname="Reservation">
+        <source>Reservation</source>
+        <target>Réservations</target>
+      </trans-unit>
+      <trans-unit id="TraductionArticle" resname="TraductionArticle">
+        <source>TraductionArticle</source>
+        <target>Traductions Article</target>
+      </trans-unit>
+      <trans-unit id="TraductionBeurre" resname="TraductionBeurre">
+        <source>TraductionBeurre</source>
+        <target>Traductions Beurre</target>
+      </trans-unit>
+      <trans-unit id="TraductionCategorie" resname="TraductionCategorie">
+        <source>TraductionCategorie</source>
+        <target>Traductions Catégorie</target>
+      </trans-unit>
+      <trans-unit id="TraductionEvent" resname="TraductionEvent">
+        <source>TraductionEvent</source>
+        <target>Traductions Événements</target>
+      </trans-unit>
+      <trans-unit id="TraductionHuile" resname="TraductionHuile">
+        <source>TraductionHuile</source>
+        <target>Traductions Huile</target>
+      </trans-unit>
+      <trans-unit id="TraductionHuileEssentiel" resname="TraductionHuileEssentiel">
+        <source>TraductionHuileEssentiel</source>
+        <target>Traductions Huile Essentiel</target>
+      </trans-unit>
+      <trans-unit id="TraductionIngredientSupplementaire" resname="TraductionIngredientSupplementaire">
+        <source>TraductionIngredientSupplementaire</source>
+        <target>Traductions Ingrédient Supplémentaire</target>
+      </trans-unit>
+      <trans-unit id="TraductionNewsletter" resname="TraductionNewsletter">
+        <source>TraductionNewsletter</source>
+        <target>Traductions Newsletter</target>
+      </trans-unit>
+      <trans-unit id="TraductionOdeur" resname="TraductionOdeur">
+        <source>TraductionOdeur</source>
+        <target>Traductions Odeurs</target>
+      </trans-unit>
+      <trans-unit id="TraductionPartenaire" resname="TraductionPartenaire">
+        <source>TraductionPartenaire</source>
+        <target>Traductions Partenaires</target>
+      </trans-unit>
+      <trans-unit id="TraductionPromotion" resname="TraductionPromotion">
+        <source>TraductionPromotion</source>
+        <target>Traductions Promotion</target>
+      </trans-unit>
+      <trans-unit id="TraductionTypeEvent" resname="TraductionTypeEvent">
+        <source>TraductionTypeEvent</source>
+        <target>Traductions Type Événement</target>
+      </trans-unit>
+      <trans-unit id="TypeEvent" resname="TypeEvent">
+        <source>TypeEvent</source>
+        <target>Types Événement</target>
+      </trans-unit>
+      <trans-unit id="Utilisateur" resname="Utilisateur">
+        <source>Utilisateur</source>
+        <target>Utilisateurs</target>
       </trans-unit>
     </body>
   </file>
