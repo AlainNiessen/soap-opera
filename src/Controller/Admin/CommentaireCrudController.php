@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Commentaire;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -20,12 +21,12 @@ class CommentaireCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('contenu');
-        yield DateTimeField::new('dateCommentaire');
-        yield BooleanField::new('commentaireInfructueux');
-        yield IntegerField::new('nombreEtoiles');
-        yield AssociationField::new('article');
-        yield AssociationField::new('utilisateur');
+        yield TextField::new('contenu', new TranslatableMessage('option.commentaire_contenu', [], 'EasyAdminBundle'));
+        yield DateTimeField::new('dateCommentaire', new TranslatableMessage('option.commentaire_dateCommentaire', [], 'EasyAdminBundle'));
+        yield BooleanField::new('commentaireInfructueux', new TranslatableMessage('option.commentaire_commentaireInfructueux', [], 'EasyAdminBundle'));
+        yield IntegerField::new('nombreEtoiles', new TranslatableMessage('option.commentaire_nombreEtoiles', [], 'EasyAdminBundle'));
+        yield AssociationField::new('article', new TranslatableMessage('option.commentaire_article', [], 'EasyAdminBundle') );
+        yield AssociationField::new('utilisateur', new TranslatableMessage('option.commentaire_utilisateur', [], 'EasyAdminBundle'));
 
     }
     

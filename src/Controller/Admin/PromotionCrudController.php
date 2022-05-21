@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Promotion;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -20,16 +21,16 @@ class PromotionCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend');
-        yield DateTimeField::new('dateAffichageStart');
-        yield DateTimeField::new('dateAffichageEnd');
-        yield DateTimeField::new('dateStart');
-        yield DateTimeField::new('dateEnd');
-        yield PercentField::new('Pourcentage')
+        yield TextField::new('nomBackend', new TranslatableMessage('option.promotion_nomBackend', [], 'EasyAdminBundle'));
+        yield DateTimeField::new('dateAffichageStart', new TranslatableMessage('option.promotion_dateAffichageStart', [], 'EasyAdminBundle'));
+        yield DateTimeField::new('dateAffichageEnd', new TranslatableMessage('option.promotion_dateAffichageEnd', [], 'EasyAdminBundle'));
+        yield DateTimeField::new('dateStart', new TranslatableMessage('option.promotion_dateStart', [], 'EasyAdminBundle'));
+        yield DateTimeField::new('dateEnd', new TranslatableMessage('option.promotion_dateEnd', [], 'EasyAdminBundle'));
+        yield PercentField::new('Pourcentage', new TranslatableMessage('option.promotion_pourcentage', [], 'EasyAdminBundle'))
                             ->setNumDecimals(2)
                             ->setStoredAsFractional(true);
-        yield AssociationField::new('article');
-        yield AssociationField::new('categorie');
+        yield AssociationField::new('article', new TranslatableMessage('option.promotion_article', [], 'EasyAdminBundle'));
+        yield AssociationField::new('categorie', new TranslatableMessage('option.promotion_categorie', [], 'EasyAdminBundle'));
     }
     
 }

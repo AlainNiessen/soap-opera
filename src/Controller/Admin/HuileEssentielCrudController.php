@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\HuileEssentiel;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class HuileEssentielCrudController extends AbstractCrudController
@@ -16,7 +17,7 @@ class HuileEssentielCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
+        yield TextField::new('nomBackend', new TranslatableMessage('option.huileEss_nomBackend', [], 'EasyAdminBundle'));
     }
     
 }

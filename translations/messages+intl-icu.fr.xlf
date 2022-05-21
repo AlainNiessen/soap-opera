@@ -241,6 +241,10 @@
         <source>Dieser Artikel enhält:</source>
         <target>Cet article contient :</target>
       </trans-unit>
+      <trans-unit id="M_qpeIP" resname="menu.ing_article">
+        <source>menu.ing_article</source>
+        <target>__menu.ing_article</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

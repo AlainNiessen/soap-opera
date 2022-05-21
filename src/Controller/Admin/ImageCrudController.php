@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -22,25 +23,21 @@ class ImageCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        $imageField = Field::new('imageFile')
+        $imageField = Field::new('imageFile', new TranslatableMessage('option.image_ajout', [], 'EasyAdminBundle'))
                             ->setFormType(VichImageType::class)                
-                            ->setLabel('Foto hinzufügen')
                             ->setFormTypeOptions(['attr' => ['accept' => 'image/*']]);
 
-        $image = ImageField::new('nom')
-                            ->setBasePath('/uploads/images')              
-                            ->setLabel('Foto');
-
-        
+        $image = ImageField::new('nom', new TranslatableMessage('option.image_nom', [], 'EasyAdminBundle'))
+                            ->setBasePath('/uploads/images');        
         $fields = [                
-            BooleanField::new('layoutWebsite', 'Foto für das Layout der Webseite?'),            
-            AssociationField::new('positionImage', 'Position auf Webseite definieren'),
-            AssociationField::new('categorie', 'Kategorie zuordnen'),
-            AssociationField::new('article', 'Artikel zuordnen'),
-            BooleanField::new('coverListArticle', 'Foto für die Listenansicht?'),
-            BooleanField::new('coverDetailArticle', 'Foto für die Detailansicht?'),
-            AssociationField::new('partenaire', 'Partner zuordnen'),
-            AssociationField::new('event', 'Veranstaltung zuordnen'),
+            BooleanField::new('layoutWebsite', new TranslatableMessage('option.image_layoutWebsite', [], 'EasyAdminBundle')),            
+            AssociationField::new('positionImage', new TranslatableMessage('option.image_positionImage', [], 'EasyAdminBundle')),
+            AssociationField::new('categorie', new TranslatableMessage('option.image_categorie', [], 'EasyAdminBundle')),
+            AssociationField::new('article', new TranslatableMessage('option.image_article', [], 'EasyAdminBundle')),
+            BooleanField::new('coverListArticle', new TranslatableMessage('option.image_coverListArticle', [], 'EasyAdminBundle')),
+            BooleanField::new('coverDetailArticle', new TranslatableMessage('option.image_coverDetailArticle', [], 'EasyAdminBundle')),
+            AssociationField::new('partenaire', new TranslatableMessage('option.image_partenaire', [], 'EasyAdminBundle')),
+            AssociationField::new('event', new TranslatableMessage('option.image_event', [], 'EasyAdminBundle')),
         ];
         
         // if page = index or detail => display image    

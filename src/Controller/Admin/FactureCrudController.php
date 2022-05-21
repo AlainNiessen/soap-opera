@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Facture;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -19,20 +20,20 @@ class FactureCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield DateTimeField::new('dateFacture', 'Datum Rechnung');
-        yield BooleanField::new('statutPaiement', 'Bezahlt?');        
-        yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')
+        yield DateTimeField::new('dateFacture', new TranslatableMessage('option.facture_dateFacture', [], 'EasyAdminBundle'));
+        yield BooleanField::new('statutPaiement', new TranslatableMessage('option.facture_statutPaiement', [], 'EasyAdminBundle'));        
+        yield MoneyField::new('montantTotalHorsTva', new TranslatableMessage('option.facture_montantTotalHorsTva', [], 'EasyAdminBundle'))
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield MoneyField::new('montantTotalTva', 'Gesamtbetrag MwSt')
+        yield MoneyField::new('montantTotalTva', new TranslatableMessage('option.facture_montantTotalTva', [], 'EasyAdminBundle'))
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield MoneyField::new('montantTotal', 'Gesamtbetrag')
+        yield MoneyField::new('montantTotal', new TranslatableMessage('option.facture_montantTotal', [], 'EasyAdminBundle'))
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield AssociationField::new('utilisateur', 'Nutzer zuordnen');
+        yield AssociationField::new('utilisateur', new TranslatableMessage('option.facture_utilisateur', [], 'EasyAdminBundle'));
     }    
 }

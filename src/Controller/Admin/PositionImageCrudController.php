@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\PositionImage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class PositionImageCrudController extends AbstractCrudController
@@ -16,7 +17,7 @@ class PositionImageCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('position');
+        yield TextField::new('position', new TranslatableMessage('option.positionImage_position', [], 'EasyAdminBundle'));
     }
     
 }
