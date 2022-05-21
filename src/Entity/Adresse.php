@@ -83,7 +83,7 @@ class Adresse
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
-        return $this->rue.', '.$this->numeroRue.' | '.$this->codePostal.' - '.$this->ville.' | '.$this->ville;
+        return $this->rue.', '.$this->numeroRue.' | '.$this->codePostal.' - '.$this->ville.' | '.$this->pays;
     }
 
     public function __construct()

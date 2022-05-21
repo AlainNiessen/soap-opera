@@ -16,10 +16,10 @@ class AdresseCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('rue', 'Strasse');
-        yield TextField::new('numeroRue', 'Hausnummer');        
-        yield TextField::new('codePostal', 'Postleitzahl');
-        yield TextField::new('ville', 'Stadt');
-        yield TextField::new('pays', 'Land');        
+        yield TextField::new('rue');
+        yield TextField::new('numeroRue');        
+        yield TextField::new('codePostal');
+        yield TextField::new('ville');
+        yield TextField::new('pays');        
     }
 }

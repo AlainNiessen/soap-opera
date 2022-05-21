@@ -21,16 +21,17 @@ class UtilisateurCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield EmailField::new('email', 'E-Mail');
-        yield ArrayField::new('roles', 'Rolle');
-        yield TextField::new('plainPassword', 'Passwort');
-        yield TextField::new('nom', 'Name');
-        yield TextField::new('prenom', 'Vorname');
-        yield DateTimeField::new('dateNaissance', 'Geburtsdatum');
-        yield DateTimeField::new('dateInscription', 'Einschreibedatum');
-        yield BooleanField::new('inscriptionValide', 'Einschreibebestätigung');
-        yield AssociationField::new('langue', 'Sprache zuordnen');                      
-        yield AssociationField::new('adresseHome', 'Wohnadresse zuordnen');                      
-        yield AssociationField::new('adresseDeliver', 'Lieferadresse zuordnen');                      
+        yield EmailField::new('email');
+        yield ArrayField::new('roles');
+        yield TextField::new('plainPassword')
+                        ->onlyOnForms();;
+        yield TextField::new('nom');
+        yield TextField::new('prenom');
+        yield DateTimeField::new('dateNaissance');
+        yield DateTimeField::new('dateInscription');
+        yield BooleanField::new('inscriptionValide');
+        yield AssociationField::new('langue');                      
+        yield AssociationField::new('adresseHome');                      
+        yield AssociationField::new('adresseDeliver');                      
     }    
 }

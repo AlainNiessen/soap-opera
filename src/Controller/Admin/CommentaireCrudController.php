@@ -20,12 +20,12 @@ class CommentaireCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('contenu', 'Kommentar');
-        yield DateTimeField::new('dateCommentaire', 'Datum');
-        yield BooleanField::new('commentaireInfructueux', 'Freischaltung');
-        yield IntegerField::new('nombreEtoiles', 'Anzahl Sterne');
-        yield AssociationField::new('article', 'Artikel zuordnen');
-        yield AssociationField::new('utilisateur', 'Nutzer zuordnen');
+        yield TextField::new('contenu');
+        yield DateTimeField::new('dateCommentaire');
+        yield BooleanField::new('commentaireInfructueux');
+        yield IntegerField::new('nombreEtoiles');
+        yield AssociationField::new('article');
+        yield AssociationField::new('utilisateur');
 
     }
     

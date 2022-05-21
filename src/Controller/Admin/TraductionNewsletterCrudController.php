@@ -27,18 +27,18 @@ class TraductionNewsletterCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('titre', 'Name');
-        yield TextField::new('description', 'Beschreibung');
-        yield TextField::new('documentPDF', 'PDF')
+        yield TextField::new('titre');
+        yield TextField::new('description');
+        yield TextField::new('documentPDF')
                 //VA AFFICHER DANS LA LISTE SOUS 'PDF' UN LIEN VERS LE PDF
                 ->setTemplatePath('admin/pdf.html.twig')
                 ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
                 ->onlyOnIndex();        
-        yield Field::new('documentFile', 'PDF')
+        yield Field::new('documentFile')
                 ->setFormType(VichImageType::class)                          
                 ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'Ouvrir le fichier'])
                 ->onlyOnForms();
-        yield AssociationField::new('langue', 'Sprache zuordnen');
-        yield AssociationField::new('newsletter', 'Newsletter zuordnen');
+        yield AssociationField::new('langue');
+        yield AssociationField::new('newsletter');
     }    
 }

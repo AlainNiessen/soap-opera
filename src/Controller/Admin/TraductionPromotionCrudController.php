@@ -17,10 +17,10 @@ class TraductionPromotionCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('titre', 'Name');
-        yield TextField::new('description', 'Beschreibung');
-        yield AssociationField::new('langue', 'Sprache zuordnen');
-        yield AssociationField::new('promotion', 'Promotion zuordnen');
+        yield TextField::new('titre');
+        yield TextField::new('description');
+        yield AssociationField::new('langue');
+        yield AssociationField::new('promotion');
     }
     
 }

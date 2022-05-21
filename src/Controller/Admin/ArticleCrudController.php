@@ -24,22 +24,22 @@ class ArticleCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
-        yield DateTimeField::new('dateCreation', 'Erstellungsdatum');
-        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')
+        yield TextField::new('nomBackend');
+        yield DateTimeField::new('dateCreation');
+        yield MoneyField::new('montantHorsTva')
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents();        
-        yield PercentField::new('tauxTva', 'MwSt')
+        yield PercentField::new('tauxTva')
                             ->setNumDecimals(2)
                             ->setStoredAsFractional(true);        
-        yield BooleanField::new('enAvant', 'Wird angezeigt?');
-        yield IntegerField::new('nombreVentes', 'Anzahl Verkäufe');  
-        yield AssociationField::new('categorie', 'Kategorie zuordnen');
-        yield AssociationField::new('odeur', 'Duft zuordnen');
-        yield AssociationField::new('beurre', 'Butter zuordnen');
-        yield AssociationField::new('huile', 'Öl zuordnen');
-        yield AssociationField::new('huileEssentiell', 'Ätherisches Öl zuordnen');
-        yield AssociationField::new('ingredientSupplementaire', 'Zusatz zuordnen');
+        yield BooleanField::new('enAvant');
+        yield IntegerField::new('nombreVentes');  
+        yield AssociationField::new('categorie');
+        yield AssociationField::new('odeur');
+        yield AssociationField::new('beurre');
+        yield AssociationField::new('huile');
+        yield AssociationField::new('huileEssentiell');
+        yield AssociationField::new('ingredientSupplementaire');
     }   
 }

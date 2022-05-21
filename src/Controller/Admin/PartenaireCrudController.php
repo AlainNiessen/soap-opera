@@ -17,8 +17,8 @@ class PartenaireCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nom', 'Name');
-        yield AssociationField::new('adresse', 'Adresse zuordnen');
+        yield TextField::new('nom');
+        yield AssociationField::new('adresse');
     }
     
 }

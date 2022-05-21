@@ -17,9 +17,9 @@ class TraductionOdeurCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nom', 'Name');
-        yield AssociationField::new('langue', 'Sprache zuordnen');
-        yield AssociationField::new('odeur', 'Duft zuordnen');
+        yield TextField::new('nom');
+        yield AssociationField::new('langue');
+        yield AssociationField::new('odeur');
     }
     
 }

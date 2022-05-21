@@ -20,16 +20,16 @@ class PromotionCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
-        yield DateTimeField::new('dateAffichageStart', 'Start Anzeige Promotion');
-        yield DateTimeField::new('dateAffichageEnd', 'Ende Anzeige Promotion');
-        yield DateTimeField::new('dateStart', 'Start Promotion');
-        yield DateTimeField::new('dateEnd', 'Ende Promotion');
-        yield PercentField::new('Pourcentage', 'Prozentsatz')
+        yield TextField::new('nomBackend');
+        yield DateTimeField::new('dateAffichageStart');
+        yield DateTimeField::new('dateAffichageEnd');
+        yield DateTimeField::new('dateStart');
+        yield DateTimeField::new('dateEnd');
+        yield PercentField::new('Pourcentage')
                             ->setNumDecimals(2)
                             ->setStoredAsFractional(true);
-        yield AssociationField::new('article', 'Artikel zuordnen');
-        yield AssociationField::new('categorie', 'Kategorie zuordnen');
+        yield AssociationField::new('article');
+        yield AssociationField::new('categorie');
     }
     
 }

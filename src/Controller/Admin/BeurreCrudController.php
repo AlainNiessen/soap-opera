@@ -16,7 +16,7 @@ class BeurreCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
+        yield TextField::new('nomBackend');
     }
     
 }

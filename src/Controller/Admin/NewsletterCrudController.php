@@ -20,7 +20,7 @@ class NewsletterCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
-        yield DateTimeField::new('dateNewsletter', 'Datum');                          
+        yield TextField::new('nomBackend');
+        yield DateTimeField::new('dateNewsletter');                          
     }    
 }

@@ -54,7 +54,8 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Soap Opera');
+            ->setTitle('Soap Opera')
+            ->setTranslationDomain('messages');
     }
 
     public function configureMenuItems(): iterable

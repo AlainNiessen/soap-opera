@@ -17,10 +17,10 @@ class TraductionCategorieCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nom', 'Name');
-        yield TextField::new('description', 'Beschreibung');
-        yield AssociationField::new('langue', 'Sprache zuordnen');
-        yield AssociationField::new('categorie', 'Kategorie zuordnen');
+        yield TextField::new('nom');
+        yield TextField::new('description');
+        yield AssociationField::new('langue');
+        yield AssociationField::new('categorie');
     }
     
 }

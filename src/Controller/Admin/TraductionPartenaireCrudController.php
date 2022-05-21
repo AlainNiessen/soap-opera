@@ -17,9 +17,9 @@ class TraductionPartenaireCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('description', 'Beschreibung');
-        yield AssociationField::new('langue', 'Sprache zuordnen');
-        yield AssociationField::new('partenaire', 'Partner zuordnen');
+        yield TextField::new('description');
+        yield AssociationField::new('langue');
+        yield AssociationField::new('partenaire');
     }
     
 }

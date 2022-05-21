@@ -24,20 +24,20 @@ class EventCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', 'Name für Adminbereich');
-        yield DateTimeField::new('dateAffichageStart', 'Start Anzeige Veranstaltung');
-        yield DateTimeField::new('dateAffichageEnd', 'Ende Anzeige Veranstaltung');
-        yield DateTimeField::new('dateStart', 'Start Veranstaltung');
-        yield DateTimeField::new('dateEnd', 'Ende Veranstaltung');
-        yield MoneyField::new('montantHorsTva', 'Betrag ohne MwSt')
+        yield TextField::new('nomBackend');
+        yield DateTimeField::new('dateAffichageStart');
+        yield DateTimeField::new('dateAffichageEnd');
+        yield DateTimeField::new('dateStart');
+        yield DateTimeField::new('dateEnd');
+        yield MoneyField::new('montantHorsTva')
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield PercentField::new('tauxTva', 'MwSt')
+        yield PercentField::new('tauxTva')
                             ->setNumDecimals(2)
                             ->setStoredAsFractional(true); 
-        yield IntegerField::new('nombreLimit', 'Maximale Teilnehmeranzahl');        
-        yield AssociationField::new('typeEvent', 'Veranstaltungstyp zuordnen');
+        yield IntegerField::new('nombreLimit');        
+        yield AssociationField::new('typeEvent');
         
     }
     

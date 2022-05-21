@@ -16,8 +16,8 @@ class LangueCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('langue', 'Sprache');
-        yield TextField::new('codeLangue', 'Sprachen Kürzel');
+        yield TextField::new('langue');
+        yield TextField::new('codeLangue');
     }
     
 }

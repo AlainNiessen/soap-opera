@@ -18,20 +18,20 @@ class DetailCommandeArticleCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield IntegerField::new('quantite', 'Anzahl Artikel');
-        yield MoneyField::new('montantTotalHorsTva', 'Gesamtbetrag ohne MwSt')
+        yield IntegerField::new('quantite');
+        yield MoneyField::new('montantTotalHorsTva')
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield MoneyField::new('montantTva', 'Gesamtbetrag MwSt')
+        yield MoneyField::new('montantTva')
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield MoneyField::new('montantTotal', 'Gesamtbetrag')
+        yield MoneyField::new('montantTotal')
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
                             ->setStoredAsCents(); 
-        yield AssociationField::new('article', 'Artikel zuordnen');
-        yield AssociationField::new('facture', 'Rechnung zuordnen');
+        yield AssociationField::new('article');
+        yield AssociationField::new('facture');
     }    
 }
