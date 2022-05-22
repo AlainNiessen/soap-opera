@@ -21,22 +21,22 @@ class Adresse
     private $id;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "adresse.numeroRue.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $numeroRue;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "adresse.codePostal.not_blank")
      * @Assert\Length(
      *      min = 4,
      *      max = 5,
-     *      minMessage = "Die Postleitzahl muss mindestens {{ limit }} Zeichen lang sein!",
-     *      maxMessage = "Die Postleitzahl kann höchstens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "adresse.codePostal.length_min",
+     *      maxMessage = "adresse.codePostal.length_max")
      * @Assert\Regex(
      *      "/^^[0-9]*$/",
      *      match = true, 
-     *      message="Die Postleitzahl kann nur aus Ziffern bestehen!")
+     *      message="adresse.codePostal.regex")
      * @ORM\Column(type="string", length=255)
      */
     private $codePostal;
@@ -57,25 +57,25 @@ class Adresse
     private $utilisateurDeliver;    
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "adresse.rue.not_blank")
      * @Assert\Length(
      *      min = 2,
-     *      minMessage = "Die Straße muss mindestens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "adresse.rue.length_min")
      * @ORM\Column(type="string", length=255)
      */
     private $rue;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "adresse.ville.not_blank")
      * @Assert\Length(
      *      min = 6,
-     *      minMessage = "Die Stadt muss mindestens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "adresse.ville.length_min")
      * @ORM\Column(type="string", length=255)
      */
     private $ville;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "adresse.pays.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $pays;

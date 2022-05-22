@@ -23,8 +23,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @Assert\Email (message = "Die Emailadresse '{{ value }}' ist keine korrekte Emailadresse!")
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\Email (message = "utilisateur.email.valide")
+     * @Assert\NotBlank (message = "utilisateur.email.not_blank")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -41,25 +41,25 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "utilisateur.nom.not_blank")
      * @Assert\Length(
      *      min = 2,
-     *      minMessage = "Der Name muss mindestens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "utilisateur.nom.length_min")
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "utilisateur.prenom.not_blank")
      * @Assert\Length(
      *      min = 2,
-     *      minMessage = "Der Vorname muss mindestens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "utilisateur.prenom.length_min")
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
 
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "utilisateur.dateNaissance.not_blank")
      * @ORM\Column(type="datetime")
      */
     private $dateNaissance;
@@ -113,14 +113,14 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     //mot de passe clair qui doit contenir au moins une lettre, un chiffre et un caractére spécial et au moins 6 caractéres  
     // doit contenir (match = false => ne peut pas contenir)
     /**
-     * @Assert\NotBlank (message = "Dieses Feld muss ausgefüllt werden!")
+     * @Assert\NotBlank (message = "utilisateur.plainPassword.not_blank")
      * @Assert\Length(
      *      min = 6,
-     *      minMessage = "Das Passwort muss mindestens {{ limit }} Zeichen lang sein!")
+     *      minMessage = "utilisateur.plainPassword.length_min")
      * @Assert\Regex(
      *      "/^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)/",
      *      match = true, 
-     *      message="Das Passwort muss mindestens einen Buchstaben, eine Ziffer und ein Sonderzeichen enthalten!")
+     *      message="utilisateur.plainPassword.regex")
      */ 
     private $plainPassword;
 

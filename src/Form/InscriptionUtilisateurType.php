@@ -81,15 +81,9 @@ class InscriptionUtilisateurType extends AbstractType
         ])
         ->add('adresseHome', AdresseType::class, [
             'label' => new TranslatableMessage('formInscription.adresseResi', [], 'Form'),
-            'constraints' => [
-                new NotBlank()                
-            ],
         ])
         ->add('adresseDeliver', AdresseType::class, [
             'label' => new TranslatableMessage('formInscription.adresseLivraison', [], 'Form'),
-            'constraints' => [
-                new NotBlank()                
-            ],
         ])
         ->add('langue', EntityType::class,[
             'label'=> new TranslatableMessage('formInscription.langue', [], 'Form'),

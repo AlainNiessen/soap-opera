@@ -77,14 +77,6 @@
         <source>formAdresse.rue</source>
         <target>Straße</target>
       </trans-unit>
-      <trans-unit id="ltGefa9" resname="formAdresse.not_blank">
-        <source>formAdresse.not_blank</source>
-        <target>Das Feld darf nicht leer bleiben!</target>
-      </trans-unit>
-      <trans-unit id="MWh8R23" resname="formAdresse.rue_length_min">
-        <source>formAdresse.rue_length_min</source>
-        <target>Die Straße muss mindestens 2 Zeichen lang sein!</target>
-      </trans-unit>
       <trans-unit id="H3Poo_u" resname="formAdresse.rueNumero">
         <source>formAdresse.rueNumero</source>
         <target>Hausnummer</target>
@@ -93,25 +85,9 @@
         <source>formAdresse.codePostal</source>
         <target>Postleitzahl</target>
       </trans-unit>
-      <trans-unit id="Ajnyzzp" resname="formAdresse.cp_length_min">
-        <source>formAdresse.cp_length_min</source>
-        <target>Die Postleitzahl muss mindestens 4 Zeichen lang sein!</target>
-      </trans-unit>
-      <trans-unit id="L1dWhVZ" resname="formAdresse.cp_length_max">
-        <source>formAdresse.cp_length_max</source>
-        <target>Die Postleitzahl darf nicht mehr länger als 5 Zeichen sein!</target>
-      </trans-unit>
-      <trans-unit id="28pju0l" resname="formAdresse.cp_only_number_regex">
-        <source>formAdresse.cp_only_number_regex</source>
-        <target>Die Postleitzahl kann nur aus Zahlen bestehen!</target>
-      </trans-unit>
       <trans-unit id="W5UKDA3" resname="formAdresse.ville">
         <source>formAdresse.ville</source>
         <target>Stadt</target>
-      </trans-unit>
-      <trans-unit id="TQuJ1OV" resname="formAdresse.ville_length_min">
-        <source>formAdresse.ville_length_min</source>
-        <target>Die Straße muss mindestens 2 Zeichen lang sein!</target>
       </trans-unit>
       <trans-unit id="YAUFofN" resname="formAdresse.pays">
         <source>formAdresse.pays</source>

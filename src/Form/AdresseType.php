@@ -19,6 +19,9 @@ class AdresseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // les messages de contraintes font références aux messages de contraintes définis dans les entités dans les annotation
+        // les tradcution se font dans les fichiers validators.xlf
+
         $builder
         
         ->add('rue', TextType::class,[
@@ -29,11 +32,11 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => new TranslatableMessage('formAdresse.not_blank', [], 'Form'),
+                    'message' => 'adresse.rue.not_blank',
                 ]),
                 new Length([
                     'min' => 2,
-                    'minMessage' => new TranslatableMessage('formAdresse.rue_length_min', [], 'Form'),
+                    'minMessage' => 'adresse.rue.length_min',
                 ]),
             ],
         ])
@@ -45,7 +48,7 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => new TranslatableMessage('formAdresse.not_blank', [], 'Form'),
+                    'message' => 'adresse.numeroRue.not_blank',
                 ]),
             ],
         ])
@@ -57,18 +60,18 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => new TranslatableMessage('formAdresse.not_blank', [], 'Form'),
+                    'message' => 'adresse.codePostal.not_blank',
                 ]),
                 new Length([
                     'min' => 4,
                     'max' => 5,
-                    'minMessage' => new TranslatableMessage('formAdresse.cp_length_min', [], 'Form'),
-                    'maxMessage' => new TranslatableMessage('formAdresse.cp_length_max', [], 'Form'),
+                    'minMessage' => 'adresse.codePostal.length_min',
+                    'maxMessage' => 'adresse.codePostal.length_max',
                 ]),
                 new Regex([
                     'pattern' => '/^[0-9]*$/',
                     'match' => true,
-                    'message' => new TranslatableMessage('formAdresse.cp_only_number_regex', [], 'Form'),                      
+                    'message' => 'adresse.codePostal.regex',                      
                 ])
             ],
         ])
@@ -80,11 +83,11 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => new TranslatableMessage('formAdresse.not_blank', [], 'Form'),
+                    'message' => 'adresse.ville.not_blank',
                 ]),
                 new Length([
                     'min' => 2,
-                    'minMessage' => new TranslatableMessage('formAdresse.ville_length_min', [], 'Form'),
+                    'minMessage' => 'adresse.ville.length_min',
                 ]),
             ],
         ])
@@ -97,7 +100,7 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
-                    'message' => new TranslatableMessage('formAdresse.not_blank', [], 'Form'),
+                    'message' => 'adresse.pays.not_blank',
                 ]),
             ],
         ])

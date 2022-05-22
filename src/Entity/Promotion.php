@@ -6,6 +6,7 @@ use App\Repository\PromotionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
@@ -26,6 +27,7 @@ class Promotion
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan(propertyPath="dateAffichageStart", message = "promotion.dateAffichageEnd.greaterThan")
      */
     private $dateAffichageEnd;
 
@@ -36,6 +38,7 @@ class Promotion
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan(propertyPath="dateStart", message = "promotion.dateEnd.greaterThan")
      */
     private $dateEnd;
 

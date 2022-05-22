@@ -537,6 +537,98 @@
         <source>Please enter a valid week.</source>
         <target>Veuillez entrer une semaine valide.</target>
       </trans-unit>
+      <trans-unit id="v25LTkX" resname="adresse.numeroRue.not_blank">
+        <source>adresse.numeroRue.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="NdFRhHp" resname="adresse.codePostal.not_blank">
+        <source>adresse.codePostal.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="OD7CmWx" resname="adresse.codePostal.length_min">
+        <source>adresse.codePostal.length_min</source>
+        <target>Le code postal doit comporter au moins 4 caractères !</target>
+      </trans-unit>
+      <trans-unit id="v134KcF" resname="adresse.codePostal.length_max">
+        <source>adresse.codePostal.length_max</source>
+        <target>Le code postal ne doit pas dépasser 5 caractères !</target>
+      </trans-unit>
+      <trans-unit id="L4PNWzq" resname="adresse.codePostal.regex">
+        <source>adresse.codePostal.regex</source>
+        <target>Le code postal ne peut être composé que de chiffres !</target>
+      </trans-unit>
+      <trans-unit id="c47NlOl" resname="adresse.rue.not_blank">
+        <source>adresse.rue.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="QdCl3er" resname="adresse.rue.length_min">
+        <source>adresse.rue.length_min</source>
+        <target>La rue doit comporter au moins 2 caractères !</target>
+      </trans-unit>
+      <trans-unit id="yrBF72P" resname="adresse.ville.not_blank">
+        <source>adresse.ville.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="1R5Ggld" resname="adresse.ville.length_min">
+        <source>adresse.ville.length_min</source>
+        <target>La ville doit comporter au moins 2 caractères !</target>
+      </trans-unit>
+      <trans-unit id="7jJJ2a4" resname="adresse.pays.not_blank">
+        <source>adresse.pays.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="hyWJ.jM" resname="utilisateur.email.valide">
+        <source>utilisateur.email.valide</source>
+        <target>Veuillez saisir une adresse e-mail correcte !</target>
+      </trans-unit>
+      <trans-unit id="ivEQof5" resname="utilisateur.email.not_blank">
+        <source>utilisateur.email.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="bZLrdkm" resname="utilisateur.nom.not_blank">
+        <source>utilisateur.nom.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="WS9TsdC" resname="utilisateur.nom.length_min">
+        <source>utilisateur.nom.length_min</source>
+        <target>Le nom de famille doit comporter au moins 2 caractères !</target>
+      </trans-unit>
+      <trans-unit id="5_ovQ0f" resname="utilisateur.prenom.not_blank">
+        <source>utilisateur.prenom.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="Mntoagq" resname="utilisateur.prenom.length_min">
+        <source>utilisateur.prenom.length_min</source>
+        <target>Le prénom doit comporter au moins 2 caractères !</target>
+      </trans-unit>
+      <trans-unit id="u8NntY8" resname="utilisateur.plainPassword.not_blank">
+        <source>utilisateur.plainPassword.not_blank</source>
+        <target>Le champ ne doit pas rester vide !</target>
+      </trans-unit>
+      <trans-unit id="2fQA_Yq" resname="utilisateur.plainPassword.length_min">
+        <source>utilisateur.plainPassword.length_min</source>
+        <target>Le mot de passe doit comporter au moins 6 caractères !</target>
+      </trans-unit>
+      <trans-unit id="eTvDq6J" resname="utilisateur.plainPassword.regex">
+        <source>utilisateur.plainPassword.regex</source>
+        <target>Le mot de passe doit contenir au moins 1 lettre, 1 chiffre et 1 caractère spécial !</target>
+      </trans-unit>
+      <trans-unit id=".0kR5FP" resname="event.dateAffichageEnd.greaterThan">
+        <source>event.dateAffichageEnd.greaterThan</source>
+        <target>La date de fin de l'affichage doit être postérieure à la date de début de l'affichage !</target>
+      </trans-unit>
+      <trans-unit id="GXDVgny" resname="event.dateEnd.greaterThan">
+        <source>event.dateEnd.greaterThan</source>
+        <target>La date de fin de l'événement doit être postérieure à la date de début de l'événement !</target>
+      </trans-unit>
+      <trans-unit id="ya639k6" resname="promotion.dateAffichageEnd.greaterThan">
+        <source>promotion.dateAffichageEnd.greaterThan</source>
+        <target>La date de fin de l'affichage doit être postérieure à la date de début de l'affichage !</target>
+      </trans-unit>
+      <trans-unit id="37pKtY." resname="promotion.dateEnd.greaterThan">
+        <source>promotion.dateEnd.greaterThan</source>
+        <target>La date de fin de la promotion doit être postérieure à la date de début de la promotion !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
