@@ -549,6 +549,14 @@
         <source>Sie müssen Ihr Passwort auch bestätigen.</source>
         <target>Sie müssen Ihr Passwort auch bestätigen.</target>
       </trans-unit>
+      <trans-unit id="J8iBMAx" resname="Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!">
+        <source>Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</source>
+        <target>_Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</target>
+      </trans-unit>
+      <trans-unit id="t2sFS7m" resname="Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!">
+        <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
+        <target>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

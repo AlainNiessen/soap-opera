@@ -10,11 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 
 class GoogleAuthenticator extends SocialAuthenticator
@@ -23,14 +24,16 @@ class GoogleAuthenticator extends SocialAuthenticator
     private $em;
     private $router;
     private $flash;
+    private $translator;
  
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, RouterInterface $router, FlashBagInterface $flash)
+    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, RouterInterface $router, FlashBagInterface $flash, TranslatorInterface $translator)
     {
         $this->clientRegistry = $clientRegistry;
         $this->em = $em;
         $this->router = $router;
         $this->flash = $flash;
+        $this->translator = $translator;
     }
 
     public function supports(Request $request)
@@ -80,14 +83,18 @@ class GoogleAuthenticator extends SocialAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        $this->flash->add('success', 'Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!');
+        $message = $this -> translator -> trans('Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!');
+
+        $this->flash->add('success', $message);
            
         return new RedirectResponse($this->router->generate('home'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $this->flash->add('notice', 'Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!');
+        $message = $this -> translator -> trans('Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!');
+        
+        $this->flash->add('notice', $message);
            
         return new RedirectResponse($this->router->generate('registration'));
     }

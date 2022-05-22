@@ -245,6 +245,14 @@
         <source>menu.ing_article</source>
         <target>__menu.ing_article</target>
       </trans-unit>
+      <trans-unit id="J8iBMAx" resname="Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!">
+        <source>Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</source>
+        <target>Vous vous êtes connecté avec succès avec votre compte Google !</target>
+      </trans-unit>
+      <trans-unit id="t2sFS7m" resname="Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!">
+        <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
+        <target>Malheureusement, un compte avec cet e-mail n'existe pas. Afin de pouvoir vous connecter avec le compte Google, nous vous demandons de créer d'abord un compte avec la même adresse e-mail !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
