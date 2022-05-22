@@ -119,11 +119,11 @@
       </trans-unit>
       <trans-unit id="zMWaza0" resname="menu.typ">
         <source>menu.typ</source>
-        <target>Types</target>
+        <target>Types Événement</target>
       </trans-unit>
       <trans-unit id="O41vRil" resname="menu.tra_typ">
         <source>menu.tra_typ</source>
-        <target>TRAD-Type</target>
+        <target>TRAD-Type Événement</target>
       </trans-unit>
       <trans-unit id="JKmIIwO" resname="menu.comptabilite">
         <source>menu.comptabilite</source>
@@ -239,7 +239,7 @@
       </trans-unit>
       <trans-unit id="AtuxPb5" resname="option.commentaire_dateCommentaire">
         <source>option.commentaire_dateCommentaire</source>
-        <target>Date</target>
+        <target>Date de commentaire</target>
       </trans-unit>
       <trans-unit id="Otv69lL" resname="option.commentaire_commentaireInfructueux">
         <source>option.commentaire_commentaireInfructueux</source>
@@ -415,7 +415,7 @@
       </trans-unit>
       <trans-unit id="BOZyJpV" resname="option.partenaire_nom">
         <source>option.partenaire_nom</source>
-        <target>Nom</target>
+        <target>Nom partenaire</target>
       </trans-unit>
       <trans-unit id="tysOZyz" resname="option.partenaire_adresse">
         <source>option.partenaire_adresse</source>

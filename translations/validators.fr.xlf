@@ -629,6 +629,14 @@
         <source>promotion.dateEnd.greaterThan</source>
         <target>La date de fin de la promotion doit être postérieure à la date de début de la promotion !</target>
       </trans-unit>
+      <trans-unit id="s1NTnNy" resname="formResetPassword.passwordInvalidIdent">
+        <source>formResetPassword.passwordInvalidIdent</source>
+        <target>Les deux mots de passe doivent être identiques!</target>
+      </trans-unit>
+      <trans-unit id="aWVhu4h" resname="formInscription.passwordInvalidIdent">
+        <source>formInscription.passwordInvalidIdent</source>
+        <target>Les deux mots de passe doivent être identiques!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

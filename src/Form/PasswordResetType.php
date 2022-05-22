@@ -19,7 +19,7 @@ class PasswordResetType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type'=>PasswordType::class,
                 // message d'erreur au cas où le mot de passe et la confirmation ne sont pas identiques
-                'invalid_message'=> new TranslatableMessage('formResetPassword.passwordInvalidIdent', [], 'Form'),
+                'invalid_message'=> 'formResetPassword.passwordInvalidIdent',
                 'label'=> new TranslatableMessage('formResetPassword.password', [], 'Form'),
                 'required'=>true,
                 // champs mot de passe

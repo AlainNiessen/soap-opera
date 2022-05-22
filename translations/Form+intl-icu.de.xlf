@@ -9,10 +9,6 @@
         <source>formInscription.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="aWVhu4h" resname="formInscription.passwordInvalidIdent">
-        <source>formInscription.passwordInvalidIdent</source>
-        <target>Beide Passwörter müssen identisch sein!</target>
-      </trans-unit>
       <trans-unit id="pL.qdeF" resname="formInscription.password">
         <source>formInscription.password</source>
         <target>Passwort</target>
@@ -48,10 +44,6 @@
       <trans-unit id="6VyUzXQ" resname="formInscription.langue">
         <source>formInscription.langue</source>
         <target>Sprache</target>
-      </trans-unit>
-      <trans-unit id="s1NTnNy" resname="formResetPassword.passwordInvalidIdent">
-        <source>formResetPassword.passwordInvalidIdent</source>
-        <target>Beide Passwörter müssen identisch sein!</target>
       </trans-unit>
       <trans-unit id="2CjKRuA" resname="formResetPassword.password">
         <source>formResetPassword.password</source>

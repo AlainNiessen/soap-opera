@@ -1,61 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="de" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="de" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="rD_F_fs" resname="formInscription.email">
-        <source>formInscription.email</source>
-        <target>Email</target>
+      <trans-unit id="rp63Rro" resname="formAdresse.rue">
+        <source>formAdresse.rue</source>
+        <target>Street</target>
       </trans-unit>
-      <trans-unit id="pL.qdeF" resname="formInscription.password">
-        <source>formInscription.password</source>
-        <target>Mot de passe</target>
+      <trans-unit id="H3Poo_u" resname="formAdresse.rueNumero">
+        <source>formAdresse.rueNumero</source>
+        <target>House number</target>
       </trans-unit>
-      <trans-unit id="iRaZbbg" resname="formInscription.passwordLabel">
-        <source>formInscription.passwordLabel</source>
-        <target>Mot de passe</target>
+      <trans-unit id="Bzv9Mnr" resname="formAdresse.codePostal">
+        <source>formAdresse.codePostal</source>
+        <target>Postal code</target>
       </trans-unit>
-      <trans-unit id="Qv7mBEj" resname="formInscription.passwordConfirmation">
-        <source>formInscription.passwordConfirmation</source>
-        <target>Veuillez ressaisir le mot de passe!</target>
+      <trans-unit id="W5UKDA3" resname="formAdresse.ville">
+        <source>formAdresse.ville</source>
+        <target>City</target>
       </trans-unit>
-      <trans-unit id="z7w4Z6K" resname="formInscription.nom">
-        <source>formInscription.nom</source>
-        <target>Nom</target>
-      </trans-unit>
-      <trans-unit id="i_moZjh" resname="formInscription.prenom">
-        <source>formInscription.prenom</source>
-        <target>Prénom</target>
-      </trans-unit>
-      <trans-unit id="s89YWMu" resname="formInscription.dateDeNaissance">
-        <source>formInscription.dateDeNaissance</source>
-        <target>Date de naissance</target>
-      </trans-unit>
-      <trans-unit id="5gL_Kp9" resname="formInscription.adresseResi">
-        <source>formInscription.adresseResi</source>
-        <target>Adresse résidentielle</target>
-      </trans-unit>
-      <trans-unit id="0zxCQE2" resname="formInscription.adresseLivraison">
-        <source>formInscription.adresseLivraison</source>
-        <target>Adresse de livraison</target>
-      </trans-unit>
-      <trans-unit id="6VyUzXQ" resname="formInscription.langue">
-        <source>formInscription.langue</source>
-        <target>Langue</target>
-      </trans-unit>
-      <trans-unit id="2CjKRuA" resname="formResetPassword.password">
-        <source>formResetPassword.password</source>
-        <target>Mot de passe</target>
-      </trans-unit>
-      <trans-unit id="EvMUWO9" resname="formResetPassword.passwordLabel">
-        <source>formResetPassword.passwordLabel</source>
-        <target>Mot de passe</target>
-      </trans-unit>
-      <trans-unit id="QdvoVk_" resname="formResetPassword.passwordConfirmation">
-        <source>formResetPassword.passwordConfirmation</source>
-        <target>Veuillez ressaisir le mot de passe!</target>
+      <trans-unit id="YAUFofN" resname="formAdresse.pays">
+        <source>formAdresse.pays</source>
+        <target>Country</target>
       </trans-unit>
       <trans-unit id="3KOyVj9" resname="formConfirmationEmail.email">
         <source>formConfirmationEmail.email</source>
@@ -63,27 +31,59 @@
       </trans-unit>
       <trans-unit id="olJ8w7_" resname="form.boutonConfirmation">
         <source>form.boutonConfirmation</source>
-        <target>Confirmer</target>
+        <target>Confirm</target>
       </trans-unit>
-      <trans-unit id="rp63Rro" resname="formAdresse.rue">
-        <source>formAdresse.rue</source>
-        <target>Rue</target>
+      <trans-unit id="rD_F_fs" resname="formInscription.email">
+        <source>formInscription.email</source>
+        <target>Email</target>
       </trans-unit>
-      <trans-unit id="H3Poo_u" resname="formAdresse.rueNumero">
-        <source>formAdresse.rueNumero</source>
-        <target>Numéro de rue</target>
+      <trans-unit id="pL.qdeF" resname="formInscription.password">
+        <source>formInscription.password</source>
+        <target>Password</target>
       </trans-unit>
-      <trans-unit id="Bzv9Mnr" resname="formAdresse.codePostal">
-        <source>formAdresse.codePostal</source>
-        <target>Code postal</target>
+      <trans-unit id="iRaZbbg" resname="formInscription.passwordLabel">
+        <source>formInscription.passwordLabel</source>
+        <target>Password</target>
       </trans-unit>
-      <trans-unit id="W5UKDA3" resname="formAdresse.ville">
-        <source>formAdresse.ville</source>
-        <target>Ville</target>
+      <trans-unit id="Qv7mBEj" resname="formInscription.passwordConfirmation">
+        <source>formInscription.passwordConfirmation</source>
+        <target>Please re-enter the password!</target>
       </trans-unit>
-      <trans-unit id="YAUFofN" resname="formAdresse.pays">
-        <source>formAdresse.pays</source>
-        <target>Pays</target>
+      <trans-unit id="z7w4Z6K" resname="formInscription.nom">
+        <source>formInscription.nom</source>
+        <target>Last name</target>
+      </trans-unit>
+      <trans-unit id="i_moZjh" resname="formInscription.prenom">
+        <source>formInscription.prenom</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id="s89YWMu" resname="formInscription.dateDeNaissance">
+        <source>formInscription.dateDeNaissance</source>
+        <target>Date of birth</target>
+      </trans-unit>
+      <trans-unit id="5gL_Kp9" resname="formInscription.adresseResi">
+        <source>formInscription.adresseResi</source>
+        <target>Residential address</target>
+      </trans-unit>
+      <trans-unit id="0zxCQE2" resname="formInscription.adresseLivraison">
+        <source>formInscription.adresseLivraison</source>
+        <target>Shipping address</target>
+      </trans-unit>
+      <trans-unit id="6VyUzXQ" resname="formInscription.langue">
+        <source>formInscription.langue</source>
+        <target>Language</target>
+      </trans-unit>
+      <trans-unit id="2CjKRuA" resname="formResetPassword.password">
+        <source>formResetPassword.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="EvMUWO9" resname="formResetPassword.passwordLabel">
+        <source>formResetPassword.passwordLabel</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="QdvoVk_" resname="formResetPassword.passwordConfirmation">
+        <source>formResetPassword.passwordConfirmation</source>
+        <target>Please re-enter the password!</target>
       </trans-unit>
     </body>
   </file>

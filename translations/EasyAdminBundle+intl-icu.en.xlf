@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="de" target-language="de" datatype="plaintext" original="file.ext">
+  <file source-language="de" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -9,201 +9,57 @@
         <source>label.form.empty_value</source>
         <target>__label.form.empty_value</target>
       </trans-unit>
-      <trans-unit id="UoOv6mx" resname="menu.homepage">
-        <source>menu.homepage</source>
-        <target>Zurück zur Webseite</target>
-      </trans-unit>
-      <trans-unit id=".ItM5Sb" resname="menu.utilisateur">
-        <source>menu.utilisateur</source>
-        <target>Nutzer</target>
-      </trans-unit>
-      <trans-unit id="NEppOCi" resname="menu.partenaire">
-        <source>menu.partenaire</source>
-        <target>Partner</target>
-      </trans-unit>
-      <trans-unit id="hQgNJSE" resname="menu.tra_partenaire">
-        <source>menu.tra_partenaire</source>
-        <target>ÜB-Partner</target>
-      </trans-unit>
-      <trans-unit id="LcfkpeT" resname="menu.adresse">
-        <source>menu.adresse</source>
-        <target>Adressen</target>
-      </trans-unit>
-      <trans-unit id="B0YnzSt" resname="menu.commentaire">
-        <source>menu.commentaire</source>
-        <target>Kommentare</target>
-      </trans-unit>
-      <trans-unit id="ltE1J1U" resname="menu.newsletter">
-        <source>menu.newsletter</source>
-        <target>Newsletter</target>
-      </trans-unit>
-      <trans-unit id="3ujzjzj" resname="menu.tra_newsletter">
-        <source>menu.tra_newsletter</source>
-        <target>ÜB-Newsletter</target>
-      </trans-unit>
-      <trans-unit id="ZVa1hBx" resname="menu.langue">
-        <source>menu.langue</source>
-        <target>Sprachen</target>
-      </trans-unit>
-      <trans-unit id="h90aOD9" resname="menu.article">
-        <source>menu.article</source>
-        <target>Artikel</target>
-      </trans-unit>
-      <trans-unit id="EeU8sTS" resname="menu.tra_article">
-        <source>menu.tra_article</source>
-        <target>ÜB-Artikel</target>
-      </trans-unit>
-      <trans-unit id="_Yx.7An" resname="menu.categorie">
-        <source>menu.categorie</source>
-        <target>Kategorien</target>
-      </trans-unit>
-      <trans-unit id="Zvs.3or" resname="menu.tra_categorie">
-        <source>menu.tra_categorie</source>
-        <target>ÜB-Kategorie</target>
-      </trans-unit>
-      <trans-unit id="Hl6UZry" resname="menu.promotion">
-        <source>menu.promotion</source>
-        <target>Sonderangebote</target>
-      </trans-unit>
-      <trans-unit id="in9vlgd" resname="menu.tra_promotion">
-        <source>menu.tra_promotion</source>
-        <target>ÜB-Sonderangebot</target>
-      </trans-unit>
-      <trans-unit id="1NAWmAf" resname="menu.beurre">
-        <source>menu.beurre</source>
-        <target>Butter</target>
-      </trans-unit>
-      <trans-unit id="T0Y6fMt" resname="menu.tra_beurre">
-        <source>menu.tra_beurre</source>
-        <target>ÜB-Butter</target>
-      </trans-unit>
-      <trans-unit id="4os051M" resname="menu.huile">
-        <source>menu.huile</source>
-        <target>Öle</target>
-      </trans-unit>
-      <trans-unit id="MoaRx55" resname="menu.tra_huile">
-        <source>menu.tra_huile</source>
-        <target>ÜB-Öl</target>
-      </trans-unit>
-      <trans-unit id="UgO0IIe" resname="menu.huile_ess">
-        <source>menu.huile_ess</source>
-        <target>Äth-Öle</target>
-      </trans-unit>
-      <trans-unit id="4iuz4gu" resname="menu.tra_huile_ess">
-        <source>menu.tra_huile_ess</source>
-        <target>ÜB-Äth-Öl</target>
-      </trans-unit>
-      <trans-unit id="PdHQCGM" resname="menu.odeur">
-        <source>menu.odeur</source>
-        <target>Düfte</target>
-      </trans-unit>
-      <trans-unit id="VVxY3A7" resname="menu.tra_odeur">
-        <source>menu.tra_odeur</source>
-        <target>ÜB-Duft</target>
-      </trans-unit>
-      <trans-unit id="yznIQTn" resname="menu.ingredient">
-        <source>menu.ingredient</source>
-        <target>Sonstiges</target>
-      </trans-unit>
-      <trans-unit id="lKSDDMt" resname="menu.tra_ingredient">
-        <source>menu.tra_ingredient</source>
-        <target>ÜB-Sonstiges</target>
-      </trans-unit>
-      <trans-unit id="NFs1_eO" resname="menu.event">
-        <source>menu.event</source>
-        <target>Verantstaltungen</target>
-      </trans-unit>
-      <trans-unit id="qoQng4T" resname="menu.tra_event">
-        <source>menu.tra_event</source>
-        <target>ÜB-Veranstaltung</target>
-      </trans-unit>
-      <trans-unit id="zMWaza0" resname="menu.typ">
-        <source>menu.typ</source>
-        <target>Veranstaltungstypen</target>
-      </trans-unit>
-      <trans-unit id="O41vRil" resname="menu.tra_typ">
-        <source>menu.tra_typ</source>
-        <target>ÜB-Veranstaltungstyp</target>
-      </trans-unit>
-      <trans-unit id="JKmIIwO" resname="menu.comptabilite">
-        <source>menu.comptabilite</source>
-        <target>Buchhaltung</target>
-      </trans-unit>
-      <trans-unit id="mF3CLVb" resname="menu.detail_commande">
-        <source>menu.detail_commande</source>
-        <target>Bestellungen</target>
-      </trans-unit>
-      <trans-unit id="5YG35.I" resname="menu.reservation">
-        <source>menu.reservation</source>
-        <target>Reservierungen</target>
-      </trans-unit>
-      <trans-unit id="zB1B.9a" resname="menu.facture">
-        <source>menu.facture</source>
-        <target>Rechnungen</target>
-      </trans-unit>
-      <trans-unit id="F26kRao" resname="menu.image">
-        <source>menu.image</source>
-        <target>Fotos</target>
-      </trans-unit>
-      <trans-unit id="2dVVN6k" resname="menu.pos_image">
-        <source>menu.pos_image</source>
-        <target>Positionen Foto</target>
-      </trans-unit>
-      <trans-unit id="M_qpeIP" resname="menu.ing_article">
-        <source>menu.ing_article</source>
-        <target>Zutaten Artikel</target>
-      </trans-unit>
       <trans-unit id="pyHye.B" resname="option.adresse_rue">
         <source>option.adresse_rue</source>
-        <target>Straße</target>
+        <target>Street</target>
       </trans-unit>
       <trans-unit id="AYva6Kl" resname="option.adresse_numero_rue">
         <source>option.adresse_numero_rue</source>
-        <target>Hausnummer</target>
+        <target>House Number</target>
       </trans-unit>
       <trans-unit id="whC1t8U" resname="option.adresse_code_postal">
         <source>option.adresse_code_postal</source>
-        <target>Postleitzahl</target>
+        <target>Postal Code</target>
       </trans-unit>
       <trans-unit id="LPRo02E" resname="option.adresse_ville">
         <source>option.adresse_ville</source>
-        <target>Stadt</target>
+        <target>City</target>
       </trans-unit>
       <trans-unit id="hJ0_tlX" resname="option.adresse_pays">
         <source>option.adresse_pays</source>
-        <target>Land</target>
+        <target>Country</target>
       </trans-unit>
       <trans-unit id="zbv1w2w" resname="option.article_nomBackend">
         <source>option.article_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="QdD_0Hc" resname="option.article_dateCreation">
         <source>option.article_dateCreation</source>
-        <target>Erstellungsdatum</target>
+        <target>Creation Date</target>
       </trans-unit>
       <trans-unit id="5ImHRvy" resname="option.article_montantHorsTva">
         <source>option.article_montantHorsTva</source>
-        <target>Betrag ohne MwSt</target>
+        <target>Amount excluding VAT</target>
       </trans-unit>
       <trans-unit id="_sTVkL6" resname="option.article_tauxTva">
         <source>option.article_tauxTva</source>
-        <target>MwSt-Satz</target>
+        <target>VAT rate</target>
       </trans-unit>
       <trans-unit id="pUGTEbC" resname="option.article_enAvant">
         <source>option.article_enAvant</source>
-        <target>Wird der Artikel angezeigt?</target>
+        <target>Is the article displayed?</target>
       </trans-unit>
       <trans-unit id="dlA0d4t" resname="option.article_nombreVentes">
         <source>option.article_nombreVentes</source>
-        <target>Anzahl Verkäufe</target>
+        <target>Number of sales</target>
       </trans-unit>
       <trans-unit id="lHqyh.w" resname="option.article_categorie">
         <source>option.article_categorie</source>
-        <target>Kategorie</target>
+        <target>Category</target>
       </trans-unit>
       <trans-unit id="k_XM.Fh" resname="option.article_odeur">
         <source>option.article_odeur</source>
-        <target>Duft</target>
+        <target>Scent</target>
       </trans-unit>
       <trans-unit id="ok2V_yl" resname="option.article_beurre">
         <source>option.article_beurre</source>
@@ -211,147 +67,291 @@
       </trans-unit>
       <trans-unit id="h8ygHVh" resname="option.article_huile">
         <source>option.article_huile</source>
-        <target>Öle</target>
+        <target>Oils</target>
       </trans-unit>
       <trans-unit id="n4QWOXQ" resname="option.article_huileEss">
         <source>option.article_huileEss</source>
-        <target>Ätherische Öle</target>
+        <target>Essential oils</target>
       </trans-unit>
       <trans-unit id="R9e081Q" resname="option.articleIng">
         <source>option.articleIng</source>
-        <target>Sonstige Zutaten</target>
+        <target>Other ingredients</target>
       </trans-unit>
       <trans-unit id="yM4rlAY" resname="option.beurre_nomBackend">
         <source>option.beurre_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="786.Cdi" resname="option.categorie_nomBackend">
         <source>option.categorie_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="GW_qnGw" resname="option.categorie_statutMenu">
         <source>option.categorie_statutMenu</source>
-        <target>Wird die Kategorie angezeigt?</target>
+        <target>Is the category displayed?</target>
       </trans-unit>
       <trans-unit id="ZgpItg8" resname="option.commentaire_contenu">
         <source>option.commentaire_contenu</source>
-        <target>Inhalt</target>
+        <target>Content</target>
       </trans-unit>
       <trans-unit id="AtuxPb5" resname="option.commentaire_dateCommentaire">
         <source>option.commentaire_dateCommentaire</source>
-        <target>Datum Kommentar</target>
+        <target>Date of comment</target>
       </trans-unit>
       <trans-unit id="Otv69lL" resname="option.commentaire_commentaireInfructueux">
         <source>option.commentaire_commentaireInfructueux</source>
-        <target>Wird der Kommentar blockiert?</target>
+        <target>Will the comment be blocked?</target>
       </trans-unit>
       <trans-unit id="AgL69hL" resname="option.commentaire_nombreEtoiles">
         <source>option.commentaire_nombreEtoiles</source>
-        <target>Bewertung</target>
+        <target>Valuation</target>
       </trans-unit>
       <trans-unit id="lRp_InU" resname="option.commentaire_article">
         <source>option.commentaire_article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="rAIO1No" resname="option.commentaire_utilisateur">
         <source>option.commentaire_utilisateur</source>
-        <target>Nutzer</target>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="UoOv6mx" resname="menu.homepage">
+        <source>menu.homepage</source>
+        <target>Back to website</target>
+      </trans-unit>
+      <trans-unit id=".ItM5Sb" resname="menu.utilisateur">
+        <source>menu.utilisateur</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="NEppOCi" resname="menu.partenaire">
+        <source>menu.partenaire</source>
+        <target>Partner</target>
+      </trans-unit>
+      <trans-unit id="hQgNJSE" resname="menu.tra_partenaire">
+        <source>menu.tra_partenaire</source>
+        <target>TRANS-Partner</target>
+      </trans-unit>
+      <trans-unit id="LcfkpeT" resname="menu.adresse">
+        <source>menu.adresse</source>
+        <target>Addresses</target>
+      </trans-unit>
+      <trans-unit id="B0YnzSt" resname="menu.commentaire">
+        <source>menu.commentaire</source>
+        <target>Comments</target>
+      </trans-unit>
+      <trans-unit id="ltE1J1U" resname="menu.newsletter">
+        <source>menu.newsletter</source>
+        <target>Newsletter</target>
+      </trans-unit>
+      <trans-unit id="3ujzjzj" resname="menu.tra_newsletter">
+        <source>menu.tra_newsletter</source>
+        <target>TRANS-Newsletter</target>
+      </trans-unit>
+      <trans-unit id="ZVa1hBx" resname="menu.langue">
+        <source>menu.langue</source>
+        <target>Languages</target>
+      </trans-unit>
+      <trans-unit id="h90aOD9" resname="menu.article">
+        <source>menu.article</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="EeU8sTS" resname="menu.tra_article">
+        <source>menu.tra_article</source>
+        <target>TRANS-Articles</target>
+      </trans-unit>
+      <trans-unit id="_Yx.7An" resname="menu.categorie">
+        <source>menu.categorie</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="Zvs.3or" resname="menu.tra_categorie">
+        <source>menu.tra_categorie</source>
+        <target>TRANS-Categories</target>
+      </trans-unit>
+      <trans-unit id="Hl6UZry" resname="menu.promotion">
+        <source>menu.promotion</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="in9vlgd" resname="menu.tra_promotion">
+        <source>menu.tra_promotion</source>
+        <target>TRANS-Promotions</target>
+      </trans-unit>
+      <trans-unit id="M_qpeIP" resname="menu.ing_article">
+        <source>menu.ing_article</source>
+        <target>Ingredients Article</target>
+      </trans-unit>
+      <trans-unit id="1NAWmAf" resname="menu.beurre">
+        <source>menu.beurre</source>
+        <target>Butter</target>
+      </trans-unit>
+      <trans-unit id="T0Y6fMt" resname="menu.tra_beurre">
+        <source>menu.tra_beurre</source>
+        <target>TRANS-Butter</target>
+      </trans-unit>
+      <trans-unit id="4os051M" resname="menu.huile">
+        <source>menu.huile</source>
+        <target>Oils</target>
+      </trans-unit>
+      <trans-unit id="MoaRx55" resname="menu.tra_huile">
+        <source>menu.tra_huile</source>
+        <target>TRANS-Oil</target>
+      </trans-unit>
+      <trans-unit id="UgO0IIe" resname="menu.huile_ess">
+        <source>menu.huile_ess</source>
+        <target>Essential oils</target>
+      </trans-unit>
+      <trans-unit id="4iuz4gu" resname="menu.tra_huile_ess">
+        <source>menu.tra_huile_ess</source>
+        <target>TRANS-Essential oil</target>
+      </trans-unit>
+      <trans-unit id="PdHQCGM" resname="menu.odeur">
+        <source>menu.odeur</source>
+        <target>Scents</target>
+      </trans-unit>
+      <trans-unit id="VVxY3A7" resname="menu.tra_odeur">
+        <source>menu.tra_odeur</source>
+        <target>TRANS-Scent</target>
+      </trans-unit>
+      <trans-unit id="yznIQTn" resname="menu.ingredient">
+        <source>menu.ingredient</source>
+        <target>Other ingredients</target>
+      </trans-unit>
+      <trans-unit id="lKSDDMt" resname="menu.tra_ingredient">
+        <source>menu.tra_ingredient</source>
+        <target>TRANS-Other ingredient</target>
+      </trans-unit>
+      <trans-unit id="NFs1_eO" resname="menu.event">
+        <source>menu.event</source>
+        <target>Events</target>
+      </trans-unit>
+      <trans-unit id="qoQng4T" resname="menu.tra_event">
+        <source>menu.tra_event</source>
+        <target>TRANS-Event</target>
+      </trans-unit>
+      <trans-unit id="zMWaza0" resname="menu.typ">
+        <source>menu.typ</source>
+        <target>Types of event</target>
+      </trans-unit>
+      <trans-unit id="O41vRil" resname="menu.tra_typ">
+        <source>menu.tra_typ</source>
+        <target>TRANS-Type of event</target>
+      </trans-unit>
+      <trans-unit id="JKmIIwO" resname="menu.comptabilite">
+        <source>menu.comptabilite</source>
+        <target>Accounting</target>
+      </trans-unit>
+      <trans-unit id="mF3CLVb" resname="menu.detail_commande">
+        <source>menu.detail_commande</source>
+        <target>Orders</target>
+      </trans-unit>
+      <trans-unit id="5YG35.I" resname="menu.reservation">
+        <source>menu.reservation</source>
+        <target>Reservations</target>
+      </trans-unit>
+      <trans-unit id="zB1B.9a" resname="menu.facture">
+        <source>menu.facture</source>
+        <target>Invoices</target>
+      </trans-unit>
+      <trans-unit id="F26kRao" resname="menu.image">
+        <source>menu.image</source>
+        <target>Images</target>
+      </trans-unit>
+      <trans-unit id="2dVVN6k" resname="menu.pos_image">
+        <source>menu.pos_image</source>
+        <target>Positions Image</target>
       </trans-unit>
       <trans-unit id="NhXdRhU" resname="option.commande_quantite">
         <source>option.commande_quantite</source>
-        <target>Anzahl Artikel</target>
+        <target>Number of articles</target>
       </trans-unit>
       <trans-unit id="9CB9cFy" resname="option.commande_montantTotalHorsTva">
         <source>option.commande_montantTotalHorsTva</source>
-        <target>Gesamtbetrag ohne MwSt</target>
+        <target>Total amount excluding VAT</target>
       </trans-unit>
       <trans-unit id="XcMH3Vo" resname="option.commande_montantTva">
         <source>option.commande_montantTva</source>
-        <target>Betrag MwSt</target>
+        <target>Amount VAT</target>
       </trans-unit>
       <trans-unit id="Bi0fx3o" resname="option.commande_montantTotal">
         <source>option.commande_montantTotal</source>
-        <target>Gesamtbetrag</target>
+        <target>Total amount</target>
       </trans-unit>
       <trans-unit id="lY9EKRO" resname="option.commande_article">
         <source>option.commande_article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="69LpHRI" resname="option.commande_facture">
         <source>option.commande_facture</source>
-        <target>Rechnung</target>
+        <target>Invoice</target>
       </trans-unit>
       <trans-unit id="EcmVmIZ" resname="option.event_nomBackend">
         <source>option.event_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="e2TvWoZ" resname="option.event_dateAffichageStart">
         <source>option.event_dateAffichageStart</source>
-        <target>Start Anzeige Webseite</target>
+        <target>Start display website</target>
       </trans-unit>
       <trans-unit id="dgS2qoL" resname="option.event_dateAffichageEnd">
         <source>option.event_dateAffichageEnd</source>
-        <target>Ende Anzeige Webseite</target>
+        <target>End display website</target>
       </trans-unit>
       <trans-unit id="Ul6_mAf" resname="option.event_dateStart">
         <source>option.event_dateStart</source>
-        <target>Start Veranstaltung</target>
+        <target>Start Event</target>
       </trans-unit>
       <trans-unit id="nL.AcvN" resname="option.event_dateEnd">
         <source>option.event_dateEnd</source>
-        <target>Ende Veranstaltung</target>
+        <target>End Event</target>
       </trans-unit>
       <trans-unit id="gDk6xZh" resname="option.event_montantHorsTva">
         <source>option.event_montantHorsTva</source>
-        <target>Betrag ohne MwSt</target>
+        <target>Amount excluding VAT</target>
       </trans-unit>
       <trans-unit id="UzgJaR9" resname="option.event_tauxTva">
         <source>option.event_tauxTva</source>
-        <target>MwSt-Satz</target>
+        <target>VAT rate</target>
       </trans-unit>
       <trans-unit id="Ez9Q5F3" resname="option.event_nombreLimit">
         <source>option.event_nombreLimit</source>
-        <target>Maximale Teilnehmeranzahl</target>
+        <target>Maximum number of participants</target>
       </trans-unit>
       <trans-unit id="DIkfj21" resname="option.event_typeEvent">
         <source>option.event_typeEvent</source>
-        <target>Veranstaltungstyp</target>
+        <target>Type of event</target>
       </trans-unit>
       <trans-unit id="SgyjD0v" resname="option.facture_dateFacture">
         <source>option.facture_dateFacture</source>
-        <target>Datum Rechnung</target>
+        <target>Date Invoice</target>
       </trans-unit>
       <trans-unit id="I7fL0KO" resname="option.facture_statutPaiement">
         <source>option.facture_statutPaiement</source>
-        <target>Betrag beglichen?</target>
+        <target>Amount paid?</target>
       </trans-unit>
       <trans-unit id="65FQnCb" resname="option.facture_montantTotalHorsTva">
         <source>option.facture_montantTotalHorsTva</source>
-        <target>Gesamtbetrag ohne MwSt</target>
+        <target>Total amount excluding VAT</target>
       </trans-unit>
       <trans-unit id="i6PcVR2" resname="option.facture_montantTotalTva">
         <source>option.facture_montantTotalTva</source>
-        <target>Gesamtbetrag MwSt</target>
+        <target>Total VAT</target>
       </trans-unit>
       <trans-unit id="WiYZnrq" resname="option.facture_montantTotal">
         <source>option.facture_montantTotal</source>
-        <target>Gesamtbetrag</target>
+        <target>Total amount</target>
       </trans-unit>
       <trans-unit id="QziOuRu" resname="option.facture_utilisateur">
         <source>option.facture_utilisateur</source>
-        <target>Nutzer</target>
+        <target>User</target>
       </trans-unit>
       <trans-unit id="7lzR5l4" resname="option.huile_nomBackend">
         <source>option.huile_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="71prlf4" resname="option.huileEss_nomBackend">
         <source>option.huileEss_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="ZSR0g3g" resname="option.image_ajout">
         <source>option.image_ajout</source>
-        <target>Bild hinzufügen</target>
+        <target>Add image</target>
       </trans-unit>
       <trans-unit id="b4vEnUY" resname="option.image_nom">
         <source>option.image_nom</source>
@@ -359,27 +359,27 @@
       </trans-unit>
       <trans-unit id="qAimoZ0" resname="option.image_layoutWebsite">
         <source>option.image_layoutWebsite</source>
-        <target>Handelt es sich um ein Bild für die Webseite?</target>
+        <target>Is it an image for the website?</target>
       </trans-unit>
       <trans-unit id="D.6zk67" resname="option.image_positionImage">
         <source>option.image_positionImage</source>
-        <target>Position Bild auf Webseite</target>
+        <target>Position image on website</target>
       </trans-unit>
       <trans-unit id="UaD1etC" resname="option.image_categorie">
         <source>option.image_categorie</source>
-        <target>Kategorie</target>
+        <target>Category</target>
       </trans-unit>
       <trans-unit id="KzdpnaD" resname="option.image_article">
         <source>option.image_article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="jZx4n4K" resname="option.image_coverListArticle">
         <source>option.image_coverListArticle</source>
-        <target>Handelt es sich um ein Bild für die Artikelliste?</target>
+        <target>Is it an image for the article listing?</target>
       </trans-unit>
       <trans-unit id="GqgMhAK" resname="option.image_coverDetailArticle">
         <source>option.image_coverDetailArticle</source>
-        <target>Handelt es sich um Bild für das Artikeldetail?</target>
+        <target>Is it picture for article detail?</target>
       </trans-unit>
       <trans-unit id="d9Etqdc" resname="option.image_partenaire">
         <source>option.image_partenaire</source>
@@ -387,99 +387,99 @@
       </trans-unit>
       <trans-unit id="1lITLHV" resname="option.image_event">
         <source>option.image_event</source>
-        <target>Veranstaltung</target>
+        <target>Event</target>
       </trans-unit>
       <trans-unit id="PRX2mTO" resname="option.ingredients_nomBackend">
         <source>option.ingredients_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="f4cvo7C" resname="option.langue_langue">
         <source>option.langue_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="Z_Jnm9v" resname="option.langue_codeLangue">
         <source>option.langue_codeLangue</source>
-        <target>Sprachenkürzel</target>
+        <target>Language code</target>
       </trans-unit>
       <trans-unit id="yOfeLay" resname="option.newsletter_nomBackend">
         <source>option.newsletter_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="_nkBXNQ" resname="option.newsletter_dateNewsletter">
         <source>option.newsletter_dateNewsletter</source>
-        <target>Datum Newsletter</target>
+        <target>Date Newsletter</target>
       </trans-unit>
       <trans-unit id="oKGhV8B" resname="option.odeur_nomBackend">
         <source>option.odeur_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="BOZyJpV" resname="option.partenaire_nom">
         <source>option.partenaire_nom</source>
-        <target>Name Partner</target>
+        <target>Name partner</target>
       </trans-unit>
       <trans-unit id="tysOZyz" resname="option.partenaire_adresse">
         <source>option.partenaire_adresse</source>
-        <target>Adresse</target>
+        <target>Address</target>
       </trans-unit>
       <trans-unit id="qhMCw.4" resname="option.positionImage_position">
         <source>option.positionImage_position</source>
-        <target>Bezeichnung Position</target>
+        <target>Designation position</target>
       </trans-unit>
       <trans-unit id="YLGzNn1" resname="option.promotion_nomBackend">
         <source>option.promotion_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="yac1XMs" resname="option.promotion_dateAffichageStart">
         <source>option.promotion_dateAffichageStart</source>
-        <target>Start Anzeige Webseite</target>
+        <target>Start display website</target>
       </trans-unit>
       <trans-unit id="biTXjFi" resname="option.promotion_dateAffichageEnd">
         <source>option.promotion_dateAffichageEnd</source>
-        <target>Ende Anzeige Webseite</target>
+        <target>End display website</target>
       </trans-unit>
       <trans-unit id="rvWVESq" resname="option.promotion_dateStart">
         <source>option.promotion_dateStart</source>
-        <target>Start Sonderangebot</target>
+        <target>Start promotion</target>
       </trans-unit>
       <trans-unit id="B_B2ZKS" resname="option.promotion_dateEnd">
         <source>option.promotion_dateEnd</source>
-        <target>Ende Sonderangebot</target>
+        <target>End promotion</target>
       </trans-unit>
       <trans-unit id="1Lfc8hR" resname="option.promotion_pourcentage">
         <source>option.promotion_pourcentage</source>
-        <target>Ermässigung</target>
+        <target>Discount</target>
       </trans-unit>
       <trans-unit id="YpT3FaM" resname="option.promotion_article">
         <source>option.promotion_article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="veRFTG_" resname="option.promotion_categorie">
         <source>option.promotion_categorie</source>
-        <target>Kategorie</target>
+        <target>Category</target>
       </trans-unit>
       <trans-unit id="_C3kZ.x" resname="option.reservation_dateReservation">
         <source>option.reservation_dateReservation</source>
-        <target>Datum Reservierung</target>
+        <target>Date reservation</target>
       </trans-unit>
       <trans-unit id="UZZ0H9d" resname="option.reservation_montantTotalHorsTva">
         <source>option.reservation_montantTotalHorsTva</source>
-        <target>Gesamtbetrag ohne MwSt</target>
+        <target>Total amount excluding VAT</target>
       </trans-unit>
       <trans-unit id="oJGXZq3" resname="option.reservation_montantTva">
         <source>option.reservation_montantTva</source>
-        <target>Betrag MwSt</target>
+        <target>Amount VAT</target>
       </trans-unit>
       <trans-unit id="AFftfMt" resname="option.reservation_montantTotal">
         <source>option.reservation_montantTotal</source>
-        <target>Gesamtbetrag</target>
+        <target>Total amount</target>
       </trans-unit>
       <trans-unit id="H4E_Vpw" resname="option.reservation_event">
         <source>option.reservation_event</source>
-        <target>Veranstaltung</target>
+        <target>Event</target>
       </trans-unit>
       <trans-unit id="S9F0GlJ" resname="option.reservation_facture">
         <source>option.reservation_facture</source>
-        <target>Rechnung</target>
+        <target>Invoice</target>
       </trans-unit>
       <trans-unit id="8x8P2EO" resname="option.tradArticle_nom">
         <source>option.tradArticle_nom</source>
@@ -487,19 +487,19 @@
       </trans-unit>
       <trans-unit id="3RR_tGs" resname="option.tradArticle_description">
         <source>option.tradArticle_description</source>
-        <target>Beschreibung</target>
+        <target>Description</target>
       </trans-unit>
       <trans-unit id="j9KCyYC" resname="option.tradArticle_slogan">
         <source>option.tradArticle_slogan</source>
-        <target>Kurzbeschreibung</target>
+        <target>Short description</target>
       </trans-unit>
       <trans-unit id="lOaW4lk" resname="option.tradArticle_langue">
         <source>option.tradArticle_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="zOjBdrz" resname="option.tradArticle_article">
         <source>option.tradArticle_article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="Fb8qCPc" resname="option.tradBeurre_nom">
         <source>option.tradBeurre_nom</source>
@@ -507,7 +507,7 @@
       </trans-unit>
       <trans-unit id="Yyt5WG_" resname="option.tradBeurre_langue">
         <source>option.tradBeurre_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="8o8tzJr" resname="option.tradBeurre_beurre">
         <source>option.tradBeurre_beurre</source>
@@ -519,15 +519,15 @@
       </trans-unit>
       <trans-unit id="dtNqFth" resname="option.tradCategorie_description">
         <source>option.tradCategorie_description</source>
-        <target>_Beschreibung</target>
+        <target>Description</target>
       </trans-unit>
       <trans-unit id="oaFur8b" resname="option.tradcategorie_langue">
         <source>option.tradcategorie_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="kwN3RZo" resname="option.tradCategorie_categorie">
         <source>option.tradCategorie_categorie</source>
-        <target>Kategorie</target>
+        <target>Category</target>
       </trans-unit>
       <trans-unit id="B0U_kPr" resname="option.tradEvent_titre">
         <source>option.tradEvent_titre</source>
@@ -539,23 +539,23 @@
       </trans-unit>
       <trans-unit id="4whGkZ6" resname="option.tradEvent_documentPDF">
         <source>option.tradEvent_documentPDF</source>
-        <target>PDF anzeigen</target>
+        <target>Show PDF</target>
       </trans-unit>
       <trans-unit id="Y5XYMY6" resname="option.tradEvent_documentFile">
         <source>option.tradEvent_documentFile</source>
-        <target>PDF hinzufügen</target>
+        <target>Add PDF</target>
       </trans-unit>
       <trans-unit id="iuBcM5_" resname="option.tradEvent_downloadPDF">
         <source>option.tradEvent_downloadPDF</source>
-        <target>PDF anzeigen</target>
+        <target>Show PDF</target>
       </trans-unit>
       <trans-unit id=".YRALpd" resname="option.tradEvent_langue">
         <source>option.tradEvent_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="GEgLhZx" resname="option.tradEvent_event">
         <source>option.tradEvent_event</source>
-        <target>Veranstaltung</target>
+        <target>Event</target>
       </trans-unit>
       <trans-unit id="E21VSu." resname="option.tradHuile_nom">
         <source>option.tradHuile_nom</source>
@@ -563,11 +563,11 @@
       </trans-unit>
       <trans-unit id="Hh66sdH" resname="option.tradHuile_langue">
         <source>option.tradHuile_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="5aBhhds" resname="option.tradHuile_huile">
         <source>option.tradHuile_huile</source>
-        <target>öl</target>
+        <target>Oil</target>
       </trans-unit>
       <trans-unit id="Ma3vfXl" resname="option.tradHuileEss_nom">
         <source>option.tradHuileEss_nom</source>
@@ -575,11 +575,11 @@
       </trans-unit>
       <trans-unit id="_8g3ec_" resname="option.tradHuileEss_langue">
         <source>option.tradHuileEss_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="ZWxyCIP" resname="option.tradhuileEss_langue">
         <source>option.tradhuileEss_langue</source>
-        <target>Ätherisches Öl</target>
+        <target>Essential Oil</target>
       </trans-unit>
       <trans-unit id="YyOyI9X" resname="option.tradIng_nom">
         <source>option.tradIng_nom</source>
@@ -587,11 +587,11 @@
       </trans-unit>
       <trans-unit id="0PFwheY" resname="option.tradIng_langue">
         <source>option.tradIng_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="MIL9Ajp" resname="option.tradIng_ing">
         <source>option.tradIng_ing</source>
-        <target>Sonstige Zutat</target>
+        <target>Other ingredient</target>
       </trans-unit>
       <trans-unit id="YY5cdoP" resname="option.tradNewsletter_nom">
         <source>option.tradNewsletter_nom</source>
@@ -599,23 +599,23 @@
       </trans-unit>
       <trans-unit id="bvjrrC." resname="option.tradNewsletter_description">
         <source>option.tradNewsletter_description</source>
-        <target>Inhalt</target>
+        <target>Content</target>
       </trans-unit>
       <trans-unit id="Xjq4r8l" resname="option.tradNewsletter_documentPDF">
         <source>option.tradNewsletter_documentPDF</source>
-        <target>PDF anzeigen</target>
+        <target>Show PDF</target>
       </trans-unit>
       <trans-unit id="VrHVRu8" resname="option.tradNewsletter_documentFile">
         <source>option.tradNewsletter_documentFile</source>
-        <target>PDF hinzufügen</target>
+        <target>Add PDF</target>
       </trans-unit>
       <trans-unit id="mrZr7st" resname="option.tradNewsletter_download">
         <source>option.tradNewsletter_download</source>
-        <target>PDF anzeigen</target>
+        <target>Show PDF</target>
       </trans-unit>
       <trans-unit id="0zFVL3Y" resname="option.tradnewsletter_langue">
         <source>option.tradnewsletter_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="2Y4qBDU" resname="option.tradNewsletter_newsletter">
         <source>option.tradNewsletter_newsletter</source>
@@ -627,19 +627,19 @@
       </trans-unit>
       <trans-unit id="_oFzC2X" resname="option.tradOdeur_langue">
         <source>option.tradOdeur_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="mDugvjm" resname="option.tradOdeur_odeur">
         <source>option.tradOdeur_odeur</source>
-        <target>Duft</target>
+        <target>Scent</target>
       </trans-unit>
       <trans-unit id="0PsF4as" resname="option.tradPartenaire_description">
         <source>option.tradPartenaire_description</source>
-        <target>Beschreibung</target>
+        <target>Description</target>
       </trans-unit>
       <trans-unit id="syjjWX9" resname="option.tradPartenaire_langue">
         <source>option.tradPartenaire_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="0QsDM18" resname="option.tradPartenaire_partenaire">
         <source>option.tradPartenaire_partenaire</source>
@@ -647,19 +647,19 @@
       </trans-unit>
       <trans-unit id="t5FvLTf" resname="option.tradPromotion_titre">
         <source>option.tradPromotion_titre</source>
-        <target>_Name</target>
+        <target>Name</target>
       </trans-unit>
       <trans-unit id="yg3OI5I" resname="option.tradPromotion_description">
         <source>option.tradPromotion_description</source>
-        <target>Beschreibung</target>
+        <target>Description</target>
       </trans-unit>
       <trans-unit id="mI_XMrP" resname="option.tradPromotion_langue">
         <source>option.tradPromotion_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="WcOW9or" resname="option.tradPromotion_promotion">
         <source>option.tradPromotion_promotion</source>
-        <target>Ermässigung</target>
+        <target>Promotion</target>
       </trans-unit>
       <trans-unit id="C9cAEEr" resname="option.tradTypeEvent_nom">
         <source>option.tradTypeEvent_nom</source>
@@ -667,15 +667,15 @@
       </trans-unit>
       <trans-unit id="0Qg223M" resname="option.tradTypeEvent_langue">
         <source>option.tradTypeEvent_langue</source>
-        <target>Sprache</target>
+        <target>Languages</target>
       </trans-unit>
       <trans-unit id="qLEheod" resname="option.tradtypeEvent_typeEvent">
         <source>option.tradtypeEvent_typeEvent</source>
-        <target>Veranstaltungsart</target>
+        <target>Type of event</target>
       </trans-unit>
       <trans-unit id=".bRSibZ" resname="option.typeEvent_nomBackend">
         <source>option.typeEvent_nomBackend</source>
-        <target>Name für Adminbereich</target>
+        <target>Name for admin area</target>
       </trans-unit>
       <trans-unit id="cjR4c_n" resname="option.utilisateur_email">
         <source>option.utilisateur_email</source>
@@ -683,51 +683,51 @@
       </trans-unit>
       <trans-unit id="Ren4.Ih" resname="option.utilisateur_roles">
         <source>option.utilisateur_roles</source>
-        <target>Rollen</target>
+        <target>Roles</target>
       </trans-unit>
       <trans-unit id="9V.itym" resname="option.utilisateur_plainPassword">
         <source>option.utilisateur_plainPassword</source>
-        <target>Passwort</target>
+        <target>Password</target>
       </trans-unit>
       <trans-unit id="zlCrtRr" resname="option.utilisateur_nom">
         <source>option.utilisateur_nom</source>
-        <target>Nachname</target>
+        <target>Last name</target>
       </trans-unit>
       <trans-unit id="2oDHPh_" resname="option.utilisateur_prenom">
         <source>option.utilisateur_prenom</source>
-        <target>Vorname</target>
+        <target>First name</target>
       </trans-unit>
       <trans-unit id="6P23GJb" resname="option.utilisateur_dateNaissance">
         <source>option.utilisateur_dateNaissance</source>
-        <target>Geburtsdatum</target>
+        <target>Date of birth</target>
       </trans-unit>
       <trans-unit id="rT6gFz2" resname="option.utilisateur_dateInscription">
         <source>option.utilisateur_dateInscription</source>
-        <target>Einschreibungsdatum</target>
+        <target>Registration date</target>
       </trans-unit>
       <trans-unit id="voislvL" resname="option.utilisateur_inscriptionValide">
         <source>option.utilisateur_inscriptionValide</source>
-        <target>Einschreibebestätigung</target>
+        <target>Registration confirmation</target>
       </trans-unit>
       <trans-unit id="J1hAOwm" resname="option.utilisateur_langue">
         <source>option.utilisateur_langue</source>
-        <target>Sprache</target>
+        <target>Language</target>
       </trans-unit>
       <trans-unit id="uX07gG4" resname="option.utilisateur_adresseHome">
         <source>option.utilisateur_adresseHome</source>
-        <target>Wohnadresse</target>
+        <target>Residential address</target>
       </trans-unit>
       <trans-unit id="4t4QxZD" resname="option.utilisateur_adresseDeliver">
         <source>option.utilisateur_adresseDeliver</source>
-        <target>Lieferadresse</target>
+        <target>Shipping address</target>
       </trans-unit>
       <trans-unit id="eeXPIN4" resname="Adresse">
         <source>Adresse</source>
-        <target>Adresse</target>
+        <target>Address</target>
       </trans-unit>
       <trans-unit id="KdlJIlE" resname="Article">
         <source>Article</source>
-        <target>Artikel</target>
+        <target>Article</target>
       </trans-unit>
       <trans-unit id="35rbdh6" resname="Beurre">
         <source>Beurre</source>
@@ -735,111 +735,111 @@
       </trans-unit>
       <trans-unit id="GSQ6Rkl" resname="HuileEssentiel">
         <source>HuileEssentiel</source>
-        <target>Ätherisches Öle</target>
+        <target>Essential oils</target>
       </trans-unit>
       <trans-unit id="tEhL7xj" resname="Odeur">
         <source>Odeur</source>
-        <target>Düfte</target>
+        <target>Scents</target>
       </trans-unit>
       <trans-unit id="no8.wBR" resname="IngredientSupplementaire">
         <source>IngredientSupplementaire</source>
-        <target>Sonstige Zutaten</target>
+        <target>Other ingredients</target>
       </trans-unit>
       <trans-unit id="SNPoFla" resname="Commentaire">
         <source>Commentaire</source>
-        <target>Kommentare</target>
+        <target>Comments</target>
       </trans-unit>
       <trans-unit id="OXfTUpb" resname="Categorie">
         <source>Categorie</source>
-        <target>Kategorien</target>
+        <target>Categories</target>
       </trans-unit>
       <trans-unit id="l5LkA2D" resname="DetailCommandeArticle">
         <source>DetailCommandeArticle</source>
-        <target>Bestellungen</target>
+        <target>Orders</target>
       </trans-unit>
       <trans-unit id="Th9Jqci" resname="Event">
         <source>Event</source>
-        <target>Veranstaltungen</target>
+        <target>Events</target>
       </trans-unit>
       <trans-unit id="e6lvCKC" resname="Facture">
         <source>Facture</source>
-        <target>Rechnungen</target>
+        <target>Invoices</target>
       </trans-unit>
       <trans-unit id="GqTLC8y" resname="Image">
         <source>Image</source>
-        <target>Fotos</target>
+        <target>Images</target>
       </trans-unit>
       <trans-unit id="X2uqtNv" resname="Langue">
         <source>Langue</source>
-        <target>Sprachen</target>
+        <target>Languages</target>
       </trans-unit>
       <trans-unit id="HDML1Pn" resname="Partenaire">
         <source>Partenaire</source>
-        <target>Partner</target>
+        <target>Partners</target>
       </trans-unit>
       <trans-unit id="86DGV0l" resname="PositionImage">
         <source>PositionImage</source>
-        <target>Positionen Foto</target>
+        <target>Positions image</target>
       </trans-unit>
       <trans-unit id="tFbm1a5" resname="Reservation">
         <source>Reservation</source>
-        <target>Reservierungen</target>
+        <target>Reservations</target>
       </trans-unit>
       <trans-unit id="lP6AAO." resname="TraductionArticle">
         <source>TraductionArticle</source>
-        <target>Übersetzungen Artikel</target>
+        <target>Translations article</target>
       </trans-unit>
       <trans-unit id="TfK8Tbr" resname="TraductionBeurre">
         <source>TraductionBeurre</source>
-        <target>Übersetzungen Butter</target>
+        <target>Translations butter</target>
       </trans-unit>
       <trans-unit id="WY3x5Cc" resname="TraductionCategorie">
         <source>TraductionCategorie</source>
-        <target>Übersetzungen Kategorie</target>
+        <target>Translations category</target>
       </trans-unit>
       <trans-unit id="_EW3Nt8" resname="TraductionEvent">
         <source>TraductionEvent</source>
-        <target>Übersetzungen Veranstaltung</target>
+        <target>Translations event</target>
       </trans-unit>
       <trans-unit id="vizQb47" resname="TraductionHuile">
         <source>TraductionHuile</source>
-        <target>Übersetzungen Öl</target>
+        <target>Translations oil</target>
       </trans-unit>
       <trans-unit id="Hiu5Tfa" resname="TraductionHuileEssentiel">
         <source>TraductionHuileEssentiel</source>
-        <target>Übersetzungen Ätherisches Öl</target>
+        <target>Translation essential oil</target>
       </trans-unit>
       <trans-unit id="wCt38FC" resname="TraductionIngredientSupplementaire">
         <source>TraductionIngredientSupplementaire</source>
-        <target>Übersetzungen Sonstige Zutat</target>
+        <target>Translations other ingredient</target>
       </trans-unit>
       <trans-unit id="FNbtqcy" resname="TraductionNewsletter">
         <source>TraductionNewsletter</source>
-        <target>Übersetzungen Newsletter</target>
+        <target>Translations Newsletter</target>
       </trans-unit>
       <trans-unit id="VISY6h1" resname="TraductionOdeur">
         <source>TraductionOdeur</source>
-        <target>Übersetzungen Duft</target>
+        <target>Translations scent</target>
       </trans-unit>
       <trans-unit id="jnbYZqI" resname="TraductionPartenaire">
         <source>TraductionPartenaire</source>
-        <target>Übersetzungen Partner</target>
+        <target>Translations partner</target>
       </trans-unit>
       <trans-unit id="LuzMa79" resname="TraductionPromotion">
         <source>TraductionPromotion</source>
-        <target>Übersetzungen Promotion</target>
+        <target>Translations promotion</target>
       </trans-unit>
       <trans-unit id="mgc0j5." resname="TraductionTypeEvent">
         <source>TraductionTypeEvent</source>
-        <target>Übersetzungen Veranstaltungsart</target>
+        <target>Translations type of event</target>
       </trans-unit>
       <trans-unit id="ua..mGn" resname="TypeEvent">
         <source>TypeEvent</source>
-        <target>Veranstaltungsarten</target>
+        <target>Types of Event</target>
       </trans-unit>
       <trans-unit id="ch5bKau" resname="Utilisateur">
         <source>Utilisateur</source>
-        <target>Nutzer</target>
+        <target>User</target>
       </trans-unit>
     </body>
   </file>

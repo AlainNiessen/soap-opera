@@ -38,7 +38,7 @@ class InscriptionUtilisateurType extends AbstractType
         ->add('plainPassword', RepeatedType::class, [
             'type'=>PasswordType::class,
             // message d'erreur au cas où le mot de passe et la confirmation ne sont pas identiques
-            'invalid_message'=> new TranslatableMessage('formInscription.passwordInvalidIdent', [], 'Form'),
+            'invalid_message'=> 'formInscription.passwordInvalidIdent',
             'label'=> new TranslatableMessage('formInscription.password', [], 'Form'),
             'required'=>true,
             // champs mot de passe
