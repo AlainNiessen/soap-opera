@@ -6,6 +6,7 @@ use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -15,14 +16,14 @@ class EmailConfirmationType extends AbstractType
     {
         $builder
         ->add('email', EmailType::class,[
-            'label'=> 'Email',
+            'label'=> new TranslatableMessage('formConfirmationEmail.email', [], 'Form'),
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ]           
         ]) 
         ->add('submit', SubmitType::class,[
-            'label'=> 'Bestätigen',
+            'label'=> new TranslatableMessage('form.boutonConfirmation', [], 'Form'),
             'attr'=>[
                 'class'=>'btn btn-primary submit-btn',
             ]

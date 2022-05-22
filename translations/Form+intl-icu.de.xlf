@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="de" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="rD_F_fs" resname="formInscription.email">
+        <source>formInscription.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="aWVhu4h" resname="formInscription.passwordInvalidIdent">
+        <source>formInscription.passwordInvalidIdent</source>
+        <target>Beide Passwörter müssen identisch sein!</target>
+      </trans-unit>
+      <trans-unit id="pL.qdeF" resname="formInscription.password">
+        <source>formInscription.password</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="iRaZbbg" resname="formInscription.passwordLabel">
+        <source>formInscription.passwordLabel</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="Qv7mBEj" resname="formInscription.passwordConfirmation">
+        <source>formInscription.passwordConfirmation</source>
+        <target>Bitte gib das Passwort erneut ein!</target>
+      </trans-unit>
+      <trans-unit id="z7w4Z6K" resname="formInscription.nom">
+        <source>formInscription.nom</source>
+        <target>Nachname</target>
+      </trans-unit>
+      <trans-unit id="i_moZjh" resname="formInscription.prenom">
+        <source>formInscription.prenom</source>
+        <target>Vorname</target>
+      </trans-unit>
+      <trans-unit id="s89YWMu" resname="formInscription.dateDeNaissance">
+        <source>formInscription.dateDeNaissance</source>
+        <target>Geburtsdatum</target>
+      </trans-unit>
+      <trans-unit id="5gL_Kp9" resname="formInscription.adresseResi">
+        <source>formInscription.adresseResi</source>
+        <target>Wohnadresse</target>
+      </trans-unit>
+      <trans-unit id="0zxCQE2" resname="formInscription.adresseLivraison">
+        <source>formInscription.adresseLivraison</source>
+        <target>Lieferadresse</target>
+      </trans-unit>
+      <trans-unit id="6VyUzXQ" resname="formInscription.langue">
+        <source>formInscription.langue</source>
+        <target>Sprache</target>
+      </trans-unit>
+      <trans-unit id="s1NTnNy" resname="formResetPassword.passwordInvalidIdent">
+        <source>formResetPassword.passwordInvalidIdent</source>
+        <target>Beide Passwörter müssen identisch sein!</target>
+      </trans-unit>
+      <trans-unit id="2CjKRuA" resname="formResetPassword.password">
+        <source>formResetPassword.password</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="EvMUWO9" resname="formResetPassword.passwordLabel">
+        <source>formResetPassword.passwordLabel</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="QdvoVk_" resname="formResetPassword.passwordConfirmation">
+        <source>formResetPassword.passwordConfirmation</source>
+        <target>Bitte gib das Passwort erneut ein!</target>
+      </trans-unit>
+      <trans-unit id="3KOyVj9" resname="formConfirmationEmail.email">
+        <source>formConfirmationEmail.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="olJ8w7_" resname="form.boutonConfirmation">
+        <source>form.boutonConfirmation</source>
+        <target>Bestätigen</target>
+      </trans-unit>
+      <trans-unit id="rp63Rro" resname="formAdresse.rue">
+        <source>formAdresse.rue</source>
+        <target>Straße</target>
+      </trans-unit>
+      <trans-unit id="ltGefa9" resname="formAdresse.not_blank">
+        <source>formAdresse.not_blank</source>
+        <target>Das Feld darf nicht leer bleiben!</target>
+      </trans-unit>
+      <trans-unit id="MWh8R23" resname="formAdresse.rue_length_min">
+        <source>formAdresse.rue_length_min</source>
+        <target>Die Straße muss mindestens 2 Zeichen lang sein!</target>
+      </trans-unit>
+      <trans-unit id="H3Poo_u" resname="formAdresse.rueNumero">
+        <source>formAdresse.rueNumero</source>
+        <target>Hausnummer</target>
+      </trans-unit>
+      <trans-unit id="Bzv9Mnr" resname="formAdresse.codePostal">
+        <source>formAdresse.codePostal</source>
+        <target>Postleitzahl</target>
+      </trans-unit>
+      <trans-unit id="Ajnyzzp" resname="formAdresse.cp_length_min">
+        <source>formAdresse.cp_length_min</source>
+        <target>Die Postleitzahl muss mindestens 4 Zeichen lang sein!</target>
+      </trans-unit>
+      <trans-unit id="L1dWhVZ" resname="formAdresse.cp_length_max">
+        <source>formAdresse.cp_length_max</source>
+        <target>Die Postleitzahl darf nicht mehr länger als 5 Zeichen sein!</target>
+      </trans-unit>
+      <trans-unit id="28pju0l" resname="formAdresse.cp_only_number_regex">
+        <source>formAdresse.cp_only_number_regex</source>
+        <target>Die Postleitzahl kann nur aus Zahlen bestehen!</target>
+      </trans-unit>
+      <trans-unit id="W5UKDA3" resname="formAdresse.ville">
+        <source>formAdresse.ville</source>
+        <target>Stadt</target>
+      </trans-unit>
+      <trans-unit id="TQuJ1OV" resname="formAdresse.ville_length_min">
+        <source>formAdresse.ville_length_min</source>
+        <target>Die Straße muss mindestens 2 Zeichen lang sein!</target>
+      </trans-unit>
+      <trans-unit id="YAUFofN" resname="formAdresse.pays">
+        <source>formAdresse.pays</source>
+        <target>Land</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

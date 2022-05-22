@@ -7,11 +7,13 @@ use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,7 +21,6 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Validator\Constraints\Email;
 
 class InscriptionUtilisateurType extends AbstractType
 {
@@ -27,37 +28,36 @@ class InscriptionUtilisateurType extends AbstractType
     {
         $builder
         ->add('email', EmailType::class,[
-            'label'=> 'Email',
+            'label'=> new TranslatableMessage('formInscription.email', [], 'Form'),
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
-            ],
-            
+            ],            
         ])           
         
         ->add('plainPassword', RepeatedType::class, [
             'type'=>PasswordType::class,
             // message d'erreur au cas où le mot de passe et la confirmation ne sont pas identiques
-            'invalid_message'=> 'Das Passwort und die Bestätigung müssen identisch sein!',
-            'label'=>'Passwort',
+            'invalid_message'=> new TranslatableMessage('formInscription.passwordInvalidIdent', [], 'Form'),
+            'label'=> new TranslatableMessage('formInscription.password', [], 'Form'),
             'required'=>true,
             // champs mot de passe
             'first_options'=>[
-                'label'=>'Passwort',
+                'label'=> new TranslatableMessage('formInscription.passwordLabel', [], 'Form'),
                 'attr'=>[
                     'class'=>'form-control',
                 ]
             ],            
             //champs confirmation du mot de passe
             'second_options'=>[
-                'label'=>'Bestätigen Sie bitte Ihr Passwort',
+                'label'=> new TranslatableMessage('formInscription.passwordConfirmation', [], 'Form'),
                 'attr'=>[
                     'class'=>'form-control',
                 ]
             ]
         ])            
         ->add('nom', TextType::class, [
-            'label'=> 'Name',
+            'label'=> new TranslatableMessage('formInscription.nom', [], 'Form'),
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
@@ -65,14 +65,14 @@ class InscriptionUtilisateurType extends AbstractType
         ])  
           
         ->add('prenom', TextType::class, [
-            'label'=> 'Vorname',
+            'label'=> new TranslatableMessage('formInscription.prenom', [], 'Form'),
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ]
         ])
         ->add('dateNaissance', BirthdayType::class, [
-            'label' => 'Geburtsdatum',
+            'label' => new TranslatableMessage('formInscription.dateDeNaissance', [], 'Form'),
             'widget' => 'choice',
             'required'=>true,
             'attr'=>[
@@ -80,19 +80,19 @@ class InscriptionUtilisateurType extends AbstractType
             ]
         ])
         ->add('adresseHome', AdresseType::class, [
-            'label' => 'Wohnadresse',
+            'label' => new TranslatableMessage('formInscription.adresseResi', [], 'Form'),
             'constraints' => [
                 new NotBlank()                
             ],
         ])
         ->add('adresseDeliver', AdresseType::class, [
-            'label' => 'Lieferadresse',
+            'label' => new TranslatableMessage('formInscription.adresseLivraison', [], 'Form'),
             'constraints' => [
                 new NotBlank()                
             ],
         ])
         ->add('langue', EntityType::class,[
-            'label'=> 'Sprache',
+            'label'=> new TranslatableMessage('formInscription.langue', [], 'Form'),
             'class'=> Langue::class,
             'choice_label' => 'langue',
             'multiple' => false,
@@ -104,7 +104,7 @@ class InscriptionUtilisateurType extends AbstractType
         ])
            
         ->add('submit', SubmitType::class,[
-            'label'=> 'Bestätigen',
+            'label'=> new TranslatableMessage('form.boutonConfirmation', [], 'Form'),
             'attr'=>[
                 'class'=>'btn btn-primary submit-btn',
             ]
