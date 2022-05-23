@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -67,7 +68,7 @@ class GoogleAuthenticator extends SocialAuthenticator
         
         // check si l'utilisateur existe dans la base de données via check by Email
         $utilisateur = $this->em->getRepository(Utilisateur::class)
-            ->findOneBy(['email' => $email]);        
+            ->findOneBy(['email' => $email]);  
         
         return $utilisateur;
     }
@@ -82,10 +83,16 @@ class GoogleAuthenticator extends SocialAuthenticator
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
-    {
-        $message = $this -> translator -> trans('Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!');
-
-        $this->flash->add('success', $message);
+    {            
+        // récupération de l'utilisateur connecté 
+        $utilisateur = $token -> getUser();  
+        if($utilisateur instanceof Utilisateur):
+            // récupération du code Langue lié à l'utilisateur connecté
+            $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
+            
+            // définir cette langue dans la Session
+            $request->getSession()->set('_locale', $langueUtilisateur);            
+        endif;
            
         return new RedirectResponse($this->router->generate('home'));
     }

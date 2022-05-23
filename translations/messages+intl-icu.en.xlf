@@ -237,10 +237,6 @@
         <source>Sie müssen Ihr Passwort auch bestätigen.</source>
         <target>You must also confirm your password.</target>
       </trans-unit>
-      <trans-unit id="J8iBMAx" resname="Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!">
-        <source>Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</source>
-        <target>You have successfully logged in with your Google account!</target>
-      </trans-unit>
       <trans-unit id="t2sFS7m" resname="Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!">
         <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
         <target>Unfortunately, an account with this email does not exist. In order to be able to log in with the Google account, we ask you to first create an account with the same email address!</target>

@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Utilisateur;
 use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -61,6 +62,15 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
+
+        // récupération de l'utilisateur connecté 
+        $utilisateur = $token -> getUser();
+        if($utilisateur instanceof Utilisateur):
+            // récupération du code Langue lié à l'utilisateur connecté
+            $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
+            // définir cette langue dans la Session
+            $request->getSession()->set('_locale', $langueUtilisateur);            
+        endif;
 
         // redirect vers la page où on vient se connecter (_target_path = name du input hidden dans le form login)
         // value de cet input = back_to_your_page (défini et passé vers le TWIG login dans SecurityController = $request->headers->get('referer'))

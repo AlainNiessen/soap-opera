@@ -21,6 +21,7 @@ class LocaleSubscriber implements EventSubscriberInterface
         if (!$request->hasPreviousSession()) {
             return;
         }
+        
         // essayez de voir si la locale a été définie en tant que paramètre de routage _locale
         if ($locale = $request->query->get('_locale')) {
             $request->setLocale($locale);
