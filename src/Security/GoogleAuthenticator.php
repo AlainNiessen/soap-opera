@@ -68,7 +68,7 @@ class GoogleAuthenticator extends SocialAuthenticator
         
         // check si l'utilisateur existe dans la base de données via check by Email
         $utilisateur = $this->em->getRepository(Utilisateur::class)
-            ->findOneBy(['email' => $email]);  
+            ->findOneBy(['email' => $email]);       
         
         return $utilisateur;
     }
@@ -83,7 +83,7 @@ class GoogleAuthenticator extends SocialAuthenticator
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
-    {            
+    {    
         // récupération de l'utilisateur connecté 
         $utilisateur = $token -> getUser();  
         if($utilisateur instanceof Utilisateur):
@@ -92,13 +92,14 @@ class GoogleAuthenticator extends SocialAuthenticator
             
             // définir cette langue dans la Session
             $request->getSession()->set('_locale', $langueUtilisateur);            
-        endif;
-           
+        endif;        
+        
         return new RedirectResponse($this->router->generate('home'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
+        
         $message = $this -> translator -> trans('Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!');
         
         $this->flash->add('notice', $message);
