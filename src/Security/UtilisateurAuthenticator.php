@@ -70,17 +70,6 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        
-
-        // récupération de l'utilisateur connecté 
-        $utilisateur = $token -> getUser();
-        if($utilisateur instanceof Utilisateur):
-            // récupération du code Langue lié à l'utilisateur connecté
-            $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
-            // définir cette langue dans la Session
-            $request->getSession()->set('_locale', $langueUtilisateur);            
-        endif;
-
         // redirect vers la page où on vient se connecter (_target_path = name du input hidden dans le form login)
         // value de cet input = back_to_your_page (défini et passé vers le TWIG login dans SecurityController = $request->headers->get('referer'))
         return new RedirectResponse($request->get('_target_path'));
