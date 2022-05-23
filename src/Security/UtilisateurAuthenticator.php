@@ -38,6 +38,12 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
     {
         $email = $request->request->get('email', '');
 
+        //changer la langue dans la Session pour l'admin qui se connecte via la route /admin_s_op
+        $user = $this->utilisateurRepository->findOneBy(['email' => $email]);
+        if($user):
+            $request -> getSession() -> set('_locale', $user -> getLangue() -> getCodeLangue());
+        endif;
+
         $request->getSession()->set(Security::LAST_USERNAME, $email);
 
         return new Passport(
@@ -46,7 +52,8 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
                 $user = $this->utilisateurRepository->findOneBy(['email' => $userIdentifier]);
                 if (!$user || $user->getInscriptionValide() == false) {
                     throw new UserNotFoundException();
-                }
+                }          
+                
                 return $user;
             }),
             new PasswordCredentials($request->request->get('password', '')),
@@ -62,6 +69,8 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
+
+        
 
         // récupération de l'utilisateur connecté 
         $utilisateur = $token -> getUser();

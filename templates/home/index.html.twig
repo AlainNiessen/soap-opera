@@ -15,6 +15,11 @@
             {{ message }}
         </div>
     {% endfor %}
+    {% for message in app.flashes('successGoogle') %}
+        <div class="alert alert-success message">
+            {{ message|trans({}, 'messages') }}
+        </div>
+    {% endfor %}
     {% for message in app.flashes('error') %}
         <div class="alert alert-danger message">
             {{ message }}

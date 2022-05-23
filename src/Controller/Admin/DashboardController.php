@@ -34,6 +34,7 @@ use App\Entity\TraductionPartenaire;
 use App\Entity\DetailCommandeArticle;
 use App\Entity\IngredientSupplementaire;
 use App\Entity\TraductionHuileEssentiel;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
@@ -44,11 +45,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+    
     /**
      * @Route("/admin_s_op", name="admin_s_op")
      */
     public function index(): Response
     {
+        
         return $this->render('admin/dashboard.html.twig');
     }
 

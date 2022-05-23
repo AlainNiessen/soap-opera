@@ -93,7 +93,9 @@ class GoogleAuthenticator extends SocialAuthenticator
             // définir cette langue dans la Session
             $request->getSession()->set('_locale', $langueUtilisateur);            
         endif;        
-        
+            
+        $this->flash->add('successGoogle', 'Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!');        
+           
         return new RedirectResponse($this->router->generate('home'));
     }
 
