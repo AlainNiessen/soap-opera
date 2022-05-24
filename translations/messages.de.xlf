@@ -553,10 +553,6 @@
         <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
         <target>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</target>
       </trans-unit>
-      <trans-unit id="J8iBMAx" resname="Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!">
-        <source>Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</source>
-        <target>Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -24,11 +24,14 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
-        //si l'utilisateur est déjà connecté, il sera rediregé vers la page d'accueil
+        //si l'utilisateur est déjà connecté, il sera redirigé vers la page d'accueil
         if ($this->getUser()) {
             return $this->redirectToRoute('home');
         }
 
+        //stockage de l'URL précedente dans la Session pour rediriger après login (UtilisateurAuthenticator + GoogleAuthenticator)
+        $request->getSession()->set('referer', $request -> headers -> get('referer'));
+        
         // login erreur
         $error = $authenticationUtils->getLastAuthenticationError();
         // lastUsername rentré par l'utilisateur
@@ -36,9 +39,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 
-            'error' => $error, 
-            //recupération du path où on va faire login
-            'back_to_your_page' => $request->headers->get('referer')
+            'error' => $error
         ]);
     }
 
@@ -144,14 +145,14 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login/no_acces", name="no_acces")
      */
-    //cette route sera appelé dans le cas où on essaie d'accéder à l'interface administration sans avoir les droits (ROLE_ADMIN)
+    //cette route sera appelé dans le cas où on essaie d'accéder à l'interface administration sans avoir les droits (ROLE_SUPER_ADMIN ou ROLE_FINANCE_ADMIN)
     public function noAcces(TranslatorInterface $translator): Response
     {
         //ajout d'un message pas accés
         $messageNoAcces = $translator -> trans('Sie haben nicht die Berechtigung für diesen Bereich!');
         $this -> addFlash('error', $messageNoAcces); 
         //et redirection vers la page d'accueil        
-        return $this->redirectToRoute('login');       
+        return $this->redirectToRoute('home');       
     }
 
     /**

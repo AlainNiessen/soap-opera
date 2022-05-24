@@ -7,10 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -21,18 +19,17 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class GoogleAuthenticator extends SocialAuthenticator
 {
+    
     private $clientRegistry;
     private $em;
-    private $router;
     private $flash;
     private $translator;
  
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, RouterInterface $router, FlashBagInterface $flash, TranslatorInterface $translator)
+    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, FlashBagInterface $flash, TranslatorInterface $translator)
     {
         $this->clientRegistry = $clientRegistry;
         $this->em = $em;
-        $this->router = $router;
         $this->flash = $flash;
         $this->translator = $translator;
     }
@@ -45,13 +42,7 @@ class GoogleAuthenticator extends SocialAuthenticator
 
     public function getCredentials(Request $request)
     {
-        // this method is only called if supports() returns true
-
-        // For Symfony lower than 3.4 the supports method need to be called manually here:
-        // if (!$this->supports($request)) {
-        //     return null;
-        // }
-
+        // cette method est uniquement appéle si supports() return true
         return $this->fetchAccessToken($this->getGoogleClient());
     }
 
@@ -92,20 +83,21 @@ class GoogleAuthenticator extends SocialAuthenticator
             
             // définir cette langue dans la Session
             $request->getSession()->set('_locale', $langueUtilisateur);            
-        endif;        
-            
-        $this->flash->add('successGoogle', 'Sie haben sich erfolgreich mit Ihrem Google-Konto angemeldet!');        
-           
-        return new RedirectResponse($this->router->generate('home'));
+        endif;         
+        
+        // récupération de la page où on a cliqué sur se connecter
+        $url = $request->getSession()->get('referer');
+        // redirection vers cette page      
+        return new RedirectResponse($url);
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        
-        $message = $this -> translator -> trans('Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!');
-        
+        // message d'erreur
+        $message = $this -> translator -> trans('Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!');        
         $this->flash->add('notice', $message);
-           
+        
+        // redirect vers le formulaire d'inscription pour créer un compte
         return new RedirectResponse($this->router->generate('registration'));
     }
 

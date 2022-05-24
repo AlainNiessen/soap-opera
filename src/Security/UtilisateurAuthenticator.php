@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Entity\Utilisateur;
 use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -38,7 +37,10 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
     {
         $email = $request->request->get('email', '');
 
-        //changer la langue dans la Session pour l'admin qui se connecte via la route /admin_s_op
+        // si un utilisateur ou admin a été trouvé =>
+        // Remplacer la langue dans la Session à la langue de cet utilisateur ou de cet admin
+        // alors après login le site s'affiche dans la langue correspondante
+        // Si l'utilisateur ou l'admin n'existe pas, la langue reste sur la valeur par défault (de)
         $user = $this->utilisateurRepository->findOneBy(['email' => $email]);
         if($user):
             $request -> getSession() -> set('_locale', $user -> getLangue() -> getCodeLangue());
@@ -70,9 +72,10 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // redirect vers la page où on vient se connecter (_target_path = name du input hidden dans le form login)
-        // value de cet input = back_to_your_page (défini et passé vers le TWIG login dans SecurityController = $request->headers->get('referer'))
-        return new RedirectResponse($request->get('_target_path'));
+        // récupération de la page où on a cliqué sur se connecter
+        $url = $request->getSession()->get('referer');
+        // redirection vers cette page
+        return new RedirectResponse($url);
         
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }

@@ -30,8 +30,6 @@
                     <a href="{{ path('reset_password') }}">{% trans %}Passwort vergessen?{% endtrans %}</a>
                 </div>
             </div>
-            {# hidden input pour insérer la variable back_to_your_page #}
-            <input type="hidden" name="_target_path" value="{{ back_to_your_page }}"/> 
             <input type="hidden" name="_csrf_token"
                 value="{{ csrf_token('authenticate') }}"
             >       
@@ -41,11 +39,12 @@
                     <input type="checkbox" name="_remember_me"> {% trans %}Angemeldet bleiben?{% endtrans %}
                 </label>
             </div>
-                
+              
             <button class="btn btn-lg btn-primary login-btn" type="submit">
                 {% trans %}Anmeldung{% endtrans %}
             </button>
         </form>
+        
         <div class="google-auth">
             <a href="{{ path('connect_google_start') }}" class="btn btn-primary">{% trans %}Anmeldung mit Google{% endtrans %}</a>
         </div>
