@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -24,14 +25,17 @@ class GoogleAuthenticator extends SocialAuthenticator
     private $em;
     private $flash;
     private $translator;
+    private $router;
+
  
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, FlashBagInterface $flash, TranslatorInterface $translator)
+    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, RouterInterface $router, FlashBagInterface $flash, TranslatorInterface $translator)
     {
         $this->clientRegistry = $clientRegistry;
         $this->em = $em;
         $this->flash = $flash;
         $this->translator = $translator;
+        $this->router = $router;
     }
 
     public function supports(Request $request)
