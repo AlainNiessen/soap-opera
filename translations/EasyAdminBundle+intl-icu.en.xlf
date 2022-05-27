@@ -841,6 +841,14 @@
         <source>Utilisateur</source>
         <target>User</target>
       </trans-unit>
+      <trans-unit id="grajkTI" resname="option.article_promotion">
+        <source>option.article_promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
+      <trans-unit id="My1NWcj" resname="option.categorie_promotion">
+        <source>option.categorie_promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

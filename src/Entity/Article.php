@@ -36,9 +36,9 @@ class Article
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Promotion::class, mappedBy="article")
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="articles")
      */
-    private $promotions;
+    private $promotion;
 
     /**
      * @ORM\ManyToMany(targetEntity=Utilisateur::class, mappedBy="articles")
@@ -171,32 +171,14 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection<int, Promotion>
-     */
-    public function getPromotions(): Collection
+    public function getPromotion(): ?Promotion
     {
-        return $this->promotions;
+        return $this->promotion;
     }
 
-    public function addPromotion(Promotion $promotion): self
+    public function setPromotion(?Promotion $promotion): self
     {
-        if (!$this->promotions->contains($promotion)) {
-            $this->promotions[] = $promotion;
-            $promotion->setArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removePromotion(Promotion $promotion): self
-    {
-        if ($this->promotions->removeElement($promotion)) {
-            // set the owning side to null (unless already changed)
-            if ($promotion->getArticle() === $this) {
-                $promotion->setArticle(null);
-            }
-        }
+        $this->promotion = $promotion;
 
         return $this;
     }

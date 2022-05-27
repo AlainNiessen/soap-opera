@@ -245,6 +245,10 @@
         <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
         <target>Malheureusement, un compte avec cet e-mail n'existe pas. Afin de pouvoir vous connecter avec le compte Google, nous vous demandons de créer d'abord un compte avec la même adresse e-mail !</target>
       </trans-unit>
+      <trans-unit id="ggXexsG" resname="Sonderangebot">
+        <source>Sonderangebot</source>
+        <target>En promotion</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -29,8 +29,6 @@ class PromotionCrudController extends AbstractCrudController
         yield PercentField::new('Pourcentage', new TranslatableMessage('option.promotion_pourcentage', [], 'EasyAdminBundle'))
                             ->setNumDecimals(2)
                             ->setStoredAsFractional(true);  
-        yield AssociationField::new('article', new TranslatableMessage('option.promotion_article', [], 'EasyAdminBundle'));
-        yield AssociationField::new('categorie', new TranslatableMessage('option.promotion_categorie', [], 'EasyAdminBundle'));
     }
     
 }

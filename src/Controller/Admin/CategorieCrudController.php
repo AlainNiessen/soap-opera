@@ -6,6 +6,7 @@ use App\Entity\Categorie;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CategorieCrudController extends AbstractCrudController
@@ -20,6 +21,7 @@ class CategorieCrudController extends AbstractCrudController
     {
         yield TextField::new('nomBackend', new TranslatableMessage('option.categorie_nomBackend', [], 'EasyAdminBundle'));
         yield BooleanField::new('statutMenu',  new TranslatableMessage('option.categorie_statutMenu', [], 'EasyAdminBundle'));
+        yield AssociationField::new('promotion', new TranslatableMessage('option.categorie_promotion', [], 'EasyAdminBundle'));
     }
     
 }

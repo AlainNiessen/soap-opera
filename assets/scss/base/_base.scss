@@ -93,6 +93,12 @@ a {
     flex-direction: column;
 }
 
+//articles en promotion
+.promo {
+    color: rgb(8, 146, 8);
+    margin: 0;
+}
+
 //MEDIA QUERY 
 @media screen and (min-width: 576px) {
     .form-flex-container {

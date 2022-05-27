@@ -164,9 +164,8 @@ class ArticleRepository extends ServiceEntityRepository
     {
         //préparation lier les tables 
         return $this    -> createQueryBuilder('a')
-                        -> innerJoin('a.promotions', 'pa')
+                        -> innerJoin('a.promotion', 'pa')
                         -> addSelect('pa')                                                                                      
-                        -> orderBy('a.dateCreation', 'DESC')
                         -> getQuery()
                         -> getResult();
         ;       

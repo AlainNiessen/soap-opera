@@ -553,6 +553,10 @@
         <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
         <target>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</target>
       </trans-unit>
+      <trans-unit id="ggXexsG" resname="Sonderangebot">
+        <source>Sonderangebot</source>
+        <target>Sonderangebot</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

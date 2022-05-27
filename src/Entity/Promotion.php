@@ -48,14 +48,14 @@ class Promotion
     private $Pourcentage;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, inversedBy="promotions")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="article")
      */
-    private $article;
+    private $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Categorie::class, inversedBy="promotions")
+     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="categorie")
      */
-    private $categorie;
+    private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=TraductionPromotion::class, mappedBy="promotion")
@@ -143,30 +143,65 @@ class Promotion
         return $this;
     }
 
-    public function getArticle(): ?Article
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticles(): Collection
     {
-        return $this->article;
+        return $this->articles;
     }
 
-    public function setArticle(?Article $article): self
+    public function addArticle(Article $article): self
     {
-        $this->article = $article;
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setPromotion($this);
+        }
 
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    public function removeArticle(Article $article): self
     {
-        return $this->categorie;
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getPromotion() === $this) {
+                $article->setPromotion(null);
+            }
+        }
+
+        return $this;
+    }
+    /**
+     * @return Collection<int, Categorie>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categories->contains($categorie)) {
+            $this->categories[] = $categorie;
+            $categorie->setPromotion($this);
+        }
 
         return $this;
     }
 
+    public function removeCategorie(Categorie $categorie): self
+    {
+        if ($this->categories->removeElement($categorie)) {
+            // set the owning side to null (unless already changed)
+            if ($categorie->getPromotion() === $this) {
+                $categorie->setPromotion(null);
+            }
+        }
+
+        return $this;
+    }
+    
     /**
      * @return Collection<int, TraductionPromotion>
      */

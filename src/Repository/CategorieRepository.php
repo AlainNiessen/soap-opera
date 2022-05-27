@@ -54,7 +54,7 @@ class CategorieRepository extends ServiceEntityRepository
     {
         //préparation lier les tables 
         return $this    -> createQueryBuilder('c')
-                        -> innerJoin('c.promotions', 'pc')
+                        -> innerJoin('c.promotion', 'pc')
                         -> addSelect('pc')                                                                                      
                         -> getQuery()
                         -> getResult();

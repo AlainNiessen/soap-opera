@@ -41,5 +41,6 @@ class ArticleCrudController extends AbstractCrudController
         yield AssociationField::new('huile', new TranslatableMessage('option.article_huile', [], 'EasyAdminBundle'));
         yield AssociationField::new('huileEssentiell', new TranslatableMessage('option.article_huileEss', [], 'EasyAdminBundle'));
         yield AssociationField::new('ingredientSupplementaire', new TranslatableMessage('option.articleIng', [], 'EasyAdminBundle'));
+        yield AssociationField::new('promotion', new TranslatableMessage('option.article_promotion', [], 'EasyAdminBundle'));
     }   
 }
