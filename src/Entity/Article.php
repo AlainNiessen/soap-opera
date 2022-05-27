@@ -36,7 +36,7 @@ class Article
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="article")
+     * @ORM\ManyToOne(targetEntity=Promotion::class, mappedBy="article")
      */
     private $promotions;
 

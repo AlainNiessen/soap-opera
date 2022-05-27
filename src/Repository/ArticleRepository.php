@@ -47,8 +47,7 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
     * @return Article[] Returns an array of Article objects
-    */
-    
+    */    
     //fonction de recherche articles via barre de recherche
     public function findArticlesSearchBar($keywords = [])
     {
@@ -93,15 +92,12 @@ class ArticleRepository extends ServiceEntityRepository
             }        
             $queryBuilder->andWhere(join(' OR ', $arr));     
             
-        }
-       
-
-      
+        }     
 
         //si rien a été rempli => pas des if => return automatique des tous les articles 
         return $queryBuilder 
                     ->getQuery()
-                    ->getResult();                                     
+                    ->getResult();                                   
                     
                    
         ;       
@@ -156,6 +152,23 @@ class ArticleRepository extends ServiceEntityRepository
                      -> setMaxResults($value) 
                      -> getQuery()
                      -> getResult();
+        ;       
+    }
+
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+    
+    //fonction de recherche articles par categorie
+    public function findArticlesInPromotion()
+    {
+        //préparation lier les tables 
+        return $this    -> createQueryBuilder('a')
+                        -> innerJoin('a.promotions', 'pa')
+                        -> addSelect('pa')                                                                                      
+                        -> orderBy('a.dateCreation', 'DESC')
+                        -> getQuery()
+                        -> getResult();
         ;       
     }
     

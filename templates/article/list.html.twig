@@ -30,6 +30,11 @@
                 {% include 'article/_navigationCat.html.twig' %}
             </div> 
             {% endif %}     
+            {% if pagPromo is defined and pagPromo is not null and pagPromo is not empty %}
+            <div id="js-list-promo-navigation">
+                {% include 'article/_navigationPromo.html.twig' %}
+            </div> 
+            {% endif %}     
         {% endif %}  
     </div>
 </section>

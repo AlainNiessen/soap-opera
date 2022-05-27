@@ -39,7 +39,7 @@
                                     <a href="{{ path('home') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('home')) %} activeElement {% endif %}">{% trans %}Home{% endtrans %}</a>
                                 </li>                                
                                 <li >
-                                    <a href="#" class="l-menu-list-element">{% trans %}Sonderangebote{% endtrans %}</a>
+                                    <a href="{{ path('article_recherche_promo', {pagPromo: 1}) }}" class="l-menu-list-element">{% trans %}Sonderangebote{% endtrans %}</a>
                                 </li>
                                 <li >
                                     <a href="#" class="l-menu-list-element">{% trans %}Veranstaltungen{% endtrans %}</a>

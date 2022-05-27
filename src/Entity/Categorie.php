@@ -30,7 +30,7 @@ class Categorie
     private $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="categorie")
+     * @ORM\ManyToOne(targetEntity=Promotion::class, mappedBy="categorie")
      */
     private $promotions;
 

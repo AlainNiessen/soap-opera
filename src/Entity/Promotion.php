@@ -43,17 +43,17 @@ class Promotion
     private $dateEnd;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", scale=2, nullable=false)
      */
     private $Pourcentage;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="promotions")
+     * @ORM\OneToMany(targetEntity=Article::class, inversedBy="promotions")
      */
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="promotions")
+     * @ORM\OneToMany(targetEntity=Categorie::class, inversedBy="promotions")
      */
     private $categorie;
 
@@ -131,12 +131,12 @@ class Promotion
         return $this;
     }
 
-    public function getPourcentage(): ?int
+    public function getPourcentage(): ?float
     {
         return $this->Pourcentage;
     }
 
-    public function setPourcentage(?int $Pourcentage): self
+    public function setPourcentage(?float $Pourcentage): self
     {
         $this->Pourcentage = $Pourcentage;
 

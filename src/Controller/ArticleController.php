@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Article;
+use App\Entity\Categorie;
 use App\Entity\TraductionHuile;
 use App\Entity\TraductionBeurre;
 use App\Entity\TraductionArticle;
@@ -183,6 +184,98 @@ class ArticleController extends AbstractController
             'pagCat'=> $interPag,
             'limitPagination' => $limitPagination,
             'id' => $id
+        ]);
+    }
+
+    //----------------------------------------------
+    // ROUTE RECHERCHE ARTICLES - ARTICLES EN PROMOTION
+    //----------------------------------------------
+    /**
+     * @Route("/article/promotions/page={pagPromo}", name="article_recherche_promo")
+     */
+    public function requestArticlePromotion($pagPromo, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        //récupération de la pagination
+        $interPag = intval($pagPromo);
+
+        //récupération langue
+        $lang = $request-> getLocale();
+        //définition repository beurre
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);
+        // fonction de requête sur base de données récupérées       
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
+        
+        //définition repository article
+        $repositoryArticle = $entityManager -> getRepository(Article::class);
+        // fonction de requête sur base de données récupérées       
+        $articlesPromotions = $repositoryArticle -> findArticlesInPromotion();  
+        //définition repository categorie
+        $repositoryCategorie = $entityManager -> getRepository(Categorie::class);
+        // fonction de requête sur base de données récupérées       
+        $categoriePromotions = $repositoryCategorie -> findcategorieInPromotion();  
+        
+        //création tableau avec tous les articles en promo
+        $tabPromo = [];
+        //push articles en promotion dans le tableau
+        foreach($articlesPromotions as $articlesPromotion):
+            array_push($tabPromo, $articlesPromotion);
+        endforeach;
+        //push articles de la categorie en promotion dans le tableau
+        foreach($categoriePromotions as $categoriePromotion):
+            $articles = $categoriePromotion -> getArticles();
+            foreach($articles as $article):
+                array_push($tabPromo, $article);
+            endforeach;
+        endforeach;
+        
+        
+        //récupération des informations sur les articles dans la langue
+        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabPromo, $langue);
+
+        // récupération du nombre des articles
+        $nombreArticles = count($resultTraductionArticles);
+
+        // définition nombre des articles par page
+        $limit = 6;
+        
+        //définition start and end pour le tableau à transférer pour la pagination
+        $startCount = $interPag * $limit - $limit;
+
+        if($interPag * $limit >= count($resultTraductionArticles)):
+            $endCount = count($resultTraductionArticles);
+        else:
+            $endCount = $interPag * $limit;
+        endif;
+
+        //nombre de pages de résultat
+        $nombreLiens = ceil($nombreArticles / $limit);
+        //définition limite affichage pagination
+        $limitPagination = $interPag + 2;      
+      
+        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
+
+        // si il s'agit d'une requête AJAX
+        // re-rendering le contenu et la navigation sans rechargement du site
+        if($request -> isXmlHttpRequest()) {
+            return new JsonResponse([
+                'content' => $this -> renderView('article/_articles.html.twig', [
+                    'traductionArticles' => $pagination                    
+                ]),
+                'navigationPromo' => $this -> renderView('article/_navigationPromo.html.twig', [
+                    'traductionArticles' => $pagination,
+                    'nombreLiens' => $nombreLiens,
+                    'pagPromo'=> $interPag,
+                    'limitPagination' => $limitPagination
+                ])
+            ]);
+        }          
+
+        return $this->render('article/list.html.twig', [
+            'traductionArticles' => $pagination,
+            'nombreLiens' => $nombreLiens,
+            'pagPromo'=> $interPag,
+            'limitPagination' => $limitPagination
         ]);
     }
 

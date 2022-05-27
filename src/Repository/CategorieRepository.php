@@ -44,6 +44,22 @@ class CategorieRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+    /**
+    * @return Categorie[] Returns an array of Categorie objects
+    */
+    
+    //fonction de recherche articles par categorie
+    public function findcategorieInPromotion()
+    {
+        //préparation lier les tables 
+        return $this    -> createQueryBuilder('c')
+                        -> innerJoin('c.promotions', 'pc')
+                        -> addSelect('pc')                                                                                      
+                        -> getQuery()
+                        -> getResult();
+        ;       
+    }
     
     
 

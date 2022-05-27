@@ -9,6 +9,10 @@
                 {% endfor %}
                 <div class="m-article-info">
                     <h3>{{ traductionArticle.nom }}</h3>
+                    {# si il y a une promotion #}
+                    {% if traductionArticle.article.promotions %}
+                        <p>In Promo</p>
+                    {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>
                     <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
                 </div> 
