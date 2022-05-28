@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Component\Mime\Address;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -66,6 +65,9 @@ class ContactController extends AbstractController
             //redirect vers la page où on a cliqué sur contact
             return $this->redirectToRoute('home');          
         else:
+            
+            // définition des messages d'erreur pour chaque champs + message d'erreur global
+
             if(empty($nom)):
                 //ajout d'un message d'erreur
                 $messageErrorNoName = $translator -> trans('Dieses Feld darf nicht leer bleiben');
@@ -96,6 +98,7 @@ class ContactController extends AbstractController
             $messageError = $translator -> trans('Leider ist ein Fehler aufgetreten!');
             $this -> addFlash('error', $messageError); 
             
+            // en cas d'erreur, on renvoit tous les valeurs pour les champs du formulaire
             return $this->render('contact/contact.html.twig', [
                 'nom' => $nom,
                 'email' => $email,
