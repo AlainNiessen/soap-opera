@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Kontakt{% endtrans %}{% endblock %}
+
+{% block body %}
+<section class="formContact">
+    <div class="wrapper">
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger message">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <h2>{% trans %}Kontaktformular{% endtrans %}</h2>
+        <p>{% trans %}Jedes Feld muss ausgefüllt werden.{% endtrans %}</p>
+        <form action="{{ path('contact_email') }}" class="formContactBox" id="formContactBox" method="POST" novalidate>
+            <div class="input-box-contact">
+                <label for="name">{% trans %}Dein Name{% endtrans %}</label>
+                <input type="text" name="nom" id="nom" value="{{ nom }}" required/>
+                {% for message in app.flashes('errorNoName') %}
+                    <div class="alert formError message">
+                        {{ message }}
+                    </div>
+                {% endfor %}                                            
+            </div>                                        
+            <div class="input-box-contact">
+                <label for="email">{% trans %}Deine Email{% endtrans %}</label>
+                <input type="email" name="email" id="email" value="{{ email }}"required/>  
+                {% for message in app.flashes('errorNoEmail') %}
+                    <div class="alert formError message">
+                        {{ message }}
+                    </div>
+                {% endfor %} 
+                {% for message in app.flashes('errorInvalidEmail') %}
+                    <div class="alert formError message">
+                        {{ message }}
+                    </div>
+                {% endfor %}                                             
+            </div>
+            <div class="input-box-contact">
+                <label for="subject">{% trans %}Dein Betreff{% endtrans %}</label>
+                <input type="text" name="sujet" id="sujet" value="{{ sujet }}" required/> 
+                {% for message in app.flashes('errorNoSubject') %}
+                    <div class="alert formError message">
+                        {{ message }}
+                    </div>
+                {% endfor %}                                             
+            </div>
+            <div class="input-box-contact">
+                <label for="message">{% trans %}Deine Nachricht{% endtrans %}</label>
+                <textarea id="message" name="message" value="{{ message }}" required></textarea> 
+                {% for message in app.flashes('errorNoMessage') %}
+                    <div class="alert formError message">
+                        {{ message }}
+                    </div>
+                {% endfor %}                                             
+            </div>                                        
+            <button type="submit" class="btn btn-primary">{% trans %}Senden{% endtrans %}</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

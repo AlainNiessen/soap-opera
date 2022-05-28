@@ -48,7 +48,7 @@
                                     <a href="#" class="l-menu-list-element">{% trans %}Unsere Philosophie{% endtrans %}</a>
                                 </li>                           
                                 <li > 
-                                    <a href="#" class="l-menu-list-element">{% trans %}Kontakt{% endtrans %}</a>
+                                    <a href="{{ path('contact') }}" class="l-menu-list-element">{% trans %}Kontakt{% endtrans %}</a>
                                 </li>
                                 {% if is_granted('ROLE_USER') and (is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_FINANCE_ADMIN')) %}
                                 <li > 

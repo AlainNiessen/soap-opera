@@ -1,0 +1,45 @@
+// formulaire de contact
+.formContact {
+    margin: 4rem 0 2rem 0;
+    h2, p {
+        text-align: center;
+    }    
+}
+
+.formContactBox {
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    .input-box-contact {
+        width: 15rem;
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0;
+        input, textarea {
+            width: 100%;            
+        }
+        textarea {
+            height: 10rem;
+        }
+    } 
+}
+
+.formError {
+    color: red;
+    margin: .5rem 0 0 0;
+    padding: 0;
+    text-align: left;
+}
+
+//media query
+@media screen and (min-width: 768px) {
+    .formContactBox {
+        .input-box-contact {
+            width: 25rem;
+        } 
+    }    
+}    

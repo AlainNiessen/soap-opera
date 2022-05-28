@@ -553,9 +553,53 @@
         <source>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</source>
         <target>Ein Konto mit dieser Email existiert leider nicht. Um sich mit dem Google-Konto anmelden zu können, bitten wir Sie, sich zuerst ein Konto mit der gleichen Email-adresse anzulegen!</target>
       </trans-unit>
-      <trans-unit id="ggXexsG" resname="Sonderangebot">
+      <trans-unit id="W9Bxuoy" resname="Sonderangebot">
         <source>Sonderangebot</source>
         <target>Sonderangebot</target>
+      </trans-unit>
+      <trans-unit id="LfWDIta" resname="Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!">
+        <source>Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!</source>
+        <target>Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!</target>
+      </trans-unit>
+      <trans-unit id="7kY2lCY" resname="Kontaktformular">
+        <source>Kontaktformular</source>
+        <target>Kontaktformular</target>
+      </trans-unit>
+      <trans-unit id="B._PH62" resname="Jedes Feld muss ausgefüllt werden.">
+        <source>Jedes Feld muss ausgefüllt werden.</source>
+        <target>Jedes Feld muss ausgefüllt werden.</target>
+      </trans-unit>
+      <trans-unit id="CQsXVvw" resname="Dein Name">
+        <source>Dein Name</source>
+        <target>Dein Name</target>
+      </trans-unit>
+      <trans-unit id="Qk1OVjN" resname="Deine Email">
+        <source>Deine Email</source>
+        <target>Deine Email</target>
+      </trans-unit>
+      <trans-unit id="1c4_NKO" resname="Dein Betreff">
+        <source>Dein Betreff</source>
+        <target>Dein Betreff</target>
+      </trans-unit>
+      <trans-unit id="P6NlaF8" resname="Deine Nachricht">
+        <source>Deine Nachricht</source>
+        <target>Deine Nachricht</target>
+      </trans-unit>
+      <trans-unit id="B5vvTiM" resname="Senden">
+        <source>Senden</source>
+        <target>Senden</target>
+      </trans-unit>
+      <trans-unit id="LooBR9J" resname="Dieses Feld darf nicht leer bleiben">
+        <source>Dieses Feld darf nicht leer bleiben</source>
+        <target>Dieses Feld darf nicht leer bleiben</target>
+      </trans-unit>
+      <trans-unit id="oZqyTgu" resname="Bitte gib eine korrekte Email an">
+        <source>Bitte gib eine korrekte Email an</source>
+        <target>Bitte gib eine korrekte Email an</target>
+      </trans-unit>
+      <trans-unit id="MxTIIh2" resname="Leider ist ein Fehler aufgetreten!">
+        <source>Leider ist ein Fehler aufgetreten!</source>
+        <target>Leider ist ein Fehler aufgetreten!</target>
       </trans-unit>
     </body>
   </file>
