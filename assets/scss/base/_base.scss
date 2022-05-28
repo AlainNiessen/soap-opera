@@ -99,6 +99,15 @@ a {
     margin: 0;
 }
 
+.barre {
+    text-decoration: line-through;
+}
+.promo-box {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
+}
+
 //MEDIA QUERY 
 @media screen and (min-width: 576px) {
     .form-flex-container {

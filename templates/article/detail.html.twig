@@ -30,7 +30,7 @@
                 <div class="m-article-detail-info-box">
                     <h3>{% trans %}Allgemeine Beschreibung:{% endtrans %}</h3> 
                     {# raw => effacer les balises HTML (div) #}              
-                    <p>{{ traductionArticle.description|raw }}</p>
+                    <p class="description">{{ traductionArticle.description|raw }}</p>
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>{% trans %}Kategorie:{% endtrans %}</h3>
@@ -38,7 +38,14 @@
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>{% trans %}Preis:{% endtrans %}</h3>
-                    <p>{{ prix }}</p> 
+                    {% if traductionArticle.article.promotion or traductionArticle.article.categorie.promotion %}
+                        <div class="promo-box">
+                            <p class="barre">{{ prix }}</p>
+                            <p class="promo">{{ prixPromo }}</p>
+                        </div>
+                    {% else %}                        
+                        <p>{{ prix }}</p> 
+                    {% endif %}
                 </div>
                 <div class="m-article-detail-info-btn">
                     <a href="#" class="btn btn-outline-info">{% trans %}In den Warenkorb{% endtrans %}</i></a>

@@ -355,11 +355,24 @@ class ArticleController extends AbstractController
         //calcul du prix
         $prixArticle = (($article -> getMontantHorsTva() + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
         $prixArticle = number_format($prixArticle, 2, ',', '.').' €';
+        $prixArticlePromo = 0;
+        // si il y a une réduction sur le prix
+        if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+            if($article -> getPromotion()):
+                $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+            elseif($article -> getCategorie() -> getPromotion()):
+                $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+            endif;
+            $prixArticlePromo = ((($article -> getMontantHorsTva() - $reduction) + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
+            $prixArticlePromo = number_format($prixArticlePromo, 2, ',', '.').' €';
+        endif;        
+
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
             'traductionArticle' => $resultTraductionArticle,
             'traductionCategorie' => $resultTraductionCategorie,
             'prix' => $prixArticle,
+            'prixPromo' => $prixArticlePromo,
             'traductionBeurres' => $resultTraductionBeurres,
             'traductionHuiles' => $resultTraductionHuiles,
             'traductionHuilesEss' => $resultTraductionHuilesEss,
