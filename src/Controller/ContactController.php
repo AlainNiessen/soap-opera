@@ -18,7 +18,7 @@ class ContactController extends AbstractController
      */
     public function contact(): Response
     { 
-        // définition des valeurs dans les champs sur vide
+        // définition des valeurs dans les champs sur vide (première passage au formulaire)
         $nom      = "";
         $email    = "";
         $sujet    = "";
@@ -43,23 +43,23 @@ class ContactController extends AbstractController
         $message  = $request -> request -> get('message');
         
         if(!empty($nom) && !empty($email) && !empty($sujet) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)):
-            dd('hello');
+            
             //envoie du email
             $emailSend = (new TemplatedEmail())
                 ->from("alain_niessen@hotmail.com") //de qui
-                ->to(new Address("alain_niessen@hotmail.com")) //vers adresse mail du prestataire
+                ->to(new Address("alain_niessen@hotmail.com")) //vers adresse mail 
                 ->replyTo($email)
-                ->subject($sujet) //sujet
-                ->htmlTemplate('emails/contact.html.twig') //création template email contact prestataire
+                ->subject('Anfrage von '.$nom.' - '.$email.' / Betreff: '.$sujet) //sujet
+                ->htmlTemplate('emails/contact.html.twig') //création template email contact 
                 ->context([
-                    'message' => $message, //passage du message              
+                    'message' => $message, //passage du message au template           
                 ])
             ;
             // envoi du mail
             $mailer -> send($emailSend); 
             
             //ajout d'un message de réussite
-            $messageEnvoiMail = $translator -> trans('Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!');
+            $messageEnvoiMail = $translator -> trans('Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!');
             $this -> addFlash('success', $messageEnvoiMail); 
                        
             //redirect vers la page où on a cliqué sur contact

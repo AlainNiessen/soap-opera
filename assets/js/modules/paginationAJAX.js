@@ -53,8 +53,6 @@ if(navigationBar) {
     })
 }
 
-
-
 //fonction ajax fetch
 async function loadURL(url) {
     //traitement AJAX
@@ -69,6 +67,7 @@ async function loadURL(url) {
     if(response.status >= 200 && response.status < 300) {
         // on récupére la réponse en format json
         const data = await response.json();
+        console.log(data);
         //actualisation du contenu de la liste et de la pagination
         contentList.innerHTML = data.content;
         //si URL contient le mot categorie => alors on actualise la pagination dans la liste des articles avec une catégorie choisi

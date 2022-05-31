@@ -245,10 +245,6 @@
         <source>Sonderangebot</source>
         <target>In Promotion</target>
       </trans-unit>
-      <trans-unit id="LfWDIta" resname="Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!">
-        <source>Deine Email ist erfolgreich versendet. Du wirst in Kürez Antwort erhalten!</source>
-        <target>Your email has been sent successfully. You will receive an answer shortly!</target>
-      </trans-unit>
       <trans-unit id="7kY2lCY" resname="Kontaktformular">
         <source>Kontaktformular</source>
         <target>Contact form</target>
@@ -288,6 +284,10 @@
       <trans-unit id="MxTIIh2" resname="Leider ist ein Fehler aufgetreten!">
         <source>Leider ist ein Fehler aufgetreten!</source>
         <target>Sorry, an error has occurred!</target>
+      </trans-unit>
+      <trans-unit id="ua1WdC1" resname="Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!">
+        <source>Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!</source>
+        <target>Your email has been sent successfully. You will receive an answer shortly!</target>
       </trans-unit>
     </body>
   </file>
