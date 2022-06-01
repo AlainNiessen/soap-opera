@@ -773,6 +773,10 @@
         <source>Langue</source>
         <target>Sprachen</target>
       </trans-unit>
+      <trans-unit id="AkMgnKX" resname="NewsletterCategorie">
+        <source>NewsletterCategorie</source>
+        <target>Kategorien Newsletter</target>
+      </trans-unit>
       <trans-unit id="HDML1Pn" resname="Partenaire">
         <source>Partenaire</source>
         <target>Partner</target>
@@ -817,6 +821,10 @@
         <source>TraductionNewsletter</source>
         <target>Übersetzungen Newsletter</target>
       </trans-unit>
+      <trans-unit id="Z1Yziih" resname="TraductionNewsletterCategorie">
+        <source>TraductionNewsletterCategorie</source>
+        <target>Übersetzungen Kategorie Newsletter</target>
+      </trans-unit>
       <trans-unit id="VISY6h1" resname="TraductionOdeur">
         <source>TraductionOdeur</source>
         <target>Übersetzungen Duft</target>
@@ -848,6 +856,34 @@
       <trans-unit id="My1NWcj" resname="option.categorie_promotion">
         <source>option.categorie_promotion</source>
         <target>Sonderangebot</target>
+      </trans-unit>
+      <trans-unit id="onFLqBz" resname="menu.newsletterCategorie">
+        <source>menu.newsletterCategorie</source>
+        <target>Kategorie Newsletter</target>
+      </trans-unit>
+      <trans-unit id="KmkIJs." resname="menu.tra_newsletterCategorie">
+        <source>menu.tra_newsletterCategorie</source>
+        <target>Üb-Kategorie Newsletter</target>
+      </trans-unit>
+      <trans-unit id="Qyg_ra2" resname="option.newsletter_statutEnvoie">
+        <source>option.newsletter_statutEnvoie</source>
+        <target>Newsletter versendet?</target>
+      </trans-unit>
+      <trans-unit id="1j9MD8v" resname="option.newsletter_newsletterCategorie">
+        <source>option.newsletter_newsletterCategorie</source>
+        <target>Kategorie Newsletter</target>
+      </trans-unit>
+      <trans-unit id="BGnx_0b" resname="option.tradNewsletterCategorie_nom">
+        <source>option.tradNewsletterCategorie_nom</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="UHX81q1" resname="option.tradNewsletterCategorie_langue">
+        <source>option.tradNewsletterCategorie_langue</source>
+        <target>Sprache</target>
+      </trans-unit>
+      <trans-unit id="NPiWg9U" resname="option.tradNewsletterCategorie_newsletterCategorie">
+        <source>option.tradNewsletterCategorie_newsletterCategorie</source>
+        <target>Kategorie Newsletter</target>
       </trans-unit>
     </body>
   </file>

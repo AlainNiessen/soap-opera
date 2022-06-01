@@ -124,6 +124,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */ 
     private $plainPassword;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=NewsletterCategorie::class, mappedBy="utilisateurs")
+     */
+    private $newsletterCategories;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -132,9 +137,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        $this->dateInscription = new \DateTime();
         $this->articles = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->factures = new ArrayCollection();
+        $this->newsletterCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -426,6 +433,33 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword(string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, NewsletterCategorie>
+     */
+    public function getNewsletterCategories(): Collection
+    {
+        return $this->newsletterCategories;
+    }
+
+    public function addNewsletterCategory(NewsletterCategorie $newsletterCategory): self
+    {
+        if (!$this->newsletterCategories->contains($newsletterCategory)) {
+            $this->newsletterCategories[] = $newsletterCategory;
+            $newsletterCategory->addUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewsletterCategory(NewsletterCategorie $newsletterCategory): self
+    {
+        if ($this->newsletterCategories->removeElement($newsletterCategory)) {
+            $newsletterCategory->removeUtilisateur($this);
+        }
+
         return $this;
     }
 }

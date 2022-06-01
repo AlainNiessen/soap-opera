@@ -94,6 +94,11 @@ class Langue
      */
     private $traductionIngredientSupplementaires;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionNewsletterCategorie::class, mappedBy="langue")
+     */
+    private $traductionNewsletterCategories;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -118,6 +123,7 @@ class Langue
         $this->traductionHuileEssentiels = new ArrayCollection();
         $this->traductionBeurres = new ArrayCollection();
         $this->traductionIngredientSupplementaires = new ArrayCollection();
+        $this->traductionNewsletterCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -533,6 +539,36 @@ class Langue
             // set the owning side to null (unless already changed)
             if ($traductionIngredientSupplementaire->getLangue() === $this) {
                 $traductionIngredientSupplementaire->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionNewsletterCategorie>
+     */
+    public function getTraductionNewsletterCategories(): Collection
+    {
+        return $this->traductionNewsletterCategories;
+    }
+
+    public function addTraductionNewsletterCategory(TraductionNewsletterCategorie $traductionNewsletterCategory): self
+    {
+        if (!$this->traductionNewsletterCategories->contains($traductionNewsletterCategory)) {
+            $this->traductionNewsletterCategories[] = $traductionNewsletterCategory;
+            $traductionNewsletterCategory->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionNewsletterCategory(TraductionNewsletterCategorie $traductionNewsletterCategory): self
+    {
+        if ($this->traductionNewsletterCategories->removeElement($traductionNewsletterCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionNewsletterCategory->getLangue() === $this) {
+                $traductionNewsletterCategory->setLangue(null);
             }
         }
 

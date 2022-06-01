@@ -34,7 +34,18 @@ class Newsletter
      */
     private $traductionNewsletters;
 
-     // AFFICHAGE DANS INTERFACE ADMIN
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statutEnvoie = false;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=NewsletterCategorie::class, inversedBy="newsletters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $newsletterCategories;
+
+    // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
         return $this->nomBackend;
@@ -42,7 +53,9 @@ class Newsletter
 
     public function __construct()
     {
+        $this->dateNewsletter = new \DateTime();
         $this->traductionNewsletters = new ArrayCollection();
+        $this->traductionNewsletterCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,6 +113,30 @@ class Newsletter
                 $traductionNewsletter->setNewsletter(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatutEnvoie(): ?bool
+    {
+        return $this->statutEnvoie;
+    }
+
+    public function setStatutEnvoie(bool $statutEnvoie): self
+    {
+        $this->statutEnvoie = $statutEnvoie;
+
+        return $this;
+    }
+
+    public function getNewsletterCategories(): ?NewsletterCategorie
+    {
+        return $this->newsletterCategories;
+    }
+
+    public function setNewsletterCategories(?NewsletterCategorie $newsletterCategories): self
+    {
+        $this->newsletterCategories = $newsletterCategories;
 
         return $this;
     }    

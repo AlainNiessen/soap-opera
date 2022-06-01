@@ -26,6 +26,7 @@ use App\Entity\TraductionHuile;
 use App\Entity\TraductionOdeur;
 use App\Entity\TraductionBeurre;
 use App\Entity\TraductionArticle;
+use App\Entity\NewsletterCategorie;
 use App\Entity\TraductionCategorie;
 use App\Entity\TraductionPromotion;
 use App\Entity\TraductionTypeEvent;
@@ -34,6 +35,7 @@ use App\Entity\TraductionPartenaire;
 use App\Entity\DetailCommandeArticle;
 use App\Entity\IngredientSupplementaire;
 use App\Entity\TraductionHuileEssentiel;
+use App\Entity\TraductionNewsletterCategorie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -75,10 +77,16 @@ class DashboardController extends AbstractDashboardController
                     MenuItem::linkToCrud(new TranslatableMessage('menu.partenaire', [], 'EasyAdminBundle'), 'fas fa-user', Partenaire::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.tra_partenaire', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPartenaire::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.adresse', [], 'EasyAdminBundle'), 'fas fa-address-card', Adresse::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.commentaire', [], 'EasyAdminBundle'), 'fas fa-comment', Commentaire::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.newsletter', [], 'EasyAdminBundle'), 'fas fa-envelope-open-text', Newsletter::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.tra_newsletter', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionNewsletter::class),
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.commentaire', [], 'EasyAdminBundle'), 'fas fa-comment', Commentaire::class),                    
                     MenuItem::linkToCrud(new TranslatableMessage('menu.langue', [], 'EasyAdminBundle'), 'fas fa-language', Langue::class)
+                ]),
+
+                MenuItem::subMenu(new TranslatableMessage('menu.newsletter', [], 'EasyAdminBundle')) -> setSubItems([
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.newsletter', [], 'EasyAdminBundle'), 'fas fa-envelope-open-text', Newsletter::class),
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.tra_newsletter', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionNewsletter::class),                        
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.newsletterCategorie', [], 'EasyAdminBundle'), 'fas fa-plus', NewsletterCategorie::class),
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.tra_newsletterCategorie', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionNewsletterCategorie::class)                        
+                       
                 ]),
             
                 MenuItem::subMenu(new TranslatableMessage('menu.article', [], 'EasyAdminBundle')) -> setSubItems([
