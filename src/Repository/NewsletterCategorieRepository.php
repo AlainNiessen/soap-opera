@@ -46,23 +46,9 @@ class NewsletterCategorieRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
-    // /**
-    //  * @return NewsletterCategorie[] Returns an array of NewsletterCategorie objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('n')
-            ->andWhere('n.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('n.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+   
+    
+    
 
     /*
     public function findOneBySomeField($value): ?NewsletterCategorie

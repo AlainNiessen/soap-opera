@@ -601,6 +601,18 @@
         <source>Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!</source>
         <target>Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!</target>
       </trans-unit>
+      <trans-unit id="OzoCJRM" resname="Möchten Sie einen Newsletter abonnieren?">
+        <source>Möchten Sie einen Newsletter abonnieren?</source>
+        <target>Möchten Sie einen Newsletter abonnieren?</target>
+      </trans-unit>
+      <trans-unit id="dQPjcnF" resname="Der Newsletter ist nicht obligatorisch.">
+        <source>Der Newsletter ist nicht obligatorisch.</source>
+        <target>Der Newsletter ist nicht obligatorisch.</target>
+      </trans-unit>
+      <trans-unit id="8VhbUNF" resname="Sie können eine oder mehrere Kategorien anwählen.">
+        <source>Sie können eine oder mehrere Kategorien anwählen.</source>
+        <target>Sie können eine oder mehrere Kategorien anwählen.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

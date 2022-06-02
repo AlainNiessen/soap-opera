@@ -85,6 +85,10 @@
         <source>formAdresse.pays</source>
         <target>Pays</target>
       </trans-unit>
+      <trans-unit id="J_4m3ei" resname="formInscription.newsletterCategorie">
+        <source>formInscription.newsletterCategorie</source>
+        <target>Catégories</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

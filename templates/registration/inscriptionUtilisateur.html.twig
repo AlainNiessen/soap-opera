@@ -55,6 +55,12 @@
             {{ form_row(formInscription.adresseDeliver.pays) }}
         </div>
         <div class="form-container">
+            <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
+            <p>{% trans %}Der Newsletter ist nicht obligatorisch.{% endtrans %}</p>
+            <p>{% trans %}Sie können eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
+            {{ form_row(formInscription.newsletterCategories) }}
+        </div>
+        <div class="form-container">
             <h3>{% trans %}Wählen Sie eine Sprache aus{% endtrans %}</h3>
             {{ form_row(formInscription.langue) }}
         </div>

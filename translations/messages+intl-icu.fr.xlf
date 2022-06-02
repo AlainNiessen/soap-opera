@@ -293,6 +293,18 @@
         <source>Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!</source>
         <target>Ton e-mail a été envoyé avec succès. Tu recevras une réponse sous peu!</target>
       </trans-unit>
+      <trans-unit id="OzoCJRM" resname="Möchten Sie einen Newsletter abonnieren?">
+        <source>Möchten Sie einen Newsletter abonnieren?</source>
+        <target>Souhaitez-vous vous inscrire à une newsletter ?</target>
+      </trans-unit>
+      <trans-unit id="dQPjcnF" resname="Der Newsletter ist nicht obligatorisch.">
+        <source>Der Newsletter ist nicht obligatorisch.</source>
+        <target>La newsletter n'est pas obligatoire.</target>
+      </trans-unit>
+      <trans-unit id="8VhbUNF" resname="Sie können eine oder mehrere Kategorien anwählen.">
+        <source>Sie können eine oder mehrere Kategorien anwählen.</source>
+        <target>Vous pouvez sélectionner une ou plusieurs catégories.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

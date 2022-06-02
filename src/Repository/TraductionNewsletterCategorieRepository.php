@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\ORMException;
+use App\Entity\NewsletterCategorie;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\TraductionNewsletterCategorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
-use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<TraductionNewsletterCategorie>
@@ -47,22 +48,21 @@ class TraductionNewsletterCategorieRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionNewsletterCategorie[] Returns an array of TraductionNewsletterCategorie objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findTraduction(NewsletterCategorie $newsletterCategorie, $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this    ->  createQueryBuilder('tnc')
+                        ->  innerJoin('tnc.newsletterCategories', 'nc')
+                        ->  addSelect('nc')  
+                        ->  innerJoin('tnc.langue', 'l')
+                        ->  addSelect('l')  
+                        ->  andWhere('l.codeLangue LIKE :code')
+                        ->  setParameter('code', $langue)
+                        ->  andWhere('tnc.newsletterCategories = :objet')
+                        ->  setParameter('objet', $newsletterCategorie)
+                        ->  getQuery()
+                        ->  getSingleResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionNewsletterCategorie

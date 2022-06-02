@@ -4,9 +4,14 @@ namespace App\Form;
 
 use App\Entity\Langue;
 use App\Entity\Utilisateur;
+use App\Entity\NewsletterCategorie;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
+use App\Entity\TraductionNewsletterCategorie;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Length;
@@ -24,6 +29,14 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class InscriptionUtilisateurType extends AbstractType
 {
+    // Injection du service request_stack => accés à la requête en appelant la méthode getCurrentRequest() 
+    // pour pouvoir récupérer la langue dans la Session pour le choice_label du newsletterCategorie
+    public function __construct(RequestStack $requestStack, EntityManagerInterface $entityManager)
+    {
+        $this->request = $requestStack->getCurrentRequest();
+        $this->entityManager = $entityManager;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -84,6 +97,29 @@ class InscriptionUtilisateurType extends AbstractType
         ])
         ->add('adresseDeliver', AdresseType::class, [
             'label' => new TranslatableMessage('formInscription.adresseLivraison', [], 'Form'),
+        ])
+        ->add('newsletterCategories', EntityType::class, [
+            'class' => NewsletterCategorie::class,
+            'label' => new TranslatableMessage('formInscription.newsletterCategorie', [], 'Form'),
+            'choice_label' => function (NewsletterCategorie $newsletterCategorie) {
+                
+                //récupération de la langue dans la Session
+                $langue = $this -> request -> getLocale();
+                //connection au repository TraductionNewsletterCategorie
+                $repository = $this -> entityManager -> getRepository(TraductionNewsletterCategorie::class);
+                //appel à la fonction findTraduction pour trouver la traduction de NewsletterCategorie 
+                $trad = $repository -> findTraduction($newsletterCategorie, $langue);                
+                //récupération du nom de la catégorie dans la langue stockée dans la Session
+                $categorieNom = $trad -> getNom();
+                
+                return $categorieNom;                
+            },
+            'multiple' => true,
+            'expanded' => true,
+            'required'=> false,
+            'attr'=>[
+                'class'=>'form-control',
+            ]  
         ])
         ->add('langue', EntityType::class,[
             'label'=> new TranslatableMessage('formInscription.langue', [], 'Form'),

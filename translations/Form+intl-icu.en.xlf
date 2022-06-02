@@ -85,6 +85,10 @@
         <source>formResetPassword.passwordConfirmation</source>
         <target>Please re-enter the password!</target>
       </trans-unit>
+      <trans-unit id="J_4m3ei" resname="formInscription.newsletterCategorie">
+        <source>formInscription.newsletterCategorie</source>
+        <target>Categories</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
