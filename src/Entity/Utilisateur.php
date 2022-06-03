@@ -125,7 +125,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $plainPassword;
 
     /**
-     * @ORM\ManyToMany(targetEntity=NewsletterCategorie::class, mappedBy="utilisateurs")
+     * @ORM\ManyToMany(targetEntity=NewsletterCategorie::class, inversedBy="utilisateurs")
      */
     private $newsletterCategories;
 
@@ -448,7 +448,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->newsletterCategories->contains($newsletterCategory)) {
             $this->newsletterCategories[] = $newsletterCategory;
-            $newsletterCategory->addUtilisateur($this);
+            //$newsletterCategory->addUtilisateur($this);
         }
 
         return $this;
@@ -456,9 +456,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeNewsletterCategory(NewsletterCategorie $newsletterCategory): self
     {
-        if ($this->newsletterCategories->removeElement($newsletterCategory)) {
-            $newsletterCategory->removeUtilisateur($this);
-        }
+        $this->newsletterCategories->removeElement($newsletterCategory); 
 
         return $this;
     }

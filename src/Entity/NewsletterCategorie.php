@@ -25,7 +25,7 @@ class NewsletterCategorie
     private $nomBackend;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Utilisateur::class, inversedBy="newsletterCategories")
+     * @ORM\ManyToMany(targetEntity=Utilisateur::class, mappedBy="newsletterCategories")
      */
     private $utilisateurs;
 
@@ -81,6 +81,7 @@ class NewsletterCategorie
     {
         if (!$this->utilisateurs->contains($utilisateur)) {
             $this->utilisateurs[] = $utilisateur;
+            $utilisateur->addNewsletterCategory($this);
         }
 
         return $this;
@@ -88,7 +89,9 @@ class NewsletterCategorie
 
     public function removeUtilisateur(Utilisateur $utilisateur): self
     {
-        $this->utilisateurs->removeElement($utilisateur);
+        if($this->utilisateurs->removeElement($utilisateur)) {
+            $utilisateur -> removeNewsletterCategory($this);
+        }
 
         return $this;
     }

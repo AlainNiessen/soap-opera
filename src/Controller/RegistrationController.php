@@ -40,6 +40,13 @@ class RegistrationController extends AbstractController
         if($formInscription -> isSubmitted() && $formInscription -> isValid()):
             //récupération des données du formulaire
             $utilisateur = $formInscription -> getData();
+
+            $newsletterUtilisateur = $formInscription -> getData('newsletterCategorie');
+            if(!empty($newsletterUtilisateur)):
+                foreach($newsletterUtilisateur as $newsletter):
+                    $utilisateur -> addNewsletterCategory($newsletter);
+                endforeach;
+            endif;
             // hasher the plain password
             $utilisateur->setPassword(
                 $encoder->hashPassword(
