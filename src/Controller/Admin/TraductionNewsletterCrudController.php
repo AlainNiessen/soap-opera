@@ -36,31 +36,17 @@ class TraductionNewsletterCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {       
         yield TextField::new('titre', new TranslatableMessage('option.tradNewsletter_nom', [], 'EasyAdminBundle'));
-        yield TextField::new('description', new TranslatableMessage('option.tradNewsletter_description', [], 'EasyAdminBundle'));
+        yield TextField::new('description', new TranslatableMessage('option.tradNewsletter_description', [], 'EasyAdminBundle'));           
+        yield TextField::new('documentPDF', new TranslatableMessage('option.tradNewsletter_documentPDF', [], 'EasyAdminBundle'))                           
+                ->setTemplatePath('admin/pdf.html.twig')                    
+                ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
+                ->onlyOnIndex(); 
         
-        
-            
-            yield TextField::new('documentPDF', new TranslatableMessage('option.tradNewsletter_documentPDF', [], 'EasyAdminBundle'))                           
-                    ->setTemplatePath('admin/pdf.html.twig')                    
-                    ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
-                    ->onlyOnIndex(); 
-        // else:
-        //     yield TextField::new('documentPDF', new TranslatableMessage('option.tradNewsletter_documentPDF', [], 'EasyAdminBundle'))                           
-        //             ->setTemplatePath('admin/noPdf.html.twig')                    
-        //             ->onlyOnIndex(); 
-        // endif;
-
         yield Field::new('documentFile', new TranslatableMessage('option.tradNewsletter_documentFile', [], 'EasyAdminBundle'))
                 ->setFormType(VichImageType::class)                          
-                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => true])
+                ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'vich_uploader.link.download'])
                 ->onlyOnForms();
         yield AssociationField::new('langue', new TranslatableMessage('option.tradnewsletter_langue', [], 'EasyAdminBundle'));
         yield AssociationField::new('newsletter', new TranslatableMessage('option.tradNewsletter_newsletter', [], 'EasyAdminBundle'));
-    }  
-
-    public function getPDF(TraductionNewsletter $traduction) {
-        return $traduction -> getDocumentPDF();
-    }
-    
-    
+    }     
 }

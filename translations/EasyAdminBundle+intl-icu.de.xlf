@@ -885,6 +885,14 @@
         <source>option.tradNewsletterCategorie_newsletterCategorie</source>
         <target>Kategorie Newsletter</target>
       </trans-unit>
+      <trans-unit id="Zk.KlSD" resname="vich_uploader.link.download">
+        <source>vich_uploader.link.download</source>
+        <target>PDF anschauen</target>
+      </trans-unit>
+      <trans-unit id="_orotqB" resname="vich_uploader.form_label.delete_confirm">
+        <source>vich_uploader.form_label.delete_confirm</source>
+        <target>Aktuelles PDF löschen?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
