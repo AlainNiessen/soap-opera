@@ -1,2 +1,7 @@
 {# AFFICHGE DU PDF DANS INTERFACE ADMIN LISTE SOUS FORME LIEN #}
-<a href="{{ field.customOption('base_path') ~ '/' ~ entity.instance.documentPDF}}">{% trans %}PDF anschauen{% endtrans %}</a>
+{# vérification si il existe un PDF pour le Newsletter #}
+{% if entity.instance.documentPDF %}
+    <a href="{{ field.customOption('base_path') ~ '/' ~ entity.instance.documentPDF}}">{% trans %}PDF anschauen{% endtrans %}</a>
+{% else %}
+    <p>{% trans %}Keine PDF vorhanden{% endtrans %}</p>
+{% endif %}

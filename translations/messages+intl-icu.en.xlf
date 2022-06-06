@@ -301,6 +301,10 @@
         <source>Sie können eine oder mehrere Kategorien anwählen.</source>
         <target>You can select one or more categories.</target>
       </trans-unit>
+      <trans-unit id="YtzpzYl" resname="Keine PDF vorhanden">
+        <source>Keine PDF vorhanden</source>
+        <target>No PDF available</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

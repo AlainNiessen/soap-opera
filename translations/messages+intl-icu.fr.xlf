@@ -305,6 +305,10 @@
         <source>Sie können eine oder mehrere Kategorien anwählen.</source>
         <target>Vous pouvez sélectionner une ou plusieurs catégories.</target>
       </trans-unit>
+      <trans-unit id="YtzpzYl" resname="Keine PDF vorhanden">
+        <source>Keine PDF vorhanden</source>
+        <target>Aucun PDF disponible</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
