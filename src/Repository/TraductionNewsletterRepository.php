@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionNewsletter;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionNewsletter;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method TraductionNewsletter|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,22 +46,25 @@ class TraductionNewsletterRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionNewsletter[] Returns an array of TraductionNewsletter objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return TraductionNewsletter Returns an object of TraductionNewsletter
+    */
+    
+    public function findTraductionNewsletter($newsletterID, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+
+        return $this    -> createQueryBuilder('tn')                    
+                        -> andWhere('tn.langue = :langueID')
+                        -> setParameter('langueID', $langueID)
+                        -> andWhere('tn.newsletter = :newsletterID')
+                        -> setParameter('newsletterID', $newsletterID)                               
+                        -> getQuery()
+                        -> getSingleResult();
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionNewsletter

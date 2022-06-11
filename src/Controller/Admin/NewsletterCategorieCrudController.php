@@ -5,8 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\NewsletterCategorie;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class NewsletterCategorieCrudController extends AbstractCrudController
@@ -19,6 +18,7 @@ class NewsletterCategorieCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', new TranslatableMessage('option.newsletter_nomBackend', [], 'EasyAdminBundle'));  
+        yield TextField::new('nomBackend', new TranslatableMessage('option.newsletter_nomBackend', [], 'EasyAdminBundle')); 
+        yield AssociationField::new('utilisateurs', new TranslatableMessage('option.newsletter_utilisateurs', [], 'EasyAdminBundle')); 
     }    
 }

@@ -51,7 +51,7 @@ class ArticleController extends AbstractController
         
         //récupération langue
         $lang = $request-> getLocale();
-        //définition repository beurre
+        //définition repository langue
         $repositoryLangue = $entityManager -> getRepository(Langue::class);
         // fonction de requête sur base de données récupérées       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 

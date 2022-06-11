@@ -133,9 +133,9 @@
         <source>von</source>
         <target>from</target>
       </trans-unit>
-      <trans-unit id="dTaS7Da" resname="Hallo">
-        <source>Hallo</source>
-        <target>Hello</target>
+      <trans-unit id="dTaS7Da" resname="Hallo ">
+        <source>Hallo </source>
+        <target>Hello </target>
       </trans-unit>
       <trans-unit id="L1aAwKo" resname="Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:">
         <source>Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:</source>
@@ -304,6 +304,10 @@
       <trans-unit id="YtzpzYl" resname="Keine PDF vorhanden">
         <source>Keine PDF vorhanden</source>
         <target>No PDF available</target>
+      </trans-unit>
+      <trans-unit id="pOMxseF" resname="Der Newsletter ist erfolgreich versendet">
+        <source>Der Newsletter ist erfolgreich versendet</source>
+        <target>The newsletter has been sent successfully</target>
       </trans-unit>
     </body>
   </file>

@@ -101,9 +101,9 @@
         <source>und</source>
         <target>et</target>
       </trans-unit>
-      <trans-unit id="dTaS7Da" resname="Hallo">
-        <source>Hallo</source>
-        <target>Salut</target>
+      <trans-unit id="dTaS7Da" resname="Hallo ">
+        <source>Hallo </source>
+        <target>Salut </target>
       </trans-unit>
       <trans-unit id="L1aAwKo" resname="Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:">
         <source>Du möchtest dein Passwort ändern? Bitte nutze hierfür den folgenden Link:</source>
@@ -308,6 +308,10 @@
       <trans-unit id="YtzpzYl" resname="Keine PDF vorhanden">
         <source>Keine PDF vorhanden</source>
         <target>Aucun PDF disponible</target>
+      </trans-unit>
+      <trans-unit id="pOMxseF" resname="Der Newsletter ist erfolgreich versendet">
+        <source>Der Newsletter ist erfolgreich versendet</source>
+        <target>La newsletter a été envoyée avec succès</target>
       </trans-unit>
     </body>
   </file>

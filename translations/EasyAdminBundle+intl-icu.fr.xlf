@@ -893,6 +893,14 @@
         <source>vich_uploader.form_label.delete_confirm</source>
         <target>Supprimer PDF actuel?</target>
       </trans-unit>
+      <trans-unit id="O.Rv84m" resname="option.newsletter_sendNewsletter">
+        <source>option.newsletter_sendNewsletter</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="v7FSk1L" resname="option.newsletter_utilisateurs">
+        <source>option.newsletter_utilisateurs</source>
+        <target>Nombre des utilisateurs</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
