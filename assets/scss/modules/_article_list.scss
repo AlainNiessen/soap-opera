@@ -33,7 +33,23 @@
                 color: map-get($map: $colors, $key: 'text');
                 background-color: map-get($map: $colors, $key: 'main1');
                 text-align: center; 
-                padding: 2rem;                             
+                padding: 2rem;  
+                .deco-point {
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    background-color: rgb(166, 217, 230);
+                    margin-bottom: .5rem;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &:hover {
+                    .deco-point {
+                        background-color: map-get($map: $colors, $key: 'bg-2');
+                    }
+                }                           
             }            
         }
     }    

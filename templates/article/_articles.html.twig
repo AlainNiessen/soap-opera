@@ -4,17 +4,26 @@
             <div class="m-article-content">
                 {% for image in traductionArticle.article.images %}
                     {% if image.coverListArticle == true %}                           
-                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticle.nom}}" title="{{ traductionArticle.nom}}">                            
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionArticle.nom }}" title="{{ traductionArticle.nom }}">                            
                     {% endif %}
                 {% endfor %}
                 <div class="m-article-info">
+                    <div class="deco-point">
+                    {% for image in traductionArticle.article.categorie.images %}            
+                        <img src="{{ asset('/uploads/images/'~image.nom) }}" 
+                            {% for traductionCat in traductionArticle.article.categorie.traductionCategories %}
+                                alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
+                            {% endfor %}
+                            >
+                    {% endfor %}                                    
+                    </div>
                     <h3>{{ traductionArticle.nom }}</h3>
                     {# si il y a une promotion #}
                     {% if traductionArticle.article.promotion or traductionArticle.article.categorie.promotion %}
                         <p class="promo">% {% trans %}Sonderangebot{% endtrans %} %</p>
                     {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>
-                    <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                    <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
                 </div> 
             </div>                   
         </div>

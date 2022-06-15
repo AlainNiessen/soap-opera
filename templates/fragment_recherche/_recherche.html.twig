@@ -6,7 +6,11 @@
                     <div class=" col-4 col-sm-4 col-md-2">
                         <a href="{{ path('article_recherche_cat', {id: traductionCategorie.categorie.id, pagCat: 1}) }}">
                             <div class="m-recherche-categorie-box">
-                                <div class="deco-point"></div>
+                                <div class="deco-point">
+                                {% for image in traductionCategorie.categorie.images %}
+                                    <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionCategorie.nom}}" title="{{ traductionCategorie.nom}}">                            
+                                {% endfor %}                                    
+                                </div>
                                 <h4>{{ traductionCategorie.nom }}</h4>
                             </div>
                         </a>

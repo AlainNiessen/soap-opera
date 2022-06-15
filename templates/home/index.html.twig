@@ -32,9 +32,18 @@
                                 {% endif %}
                             {% endfor %}
                             <div class="m-article-info">
+                                <div class="deco-point">
+                                {% for image in traductionArticleBestseller.article.categorie.images %}            
+                                    <img src="{{ asset('/uploads/images/'~image.nom) }}" 
+                                        {% for traductionCat in traductionArticleBestseller.article.categorie.traductionCategories %}
+                                            alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
+                                        {% endfor %}
+                                        >
+                                {% endfor %}                                    
+                                </div>
                                 <h3>{{ traductionArticleBestseller.nom }}</h3>
                                 <p>{{ traductionArticleBestseller.slogan }}</p>
-                                <a href="{{ path('article_detail', {id: traductionArticleBestseller.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                                <a href="{{ path('article_detail', {id: traductionArticleBestseller.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
                             </div> 
                         </div>                   
                     </div>
@@ -57,9 +66,18 @@
                                 {% endif %}
                             {% endfor %}
                             <div class="m-article-info">
+                                <div class="deco-point">
+                                    {% for image in traductionArticleNew.article.categorie.images %}            
+                                        <img src="{{ asset('/uploads/images/'~image.nom) }}" 
+                                            {% for traductionCat in traductionArticleNew.article.categorie.traductionCategories %}
+                                                alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
+                                            {% endfor %}
+                                            >
+                                    {% endfor %}                                    
+                                </div>
                                 <h3>{{ traductionArticleNew.nom }}</h3>
                                 <p>{{ traductionArticleNew.slogan }}</p>
-                                <a href="{{ path('article_detail', {id: traductionArticleNew.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-search"></i></a>
+                                <a href="{{ path('article_detail', {id: traductionArticleNew.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
                             </div> 
                         </div>                   
                     </div>
