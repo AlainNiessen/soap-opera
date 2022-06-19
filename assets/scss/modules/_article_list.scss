@@ -43,6 +43,7 @@
                     img {
                         width: 100%;
                         height: 100%;
+                       filter: brightness(0.7) invert(.6) sepia(.2) hue-rotate(80deg) saturate(150%);                        
                     }
                 }
                 &:hover {

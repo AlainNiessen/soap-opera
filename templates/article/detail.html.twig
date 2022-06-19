@@ -19,7 +19,71 @@
                     {% endif %}
                 {% endfor %}
             </div>
-        </section>
+        </section>        
+        {# si l'utilisateur est authentifié, il a accès à la barre d'actions #}
+        {% if (app.user) %}
+        <section class="m-article-detail-navbar-actions">
+            <div class="wrapper">  
+                <div class="commentaire" id="commentaire">
+                    <i class="far fa-times-circle" id="back_to_page" alt="fermer" title="fermer"></i>
+                    <div class="form-commentaire">
+                        <h3>{% trans %}Kommentieren{% endtrans %}</h3>
+                        <form action="{{ path('commentaire') }}" method="post" class="form-commentaire-formulaire">
+                            <div class="form-area">
+                                <input type="textarea" name="commentaire"/>                 
+                            </div>
+                            <div class="recherche-area">
+                                <button type="submit" class="submit-btn">{% trans %}Zur überprüfung absenden{% endtrans %}</button>
+                            </div>
+                        </form>
+                    </div>           
+                    {{ form_end(formPrestataireInfo) }}
+                </div>              
+                <div class="actions">
+                    <div class="action-box">
+                        <a href="#">          
+                            <div class="action-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="action-description">
+                                <p>{% trans %}Kommentieren{% endtrans %}</p>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="action-box">
+                        <a href="#">          
+                            <div class="action-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="action-description">
+                                <p>{% trans %}Bewerten{% endtrans %}</p>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="action-box">
+                        <a href="#">          
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="action-description">
+                                <p>{% trans %}Als Favorit hinzufügen{% endtrans %}</p>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="action-box">
+                        <a href="#">          
+                            <div class="action-icon">
+                                <i class="fas fa-cart-arrow-down"></i>
+                            </div>
+                            <div class="action-description">
+                                <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
+                            </div> 
+                        </a>   
+                    </div>
+                </div>
+            </div>
+        </section> 
+        {% endif %}
         <section class="m-article-detail-info">        
             <div class="container-onglets">
                 <div class="onglets act" data-anim="1">{% trans %}Beschreibung{% endtrans %}</div>
@@ -46,10 +110,7 @@
                     {% else %}                        
                         <p>{{ prix }}</p> 
                     {% endif %}
-                </div>
-                <div class="m-article-detail-info-btn">
-                    <a href="#" class="btn btn-outline-info">{% trans %}In den Warenkorb{% endtrans %}</i></a>
-                </div>      
+                </div>     
             </div>
             <div class="contenu" data-anim="2">                          
                 <div class="contenu-box">
