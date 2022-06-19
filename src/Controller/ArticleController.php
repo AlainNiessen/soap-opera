@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Langue;
 use App\Entity\Article;
 use App\Entity\Categorie;
+use App\Entity\Commentaire;
+use App\Entity\Utilisateur;
 use App\Entity\TraductionHuile;
 use App\Entity\TraductionBeurre;
 use App\Entity\TraductionArticle;
@@ -16,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
@@ -378,5 +381,42 @@ class ArticleController extends AbstractController
             'traductionHuilesEss' => $resultTraductionHuilesEss,
             'traductionIngredientsSupp' => $resultTraductionIngredientsSupp     
         ]);
+    }
+
+    //----------------------------------------------
+    // ROUTE COMMENTAIRE ARTICLE
+    //----------------------------------------------
+    /**
+     * @Route("/article/commentaire/{id}", name="article_commentaire", methods="post|get")
+     */
+    public function commentaire(Article $article, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {
+        if(isset($_POST['commentaire']) && !empty($_POST['commentaire'])):
+
+            $commentaire = new Commentaire();
+            $commentaire -> setDateCommentaire(new \Datetime());
+            $commentaire -> setCommentaireInfructueux(true);
+            $commentaire -> setArticle($article);
+            $commentaire -> setUtilisateur($this->getUser());
+            $commentaire -> setContenu($_POST['commentaire']);
+
+            //préparation insertion dans la BD
+            $entityManager -> persist($commentaire);
+            //insertion BD
+            $entityManager -> flush();
+
+            //ajout d'un message de réussite
+            $message = $translator -> trans('Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet');
+            $this -> addFlash('success', $message); 
+
+            return $this->redirectToRoute('article_detail', [
+                'id' => $article->getId()
+            ]);
+        endif;
+        
+        //redirect vers la page où on a cliqué sur contact
+        return $this->redirectToRoute('article_detail', [
+            'id' => $article->getId()
+        ]); 
     }
 }

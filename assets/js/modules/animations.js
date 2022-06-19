@@ -79,3 +79,24 @@ onglets.forEach(onglet => {
     })    
 })
 
+// ----------------------------
+    // Animation formulaire commentaire pop-up
+    // ---------------------------- 
+
+    //récupération des tous les onglets et contenus
+    const btn_form_commentaire = document.getElementById('submit-commentaire');
+    const formulaire_commentaire = document.getElementById('commentaire');
+    const croix_commentaire = document.getElementById('back_to_page');
+    
+    //event pour afficher le formulaire
+    btn_form_commentaire.addEventListener('click', () => {
+        formulaire_commentaire.classList.add('show');
+       
+    })
+    
+    //event pour cacher le formulaire
+    croix_commentaire.addEventListener('click', () => {
+        formulaire_commentaire.classList.remove('show');
+        
+    })
+

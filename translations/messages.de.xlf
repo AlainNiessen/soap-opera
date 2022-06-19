@@ -445,7 +445,7 @@
         <source>von</source>
         <target>von</target>
       </trans-unit>
-      <trans-unit id="dTaS7Da" resname="Hallo ">
+      <trans-unit id="m3s0pvP" resname="Hallo ">
         <source>Hallo </source>
         <target>Hallo </target>
       </trans-unit>
@@ -620,6 +620,38 @@
       <trans-unit id="pOMxseF" resname="Der Newsletter ist erfolgreich versendet">
         <source>Der Newsletter ist erfolgreich versendet</source>
         <target>Der Newsletter ist erfolgreich versendet</target>
+      </trans-unit>
+      <trans-unit id="K.11XE6" resname="Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet">
+        <source>Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet</source>
+        <target>Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet</target>
+      </trans-unit>
+      <trans-unit id="kChIidN" resname="Kommentieren">
+        <source>Kommentieren</source>
+        <target>Kommentieren</target>
+      </trans-unit>
+      <trans-unit id="CmJikwt" resname="Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!">
+        <source>Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!</source>
+        <target>Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!</target>
+      </trans-unit>
+      <trans-unit id="IuHFUTo" resname="Absenden">
+        <source>Absenden</source>
+        <target>Absenden</target>
+      </trans-unit>
+      <trans-unit id="2wAPQOP" resname="Bewerten">
+        <source>Bewerten</source>
+        <target>Bewerten</target>
+      </trans-unit>
+      <trans-unit id="bds_Fcq" resname="Als Favorit hinzufügen">
+        <source>Als Favorit hinzufügen</source>
+        <target>Als Favorit hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="1ea0BPN" resname="Dem Warenkorb hinzufügen">
+        <source>Dem Warenkorb hinzufügen</source>
+        <target>Dem Warenkorb hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="dTaS7Da" resname="Hallo">
+        <source>Hallo</source>
+        <target>Hallo</target>
       </trans-unit>
     </body>
   </file>

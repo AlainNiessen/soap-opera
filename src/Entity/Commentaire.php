@@ -39,11 +39,7 @@ class Commentaire
      */
     private $utilisateur;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $nombreEtoiles;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -98,18 +94,6 @@ class Commentaire
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
-
-        return $this;
-    }
-
-    public function getNombreEtoiles(): ?int
-    {
-        return $this->nombreEtoiles;
-    }
-
-    public function setNombreEtoiles(int $nombreEtoiles): self
-    {
-        $this->nombreEtoiles = $nombreEtoiles;
 
         return $this;
     }

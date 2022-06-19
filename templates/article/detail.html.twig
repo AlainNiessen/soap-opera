@@ -9,6 +9,17 @@
 
 <section class="m-article-detail">
     <div class="wrapper">
+        {# insertion message de réussite / erreur / notice #}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <section class="m-article-detail-intro">
             <h1>{{ traductionArticle.nom }}</h1>
             <p>{{ traductionArticle.slogan }}</p>
@@ -28,57 +39,49 @@
                     <i class="far fa-times-circle" id="back_to_page" alt="fermer" title="fermer"></i>
                     <div class="form-commentaire">
                         <h3>{% trans %}Kommentieren{% endtrans %}</h3>
-                        <form action="{{ path('commentaire') }}" method="post" class="form-commentaire-formulaire">
+                        <p>{% trans %}Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
+                        <form action="{{ path('article_commentaire', {id: traductionArticle.article.id}) }}" method="post" class="form-commentaire-formulaire">
                             <div class="form-area">
-                                <input type="textarea" name="commentaire"/>                 
+                                <textarea name="commentaire"/></textarea>                
                             </div>
                             <div class="recherche-area">
-                                <button type="submit" class="submit-btn">{% trans %}Zur überprüfung absenden{% endtrans %}</button>
+                                <button type="submit" class="btn btn-outline-info detail-btn">{% trans %}Absenden{% endtrans %}</button>
                             </div>
                         </form>
                     </div>           
-                    {{ form_end(formPrestataireInfo) }}
                 </div>              
                 <div class="actions">
-                    <div class="action-box">
-                        <a href="#">          
-                            <div class="action-icon">
-                                <i class="fas fa-comment"></i>
-                            </div>
-                            <div class="action-description">
-                                <p>{% trans %}Kommentieren{% endtrans %}</p>
-                            </div> 
-                        </a>   
+                    <div class="action-box" id="submit-commentaire">                                  
+                        <div class="action-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="action-description">
+                            <p>{% trans %}Kommentieren{% endtrans %}</p>
+                        </div>                         
                     </div>
-                    <div class="action-box">
-                        <a href="#">          
-                            <div class="action-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="action-description">
-                                <p>{% trans %}Bewerten{% endtrans %}</p>
-                            </div> 
-                        </a>   
+                    <div class="action-box">                                 
+                        <div class="action-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="action-description">
+                            <p>{% trans %}Bewerten{% endtrans %}</p>
+                        </div>                          
                     </div>
-                    <div class="action-box">
-                        <a href="#">          
+                    <div class="action-box">       
                             <div class="action-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div class="action-description">
                                 <p>{% trans %}Als Favorit hinzufügen{% endtrans %}</p>
-                            </div> 
-                        </a>   
+                            </div>   
                     </div>
-                    <div class="action-box">
-                        <a href="#">          
+                    <div class="action-box">        
                             <div class="action-icon">
                                 <i class="fas fa-cart-arrow-down"></i>
                             </div>
                             <div class="action-description">
                                 <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
-                            </div> 
-                        </a>   
+                            </div>  
                     </div>
                 </div>
             </div>

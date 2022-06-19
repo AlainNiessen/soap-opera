@@ -101,7 +101,7 @@
         <source>und</source>
         <target>et</target>
       </trans-unit>
-      <trans-unit id="dTaS7Da" resname="Hallo ">
+      <trans-unit id="m3s0pvP" resname="Hallo ">
         <source>Hallo </source>
         <target>Salut </target>
       </trans-unit>
@@ -312,6 +312,38 @@
       <trans-unit id="pOMxseF" resname="Der Newsletter ist erfolgreich versendet">
         <source>Der Newsletter ist erfolgreich versendet</source>
         <target>La newsletter a été envoyée avec succès</target>
+      </trans-unit>
+      <trans-unit id="K.11XE6" resname="Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet">
+        <source>Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet</source>
+        <target>Merci pour votre commentaire. Après vérification, il sera publié sous peu</target>
+      </trans-unit>
+      <trans-unit id="kChIidN" resname="Kommentieren">
+        <source>Kommentieren</source>
+        <target>Commenter</target>
+      </trans-unit>
+      <trans-unit id="CmJikwt" resname="Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!">
+        <source>Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!</source>
+        <target>Faites-nous savoir ce que vous pensez de cet article ! Le commentaire sera publié après vérification !</target>
+      </trans-unit>
+      <trans-unit id="IuHFUTo" resname="Absenden">
+        <source>Absenden</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="2wAPQOP" resname="Bewerten">
+        <source>Bewerten</source>
+        <target>Evaluer</target>
+      </trans-unit>
+      <trans-unit id="bds_Fcq" resname="Als Favorit hinzufügen">
+        <source>Als Favorit hinzufügen</source>
+        <target>Ajouter comme favori</target>
+      </trans-unit>
+      <trans-unit id="1ea0BPN" resname="Dem Warenkorb hinzufügen">
+        <source>Dem Warenkorb hinzufügen</source>
+        <target>Ajouter au panier</target>
+      </trans-unit>
+      <trans-unit id="dTaS7Da" resname="Hallo">
+        <source>Hallo</source>
+        <target>Salut</target>
       </trans-unit>
     </body>
   </file>
