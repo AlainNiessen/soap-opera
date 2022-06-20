@@ -23,8 +23,7 @@ class CommentaireCrudController extends AbstractCrudController
     {
         yield TextField::new('contenu', new TranslatableMessage('option.commentaire_contenu', [], 'EasyAdminBundle'));
         yield DateTimeField::new('dateCommentaire', new TranslatableMessage('option.commentaire_dateCommentaire', [], 'EasyAdminBundle'));
-        yield BooleanField::new('commentaireInfructueux', new TranslatableMessage('option.commentaire_commentaireInfructueux', [], 'EasyAdminBundle'));
-        yield IntegerField::new('nombreEtoiles', new TranslatableMessage('option.commentaire_nombreEtoiles', [], 'EasyAdminBundle'));
+        yield BooleanField::new('publication', new TranslatableMessage('option.commentaire_publication', [], 'EasyAdminBundle'));
         yield AssociationField::new('article', new TranslatableMessage('option.commentaire_article', [], 'EasyAdminBundle') );
         yield AssociationField::new('utilisateur', new TranslatableMessage('option.commentaire_utilisateur', [], 'EasyAdminBundle'));
 

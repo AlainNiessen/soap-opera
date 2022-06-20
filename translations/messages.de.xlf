@@ -653,6 +653,22 @@
         <source>Hallo</source>
         <target>Hallo</target>
       </trans-unit>
+      <trans-unit id="4L8kPem" resname="Kommentare">
+        <source>Kommentare</source>
+        <target>Kommentare</target>
+      </trans-unit>
+      <trans-unit id="0HLV4Ob" resname="Kommentare zu">
+        <source>Kommentare zu</source>
+        <target>Kommentare zu</target>
+      </trans-unit>
+      <trans-unit id="Yp2moEQ" resname="schrieb am">
+        <source>schrieb am</source>
+        <target>schrieb am</target>
+      </trans-unit>
+      <trans-unit id="YrrqiGJ" resname="Keine Kommentare zu diesem Artikel vorhanden!">
+        <source>Keine Kommentare zu diesem Artikel vorhanden!</source>
+        <target>Keine Kommentare zu diesem Artikel vorhanden!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -901,6 +901,10 @@
         <source>option.newsletter_utilisateurs</source>
         <target>Nombre des utilisateurs</target>
       </trans-unit>
+      <trans-unit id="MC_g9KB" resname="option.commentaire_publication">
+        <source>option.commentaire_publication</source>
+        <target>Publication accordée?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

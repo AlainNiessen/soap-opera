@@ -25,7 +25,7 @@ class Commentaire
     /**
      * @ORM\Column(type="boolean")
      */
-    private $commentaireInfructueux;
+    private $publication;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="commentaires")
@@ -62,14 +62,14 @@ class Commentaire
         return $this;
     }
 
-    public function getCommentaireInfructueux(): ?bool
+    public function getPublication(): ?bool
     {
-        return $this->commentaireInfructueux;
+        return $this->publication;
     }
 
-    public function setCommentaireInfructueux(bool $commentaireInfructueux): self
+    public function setPublication(bool $publication): self
     {
-        $this->commentaireInfructueux = $commentaireInfructueux;
+        $this->publication = $publication;
 
         return $this;
     }

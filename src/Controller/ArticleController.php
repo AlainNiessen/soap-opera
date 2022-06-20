@@ -368,7 +368,14 @@ class ArticleController extends AbstractController
             endif;
             $prixArticlePromo = ((($article -> getMontantHorsTva() - $reduction) + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
             $prixArticlePromo = number_format($prixArticlePromo, 2, ',', '.').' €';
-        endif;        
+        endif; 
+        
+        // récupération des commentaires validés par l'administrateur (publication = true)
+        // définition repository commentaires
+        $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
+        // fonction de requête sur base de données récupérées 
+        $resultCommentaires = $repositoryCommentaires -> findBy(["publication" => true]);      
+
 
         //redirect vers le detail de l'article
         return $this->render('article/detail.html.twig', [
@@ -379,7 +386,8 @@ class ArticleController extends AbstractController
             'traductionBeurres' => $resultTraductionBeurres,
             'traductionHuiles' => $resultTraductionHuiles,
             'traductionHuilesEss' => $resultTraductionHuilesEss,
-            'traductionIngredientsSupp' => $resultTraductionIngredientsSupp     
+            'traductionIngredientsSupp' => $resultTraductionIngredientsSupp ,
+            'commentaires' => $resultCommentaires    
         ]);
     }
 
@@ -389,13 +397,13 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/commentaire/{id}", name="article_commentaire", methods="post|get")
      */
-    public function commentaire(Article $article, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    public function commentaire(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         if(isset($_POST['commentaire']) && !empty($_POST['commentaire'])):
 
             $commentaire = new Commentaire();
             $commentaire -> setDateCommentaire(new \Datetime());
-            $commentaire -> setCommentaireInfructueux(true);
+            $commentaire -> setPublication(false); // va être publié après vérification de l'administrateur
             $commentaire -> setArticle($article);
             $commentaire -> setUtilisateur($this->getUser());
             $commentaire -> setContenu($_POST['commentaire']);

@@ -91,7 +91,7 @@
             <div class="container-onglets">
                 <div class="onglets act" data-anim="1">{% trans %}Beschreibung{% endtrans %}</div>
                 <div class="onglets" data-anim="2">{% trans %}Zutaten{% endtrans %}</div>
-                <div class="onglets" data-anim="3">{% trans %}Bewertungen{% endtrans %}</div>
+                <div class="onglets" data-anim="3">{% trans %}Kommentare{% endtrans %}</div>
             </div>
             <div class="contenu overflow-y activeContenu" data-anim="1">
                 <div class="m-article-detail-info-box">
@@ -141,10 +141,18 @@
                     {% endif %}  
                 </div>
             </div>               
-            <div class="contenu" data-anim="3">
-                <h3>{% trans %}Bewertungen{% endtrans %}</h3>
-                <hr>
-                <p>JIJI</p>
+            <div class="contenu overflow-y" data-anim="3">
+                <h3>{% trans %}Kommentare zu{% endtrans %} {{ traductionArticle.nom }}:</h3> 
+                {% if commentaires is defined and commentaires is not null and commentaires is not empty %}                
+                    {% for commentaire in commentaires %}   
+                        <div class="m-article-detail-commentaire-box">                                
+                            <p>{{ commentaire.utilisateur.prenom }} {{ commentaire.utilisateur.nom}} {% trans %}schrieb am{% endtrans %} {{ commentaire.dateCommentaire|date('d/m/Y')}}: </p>
+                            <p>"{{ commentaire.contenu }}"</p>
+                        </div>
+                    {% endfor %} 
+                {% else %}
+                    <p>{% trans %}Keine Kommentare zu diesem Artikel vorhanden!{% endtrans %}
+                {% endif %}
             </div>
         </section>
     </div>
