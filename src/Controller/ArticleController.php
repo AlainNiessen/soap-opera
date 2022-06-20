@@ -422,7 +422,7 @@ class ArticleController extends AbstractController
             ]);
         endif;
         
-        //redirect vers la page où on a cliqué sur contact
+        //redirect vers le détail de l'article
         return $this->redirectToRoute('article_detail', [
             'id' => $article->getId()
         ]); 
