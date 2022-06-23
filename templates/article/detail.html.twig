@@ -36,12 +36,12 @@
         <section class="m-article-detail-navbar-actions">
             <div class="wrapper">  
                 <div class="commentaire" id="commentaire">
-                    <i class="far fa-times-circle" id="back_to_page" alt="fermer" title="fermer"></i>
+                    <i class="far fa-times-circle back-to-page" id="back-to-page-commentaire"></i>
                     <div class="form-commentaire">
                         <h3>{% trans %}Kommentieren{% endtrans %}</h3>
                         <p>{% trans %}Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
                         <form action="{{ path('article_commentaire', {id: traductionArticle.article.id}) }}" method="post" class="form-commentaire-formulaire">
-                            <div class="form-area">
+                            <div class="form-area-comment">
                                 <textarea name="commentaire"/></textarea>                
                             </div>
                             <div class="recherche-area">
@@ -50,8 +50,27 @@
                         </form>
                     </div>           
                 </div>              
+                <div class="evaluation" id="evaluation">
+                    <i class="far fa-times-circle back-to-page" id="back-to-page-evaluation"></i>
+                    <div class="form-evaluation">
+                        <h3>{% trans %}Bewerten{% endtrans %}</h3>
+                        <p>{% trans %}Hier kannst du eine Bewertung abgeben!{% endtrans %}</p>
+                        <form action="#" method="post" class="form-evaluation-formulaire">
+                            <div class="form-area-evaluation">
+                                <i class="lar la-star star"></i>              
+                                <i class="lar la-star star"></i>              
+                                <i class="lar la-star star"></i>              
+                                <i class="lar la-star star"></i>              
+                                <i class="lar la-star star"></i>                            
+                            </div>
+                            <div class="recherche-area">
+                                <button type="submit" class="btn btn-outline-info detail-btn">{% trans %}Absenden{% endtrans %}</button>
+                            </div>
+                        </form>
+                    </div>           
+                </div>              
                 <div class="actions">
-                    <div class="action-box" id="submit-commentaire">                                  
+                    <div class="action-box affichage-formulaire" id="submit-commentaire">                                  
                         <div class="action-icon">
                             <i class="fas fa-comment"></i>
                         </div>
@@ -59,7 +78,7 @@
                             <p>{% trans %}Kommentieren{% endtrans %}</p>
                         </div>                         
                     </div>
-                    <div class="action-box">                                 
+                    <div class="action-box affichage-formulaire" id="submit-evaluation">                                 
                         <div class="action-icon">
                             <i class="fas fa-star"></i>
                         </div>

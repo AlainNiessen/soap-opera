@@ -669,6 +669,10 @@
         <source>Keine Kommentare zu diesem Artikel vorhanden!</source>
         <target>Keine Kommentare zu diesem Artikel vorhanden!</target>
       </trans-unit>
+      <trans-unit id="dFx9IhW" resname="Hier kannst du eine Bewertung abgeben!">
+        <source>Hier kannst du eine Bewertung abgeben!</source>
+        <target>Hier kannst du eine Bewertung abgeben!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -80,23 +80,45 @@ onglets.forEach(onglet => {
 })
 
 // ----------------------------
-    // Animation formulaire commentaire pop-up
+    // Animation formulaire commentaire et évaluation pop-up
     // ---------------------------- 
 
-    //récupération des tous les onglets et contenus
-    const btn_form_commentaire = document.getElementById('submit-commentaire');
-    const formulaire_commentaire = document.getElementById('commentaire');
-    const croix_commentaire = document.getElementById('back_to_page');
-    
-    //event pour afficher le formulaire
-    btn_form_commentaire.addEventListener('click', () => {
-        formulaire_commentaire.classList.add('show');
-       
+    //récupération des actions pour accéder les formulaires et pour fermer les formulaires
+    const acces_formulaires = document.querySelectorAll('.affichage-formulaire');
+    const close_formulaires = document.querySelectorAll('.back-to-page');
+    // formulaires    
+    const formulaire_commentaire = document.getElementById('commentaire');   
+    const formulaire_evaluation = document.getElementById('evaluation');
+   
+    //boucle sur les boutons d'accés aux formulaires
+    acces_formulaires.forEach(item => {
+        // eventListener click
+        item.addEventListener('click', function() {
+            if(this.id == 'submit-commentaire') {
+                showFormulaire(formulaire_commentaire);
+            } else if (this.id == 'submit-evaluation') {
+                showFormulaire(formulaire_evaluation);
+            }
+        })
     })
-    
-    //event pour cacher le formulaire
-    croix_commentaire.addEventListener('click', () => {
-        formulaire_commentaire.classList.remove('show');
-        
-    })
+
+    //boucle sur les boutons pour fermer les formulaires
+    close_formulaires.forEach(item => {
+        // eventListener click
+        item.addEventListener('click', function() {
+            if(this.id == 'back-to-page-commentaire') {
+                removeFormulaire (formulaire_commentaire);
+            } else if (this.id == 'back-to-page-evaluation') {
+                removeFormulaire (formulaire_evaluation);
+            }
+        })
+    })    
+
+    function showFormulaire (element) {
+        element.classList.add('show');
+    }
+
+    function removeFormulaire (element) {
+        element.classList.remove('show');
+    }
 
