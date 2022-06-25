@@ -110,6 +110,11 @@ class Article
      */
     private $dateCreation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="article")
+     */
+    private $evaluations;
+
      // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -128,6 +133,7 @@ class Article
         $this->huileEssentiell = new ArrayCollection();
         $this->beurre = new ArrayCollection();
         $this->ingredientSupplementaire = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -482,6 +488,36 @@ class Article
     public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Evaluation>
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getArticle() === $this) {
+                $evaluation->setArticle(null);
+            }
+        }
 
         return $this;
     }

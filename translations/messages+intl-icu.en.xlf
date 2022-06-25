@@ -361,6 +361,18 @@
         <source>Hier kannst du eine Bewertung abgeben!</source>
         <target>You can leave a review here!</target>
       </trans-unit>
+      <trans-unit id="ROO3H.P" resname="Du hast keinen Kommentar abgegeben.">
+        <source>Du hast keinen Kommentar abgegeben.</source>
+        <target>You have not made a comment.</target>
+      </trans-unit>
+      <trans-unit id="5MgfdIB" resname="Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen">
+        <source>Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</source>
+        <target>Thank you for your review. It will be included in the calculation of the average rating</target>
+      </trans-unit>
+      <trans-unit id="RggHyqN" resname="Für diesen Artikel hast du schon eine Bewertung abgegeben.">
+        <source>Für diesen Artikel hast du schon eine Bewertung abgegeben.</source>
+        <target>You have already submitted a rating for this article.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

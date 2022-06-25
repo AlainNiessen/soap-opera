@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Langue;
 use App\Entity\Article;
 use App\Entity\Categorie;
+use App\Entity\Evaluation;
 use App\Entity\Commentaire;
 use App\Entity\Utilisateur;
 use App\Entity\TraductionHuile;
@@ -416,10 +417,51 @@ class ArticleController extends AbstractController
             //ajout d'un message de réussite
             $message = $translator -> trans('Vielen Dank für deinen Kommentar. Nach Überprüfung wird dieser in Kürze freigeschaltet');
             $this -> addFlash('success', $message); 
+        else: 
+            //ajout d'un message de notice
+            $message = $translator -> trans('Du hast keinen Kommentar abgegeben.');
+            $this -> addFlash('notice', $message);
+        endif;
+        
+        //redirect vers le détail de l'article
+        return $this->redirectToRoute('article_detail', [
+            'id' => $article->getId()
+        ]); 
+    }
+    //----------------------------------------------
+    // ROUTE EVALUATION ARTICLE
+    //----------------------------------------------
+    /**
+     * @Route("/article/evaluation/{id}", name="article_evaluation", methods="post|get")
+     */
+    public function evaluation(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {
+        // contrôle si l'utilisateur connecté a déjà évalué l'atricle en question
+        // définition repository evaluation
+        $repositoryEvaluation = $entityManager -> getRepository(Evaluation::class);
+        // fonction de requête sur base de données récupérées 
+        $resultEvaluation = $repositoryEvaluation -> findBy(['article' => $article, 'utilisateur' => $this->getUser()]);
+        
+        if(empty($resultEvaluation)):
+            //Création nouvelle évaluation
+            $evaluation = new Evaluation();
+            $evaluation -> setNombreEtoiles($_POST['note']);
+            $evaluation -> setArticle($article); 
+            $evaluation -> setUtilisateur($this->getUser());           
 
-            return $this->redirectToRoute('article_detail', [
-                'id' => $article->getId()
-            ]);
+            //préparation insertion dans la BD
+            $entityManager -> persist($evaluation);
+            //insertion BD
+            $entityManager -> flush();
+
+            //ajout d'un message de réussite
+            $message = $translator -> trans('Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen');
+            $this -> addFlash('success', $message); 
+        else:
+            //ajout d'un message de notice
+            $message = $translator -> trans('Für diesen Artikel hast du schon eine Bewertung abgegeben.');
+            $this -> addFlash('notice', $message);
+
         endif;
         
         //redirect vers le détail de l'article

@@ -129,6 +129,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $newsletterCategories;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="utilisateur")
+     */
+    private $evaluations;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -142,6 +147,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         $this->commentaires = new ArrayCollection();
         $this->factures = new ArrayCollection();
         $this->newsletterCategories = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -457,6 +463,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeNewsletterCategory(NewsletterCategorie $newsletterCategory): self
     {
         $this->newsletterCategories->removeElement($newsletterCategory); 
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Evaluation>
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getUtilisateur() === $this) {
+                $evaluation->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
