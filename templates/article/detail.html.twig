@@ -131,7 +131,16 @@
                     {% else %}                        
                         <p>{{ prix }}</p> 
                     {% endif %}
-                </div>     
+                </div>  
+                <div class="m-article-detail-info-box">
+                    <h3>{% trans %}Bewertungen{% endtrans %}</h3>
+                    {% if nombreEvaluations > 0 %}
+                        <p>{% trans %}Anzahl Bewertungen:{% endtrans %} <span>{{ nombreEvaluations}}</span></p>
+                        <p>{% trans %}Durchschnittsbewertung:{% endtrans %} <span>{{ notationMoyenne }}/5<span></p>
+                    {% else %}
+                        <p>{{ traductionArticle.nom }} {% trans %}wurde noch nicht bewertet.{% endtrans %}
+                    {% endif %}
+                </div>   
             </div>
             <div class="contenu" data-anim="2">                          
                 <div class="contenu-box">

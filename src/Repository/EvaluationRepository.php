@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Article;
 use App\Entity\Evaluation;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Evaluation>
@@ -47,22 +48,29 @@ class EvaluationRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Evaluation[] Returns an array of Evaluation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+       
+    public function countStars(Article $article)
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('e.article = :val')
+            ->setParameter('val', $article)
+            ->select('SUM(e.nombreEtoiles) as nombreEtoiles')
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult();
         ;
     }
-    */
+    
+    public function countEvaluations(Article $article)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.article = :val')
+            ->setParameter('val', $article)
+            ->select('COUNT(e) as nombreEvaluations')
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Evaluation

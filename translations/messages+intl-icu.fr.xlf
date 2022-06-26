@@ -219,7 +219,7 @@
       </trans-unit>
       <trans-unit id="IEmtTcn" resname="Bewertungen">
         <source>Bewertungen</source>
-        <target>Commentaires</target>
+        <target>Notations</target>
       </trans-unit>
       <trans-unit id="OxgGZbK" resname="Allgemeine Beschreibung:">
         <source>Allgemeine Beschreibung:</source>
@@ -331,7 +331,7 @@
       </trans-unit>
       <trans-unit id="2wAPQOP" resname="Bewerten">
         <source>Bewerten</source>
-        <target>Evaluer</target>
+        <target>Noter</target>
       </trans-unit>
       <trans-unit id="bds_Fcq" resname="Als Favorit hinzufügen">
         <source>Als Favorit hinzufügen</source>
@@ -363,7 +363,7 @@
       </trans-unit>
       <trans-unit id="dFx9IhW" resname="Hier kannst du eine Bewertung abgeben!">
         <source>Hier kannst du eine Bewertung abgeben!</source>
-        <target>Vous pouvez donner une évaluation ici !</target>
+        <target>Vous pouvez donner une notation ici !</target>
       </trans-unit>
       <trans-unit id="ROO3H.P" resname="Du hast keinen Kommentar abgegeben.">
         <source>Du hast keinen Kommentar abgegeben.</source>
@@ -371,11 +371,23 @@
       </trans-unit>
       <trans-unit id="5MgfdIB" resname="Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen">
         <source>Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</source>
-        <target>Merci pour votre évaluation. Elle sera inclue dans le calcul de la note moyenne</target>
+        <target>Merci pour votre notation. Elle sera inclue dans le calcul de la note moyenne</target>
       </trans-unit>
       <trans-unit id="RggHyqN" resname="Für diesen Artikel hast du schon eine Bewertung abgegeben.">
         <source>Für diesen Artikel hast du schon eine Bewertung abgegeben.</source>
-        <target>Vous avez déjà soumis une évaluation pour cet article.</target>
+        <target>Vous avez déjà soumis une notation pour cet article.</target>
+      </trans-unit>
+      <trans-unit id="zc0DaCo" resname="Anzahl Bewertungen:">
+        <source>Anzahl Bewertungen:</source>
+        <target>Nombre des notations:</target>
+      </trans-unit>
+      <trans-unit id="eM235Dv" resname="Durchschnittsbewertung:">
+        <source>Durchschnittsbewertung:</source>
+        <target>Notation moyenne:</target>
+      </trans-unit>
+      <trans-unit id="Q8DT9H6" resname="wurde noch nicht bewertet.">
+        <source>wurde noch nicht bewertet.</source>
+        <target>n'a pas encore été évalué.</target>
       </trans-unit>
     </body>
   </file>

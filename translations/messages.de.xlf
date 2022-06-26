@@ -675,15 +675,27 @@
       </trans-unit>
       <trans-unit id="ROO3H.P" resname="Du hast keinen Kommentar abgegeben.">
         <source>Du hast keinen Kommentar abgegeben.</source>
-        <target>__Du hast keinen Kommentar abgegeben.</target>
+        <target>Du hast keinen Kommentar abgegeben.</target>
       </trans-unit>
       <trans-unit id="5MgfdIB" resname="Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen">
         <source>Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</source>
-        <target>__Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</target>
+        <target>Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</target>
       </trans-unit>
       <trans-unit id="RggHyqN" resname="Für diesen Artikel hast du schon eine Bewertung abgegeben.">
         <source>Für diesen Artikel hast du schon eine Bewertung abgegeben.</source>
-        <target>__Für diesen Artikel hast du schon eine Bewertung abgegeben.</target>
+        <target>Für diesen Artikel hast du schon eine Bewertung abgegeben.</target>
+      </trans-unit>
+      <trans-unit id="zc0DaCo" resname="Anzahl Bewertungen:">
+        <source>Anzahl Bewertungen:</source>
+        <target>Anzahl Bewertungen:</target>
+      </trans-unit>
+      <trans-unit id="eM235Dv" resname="Durchschnittsbewertung:">
+        <source>Durchschnittsbewertung:</source>
+        <target>Durchschnittsbewertung:</target>
+      </trans-unit>
+      <trans-unit id="Q8DT9H6" resname="wurde noch nicht bewertet.">
+        <source>wurde noch nicht bewertet.</source>
+        <target>wurde noch nicht bewertet.</target>
       </trans-unit>
     </body>
   </file>

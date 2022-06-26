@@ -370,11 +370,26 @@ class ArticleController extends AbstractController
             $prixArticlePromo = ((($article -> getMontantHorsTva() - $reduction) + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
             $prixArticlePromo = number_format($prixArticlePromo, 2, ',', '.').' €';
         endif; 
+
+        // récupération des évaluations sur l'article en question
+        // définition repository evaluation
+        $repositoryEvaluations = $entityManager -> getRepository(Evaluation::class);
+        // récupération du nombre des évaluations sur l'article
+        $nombreEvaluations = $repositoryEvaluations -> countEvaluations($article);
+        // récupération nombre total des étoiles sur l'article
+        $nombreEtoiles = $repositoryEvaluations -> countStars($article);
+        // définition notations moyenne
+        if($nombreEvaluations != 0):
+            $notationMoyenne = round($nombreEtoiles / $nombreEvaluations, 2);
+        else:
+            $notationMoyenne = 0;
+        endif;
         
+               
         // récupération des commentaires validés par l'administrateur (publication = true)
         // définition repository commentaires
         $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
-        // fonction de requête sur base de données récupérées 
+        // récupération des commentaires sur l'article 
         $resultCommentaires = $repositoryCommentaires -> findCommentaires($article);      
 
 
@@ -388,7 +403,9 @@ class ArticleController extends AbstractController
             'traductionHuiles' => $resultTraductionHuiles,
             'traductionHuilesEss' => $resultTraductionHuilesEss,
             'traductionIngredientsSupp' => $resultTraductionIngredientsSupp ,
-            'commentaires' => $resultCommentaires    
+            'commentaires' => $resultCommentaires,
+            'nombreEvaluations' => $nombreEvaluations,
+            'notationMoyenne' => $notationMoyenne  
         ]);
     }
 

@@ -59,7 +59,7 @@
       </trans-unit>
       <trans-unit id="IEmtTcn" resname="Bewertungen">
         <source>Bewertungen</source>
-        <target>Valuations</target>
+        <target>Ratings</target>
       </trans-unit>
       <trans-unit id="OxgGZbK" resname="Allgemeine Beschreibung:">
         <source>Allgemeine Beschreibung:</source>
@@ -327,7 +327,7 @@
       </trans-unit>
       <trans-unit id="2wAPQOP" resname="Bewerten">
         <source>Bewerten</source>
-        <target>Evaluate</target>
+        <target>Rate</target>
       </trans-unit>
       <trans-unit id="bds_Fcq" resname="Als Favorit hinzufügen">
         <source>Als Favorit hinzufügen</source>
@@ -359,7 +359,7 @@
       </trans-unit>
       <trans-unit id="dFx9IhW" resname="Hier kannst du eine Bewertung abgeben!">
         <source>Hier kannst du eine Bewertung abgeben!</source>
-        <target>You can leave a review here!</target>
+        <target>You can leave a rating here!</target>
       </trans-unit>
       <trans-unit id="ROO3H.P" resname="Du hast keinen Kommentar abgegeben.">
         <source>Du hast keinen Kommentar abgegeben.</source>
@@ -367,11 +367,23 @@
       </trans-unit>
       <trans-unit id="5MgfdIB" resname="Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen">
         <source>Vielen Dank für deine Bewertung. Sie wird bei der Berrechnung der Durchschnittsbewertung einfliessen</source>
-        <target>Thank you for your review. It will be included in the calculation of the average rating</target>
+        <target>Thank you for your rating. It will be included in the calculation of the average rating</target>
       </trans-unit>
       <trans-unit id="RggHyqN" resname="Für diesen Artikel hast du schon eine Bewertung abgegeben.">
         <source>Für diesen Artikel hast du schon eine Bewertung abgegeben.</source>
         <target>You have already submitted a rating for this article.</target>
+      </trans-unit>
+      <trans-unit id="zc0DaCo" resname="Anzahl Bewertungen:">
+        <source>Anzahl Bewertungen:</source>
+        <target>Number of ratings:</target>
+      </trans-unit>
+      <trans-unit id="eM235Dv" resname="Durchschnittsbewertung:">
+        <source>Durchschnittsbewertung:</source>
+        <target>Average rating:</target>
+      </trans-unit>
+      <trans-unit id="Q8DT9H6" resname="wurde noch nicht bewertet.">
+        <source>wurde noch nicht bewertet.</source>
+        <target>has not been rated yet.</target>
       </trans-unit>
     </body>
   </file>
