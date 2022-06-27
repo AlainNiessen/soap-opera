@@ -86,7 +86,7 @@
                         </div>                          
                     </div>
                     <div class="action-box"> 
-                        <a href="{{ path('article_favori', {id: traductionArticle.article.id}) }}" onclick='return confirm("Möchtest du {{ traductionArticle.nom }} als Favorit hinzufügen?")'>      
+                        <a class="action-link" href="{{ path('article_favori', {id: traductionArticle.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel als Favorit hinzufügen?{% endtrans %}")'>      
                             <div class="action-icon">
                                 <i class="fas fa-heart"></i>
                             </div>

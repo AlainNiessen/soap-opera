@@ -697,6 +697,18 @@
         <source>wurde noch nicht bewertet.</source>
         <target>wurde noch nicht bewertet.</target>
       </trans-unit>
+      <trans-unit id="nN1RV7Z" resname="Möchtest du diesen Artikel als Favorit hinzufügen?">
+        <source>Möchtest du diesen Artikel als Favorit hinzufügen?</source>
+        <target>Möchtest du diesen Artikel als Favorit hinzufügen?</target>
+      </trans-unit>
+      <trans-unit id="5ayjJUN" resname="Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!">
+        <source>Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!</source>
+        <target>Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!</target>
+      </trans-unit>
+      <trans-unit id="AatD6Z8" resname="Diesen Artikel hast du schon als Favorit gewählt">
+        <source>Diesen Artikel hast du schon als Favorit gewählt</source>
+        <target>Diesen Artikel hast du schon als Favorit gewählt</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

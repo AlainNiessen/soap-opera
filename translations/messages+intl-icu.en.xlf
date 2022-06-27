@@ -385,6 +385,18 @@
         <source>wurde noch nicht bewertet.</source>
         <target>has not been rated yet.</target>
       </trans-unit>
+      <trans-unit id="nN1RV7Z" resname="Möchtest du diesen Artikel als Favorit hinzufügen?">
+        <source>Möchtest du diesen Artikel als Favorit hinzufügen?</source>
+        <target>Would you like to add this article to your favorites?</target>
+      </trans-unit>
+      <trans-unit id="5ayjJUN" resname="Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!">
+        <source>Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!</source>
+        <target>You have successfully added this article to your favorites!</target>
+      </trans-unit>
+      <trans-unit id="AatD6Z8" resname="Diesen Artikel hast du schon als Favorit gewählt">
+        <source>Diesen Artikel hast du schon als Favorit gewählt</source>
+        <target>You have already selected this article as a favorite</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

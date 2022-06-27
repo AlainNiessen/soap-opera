@@ -35,11 +35,16 @@
                                 <div class="deco-point">
                                 {% for image in traductionArticleBestseller.article.categorie.images %}            
                                     <img src="{{ asset('/uploads/images/'~image.nom) }}" 
-                                        {% for traductionCat in traductionArticleBestseller.article.categorie.traductionCategories %}
-                                            alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
+                                    {# boucle sur les traductions des catégories dont la langue est la langue de traductionArticle (par exemple français) #}
+                                        {% for traductionCategorie in traductionArticleBestseller.langue.traductionCategories %}
+                                            {# si la categorie de la traductionCategorie est égal à la categorie de l'article en question #}
+                                            {# affichage du nom de la catégorie dans la langue pour ALT et TITLE #}
+                                            {% if traductionCategorie.categorie == traductionArticleBestseller.article.categorie %}
+                                                alt="{{ traductionCategorie.nom }}" title="{{ traductionCategorie.nom }}"
+                                            {% endif %}
                                         {% endfor %}
                                         >
-                                {% endfor %}                                    
+                                {% endfor %}                                     
                                 </div>
                                 <h3>{{ traductionArticleBestseller.nom }}</h3>
                                 <p>{{ traductionArticleBestseller.slogan }}</p>
@@ -69,11 +74,16 @@
                                 <div class="deco-point">
                                     {% for image in traductionArticleNew.article.categorie.images %}            
                                         <img src="{{ asset('/uploads/images/'~image.nom) }}" 
-                                            {% for traductionCat in traductionArticleNew.article.categorie.traductionCategories %}
-                                                alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
-                                            {% endfor %}
-                                            >
-                                    {% endfor %}                                    
+                                        {# boucle sur les traductions des catégories dont la langue est la langue de traductionArticle (par exemple français) #}
+                                        {% for traductionCategorie in traductionArticleNew.langue.traductionCategories %}
+                                            {# si la categorie de la traductionCategorie est égal à la categorie de l'article en question #}
+                                            {# affichage du nom de la catégorie dans la langue pour ALT et TITLE #}
+                                            {% if traductionCategorie.categorie == traductionArticleNew.article.categorie %}
+                                                alt="{{ traductionCategorie.nom }}" title="{{ traductionCategorie.nom }}"
+                                            {% endif %}
+                                        {% endfor %}
+                                        >
+                                {% endfor %}                                   
                                 </div>
                                 <h3>{{ traductionArticleNew.nom }}</h3>
                                 <p>{{ traductionArticleNew.slogan }}</p>

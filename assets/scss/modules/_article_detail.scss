@@ -107,7 +107,13 @@
                 .action-icon {
                     color: map-get($map: $colors, $key: 'bg-2');
                 }                
-            }            
+            } 
+            .action-link {
+                font-size: 1rem;
+                text-decoration: none;
+                color: map-get($map: $colors, $key: 'text');
+                text-align: center;
+            }           
         }
     }    
 }

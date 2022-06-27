@@ -8,14 +8,19 @@
                     {% endif %}
                 {% endfor %}
                 <div class="m-article-info">
-                    <div class="deco-point">
+                    <div class="deco-point">                    
                     {% for image in traductionArticle.article.categorie.images %}            
                         <img src="{{ asset('/uploads/images/'~image.nom) }}" 
-                            {% for traductionCat in traductionArticle.article.categorie.traductionCategories %}
-                                alt="{{ traductionCat.nom }}" title="{{ traductionCat.nom }}"
+                            {# boucle sur les traductions des catégories dont la langue est la langue de traductionArticle (par exemple français) #}
+                            {% for traductionCategorie in traductionArticle.langue.traductionCategories %}
+                                {# si la categorie de la traductionCategorie est égal à la categorie de l'article en question #}
+                                {# affichage du nom de la catégorie dans la langue pour ALT et TITLE #}
+                                {% if traductionCategorie.categorie == traductionArticle.article.categorie %}
+                                    alt="{{ traductionCategorie.nom }}" title="{{ traductionCategorie.nom }}"
+                                {% endif %}
                             {% endfor %}
                             >
-                    {% endfor %}                                    
+                    {% endfor %}                                     
                     </div>
                     <h3>{{ traductionArticle.nom }}</h3>
                     {# si il y a une promotion #}

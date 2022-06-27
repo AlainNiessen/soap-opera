@@ -69,7 +69,8 @@ class ArticleController extends AbstractController
         //récupération des informations sur les articles dans la langue
         $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
         $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue);
-       
+
+          
         // récupération du nombre des articles
         $nombreArticles = count($resultTraductionArticles);
 
@@ -97,7 +98,7 @@ class ArticleController extends AbstractController
         if($request -> isXmlHttpRequest()) {
             return new JsonResponse([
                 'content' => $this -> renderView('article/_articles.html.twig', [
-                    'traductionArticles' => $pagination
+                    'traductionArticles' => $pagination,
                 ]),
                 'navigationBar' => $this -> renderView('article/_navigationBar.html.twig', [
                     'traductionArticles' => $pagination,
@@ -170,7 +171,7 @@ class ArticleController extends AbstractController
         if($request -> isXmlHttpRequest()) {
             return new JsonResponse([
                 'content' => $this -> renderView('article/_articles.html.twig', [
-                    'traductionArticles' => $pagination                    
+                    'traductionArticles' => $pagination,                
                 ]),
                 'navigationCat' => $this -> renderView('article/_navigationCat.html.twig', [
                     'traductionArticles' => $pagination,
@@ -453,7 +454,7 @@ class ArticleController extends AbstractController
      */
     public function evaluation(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        // contrôle si l'utilisateur connecté a déjà évalué l'atricle en question
+        // contrôle si l'utilisateur actuellement connecté a déjà évalué l'atricle en question
         // définition repository evaluation
         $repositoryEvaluation = $entityManager -> getRepository(Evaluation::class);
         // fonction de requête sur base de données récupérées 
@@ -494,7 +495,27 @@ class ArticleController extends AbstractController
      */
     public function favori(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        dd('hello');
+        // contrôle si l'utilisateur connecté a déjà ajouté cet article comme favori
+        // récupération des favoris de l'utilisateur actuellement connecté
+        $favoris = $this->getUser()->getArticles();
+        // check si l'article en question fait déjà partie des favoris de l'utilisateur
+        // si non => création nouveau favori
+        if(!$favoris->contains($article)):
+            $this->getUser()->addArticle($article);
+            //préparation insertion dans la BD
+            $entityManager -> persist($this->getUser());
+            //insertion BD
+            $entityManager -> flush();
+            //ajout d'un message de réussite (avec paramétre nom de l'article)
+            $message = $translator -> trans('Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!');
+            $this -> addFlash('success', $message); 
+        // so oui => message de notice que cet article a été déjà choisi comme favori
+        else:
+            //ajout d'un message de réussite (avec paramétre nom de l'article)
+            $message = $translator -> trans('Diesen Artikel hast du schon als Favorit gewählt');
+            $this -> addFlash('notice', $message); 
+        endif;
+        
         //redirect vers le détail de l'article
         return $this->redirectToRoute('article_detail', [
             'id' => $article->getId()
