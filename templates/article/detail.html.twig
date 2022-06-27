@@ -85,21 +85,23 @@
                             <p>{% trans %}Bewerten{% endtrans %}</p>
                         </div>                          
                     </div>
-                    <div class="action-box">       
+                    <div class="action-box"> 
+                        <a href="{{ path('article_favori', {id: traductionArticle.article.id}) }}" onclick='return confirm("Möchtest du {{ traductionArticle.nom }} als Favorit hinzufügen?")'>      
                             <div class="action-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div class="action-description">
                                 <p>{% trans %}Als Favorit hinzufügen{% endtrans %}</p>
                             </div>   
+                        </a>
                     </div>
                     <div class="action-box">        
-                            <div class="action-icon">
-                                <i class="fas fa-cart-arrow-down"></i>
-                            </div>
-                            <div class="action-description">
-                                <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
-                            </div>  
+                        <div class="action-icon">
+                            <i class="fas fa-cart-arrow-down"></i>
+                        </div>
+                        <div class="action-description">
+                            <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
+                        </div>  
                     </div>
                 </div>
             </div>

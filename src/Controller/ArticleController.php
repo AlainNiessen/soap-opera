@@ -486,4 +486,18 @@ class ArticleController extends AbstractController
             'id' => $article->getId()
         ]); 
     }
+    //----------------------------------------------
+    // ROUTE ARTICLE COMME FAVORI
+    //----------------------------------------------
+    /**
+     * @Route("/article/favori/{id}", name="article_favori")
+     */
+    public function favori(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {
+        dd('hello');
+        //redirect vers le détail de l'article
+        return $this->redirectToRoute('article_detail', [
+            'id' => $article->getId()
+        ]); 
+    }
 }
