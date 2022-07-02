@@ -381,7 +381,7 @@ class ArticleController extends AbstractController
         $nombreEtoiles = $repositoryEvaluations -> countStars($article);
         // définition notations moyenne
         if($nombreEvaluations != 0):
-            $notationMoyenne = round($nombreEtoiles / $nombreEvaluations, 2);
+            $notationMoyenne = round($nombreEtoiles / $nombreEvaluations, 1);
         else:
             $notationMoyenne = 0;
         endif;
