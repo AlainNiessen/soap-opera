@@ -18,19 +18,22 @@ let barreForm = document.getElementById('m-recherche-barre-form');
 let input = document.getElementById('mots');
 let button = document.getElementById('submit-rech-btn');
 
-input.addEventListener('click', (e) => {
-    e.currentTarget.style.outline = "none";
+if(input) {
+    input.addEventListener('click', (e) => {
+        e.currentTarget.style.outline = "none";
+    
+        // au-dessous de 576px => 10rem à 240px (15rem)
+        if (window.matchMedia('(max-width: 576px)').matches) {  
+            e.currentTarget.style.width = '240px';
+            e.currentTarget.style.transition = 'width 1s ease-in';
+        // au-dessus de 576px => 15rem à 400px (25rem)
+        } else {
+            e.currentTarget.style.width = '400px';
+            e.currentTarget.style.transition = 'width 1s ease-in';
+        }
+    });
+}
 
-    // au-dessous de 576px => 10rem à 240px (15rem)
-    if (window.matchMedia('(max-width: 576px)').matches) {  
-        e.currentTarget.style.width = '240px';
-        e.currentTarget.style.transition = 'width 1s ease-in';
-    // au-dessus de 576px => 15rem à 400px (25rem)
-    } else {
-        e.currentTarget.style.width = '400px';
-        e.currentTarget.style.transition = 'width 1s ease-in';
-    }
-});
 
 // ----------------------------
 // Animation ONGLET DETAIL ARTICLE

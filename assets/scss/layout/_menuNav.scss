@@ -141,6 +141,22 @@
     }
 }
 
+// PANIER
+.l-menu-list-element-panier {
+    position: relative;
+    p {
+        position: absolute;
+        width: 1rem;
+        top: -.2rem;
+        left: 90%;
+        font-size: .7rem;
+        color: map-get($map: $colors, $key: 'main1');
+        background-color: map-get($map: $colors, $key: 'bg-2');
+        border-radius: 50%;
+        text-align: center;
+    }
+}
+
 //MEDIA QUERY 
 @media screen and (min-width: 768px) {
     .l-topbar-menu {

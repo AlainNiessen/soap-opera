@@ -95,13 +95,15 @@
                             </div>   
                         </a>
                     </div>
-                    <div class="action-box">        
-                        <div class="action-icon">
-                            <i class="fas fa-cart-arrow-down"></i>
-                        </div>
-                        <div class="action-description">
-                            <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
-                        </div>  
+                    <div class="action-box"> 
+                        <a class="action-link" href="{{ path('add_panier', {id: traductionArticle.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                            <div class="action-icon">
+                                <i class="fas fa-cart-arrow-down"></i>
+                            </div>
+                            <div class="action-description">
+                                <p>{% trans %}Dem Warenkorb hinzufügen{% endtrans %}</p>
+                            </div> 
+                        </a> 
                     </div>
                 </div>
             </div>

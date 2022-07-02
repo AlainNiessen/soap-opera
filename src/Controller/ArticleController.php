@@ -91,23 +91,8 @@ class ArticleController extends AbstractController
         //définition limite affichage pagination
         $limitPagination = $interPag + 2;      
       
-        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
-       
-        // si il s'agit d'une requête AJAX
-        // re-rendering le contenu et la navigation sans rechargement du site
-        if($request -> isXmlHttpRequest()) {
-            return new JsonResponse([
-                'content' => $this -> renderView('article/_articles.html.twig', [
-                    'traductionArticles' => $pagination,
-                ]),
-                'navigationBar' => $this -> renderView('article/_navigationBar.html.twig', [
-                    'traductionArticles' => $pagination,
-                    'nombreLiens' => $nombreLiens,
-                    'pagBar'=> $interPag,
-                    'limitPagination' => $limitPagination
-                ])
-            ]);
-        }           
+        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);      
+            
         
         return $this->render('article/list.html.twig', [
             'traductionArticles' => $pagination,
@@ -368,7 +353,7 @@ class ArticleController extends AbstractController
             elseif($article -> getCategorie() -> getPromotion()):
                 $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
             endif;
-            $prixArticlePromo = ((($article -> getMontantHorsTva() - $reduction) + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
+            $prixArticlePromo = ((($article -> getMontantHorsTva() - $reduction) + (($article -> getMontantHorsTva() - $reduction) * $article -> getTauxTva())) / 100);
             $prixArticlePromo = number_format($prixArticlePromo, 2, ',', '.').' €';
         endif; 
 

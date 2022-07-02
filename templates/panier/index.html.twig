@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Dein Warenkorb{% endtrans %}{% endblock %}
+
+{% block body %}
+
+<section class="m-panier">
+    <div class="wrapper">
+        <h2>{% trans %}Dein Warenkorb{% endtrans %}</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{% trans %}Artikel{% endtrans %}</th>
+                    <th>{% trans %}Preis (ohne MwSt){% endtrans %}</th>
+                    <th>{% trans %}MwSt-Satz{% endtrans %}</th>
+                    <th>{% trans %}Preis (inklusive MwSt){% endtrans %}</th>
+                    <th>{% trans %}Anzahl{% endtrans %}</th>
+                    <th>{% trans %}Total{% endtrans %}</th>
+                    <th>{% trans %}Aktion{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-content">                  
+                {# for else => si on a des éléments dans le tableau => traitement dans le for, sinon traitement dans le else #}
+                {% for element in infosPanier %}
+                    <tr>
+                        <td>{{ element.traduction.nom }}</td>
+                        <td class="text-end">{{ element.prixHorsTva }}</td>
+                        <td class="text-end">{{ element.tauxTva }}</td>
+                        <td class="text-end" >{{ element.prixTotal }}</td>
+                        <td>
+                            <a title="{% trans %}Artikel abziehen{% endtrans %}" href="#" class="btn btn-outline-info" id="articleminus">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <input type="number" min="1" value="{{ element.quantite }}">
+                            <a title="{% trans %}Artikel hinzufügen{% endtrans %}" href="{{ path('article_plus', {id: element.article.id})}}" class="btn btn-outline-info" id="articleplus">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
+                        <td class="text-end">{{ element.prixTotalQuantite }}</td>
+                        <td>
+                            <a title="{% trans %}Artikel komplett löschen{% endtrans %}" href="#" class="btn btn-danger" id="articledelete">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">{% trans %}Keine Artikel im Warenkorb{% endtrans %}</td>
+                    </tr>
+                {% endfor %}              
+            </tbody>  
+            <tfoot id="tfoot-content">
+                <tr>
+                    <td colspan="5">Total</td>
+                    <td class="text-end" id='prix-total'>{{ total }}</td>
+                    <td></td>
+                </tr> 
+            </tfoot>         
+        </table>
+    </div>
+</section>
+
+{% endblock %}
