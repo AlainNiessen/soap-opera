@@ -401,6 +401,86 @@
         <source>Diesen Artikel hast du schon als Favorit gewählt</source>
         <target>Vous avez déjà sélectionné cet article comme favori</target>
       </trans-unit>
+      <trans-unit id="xv2yKoT" resname="Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt">
+        <source>Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt</source>
+        <target>L'article a été ajouté avec succès à votre panier</target>
+      </trans-unit>
+      <trans-unit id="Euf_F4d" resname="Ein Artikel mit dieser ID existiert nicht">
+        <source>Ein Artikel mit dieser ID existiert nicht</source>
+        <target>Un article avec cet ID n'existe pas</target>
+      </trans-unit>
+      <trans-unit id="_dVCacV" resname="Der Artikel wurde erfolgreich deinem Warenkorb abgezogen">
+        <source>Der Artikel wurde erfolgreich deinem Warenkorb abgezogen</source>
+        <target>L'article a été supprimé avec succès de votre panier</target>
+      </trans-unit>
+      <trans-unit id="DCdwNKy" resname="Möchtest du diesen Artikel dem Warenkorb hinzufügen?">
+        <source>Möchtest du diesen Artikel dem Warenkorb hinzufügen?</source>
+        <target>Voulez-vous ajouter cet article au panier ?</target>
+      </trans-unit>
+      <trans-unit id="MDGDtxh" resname="deutsch">
+        <source>deutsch</source>
+        <target>allemand</target>
+      </trans-unit>
+      <trans-unit id="cWV.RVa" resname="französisch">
+        <source>französisch</source>
+        <target>français</target>
+      </trans-unit>
+      <trans-unit id="CGqOVTy" resname="englisch">
+        <source>englisch</source>
+        <target>anglais</target>
+      </trans-unit>
+      <trans-unit id="pCMtMhX" resname="Dein Warenkorb">
+        <source>Dein Warenkorb</source>
+        <target>Ton panier</target>
+      </trans-unit>
+      <trans-unit id="RDX8wud" resname="Artikel">
+        <source>Artikel</source>
+        <target>Article</target>
+      </trans-unit>
+      <trans-unit id="jTLIzFN" resname="Preis (ohne MwSt)">
+        <source>Preis (ohne MwSt)</source>
+        <target>Prix (​​hors TVA)</target>
+      </trans-unit>
+      <trans-unit id="KphHfax" resname="MwSt-Satz">
+        <source>MwSt-Satz</source>
+        <target>Taux de TVA</target>
+      </trans-unit>
+      <trans-unit id="m5Xxbwd" resname="Preis (inkl. MwSt)">
+        <source>Preis (inkl. MwSt)</source>
+        <target>Prix (​​TTC)</target>
+      </trans-unit>
+      <trans-unit id="cXTeIrr" resname="Anzahl">
+        <source>Anzahl</source>
+        <target>Nombre</target>
+      </trans-unit>
+      <trans-unit id="ybPDgkf" resname="Total">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="pK0lnnH" resname="Aktion">
+        <source>Aktion</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="yWjFeZ9" resname="Artikel abziehen">
+        <source>Artikel abziehen</source>
+        <target>Soustraire un acticle</target>
+      </trans-unit>
+      <trans-unit id="YichaCp" resname="Artikel hinzufügen">
+        <source>Artikel hinzufügen</source>
+        <target>Ajouter un article</target>
+      </trans-unit>
+      <trans-unit id="raoVKN1" resname="Artikel komplett löschen">
+        <source>Artikel komplett löschen</source>
+        <target>Supprimer complètement l'article</target>
+      </trans-unit>
+      <trans-unit id="1acypNc" resname="Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?">
+        <source>Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?</source>
+        <target>Voulez-vous vraiment supprimer cet article de votre panier ?</target>
+      </trans-unit>
+      <trans-unit id="UpXDFg." resname="Keine Artikel im Warenkorb">
+        <source>Keine Artikel im Warenkorb</source>
+        <target>Aucun article dans le panier</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

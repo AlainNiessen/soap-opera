@@ -1,0 +1,27 @@
+.m-panier {
+    margin: 2rem 0;
+    
+    h2 {
+        text-align: center;
+        margin: 2rem 0;
+    }
+    
+    .overflow-table {
+        width: 100%;
+        overflow-x: scroll;
+        table {
+            table-layout: fixed;
+            th {
+                width: 10rem;
+                max-width: 10rem;
+            }            
+        }
+    }
+}
+
+.quantite-management {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}

@@ -21,21 +21,241 @@ class PanierController extends AbstractController
      */
     public function index(SessionInterface $session, EntityManagerInterface $entityManager, Request $request): Response
     {
+        // récupération du panier avec toutes les informations
+        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+        $panier = $session -> get('panier', []);
+        
+        // appel à la fonction qui traite toutes les informations pour les afficher par aprés
+        $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request);        
+                    
+        return $this->render('panier/index.html.twig', [
+            'infosPanier' => $tabInfos[0],
+            'total' => $tabInfos[1]
+        ]);
+    }
+
+    /**
+     * @Route("/panier/add/{id}", name="add_panier")
+     */
+    public function add($id, SessionInterface $session, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
+    {
+        // on récupére le panier actuel de la Session
+        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+        $panier = $session -> get('panier', []);
+        
+
+        // on récupére le nombre des articles dans le panier
+        // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
+        $nombreArticles = $session -> get('nombreArticles', 0);
+
+        // récupération de l'article via son ID
+        // définition repository article
+        $repositoryArticle = $entityManager -> getRepository(Article::class);
+        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+
+        // on vérifie si l'article existe
+        if($article):
+            // on regarde si l'article avec son ID existe dans le panier
+            // si il existe déjà, on incrémente
+            if(!empty($panier[$id])):
+                $panier[$id]++;
+            // si il n'existe pas, on le crée
+            else:
+                $panier[$id] = 1;
+            endif;
+            
+            $nombreArticles = array_sum($panier);
+            
+
+            // on sauvgarde dans la Session
+            $session -> set('panier', $panier);
+            $session -> set('nombreArticles', $nombreArticles);
+
+            // si il s'agit d'une requête AJAX
+            // re-rendering le contenu et la navigation sans rechargement du site
+            if($request -> isXmlHttpRequest()) {
+                // même traitement que sur la route "panier" pour actualiser le contenu sans rafraichissement de la page
+
+                // récupération du panier avec toutes les informations
+                // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+                $panier = $session -> get('panier', []);
+
+                // appel à la fonction qui traite toutes les informations pour les afficher par aprés
+                $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+                
+                return new JsonResponse([
+                    'content' => $this -> renderView('panier/index.html.twig', [
+                        'infosPanier' => $tabInfos[0],
+                        'total' => $tabInfos[1]
+                    ])
+                ]);
+            }       
+                    
+            //ajout d'un message de réussite
+            $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt');
+            $this -> addFlash('success', $message); 
+
+            //redirect vers le détail de l'article
+            return $this->redirectToRoute('article_detail', [
+                'id' => $article->getId()
+            ]);
+            
+        else: 
+            //ajout d'un message d'erreur que l'article n'existe pas
+            $message = $translator -> trans('Ein Artikel mit dieser ID existiert nicht');
+            $this -> addFlash('error', $message);
+
+            //redirect vers le détail de l'article
+            return $this->redirectToRoute('home'); 
+
+        endif;
+    }
+
+    /**
+     * @Route("/panier/remove/{id}", name="remove_panier")
+     */
+    public function remove($id, SessionInterface $session, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
+    {
+        // on récupére le panier actuel de la Session
+        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+        $panier = $session -> get('panier', []);        
+
+        // on récupére le nombre des articles dans le panier
+        // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
+        $nombreArticles = $session -> get('nombreArticles', 0);
+
+        // récupération de l'article via son ID
+        // définition repository article
+        $repositoryArticle = $entityManager -> getRepository(Article::class);
+        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+
+        // on vérifie si l'article existe
+        if($article):
+            // on regarde si l'article avec son ID existe dans le panier
+            // si il existe déjà, on diminue 
+            if(!empty($panier[$id])):
+                //vérification supplémentaire si le nombre est plus grand que 1
+                if($panier[$id] > 1):
+                    $panier[$id]--;
+                else:
+                    $panier[$id] = 1;
+                endif;
+            endif;
+            
+            $nombreArticles = array_sum($panier);
+            
+
+            // on sauvgarde dans la Session
+            $session -> set('panier', $panier);
+            $session -> set('nombreArticles', $nombreArticles);
+
+            // si il s'agit d'une requête AJAX
+            // re-rendering le contenu et la navigation sans rechargement du site
+            if($request -> isXmlHttpRequest()) {
+                // même traitement que sur la route "panier" pour actualiser le contenu sans rafraichissement de la page
+
+                // récupération du panier avec toutes les informations
+                // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+                $panier = $session -> get('panier', []);
+
+                // appel à la fonction qui traite toutes les informations pour les afficher par aprés
+                $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+
+                return new JsonResponse([
+                    'content' => $this -> renderView('panier/index.html.twig', [
+                        'infosPanier' => $tabInfos[0],
+                        'total' => $tabInfos[1]
+                    ])
+                ]);
+            }       
+                    
+            //ajout d'un message de réussite
+            $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb abgezogen');
+            $this -> addFlash('success', $message); 
+
+            //redirect vers le détail de l'article
+            return $this->redirectToRoute('article_detail', [
+                'id' => $article->getId()
+            ]);
+            
+        else: 
+            //ajout d'un message d'erreur que l'article n'existe pas
+            $message = $translator -> trans('Ein Artikel mit dieser ID existiert nicht');
+            $this -> addFlash('error', $message);
+
+            //redirect vers le détail de l'article
+            return $this->redirectToRoute('home'); 
+
+        endif;
+    }    
+    /**
+     * @Route("/panier/delete/{id}", name="delete_panier")
+     */
+    public function delete($id, SessionInterface $session, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
+    {
+        // on récupére le panier actuel de la Session
+        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+        $panier = $session -> get('panier', []);        
+
+        // on récupére le nombre des articles dans le panier
+        // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
+        $nombreArticles = $session -> get('nombreArticles', 0);
+
+        // récupération de l'article via son ID
+        // définition repository article
+        $repositoryArticle = $entityManager -> getRepository(Article::class);
+        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+
+        // on vérifie si l'article existe
+        if($article):
+            // on regarde si l'article avec son ID existe dans le panier
+            // si le panier n'est pas vide => on le supprime
+            if(!empty($panier[$id])):
+                unset($panier[$id]);
+            endif;
+            
+            $nombreArticles = array_sum($panier);            
+
+            // on sauvgarde dans la Session
+            $session -> set('panier', $panier);
+            $session -> set('nombreArticles', $nombreArticles);            
+
+            // récupération du panier avec toutes les informations
+            // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
+            $panier = $session -> get('panier', []);
+            
+
+            // appel à la fonction qui traite toutes les informations pour les afficher par aprés
+            $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+                        
+            return $this->render('panier/index.html.twig', [
+                'infosPanier' => $tabInfos[0],
+                'total' => $tabInfos[1]
+            ]);            
+        else: 
+            //ajout d'un message d'erreur que l'article n'existe pas
+            $message = $translator -> trans('Ein Artikel mit dieser ID existiert nicht');
+            $this -> addFlash('error', $message);
+
+            //redirect vers le détail de l'article
+            return $this->redirectToRoute('home'); 
+
+        endif;
+    }   
+    
+    function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)
+    {
+        // initialisation des variables
+        $infosPanier = [];
+        $prixTotal = 0;
+        $infoComplete = [];
+
         //récupération langue
         $lang = $request-> getLocale();
         //définition repository beurre
         $repositoryLangue = $entityManager -> getRepository(Langue::class);
         // fonction de requête sur base de données récupérées       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
-
-        // récupération du panier avec toutes les informations
-        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
-        $panier = $session -> get('panier', []);
-        
-
-        // initialisation des variables
-        $infosPanier = [];
-        $prixTotal = 0;
 
         // boucle sur le panier
         foreach($panier as $id => $quantite):
@@ -89,110 +309,10 @@ class PanierController extends AbstractController
         endforeach;
 
         $prixTotal = number_format($prixTotal, 2, ',', '.').' €';
-                    
-        return $this->render('panier/index.html.twig', [
-            'infosPanier' => $infosPanier,
-            'total' => $prixTotal
-        ]);
-    }
 
-    /**
-     * @Route("/panier/add/{id}", name="add_panier")
-     */
-    public function add($id, SessionInterface $session, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager)
-    {
-        // on récupére le panier actuel de la Session
-        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
-        $panier = $session -> get('panier', []);
+        $infoComplete[] = $infosPanier;
+        $infoComplete[] = $prixTotal;
         
-
-        // on récupére le nombre des articles dans le panier
-        // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
-        $nombreArticles = $session -> get('nombreArticles', 0);
-
-        // récupération de l'article via son ID
-        // définition repository article
-        $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
-
-        // on vérifie si l'article existe
-        if($article):
-            // on regarde si l'article avec son ID existe dans le panier
-            // si il existe déjà, on incrémente
-            if(!empty($panier[$id])):
-                $panier[$id]++;
-            // si il n'existe pas, on le crée
-            else:
-                $panier[$id] = 1;
-            endif;
-            
-            $nombreArticles = array_sum($panier);
-            
-
-            // on sauvgarde dans la Session
-            $session -> set('panier', $panier);
-            $session -> set('nombreArticles', $nombreArticles);
-                    
-            //ajout d'un message de réussite
-            $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt');
-            $this -> addFlash('success', $message); 
-
-            //redirect vers le détail de l'article
-            return $this->redirectToRoute('article_detail', [
-                'id' => $article->getId()
-            ]);
-            
-        else: 
-            //ajout d'un message d'erreur que l'article n'existe pas
-            $message = $translator -> trans('Ein Artikel mit dieser ID existiert nicht');
-            $this -> addFlash('error', $message);
-
-            //redirect vers le détail de l'article
-            return $this->redirectToRoute('home'); 
-
-        endif;
-    }
-
-    /**
-     * @Route("/panier/article_plus/{id}", name="article_plus")
-     */
-    public function articlePlus($id, SessionInterface $session, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager)
-    {
-        // on récupére le panier actuel de la Session
-        // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)        
-        $panier = $session -> get('panier', []);
-               
-
-        // on récupére le nombre des articles dans le panier
-        // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
-        $nombreArticles = $session -> get('nombreArticles', 0);
-         
-
-        // récupération de l'article via son ID
-        // définition repository article
-        $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
-
-        // on vérifie si l'article existe
-        if($article): 
-            $panier[$id]++;
-            $nombreArticles = array_sum($panier);
-
-            // on sauvgarde dans la Session
-            $session -> set('panier', $panier);
-            $session -> set('nombreArticles', $nombreArticles);            
-
-            //redirect vers le détail de l'article
-            return $this->redirectToRoute('panier');
-        else: 
-            //ajout d'un message d'erreur que l'article n'existe pas
-            $message = $translator -> trans('Ein Artikel mit dieser ID existiert nicht');
-            $this -> addFlash('error', $message);
-
-            //redirect vers le détail de l'article
-            return $this->redirectToRoute('home'); 
-
-        endif;  
-    }
-    
+        return $infoComplete;
+    }    
 }

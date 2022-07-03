@@ -9,7 +9,7 @@ window.onload = () => {
         
         // boucle sur les étoiles pour ajouter un EventListener
         for(etoile of etoiles) {
-            //EventListener mouseover sur les étoiles
+            //EventListener click sur les étoiles
             etoile.addEventListener('click', function() {
                 // cette fonction remet toutes les étoiles dans la couleur noir 
                 // exemple: on passe de 5 étoiles à 3

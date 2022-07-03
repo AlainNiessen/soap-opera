@@ -61,6 +61,15 @@ a {
     }
 }
 
+.size-btn {
+    font-size: 0.3rem;
+    margin: 0.3rem;
+}
+
+.btn-danger-size {
+    font-size: 0.6rem;
+}
+
 .detail-btn {
     width: 5rem;
 }
@@ -74,9 +83,14 @@ a {
     overflow-y: scroll;
 }
 
-//text-center
+//text-align
 .text-center {
     text-align: center;
+}
+
+td > .text-end {
+    display: block;
+    padding-right: 3rem;
 }
 
 //formulaire
