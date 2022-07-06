@@ -286,10 +286,10 @@ class PanierController extends AbstractController
             $prixTotal += $prixTotalArticleQuantite;
 
             // formats d'affichage
-            $prixHorsTva = number_format($prixHorsTva, 2, ',', '.').' €';
-            $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.').' €';
-            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.').' €';
-            $tauxTva = (($article -> getTauxTva()) * 100).' %';
+            $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
+            $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
+            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');
+            $tauxTva = (($article -> getTauxTva()) * 100);
             
 
             //récupération de la traduction de l'article           
@@ -308,7 +308,7 @@ class PanierController extends AbstractController
             ];                      
         endforeach;
 
-        $prixTotal = number_format($prixTotal, 2, ',', '.').' €';
+        $prixTotal = number_format($prixTotal, 2, ',', '.');
 
         $infoComplete[] = $infosPanier;
         $infoComplete[] = $prixTotal;

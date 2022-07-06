@@ -27,9 +27,9 @@
                     {% for element in infosPanier %}
                         <tr>
                             <td>{{ element.traduction.nom }}</td>
-                            <td class="text-start">{{ element.prixHorsTva }}</td>
-                            <td class="text-start">{{ element.tauxTva }}</td>
-                            <td class="text-start" >{{ element.prixTotal }}</td>
+                            <td class="text-start">{{ element.prixHorsTva }} €</td>
+                            <td class="text-start">{{ element.tauxTva }} %</td>
+                            <td class="text-start" >{{ element.prixTotal }} €</td>
                             <td class="quantite-management">
                                 <a title="{% trans %}Artikel abziehen{% endtrans %}" href="{{ path('remove_panier', {id: element.article.id})}}" class="btn btn-outline-info size-btn articleminus">
                                     <i class="fa fa-minus"></i>
@@ -39,7 +39,7 @@
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </td>
-                            <td class="text-start">{{ element.prixTotalQuantite }}</td>
+                            <td class="text-start">{{ element.prixTotalQuantite }} €</td>
                             <td>
                                 <a title="{% trans %}Artikel komplett löschen{% endtrans %}" href="{{ path('delete_panier', {id: element.article.id})}}" class="btn btn-danger-size btn-danger" onclick="return confirm('{% trans %}Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?{% endtrans %}')">
                                     <i class="fas fa-trash"></i>
@@ -55,8 +55,12 @@
                 <tfoot id="tfoot-content">
                     <tr>
                         <td colspan="5">Total</td>
-                        <td class="text-start" id='prix-total'>{{ total }}</td>
-                        <td></td>
+                        <td class="text-start" id='prix-total'>{{ total }} €</td>
+                        <td>
+                            <form action="{{ path('paiement', {total: total}) }}" method="POST">
+                                <button type="submit" class="btn btn-outline-info">{% trans %}Bezahlen{% endtrans %}</button>
+                            </form>
+                        </td>
                     </tr> 
                 </tfoot>         
             </table>
