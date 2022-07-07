@@ -481,6 +481,18 @@
         <source>Keine Artikel im Warenkorb</source>
         <target>Aucun article dans le panier</target>
       </trans-unit>
+      <trans-unit id="PLQNfKn" resname="Deine Bestellung">
+        <source>Deine Bestellung</source>
+        <target>Ta commande</target>
+      </trans-unit>
+      <trans-unit id="5kaCp1A" resname="Bezahlen">
+        <source>Bezahlen</source>
+        <target>Payer</target>
+      </trans-unit>
+      <trans-unit id="4dLsisZ" resname="Lieferkosten">
+        <source>Lieferkosten</source>
+        <target>Frais de livraison</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

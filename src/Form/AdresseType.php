@@ -22,6 +22,8 @@ class AdresseType extends AbstractType
         // les messages de contraintes font références aux messages de contraintes définis dans les entités dans les annotation
         // les tradcution se font dans les fichiers validators.xlf
 
+        $supportedCountries = ['BE', 'DE'];
+
         $builder
         
         ->add('rue', TextType::class,[
@@ -92,7 +94,10 @@ class AdresseType extends AbstractType
             ],
         ])
         ->add('pays', CountryType::class,[
-            'preferred_choices' => ['BE', 'DE'],
+            // limiter le choix des pays à Belgique et Allemagne
+            'choice_filter' => function ($countryName) use ($supportedCountries) {
+                return in_array($countryName, $supportedCountries, true);
+            },
             'label'=> new TranslatableMessage('formAdresse.pays', [], 'Form'),
             'required'=>true,
             'attr'=>[

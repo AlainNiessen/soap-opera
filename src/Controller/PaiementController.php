@@ -18,7 +18,7 @@ class PaiementController extends AbstractController
     //injection de la clé secret de STRIPE défini dans services.yaml et .env
     public function paiement($total, $stripeSK, TranslatorInterface $translator): Response
     {
-        // remplacement des "," par des "."
+        // remplacement des "," par des "." (pour le float)
         $total = str_replace(',', '.', $total);        
         // changement du montant en float et total en centimes
         $total = floatval($total) * 100;

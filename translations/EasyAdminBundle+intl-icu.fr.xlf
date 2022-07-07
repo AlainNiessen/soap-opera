@@ -905,6 +905,18 @@
         <source>option.commentaire_publication</source>
         <target>Publication accordée?</target>
       </trans-unit>
+      <trans-unit id="TnmJ1Qj" resname="menu.livraison">
+        <source>menu.livraison</source>
+        <target>Frais de livraison</target>
+      </trans-unit>
+      <trans-unit id="xUKREqx" resname="option.livraison_prix">
+        <source>option.livraison_prix</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="bAUrW_5" resname="option.livraison_pays">
+        <source>option.livraison_pays</source>
+        <target>Pays</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

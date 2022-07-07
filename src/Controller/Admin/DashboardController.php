@@ -12,6 +12,7 @@ use App\Entity\Adresse;
 use App\Entity\Article;
 use App\Entity\Facture;
 use App\Entity\Categorie;
+use App\Entity\Livraison;
 use App\Entity\Promotion;
 use App\Entity\TypeEvent;
 use App\Entity\Newsletter;
@@ -95,7 +96,8 @@ class DashboardController extends AbstractDashboardController
                         MenuItem::linkToCrud(new TranslatableMessage('menu.categorie', [], 'EasyAdminBundle'), 'fas fa-arrow-right', Categorie::class),
                         MenuItem::linkToCrud(new TranslatableMessage('menu.tra_categorie', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionCategorie::class),
                         MenuItem::linkToCrud(new TranslatableMessage('menu.promotion', [], 'EasyAdminBundle'), 'fas fa-percent', Promotion::class),
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.tra_promotion', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPromotion::class)   
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.tra_promotion', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPromotion::class),  
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.livraison', [], 'EasyAdminBundle'), 'fas fa-truck', Livraison::class),  
                 ]),
 
                 MenuItem::subMenu(new TranslatableMessage('menu.ing_article', [], 'EasyAdminBundle')) -> setSubItems([

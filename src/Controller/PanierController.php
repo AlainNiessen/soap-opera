@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Article;
+use App\Entity\Livraison;
 use App\Entity\TraductionArticle;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +31,8 @@ class PanierController extends AbstractController
                     
         return $this->render('panier/index.html.twig', [
             'infosPanier' => $tabInfos[0],
-            'total' => $tabInfos[1]
+            'total' => $tabInfos[1],
+            'fraisLivraison' => $tabInfos[2]
         ]);
     }
 
@@ -42,7 +44,6 @@ class PanierController extends AbstractController
         // on récupére le panier actuel de la Session
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);
-        
 
         // on récupére le nombre des articles dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
@@ -86,7 +87,8 @@ class PanierController extends AbstractController
                 return new JsonResponse([
                     'content' => $this -> renderView('panier/index.html.twig', [
                         'infosPanier' => $tabInfos[0],
-                        'total' => $tabInfos[1]
+                        'total' => $tabInfos[1],
+                        'fraisLivraison' => $tabInfos[2]
                     ])
                 ]);
             }       
@@ -164,7 +166,8 @@ class PanierController extends AbstractController
                 return new JsonResponse([
                     'content' => $this -> renderView('panier/index.html.twig', [
                         'infosPanier' => $tabInfos[0],
-                        'total' => $tabInfos[1]
+                        'total' => $tabInfos[1],
+                        'fraisLivraison' => $tabInfos[2]
                     ])
                 ]);
             }       
@@ -230,7 +233,8 @@ class PanierController extends AbstractController
                         
             return $this->render('panier/index.html.twig', [
                 'infosPanier' => $tabInfos[0],
-                'total' => $tabInfos[1]
+                'total' => $tabInfos[1],
+                'fraisLivraison' => $tabInfos[2]
             ]);            
         else: 
             //ajout d'un message d'erreur que l'article n'existe pas
@@ -252,11 +256,22 @@ class PanierController extends AbstractController
 
         //récupération langue
         $lang = $request-> getLocale();
-        //définition repository beurre
+        //définition repository langue
         $repositoryLangue = $entityManager -> getRepository(Langue::class);
         // fonction de requête sur base de données récupérées       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
+        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
+        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
+        // récupération du montant des frais de livraison
+        // définition repository langue
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
+        // fonction de requête sur base de données récupérées       
+        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        // frais de livraison
+        $fraisLivraison = ($livraison -> getPrix()) / 100;
+        
+        
         // boucle sur le panier
         foreach($panier as $id => $quantite):
             
@@ -282,7 +297,7 @@ class PanierController extends AbstractController
             // calculs sur base du prix nette
             $prixHorsTva = $prixNette / 100;
             $prixTotalArticle = (($prixNette + ($prixNette * $article -> getTauxTva())) / 100);
-            $prixTotalArticleQuantite = $prixTotalArticle * $quantite;
+            $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
             $prixTotal += $prixTotalArticleQuantite;
 
             // formats d'affichage
@@ -308,10 +323,19 @@ class PanierController extends AbstractController
             ];                      
         endforeach;
 
+        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison
+        
+        if($prixTotal >= 100):
+            $fraisLivraison = 0;
+        endif;
+
+        $prixTotal += $fraisLivraison;
         $prixTotal = number_format($prixTotal, 2, ',', '.');
+        $fraisLivraison = number_format($fraisLivraison, 2, ',', '.');
 
         $infoComplete[] = $infosPanier;
         $infoComplete[] = $prixTotal;
+        $infoComplete[] = $fraisLivraison;
         
         return $infoComplete;
     }    
