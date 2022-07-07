@@ -51,7 +51,8 @@
                             <td colspan="7" class="text-center">{% trans %}Keine Artikel im Warenkorb{% endtrans %}</td>
                         </tr>
                     {% endfor %}              
-                </tbody>  
+                </tbody>
+                {% if infosPanier %}  
                 <tfoot id="tfoot-content">
                     <tr>
                         <td colspan="5">{% trans %}Lieferkosten{% endtrans %}</td>
@@ -66,7 +67,8 @@
                             </form>
                         </td>
                     </tr> 
-                </tfoot>         
+                </tfoot> 
+                {% endif %}        
             </table>
         </div>
     </div>

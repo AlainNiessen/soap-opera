@@ -27,7 +27,7 @@ class PanierController extends AbstractController
         $panier = $session -> get('panier', []);
         
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés
-        $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request);        
+        $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request);      
                     
         return $this->render('panier/index.html.twig', [
             'infosPanier' => $tabInfos[0],
