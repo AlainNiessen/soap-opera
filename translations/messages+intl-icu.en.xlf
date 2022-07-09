@@ -489,6 +489,10 @@
         <source>Lieferkosten</source>
         <target>Delivery costs</target>
       </trans-unit>
+      <trans-unit id="Ij75rDc" resname="MwSt-Betrag">
+        <source>MwSt-Betrag</source>
+        <target>VAT amount</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

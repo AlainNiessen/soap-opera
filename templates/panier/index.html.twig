@@ -15,7 +15,7 @@
                     <tr>
                         <th>{% trans %}Artikel{% endtrans %}</th>
                         <th>{% trans %}Preis (ohne MwSt){% endtrans %}</th>
-                        <th>{% trans %}MwSt-Satz{% endtrans %}</th>
+                        <th>{% trans %}MwSt-Betrag{% endtrans %}</th>
                         <th>{% trans %}Preis (inkl. MwSt){% endtrans %}</th>
                         <th>{% trans %}Anzahl{% endtrans %}</th>
                         <th>{% trans %}Total{% endtrans %}</th>
@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ element.traduction.nom }}</td>
                             <td class="text-start">{{ element.prixHorsTva }} €</td>
-                            <td class="text-start">{{ element.tauxTva }} %</td>
+                            <td class="text-start">{{ element.prixTva }} €</td>
                             <td class="text-start" >{{ element.prixTotal }} €</td>
                             <td class="quantite-management">
                                 <a title="{% trans %}Artikel abziehen{% endtrans %}" href="{{ path('remove_panier', {id: element.article.id})}}" class="btn btn-outline-info size-btn articleminus">

@@ -801,6 +801,10 @@
         <source>Bezahlen</source>
         <target>Bezahlen</target>
       </trans-unit>
+      <trans-unit id="Ij75rDc" resname="MwSt-Betrag">
+        <source>MwSt-Betrag</source>
+        <target>MwSt-Betrag</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

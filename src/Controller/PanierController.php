@@ -295,17 +295,17 @@ class PanierController extends AbstractController
             endif;
 
             // calculs sur base du prix nette
-            $prixHorsTva = $prixNette / 100;
-            $prixTotalArticle = (($prixNette + ($prixNette * $article -> getTauxTva())) / 100);
+            $prixHorsTva = round($prixNette / 100, 2);
+            $prixTva = round(($prixNette * $article -> getTauxTva()) / 100, 2);
+            $prixTotalArticle = $prixHorsTva + $prixTva;
             $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
             $prixTotal += $prixTotalArticleQuantite;
 
             // formats d'affichage
             $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
+            $prixTva = number_format($prixTva, 2, ',', '.');
             $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
-            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');
-            $tauxTva = (($article -> getTauxTva()) * 100);
-            
+            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
 
             //récupération de la traduction de l'article           
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
@@ -315,7 +315,7 @@ class PanierController extends AbstractController
             $infosPanier[] = [
                 "article" => $article,
                 "prixHorsTva" => $prixHorsTva,
-                "tauxTva" => $tauxTva,
+                "prixTva" => $prixTva,
                 "prixTotal" => $prixTotalArticle,
                 "prixTotalQuantite" => $prixTotalArticleQuantite,
                 "traduction" => $resultTraduction,

@@ -2,13 +2,19 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Stripe\Stripe;
+use App\Entity\Article;
+use App\Entity\Facture;
 use Stripe\Checkout\Session;
+use App\Entity\DetailCommandeArticle;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaiementController extends AbstractController
 {
@@ -56,9 +62,88 @@ class PaiementController extends AbstractController
     /**
      * @Route("/succes", name="succes")
      */
-    public function succes(): Response
+    public function succes(SessionInterface $session, EntityManagerInterface $entityManager): Response
     {
+
+        // création facture
+        $facture = new Facture();
+        $facture -> setDateFacture(new DateTime());
+        $facture -> setStatutPaiement(true);
+        $facture -> setUtilisateur($this -> getUser());
+        $facture -> setMontantTotalHorsTva(0.00);
+        $facture -> setMontantTotalTva(0.00);
+        $facture -> setMontantTotal(0.00);
+        //préparation insertion dans la BD
+        $entityManager -> persist($facture);
+        //insertion BD
+        $entityManager -> flush();
         
+        // on récupére le panier actuel de la Session
+        // on boucle sur le panier pour créer des détails de commandes par article dasn le panier
+        $panier = $session -> get('panier', []);
+        foreach($panier as $id => $quantite):            
+          // récupération de l'article via son ID
+          // définition repository article
+          $repositoryArticle = $entityManager -> getRepository(Article::class);
+          $article = $repositoryArticle -> findOneBy(['id' => $id]);
+
+          //actualisation de la quantité de ventes par article dans l'entité article
+          $nombreVentes = $article -> getNombreVentes();
+          $nombreVentes += $quantite;
+          $article -> setNombreVentes($nombreVentes);
+          //préparation insertion dans la BD
+          $entityManager -> persist($article);
+          //insertion BD
+          $entityManager -> flush();
+
+          // si il y a une réduction sur le prix
+          if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+            if($article -> getPromotion()):
+                $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();                    
+            elseif($article -> getCategorie() -> getPromotion()):
+                $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+            endif;
+            $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
+          else:
+              $prixNette = $article -> getMontantHorsTva();                    
+          endif;
+
+          // calculs sur base du prix nette          
+          $prixHorsTva = (round($prixNette / 100, 2) * $quantite) * 100;
+          $prixTva = (round(($prixNette * $article -> getTauxTva()) / 100, 2) * $quantite) * 100;
+          $prixTotalArticle = $prixHorsTva + $prixTva;         
+
+          //création détail de commande par article dans le panier
+          $commande = new DetailCommandeArticle();
+          $commande -> setQuantite($quantite);
+          $commande -> setArticle($article);
+          $commande -> setMontantTotalHorsTva($prixHorsTva);
+          $commande -> setMontantTva($prixTva);
+          $commande -> setMontantTotal($prixTotalArticle);
+          $commande -> setFacture($facture);
+          // ajout des totaux à la facture correspondante
+          $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
+          $factMontantTotalHorsTva += $commande -> getMontantTotalHorsTva();
+          $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
+
+          $factMontantTotalTva = $facture -> getMontantTotalTva();
+          $factMontantTotalTva += $commande -> getMontantTva();
+          $facture -> setMontantTotalTva($factMontantTotalTva);
+
+          $factMontantTotal = $facture -> getMontantTotal();
+          $factMontantTotal += $commande -> getMontantTotal();
+          $facture -> setMontantTotal($factMontantTotal);
+
+          //préparation insertion dans la BD
+          $entityManager -> persist($commande);
+          $entityManager -> persist($facture);
+          //insertion BD
+          $entityManager -> flush();      
+
+        endforeach;
+
+
+
         return $this -> render('paiement/succes.html.twig');
     }
 
