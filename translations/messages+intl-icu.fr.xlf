@@ -497,6 +497,10 @@
         <source>MwSt-Betrag</source>
         <target>Montant Tva</target>
       </trans-unit>
+      <trans-unit id="xChp9PK" resname="Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!">
+        <source>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</source>
+        <target>A partir d'une valeur totale de 100 euros, les frais de livraison sont supprimés!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

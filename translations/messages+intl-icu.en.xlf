@@ -493,6 +493,10 @@
         <source>MwSt-Betrag</source>
         <target>VAT amount</target>
       </trans-unit>
+      <trans-unit id="xChp9PK" resname="Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!">
+        <source>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</source>
+        <target>From a goods value of 100 euros, the delivery costs are waived!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
