@@ -497,6 +497,42 @@
         <source>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</source>
         <target>From a goods value of 100 euros, the delivery costs are waived!</target>
       </trans-unit>
+      <trans-unit id="mjL6csn" resname="Die Lieferbestätigung ist an den Kunden gesendet!">
+        <source>Die Lieferbestätigung ist an den Kunden gesendet!</source>
+        <target>The delivery confirmation is sent to the customer!</target>
+      </trans-unit>
+      <trans-unit id="XD4x8cH" resname="Kaufbestätigung - Rechnung Nr.">
+        <source>Kaufbestätigung - Rechnung Nr.</source>
+        <target>Purchase confirmation - invoice no.</target>
+      </trans-unit>
+      <trans-unit id="oF7Bf4I" resname="Hier findest du einen Überblick über deine Bestellung.">
+        <source>Hier findest du einen Überblick über deine Bestellung.</source>
+        <target>Here you will find an overview of your order.</target>
+      </trans-unit>
+      <trans-unit id="OcnDS3w" resname="Der Betrag von">
+        <source>Der Betrag von</source>
+        <target>The amount of</target>
+      </trans-unit>
+      <trans-unit id=".F.212n" resname="€ wurde beglichen.">
+        <source>€ wurde beglichen.</source>
+        <target>€ has been paid.</target>
+      </trans-unit>
+      <trans-unit id="yrKX9VT" resname="Die Lieferung wird in Kürze erfolgen">
+        <source>Die Lieferung wird in Kürze erfolgen</source>
+        <target>The delivery will take place shortly</target>
+      </trans-unit>
+      <trans-unit id="IZ9u_PA" resname="Mit freundlichen Grüssen">
+        <source>Mit freundlichen Grüssen</source>
+        <target>Kind regards</target>
+      </trans-unit>
+      <trans-unit id="hWzJnYc" resname="und">
+        <source>und</source>
+        <target>and</target>
+      </trans-unit>
+      <trans-unit id="5AgjkaZ" resname="Der Kommentar wurde freigeschaltet">
+        <source>Der Kommentar wurde freigeschaltet</source>
+        <target>The comment has been published</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

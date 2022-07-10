@@ -917,6 +917,22 @@
         <source>option.livraison_pays</source>
         <target>Land</target>
       </trans-unit>
+      <trans-unit id="RanCj_Y" resname="option.facture_statutLivraison">
+        <source>option.facture_statutLivraison</source>
+        <target>Lieferstatus</target>
+      </trans-unit>
+      <trans-unit id="H5cXiea" resname="option.facture_delivrer">
+        <source>option.facture_delivrer</source>
+        <target>Liefern</target>
+      </trans-unit>
+      <trans-unit id="4zk1z_d" resname="option.commentaire_publier">
+        <source>option.commentaire_publier</source>
+        <target>Freischalten</target>
+      </trans-unit>
+      <trans-unit id="b5FlCFe" resname="option.facture_id">
+        <source>option.facture_id</source>
+        <target>Rechnungsnummer</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

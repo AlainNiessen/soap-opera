@@ -60,6 +60,11 @@ class Facture
      */
     private $montantTotalHorsTva;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statutLivraison;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -205,6 +210,18 @@ class Facture
     public function setMontantTotalHorsTva(float $montantTotalHorsTva): self
     {
         $this->montantTotalHorsTva = $montantTotalHorsTva;
+
+        return $this;
+    }
+
+    public function getStatutLivraison(): ?bool
+    {
+        return $this->statutLivraison;
+    }
+
+    public function setStatutLivraison(bool $statutLivraison): self
+    {
+        $this->statutLivraison = $statutLivraison;
 
         return $this;
     }

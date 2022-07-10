@@ -809,6 +809,42 @@
         <source>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</source>
         <target>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</target>
       </trans-unit>
+      <trans-unit id="mjL6csn" resname="Die Lieferbestätigung ist an den Kunden gesendet!">
+        <source>Die Lieferbestätigung ist an den Kunden gesendet!</source>
+        <target>Die Lieferbestätigung ist an den Kunden gesendet!</target>
+      </trans-unit>
+      <trans-unit id="XD4x8cH" resname="Kaufbestätigung - Rechnung Nr.">
+        <source>Kaufbestätigung - Rechnung Nr.</source>
+        <target>Kaufbestätigung - Rechnung Nr.</target>
+      </trans-unit>
+      <trans-unit id="oF7Bf4I" resname="Hier findest du einen Überblick über deine Bestellung.">
+        <source>Hier findest du einen Überblick über deine Bestellung.</source>
+        <target>Hier findest du einen Überblick über deine Bestellung.</target>
+      </trans-unit>
+      <trans-unit id="OcnDS3w" resname="Der Betrag von">
+        <source>Der Betrag von</source>
+        <target>Der Betrag von</target>
+      </trans-unit>
+      <trans-unit id=".F.212n" resname="€ wurde beglichen.">
+        <source>€ wurde beglichen.</source>
+        <target>€ wurde beglichen.</target>
+      </trans-unit>
+      <trans-unit id="yrKX9VT" resname="Die Lieferung wird in Kürze erfolgen">
+        <source>Die Lieferung wird in Kürze erfolgen</source>
+        <target>Die Lieferung wird in Kürze erfolgen</target>
+      </trans-unit>
+      <trans-unit id="IZ9u_PA" resname="Mit freundlichen Grüssen">
+        <source>Mit freundlichen Grüssen</source>
+        <target>Mit freundlichen Grüssen</target>
+      </trans-unit>
+      <trans-unit id="hWzJnYc" resname="und">
+        <source>und</source>
+        <target>und</target>
+      </trans-unit>
+      <trans-unit id="5AgjkaZ" resname="Der Kommentar wurde freigeschaltet">
+        <source>Der Kommentar wurde freigeschaltet</source>
+        <target>Der Kommentar wurde freigeschaltet</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

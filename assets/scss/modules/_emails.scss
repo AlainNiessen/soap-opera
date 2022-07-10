@@ -1,0 +1,10 @@
+.table-confirmation-achat {
+    font-size: .8rem;
+}
+
+//media query
+@media screen and (min-width: 576px) {
+    .table-confirmation-achat {
+        font-size: 1rem;
+    }
+}

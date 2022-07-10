@@ -55,6 +55,7 @@ class CommentaireRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->andWhere('c.article = :val')
             ->setParameter('val', $article)
+            ->andWhere('c.publication = true')
             ->orderBy('c.dateCommentaire', 'DESC')
             ->getQuery()
             ->getResult()

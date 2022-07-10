@@ -501,6 +501,38 @@
         <source>Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!</source>
         <target>A partir d'une valeur totale de 100 euros, les frais de livraison sont supprimés!</target>
       </trans-unit>
+      <trans-unit id="mjL6csn" resname="Die Lieferbestätigung ist an den Kunden gesendet!">
+        <source>Die Lieferbestätigung ist an den Kunden gesendet!</source>
+        <target>La confirmation de livraison est envoyée au client !</target>
+      </trans-unit>
+      <trans-unit id="XD4x8cH" resname="Kaufbestätigung - Rechnung Nr.">
+        <source>Kaufbestätigung - Rechnung Nr.</source>
+        <target>Confirmation d'achat - facture no.</target>
+      </trans-unit>
+      <trans-unit id="oF7Bf4I" resname="Hier findest du einen Überblick über deine Bestellung.">
+        <source>Hier findest du einen Überblick über deine Bestellung.</source>
+        <target>Vous trouverez ici un aperçu de votre commande.</target>
+      </trans-unit>
+      <trans-unit id="OcnDS3w" resname="Der Betrag von">
+        <source>Der Betrag von</source>
+        <target>Le montant de</target>
+      </trans-unit>
+      <trans-unit id=".F.212n" resname="€ wurde beglichen.">
+        <source>€ wurde beglichen.</source>
+        <target>€ a été payé.</target>
+      </trans-unit>
+      <trans-unit id="yrKX9VT" resname="Die Lieferung wird in Kürze erfolgen">
+        <source>Die Lieferung wird in Kürze erfolgen</source>
+        <target>La livraison aura lieu sous peu</target>
+      </trans-unit>
+      <trans-unit id="IZ9u_PA" resname="Mit freundlichen Grüssen">
+        <source>Mit freundlichen Grüssen</source>
+        <target>Salutations distinguées</target>
+      </trans-unit>
+      <trans-unit id="5AgjkaZ" resname="Der Kommentar wurde freigeschaltet">
+        <source>Der Kommentar wurde freigeschaltet</source>
+        <target>Le commentaire a été publié</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

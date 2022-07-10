@@ -20,7 +20,7 @@ class NewsletterController extends AbstractController
     /**
      * @Route("/newsletter/{id}", name="newsletter_send")
      */
-    public function index(EntityManagerInterface $entityManager, Newsletter $newsletter, MailerInterface $mailer, TranslatorInterface $translator): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, Newsletter $newsletter, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         // récupération de la catégorie du Newsletter
         $categorie = $newsletter -> getNewsletterCategories();
@@ -89,6 +89,7 @@ class NewsletterController extends AbstractController
         $messageEnvoiMail = $translator -> trans('Der Newsletter ist erfolgreich versendet');
         $this -> addFlash('success', $messageEnvoiMail); 
             
-        return $this->redirectToRoute('home');
+        // redirect vers la liste de newsletter avec message
+        return $this->redirect($request -> headers -> get('referer'));
     }
 }

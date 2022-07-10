@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Commentaire;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -26,7 +29,27 @@ class CommentaireCrudController extends AbstractCrudController
         yield BooleanField::new('publication', new TranslatableMessage('option.commentaire_publication', [], 'EasyAdminBundle'));
         yield AssociationField::new('article', new TranslatableMessage('option.commentaire_article', [], 'EasyAdminBundle') );
         yield AssociationField::new('utilisateur', new TranslatableMessage('option.commentaire_utilisateur', [], 'EasyAdminBundle'));
+    }
 
+    // Ajout action "publier"    
+    public function configureActions(Actions $actions): Actions
+    {
+        $actionPublier = Action::new('Publier', new TranslatableMessage('option.commentaire_publier', [], 'EasyAdminBundle'))
+            ->displayIf(static function ($entity) {
+                // action sera uniquement affiché si le statutLivraison est sur false
+                return !$entity->getPublication();
+            })
+            ->linkToRoute('publier', function ($entity): array {
+                return [
+                    'id' => $entity->getId(),
+                ];
+            })
+            ->displayAsLink();
+
+            
+        return $actions
+            // ...
+            ->add(Crud::PAGE_INDEX, $actionPublier);
     }
     
 }

@@ -33,12 +33,13 @@ class NewsletterCrudController extends AbstractCrudController
                             ->onlyOnIndex();
         yield AssociationField::new('newsletterCategories', new TranslatableMessage('option.newsletter_newsletterCategorie', [], 'EasyAdminBundle'));                          
     }   
-    
+
+    // Ajout action "envoyer Newsletter"    
     public function configureActions(Actions $actions): Actions
     {
-        $viewInvoice = Action::new('Send Newsletter', new TranslatableMessage('option.newsletter_sendNewsletter', [], 'EasyAdminBundle'))
+        $actionSendNewsletter = Action::new('Send Newsletter', new TranslatableMessage('option.newsletter_sendNewsletter', [], 'EasyAdminBundle'))
             ->displayIf(static function ($entity) {
-                
+                // action sera uniquement affiché si le statutEnvoie est sur false
                 return !$entity->getStatutEnvoie();
             })
             ->linkToRoute('newsletter_send', function ($entity): array {
@@ -48,11 +49,9 @@ class NewsletterCrudController extends AbstractCrudController
             })
             ->displayAsLink();
 
-            // in PHP 7.4 and newer you can use arrow functions
-            // ->displayIf(fn ($entity) => $entity->isPaid())
-
+            
         return $actions
             // ...
-            ->add(Crud::PAGE_INDEX, $viewInvoice);
+            ->add(Crud::PAGE_INDEX, $actionSendNewsletter);
     }
 }

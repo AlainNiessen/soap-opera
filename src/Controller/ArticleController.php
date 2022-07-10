@@ -376,7 +376,8 @@ class ArticleController extends AbstractController
         // définition repository commentaires
         $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
         // récupération des commentaires sur l'article 
-        $resultCommentaires = $repositoryCommentaires -> findCommentaires($article);      
+        $resultCommentaires = $repositoryCommentaires -> findCommentaires($article); 
+            
 
 
         //redirect vers le detail de l'article
