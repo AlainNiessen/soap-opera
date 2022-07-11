@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ utilisateur.prenom }}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-profile">
+    <div class="wrapper">
+        <section class="m-profile-informations">
+            <h1>{% trans %}Hallo{% endtrans %} {{ utilisateur.prenom }}</h1>
+            <h2>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h2>
+            <h3>{% trans %}Möchtest du deine persönlichen Informationen anpassen?{% endtrans %}</h3>
+        </section>
+    </div>
+</section>
+
+{% endblock %}
