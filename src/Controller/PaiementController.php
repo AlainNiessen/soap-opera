@@ -173,7 +173,9 @@ class PaiementController extends AbstractController
         // envoi du mail
         $mailer -> send($email);  
 
-
+        // reste du panier et nombre total des articles dans le panier
+        $session -> set('panier', []);
+        $session -> set('nombreArticles', 0);
 
         return $this -> render('paiement/succes.html.twig');
     }
