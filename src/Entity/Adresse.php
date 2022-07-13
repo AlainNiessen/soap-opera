@@ -23,12 +23,14 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "adresse.numeroRue.not_blank")
+     * @Assert\NotNull (message = "adresse.numeroRue.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $numeroRue;
 
     /**
      * @Assert\NotBlank (message = "adresse.codePostal.not_blank")
+     * @Assert\NotNull (message = "adresse.codePostal.not_blank")
      * @Assert\Length(
      *      min = 4,
      *      max = 5,
@@ -59,6 +61,7 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "adresse.rue.not_blank")
+     * @Assert\NotNull (message = "adresse.rue.not_blank")
      * @Assert\Length(
      *      min = 2,
      *      minMessage = "adresse.rue.length_min")
@@ -68,6 +71,7 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "adresse.ville.not_blank")
+     * @Assert\NotNull (message = "adresse.ville.not_blank")
      * @Assert\Length(
      *      min = 6,
      *      minMessage = "adresse.ville.length_min")
@@ -77,6 +81,7 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "adresse.pays.not_blank")
+     * @Assert\NotNull (message = "adresse.pays.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $pays;

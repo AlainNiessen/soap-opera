@@ -83,7 +83,7 @@ onglets.forEach(onglet => {
 })
 
 // ----------------------------
-    // Animation formulaire commentaire et évaluation pop-up
+    // Animation formulaires pop-up
     // ---------------------------- 
 
     //récupération des actions pour accéder les formulaires et pour fermer les formulaires
@@ -101,7 +101,7 @@ onglets.forEach(onglet => {
                 showFormulaire(formulaire_commentaire);
             } else if (this.id == 'submit-evaluation') {
                 showFormulaire(formulaire_evaluation);
-            }
+            } 
         })
     })
 
@@ -110,10 +110,10 @@ onglets.forEach(onglet => {
         // eventListener click
         item.addEventListener('click', function() {
             if(this.id == 'back-to-page-commentaire') {
-                removeFormulaire (formulaire_commentaire);
+                removeFormulaire(formulaire_commentaire);
             } else if (this.id == 'back-to-page-evaluation') {
-                removeFormulaire (formulaire_evaluation);
-            }
+                removeFormulaire(formulaire_evaluation);
+            } 
         })
     })    
 

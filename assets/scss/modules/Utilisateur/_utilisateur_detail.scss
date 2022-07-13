@@ -1,0 +1,30 @@
+// general
+.m-profile-informations {    
+    margin: 2rem 0;
+    .m-profile-informations-intro {
+        text-align: center;
+        margin: 2rem 0;
+    }
+}
+
+.m-profile-informations-utilisateur {
+    text-align: center;
+    position: relative; // pour les formulaires
+    h2 {        
+        font-weight: bold;
+        margin: 1rem 0 2rem 0;
+    }
+}
+
+.utilisateur-info-box {
+    margin: 2rem 0;
+}
+
+.info-modif, .mp-modif {
+    margin: 2rem 0;
+    .modif-question {
+        font-weight: bold;
+    }
+}
+
+

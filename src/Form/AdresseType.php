@@ -28,12 +28,16 @@ class AdresseType extends AbstractType
         
         ->add('rue', TextType::class,[
             'label'=> new TranslatableMessage('formAdresse.rue', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ],
             'constraints' => [
                 new NotBlank([
+                    'message' => 'adresse.rue.not_blank',
+                ]),
+                new NotNull([
                     'message' => 'adresse.rue.not_blank',
                 ]),
                 new Length([
@@ -44,6 +48,7 @@ class AdresseType extends AbstractType
         ])
         ->add('numeroRue', TextType::class,[
             'label'=> new TranslatableMessage('formAdresse.rueNumero', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
@@ -52,16 +57,23 @@ class AdresseType extends AbstractType
                 new NotBlank([
                     'message' => 'adresse.numeroRue.not_blank',
                 ]),
+                new NotNull([
+                    'message' => 'adresse.numeroRue.not_blank',
+                ]),
             ],
         ])
         ->add('codePostal', TextType::class,[
             'label'=> new TranslatableMessage('formAdresse.codePostal', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ],
             'constraints' => [
                 new NotBlank([
+                    'message' => 'adresse.codePostal.not_blank',
+                ]),
+                new NotNull([
                     'message' => 'adresse.codePostal.not_blank',
                 ]),
                 new Length([
@@ -79,12 +91,16 @@ class AdresseType extends AbstractType
         ])
         ->add('ville', TextType::class,[
             'label'=> new TranslatableMessage('formAdresse.ville', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ],
             'constraints' => [
                 new NotBlank([
+                    'message' => 'adresse.ville.not_blank',
+                ]),
+                new NotNull([
                     'message' => 'adresse.ville.not_blank',
                 ]),
                 new Length([
@@ -98,6 +114,7 @@ class AdresseType extends AbstractType
             'choice_filter' => function ($countryName) use ($supportedCountries) {
                 return in_array($countryName, $supportedCountries, true);
             },
+            'empty_data' => '',
             'label'=> new TranslatableMessage('formAdresse.pays', [], 'Form'),
             'required'=>true,
             'attr'=>[
@@ -105,6 +122,9 @@ class AdresseType extends AbstractType
             ],
             'constraints' => [
                 new NotBlank([
+                    'message' => 'adresse.pays.not_blank',
+                ]),
+                new NotNull([
                     'message' => 'adresse.pays.not_blank',
                 ]),
             ],

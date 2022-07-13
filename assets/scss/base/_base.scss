@@ -93,25 +93,9 @@ td > .text-end {
     padding-right: 3rem;
 }
 
-//formulaire
-.formulaire {
-    margin: 4rem 0;
-}
-.info-box-inscription, .info-box-authentification {
+//flash-messages 
+.message {
     text-align: center;
-}
-.form-container {
-    margin: 2rem 0;
-    h3 {
-        font-weight: bold;
-    }
-    p {
-        margin: 0;
-    }
-}
-.form-flex-container {
-    display: flex;
-    flex-direction: column;
 }
 
 

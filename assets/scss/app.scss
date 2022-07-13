@@ -11,10 +11,17 @@
 
 
 //IMPORT MODULES DU DOSSIER "MODULES"
-@import "modules/frag_recherche";
-@import "modules/article_list";
-@import "modules/article_detail";
-@import "modules/email_signup";
-@import "modules/form_contact";
-@import "modules/panier";
-@import "modules/emails";
+// RECHERCHE
+@import "modules/Recherche/frag_recherche";
+//ARTICLES
+@import "modules/Articles/article_detail";
+@import "modules/Articles/article_list";
+//Panier
+@import "modules/Panier/panier";
+//Emails
+@import "modules/Emails/emails";
+//FORMULAIRES
+@import "modules/Formulaires/form_utilisateur";
+@import "modules/Formulaires/form_contact";
+//UTILISATEURS
+@import "modules/Utilisateur/utilisateur_detail";

@@ -9,10 +9,64 @@
 
 <section class="m-profile">
     <div class="wrapper">
+        {# insertion message de réussite / erreur / notice #}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <section class="m-profile-informations">
-            <h1>{% trans %}Hallo{% endtrans %} {{ utilisateur.prenom }}</h1>
-            <h2>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h2>
-            <h3>{% trans %}Möchtest du deine persönlichen Informationen anpassen?{% endtrans %}</h3>
+            <div class="m-profile-informations-intro">
+                <h1>{% trans %}Hallo{% endtrans %} {{ utilisateur.prenom }}</h1>
+                <h1>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h1>
+            </div>
+            <section class="m-profile-informations-utilisateur">
+                <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
+                <div class="info-box">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="utilisateur-info"> 
+                                <div class="utilisateur-info-box">
+                                    <h3>{% trans %}Deine vollständiger Name{% endtrans %}</h3>
+                                    <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>  
+                                </div> 
+                                <div class="utilisateur-info-box">                   
+                                    <h3>{% trans %}E-mail{% endtrans %}</h3>
+                                    <p>{{ utilisateur.email }}</p>
+                                </div> 
+                                <div class="utilisateur-info-box">
+                                    <h3>{% trans %}Dein Geburtsdatum{% endtrans %}</h3>
+                                    <p>{{ utilisateur.dateNaissance | date('d/m/Y')}}</p>
+                                </div> 
+                                <div class="utilisateur-info-box">
+                                    <h3>{% trans %}Deine Sprache{% endtrans %}</h3>
+                                    <p>{{ utilisateur.langue.langue }}</p>  
+                                </div>                               
+                            </div>                
+                        </div>  
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="utilisateur_adresses">
+                                <div class="utilisateur-info-box">
+                                    <h3>{% trans %}Deine Wohnadresse{% endtrans %}</h3>
+                                    <p>{{ utilisateur.adresseHome }}</p>
+                                </div> 
+                                <div class="utilisateur-info-box">
+                                    <h3>{% trans %}Deine Lieferadresse{% endtrans %}</h3>
+                                    <p>{{ utilisateur.adresseDeliver }}</p> 
+                                </div>                                
+                            </div>                
+                        </div>  
+                    </div>                     
+                </div> 
+                <div class="info-modif">
+                    <h3 class="modif-question">{% trans %}Möchtest du deine persönlichen Daten anpassen?{% endtrans %}</h3>
+                    <a href="{{ path('modif', {'id': utilisateur.id})}}" class="btn btn-outline-info affichage-formulaire">{% trans %}Anpassen{% endtrans %}</a>
+                </div> 
+                <div class="mp-modif">
+                    <h3 class="modif-question">{% trans %}Möchtest du dein Passwort ändern??{% endtrans %}</h3>
+                    <button id="modif-mp" class="btn btn-outline-info affichage-formulaire">{% trans %}Ändern{% endtrans %}</button>
+                </div>                
+            </section>
         </section>
     </div>
 </section>

@@ -58,102 +58,11 @@ class RegistrationController extends AbstractController
             //appel à la fonction privée generateToken pour générer le Token et l'attribuer à l'utilisateur créé dans le formulaire
             $utilisateur -> setInscriptionToken($this -> generateToken());  
 
-            // récupération de toutes les adresses dans la BD => comparaison si les adresses fournies par le formulaire existent déjà 
-            //définition repository adresse
-            $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
-            // fonction de requête sur base de données récupérées       
-            $adresses = $repositoryAdresse -> findAll();
-            // tableau de réfèrence
-            $tabRefHome = [];
-            $tabRefDeliver = [];
-
             // vérification si il y en a des adresses dans la BD
-            // si oui => boucle sur les adresses
-            if(!empty($adresses)):
-                foreach($adresses as $adresse):
-                    // si l'adresse du formulaire existe déjà 
-                    if( $adresse->getNumeroRue()    == $utilisateur->getAdresseHome()->getNumeroRue()   &&
-                        $adresse->getRue()          == $utilisateur->getAdresseHome()->getRue()         &&
-                        $adresse->getCodePostal()   == $utilisateur->getAdresseHome()->getCodePostal()  &&
-                        $adresse->getVille()        == $utilisateur->getAdresseHome()->getVille()       &&  
-                        $adresse->getPays()         == $utilisateur->getAdresseHome()->getPays()):         
-                            // attribution de l'adresse de la BD au nouveau utilisateur
-                            $utilisateur -> setAdresseHome($adresse);
-                    else:
-                        // stockage de l'adresse dans le tableau de référence
-                        $tabRefHome[] = $adresse;                                         
-                    endif;
-                endforeach;
-                // si l'adresse du formulaire n'existe pas encore
-                if(count($adresses) == count($tabRefHome)):
-                    // => création nouvelle adresse dans la BD et attribution par après à l'utilisateur
-                    $adresseNew = new Adresse();
-                    $adresseNew->setNumeroRue($utilisateur->getAdresseHome()->getNumeroRue());
-                    $adresseNew->setRue($utilisateur->getAdresseHome()->getRue());
-                    $adresseNew->setCodePostal($utilisateur->getAdresseHome()->getCodePostal());
-                    $adresseNew->setVille($utilisateur->getAdresseHome()->getVille());
-                    $adresseNew->setPays($utilisateur->getAdresseHome()->getPays()); 
-
-                    //préparation insertion dans la BD
-                    $entityManager -> persist($adresseNew);
-                    //insertion BD
-                    $entityManager -> flush();
-
-                    $utilisateur -> setAdresseHome($adresseNew);  
-                endif;
-            // si non => création d'une première adresse
-            else:
-                $adresseNew = new Adresse();
-                $adresseNew->setNumeroRue($utilisateur->getAdresseHome()->getNumeroRue());
-                $adresseNew->setRue($utilisateur->getAdresseHome()->getRue());
-                $adresseNew->setCodePostal($utilisateur->getAdresseHome()->getCodePostal());
-                $adresseNew->setVille($utilisateur->getAdresseHome()->getVille());
-                $adresseNew->setPays($utilisateur->getAdresseHome()->getPays()); 
-
-                //préparation insertion dans la BD
-                $entityManager -> persist($adresseNew);
-                //insertion BD
-                $entityManager -> flush();
-
-                $utilisateur -> setAdresseHome($adresseNew);
-            endif;
-
-            // deuxiéme récupération des adresses pour parcourir le même chemin pour adresseDeliver   
-            $adresses = $repositoryAdresse -> findAll();
-
-            // directement la boucle car la base de données a au moins une adresse
-            foreach($adresses as $adresse):
-                //vérification si adresseDeliver existe déjà dans la BD
-                if( $adresse->getNumeroRue()    == $utilisateur->getAdresseDeliver()->getNumeroRue()   &&
-                    $adresse->getRue()          == $utilisateur->getAdresseDeliver()->getRue()         &&
-                    $adresse->getCodePostal()   == $utilisateur->getAdresseDeliver()->getCodePostal()  &&
-                    $adresse->getVille()        == $utilisateur->getAdresseDeliver()->getVille()       &&  
-                    $adresse->getPays()         == $utilisateur->getAdresseDeliver()->getPays()):         
-                        // attribution de l'adresse de la BD au nouveau utilisateur
-                        $utilisateur -> setAdresseDeliver($adresse);
-                else:
-                    // stockage de l'adresse dans le tableau de référence
-                    $tabRefDeliver[] = $adresse;                                       
-                endif;
-            endforeach;
-            // si l'adresse du formulaire n'existe pas encore
-            if(count($adresses) == count($tabRefDeliver)):
-                //si non => création nouvelle adresse dans la BD et attribution par après à l'utilisateur
-                $adresseNew = new Adresse();
-                $adresseNew->setNumeroRue($utilisateur->getAdresseDeliver()->getNumeroRue());
-                $adresseNew->setRue($utilisateur->getAdresseDeliver()->getRue());
-                $adresseNew->setCodePostal($utilisateur->getAdresseDeliver()->getCodePostal());
-                $adresseNew->setVille($utilisateur->getAdresseDeliver()->getVille());
-                $adresseNew->setPays($utilisateur->getAdresseDeliver()->getPays()); 
-
-                //préparation insertion dans la BD
-                $entityManager -> persist($adresseNew);
-                //insertion BD
-                $entityManager -> flush();
-
-                $utilisateur -> setAdresseDeliver($adresseNew);
-            endif;
-
+            // appel de deux fonctions de vérification pour les deux adresses
+            $this -> checkAdressesHome($utilisateur, $entityManager);
+            $this -> checkAdressesDeliver($utilisateur, $entityManager);
+            
             //préparation insertion dans la BD
             $entityManager -> persist($utilisateur);
             //insertion BD
@@ -223,5 +132,118 @@ class RegistrationController extends AbstractController
             $this -> addFlash('error', $messageErreur);
             return $this->redirectToRoute('home');
         }
+    }
+
+    // fonction qui va contrôler si une adresse existe déjà dans la base de données
+    // si oui => attribution directe à l'utilisateur
+    // si non => création et attribution par aprés
+    public function checkAdressesHome(Utilisateur $utilisateur, EntityManagerInterface $entityManager) {
+        //définition repository adresse
+        $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
+        // fonction de requête sur base de données récupérées       
+        $adresses = $repositoryAdresse -> findAll();
+        // tableau de réfèrence
+        $tabAdresses = []; 
+        
+        //création adresse home
+        $adresseHome = new Adresse();
+        $adresseHome->setNumeroRue($utilisateur->getAdresseHome()->getNumeroRue());
+        $adresseHome->setRue($utilisateur->getAdresseHome()->getRue());
+        $adresseHome->setCodePostal($utilisateur->getAdresseHome()->getCodePostal());
+        $adresseHome->setVille($utilisateur->getAdresseHome()->getVille());
+        $adresseHome->setPays($utilisateur->getAdresseHome()->getPays());
+
+        if(!empty($adresses)):
+            // boucle sur les adresses stockées dans la base de données        
+            foreach($adresses as $adresse):
+                // vérification si l'adresse home existe déjà
+                if($adresse->getNumeroRue() == $adresseHome->getNumeroRue() &&
+                    $adresse->getRue() == $adresseHome->getRue() &&
+                    $adresse->getCodePostal() == $adresseHome->getCodePostal() &&
+                    $adresse->getVille() == $adresseHome->getVille() &&
+                    $adresse->getPays() == $adresseHome->getPays()):  
+                            
+                    // si oui => attribution directe de l'adresse existante à l'utilisateur
+                    $utilisateur -> setAdresseHome($adresse);
+                else:
+                    // si non => stockage de l'adresse dans le tableau de référence
+                    $tabAdresses[] = $adresse;                                         
+                endif;            
+            endforeach;
+            
+            // si le nombre des adresse dans la base de données est égal au nombre des adresses stockées dans mon tableau
+            // => adresseHome est nouveau
+            if(count($adresses) == count($tabAdresses)):
+                //préparation insertion dans la BD
+                $entityManager -> persist($adresseHome);
+                //insertion BD
+                $entityManager -> flush();
+
+                $utilisateur -> setAdresseHome($adresseHome);  
+            endif;
+        // si non => tableau adresse dans la base de données est vide et création d'une première adresse
+        else:
+            //préparation insertion dans la BD
+            $entityManager -> persist($adresseHome);
+            //insertion BD
+            $entityManager -> flush();
+
+            $utilisateur -> setAdresseDeliver($adresseHome);
+        endif;
+    }
+
+    public function checkAdressesDeliver(Utilisateur $utilisateur, EntityManagerInterface $entityManager) {
+        //définition repository adresse
+        $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
+        // fonction de requête sur base de données récupérées       
+        $adresses = $repositoryAdresse -> findAll();
+        // tableau de réfèrence
+        $tabAdresses = [];        
+
+        //création adresse Deliver
+        $adresseDeliver = new Adresse();
+        $adresseDeliver->setNumeroRue($utilisateur->getAdresseDeliver()->getNumeroRue());
+        $adresseDeliver->setRue($utilisateur->getAdresseDeliver()->getRue());
+        $adresseDeliver->setCodePostal($utilisateur->getAdresseDeliver()->getCodePostal());
+        $adresseDeliver->setVille($utilisateur->getAdresseDeliver()->getVille());
+        $adresseDeliver->setPays($utilisateur->getAdresseDeliver()->getPays());
+
+        if(!empty($adresses)):
+            // boucle sur les adresses stockées dans la base de données        
+            foreach($adresses as $adresse):
+                // vérification si l'adresse deliver existe déjà
+                if( $adresse->getNumeroRue() == $adresseDeliver->getNumeroRue() &&
+                    $adresse->getRue() == $adresseDeliver->getRue() &&
+                    $adresse->getCodePostal() == $adresseDeliver->getCodePostal() &&
+                    $adresse->getVille() == $adresseDeliver->getVille() &&
+                    $adresse->getPays() == $adresseDeliver->getPays()):  
+                          
+                    // si oui => attribution directe de l'adresse existante à l'utilisateur 
+                    $utilisateur -> setAdresseDeliver($adresse);
+                else:
+                    // si non => stockage de l'adresse dans le tableau de référence
+                    $tabAdresses[] = $adresse;                                         
+                endif;            
+            endforeach;
+            
+            // si le nombre des adresse dans la base de données est égal au nombre des adresses stockées dans mon tableau
+            // => adresseDeliver est nouveau
+            if(count($adresses) == count($tabAdresses)):
+                //préparation insertion dans la BD
+                $entityManager -> persist($adresseDeliver);
+                //insertion BD
+                $entityManager -> flush();
+
+                $utilisateur -> setAdresseDeliver($adresseDeliver);  
+            endif;
+        // si non => tableau adresse dans la base de données est vide et création d'une première adresse
+        else:
+            //préparation insertion dans la BD
+            $entityManager -> persist($adresseDeliver);
+            //insertion BD
+            $entityManager -> flush();
+
+            $utilisateur -> setAdresseDeliver($adresseDeliver);
+        endif;
     }
 }

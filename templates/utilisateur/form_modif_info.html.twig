@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Anpassung{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<div class="formulaire"> 
+    <div class="wrapper"> 
+        {# insertion message de réussite / erreur / notice #}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning message">
+                {{ message }}
+            </div>
+        {% endfor %}  
+        <div class="info-box-modification">
+            <h1>{% trans %}Anpassung der persönlichen Informationen{% endtrans %}</h1>        
+            <p>{% trans %}Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.{% endtrans %}</p>
+        </div>    
+        {{ form_start(formUtilisateurInfo, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-container">
+            <h3>{% trans %}Persönliche Informationen{% endtrans %}</h3>
+            <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.nom) }}
+                {{ form_row(formUtilisateurInfo.prenom) }}
+                {{ form_row(formUtilisateurInfo.plainPassword) }}
+            </div>
+            {{ form_row(formUtilisateurInfo.email) }}
+            {{ form_row(formUtilisateurInfo.dateNaissance) }}
+        </div>
+        <div class="form-container">
+            <h3>{% trans %}Wohnadresse{% endtrans %}</h3>
+            <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.adresseHome.rue) }}
+                {{ form_row(formUtilisateurInfo.adresseHome.numeroRue) }}
+            </div>
+            <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.adresseHome.codePostal) }}
+                {{ form_row(formUtilisateurInfo.adresseHome.ville) }}
+            </div>
+            {{ form_row(formUtilisateurInfo.adresseHome.pays) }}
+        </div>
+            <div class="form-container">
+            <h3>{% trans %}Lieferadresse{% endtrans %}</h3>
+            <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.adresseDeliver.rue) }}
+                {{ form_row(formUtilisateurInfo.adresseDeliver.numeroRue) }}
+            </div>
+            <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.adresseDeliver.codePostal) }}
+                {{ form_row(formUtilisateurInfo.adresseDeliver.ville) }}
+            </div>
+            {{ form_row(formUtilisateurInfo.adresseDeliver.pays) }}
+        </div>
+        <div class="form-container">
+            <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
+            <p>{% trans %}Der Newsletter ist nicht obligatorisch.{% endtrans %}</p>
+            <p>{% trans %}Sie können eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
+            {{ form_row(formUtilisateurInfo.newsletterCategories) }}
+        </div>
+        <div class="form-container">
+            <h3>{% trans %}Wählen Sie eine Sprache aus{% endtrans %}</h3>
+            {{ form_row(formUtilisateurInfo.langue) }}
+        </div>
+        {{ form_row(formUtilisateurInfo.submit) }}
+
+        {{ form_end(formUtilisateurInfo) }}
+    </div>
+</div>
+{% endblock %}
