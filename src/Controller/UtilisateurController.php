@@ -49,18 +49,9 @@ class UtilisateurController extends AbstractController
     public function modif(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
        
-        // comme les adresses dans le formulaire de modification sont 'non-mappées'
-        // récupération des adresses actuelles de l'utilisateur pour remplir les champs du formulaire
-        // si on ne change rien, les adresses restent
-        // si on fait un changement sur les adresses => les adresses parcourent les mêmes vérifications (pas de doublons) comme dans le formulaire d'inscription
-        $adresseHomeActuel = $utilisateur -> getAdresseHome();
-        $adresseDeliverActuel = $utilisateur -> getAdresseDeliver();        
-
+        
         // récupération du formulaire info utilisateur     
-        $formUtilisateurInfo = $this->createForm(InfoUtilisateurType::class, $utilisateur);
-        // passage des adresses actuelles au formulaire
-        $formUtilisateurInfo -> get('adresseHome') -> setData($adresseHomeActuel);
-        $formUtilisateurInfo -> get('adresseDeliver') -> setData($adresseDeliverActuel);
+        $formUtilisateurInfo = $this->createForm(InfoUtilisateurType::class, $utilisateur);        
         $formUtilisateurInfo -> handleRequest($request);
 
         
@@ -70,6 +61,8 @@ class UtilisateurController extends AbstractController
             // récupération des nouvelles adresses non mappés
             $adresseHome = $formUtilisateurInfo->get("adresseHome")->getData();
             $adresseDeliver = $formUtilisateurInfo->get("adresseDeliver")->getData();
+
+            
             $this -> checkAdressesHomeModif($utilisateur, $adresseHome, $entityManager);
             $this -> checkAdressesDeliverModif($utilisateur, $adresseDeliver, $entityManager);
 
@@ -80,7 +73,7 @@ class UtilisateurController extends AbstractController
             
             //ajout d'un message de réussite (avec paramétre nom de l'article)
             $message = $translator -> trans('Die Änderungen wurden efolgreich registriert');
-            $this -> addFlash('succes', $message);
+            $this -> addFlash('success', $message);
 
             return $this->redirectToRoute('profile', [
                 'id' => $utilisateur -> getId()
@@ -112,8 +105,8 @@ class UtilisateurController extends AbstractController
         $adresseHome->setRue($adresse->getRue());
         $adresseHome->setCodePostal($adresse->getCodePostal());
         $adresseHome->setVille($adresse->getVille());
-        $adresseHome->setPays($adresse->getPays());       
-
+        $adresseHome->setPays($adresse->getPays()); 
+        
         // boucle sur les adresses stockées dans la base de données        
         foreach($adresses as $adresse):
             // vérification si l'adresse home existe déjà
@@ -158,6 +151,8 @@ class UtilisateurController extends AbstractController
        $adresseDeliver->setCodePostal($adresse->getCodePostal());
        $adresseDeliver->setVille($adresse->getVille());
        $adresseDeliver->setPays($adresse->getPays());
+
+       
         
        // boucle sur les adresses stockées dans la base de données        
        foreach($adresses as $adresse):
@@ -168,17 +163,18 @@ class UtilisateurController extends AbstractController
                 $adresse->getVille() == $adresseDeliver->getVille() &&
                 $adresse->getPays() == $adresseDeliver->getPays()):         
                 // si oui => attribution directe de l'adresse existante à l'utilisateur 
-                $utilisateur -> setAdresseDeliver($adresse);
-                
+                $utilisateur -> setAdresseDeliver($adresse);                
            else:
                // si non => stockage de l'adresse dans le tableau de référence
                $tabAdresses[] = $adresse;                                         
            endif;            
        endforeach;
+      
        
        // si le nombre des adresse dans la base de données est égal au nombre des adresses stockées dans mon tableau
        // => adresseDeliver est nouveau
        if(count($adresses) == count($tabAdresses)):
+        
            //préparation insertion dans la BD
            $entityManager -> persist($adresseDeliver);
            //insertion BD
