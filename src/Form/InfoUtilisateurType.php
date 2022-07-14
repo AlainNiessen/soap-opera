@@ -36,35 +36,37 @@ class InfoUtilisateurType extends AbstractType
         $builder
         ->add('email', EmailType::class,[
             'label'=> new TranslatableMessage('formInscription.email', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
             ],            
         ]) 
-        ->add('plainPassword', RepeatedType::class, [
-            'type'=>PasswordType::class,
-            // message d'erreur au cas où le mot de passe et la confirmation ne sont pas identiques
-            'invalid_message'=> 'formInscription.passwordInvalidIdent',
-            'label'=> new TranslatableMessage('formInscription.password', [], 'Form'),
-            'required'=>true,
-            // champs mot de passe
-            'first_options'=>[
-                'label'=> new TranslatableMessage('formInscription.passwordLabel', [], 'Form'),
-                'attr'=>[
-                    'class'=>'form-control',
-                ]
-            ],            
-            //champs confirmation du mot de passe
-            'second_options'=>[
-                'label'=> new TranslatableMessage('formInscription.passwordConfirmation', [], 'Form'),
-                'attr'=>[
-                    'class'=>'form-control',
-                ]
-            ]
-        ])                     
+        // ->add('plainPassword', RepeatedType::class, [
+        //     'type'=>PasswordType::class,
+        //     // message d'erreur au cas où le mot de passe et la confirmation ne sont pas identiques
+        //     'invalid_message'=> 'formInscription.passwordInvalidIdent',
+        //     'label'=> new TranslatableMessage('formInscription.password', [], 'Form'),
+        //     'required'=>true,
+        //     // champs mot de passe
+        //     'first_options'=>[
+        //         'label'=> new TranslatableMessage('formInscription.passwordLabel', [], 'Form'),
+        //         'attr'=>[
+        //             'class'=>'form-control',
+        //         ]
+        //     ],            
+        //     //champs confirmation du mot de passe
+        //     'second_options'=>[
+        //         'label'=> new TranslatableMessage('formInscription.passwordConfirmation', [], 'Form'),
+        //         'attr'=>[
+        //             'class'=>'form-control',
+        //         ]
+        //     ]
+        // ])                     
                
         ->add('nom', TextType::class, [
             'label'=> new TranslatableMessage('formInscription.nom', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
@@ -73,6 +75,7 @@ class InfoUtilisateurType extends AbstractType
           
         ->add('prenom', TextType::class, [
             'label'=> new TranslatableMessage('formInscription.prenom', [], 'Form'),
+            'empty_data' => '',
             'required'=>true,
             'attr'=>[
                 'class'=>'form-control',
@@ -80,6 +83,7 @@ class InfoUtilisateurType extends AbstractType
         ])
         ->add('dateNaissance', BirthdayType::class, [
             'label' => new TranslatableMessage('formInscription.dateDeNaissance', [], 'Form'),
+            'empty_data' => '',
             'widget' => 'choice',
             'required'=>true,
             'attr'=>[
@@ -143,7 +147,9 @@ class InfoUtilisateurType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Utilisateur::class
+            'data_class' => Utilisateur::class,
+            // validation sur les propriétés sauf sur mot de passe (qui a uniquement inscription et reset)
+            'validation_groups' => ['Default']
         ]);
     }
 }

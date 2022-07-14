@@ -113,14 +113,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     //mot de passe clair qui doit contenir au moins une lettre, un chiffre et un caractére spécial et au moins 6 caractéres  
     // doit contenir (match = false => ne peut pas contenir)
     /**
-     * @Assert\NotBlank (message = "utilisateur.plainPassword.not_blank")
+     * @Assert\NotBlank (message = "utilisateur.plainPassword.not_blank", groups={"inscription", "reset"})
      * @Assert\Length(
      *      min = 6,
-     *      minMessage = "utilisateur.plainPassword.length_min")
+     *      minMessage = "utilisateur.plainPassword.length_min",
+     *      groups={"inscription", "reset"})
      * @Assert\Regex(
      *      "/^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)/",
      *      match = true, 
-     *      message="utilisateur.plainPassword.regex")
+     *      message="utilisateur.plainPassword.regex",
+     *      groups={"inscription", "reset"})
      */ 
     private $plainPassword;
 

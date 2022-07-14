@@ -68,9 +68,10 @@ class SecurityController extends AbstractController
                 $messageEmail = $translator -> trans('Bitte geben Sie eine existierende Emailadresse an oder legen Sie ein Konto an, falls Sie noch nicht registriert sind!');
                 $this -> addFlash('error', $messageEmail);
                 
-                return $this->render('security/passwordReset.html.twig', [
-                    'formPasswordReset' => $formPasswordResetEmail -> createView()
+                return $this->render('security/emailConfirmation.html.twig', [
+                    'formPasswordResetEmail' => $formPasswordResetEmail -> createView()
                 ]);
+
             else: 
                 //envoie d'un mail pour confirmer le changement de mot de passe
                 $messageSujetPass = $translator -> trans('Passwort ändern!');
@@ -91,6 +92,7 @@ class SecurityController extends AbstractController
                 $messageEmailPass = $translator -> trans('Du wirst in Kürze eine Email erhalten, in der du dein Passwort anpassen kannst!');
                 $this -> addFlash('success', $messageEmailPass); 
                     
+                // redirect vers la liste de commentaires avec message
                 return $this->redirectToRoute('home');
 
             endif;
@@ -104,13 +106,9 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset_password/validation/{id}", name="validation_password_reset")
      */
-    public function resetPasswordValidation($id, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder, TranslatorInterface $translator): Response
+    public function resetPasswordValidation(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder, TranslatorInterface $translator): Response
     {
-        // Récupération utilisateur
-        //définition repository utilisateur
-        $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
-        // fonction de requête sur base de données récupérées       
-        $utilisateur = $repositoryUtilisateur -> findOneBy(['id' => $id]);
+        
         //création formulaire 
         $formPasswordReset = $this->createForm(PasswordResetType::class, $utilisateur);
         $formPasswordReset -> handleRequest($request);
@@ -134,7 +132,15 @@ class SecurityController extends AbstractController
             $messageChangePass = $translator -> trans('Gut gemacht! Dein Passwort wurde erfolgreich geändert!');
             $this -> addFlash('success', $messageChangePass); 
                 
-            return $this->redirectToRoute('home');
+            // si un utilisateur est connecté (reset mot de passe via son profile)
+            if($this -> getUser()):
+                return $this->redirectToRoute('profile', [
+                    'id' => $utilisateur -> getID()
+                ]);
+            else:
+                return $this->redirectToRoute('home');
+            endif;
+
         endif;
 
         return $this->render('security/passwordReset.html.twig', [

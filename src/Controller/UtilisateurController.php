@@ -48,13 +48,23 @@ class UtilisateurController extends AbstractController
      */
     public function modif(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-               
+       
+        // comme les adresses dans le formulaire de modification sont 'non-mappées'
+        // récupération des adresses actuelles de l'utilisateur pour remplir les champs du formulaire
+        // si on ne change rien, les adresses restent
+        // si on fait un changement sur les adresses => les adresses parcourent les mêmes vérifications (pas de doublons) comme dans le formulaire d'inscription
+        $adresseHomeActuel = $utilisateur -> getAdresseHome();
+        $adresseDeliverActuel = $utilisateur -> getAdresseDeliver();        
 
-        //récupération du formulaire info utilisateur     
+        // récupération du formulaire info utilisateur     
         $formUtilisateurInfo = $this->createForm(InfoUtilisateurType::class, $utilisateur);
-        $formUtilisateurInfo ->handleRequest($request);
+        // passage des adresses actuelles au formulaire
+        $formUtilisateurInfo -> get('adresseHome') -> setData($adresseHomeActuel);
+        $formUtilisateurInfo -> get('adresseDeliver') -> setData($adresseDeliverActuel);
+        $formUtilisateurInfo -> handleRequest($request);
 
-        //si le formulaire info est submit
+        
+        //si le formulaire est submit et valide
         if($formUtilisateurInfo -> isSubmitted() && $formUtilisateurInfo -> isValid()):
             
             // récupération des nouvelles adresses non mappés

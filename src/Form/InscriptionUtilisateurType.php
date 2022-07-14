@@ -146,6 +146,8 @@ class InscriptionUtilisateurType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
+            // validations sur tous les propriétés et sur mot de passe (qui a le validation groupe inscription)
+            'validation_groups' => ['Default', 'inscription']
             
         ]);
     }

@@ -845,6 +845,70 @@
         <source>Der Kommentar wurde freigeschaltet</source>
         <target>Der Kommentar wurde freigeschaltet</target>
       </trans-unit>
+      <trans-unit id="KcppjsF" resname="Die Änderungen wurden efolgreich registriert">
+        <source>Die Änderungen wurden efolgreich registriert</source>
+        <target>Die Änderungen wurden efolgreich registriert</target>
+      </trans-unit>
+      <trans-unit id="q8sFYLf" resname="Anpassung">
+        <source>Anpassung</source>
+        <target>Anpassung</target>
+      </trans-unit>
+      <trans-unit id="Gnxihz5" resname="Anpassung der persönlichen Informationen">
+        <source>Anpassung der persönlichen Informationen</source>
+        <target>Anpassung der persönlichen Informationen</target>
+      </trans-unit>
+      <trans-unit id="snERRNm" resname="Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.">
+        <source>Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.</source>
+        <target>Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.</target>
+      </trans-unit>
+      <trans-unit id="moRIpRf" resname="Willkommen auf deinem Profil">
+        <source>Willkommen auf deinem Profil</source>
+        <target>Willkommen auf deinem Profil</target>
+      </trans-unit>
+      <trans-unit id="Z0nVU8C" resname="Deine persönlichen Daten">
+        <source>Deine persönlichen Daten</source>
+        <target>Deine persönlichen Daten</target>
+      </trans-unit>
+      <trans-unit id="_eOWaL8" resname="Deine vollständiger Name">
+        <source>Deine vollständiger Name</source>
+        <target>Deine vollständiger Name</target>
+      </trans-unit>
+      <trans-unit id="JVDZYuU" resname="E-mail">
+        <source>E-mail</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="kLhSynD" resname="Dein Geburtsdatum">
+        <source>Dein Geburtsdatum</source>
+        <target>Dein Geburtsdatum</target>
+      </trans-unit>
+      <trans-unit id="u4jSVsd" resname="Deine Sprache">
+        <source>Deine Sprache</source>
+        <target>Deine Sprache</target>
+      </trans-unit>
+      <trans-unit id="7ndEqNK" resname="Deine Wohnadresse">
+        <source>Deine Wohnadresse</source>
+        <target>Deine Wohnadresse</target>
+      </trans-unit>
+      <trans-unit id="nOVc9Q9" resname="Deine Lieferadresse">
+        <source>Deine Lieferadresse</source>
+        <target>Deine Lieferadresse</target>
+      </trans-unit>
+      <trans-unit id="XiJnWBA" resname="Möchtest du deine persönlichen Daten anpassen?">
+        <source>Möchtest du deine persönlichen Daten anpassen?</source>
+        <target>Möchtest du deine persönlichen Daten anpassen?</target>
+      </trans-unit>
+      <trans-unit id="VnQ.tdc" resname="Anpassen">
+        <source>Anpassen</source>
+        <target>Anpassen</target>
+      </trans-unit>
+      <trans-unit id="L_9CAgu" resname="Möchtest du dein Passwort ändern??">
+        <source>Möchtest du dein Passwort ändern??</source>
+        <target>Möchtest du dein Passwort ändern??</target>
+      </trans-unit>
+      <trans-unit id="6l40F6q" resname="Ändern">
+        <source>Ändern</source>
+        <target>Ändern</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

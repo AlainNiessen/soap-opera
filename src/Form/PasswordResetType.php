@@ -50,6 +50,8 @@ class PasswordResetType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
+            //validation uniquement sur le mot de passe (qui a le validation group reset)
+            'validation_groups' => ['reset']
         ]);
     }
 }

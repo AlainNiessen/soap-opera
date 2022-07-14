@@ -60,11 +60,11 @@
                 </div> 
                 <div class="info-modif">
                     <h3 class="modif-question">{% trans %}Möchtest du deine persönlichen Daten anpassen?{% endtrans %}</h3>
-                    <a href="{{ path('modif', {'id': utilisateur.id})}}" class="btn btn-outline-info affichage-formulaire">{% trans %}Anpassen{% endtrans %}</a>
+                    <a href="{{ path('modif', {'id': utilisateur.id}) }}" class="btn btn-outline-info affichage-formulaire">{% trans %}Anpassen{% endtrans %}</a>
                 </div> 
                 <div class="mp-modif">
                     <h3 class="modif-question">{% trans %}Möchtest du dein Passwort ändern??{% endtrans %}</h3>
-                    <button id="modif-mp" class="btn btn-outline-info affichage-formulaire">{% trans %}Ändern{% endtrans %}</button>
+                    <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}" class="btn btn-outline-info affichage-formulaire">{% trans %}Ändern{% endtrans %}</a>
                 </div>                
             </section>
         </section>
