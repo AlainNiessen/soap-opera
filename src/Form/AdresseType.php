@@ -136,6 +136,8 @@ class AdresseType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Adresse::class,
+            // validation sur les propriétés  et quand il est inclu dans un formulaire dont la validation est inscription
+            'validation_groups' => ['Default']
         ]);
     }
 }

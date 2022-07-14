@@ -69,16 +69,7 @@ class InfoUtilisateurType extends AbstractType
                 'class'=>'form-control',
             ]
         ])
-        ->add('adresseHome', AdresseType::class, [
-            'label' => new TranslatableMessage('formInscription.adresseResi', [], 'Form'),
-            'mapped' => false
-            
-        ])
-        ->add('adresseDeliver', AdresseType::class, [
-            'label' => new TranslatableMessage('formInscription.adresseLivraison', [], 'Form'),
-            'mapped' => false
-            
-        ])
+        
         ->add('newsletterCategories', EntityType::class, [
             'class' => NewsletterCategorie::class,
             'label' => new TranslatableMessage('formInscription.newsletterCategorie', [], 'Form'),

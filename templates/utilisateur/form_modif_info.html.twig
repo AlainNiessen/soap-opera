@@ -29,30 +29,7 @@
             {{ form_row(formUtilisateurInfo.email) }}
             {{ form_row(formUtilisateurInfo.dateNaissance) }}
         </div>
-        <div class="form-container">
-            <h3>{% trans %}Wohnadresse{% endtrans %}</h3>
-            <div class="form-flex-container">
-                {{ form_row(formUtilisateurInfo.adresseHome.rue) }}
-                {{ form_row(formUtilisateurInfo.adresseHome.numeroRue) }}
-            </div>
-            <div class="form-flex-container">
-                {{ form_row(formUtilisateurInfo.adresseHome.codePostal) }}
-                {{ form_row(formUtilisateurInfo.adresseHome.ville) }}
-            </div>
-            {{ form_row(formUtilisateurInfo.adresseHome.pays) }}
-        </div>
-            <div class="form-container">
-            <h3>{% trans %}Lieferadresse{% endtrans %}</h3>
-            <div class="form-flex-container">
-                {{ form_row(formUtilisateurInfo.adresseDeliver.rue) }}
-                {{ form_row(formUtilisateurInfo.adresseDeliver.numeroRue) }}
-            </div>
-            <div class="form-flex-container">
-                {{ form_row(formUtilisateurInfo.adresseDeliver.codePostal) }}
-                {{ form_row(formUtilisateurInfo.adresseDeliver.ville) }}
-            </div>
-            {{ form_row(formUtilisateurInfo.adresseDeliver.pays) }}
-        </div>
+        
         <div class="form-container">
             <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
             <p>{% trans %}Der Newsletter ist nicht obligatorisch.{% endtrans %}</p>

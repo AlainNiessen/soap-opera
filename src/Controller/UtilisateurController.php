@@ -58,13 +58,13 @@ class UtilisateurController extends AbstractController
         //si le formulaire est submit et valide
         if($formUtilisateurInfo -> isSubmitted() && $formUtilisateurInfo -> isValid()):
             
-            // récupération des nouvelles adresses non mappés
-            $adresseHome = $formUtilisateurInfo->get("adresseHome")->getData();
-            $adresseDeliver = $formUtilisateurInfo->get("adresseDeliver")->getData();
+            // // récupération des nouvelles adresses non mappés
+            // $adresseHome = $formUtilisateurInfo->get("adresseHome")->getData();
+            // $adresseDeliver = $formUtilisateurInfo->get("adresseDeliver")->getData();
 
             
-            $this -> checkAdressesHomeModif($utilisateur, $adresseHome, $entityManager);
-            $this -> checkAdressesDeliverModif($utilisateur, $adresseDeliver, $entityManager);
+            // $this -> checkAdressesHomeModif($utilisateur, $adresseHome, $entityManager);
+            // $this -> checkAdressesDeliverModif($utilisateur, $adresseDeliver, $entityManager);
 
             // préparation update
             $entityManager -> persist($utilisateur);

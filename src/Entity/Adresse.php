@@ -30,7 +30,7 @@ class Adresse
 
     /**
      * @Assert\NotBlank (message = "adresse.codePostal.not_blank")
-     * @Assert\NotNull (message = "adresse.codePostal.not_blank")
+     * @Assert\NotNull (message = "adresse.codePostal.not_blank", groups={"inscription"})
      * @Assert\Length(
      *      min = 4,
      *      max = 5,
