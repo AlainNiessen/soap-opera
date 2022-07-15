@@ -73,7 +73,7 @@ class Adresse
      * @Assert\NotBlank (message = "adresse.ville.not_blank")
      * @Assert\NotNull (message = "adresse.ville.not_blank")
      * @Assert\Length(
-     *      min = 6,
+     *      min = 2,
      *      minMessage = "adresse.ville.length_min")
      * @ORM\Column(type="string", length=255)
      */

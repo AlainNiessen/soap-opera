@@ -597,6 +597,38 @@
         <source>Ändern</source>
         <target>Change</target>
       </trans-unit>
+      <trans-unit id="xXJ1A9b" resname="Die Änderungen wurden erfolgreich registriert">
+        <source>Die Änderungen wurden erfolgreich registriert</source>
+        <target>The changes have been successfully registered</target>
+      </trans-unit>
+      <trans-unit id="DY1iWEA" resname="Anpassung der">
+        <source>Anpassung der</source>
+        <target>Modification of the</target>
+      </trans-unit>
+      <trans-unit id="dSHdPjg" resname="Daten anpassen">
+        <source>Daten anpassen</source>
+        <target>Modify data</target>
+      </trans-unit>
+      <trans-unit id="84thlAj" resname="Deine gewählten Newsletter-Kategorien">
+        <source>Deine gewählten Newsletter-Kategorien</source>
+        <target>Your chosen newsletter categories</target>
+      </trans-unit>
+      <trans-unit id="2UrGdgn" resname="Du hast keine Newsletter-Kategorie ausgewählt.">
+        <source>Du hast keine Newsletter-Kategorie ausgewählt.</source>
+        <target>You have not selected a newsletter category.</target>
+      </trans-unit>
+      <trans-unit id="JWxlYuy" resname="Wohnadresse anpassen">
+        <source>Wohnadresse anpassen</source>
+        <target>Modify home address</target>
+      </trans-unit>
+      <trans-unit id="MGBZYzH" resname="Deine Adressen">
+        <source>Deine Adressen</source>
+        <target>Your addresses</target>
+      </trans-unit>
+      <trans-unit id="4BtqX.8" resname="Lieferadresse anpassen">
+        <source>Lieferadresse anpassen</source>
+        <target>Modify deliver address</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

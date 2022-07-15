@@ -20,52 +20,57 @@
                 <h1>{% trans %}Hallo{% endtrans %} {{ utilisateur.prenom }}</h1>
                 <h1>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h1>
             </div>
-            <section class="m-profile-informations-utilisateur">
-                <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
-                <div class="info-box">
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="utilisateur-info"> 
-                                <div class="utilisateur-info-box">
-                                    <h3>{% trans %}Deine vollständiger Name{% endtrans %}</h3>
-                                    <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>  
-                                </div> 
-                                <div class="utilisateur-info-box">                   
-                                    <h3>{% trans %}E-mail{% endtrans %}</h3>
-                                    <p>{{ utilisateur.email }}</p>
-                                </div> 
-                                <div class="utilisateur-info-box">
-                                    <h3>{% trans %}Dein Geburtsdatum{% endtrans %}</h3>
-                                    <p>{{ utilisateur.dateNaissance | date('d/m/Y')}}</p>
-                                </div> 
-                                <div class="utilisateur-info-box">
-                                    <h3>{% trans %}Deine Sprache{% endtrans %}</h3>
-                                    <p>{{ utilisateur.langue.langue }}</p>  
-                                </div>                               
-                            </div>                
+            <section class="m-profile-informations-utilisateur">                                
+                <div class="utilisateur-info"> 
+                    <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
+                    <a href="{{ path('modif', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Daten anpassen{% endtrans %}" title="{% trans %}Daten anpassen{% endtrans %}"></i></a>
+                    <div class="utilisateur-info-box">
+                        <h3>{% trans %}Deine vollständiger Name{% endtrans %}</h3>
+                        <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>  
+                    </div> 
+                    <div class="utilisateur-info-box">                   
+                        <h3>{% trans %}E-mail{% endtrans %}</h3>
+                        <p>{{ utilisateur.email }}</p>
+                    </div> 
+                    <div class="utilisateur-info-box">
+                        <h3>{% trans %}Dein Geburtsdatum{% endtrans %}</h3>
+                        <p>{{ utilisateur.dateNaissance | date('d/m/Y')}}</p>
+                    </div> 
+                    <div class="utilisateur-info-box">
+                        <h3>{% trans %}Deine Sprache{% endtrans %}</h3>
+                        <p>{{ utilisateur.langue.langue }}</p>  
+                    </div> 
+                    <div class="utilisateur-info-box">
+                        <h3>{% trans %}Deine gewählten Newsletter-Kategorien{% endtrans %}</h3>
+                        {% if newsletterCategories is defined and newsletterCategories is not null and newsletterCategories is not empty %}
+                            {% for nomCategorie in newsletterCategories %}   
+                                <p class="newsletter-text">{{ nomCategorie }}</p> 
+                            {% endfor %} 
+                        {% else %}
+                            <p>{% trans %}Du hast keine Newsletter-Kategorie ausgewählt.{% endtrans %}</p>
+                        {% endif %}
+                    </div> 
+                    <div class="mp-modif">
+                        <h3 class="modif-question">{% trans %}Möchtest du dein Passwort ändern??{% endtrans %}</h3>
+                        <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Wohnadresse anpassen{% endtrans %}" title="{% trans %}Ändern{% endtrans %}"></i></a>
+                    </div>                                
+                </div>                    
+                <div class="utilisateur-adresses">
+                    <h2>{% trans %}Deine Adressen{% endtrans %}</h2>
+                    <div class="utilisateur-adresses-box">
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Deine Wohnadresse{% endtrans %}</h3>                            
+                            <p>{{ utilisateur.adresseHome }}</p>
+                            <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'home'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Wohnadresse anpassen{% endtrans %}" title="{% trans %}Wohnadresse anpassen{% endtrans %}"></i></a>
+                        </div> 
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Deine Lieferadresse{% endtrans %}</h3>                            
+                            <p>{{ utilisateur.adresseDeliver }}</p> 
+                            <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'deliver'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Lieferadresse anpassen{% endtrans %}" title="{% trans %}Lieferadresse anpassen{% endtrans %}"></i></a>
                         </div>  
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="utilisateur_adresses">
-                                <div class="utilisateur-info-box">
-                                    <h3>{% trans %}Deine Wohnadresse{% endtrans %}</h3>
-                                    <p>{{ utilisateur.adresseHome }}</p>
-                                </div> 
-                                <div class="utilisateur-info-box">
-                                    <h3>{% trans %}Deine Lieferadresse{% endtrans %}</h3>
-                                    <p>{{ utilisateur.adresseDeliver }}</p> 
-                                </div>                                
-                            </div>                
-                        </div>  
-                    </div>                     
-                </div> 
-                <div class="info-modif">
-                    <h3 class="modif-question">{% trans %}Möchtest du deine persönlichen Daten anpassen?{% endtrans %}</h3>
-                    <a href="{{ path('modif', {'id': utilisateur.id}) }}" class="btn btn-outline-info affichage-formulaire">{% trans %}Anpassen{% endtrans %}</a>
-                </div> 
-                <div class="mp-modif">
-                    <h3 class="modif-question">{% trans %}Möchtest du dein Passwort ändern??{% endtrans %}</h3>
-                    <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}" class="btn btn-outline-info affichage-formulaire">{% trans %}Ändern{% endtrans %}</a>
-                </div>                
+                    </div>                              
+                </div>                             
+                              
             </section>
         </section>
     </div>

@@ -3,24 +3,43 @@
 namespace App\Controller;
 
 use App\Entity\Adresse;
+use App\Form\AdresseType;
 use App\Entity\Utilisateur;
+use App\Form\AdresseChangeType;
 use App\Form\InfoUtilisateurType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\TraductionNewsletterCategorie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UtilisateurController extends AbstractController
 {
     /**
      * @Route("/profile/{id}", name="profile")
      */
-    public function profile(Utilisateur $utilisateur, Request $request): Response
+    public function profile(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager): Response
     {
         // récupération des favoris
         $favoris = $utilisateur -> getArticles();
+
+        // récupération de la langue 
+        $langue = $utilisateur -> getLangue() -> getCodeLangue();
+
+        // récupération des catégories des Newsletter
+        //connection au repository TraductionNewsletterCategorie
+        $repositoryTrad = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
+        $categories = $utilisateur -> getNewsletterCategories();
+        $tabNomsCategories = [];
+        foreach($categories as $categorie):
+            //appel à la fonction findTraduction pour trouver la traduction de NewsletterCategorie 
+            $trad = $repositoryTrad -> findTraduction($categorie, $langue);                
+            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            $categorieNom = $trad -> getNom();
+            array_push($tabNomsCategories, $categorieNom);
+        endforeach;
 
         // récupération des articles achetés
         $tabAchats = [];
@@ -40,39 +59,33 @@ class UtilisateurController extends AbstractController
             'utilisateur' => $utilisateur,
             'favoris' => $favoris,
             'articlesAchat' => $tabAchatsUniques,
+            'newsletterCategories' => $tabNomsCategories
         ]);
     }
 
     /**
-     * @Route("/modif-utilisateur/{id}", name="modif", methods={"POST", "GET"})
+     * @Route("/modif-utilisateur/{id}", name="modif")
      */
-    public function modif(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
-    {
-       
-        
+    public function modifUtilisateur(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {        
         // récupération du formulaire info utilisateur     
         $formUtilisateurInfo = $this->createForm(InfoUtilisateurType::class, $utilisateur);        
         $formUtilisateurInfo -> handleRequest($request);
 
         
         //si le formulaire est submit et valide
-        if($formUtilisateurInfo -> isSubmitted() && $formUtilisateurInfo -> isValid()):
-            
-            // // récupération des nouvelles adresses non mappés
-            // $adresseHome = $formUtilisateurInfo->get("adresseHome")->getData();
-            // $adresseDeliver = $formUtilisateurInfo->get("adresseDeliver")->getData();
-
-            
-            // $this -> checkAdressesHomeModif($utilisateur, $adresseHome, $entityManager);
-            // $this -> checkAdressesDeliverModif($utilisateur, $adresseDeliver, $entityManager);
+        if($formUtilisateurInfo -> isSubmitted() && $formUtilisateurInfo -> isValid()):           
 
             // préparation update
             $entityManager -> persist($utilisateur);
             // insertion BD du update
             $entityManager -> flush();
+
+            // rechange de la langue dans la Session
+            $request -> getSession() -> set('_locale', $utilisateur -> getLangue() -> getCodeLangue());
             
             //ajout d'un message de réussite (avec paramétre nom de l'article)
-            $message = $translator -> trans('Die Änderungen wurden efolgreich registriert');
+            $message = $translator -> trans('Die Änderungen wurden erfolgreich registriert');
             $this -> addFlash('success', $message);
 
             return $this->redirectToRoute('profile', [
@@ -88,38 +101,107 @@ class UtilisateurController extends AbstractController
 
     }
 
+    /**
+     * @Route("/modif-adresse/{id}/{type}", name="modif_adresse")
+     */
+    public function modifAdresse(Utilisateur $utilisateur, $type, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {
+        // check sur type pour titre dans le formulaire
+        // récupération de la langue 
+        $langue = $utilisateur -> getLangue() -> getCodeLangue();
+        if($type === "home"):
+            if($langue === "de"):
+                $titre = "Wohnadresse";
+            elseif($langue === "fr"):
+                $titre = "adresse résidentielle";
+            elseif($langue === "en"):
+                $titre = "residential address";
+            endif;
+        elseif($type === "deliver"):
+            if($langue === "de"):
+                $titre = "Liederadresse";
+            elseif($langue === "fr"):
+                $titre = "adresse de livraison";
+            elseif($langue === "en"):
+                $titre = "deliver address";
+            endif;
+        endif;
+        // création nouvelle adresse
+        $adresse = new Adresse();
+
+        // récupération du formulaire Adresse     
+        $formAdresse = $this->createForm(AdresseChangeType::class, $adresse);        
+        $formAdresse -> handleRequest($request);
+
+        //si le formulaire est submit et valide
+        if($formAdresse -> isSubmitted() && $formAdresse -> isValid()):
+            
+            // récupération des valeurs du formulaire
+            $numeroRue = $formAdresse -> get('numeroRue') -> getData();
+            $rue = $formAdresse -> get('rue') -> getData();
+            $codePostal= $formAdresse -> get('codePostal') -> getData();
+            $ville = $formAdresse -> get('ville') -> getData();
+            $pays = $formAdresse -> get('pays') -> getData();
+
+            //attribution des valeurs à la nouvelle adresse
+            $adresse -> setNumeroRue($numeroRue);
+            $adresse -> setRue($rue);
+            $adresse -> setCodePostal($codePostal);
+            $adresse -> setVille($ville);
+            $adresse -> setPays($pays);
+
+            // check dans la base de données
+            $this -> checkAdresseBD($utilisateur, $adresse, $type, $entityManager);
+
+            // préparation update
+            $entityManager -> persist($utilisateur);
+            // insertion BD du update
+            $entityManager -> flush();
+
+            //ajout d'un message de réussite (avec paramétre nom de l'article)
+            $message = $translator -> trans('Die Änderungen wurden erfolgreich registriert');
+            $this -> addFlash('success', $message);
+
+            return $this->redirectToRoute('profile', [
+                'id' => $utilisateur -> getId()
+            ]);
+            
+        endif;
+
+        return $this->render('utilisateur/form_modif_adresse.html.twig', [
+            'formAdresse' => $formAdresse -> createView(), 
+            'titre' => $titre
+        ]);
+    }
+
     // fonction qui va contrôler si une adresse existe déjà dans la base de données
     // si oui => attribution directe à l'utilisateur
     // si non => création et attribution par aprés
-    public function checkAdressesHomeModif(Utilisateur $utilisateur, Adresse $adresse, EntityManagerInterface $entityManager) {
+    public function checkAdresseBD(Utilisateur $utilisateur, Adresse $adresse, $type, EntityManagerInterface $entityManager) {
         //définition repository adresse
         $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
         // fonction de requête sur base de données récupérées       
         $adresses = $repositoryAdresse -> findAll();
         // tableau de réfèrence
         $tabAdresses = [];  
-        
-        //création adresse home
-        $adresseHome = new Adresse();
-        $adresseHome->setNumeroRue($adresse->getNumeroRue());
-        $adresseHome->setRue($adresse->getRue());
-        $adresseHome->setCodePostal($adresse->getCodePostal());
-        $adresseHome->setVille($adresse->getVille());
-        $adresseHome->setPays($adresse->getPays()); 
-        
+            
         // boucle sur les adresses stockées dans la base de données        
-        foreach($adresses as $adresse):
+        foreach($adresses as $adresseBD):
             // vérification si l'adresse home existe déjà
-            if( $adresse->getNumeroRue() == $adresseHome->getNumeroRue() &&
-                $adresse->getRue() == $adresseHome->getRue() &&
-                $adresse->getCodePostal() == $adresseHome->getCodePostal() &&
-                $adresse->getVille() == $adresseHome->getVille() &&
-                $adresse->getPays() == $adresseHome->getPays()):    
+            if( $adresseBD->getNumeroRue() == $adresse->getNumeroRue() &&
+                $adresseBD->getRue() == $adresse->getRue() &&
+                $adresseBD->getCodePostal() == $adresse->getCodePostal() &&
+                $adresseBD->getVille() == $adresse->getVille() &&
+                $adresseBD->getPays() == $adresse->getPays()):    
                 // si oui => attribution directe de l'adresse existante à l'utilisateur 
-                $utilisateur -> setAdresseHome($adresse);
+                if($type === "home"):
+                    $utilisateur -> setAdresseHome($adresseBD);
+                elseif($type === "deliver"):
+                    $utilisateur -> setAdresseDeliver($adresseBD);
+                endif;
             else:
                 // si non => stockage de l'adresse dans le tableau de référence
-                $tabAdresses[] = $adresse;                                         
+                $tabAdresses[] = $adresseBD;                                         
             endif;            
         endforeach;
         
@@ -127,60 +209,15 @@ class UtilisateurController extends AbstractController
         // => adresseHome est nouveau
         if(count($adresses) == count($tabAdresses)):
             //préparation insertion dans la BD
-            $entityManager -> persist($adresseHome);
+            $entityManager -> persist($adresse);
             //insertion BD
             $entityManager -> flush();
 
-            $utilisateur -> setAdresseHome($adresseHome);  
+            if($type === "home"):
+                $utilisateur -> setAdresseHome($adresse);
+            elseif($type === "deliver"):
+                $utilisateur -> setAdresseDeliver($adresse);
+            endif; 
         endif;
-        
-    }
-
-    public function checkAdressesDeliverModif(Utilisateur $utilisateur, Adresse $adresse, EntityManagerInterface $entityManager) {
-        //définition repository adresse
-        $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
-        // fonction de requête sur base de données récupérées       
-        $adresses = $repositoryAdresse -> findAll();
-        // tableau de réfèrence
-        $tabAdresses = [];        
-
-       //création adresse home
-       $adresseDeliver = new Adresse();
-       $adresseDeliver->setNumeroRue($adresse->getNumeroRue());
-       $adresseDeliver->setRue($adresse->getRue());
-       $adresseDeliver->setCodePostal($adresse->getCodePostal());
-       $adresseDeliver->setVille($adresse->getVille());
-       $adresseDeliver->setPays($adresse->getPays());
-
-       
-        
-       // boucle sur les adresses stockées dans la base de données        
-       foreach($adresses as $adresse):
-           // vérification si l'adresse home existe déjà
-           if( $adresse->getNumeroRue() == $adresseDeliver->getNumeroRue() &&
-                $adresse->getRue() == $adresseDeliver->getRue() &&
-                $adresse->getCodePostal() == $adresseDeliver->getCodePostal() &&
-                $adresse->getVille() == $adresseDeliver->getVille() &&
-                $adresse->getPays() == $adresseDeliver->getPays()):         
-                // si oui => attribution directe de l'adresse existante à l'utilisateur 
-                $utilisateur -> setAdresseDeliver($adresse);                
-           else:
-               // si non => stockage de l'adresse dans le tableau de référence
-               $tabAdresses[] = $adresse;                                         
-           endif;            
-       endforeach;
-      
-       
-       // si le nombre des adresse dans la base de données est égal au nombre des adresses stockées dans mon tableau
-       // => adresseDeliver est nouveau
-       if(count($adresses) == count($tabAdresses)):
-        
-           //préparation insertion dans la BD
-           $entityManager -> persist($adresseDeliver);
-           //insertion BD
-           $entityManager -> flush();
-
-           $utilisateur -> setAdresseDeliver($adresseDeliver);  
-       endif;
     }
 }

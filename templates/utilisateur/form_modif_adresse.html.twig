@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Anpassung{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<div class="formulaire"> 
+    <div class="wrapper"> 
+        {# insertion message de réussite / erreur / notice #}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning message">
+                {{ message }}
+            </div>
+        {% endfor %}  
+        <div class="info-box-modification">
+            <h1>{% trans %}Anpassung der{% endtrans %} {{ titre }}</h1>        
+        </div>    
+        {{ form_start(formAdresse, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-container">
+            <div class="form-flex-container">
+                {{ form_row(formAdresse.rue) }}
+                {{ form_row(formAdresse.numeroRue) }}
+            </div>       
+            <div class="form-flex-container">
+                {{ form_row(formAdresse.codePostal) }}
+                {{ form_row(formAdresse.ville) }}
+            </div>
+        <div class="form-flex-container">
+            {{ form_row(formAdresse.pays) }}
+        </div>
+        {{ form_row(formAdresse.submit) }}
+
+        {{ form_end(formAdresse) }}
+    </div>
+</div>
+{% endblock %}

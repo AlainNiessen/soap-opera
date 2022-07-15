@@ -551,7 +551,7 @@
       </trans-unit>
       <trans-unit id="moRIpRf" resname="Willkommen auf deinem Profil">
         <source>Willkommen auf deinem Profil</source>
-        <target>_Bienvenue sur ton profil</target>
+        <target>Bienvenue sur ton profil</target>
       </trans-unit>
       <trans-unit id="Z0nVU8C" resname="Deine persönlichen Daten">
         <source>Deine persönlichen Daten</source>
@@ -596,6 +596,38 @@
       <trans-unit id="6l40F6q" resname="Ändern">
         <source>Ändern</source>
         <target>Changer</target>
+      </trans-unit>
+      <trans-unit id="xXJ1A9b" resname="Die Änderungen wurden erfolgreich registriert">
+        <source>Die Änderungen wurden erfolgreich registriert</source>
+        <target>Les modifications ont été enregistrées avec succès</target>
+      </trans-unit>
+      <trans-unit id="DY1iWEA" resname="Anpassung der">
+        <source>Anpassung der</source>
+        <target>Modification de l'</target>
+      </trans-unit>
+      <trans-unit id="dSHdPjg" resname="Daten anpassen">
+        <source>Daten anpassen</source>
+        <target>Modifier les données</target>
+      </trans-unit>
+      <trans-unit id="84thlAj" resname="Deine gewählten Newsletter-Kategorien">
+        <source>Deine gewählten Newsletter-Kategorien</source>
+        <target>Les catégories de newsletter que tu as choisie</target>
+      </trans-unit>
+      <trans-unit id="2UrGdgn" resname="Du hast keine Newsletter-Kategorie ausgewählt.">
+        <source>Du hast keine Newsletter-Kategorie ausgewählt.</source>
+        <target>Tu n'as pas sélectionné de catégorie de newsletter.</target>
+      </trans-unit>
+      <trans-unit id="JWxlYuy" resname="Wohnadresse anpassen">
+        <source>Wohnadresse anpassen</source>
+        <target>Modifier l'adresse résidentielle</target>
+      </trans-unit>
+      <trans-unit id="MGBZYzH" resname="Deine Adressen">
+        <source>Deine Adressen</source>
+        <target>Tes adresses</target>
+      </trans-unit>
+      <trans-unit id="4BtqX.8" resname="Lieferadresse anpassen">
+        <source>Lieferadresse anpassen</source>
+        <target>Modifier l'adresse de livraison</target>
       </trans-unit>
     </body>
   </file>
