@@ -68,7 +68,23 @@ class InscriptionUtilisateurType extends AbstractType
                     'class'=>'form-control',
                 ]
             ]
-        ])            
+        ]) 
+
+        ->add('nomEntreprise', TextType::class, [
+            'label'=> new TranslatableMessage('formInscription.nomEntreprise', [], 'Form'),
+            'required'=>false,
+            'attr'=>[
+                'class'=>'form-control',
+            ]
+        ]) 
+        ->add('numeroTVA', TextType::class, [
+            'label'=> new TranslatableMessage('formInscription.numeroTVA', [], 'Form'),
+            'required'=>false,
+            'attr'=>[
+                'class'=>'form-control',
+            ]
+        ]) 
+
         ->add('nom', TextType::class, [
             'label'=> new TranslatableMessage('formInscription.nom', [], 'Form'),
             'required'=>true,

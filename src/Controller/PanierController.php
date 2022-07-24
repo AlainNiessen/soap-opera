@@ -32,7 +32,9 @@ class PanierController extends AbstractController
         return $this->render('panier/index.html.twig', [
             'infosPanier' => $tabInfos[0],
             'total' => $tabInfos[1],
-            'fraisLivraison' => $tabInfos[2]
+            'fraisLivraison' => $tabInfos[2],
+            'fraisTVALivraison' => $tabInfos[3],
+            'fraisTotalLivraison' => $tabInfos[4]
         ]);
     }
 
@@ -88,7 +90,9 @@ class PanierController extends AbstractController
                     'content' => $this -> renderView('panier/index.html.twig', [
                         'infosPanier' => $tabInfos[0],
                         'total' => $tabInfos[1],
-                        'fraisLivraison' => $tabInfos[2]
+                        'fraisLivraison' => $tabInfos[2],
+                        'fraisTVALivraison' => $tabInfos[3],
+                        'fraisTotalLivraison' => $tabInfos[4]
                     ])
                 ]);
             }       
@@ -167,7 +171,9 @@ class PanierController extends AbstractController
                     'content' => $this -> renderView('panier/index.html.twig', [
                         'infosPanier' => $tabInfos[0],
                         'total' => $tabInfos[1],
-                        'fraisLivraison' => $tabInfos[2]
+                        'fraisLivraison' => $tabInfos[2],
+                        'fraisTVALivraison' => $tabInfos[3],
+                        'fraisTotalLivraison' => $tabInfos[4]
                     ])
                 ]);
             }       
@@ -234,7 +240,9 @@ class PanierController extends AbstractController
             return $this->render('panier/index.html.twig', [
                 'infosPanier' => $tabInfos[0],
                 'total' => $tabInfos[1],
-                'fraisLivraison' => $tabInfos[2]
+                'fraisLivraison' => $tabInfos[2],
+                'fraisTVALivraison' => $tabInfos[3],
+                'fraisTotalLivraison' => $tabInfos[4]
             ]);            
         else: 
             //ajout d'un message d'erreur que l'article n'existe pas
@@ -259,17 +267,7 @@ class PanierController extends AbstractController
         //définition repository langue
         $repositoryLangue = $entityManager -> getRepository(Langue::class);
         // fonction de requête sur base de données récupérées       
-        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
-
-        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
-        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
-        // récupération du montant des frais de livraison
-        // définition repository langue
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
-        // fonction de requête sur base de données récupérées       
-        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
-        // frais de livraison
-        $fraisLivraison = ($livraison -> getPrix()) / 100;
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);      
         
         
         // boucle sur le panier
@@ -296,7 +294,7 @@ class PanierController extends AbstractController
 
             // calculs sur base du prix nette
             $prixHorsTva = round($prixNette / 100, 2);
-            $prixTva = round(($prixNette * $article -> getTauxTva()) / 100, 2);
+            $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
             $prixTotalArticle = $prixHorsTva + $prixTva;
             $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
             $prixTotal += $prixTotalArticleQuantite;
@@ -323,19 +321,42 @@ class PanierController extends AbstractController
             ];                      
         endforeach;
 
-        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison
-        
-        if($prixTotal >= 100):
+        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
+        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
+        // récupération du montant des frais de livraison
+        // définition repository langue
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
+        // fonction de requête sur base de données récupérées       
+        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        // frais de livraison
+        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
+
+        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
+        if($prixTotal < 100):
+            // Calculs
+            $fraisLivraison = round($fraisLivraison, 2);
+            $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+        else:
             $fraisLivraison = 0;
+            $montantTvaLivraison = 0;
+            $montantTotalLivraison = 0;            
         endif;
 
-        $prixTotal += $fraisLivraison;
-        $prixTotal = number_format($prixTotal, 2, ',', '.');
+        $prixTotal += $montantTotalLivraison;
+
+        // Affichage
         $fraisLivraison = number_format($fraisLivraison, 2, ',', '.');
+        $montantTvaLivraison = number_format($montantTvaLivraison, 2, ',', '.');
+        $montantTotalLivraison = number_format($montantTotalLivraison, 2, ',', '.');        
+        $prixTotal = number_format($prixTotal, 2, ',', '.');
+        
 
         $infoComplete[] = $infosPanier;
         $infoComplete[] = $prixTotal;
         $infoComplete[] = $fraisLivraison;
+        $infoComplete[] = $montantTvaLivraison;
+        $infoComplete[] = $montantTotalLivraison;
         
         return $infoComplete;
     }    

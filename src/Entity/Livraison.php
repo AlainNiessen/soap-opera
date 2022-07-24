@@ -20,26 +20,31 @@ class Livraison
     /**
      * @ORM\Column(type="integer")
      */
-    private $prix;
+    private $montantHorsTva;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $pays;
 
+    /**
+     * @ORM\Column(type="float", scale=2)
+     */
+    private $tauxTva;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrix(): ?int
+    public function getMontantHorsTva(): ?int
     {
-        return $this->prix;
+        return $this->montantHorsTva;
     }
 
-    public function setPrix(int $prix): self
+    public function setMontantHorsTva(int $montantHorsTva): self
     {
-        $this->prix = $prix;
+        $this->montantHorsTva = $montantHorsTva;
 
         return $this;
     }
@@ -52,6 +57,18 @@ class Livraison
     public function setPays(string $pays): self
     {
         $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getTauxTva(): ?float
+    {
+        return $this->tauxTva;
+    }
+
+    public function setTauxTva(float $tauxTva): self
+    {
+        $this->tauxTva = $tauxTva;
 
         return $this;
     }

@@ -26,6 +26,8 @@ class UtilisateurCrudController extends AbstractCrudController
         yield ArrayField::new('roles', new TranslatableMessage('option.utilisateur_roles', [], 'EasyAdminBundle'));
         yield TextField::new('plainPassword', new TranslatableMessage('option.utilisateur_plainPassword', [], 'EasyAdminBundle'))
                         ->onlyOnForms();
+        yield TextField::new('nomEntreprise', new TranslatableMessage('option.utilisateur_nomEntreprise', [], 'EasyAdminBundle'));
+        yield TextField::new('numeroTVA', new TranslatableMessage('option.utilisateur_numeroTVA', [], 'EasyAdminBundle'));
         yield TextField::new('nom', new TranslatableMessage('option.utilisateur_nom', [], 'EasyAdminBundle'));
         yield TextField::new('prenom', new TranslatableMessage('option.utilisateur_prenom', [], 'EasyAdminBundle'));
         yield DateTimeField::new('dateNaissance', new TranslatableMessage('option.utilisateur_dateNaissance', [], 'EasyAdminBundle'));

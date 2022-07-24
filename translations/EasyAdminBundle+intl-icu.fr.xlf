@@ -933,6 +933,22 @@
         <source>option.facture_id</source>
         <target>Numéro de facture</target>
       </trans-unit>
+      <trans-unit id="nG92x66" resname="option.livraison_montantHorsTva">
+        <source>option.livraison_montantHorsTva</source>
+        <target>Montant hors Tva</target>
+      </trans-unit>
+      <trans-unit id="N.lIGs8" resname="option.livraison_tauxTva">
+        <source>option.livraison_tauxTva</source>
+        <target>Taux Tva</target>
+      </trans-unit>
+      <trans-unit id="HlsXCuV" resname="option.utilisateur_nomEntreprise">
+        <source>option.utilisateur_nomEntreprise</source>
+        <target>Nom d'entreprise</target>
+      </trans-unit>
+      <trans-unit id="aAZC.hZ" resname="option.utilisateur_numeroTVA">
+        <source>option.utilisateur_numeroTVA</source>
+        <target>Numéro de TVA</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -150,6 +150,49 @@ class PaiementController extends AbstractController
           $entityManager -> flush();      
 
         endforeach;
+        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
+        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
+        // récupération du montant des frais de livraison
+        // définition repository langue
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
+        // fonction de requête sur base de données récupérées       
+        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        
+        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison 
+        $prixTotal = $factMontantTotal / 100;       
+        if($prixTotal < 100):
+            // Calculs
+            $fraisLivraison = $livraison -> getMontantHorsTva();
+            $montantTvaLivraison = $fraisLivraison * $livraison -> getTauxTva();
+            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+        else:
+            $fraisLivraison = 0;
+            $montantTvaLivraison = 0;
+            $montantTotalLivraison = 0;            
+        endif;
+
+        $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
+        $factMontantTotalHorsTva += $fraisLivraison;
+        $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
+
+        $factMontantTotalTva = $facture -> getMontantTotalTva();
+        $factMontantTotalTva += $montantTvaLivraison;
+        $facture -> setMontantTotalTva($factMontantTotalTva);
+        
+        $factMontantTotal = $facture -> getMontantTotal();
+        $factMontantTotal += $montantTotalLivraison;
+        $facture -> setMontantTotal($factMontantTotal);       
+       
+        //préparation insertion dans la BD
+        $entityManager -> persist($facture);
+        //insertion BD
+        $entityManager -> flush(); 
+
+        // Affichage
+        $fraisLivraison = number_format($fraisLivraison, 2, ',', '.');
+        $montantTvaLivraison = number_format($montantTvaLivraison, 2, ',', '.');
+        $montantTotalLivraison = number_format($montantTotalLivraison, 2, ',', '.');        
+        $prixTotal = number_format($factMontantTotal, 2, ',', '.');
 
         // envoie d'un mail de confirmation de l'achat à l'utilisateur connecté
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés dans le Mail comme résumé
@@ -168,7 +211,9 @@ class PaiementController extends AbstractController
             'nom' => $this -> getUser() -> getPrenom(),
             'infosPanier' => $tabInfos[0],
             'total' => $tabInfos[1],
-            'fraisLivraison' => $tabInfos[2]           
+            'fraisLivraison' => $tabInfos[2],
+            'fraisTVALivraison' => $tabInfos[3],
+            'fraisTotalLivraison' => $tabInfos[4]          
         ]);
         // envoi du mail
         $mailer -> send($email);  
@@ -203,17 +248,6 @@ class PaiementController extends AbstractController
         // fonction de requête sur base de données récupérées       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
-        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
-        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
-        // récupération du montant des frais de livraison
-        // définition repository langue
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
-        // fonction de requête sur base de données récupérées       
-        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
-        // frais de livraison
-        $fraisLivraison = ($livraison -> getPrix()) / 100;
-        
-        
         // boucle sur le panier
         foreach($panier as $id => $quantite):
             
@@ -265,19 +299,42 @@ class PaiementController extends AbstractController
             ];                      
         endforeach;
 
-        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison
-        
-        if($prixTotal >= 100):
+        // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
+        $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
+        // récupération du montant des frais de livraison
+        // définition repository langue
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
+        // fonction de requête sur base de données récupérées       
+        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        // frais de livraison
+        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
+
+        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
+        if($prixTotal < 100):
+            // Calculs
+            $fraisLivraison = round($fraisLivraison, 2);
+            $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+        else:
             $fraisLivraison = 0;
+            $montantTvaLivraison = 0;
+            $montantTotalLivraison = 0;            
         endif;
 
-        $prixTotal += $fraisLivraison;
-        $prixTotal = number_format($prixTotal, 2, ',', '.');
+        $prixTotal += $montantTotalLivraison;
+
+        // Affichage
         $fraisLivraison = number_format($fraisLivraison, 2, ',', '.');
+        $montantTvaLivraison = number_format($montantTvaLivraison, 2, ',', '.');
+        $montantTotalLivraison = number_format($montantTotalLivraison, 2, ',', '.');        
+        $prixTotal = number_format($prixTotal, 2, ',', '.');
+        
 
         $infoComplete[] = $infosPanier;
         $infoComplete[] = $prixTotal;
         $infoComplete[] = $fraisLivraison;
+        $infoComplete[] = $montantTvaLivraison;
+        $infoComplete[] = $montantTotalLivraison;
         
         return $infoComplete;
     }

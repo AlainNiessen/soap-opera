@@ -25,9 +25,13 @@
         <div class="form-container">
             <h3>{% trans %}Persönliche Informationen{% endtrans %}</h3>
             <div class="form-flex-container">
+                {{ form_row(formInscription.nomEntreprise) }}
+                {{ form_row(formInscription.numeroTVA) }}
+            </div>
+            <div class="form-flex-container">
                 {{ form_row(formInscription.nom) }}
                 {{ form_row(formInscription.prenom) }}
-            </div>
+            </div>            
             {{ form_row(formInscription.dateNaissance) }}
         </div>
         <div class="form-container">

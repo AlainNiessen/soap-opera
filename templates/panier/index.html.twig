@@ -55,11 +55,15 @@
                 {% if infosPanier %}  
                 <tfoot id="tfoot-content">
                     <tr>
-                        <td colspan="5">
+                        <td>
                             {% trans %}Lieferkosten{% endtrans %}
                             <p class="livraison-info">{% trans %}Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!{% endtrans %}</p>
                         </td>
                         <td class="text-start">{{ fraisLivraison }} €</td>
+                        <td class="text-start">{{ fraisTVALivraison }} €</td>
+                        <td class="text-start">{{ fraisTotalLivraison }} €</td>
+                        <td class="text-start"></td>
+                        <td class="text-start">{{ fraisTotalLivraison }} €</td>
                     </tr>
                     <tr>
                         <td colspan="5">Total</td>

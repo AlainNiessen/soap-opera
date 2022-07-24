@@ -933,6 +933,22 @@
         <source>option.facture_id</source>
         <target>Invoice number</target>
       </trans-unit>
+      <trans-unit id="nG92x66" resname="option.livraison_montantHorsTva">
+        <source>option.livraison_montantHorsTva</source>
+        <target>Amount excluding VAT</target>
+      </trans-unit>
+      <trans-unit id="N.lIGs8" resname="option.livraison_tauxTva">
+        <source>option.livraison_tauxTva</source>
+        <target>VAT rate</target>
+      </trans-unit>
+      <trans-unit id="HlsXCuV" resname="option.utilisateur_nomEntreprise">
+        <source>option.utilisateur_nomEntreprise</source>
+        <target>Name of entreprise</target>
+      </trans-unit>
+      <trans-unit id="aAZC.hZ" resname="option.utilisateur_numeroTVA">
+        <source>option.utilisateur_numeroTVA</source>
+        <target>VAT number</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

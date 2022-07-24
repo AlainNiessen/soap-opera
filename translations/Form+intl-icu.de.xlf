@@ -89,6 +89,14 @@
         <source>formInscription.newsletterCategorie</source>
         <target>Kategorien</target>
       </trans-unit>
+      <trans-unit id="KbItun4" resname="formInscription.nomEntreprise">
+        <source>formInscription.nomEntreprise</source>
+        <target>Firmenname</target>
+      </trans-unit>
+      <trans-unit id="odEXHkw" resname="formInscription.numeroTVA">
+        <source>formInscription.numeroTVA</source>
+        <target>MwSt-Nummer</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

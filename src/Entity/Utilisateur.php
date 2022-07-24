@@ -136,6 +136,22 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $evaluations;
 
+    /**
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "utilisateur.nomEntreprise.length_min")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nomEntreprise;
+
+    /**
+     * @Assert\Length(
+     *      min = 3,
+     *      minMessage = "utilisateur.numeroTVA.length_min")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numeroTVA;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -495,6 +511,30 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
                 $evaluation->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomEntreprise(): ?string
+    {
+        return $this->nomEntreprise;
+    }
+
+    public function setNomEntreprise(?string $nomEntreprise): self
+    {
+        $this->nomEntreprise = $nomEntreprise;
+
+        return $this;
+    }
+
+    public function getNumeroTVA(): ?string
+    {
+        return $this->numeroTVA;
+    }
+
+    public function setNumeroTVA(?string $numeroTVA): self
+    {
+        $this->numeroTVA = $numeroTVA;
 
         return $this;
     }
