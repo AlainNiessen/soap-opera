@@ -294,7 +294,13 @@ class PanierController extends AbstractController
 
             // calculs sur base du prix nette
             $prixHorsTva = round($prixNette / 100, 2);
-            $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
+            // condition si utilisateur est une entreprise allemande avec numéro TVA
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $prixTva = 0;
+            else:
+                $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
+            endif;
+
             $prixTotalArticle = $prixHorsTva + $prixTva;
             $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
             $prixTotal += $prixTotalArticleQuantite;
@@ -328,14 +334,18 @@ class PanierController extends AbstractController
         $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
         // fonction de requête sur base de données récupérées       
         $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
-        // frais de livraison
-        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
-
+        
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
         if($prixTotal < 100):
             // Calculs
-            $fraisLivraison = round($fraisLivraison, 2);
-            $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            $fraisLivraison = round($livraison -> getMontantHorsTva() / 100, 2);
+            // condition si utilisateur est une entreprise allemande avec numéro TVA
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $montantTvaLivraison = 0;
+            else:
+                $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            endif;
+            
             $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
         else:
             $fraisLivraison = 0;

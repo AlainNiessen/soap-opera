@@ -112,22 +112,30 @@ class PaiementController extends AbstractController
             elseif($article -> getCategorie() -> getPromotion()):
                 $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
             endif;
-            $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
+            $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
           else:
-              $prixNette = $article -> getMontantHorsTva();                    
+            $prixHorsTva = $article -> getMontantHorsTva();                    
           endif;
 
-          // calculs sur base du prix nette          
-          $prixHorsTva = (round($prixNette / 100, 2) * $quantite) * 100;
-          $prixTva = (round(($prixNette * $article -> getTauxTva()) / 100, 2) * $quantite) * 100;
-          $prixTotalArticle = $prixHorsTva + $prixTva;         
+          $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
+          // condition si utilisateur est une entreprise allemande avec numéro TVA
+          if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+            $prixTotalTva = 0;
+          else:
+            $prixTva = intval(round(round(($prixHorsTva * $article -> getTauxTva()), 2)), 0);
+            $prixTotalTva = $prixTva * $quantite;
+          endif;
+          
+          
+          $prixTotalArticle = $prixTotalHorsTva + $prixTotalTva;      
+          
 
           //création détail de commande par article dans le panier
           $commande = new DetailCommandeArticle();
           $commande -> setQuantite($quantite);
           $commande -> setArticle($article);
-          $commande -> setMontantTotalHorsTva($prixHorsTva);
-          $commande -> setMontantTva($prixTva);
+          $commande -> setMontantTotalHorsTva($prixTotalHorsTva);
+          $commande -> setMontantTva($prixTotalTva);
           $commande -> setMontantTotal($prixTotalArticle);
           $commande -> setFacture($facture);
           // ajout des totaux à la facture correspondante
@@ -159,11 +167,19 @@ class PaiementController extends AbstractController
         $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
         
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison 
-        $prixTotal = $factMontantTotal / 100;       
+        $prixTotal = $factMontantTotal / 100;  
+            
         if($prixTotal < 100):
             // Calculs
             $fraisLivraison = $livraison -> getMontantHorsTva();
-            $montantTvaLivraison = $fraisLivraison * $livraison -> getTauxTva();
+                   
+            // condition si utilisateur est une entreprise allemande avec numéro TVA
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $montantTvaLivraison = 0;
+            else:
+                $montantTvaLivraison  = intval(round(round(($fraisLivraison * $livraison -> getTauxTva()), 2)), 0);
+            endif;  
+              
             $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
         else:
             $fraisLivraison = 0;
@@ -171,13 +187,17 @@ class PaiementController extends AbstractController
             $montantTotalLivraison = 0;            
         endif;
 
+        
+
         $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
         $factMontantTotalHorsTva += $fraisLivraison;
         $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
 
         $factMontantTotalTva = $facture -> getMontantTotalTva();
+        //dd($factMontantTotalTva);
         $factMontantTotalTva += $montantTvaLivraison;
         $facture -> setMontantTotalTva($factMontantTotalTva);
+        
         
         $factMontantTotal = $facture -> getMontantTotal();
         $factMontantTotal += $montantTotalLivraison;
@@ -272,7 +292,12 @@ class PaiementController extends AbstractController
 
             // calculs sur base du prix nette
             $prixHorsTva = round($prixNette / 100, 2);
-            $prixTva = round(($prixNette * $article -> getTauxTva()) / 100, 2);
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $prixTva = 0;
+            else:
+                $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
+            endif;
+            
             $prixTotalArticle = $prixHorsTva + $prixTva;
             $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
             $prixTotal += $prixTotalArticleQuantite;
@@ -313,7 +338,13 @@ class PaiementController extends AbstractController
         if($prixTotal < 100):
             // Calculs
             $fraisLivraison = round($fraisLivraison, 2);
-            $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            // condition si utilisateur est une entreprise allemande avec numéro TVA
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $montantTvaLivraison = 0;
+            else:
+                $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+            endif;
+            
             $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
         else:
             $fraisLivraison = 0;
