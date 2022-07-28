@@ -56,7 +56,7 @@ class CommentaireController extends AbstractController
      */
     public function modifCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {  
-        
+        dd($commentaire);
         if(isset($_POST['commentaire']) && !empty($_POST['commentaire'])):
 
             // changement de la date et remis du boolean publication sur false pour une nouvelle vérification

@@ -192,14 +192,14 @@
                                 </tr>
                             </thead>
                             <tbody class="commentaire-content">                               
-                                {% for commentaire in commentaires %}
-                                    
-                                        
-                                    <tr>  
+                                {% for commentaire in commentaires %}  
+                                    <tr> 
                                     {# récupération du nom de l'Article traduit concernant le commantaire#}
                                     {% for articleCommentaires in articlesCommentaires %}
                                         {% if articleCommentaires.article.id == commentaire.article.id %}
+                                         
                                             {% set nomArticle = articleCommentaires.nom %}
+                                            
                                                                               
                                             {% for image in commentaire.article.images %}
                                                 {% if image.coverListArticle == true %}                           
@@ -227,10 +227,10 @@
                                                     <i class="far fa-times-circle back-to-page" id="back-to-page-commentaire"></i>
                                                     <div class="form-commentaire">
                                                         <h3>{% trans %}Kommentieren{% endtrans %}</h3>
-                                                        <p>{% trans %}Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
+                                                        <p>{% trans %}Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
                                                         <form action="{{ path('modif_commentaire', {'id': commentaire.id}) }}" method="post" class="form-commentaire-formulaire">
                                                             <div class="form-area-comment">
-                                                                <textarea name="commentaire"/>{{ commentaire.contenu}}</textarea>                
+                                                                <textarea name="commentaire"/></textarea>                
                                                             </div>
                                                             <div class="recherche-area">
                                                                 <button type="submit" class="btn btn-outline-info detail-btn">{% trans %}Absenden{% endtrans %}</button>
@@ -238,10 +238,10 @@
                                                         </form>
                                                     </div>           
                                                 </div>
-                                            </td>                                        
+                                            </td>                                                                            
                                         {% endif %}
-                                    {% endfor %}
-                                    </tr>                                    
+                                    {% endfor %}  
+                                    </tr>                                                                       
                                 {% endfor %}            
                             </tbody>                                
                         </table>

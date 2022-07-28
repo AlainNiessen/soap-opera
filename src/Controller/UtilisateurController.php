@@ -92,15 +92,18 @@ class UtilisateurController extends AbstractController
             $trad = $repositoryTradArticles -> findTraductionArticle($articleCommentID, $langue);             
             //récupération du nom de la catégorie dans la langue de l'utilisateur
             array_push($tabCommentairesArticles, $trad);
-        endforeach;         
-           
+        endforeach;  
+        // effacer les doublons des articles commentés       
+        $tabCommentairesArticlesUniques = array_unique($tabCommentairesArticles, SORT_REGULAR);
+         
+
         return $this->render('utilisateur/profile.html.twig', [
             'utilisateur' => $utilisateur,
             'favoris' => $tabFavoris,
             'articlesAchat' => $tabAchatsUniquesTrad,
             'newsletterCategories' => $tabNomsCategories,
             'commentaires' => $resultCommentaires,
-            'articlesCommentaires' => $tabCommentairesArticles
+            'articlesCommentaires' => $tabCommentairesArticlesUniques
         ]);
     }
 
