@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Adresse;
+use App\Entity\Article;
 use App\Form\AdresseType;
+use App\Entity\Commentaire;
 use App\Entity\Utilisateur;
 use App\Form\AdresseChangeType;
+use App\Entity\TraductionArticle;
 use App\Form\InfoUtilisateurType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\TraductionNewsletterCategorie;
@@ -22,20 +25,34 @@ class UtilisateurController extends AbstractController
      */
     public function profile(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager): Response
     {
-        // récupération des favoris
-        $favoris = $utilisateur -> getArticles();
+        
 
         // récupération de la langue 
-        $langue = $utilisateur -> getLangue() -> getCodeLangue();
-
+        $codeLangue = $utilisateur -> getLangue() -> getCodeLangue();
+        $langue = $utilisateur -> getLangue();
+       
+        
+        //récupération des informations sur les articles dans la langue
+        $repositoryTradArticles = $entityManager -> getRepository(TraductionArticle::class);
+        // récupération des favoris
+        $favoris = $utilisateur -> getArticles();
+        $tabFavoris = [];
+        foreach($favoris as $favori):
+            $favoriID = $favori -> getId();
+            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            $trad = $repositoryTradArticles -> findTraductionArticle($favoriID, $langue);             
+            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            array_push($tabFavoris, $trad);
+        endforeach;
+        
         // récupération des catégories des Newsletter
         //connection au repository TraductionNewsletterCategorie
-        $repositoryTrad = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
+        $repositoryTradCategorie = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
         $categories = $utilisateur -> getNewsletterCategories();
         $tabNomsCategories = [];
         foreach($categories as $categorie):
             //appel à la fonction findTraduction pour trouver la traduction de NewsletterCategorie 
-            $trad = $repositoryTrad -> findTraduction($categorie, $langue);                
+            $trad = $repositoryTradCategorie -> findTraduction($categorie, $codeLangue);                
             //récupération du nom de la catégorie dans la langue de l'utilisateur
             $categorieNom = $trad -> getNom();
             array_push($tabNomsCategories, $categorieNom);
@@ -53,13 +70,37 @@ class UtilisateurController extends AbstractController
         endforeach;
 
         // Éliminer les articles répétitifs
-        $tabAchatsUniques = array_unique($tabAchats);        
+        $tabAchatsUniques = array_unique($tabAchats); 
+        $tabAchatsUniquesTrad = [];
+        foreach($tabAchatsUniques as $achat):
+            $achatID = $achat -> getId();
+            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            $trad = $repositoryTradArticles -> findTraductionArticle($achatID, $langue);             
+            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            array_push($tabAchatsUniquesTrad, $trad);
+        endforeach; 
+        
+        // récupération des commentaires validés par l'administrateur (publication = true)
+        // définition repository commentaires
+        $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
+        // récupération des commentaires sur l'article 
+        $resultCommentaires = $repositoryCommentaires -> findCommentairesUtilisateur($utilisateur);
+        $tabCommentairesArticles = [];
+        foreach($resultCommentaires as $commentaire):
+            $articleCommentID = $commentaire -> getArticle() -> getId();
+            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            $trad = $repositoryTradArticles -> findTraductionArticle($articleCommentID, $langue);             
+            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            array_push($tabCommentairesArticles, $trad);
+        endforeach;         
            
         return $this->render('utilisateur/profile.html.twig', [
             'utilisateur' => $utilisateur,
-            'favoris' => $favoris,
-            'articlesAchat' => $tabAchatsUniques,
-            'newsletterCategories' => $tabNomsCategories
+            'favoris' => $tabFavoris,
+            'articlesAchat' => $tabAchatsUniquesTrad,
+            'newsletterCategories' => $tabNomsCategories,
+            'commentaires' => $resultCommentaires,
+            'articlesCommentaires' => $tabCommentairesArticles
         ]);
     }
 
@@ -220,4 +261,35 @@ class UtilisateurController extends AbstractController
             endif; 
         endif;
     }
+
+    /**
+     * @Route("/delete-favori/{utilisateurID}/{articleID}", name="delete_favori")
+     */
+    public function deleteFavori($utilisateurID, $articleID, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    {  
+        // récupération de l'utilisateur et l'article
+        //définition repository utilisateur et article
+        $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
+        $repositoryArticle = $entityManager -> getRepository(Article::class);
+        // récupération des éléments    
+        $utilisateur = $repositoryUtilisateur -> findOneBy(['id' => $utilisateurID]);
+        $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
+
+        // action delete
+        $utilisateur -> removeArticle($article);
+        //préparation insertion suppression service dans la BD
+        $entityManager -> persist($utilisateur);
+        //insertion
+        $entityManager -> flush();
+
+        //ajout d'un message de réussite (avec paramétre nom de l'article)
+        $message = $translator -> trans('Der Favorit wurde erfolgreich gelöscht!');
+        $this -> addFlash('success', $message);
+
+        return $this->redirectToRoute('profile', [
+            'id' => $utilisateurID
+        ]);
+    }
+        
+    
 }

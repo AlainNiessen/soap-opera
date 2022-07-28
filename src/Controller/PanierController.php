@@ -46,6 +46,9 @@ class PanierController extends AbstractController
         // on récupére le panier actuel de la Session
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);
+        // récupération de l'URL pour rediriger par aprés sur différents routes (soit vers détial article soit vers profile utilisateur)
+        $url = $request->headers->get('referer');
+        
 
         // on récupére le nombre des articles dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
@@ -101,10 +104,16 @@ class PanierController extends AbstractController
             $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt');
             $this -> addFlash('success', $message); 
 
-            //redirect vers le détail de l'article
-            return $this->redirectToRoute('article_detail', [
-                'id' => $article->getId()
-            ]);
+            //redirect vers le détail de l'article ou vers le profile d'utilisateur
+            if(str_contains($url, 'profile')):
+                return $this->redirectToRoute('profile', [
+                    'id' => $this -> getUser() -> getId()
+                ]);
+            else:
+                return $this->redirectToRoute('article_detail', [
+                    'id' => $article->getId()
+                ]);
+            endif;
             
         else: 
             //ajout d'un message d'erreur que l'article n'existe pas

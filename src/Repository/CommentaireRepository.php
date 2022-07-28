@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use App\Entity\Commentaire;
+use App\Entity\Utilisateur;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -55,6 +56,18 @@ class CommentaireRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->andWhere('c.article = :val')
             ->setParameter('val', $article)
+            ->andWhere('c.publication = true')
+            ->orderBy('c.dateCommentaire', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findCommentairesUtilisateur(Utilisateur $utilisateur)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.utilisateur = :val')
+            ->setParameter('val', $utilisateur)
             ->andWhere('c.publication = true')
             ->orderBy('c.dateCommentaire', 'DESC')
             ->getQuery()

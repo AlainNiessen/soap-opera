@@ -74,6 +74,13 @@ a {
     width: 5rem;
 }
 
+.btn-favori-delete, .btn-add-panier, .btn-commentaire-delete, .btn-commentaire-modif {
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .google-auth {
     margin-top: 2rem;
 }
@@ -81,6 +88,9 @@ a {
 //overflow
 .overflow-y {
     overflow-y: scroll;
+}
+.overflow-x {
+    overflow-x: scroll;
 }
 
 //text-align

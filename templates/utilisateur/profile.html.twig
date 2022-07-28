@@ -15,62 +15,241 @@
                 {{ message }}
             </div>
         {% endfor %}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <section class="m-profile-informations">
             <div class="m-profile-informations-intro">
                 <h1>{% trans %}Hallo{% endtrans %} {{ utilisateur.prenom }}</h1>
-                <h1>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h1>
+                <h2>{% trans %}Willkommen auf deinem Profil{% endtrans %}</h2>                
             </div>
-            <section class="m-profile-informations-utilisateur">                                
-                <div class="utilisateur-info"> 
-                    <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
-                    <a href="{{ path('modif', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Daten anpassen{% endtrans %}" title="{% trans %}Daten anpassen{% endtrans %}"></i></a>
-                    <div class="utilisateur-info-box">
-                        <h3>{% trans %}Deine vollständiger Name{% endtrans %}</h3>
-                        <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>  
-                    </div> 
-                    <div class="utilisateur-info-box">                   
-                        <h3>{% trans %}E-mail{% endtrans %}</h3>
-                        <p>{{ utilisateur.email }}</p>
-                    </div> 
-                    <div class="utilisateur-info-box">
-                        <h3>{% trans %}Dein Geburtsdatum{% endtrans %}</h3>
-                        <p>{{ utilisateur.dateNaissance | date('d/m/Y')}}</p>
-                    </div> 
-                    <div class="utilisateur-info-box">
-                        <h3>{% trans %}Deine Sprache{% endtrans %}</h3>
-                        <p>{{ utilisateur.langue.langue }}</p>  
-                    </div> 
-                    <div class="utilisateur-info-box">
-                        <h3>{% trans %}Deine gewählten Newsletter-Kategorien{% endtrans %}</h3>
-                        {% if newsletterCategories is defined and newsletterCategories is not null and newsletterCategories is not empty %}
-                            {% for nomCategorie in newsletterCategories %}   
-                                <p class="newsletter-text">{{ nomCategorie }}</p> 
-                            {% endfor %} 
-                        {% else %}
-                            <p>{% trans %}Du hast keine Newsletter-Kategorie ausgewählt.{% endtrans %}</p>
-                        {% endif %}
-                    </div> 
-                    <div class="mp-modif">
-                        <h3 class="modif-question">{% trans %}Möchtest du dein Passwort ändern??{% endtrans %}</h3>
-                        <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Wohnadresse anpassen{% endtrans %}" title="{% trans %}Ändern{% endtrans %}"></i></a>
-                    </div>                                
-                </div>                    
-                <div class="utilisateur-adresses">
-                    <h2>{% trans %}Deine Adressen{% endtrans %}</h2>
-                    <div class="utilisateur-adresses-box">
+            <section class="m-profile-informations-utilisateur"> 
+                <h2 class="intro-title">{% trans %}Deine Daten{% endtrans %}<h2> 
+                <p class="intro-text">{% trans %}Hier kannst du deine persönlichen Informationen anpassen.{% endtrans %}</p>
+                <div class="profile-box information-box">                              
+                    <div class="utilisateur-info"> 
+                        <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
+                        <p class="modif-link">{% trans %}Möchtest du deine persönlichen Daten anpassen?{% endtrans %} <a href="{{ path('modif', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Daten anpassen{% endtrans %}" title="{% trans %}Daten anpassen{% endtrans %}"></i></a></p>
+                        <p class="modif-link">{% trans %}Möchtest du dein Passwort anpassen?{% endtrans %} <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Passwort anpassen{% endtrans %}" title="{% trans %}Passwort anpassen{% endtrans %}"></i></a></p>
+                        {% if utilisateur.nomEntreprise is defined and utilisateur.nomEntreprise is not null and utilisateur.nomEntreprise is not empty %}
                         <div class="utilisateur-info-box">
-                            <h3>{% trans %}Deine Wohnadresse{% endtrans %}</h3>                            
-                            <p>{{ utilisateur.adresseHome }}</p>
-                            <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'home'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Wohnadresse anpassen{% endtrans %}" title="{% trans %}Wohnadresse anpassen{% endtrans %}"></i></a>
+                            <h3>{% trans %}Firmenname{% endtrans %}</h3>
+                            <p>{{ utilisateur.nomEntreprise }}</p>  
+                        </div> 
+                        {% endif %}
+                        {% if utilisateur.numeroTVA is defined and utilisateur.numeroTVA is not null and utilisateur.numeroTVA is not empty %}
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}MwSt-Nummer{% endtrans %}</h3>
+                            <p>{{ utilisateur.numeroTVA }}</p>  
+                        </div> 
+                        {% endif %}
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Deine vollständiger Name{% endtrans %}</h3>
+                            <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>  
+                        </div> 
+                        <div class="utilisateur-info-box">                   
+                            <h3>{% trans %}E-mail{% endtrans %}</h3>
+                            <p>{{ utilisateur.email }}</p>
                         </div> 
                         <div class="utilisateur-info-box">
-                            <h3>{% trans %}Deine Lieferadresse{% endtrans %}</h3>                            
-                            <p>{{ utilisateur.adresseDeliver }}</p> 
-                            <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'deliver'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Lieferadresse anpassen{% endtrans %}" title="{% trans %}Lieferadresse anpassen{% endtrans %}"></i></a>
-                        </div>  
-                    </div>                              
-                </div>                             
-                              
+                            <h3>{% trans %}Dein Geburtsdatum{% endtrans %}</h3>
+                            <p>{{ utilisateur.dateNaissance | date('d/m/Y')}}</p>
+                        </div> 
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Deine Sprache{% endtrans %}</h3>
+                            <p>{{ utilisateur.langue.langue }}</p>  
+                        </div> 
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Deine gewählten Newsletter-Kategorien{% endtrans %}</h3>
+                            {% if newsletterCategories is defined and newsletterCategories is not null and newsletterCategories is not empty %}
+                                {% for nomCategorie in newsletterCategories %}   
+                                    <p class="newsletter-text">{{ nomCategorie }}</p> 
+                                {% endfor %} 
+                            {% else %}
+                                <p>{% trans %}Du hast keine Newsletter-Kategorie ausgewählt.{% endtrans %}</p>
+                            {% endif %}
+                        </div>                                
+                    </div>                                   
+                    <div class="utilisateur-adresses">
+                        <h2>{% trans %}Deine Adressen{% endtrans %}</h2>
+                        <div class="utilisateur-adresses-box">
+                            <div class="utilisateur-info-box">
+                                <h3>{% trans %}Deine Wohnadresse{% endtrans %}</h3>                            
+                                <p>{{ utilisateur.adresseHome }}</p>
+                                <p class="modif-link">{% trans %}Möchtest du deine Wohnadresse anpassen?{% endtrans %} <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'home'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Wohnadresse anpassen{% endtrans %}" title="{% trans %}Wohnadresse anpassen{% endtrans %}"></i></a></p>
+                            </div> 
+                            <div class="utilisateur-info-box">
+                                <h3>{% trans %}Deine Lieferadresse{% endtrans %}</h3>                            
+                                <p>{{ utilisateur.adresseDeliver }}</p> 
+                                <p class="modif-link">{% trans %}Möchtest du deine Lieferadresse anpassen?{% endtrans %} <a href="{{ path('modif_adresse', {'id': utilisateur.id, 'type': 'deliver'}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Lieferadresse anpassen{% endtrans %}" title="{% trans %}Lieferadresse anpassen{% endtrans %}"></i></a></p>
+                            </div>  
+                        </div>                              
+                    </div>
+                </div>                              
+            </section>
+            <section class="m-profile-favoris-utilisateur"> 
+                <h2 class="intro-title">{% trans %}Deine Favoriten{% endtrans %}</h2>
+                <p class="intro-text">{% trans %}Hier kannst du deine Favoriten einsehen, sie direkt dem Warenkorb hinzufügen oder löschen.{% endtrans %}</p>
+                <div class="profile-box">
+                {% if favoris is defined and favoris is not null and favoris is not empty %}
+                    <div class="overflow-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans %}Bild{% endtrans %}</th>
+                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Aktionen{% endtrans %}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="favoris-content">                  
+                                {% for favori in favoris %}
+                                    <tr>                                    
+                                        {% for image in favori.article.images %}
+                                            {% if image.coverListArticle == true %}                           
+                                                <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ favori.nom }}" title="{{ favori.nom }}"></td>                        
+                                            {% endif %}
+                                        {% endfor %} 
+                                        <td>{{ favori.nom }}</td>                                   
+                                        <td>
+                                            <div class="favoris-actions">
+                                                <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: favori.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                                                    <div class="action-icon">
+                                                        <i class="fas fa-cart-arrow-down"></i>
+                                                    </div>
+                                                </a> 
+                                                <a title="{% trans %}Favorit komplett löschen{% endtrans %}" href="{{ path('delete_favori', {'utilisateurID': app.user.id, 'articleID': favori.article.id })}}" class="btn btn-favori-delete btn-danger" onclick="return confirm('{% trans %}Willst du diesen Favoriten wirklich entfernen?{% endtrans %}')">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>  
+                                {% endfor %}                                          
+                            </tbody>                                
+                        </table>
+                    </div>
+                {% else %}                                    
+                    <p class="text-center">{% trans %}Du hast im Moment noch keine Favoriten{% endtrans %}</p>                                    
+                {% endif %}  
+                </div>
+            </section>
+            <section class="m-profile-achats-utilisateur"> 
+                <h2 class="intro-title">{% trans %}Deine gekauften Artikel{% endtrans %}</h2>
+                <p class="intro-text">{% trans %}Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.{% endtrans %}</p>
+                <div class="profile-box">
+                {% if articlesAchat is defined and articlesAchat is not null and articlesAchat is not empty %}
+                    <div class="overflow-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans %}Bild{% endtrans %}</th>
+                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Aktionen{% endtrans %}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="achats-content">                 
+                                {% for achat in articlesAchat %}
+                                    <tr>                                    
+                                        {% for image in achat.article.images %}
+                                            {% if image.coverListArticle == true %}                           
+                                                <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ achat.nom }}" title="{{ achat.nom }}"></td>                        
+                                            {% endif %}
+                                        {% endfor %} 
+                                        <td>{{ achat.nom }}</td>                                   
+                                        <td>
+                                            <div class="achats-actions">
+                                                <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: achat.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                                                    <div class="action-icon">
+                                                        <i class="fas fa-cart-arrow-down"></i>
+                                                    </div>
+                                                </a> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}            
+                            </tbody>                                
+                        </table>
+                    </div>
+                {% else %}                                  
+                    <p class="text-center">{% trans %}Du hast im Moment noch keine Artikel gekauft{% endtrans %}</p>                    
+                {% endif %}  
+                </div>
+            </section>
+            <section class="m-profile-commentaires-utilisateur"> 
+                <h2 class="intro-title">{% trans %}Deine kommentierten Artikel{% endtrans %}</h2>
+                <p class="intro-text">{% trans %}Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.{% endtrans %}</p>
+                <div class="profile-box">
+                {% if commentaires is defined and commentaires is not null and commentaires is not empty %}                    
+                    <div class="overflow-table">                                 
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans %}Bild{% endtrans %}</th>
+                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Kommentar{% endtrans %}</th>                                
+                                    <th>{% trans %}Aktionen{% endtrans %}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="commentaire-content">                               
+                                {% for commentaire in commentaires %}
+                                    
+                                        
+                                    <tr>  
+                                    {# récupération du nom de l'Article traduit concernant le commantaire#}
+                                    {% for articleCommentaires in articlesCommentaires %}
+                                        {% if articleCommentaires.article.id == commentaire.article.id %}
+                                            {% set nomArticle = articleCommentaires.nom %}
+                                                                              
+                                            {% for image in commentaire.article.images %}
+                                                {% if image.coverListArticle == true %}                           
+                                                    <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ nomArticle }}" title="{{ nomArticle }}"></td>                        
+                                                {% endif %}
+                                            {% endfor %} 
+                                            <td>{{ nomArticle }}</td>                                   
+                                            <td>"{{ commentaire.contenu }}"</td>                                   
+                                            <td>
+                                                <div class="commentaire-actions">
+                                                    <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: commentaire.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                                                        <div class="action-icon">
+                                                            <i class="fas fa-cart-arrow-down"></i>
+                                                        </div>
+                                                    </a> 
+                                                    <a title="{% trans %}Kommentar komplett löschen{% endtrans %}" href="{{ path('delete_commentaire', {'id': commentaire.id })}}" class="btn btn-commentaire-delete btn-danger" onclick="return confirm('{% trans %}Willst du diesen Kommentar wirklich entfernen?{% endtrans %}')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                    <button title="{% trans %}Kommentar ändern{% endtrans %}"  id="modif-commentaire" class="btn btn-commentaire-modif btn-success affichage-formulaire">
+                                                        <i class="fas fa-pencil-alt pencil"></i>
+                                                    </button>
+                                                </div>
+                                                {# formulaire à l'intérieur d'un TD sinon il ne s'affiche pas correctement #}
+                                                <div class="commentaire" id="commentaire">
+                                                    <i class="far fa-times-circle back-to-page" id="back-to-page-commentaire"></i>
+                                                    <div class="form-commentaire">
+                                                        <h3>{% trans %}Kommentieren{% endtrans %}</h3>
+                                                        <p>{% trans %}Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
+                                                        <form action="{{ path('modif_commentaire', {'id': commentaire.id}) }}" method="post" class="form-commentaire-formulaire">
+                                                            <div class="form-area-comment">
+                                                                <textarea name="commentaire"/>{{ commentaire.contenu}}</textarea>                
+                                                            </div>
+                                                            <div class="recherche-area">
+                                                                <button type="submit" class="btn btn-outline-info detail-btn">{% trans %}Absenden{% endtrans %}</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>           
+                                                </div>
+                                            </td>                                        
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tr>                                    
+                                {% endfor %}            
+                            </tbody>                                
+                        </table>
+                    </div>
+                {% else %}                                  
+                    <p class="text-center">{% trans %}Du hast im Moment noch keine Kommentare abgegeben.{% endtrans %}</p>                    
+                {% endif %}  
+                </div>
             </section>
         </section>
     </div>

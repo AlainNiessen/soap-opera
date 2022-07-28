@@ -4,21 +4,50 @@
     .m-profile-informations-intro {
         text-align: center;
         margin: 2rem 0;
+        font-weight: 500; 
     }
 }
 
-.m-profile-informations-utilisateur {
-    text-align: center;
-    h2, h3 {        
-        font-weight: bold;        
+.information-box {
+    display: flex;
+    flex-direction: column;
+    h3, h2 {        
+        font-weight: 500;        
     }
     h2 {
         margin: 1rem 0 .5rem 0;
     }
 }
 
-.utilisateur-info-box {
+.m-profile-informations-utilisateur, .m-profile-favoris-utilisateur, .m-profile-achats-utilisateur, .m-profile-commentaires-utilisateur {
+    margin-top: 3rem;
+    .intro-title {
+        text-align: center;
+        margin: 2rem 0 .5rem;
+        font-weight: 500; 
+    }
+    .intro-text {
+        text-align: center;
+        margin: .5rem 0 2rem;
+        font-size: 0.8rem;
+        font-weight: 500; 
+
+    }
+}
+
+.utilisateur-info, .utilisateur-adresses {
+    width: 100%;
+    box-shadow: 0 0 .3rem rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    
+}
+
+.utilisateur-info-box {   
     margin: 1.5rem 0;
+    p {
+        font-size: 1rem;
+    }
 }
 
 .info-modif, .mp-modif {
@@ -28,52 +57,186 @@
     }
 }
 
-.pencil {
-    position: relative;
-    width: 2rem;
-    height: 2rem;  
-    color: map-get($map: $colors, $key: 'text');    
-    border: 0.1rem solid map-get($map: $colors, $key: 'text');
-    border-radius: 50%;
-    &:hover {
-        background-color: map-get($map: $colors, $key: 'bg-2');
-        color: map-get($map: $colors, $key: 'text');
-    }
-    &::before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+p.modif-link {
+    margin: .3rem 0;
+    font-size: .8rem;
+    a {        
+        position: relative;
+        margin-left: .8rem;
+        .pencil {
+            position: absolute;
+            font-size: .5rem;
+            top: 50%;
+            right: -.5rem;
+            transform: translate(0, -50%);
+            width: 1rem;
+            height: 1rem;
+            padding: .3rem;  
+            color: map-get($map: $colors, $key: 'text');    
+            border: 0.1rem solid map-get($map: $colors, $key: 'text');
+            border-radius: 50%;
+            &:hover {
+                background-color: map-get($map: $colors, $key: 'bg-2');
+                color: map-get($map: $colors, $key: 'text');
+            }
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }     
 }
 
 .newsletter-text {
     margin-bottom: .5rem;
 }
 
-
-.utilisateur-adresses-box {
-    margin-top: 1rem;
-    height: 13rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .utilisateur-info-box {
-        height: 6rem;
-        margin-top: 2rem;
+.overflow-table {
+    width: 100%;
+    height: 25rem;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    table {
+        table-layout: fixed;
+        th {
+            width: 15rem;
+            max-width: 15rem;
+        }            
     }
 }
 
-
-
-@media screen and (min-width: 768px) {    
-    .utilisateur-adresses-box {
-        width: 100%;
-        max-width: 30rem;
-        margin: 0 auto;
-        flex-direction: row;
-        justify-content: space-between;
+.m-profile-commentaires-utilisateur {
+    position: relative;
+    //formulaire commentaire + évaluer
+    .commentaire {
+        height: 26rem;
     }
+    .evaluation {
+        height: 18rem;
+    }
+    .commentaire, .evaluation {
+        opacity: 0;
+        overflow: hidden; 
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 80%;
+        margin: 0 auto;
+        background-color: white;
+        color: map-get($map: $colors, $key: 'text');
+        border: .1rem solid map-get($map: $colors, $key: 'text');
+        border-radius: 1rem;
+        padding: 2rem; 
+        transition: all 2s;      
+        .back-to-page {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            color: map-get($map: $colors, $key: 'text');
+            &::before {
+                font-size: 1.5rem;
+            }
+        }
+        .form-commentaire, .form-evaluation {
+            h3, p{
+                color: map-get($map: $colors, $key: 'text');
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+            .form-commentaire-formulaire, .form-evaluation-formulaire {                
+                text-align: center;
+                height: 7rem;
+                .form-area-comment {
+                    width: 100%;
+                    max-width: 80%;
+                    margin: 1rem auto;
+                    height: 100%;
+                    textarea {
+                        width: 100%;
+                        height: 100%;
+                        padding: 1rem;
+                    }
+                }
+                .form-area-evaluation {
+                    height: 3rem;
+                    .star {
+                        font-size: 1.5rem;
+                    }
+                }
+                .recherche-area {
+                    button {
+                        width: auto;
+                    }
+                }
+            }
+        }
+        &.show {
+            opacity: 1;
+            z-index: 999999;
+            transition: all 2s;
+        }
+    }
+}
+
+.favoris-content, .achats-content, .commentaire-content { 
+    
+    td {
+        vertical-align: baseline;
+    }   
+    img {
+        width: 10rem;
+        height: 10rem;
+    }  
+    .favoris-actions, .achats-actions, .commentaire-actions {
+        display: flex;
+        height: 2.5rem;        
+        a {
+            height: inherit;
+            font-size: .7rem;
+            margin-right: 1rem;
+            i {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+//media query
+@media screen and (min-width: 576px) {    
+    .m-profile-commentaires-utilisateur {
+        .commentaire {
+            height: 20rem;
+        }
+        .evaluation {
+            height: 15rem;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) { 
+    .utilisateur-info, .utilisateur-adresses {
+        width: 20rem;        
+    } 
+    .information-box {
+        flex-direction: row; 
+        justify-content: space-evenly;       
+    }  
 }  
+
+@media screen and (min-width: 992px) { 
+    .utilisateur-info, .utilisateur-adresses {
+        width: 25rem;        
+    } 
+}  
+
+
+
+
 
 
