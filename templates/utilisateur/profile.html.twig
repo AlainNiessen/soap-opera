@@ -191,15 +191,14 @@
                                     <th>{% trans %}Aktionen{% endtrans %}</th>
                                 </tr>
                             </thead>
-                            <tbody class="commentaire-content">                               
+                            <tbody class="commentaire-content">   
+                                {% set compt = 1 %}                            
                                 {% for commentaire in commentaires %}  
                                     <tr> 
                                     {# récupération du nom de l'Article traduit concernant le commantaire#}
                                     {% for articleCommentaires in articlesCommentaires %}
-                                        {% if articleCommentaires.article.id == commentaire.article.id %}
-                                         
-                                            {% set nomArticle = articleCommentaires.nom %}
-                                            
+                                        {% if articleCommentaires.article.id == commentaire.article.id %}                                         
+                                            {% set nomArticle = articleCommentaires.nom %}                                        
                                                                               
                                             {% for image in commentaire.article.images %}
                                                 {% if image.coverListArticle == true %}                           
@@ -218,12 +217,12 @@
                                                     <a title="{% trans %}Kommentar komplett löschen{% endtrans %}" href="{{ path('delete_commentaire', {'id': commentaire.id })}}" class="btn btn-commentaire-delete btn-danger" onclick="return confirm('{% trans %}Willst du diesen Kommentar wirklich entfernen?{% endtrans %}')">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
-                                                    <button title="{% trans %}Kommentar ändern{% endtrans %}"  id="modif-commentaire" class="btn btn-commentaire-modif btn-success affichage-formulaire">
+                                                    <button title="{% trans %}Kommentar ändern{% endtrans %}"  data-id="{{ compt }}" class="btn btn-commentaire-modif btn-success affichage-formulaire">
                                                         <i class="fas fa-pencil-alt pencil"></i>
                                                     </button>
                                                 </div>
                                                 {# formulaire à l'intérieur d'un TD sinon il ne s'affiche pas correctement #}
-                                                <div class="commentaire" id="commentaire">
+                                                <div class="commentaire" id="form-{{compt}}">
                                                     <i class="far fa-times-circle back-to-page" id="back-to-page-commentaire"></i>
                                                     <div class="form-commentaire">
                                                         <h3>{% trans %}Kommentieren{% endtrans %}</h3>
@@ -241,7 +240,8 @@
                                             </td>                                                                            
                                         {% endif %}
                                     {% endfor %}  
-                                    </tr>                                                                       
+                                    </tr> 
+                                    {% set compt = compt + 1 %}                                                                      
                                 {% endfor %}            
                             </tbody>                                
                         </table>
