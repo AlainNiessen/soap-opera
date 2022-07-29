@@ -83,45 +83,72 @@ onglets.forEach(onglet => {
 })
 
 // ----------------------------
-    // Animation formulaires pop-up
-    // ---------------------------- 
+// Animation formulaires pop-up
+// ---------------------------- 
 
-    //récupération des actions pour accéder les formulaires et pour fermer les formulaires
-    const acces_formulaires = document.querySelectorAll('.affichage-formulaire');
-    const close_formulaires = document.querySelectorAll('.back-to-page');
-    // formulaires    
-    const formulaire_commentaire = document.getElementById('commentaire');   
-    const formulaire_evaluation = document.getElementById('evaluation');
-   
-    //boucle sur les boutons d'accés aux formulaires
-    acces_formulaires.forEach(item => {
-        // eventListener click
-        item.addEventListener('click', function() {
-            if(this.id == 'submit-commentaire' || this.id == 'modif-commentaire') {
-                showFormulaire(formulaire_commentaire);
-            } else if (this.id == 'submit-evaluation') {
-                showFormulaire(formulaire_evaluation);
-            } 
-        })
+//récupération des actions pour accéder les formulaires et pour fermer les formulaires
+const acces_formulaires = document.querySelectorAll('.affichage-formulaire');
+const close_formulaires = document.querySelectorAll('.back-to-page');
+// formulaires    
+const formulaire_commentaire = document.getElementById('commentaire');   
+const formulaire_evaluation = document.getElementById('evaluation');
+
+//boucle sur les boutons d'accés aux formulaires
+acces_formulaires.forEach(item => {
+    // eventListener click
+    item.addEventListener('click', function() {
+        if(this.id == 'submit-commentaire' || this.id == 'modif-commentaire') {
+            showFormulaire(formulaire_commentaire);
+        } else if (this.id == 'submit-evaluation') {
+            showFormulaire(formulaire_evaluation);
+        } 
     })
+})
 
-    //boucle sur les boutons pour fermer les formulaires
-    close_formulaires.forEach(item => {
-        // eventListener click
-        item.addEventListener('click', function() {
-            if(this.id == 'back-to-page-commentaire') {
-                removeFormulaire(formulaire_commentaire);
-            } else if (this.id == 'back-to-page-evaluation') {
-                removeFormulaire(formulaire_evaluation);
-            } 
-        })
-    })    
+//boucle sur les boutons pour fermer les formulaires
+close_formulaires.forEach(item => {
+    // eventListener click
+    item.addEventListener('click', function() {
+        if(this.id == 'back-to-page-commentaire') {
+            removeFormulaire(formulaire_commentaire);
+        } else if (this.id == 'back-to-page-evaluation') {
+            removeFormulaire(formulaire_evaluation);
+        } 
+    })
+})    
 
-    function showFormulaire (element) {
-        element.classList.add('show');
-    }
+function showFormulaire (element) {
+    element.classList.add('show');
+}
 
-    function removeFormulaire (element) {
-        element.classList.remove('show');
-    }
+function removeFormulaire (element) {
+    element.classList.remove('show');
+}
 
+// ----------------------------
+// Animation formulaires pop-up profile utilisateur
+// ---------------------------- 
+
+// récupération des boutons
+let btnsModif = document.querySelectorAll('.btn-commentaire-modif');
+let btnsClose = document.querySelectorAll('.back-to-page-commentaire');
+
+//boucle sur les boutons pour récupérer le data-id
+btnsModif.forEach(item => {
+    item.addEventListener('click', function() {
+        let dataValue = this.dataset.id;
+        let formulaire = document.getElementById(`form-${dataValue}`);
+        showFormulaire(formulaire);
+    })
+})
+
+//boucle sur les croix pour récupérer le data-close
+btnsClose.forEach(item => {
+    item.addEventListener('click', function() {
+        let dataValue = this.dataset.close;
+        console.log(dataValue);
+        let formulaire = document.getElementById(`form-${dataValue}`);
+        
+        removeFormulaire(formulaire);
+    })
+})

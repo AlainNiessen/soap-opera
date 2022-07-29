@@ -217,19 +217,19 @@
                                                     <a title="{% trans %}Kommentar komplett löschen{% endtrans %}" href="{{ path('delete_commentaire', {'id': commentaire.id })}}" class="btn btn-commentaire-delete btn-danger" onclick="return confirm('{% trans %}Willst du diesen Kommentar wirklich entfernen?{% endtrans %}')">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
-                                                    <button title="{% trans %}Kommentar ändern{% endtrans %}"  data-id="{{ compt }}" class="btn btn-commentaire-modif btn-success affichage-formulaire">
+                                                    <button title="{% trans %}Kommentar ändern{% endtrans %}"  data-id="{{ compt }}" class="btn btn-commentaire-modif btn-success">
                                                         <i class="fas fa-pencil-alt pencil"></i>
                                                     </button>
                                                 </div>
                                                 {# formulaire à l'intérieur d'un TD sinon il ne s'affiche pas correctement #}
                                                 <div class="commentaire" id="form-{{compt}}">
-                                                    <i class="far fa-times-circle back-to-page" id="back-to-page-commentaire"></i>
+                                                    <i class="far fa-times-circle back-to-page-commentaire back-to-page" data-close="{{ compt }}"></i>
                                                     <div class="form-commentaire">
                                                         <h3>{% trans %}Kommentieren{% endtrans %}</h3>
                                                         <p>{% trans %}Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!{% endtrans %}</p>
                                                         <form action="{{ path('modif_commentaire', {'id': commentaire.id}) }}" method="post" class="form-commentaire-formulaire">
                                                             <div class="form-area-comment">
-                                                                <textarea name="commentaire"/></textarea>                
+                                                                <textarea name="commentaire"/>{{ commentaire.contenu }}</textarea>                
                                                             </div>
                                                             <div class="recherche-area">
                                                                 <button type="submit" class="btn btn-outline-info detail-btn">{% trans %}Absenden{% endtrans %}</button>
