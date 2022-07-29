@@ -130,24 +130,42 @@ function removeFormulaire (element) {
 // ---------------------------- 
 
 // récupération des boutons
-let btnsModif = document.querySelectorAll('.btn-commentaire-modif');
-let btnsClose = document.querySelectorAll('.back-to-page-commentaire');
+let btnsCommentaireModif = document.querySelectorAll('.btn-commentaire-modif');
+let btnsEvaluationModif = document.querySelectorAll('.btn-evaluation-modif');
+let btnsCommentaireClose = document.querySelectorAll('.back-to-page-commentaire');
+let btnsEvaluationClose = document.querySelectorAll('.back-to-page-evaluation');
 
 //boucle sur les boutons pour récupérer le data-id
-btnsModif.forEach(item => {
+btnsCommentaireModif.forEach(item => {
     item.addEventListener('click', function() {
         let dataValue = this.dataset.id;
-        let formulaire = document.getElementById(`form-${dataValue}`);
+        let formulaire = document.getElementById(`formCommentaire-${dataValue}`);
+        showFormulaire(formulaire);
+    })
+})
+//boucle sur les boutons pour récupérer le data-id
+btnsEvaluationModif.forEach(item => {
+    item.addEventListener('click', function() {
+        let dataValue = this.dataset.id;
+        let formulaire = document.getElementById(`formEvaluation-${dataValue}`);
         showFormulaire(formulaire);
     })
 })
 
 //boucle sur les croix pour récupérer le data-close
-btnsClose.forEach(item => {
+btnsCommentaireClose.forEach(item => {
     item.addEventListener('click', function() {
         let dataValue = this.dataset.close;
-        console.log(dataValue);
-        let formulaire = document.getElementById(`form-${dataValue}`);
+        let formulaire = document.getElementById(`formCommentaire-${dataValue}`);
+        
+        removeFormulaire(formulaire);
+    })
+})
+//boucle sur les croix pour récupérer le data-close
+btnsEvaluationClose.forEach(item => {
+    item.addEventListener('click', function() {        
+        let dataValue = this.dataset.close;
+        let formulaire = document.getElementById(`formEvaluation-${dataValue}`);
         
         removeFormulaire(formulaire);
     })

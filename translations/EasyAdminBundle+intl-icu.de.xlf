@@ -949,6 +949,22 @@
         <source>option.utilisateur_numeroTVA</source>
         <target>MwSt-Nummer</target>
       </trans-unit>
+      <trans-unit id="eDC4BfU" resname="menu.evaluation">
+        <source>menu.evaluation</source>
+        <target>Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="CJTRMh1" resname="option.evaluation_article">
+        <source>option.evaluation_article</source>
+        <target>Artikel</target>
+      </trans-unit>
+      <trans-unit id=".ywZIe." resname="option.evaluation_nr_etoiles">
+        <source>option.evaluation_nr_etoiles</source>
+        <target>Anzahl Sterne</target>
+      </trans-unit>
+      <trans-unit id="5BI5dDp" resname="option.evaluation_utilisateur">
+        <source>option.evaluation_utilisateur</source>
+        <target>Nutzer</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

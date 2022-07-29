@@ -1,7 +1,8 @@
-// chargement DOM pour pouvoir accéder à tous les éléments nécessaires
-window.onload = () => {
+// // chargement DOM pour pouvoir accéder à tous les éléments nécessaires
+// window.onload = () => {
     // récupération de toutes les étoiles    
     const etoiles = document.querySelectorAll('.la-star');
+    console.log(etoiles);
     //vérification si les étoiles sont bien présentes sur la page actuelle
     if(etoiles) {
         // récupération de l'input hidden
@@ -32,6 +33,8 @@ window.onload = () => {
                 note.value = this.dataset.value;
             })
         }
+    } else {
+        console.log('hello');
     }
 
     function resetEtoiles() {
@@ -40,4 +43,4 @@ window.onload = () => {
         }
     }
     
-}
+// }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use App\Entity\Evaluation;
+use App\Entity\Utilisateur;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -68,6 +69,16 @@ class EvaluationRepository extends ServiceEntityRepository
             ->select('COUNT(e) as nombreEvaluations')
             ->getQuery()
             ->getSingleScalarResult();
+        ;
+    }
+
+    public function findEvaluationsUtilisateur(Utilisateur $utilisateur)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.utilisateur = :val')
+            ->setParameter('val', $utilisateur)
+            ->getQuery()
+            ->getResult()
         ;
     }
     

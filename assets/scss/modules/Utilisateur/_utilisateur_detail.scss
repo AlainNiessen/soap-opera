@@ -19,7 +19,7 @@
     }
 }
 
-.m-profile-informations-utilisateur, .m-profile-favoris-utilisateur, .m-profile-achats-utilisateur, .m-profile-commentaires-utilisateur {
+.m-profile-informations-utilisateur, .m-profile-favoris-utilisateur, .m-profile-achats-utilisateur, .m-profile-commentaires-utilisateur, .m-profile-evaluations-utilisateur {
     margin-top: 3rem;
     .intro-title {
         text-align: center;
@@ -107,7 +107,7 @@ p.modif-link {
     }
 }
 
-.m-profile-commentaires-utilisateur {
+.m-profile-commentaires-utilisateur, .m-profile-evaluations-utilisateur {
     position: relative;
     //formulaire commentaire + évaluer
     .commentaire {
@@ -184,7 +184,7 @@ p.modif-link {
     }
 }
 
-.favoris-content, .achats-content, .commentaire-content { 
+.favoris-content, .achats-content, .commentaire-content, .evaluation-content { 
     
     td {
         vertical-align: baseline;
@@ -193,7 +193,7 @@ p.modif-link {
         width: 10rem;
         height: 10rem;
     }  
-    .favoris-actions, .achats-actions, .commentaire-actions {
+    .favoris-actions, .achats-actions, .commentaire-actions, .evaluation-actions {
         display: flex;
         height: 2.5rem;        
         a {

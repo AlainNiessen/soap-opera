@@ -15,6 +15,7 @@ use App\Entity\Categorie;
 use App\Entity\Livraison;
 use App\Entity\Promotion;
 use App\Entity\TypeEvent;
+use App\Entity\Evaluation;
 use App\Entity\Newsletter;
 use App\Entity\Partenaire;
 use App\Entity\Commentaire;
@@ -77,8 +78,7 @@ class DashboardController extends AbstractDashboardController
                     MenuItem::linkToCrud(new TranslatableMessage('menu.utilisateur', [], 'EasyAdminBundle'), 'fas fa-user', Utilisateur::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.partenaire', [], 'EasyAdminBundle'), 'fas fa-user', Partenaire::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.tra_partenaire', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPartenaire::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.adresse', [], 'EasyAdminBundle'), 'fas fa-address-card', Adresse::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.commentaire', [], 'EasyAdminBundle'), 'fas fa-comment', Commentaire::class),                    
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.adresse', [], 'EasyAdminBundle'), 'fas fa-address-card', Adresse::class),                                        
                     MenuItem::linkToCrud(new TranslatableMessage('menu.langue', [], 'EasyAdminBundle'), 'fas fa-language', Langue::class)
                 ]),
 
@@ -97,7 +97,9 @@ class DashboardController extends AbstractDashboardController
                         MenuItem::linkToCrud(new TranslatableMessage('menu.tra_categorie', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionCategorie::class),
                         MenuItem::linkToCrud(new TranslatableMessage('menu.promotion', [], 'EasyAdminBundle'), 'fas fa-percent', Promotion::class),
                         MenuItem::linkToCrud(new TranslatableMessage('menu.tra_promotion', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPromotion::class),  
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.livraison', [], 'EasyAdminBundle'), 'fas fa-truck', Livraison::class),  
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.livraison', [], 'EasyAdminBundle'), 'fas fa-truck', Livraison::class), 
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.commentaire', [], 'EasyAdminBundle'), 'fas fa-comment', Commentaire::class), 
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.evaluation', [], 'EasyAdminBundle'), 'fas fa-star', Evaluation::class), 
                 ]),
 
                 MenuItem::subMenu(new TranslatableMessage('menu.ing_article', [], 'EasyAdminBundle')) -> setSubItems([

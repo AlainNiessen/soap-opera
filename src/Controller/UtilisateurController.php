@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adresse;
 use App\Entity\Article;
 use App\Form\AdresseType;
+use App\Entity\Evaluation;
 use App\Entity\Commentaire;
 use App\Entity\Utilisateur;
 use App\Form\AdresseChangeType;
@@ -95,15 +96,30 @@ class UtilisateurController extends AbstractController
         endforeach;  
         // effacer les doublons des articles commentés       
         $tabCommentairesArticlesUniques = array_unique($tabCommentairesArticles, SORT_REGULAR);
-         
 
+        // récupération des evaluation
+        // définition repository commentaires
+        $repositoryEvaluations = $entityManager -> getRepository(Evaluation::class);
+        // récupération des commentaires sur l'article 
+        $resultEvaluations = $repositoryEvaluations -> findEvaluationsUtilisateur($utilisateur);        
+        $tabEvaluationsArticles = [];
+        foreach($resultEvaluations as $evaluation):
+            $articleEvaluationID = $evaluation -> getArticle() -> getId();
+            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            $trad = $repositoryTradArticles -> findTraductionArticle($articleEvaluationID, $langue);             
+            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            array_push($tabEvaluationsArticles, $trad);
+        endforeach;  
+        
         return $this->render('utilisateur/profile.html.twig', [
             'utilisateur' => $utilisateur,
             'favoris' => $tabFavoris,
             'articlesAchat' => $tabAchatsUniquesTrad,
             'newsletterCategories' => $tabNomsCategories,
             'commentaires' => $resultCommentaires,
-            'articlesCommentaires' => $tabCommentairesArticlesUniques
+            'articlesCommentaires' => $tabCommentairesArticlesUniques,
+            'evaluations' => $resultEvaluations,
+            'articlesEvaluations' => $tabEvaluationsArticles
         ]);
     }
 

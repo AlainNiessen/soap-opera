@@ -629,6 +629,158 @@
         <source>Lieferadresse anpassen</source>
         <target>Modify deliver address</target>
       </trans-unit>
+      <trans-unit id="RZZnIkO" resname="Der Kommentar wurde erfolgreich gelöscht!">
+        <source>Der Kommentar wurde erfolgreich gelöscht!</source>
+        <target>The comment has been successfully deleted!</target>
+      </trans-unit>
+      <trans-unit id="JYpKpun" resname="Vielen Dank für deine neue Bewertung. Sie wird ebenfalls in die Gesamtbewertung einfliessen.">
+        <source>Vielen Dank für deine neue Bewertung. Sie wird ebenfalls in die Gesamtbewertung einfliessen.</source>
+        <target>Thank you for your new rating. It will also be included in the overall rating.</target>
+      </trans-unit>
+      <trans-unit id="LGcUFc1" resname="Der Favorit wurde erfolgreich gelöscht!">
+        <source>Der Favorit wurde erfolgreich gelöscht!</source>
+        <target>The favorite has been successfully deleted!</target>
+      </trans-unit>
+      <trans-unit id="S6J7vAn" resname="Deine Daten">
+        <source>Deine Daten</source>
+        <target>Your data</target>
+      </trans-unit>
+      <trans-unit id="xvCTlBP" resname="Hier kannst du deine persönlichen Informationen anpassen.">
+        <source>Hier kannst du deine persönlichen Informationen anpassen.</source>
+        <target>Here you can adjust your personal information.</target>
+      </trans-unit>
+      <trans-unit id="_pHWD_6" resname="Möchtest du dein Passwort anpassen?">
+        <source>Möchtest du dein Passwort anpassen?</source>
+        <target>Do you want to change your password?</target>
+      </trans-unit>
+      <trans-unit id="q4i3T40" resname="Passwort anpassen">
+        <source>Passwort anpassen</source>
+        <target>Modify password</target>
+      </trans-unit>
+      <trans-unit id="WBGKnvc" resname="Firmenname">
+        <source>Firmenname</source>
+        <target>Company name</target>
+      </trans-unit>
+      <trans-unit id="OXdJRF2" resname="MwSt-Nummer">
+        <source>MwSt-Nummer</source>
+        <target>VAT number</target>
+      </trans-unit>
+      <trans-unit id="988XOVZ" resname="Möchtest du deine Wohnadresse anpassen?">
+        <source>Möchtest du deine Wohnadresse anpassen?</source>
+        <target>Would you like to change your home address?</target>
+      </trans-unit>
+      <trans-unit id="B282DCx" resname="Möchtest du deine Lieferadresse anpassen?">
+        <source>Möchtest du deine Lieferadresse anpassen?</source>
+        <target>Would you like to change your delivery address?</target>
+      </trans-unit>
+      <trans-unit id="ZCf_2FT" resname="Deine Favoriten">
+        <source>Deine Favoriten</source>
+        <target>Your favourites</target>
+      </trans-unit>
+      <trans-unit id="ZcSMKpf" resname="Hier kannst du deine Favoriten einsehen, sie direkt dem Warenkorb hinzufügen oder löschen.">
+        <source>Hier kannst du deine Favoriten einsehen, sie direkt dem Warenkorb hinzufügen oder löschen.</source>
+        <target>Here you can view your favourites, add them directly to the shopping cart or delete them.</target>
+      </trans-unit>
+      <trans-unit id="N16EA0u" resname="Bild">
+        <source>Bild</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="Vlb5Lbe" resname="Aktionen">
+        <source>Aktionen</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="Npk1JC1" resname="Favorit komplett löschen">
+        <source>Favorit komplett löschen</source>
+        <target>Delete favorite completely</target>
+      </trans-unit>
+      <trans-unit id="F5O10O_" resname="Willst du diesen Favoriten wirklich entfernen?">
+        <source>Willst du diesen Favoriten wirklich entfernen?</source>
+        <target>Are you sure you want to remove this favorite?</target>
+      </trans-unit>
+      <trans-unit id="h8_I8R3" resname="Du hast im Moment noch keine Favoriten">
+        <source>Du hast im Moment noch keine Favoriten</source>
+        <target>You don't have any favorites at the moment</target>
+      </trans-unit>
+      <trans-unit id="aQ2INKK" resname="Deine gekauften Artikel">
+        <source>Deine gekauften Artikel</source>
+        <target>Your purchased articles</target>
+      </trans-unit>
+      <trans-unit id="FG5_xsc" resname="Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.">
+        <source>Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.</source>
+        <target>Here you can view your previously purchased articles and add them directly to the shopping cart.</target>
+      </trans-unit>
+      <trans-unit id="_LwMb_z" resname="Du hast im Moment noch keine Artikel gekauft">
+        <source>Du hast im Moment noch keine Artikel gekauft</source>
+        <target>You have not purchased any articles at the moment</target>
+      </trans-unit>
+      <trans-unit id="rVgxxf6" resname="Deine kommentierten Artikel">
+        <source>Deine kommentierten Artikel</source>
+        <target>Your annotated articles</target>
+      </trans-unit>
+      <trans-unit id="Eqmac5c" resname="Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.">
+        <source>Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.</source>
+        <target>Here you can view your previously commented articles, edit them or delete them.</target>
+      </trans-unit>
+      <trans-unit id="coQifWg" resname="Kommentar">
+        <source>Kommentar</source>
+        <target>Comment</target>
+      </trans-unit>
+      <trans-unit id="ccJAhs4" resname="Kommentar komplett löschen">
+        <source>Kommentar komplett löschen</source>
+        <target>Delete comment completely</target>
+      </trans-unit>
+      <trans-unit id="HRRgPQg" resname="Willst du diesen Kommentar wirklich entfernen?">
+        <source>Willst du diesen Kommentar wirklich entfernen?</source>
+        <target>Do you really want to remove this comment?</target>
+      </trans-unit>
+      <trans-unit id="azggcHb" resname="Kommentar ändern">
+        <source>Kommentar ändern</source>
+        <target>Modify comment</target>
+      </trans-unit>
+      <trans-unit id="YKwqWhn" resname="Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!">
+        <source>Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!</source>
+        <target>Have you changed your mind? Then tell us! The comment will be activated after verification!</target>
+      </trans-unit>
+      <trans-unit id="MichX5u" resname="Du hast im Moment noch keine Kommentare abgegeben.">
+        <source>Du hast im Moment noch keine Kommentare abgegeben.</source>
+        <target>You have not made any comments at the moment.</target>
+      </trans-unit>
+      <trans-unit id="n0KVAda" resname="Deine bewerteten Artikel">
+        <source>Deine bewerteten Artikel</source>
+        <target>Your rated articles</target>
+      </trans-unit>
+      <trans-unit id="U9dXkd1" resname="Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.">
+        <source>Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.</source>
+        <target>Here you can view your previously rated articles, edit them or delete them.</target>
+      </trans-unit>
+      <trans-unit id="XJjOklj" resname="Bewertung">
+        <source>Bewertung</source>
+        <target>Rating</target>
+      </trans-unit>
+      <trans-unit id="ipan0mZ" resname="von 5">
+        <source>von 5</source>
+        <target>of 5</target>
+      </trans-unit>
+      <trans-unit id="jCnsVdk" resname="Bewertung komplett löschen">
+        <source>Bewertung komplett löschen</source>
+        <target>Delete rating completely</target>
+      </trans-unit>
+      <trans-unit id="aLeQzNe" resname="Bewertung ändern">
+        <source>Bewertung ändern</source>
+        <target>Modify rating</target>
+      </trans-unit>
+      <trans-unit id="1JSbcMR" resname="Hier kannst du eine neue Bewertung abgeben!">
+        <source>Hier kannst du eine neue Bewertung abgeben!</source>
+        <target>You can submit a new rating here!</target>
+      </trans-unit>
+      <trans-unit id="VOaRgLC" resname="Du hast im Moment noch keine Bewertungen abgegeben.">
+        <source>Du hast im Moment noch keine Bewertungen abgegeben.</source>
+        <target>You have not submitted any ratings at the moment</target>
+      </trans-unit>
+      <trans-unit id="_uNEIgU" resname="Der Bewertung wurde erfolgreich gelöscht!">
+        <source>Der Bewertung wurde erfolgreich gelöscht!</source>
+        <target>The rating has been successfully deleted!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
