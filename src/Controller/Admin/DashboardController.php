@@ -37,11 +37,13 @@ use App\Entity\TraductionPartenaire;
 use App\Entity\DetailCommandeArticle;
 use App\Entity\IngredientSupplementaire;
 use App\Entity\TraductionHuileEssentiel;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\TraductionNewsletterCategorie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -49,14 +51,27 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+    protected $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this -> entityManager = $entityManager;
+    }
     
     /**
      * @Route("/admin_s_op", name="admin_s_op")
      */
     public function index(): Response
     {
-        
-        return $this->render('admin/dashboard.html.twig');
+        // récupération du nombre des utilisateur inscrits
+        // définition repository evaluation
+        $repositoryUtilisateur = $this -> entityManager -> getRepository(Utilisateur::class);
+        // fonction de requête sur base de données récupérées 
+        $nombreUtilisateurs = $repositoryUtilisateur -> countUtilisateurs();
+
+        return $this->render('admin/welcome.html.twig', [
+            'nombreUtilisateurs' => $nombreUtilisateurs
+        ]);
     }
 
     public function configureDashboard(): Dashboard
@@ -145,5 +160,10 @@ class DashboardController extends AbstractDashboardController
                 ])
             ];
         endif;
+    }
+
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('build/css/app.css');
     }
 }

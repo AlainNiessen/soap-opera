@@ -1,0 +1,16 @@
+.m-admin {
+    width: 100%;
+}
+
+.m-admin-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;    
+    svg {
+        display: block;
+        width: auto;
+        height: 10rem;
+    }
+}

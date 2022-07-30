@@ -304,7 +304,7 @@
                                                         <p>{% trans %}Hier kannst du eine neue Bewertung abgeben!{% endtrans %}</p>
                                                         <form action="{{ path('modif_evaluation', {id: evaluation.id}) }}" method="post" class="form-evaluation-formulaire">
                                                             <div class="form-area-evaluation">
-                                                                <i class="lar la-star star" data-value="1"></i><i class="lar la-star star" data-value="2"></i><i class="lar la-star star" data-value="3"></i><i class="lar la-star star" data-value="4"></i><i class="lar la-star star" data-value="5"></i>                            
+                                                                <i class="lar la-star star" data-value="1" {% if evaluation.nombreEtoiles >= 1 %}style="color:#ffcf76"{% endif %}></i><i class="lar la-star star" data-value="2" {% if evaluation.nombreEtoiles >= 2 %}style="color:#ffcf76"{% endif %}></i><i class="lar la-star star" data-value="3" {% if evaluation.nombreEtoiles >= 3 %}style="color:#ffcf76"{% endif %}></i><i class="lar la-star star" data-value="4" {% if evaluation.nombreEtoiles >= 4 %}style="color:#ffcf76"{% endif %}></i><i class="lar la-star star" data-value="5" {% if evaluation.nombreEtoiles >= 5 %}style="color:#ffcf76"{% endif %}></i>                            
                                                             </div>
                                                             <div class="form-area-recup-valeur">
                                                                 <input type="hidden" name="note" id="note" value="0">
