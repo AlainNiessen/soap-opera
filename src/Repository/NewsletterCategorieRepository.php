@@ -45,20 +45,5 @@ class NewsletterCategorieRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
-    }
-   
-    
-    
-
-    /*
-    public function findOneBySomeField($value): ?NewsletterCategorie
-    {
-        return $this->createQueryBuilder('n')
-            ->andWhere('n.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    }   
 }

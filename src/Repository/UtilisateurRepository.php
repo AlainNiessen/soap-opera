@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\NewsletterCategorie;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -71,6 +72,8 @@ class UtilisateurRepository extends ServiceEntityRepository implements PasswordU
             ->getSingleScalarResult();
         ;
     }
+
+    
    
 
     /*

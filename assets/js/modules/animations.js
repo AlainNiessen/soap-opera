@@ -5,10 +5,13 @@
 let hamburger = document.getElementById('l-topbar-hamburger');
 let menu = document.getElementById('l-topbar-navbar');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    menu.classList.toggle('active');
-})
+if(hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        menu.classList.toggle('active');
+    })
+}
+
 
 // ----------------------------
 // Animation Barre de recherche 

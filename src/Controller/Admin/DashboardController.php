@@ -44,33 +44,50 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
-{
-    protected $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this -> entityManager = $entityManager;
-    }
-    
+{  
     /**
      * @Route("/admin_s_op", name="admin_s_op")
      */
-    public function index(): Response
+    public function interface(Request $request, EntityManagerInterface $entityManager): Response
     {
+        //récupération langue
+        $lang = $request-> getLocale();
+        
         // récupération du nombre des utilisateur inscrits
         // définition repository evaluation
-        $repositoryUtilisateur = $this -> entityManager -> getRepository(Utilisateur::class);
+        $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
         // fonction de requête sur base de données récupérées 
         $nombreUtilisateurs = $repositoryUtilisateur -> countUtilisateurs();
 
+        // récupération de toutes les catégories de Newsletter
+        // définition repository evaluation
+        $repositoryCategorieNewsletter = $entityManager -> getRepository(NewsletterCategorie::class);
+        $repositoryTraductionCategorieNewsletter = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
+        // fonction de requête sur base de données récupérées 
+        $categoriesNewsletter = $repositoryCategorieNewsletter -> findAll();
+        
+        $tabNombreUtilisateurs = [];
+        $tabNomsCategorieNewsletter = [];
+        foreach($categoriesNewsletter as $categorieNewsletter):
+            $utilisateurs = $categorieNewsletter -> getUtilisateurs();
+            $nombreUtilisateurs = count($utilisateurs);            
+            $traductionNewsletter = $repositoryTraductionCategorieNewsletter -> findTraduction($categorieNewsletter, $lang);            
+            $tabNomsCategorieNewsletter[] = $traductionNewsletter->getNom();
+            $tabNombreUtilisateurs[] = $nombreUtilisateurs;
+        endforeach;
+                 
+
         return $this->render('admin/welcome.html.twig', [
-            'nombreUtilisateurs' => $nombreUtilisateurs
+            'nombreUtilisateurs' => $nombreUtilisateurs,
+            'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs
         ]);
     }
 
@@ -164,6 +181,8 @@ class DashboardController extends AbstractDashboardController
 
     public function configureAssets(): Assets
     {
-        return Assets::new()->addCssFile('build/css/app.css');
+        return Assets::new()
+        ->addWebpackEncoreEntry('js/app')
+        ->addWebpackEncoreEntry('css/app');
     }
 }
