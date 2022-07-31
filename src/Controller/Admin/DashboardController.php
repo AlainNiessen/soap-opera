@@ -61,11 +61,15 @@ class DashboardController extends AbstractDashboardController
         //récupération langue
         $lang = $request-> getLocale();
         
-        // récupération du nombre des utilisateur inscrits
-        // définition repository evaluation
+        // récupération des informations pour les statistiques générales
+        // définition repository utilisateur
         $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
         // fonction de requête sur base de données récupérées 
         $nombreUtilisateurs = $repositoryUtilisateur -> countUtilisateurs();
+        // définition repository utilisateur
+        $repositoryArticles = $entityManager -> getRepository(Article::class);
+        // fonction de requête sur base de données récupérées 
+        $nombreArticles = $repositoryArticles -> countArticles();
 
         // récupération de toutes les catégories de Newsletter
         // définition repository evaluation
@@ -76,18 +80,38 @@ class DashboardController extends AbstractDashboardController
         
         $tabNombreUtilisateurs = [];
         $tabNomsCategorieNewsletter = [];
+        $tabColorCategorieNewsletter = [];
         foreach($categoriesNewsletter as $categorieNewsletter):
             $utilisateurs = $categorieNewsletter -> getUtilisateurs();
-            $nombreUtilisateurs = count($utilisateurs);            
+            $couleurCategorieNewsletter = $categorieNewsletter -> getColor();
+            $nombreUtilisateursCategorieNewsletter = count($utilisateurs);            
             $traductionNewsletter = $repositoryTraductionCategorieNewsletter -> findTraduction($categorieNewsletter, $lang);            
             $tabNomsCategorieNewsletter[] = $traductionNewsletter->getNom();
-            $tabNombreUtilisateurs[] = $nombreUtilisateurs;
+            $tabNombreUtilisateurs[] = $nombreUtilisateursCategorieNewsletter;
+            $tabColorCategorieNewsletter[] = $couleurCategorieNewsletter;
         endforeach;
+       
+        // si il s'agit d'une requête AJAX
+        // re-rendering le contenu et la navigation sans rechargement du site
+        if($request -> isXmlHttpRequest()) {
+            dump('hello');
+            return new JsonResponse(array(
+                'langue' => $lang,
+                'nombreArticles' => $nombreArticles,
+                'nombreUtilisateurs' => $nombreUtilisateurs,
+                'nomsCategoriesNewsletter' => $tabNomsCategorieNewsletter,
+                'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs,
+                'couleurCategorieNewsletter' => $tabColorCategorieNewsletter
+                
+            ));
+        }      
                  
 
         return $this->render('admin/welcome.html.twig', [
             'nombreUtilisateurs' => $nombreUtilisateurs,
-            'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs
+            'nomsCategoriesNewsletter' => json_encode($tabNomsCategorieNewsletter),
+            'nombreUtilisateursCategorieNewsletter' => json_encode($tabNombreUtilisateurs),
+            'couleurCategorieNewsletter' => json_encode($couleurCategorieNewsletter)
         ]);
     }
 
@@ -95,7 +119,9 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Soap Opera')
-            ->setTranslationDomain('EasyAdminBundle');
+            ->setTranslationDomain('EasyAdminBundle')
+            ->renderContentMaximized();
+            
     }
 
     public function configureMenuItems(): iterable

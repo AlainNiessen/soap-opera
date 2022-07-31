@@ -1,3 +1,7 @@
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+}
 .m-admin {
     width: 100%;
 }
@@ -13,4 +17,31 @@
         width: auto;
         height: 10rem;
     }
+}
+
+.m-admin-stat-intro {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.m-admin-stat-box {
+    color: map-get($map: $colors, $key: 'text');
+    text-align: center;
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    height: 15rem;
+    h2 {
+        margin-bottom: 2rem;
+    }
+    canvas {
+        height: 5rem;
+    }
+}
+
+.general-box {
+    h2 {
+        margin-bottom: .5rem;
+    }
+   
 }

@@ -170,6 +170,15 @@ class ArticleRepository extends ServiceEntityRepository
                         -> getResult();
         ;       
     }
+
+    public function countArticles()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a) as nombreArticles')
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+    }
     
 
     /*
