@@ -45,22 +45,14 @@ class FactureRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Facture[] Returns an array of Facture objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countFactures()
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('COUNT(f) as nombreFactures')
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult();
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Facture

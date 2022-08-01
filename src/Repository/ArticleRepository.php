@@ -179,6 +179,15 @@ class ArticleRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
         ;
     }
+
+    public function countArticlesVendus()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('SUM(a.nombreVentes) as nombreArticlesVendus')
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+    }
     
 
     /*

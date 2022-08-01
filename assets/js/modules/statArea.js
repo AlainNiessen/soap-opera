@@ -42,30 +42,41 @@ window.onload = () => {
     function buildStatistiques(data)
     {
         let titleStatCatNews = '';
-        let titleGeneral = '';
         let titleNombUtilisateur = '';
         let titleNombArticles = '';
+        let titleNombArticlesVendus = '';
+        let titleNombFactures = '';
         // récupération de la langue
         if(data.langue == "de") {            
-            titleStatCatNews = 'Anzahl Nutzer des verschiedenen KAtegorien der Newsletter';
-            titleGeneral = "Allgemeines";
+            titleStatCatNews = 'Anzahl Nutzer der verschiedenen Kategorien der Newsletter';
             titleNombUtilisateur = 'Anzahl eingeschriebener Nutzer';
             titleNombArticles = 'Anzahl Artikel';
+            titleNombArticlesVendus = 'Anzahl Verkäufe';
+            titleNombFactures = 'Anzahl Rechnungen';
         } else if(data.langue == "fr") {
             titleStatCatNews = 'Nombre d\'utilisateurs des différentes catégories de la newsletter';
-            titleGeneral = "Général";
             titleNombUtilisateur = 'Nombre d\'utilisateurs enregistrés';
             titleNombArticles = 'Nombre d\'articles';
+            titleNombArticlesVendus = 'Nombre de ventes';
+            titleNombFactures = 'Nombre de factures';
         } else if(data.langue == "en") {
             titleStatCatNews = 'Number of users of the different categories of the newsletter';
-            titleGeneral = "General";
             titleNombUtilisateur = 'Number of registered users';
             titleNombArticles = 'Number of articles';
+            titleNombArticlesVendus = 'Number of sells';
+            titleNombFactures = 'Number of invoices';
         }
         
         // build des statistiques générales
-        let titreGeneral = document.getElementById('titreGeneral');
-        titreGeneral.textContent = titleGeneral;
+        let infobox1 = document.getElementById('box-1');
+        let infobox2 = document.getElementById('box-2');
+        let infobox3 = document.getElementById('box-3');
+        let infobox4 = document.getElementById('box-4');
+
+        infobox1.style.backgroundColor = "#a7dae6";
+        infobox2.style.backgroundColor = "#ffcf76";
+        infobox3.style.backgroundColor = "#80e485";
+        infobox4.style.backgroundColor = "#c8f58c";
 
         let titreNombUtilisteur = document.getElementById('titreNombreUtilisateur');
         titreNombUtilisteur.textContent = data.nombreUtilisateurs;
@@ -76,6 +87,16 @@ window.onload = () => {
         titreNombArticles.textContent = data.nombreArticles;
         let titreNombArticlesText = document.getElementById('titreNombreArticlesText');
         titreNombArticlesText.textContent = titleNombArticles;
+
+        let titreNombArticlesVendus = document.getElementById('titreNombreArticlesVendus');
+        titreNombArticlesVendus.textContent = data.nombreArticlesVendus;
+        let titreNombArticlesTextVendus = document.getElementById('titreNombreArticlesTextVendus');
+        titreNombArticlesTextVendus.textContent = titleNombArticlesVendus;
+
+        let titreNombFactures = document.getElementById('titreNombreFactures');
+        titreNombFactures.textContent = data.nombreFactures;
+        let titreNombFacturesText = document.getElementById('titreNombreFacturesText');
+        titreNombFacturesText.textContent = titleNombFactures;
 
         // build statistique nombre des utilisteurs par catégorie de newsletter
         let canvasCatNews = document.getElementById('nombre-utilisateurs-cat-news');
@@ -89,6 +110,9 @@ window.onload = () => {
                     data: data.nombreUtilisateursCategorieNewsletter,
                     backgroundColor: data.couleurCategorieNewsletter
                 }]
+            },
+            options: {  
+                maintainAspectRatio: false
             }
         })
     }

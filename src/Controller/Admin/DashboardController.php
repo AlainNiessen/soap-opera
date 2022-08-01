@@ -66,11 +66,17 @@ class DashboardController extends AbstractDashboardController
         $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
         // fonction de requête sur base de données récupérées 
         $nombreUtilisateurs = $repositoryUtilisateur -> countUtilisateurs();
-        // définition repository utilisateur
+        // définition repository article
         $repositoryArticles = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées 
         $nombreArticles = $repositoryArticles -> countArticles();
-
+        // fonction de requête sur base de données récupérées 
+        $nombreArticlesVendus = $repositoryArticles -> countArticlesVendus();
+        // définition repository facture
+        $repositoryFactures = $entityManager -> getRepository(Facture::class);
+        // fonction de requête sur base de données récupérées 
+        $nombreFactures = $repositoryFactures -> countFactures();
+                
         // récupération de toutes les catégories de Newsletter
         // définition repository evaluation
         $repositoryCategorieNewsletter = $entityManager -> getRepository(NewsletterCategorie::class);
@@ -92,27 +98,21 @@ class DashboardController extends AbstractDashboardController
         endforeach;
        
         // si il s'agit d'une requête AJAX
-        // re-rendering le contenu et la navigation sans rechargement du site
-        if($request -> isXmlHttpRequest()) {
-            dump('hello');
+        if($request -> isXmlHttpRequest()) {            
             return new JsonResponse(array(
                 'langue' => $lang,
                 'nombreArticles' => $nombreArticles,
                 'nombreUtilisateurs' => $nombreUtilisateurs,
+                'nombreArticlesVendus' =>  $nombreArticlesVendus,
+                'nombreFactures' =>  $nombreFactures,
                 'nomsCategoriesNewsletter' => $tabNomsCategorieNewsletter,
                 'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs,
                 'couleurCategorieNewsletter' => $tabColorCategorieNewsletter
                 
             ));
-        }      
-                 
+        } 
 
-        return $this->render('admin/welcome.html.twig', [
-            'nombreUtilisateurs' => $nombreUtilisateurs,
-            'nomsCategoriesNewsletter' => json_encode($tabNomsCategorieNewsletter),
-            'nombreUtilisateursCategorieNewsletter' => json_encode($tabNombreUtilisateurs),
-            'couleurCategorieNewsletter' => json_encode($couleurCategorieNewsletter)
-        ]);
+        return $this->render('admin/welcome.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -128,7 +128,7 @@ class DashboardController extends AbstractDashboardController
     {
         if ($this->isGranted('ROLE_SUPER_ADMIN')):
             return [
-                MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+                MenuItem::linkToRoute('Dashboard', 'fa fa-home', 'admin_s_op'),
                 // RETOUR A LA PAGE ACCUEIL
                 MenuItem::linktoRoute(new TranslatableMessage('menu.homepage', [], 'EasyAdminBundle'), 'fas fa-home', 'home'),
                     // POINTS DE MENU TRIÉS PAR SUBMENUS
@@ -193,7 +193,7 @@ class DashboardController extends AbstractDashboardController
             ]; 
         elseif ($this->isGranted('ROLE_FINANCE_ADMIN')):
             return [
-                MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+                MenuItem::linkToRoute('Dashboard', 'fa fa-home', 'admin_s_op'),
                 // RETOUR A LA PAGE ACCUEIL
                 MenuItem::linktoRoute(new TranslatableMessage('menu.homepage', [], 'EasyAdminBundle'), 'fas fa-home', 'home'), 
                 MenuItem::subMenu(new TranslatableMessage('menu.comptabilite', [], 'EasyAdminBundle')) -> setSubItems([
