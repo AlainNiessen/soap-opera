@@ -61,7 +61,7 @@ window.onload = () => {
             titleNombArticles = 'Nombre d\'articles';
             titleNombArticlesVendus = 'Nombre de ventes';
             titleNombFactures = 'Nombre de factures';
-            titleNombVentesParCategorie = 'Nombre de vents par catégorie d\'article';
+            titleNombVentesParCategorie = 'Nombre de ventes par catégorie d\'article';
         } else if(data.langue == "en") {
             titleStatCatNews = 'Number of users of the different categories of the newsletter';
             titleNombUtilisateur = 'Number of registered users';
