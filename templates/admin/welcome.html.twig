@@ -11,7 +11,7 @@
         <button class="btn btn-outline-info" id="btn-stats">{% trans %}Aktualisieren{% endtrans %}</button>
     </section>
     <section class="m-admin-stat">
-        <div class="m-admin-stat-box">            
+        <div class="m-admin-intro-box">            
             <div class="row">
                 <div class="col-6">
                     <div class="general-box" id="box-1">
@@ -41,11 +41,15 @@
         </div>
         <div class="m-admin-stat-box">
             <h3 id="titreStatVentesParCategorie"></h3>
-            <canvas id="nombreVentesParCategorie"></canvas>
+            <div class="canvas-box">
+                <canvas id="nombreVentesParCategorie" height="240px"></canvas>
+            </div>
         </div>
         <div class="m-admin-stat-box">
             <h3 id="titreStatCatNews"></h3>
-            <canvas id="nombreUtilisateursCatNews"></canvas>
+            <div class="canvas-box">
+                <canvas id="nombreUtilisateursCatNews" height="240px"></canvas>
+            </div>
         </div>
 
     </section>

@@ -21,18 +21,22 @@
 }
 
 .m-admin-stat-box {
+    height: 15rem;
+    .canvas-box {
+        height: 12rem; 
+    }  
+}
+
+
+.m-admin-stat-box, .m-admin-intro-box {
     color: map-get($map: $colors, $key: 'text');
     text-align: center;
     width: 100%;
-    max-width: 80%;
-    margin: 2rem auto;
-    height: 15rem;
+    max-width: 80%;  
+    margin: 3rem auto 4rem auto;   
     h2 {
         margin-bottom: 2rem;
-    }
-    canvas {
-        height: 5rem;
-    }
+    }   
 }
 
 .general-box {

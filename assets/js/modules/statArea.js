@@ -125,7 +125,7 @@ window.onload = () => {
 
         titreStatVentesParCategorie.textContent = titleNombVentesParCategorie;
         let statVentesParcategorie = new Chart(canvasVentesParCategorie, {
-            type: "pie",
+            type: "bar",
             data: {
                 labels: data.nomsCategoriesArticle,
                 datasets: [{
@@ -134,7 +134,12 @@ window.onload = () => {
                 }]
             },
             options: {  
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
             }
         })
     }
