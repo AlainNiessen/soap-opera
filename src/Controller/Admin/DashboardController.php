@@ -60,6 +60,10 @@ class DashboardController extends AbstractDashboardController
     {
         //récupération langue
         $lang = $request-> getLocale();
+        //définition repository langue
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);
+        // fonction de requête sur base de données récupérées       
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
         // récupération des informations pour les statistiques générales
         // définition repository utilisateur
@@ -89,12 +93,35 @@ class DashboardController extends AbstractDashboardController
         $tabColorCategorieNewsletter = [];
         foreach($categoriesNewsletter as $categorieNewsletter):
             $utilisateurs = $categorieNewsletter -> getUtilisateurs();
-            $couleurCategorieNewsletter = $categorieNewsletter -> getColor();
+            $couleurCategorieNewsletter = $categorieNewsletter -> getCouleur();
             $nombreUtilisateursCategorieNewsletter = count($utilisateurs);            
             $traductionNewsletter = $repositoryTraductionCategorieNewsletter -> findTraduction($categorieNewsletter, $lang);            
             $tabNomsCategorieNewsletter[] = $traductionNewsletter->getNom();
             $tabNombreUtilisateurs[] = $nombreUtilisateursCategorieNewsletter;
             $tabColorCategorieNewsletter[] = $couleurCategorieNewsletter;
+        endforeach;
+
+        // récupération de toutes les catégories des articles
+        // définition repository 
+        $repositoryCategorieArticle = $entityManager -> getRepository(Categorie::class);
+        $repositoryTraductionCategorieArticle = $entityManager -> getRepository(TraductionCategorie::class);
+        // fonction de requête sur base de données récupérées 
+        $categoriesArticle = $repositoryCategorieArticle -> findAll();
+                
+        $tabNombreVentes = [];
+        $tabNomsCategorieArticle = [];
+        $tabColorCategorieArticle = [];
+
+        foreach($categoriesArticle as $categorieArticle):
+            $nombreVentesCategorie =  $repositoryArticles -> countArticlesCategorie($categorieArticle);
+            $couleurCategorieArticle = $categorieArticle -> getCouleur();
+            $nombreUtilisateursCategorieNewsletter = count($utilisateurs);  
+
+            $traductionCategorie = $repositoryTraductionCategorieArticle -> findTraductionCategorie($categorieArticle, $langue);            
+            $tabNomsCategorieArticle[] = $traductionCategorie->getNom();
+
+            $tabNombreVentes[] = $nombreVentesCategorie;
+            $tabColorCategorieArticle[] = $couleurCategorieArticle;
         endforeach;
        
         // si il s'agit d'une requête AJAX
@@ -105,6 +132,9 @@ class DashboardController extends AbstractDashboardController
                 'nombreUtilisateurs' => $nombreUtilisateurs,
                 'nombreArticlesVendus' =>  $nombreArticlesVendus,
                 'nombreFactures' =>  $nombreFactures,
+                'nombreVentesParCategorie' => $tabNombreVentes,
+                'nomsCategoriesArticle' => $tabNomsCategorieArticle,
+                'couleurCategorieArticle' => $tabColorCategorieArticle,
                 'nomsCategoriesNewsletter' => $tabNomsCategorieNewsletter,
                 'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs,
                 'couleurCategorieNewsletter' => $tabColorCategorieNewsletter

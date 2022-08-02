@@ -46,6 +46,7 @@ window.onload = () => {
         let titleNombArticles = '';
         let titleNombArticlesVendus = '';
         let titleNombFactures = '';
+        let titleNombVentesParCategorie = '';
         // récupération de la langue
         if(data.langue == "de") {            
             titleStatCatNews = 'Anzahl Nutzer der verschiedenen Kategorien der Newsletter';
@@ -53,18 +54,20 @@ window.onload = () => {
             titleNombArticles = 'Anzahl Artikel';
             titleNombArticlesVendus = 'Anzahl Verkäufe';
             titleNombFactures = 'Anzahl Rechnungen';
+            titleNombVentesParCategorie = 'Anzahl Verkäufe pro Artikelkategorie';
         } else if(data.langue == "fr") {
             titleStatCatNews = 'Nombre d\'utilisateurs des différentes catégories de la newsletter';
             titleNombUtilisateur = 'Nombre d\'utilisateurs enregistrés';
             titleNombArticles = 'Nombre d\'articles';
             titleNombArticlesVendus = 'Nombre de ventes';
             titleNombFactures = 'Nombre de factures';
+            titleNombVentesParCategorie = 'Nombre de vents par catégorie d\'article';
         } else if(data.langue == "en") {
             titleStatCatNews = 'Number of users of the different categories of the newsletter';
             titleNombUtilisateur = 'Number of registered users';
             titleNombArticles = 'Number of articles';
             titleNombArticlesVendus = 'Number of sells';
-            titleNombFactures = 'Number of invoices';
+            titleNombVentesParCategorie = 'Number of sales per article category';
         }
         
         // build des statistiques générales
@@ -99,7 +102,7 @@ window.onload = () => {
         titreNombFacturesText.textContent = titleNombFactures;
 
         // build statistique nombre des utilisteurs par catégorie de newsletter
-        let canvasCatNews = document.getElementById('nombre-utilisateurs-cat-news');
+        let canvasCatNews = document.getElementById('nombreUtilisateursCatNews');
         let titreStatCatNews = document.getElementById('titreStatCatNews');
         titreStatCatNews.textContent = titleStatCatNews;
         let statCatNews = new Chart(canvasCatNews, {
@@ -109,6 +112,25 @@ window.onload = () => {
                 datasets: [{
                     data: data.nombreUtilisateursCategorieNewsletter,
                     backgroundColor: data.couleurCategorieNewsletter
+                }]
+            },
+            options: {  
+                maintainAspectRatio: false
+            }
+        })
+
+        // build statistique nombre des utilisteurs par catégorie de newsletter
+        let canvasVentesParCategorie = document.getElementById('nombreVentesParCategorie');
+        let titreStatVentesParCategorie = document.getElementById('titreStatVentesParCategorie');
+
+        titreStatVentesParCategorie.textContent = titleNombVentesParCategorie;
+        let statVentesParcategorie = new Chart(canvasVentesParCategorie, {
+            type: "pie",
+            data: {
+                labels: data.nomsCategoriesArticle,
+                datasets: [{
+                    data: data.nombreVentesParCategorie,
+                    backgroundColor: data.couleurCategorieArticle
                 }]
             },
             options: {  

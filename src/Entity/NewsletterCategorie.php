@@ -42,7 +42,7 @@ class NewsletterCategorie
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $color;
+    private $couleur;
 
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
@@ -161,14 +161,14 @@ class NewsletterCategorie
         return $this;
     }
 
-    public function getColor(): ?string
+    public function getCouleur(): ?string
     {
-        return $this->color;
+        return $this->couleur;
     }
 
-    public function setColor(?string $color): self
+    public function setCouleur(?string $couleur): self
     {
-        $this->color = $color;
+        $this->couleur = $couleur;
 
         return $this;
     }

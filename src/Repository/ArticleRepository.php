@@ -3,10 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Categorie;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -184,6 +185,17 @@ class ArticleRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->select('SUM(a.nombreVentes) as nombreArticlesVendus')
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+    }
+
+    public function countArticlesCategorie(Categorie $categorie)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('SUM(a.nombreVentes) as nombreArticlesVendus')
+            ->andWhere('a.categorie = :categorie')
+            ->setParameter('categorie', $categorie)
             ->getQuery()
             ->getSingleScalarResult();
         ;

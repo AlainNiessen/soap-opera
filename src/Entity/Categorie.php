@@ -54,6 +54,11 @@ class Categorie
      */
     private $nomBackend;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $couleur;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -223,6 +228,18 @@ class Categorie
     public function setNomBackend(string $nomBackend): self
     {
         $this->nomBackend = $nomBackend;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

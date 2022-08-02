@@ -20,7 +20,7 @@ class NewsletterCategorieCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('nomBackend', new TranslatableMessage('option.newsletter_nomBackend', [], 'EasyAdminBundle')); 
-        yield ColorField::new('color', new TranslatableMessage('option.newsletter_color', [], 'EasyAdminBundle')); 
+        yield ColorField::new('couleur', new TranslatableMessage('option.newsletter_color', [], 'EasyAdminBundle')); 
         yield AssociationField::new('utilisateurs', new TranslatableMessage('option.newsletter_utilisateurs', [], 'EasyAdminBundle')); 
     }    
 }
