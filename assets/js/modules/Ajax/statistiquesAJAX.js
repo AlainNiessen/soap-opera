@@ -4,7 +4,8 @@ import Chart from 'chart.js/auto';
 window.onload = () => {  
     // définition variables
     let btnStats = document.getElementById('btn-stats');
-    let adminArea = document.getElementById('m-admin');   
+    let adminArea = document.getElementById('m-admin'); 
+    let btnContainer = document.querySelector('.m-admin-stat-intro'); 
     let url = window.location.href;
     
 
@@ -13,8 +14,11 @@ window.onload = () => {
         //remettre le wrapper sur max-width 100% pour que l'interface admin est sur 100% de l'écran
         document.querySelector('.wrapper').style.maxWidth = '100%';
         // event sur le bouton
-        btnStats.addEventListener('click', function() {            
-            affichageStatistique(url);   
+        btnContainer.addEventListener('click', (e) => {
+            if(e.target.id == "btn-stats") {
+                affichageStatistique(url);  
+            }
+             
         })             
     }
 
@@ -102,6 +106,13 @@ window.onload = () => {
         titreNombFacturesText.textContent = titleNombFactures;
 
         // build statistique nombre des utilisteurs par catégorie de newsletter
+        // ckeck statut of chart
+        let chart1Status = Chart.getChart('nombreUtilisateursCatNews'); // <canvas> id
+        // si le statut est undefined => il n'existe pas
+        // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        if (chart1Status != undefined) {
+        chart1Status.destroy();
+        }
         let canvasCatNews = document.getElementById('nombreUtilisateursCatNews');
         let titreStatCatNews = document.getElementById('titreStatCatNews');
         titreStatCatNews.textContent = titleStatCatNews;
@@ -120,6 +131,13 @@ window.onload = () => {
         })
 
         // build statistique nombre des utilisteurs par catégorie de newsletter
+        // ckeck statut of chart
+        let chart2Status = Chart.getChart('nombreVentesParCategorie'); // <canvas> id
+        // si le statut est undefined => il n'existe pas
+        // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        if (chart2Status != undefined) {
+        chart2Status.destroy();
+        }
         let canvasVentesParCategorie = document.getElementById('nombreVentesParCategorie');
         let titreStatVentesParCategorie = document.getElementById('titreStatVentesParCategorie');
 
