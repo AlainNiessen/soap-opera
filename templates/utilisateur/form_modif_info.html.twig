@@ -23,6 +23,10 @@
         <div class="form-container">
             <h3>{% trans %}Persönliche Informationen{% endtrans %}</h3>
             <div class="form-flex-container">
+                {{ form_row(formUtilisateurInfo.nomEntreprise) }}
+                {{ form_row(formUtilisateurInfo.numeroTVA) }}
+            </div>
+            <div class="form-flex-container">
                 {{ form_row(formUtilisateurInfo.nom) }}
                 {{ form_row(formUtilisateurInfo.prenom) }}
             </div>
