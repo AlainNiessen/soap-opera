@@ -781,6 +781,14 @@
         <source>Der Bewertung wurde erfolgreich gelöscht!</source>
         <target>L'évaluation a été supprimé avec succès !</target>
       </trans-unit>
+      <trans-unit id="wMIPplV" resname="Statistiken">
+        <source>Statistiken</source>
+        <target>Statistiques</target>
+      </trans-unit>
+      <trans-unit id="lr8AmBZ" resname="Aktualisieren">
+        <source>Aktualisieren</source>
+        <target>Actualiser</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

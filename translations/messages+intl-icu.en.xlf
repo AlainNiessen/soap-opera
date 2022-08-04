@@ -781,6 +781,14 @@
         <source>Der Bewertung wurde erfolgreich gelöscht!</source>
         <target>The rating has been successfully deleted!</target>
       </trans-unit>
+      <trans-unit id="wMIPplV" resname="Statistiken">
+        <source>Statistiken</source>
+        <target>Statistics</target>
+      </trans-unit>
+      <trans-unit id="lr8AmBZ" resname="Aktualisieren">
+        <source>Aktualisieren</source>
+        <target>Update</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

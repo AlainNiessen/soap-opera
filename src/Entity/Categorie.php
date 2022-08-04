@@ -35,11 +35,6 @@ class Categorie
     private $promotion;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Partenaire::class, mappedBy="categorie")
-     */
-    private $partenaires;
-
-    /**
      * @ORM\OneToMany(targetEntity=TraductionCategorie::class, mappedBy="categorie")
      */
     private $traductionCategories;
@@ -131,34 +126,7 @@ class Categorie
         $this->promotion = $promotion;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Partenaire>
-     */
-    public function getPartenaires(): Collection
-    {
-        return $this->partenaires;
-    }
-
-    public function addPartenaire(Partenaire $partenaire): self
-    {
-        if (!$this->partenaires->contains($partenaire)) {
-            $this->partenaires[] = $partenaire;
-            $partenaire->addCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removePartenaire(Partenaire $partenaire): self
-    {
-        if ($this->partenaires->removeElement($partenaire)) {
-            $partenaire->removeCategorie($this);
-        }
-
-        return $this;
-    }
+    }    
 
     /**
      * @return Collection<int, TraductionCategorie>

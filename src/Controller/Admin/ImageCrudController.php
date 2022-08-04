@@ -36,8 +36,7 @@ class ImageCrudController extends AbstractCrudController
             AssociationField::new('article', new TranslatableMessage('option.image_article', [], 'EasyAdminBundle')),
             BooleanField::new('coverListArticle', new TranslatableMessage('option.image_coverListArticle', [], 'EasyAdminBundle')),
             BooleanField::new('coverDetailArticle', new TranslatableMessage('option.image_coverDetailArticle', [], 'EasyAdminBundle')),
-            AssociationField::new('partenaire', new TranslatableMessage('option.image_partenaire', [], 'EasyAdminBundle')),
-            AssociationField::new('event', new TranslatableMessage('option.image_event', [], 'EasyAdminBundle')),
+            AssociationField::new('pointDeVente', new TranslatableMessage('option.image_pointDeVente', [], 'EasyAdminBundle')),
         ];
         
         // if page = index or detail => display image    

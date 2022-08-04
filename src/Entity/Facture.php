@@ -41,11 +41,6 @@ class Facture
     private $detailCommandeArticles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="facture")
-     */
-    private $reservations;
-
-    /**
      * @ORM\Column(type="float", scale=2)
      */
     private $montantTotal;
@@ -146,37 +141,7 @@ class Facture
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): self
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations[] = $reservation;
-            $reservation->setFacture($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getFacture() === $this) {
-                $reservation->setFacture(null);
-            }
-        }
-
-        return $this;
-    }
+    }    
 
     public function getMontantTotal(): ?float
     {

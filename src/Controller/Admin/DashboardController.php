@@ -21,6 +21,7 @@ use App\Entity\Partenaire;
 use App\Entity\Commentaire;
 use App\Entity\Reservation;
 use App\Entity\Utilisateur;
+use App\Entity\PointDeVente;
 use App\Entity\PositionImage;
 use App\Entity\HuileEssentiel;
 use App\Entity\TraductionEvent;
@@ -35,6 +36,7 @@ use App\Entity\TraductionTypeEvent;
 use App\Entity\TraductionNewsletter;
 use App\Entity\TraductionPartenaire;
 use App\Entity\DetailCommandeArticle;
+use App\Entity\TraductionPointDeVente;
 use App\Entity\IngredientSupplementaire;
 use App\Entity\TraductionHuileEssentiel;
 use Doctrine\ORM\EntityManagerInterface;
@@ -164,8 +166,6 @@ class DashboardController extends AbstractDashboardController
                     // POINTS DE MENU TRIÉS PAR SUBMENUS
                 MenuItem::subMenu(new TranslatableMessage('menu.utilisateur', [], 'EasyAdminBundle')) -> setSubItems([
                     MenuItem::linkToCrud(new TranslatableMessage('menu.utilisateur', [], 'EasyAdminBundle'), 'fas fa-user', Utilisateur::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.partenaire', [], 'EasyAdminBundle'), 'fas fa-user', Partenaire::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.tra_partenaire', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPartenaire::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.adresse', [], 'EasyAdminBundle'), 'fas fa-address-card', Adresse::class),                                        
                     MenuItem::linkToCrud(new TranslatableMessage('menu.langue', [], 'EasyAdminBundle'), 'fas fa-language', Langue::class)
                 ]),
@@ -203,16 +203,14 @@ class DashboardController extends AbstractDashboardController
                         MenuItem::linkToCrud(new TranslatableMessage('menu.tra_ingredient', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionIngredientSupplementaire::class)                          
                 ]),
                 
-                MenuItem::subMenu(new TranslatableMessage('menu.event', [], 'EasyAdminBundle')) -> setSubItems([
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.event', [], 'EasyAdminBundle'), 'fas fa-calendar', Event::class),
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.tra_event', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionEvent::class),
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.typ', [], 'EasyAdminBundle'), 'fas fa-calendar', TypeEvent::class),
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.tra_typ', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionTypeEvent::class)
+                MenuItem::subMenu(new TranslatableMessage('menu.pointDeVente', [], 'EasyAdminBundle')) -> setSubItems([
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.pointDeVente', [], 'EasyAdminBundle'), 'fas fa-home', PointDeVente::class),
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.tra_pointDeVente', [], 'EasyAdminBundle'), 'fas fa-globe', TraductionPointDeVente::class),
+                        
                 ]),
                 
                 MenuItem::subMenu(new TranslatableMessage('menu.comptabilite', [], 'EasyAdminBundle')) -> setSubItems([
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.detail_commande', [], 'EasyAdminBundle'), 'fas fa-barcode', DetailCommandeArticle::class),
-                        MenuItem::linkToCrud(new TranslatableMessage('menu.reservation', [], 'EasyAdminBundle'), 'fas fa-barcode', Reservation::class),       
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.detail_commande', [], 'EasyAdminBundle'), 'fas fa-barcode', DetailCommandeArticle::class),       
                         MenuItem::linkToCrud(new TranslatableMessage('menu.facture', [], 'EasyAdminBundle'), 'fas fa-barcode', Facture::class) 
                 ]),
                         
@@ -227,8 +225,7 @@ class DashboardController extends AbstractDashboardController
                 // RETOUR A LA PAGE ACCUEIL
                 MenuItem::linktoRoute(new TranslatableMessage('menu.homepage', [], 'EasyAdminBundle'), 'fas fa-home', 'home'), 
                 MenuItem::subMenu(new TranslatableMessage('menu.comptabilite', [], 'EasyAdminBundle')) -> setSubItems([
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.detail_commande', [], 'EasyAdminBundle'), 'fas fa-barcode', DetailCommandeArticle::class),
-                    MenuItem::linkToCrud(new TranslatableMessage('menu.reservation', [], 'EasyAdminBundle'), 'fas fa-barcode', Reservation::class),       
+                    MenuItem::linkToCrud(new TranslatableMessage('menu.detail_commande', [], 'EasyAdminBundle'), 'fas fa-barcode', DetailCommandeArticle::class),       
                     MenuItem::linkToCrud(new TranslatableMessage('menu.facture', [], 'EasyAdminBundle'), 'fas fa-barcode', Facture::class) 
                 ])
             ];

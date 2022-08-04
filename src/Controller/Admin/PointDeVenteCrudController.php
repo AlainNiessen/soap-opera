@@ -2,24 +2,26 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Partenaire;
+use App\Entity\PointDeVente;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class PartenaireCrudController extends AbstractCrudController
+class PointDeVenteCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Partenaire::class;
+        return PointDeVente::class;
     }
 
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nom', new TranslatableMessage('option.partenaire_nom', [], 'EasyAdminBundle'));
-        yield AssociationField::new('adresse', new TranslatableMessage('option.partenaire_adresse', [], 'EasyAdminBundle'));
+      
+        yield TextField::new('nom', new TranslatableMessage('option.pointDeVente_nom', [], 'EasyAdminBundle'));
+        yield AssociationField::new('adresse', new TranslatableMessage('option.pointDeVente_adresse', [], 'EasyAdminBundle'));
+
     }
     
 }

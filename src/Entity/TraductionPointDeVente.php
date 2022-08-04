@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TraductionPartenaireRepository;
+use App\Repository\TraductionPointDeVenteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TraductionPartenaireRepository::class)
+ * @ORM\Entity(repositoryClass=TraductionPointDeVenteRepository::class)
  */
-class TraductionPartenaire
+class TraductionPointDeVente
 {
     /**
      * @ORM\Id
@@ -23,16 +23,16 @@ class TraductionPartenaire
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionPartenaires")
+     * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionPointDeVentes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $langue;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Partenaire::class, inversedBy="traductionPartenaires")
+     * @ORM\ManyToOne(targetEntity=PointDeVente::class, inversedBy="traductionPointDeVentes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $partenaire;
+    private $pointDeVente;
 
     public function getId(): ?int
     {
@@ -63,14 +63,14 @@ class TraductionPartenaire
         return $this;
     }
 
-    public function getPartenaire(): ?Partenaire
+    public function getPointDeVente(): ?PointDeVente
     {
-        return $this->partenaire;
+        return $this->pointDeVente;
     }
 
-    public function setPartenaire(?Partenaire $partenaire): self
+    public function setPointDeVente(?PointDeVente $pointDeVente): self
     {
-        $this->partenaire = $partenaire;
+        $this->pointDeVente = $pointDeVente;
 
         return $this;
     }

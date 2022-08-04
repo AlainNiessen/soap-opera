@@ -48,16 +48,6 @@ class Image
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Partenaire::class, inversedBy="images")
-     */
-    private $partenaire;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="images")
-     */
-    private $event;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $layoutWebsite;
@@ -76,6 +66,11 @@ class Image
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $coverDetailArticle;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PointDeVente::class, inversedBy="image")
+     */
+    private $pointDeVente;
 
     public function getId(): ?int
     {
@@ -114,30 +109,6 @@ class Image
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
-
-        return $this;
-    }
-
-    public function getPartenaire(): ?Partenaire
-    {
-        return $this->partenaire;
-    }
-
-    public function setPartenaire(?Partenaire $partenaire): self
-    {
-        $this->partenaire = $partenaire;
-
-        return $this;
-    }
-
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): self
-    {
-        $this->event = $event;
 
         return $this;
     }
@@ -218,6 +189,18 @@ class Image
     public function setCoverDetailArticle(?bool $coverDetailArticle): self
     {
         $this->coverDetailArticle = $coverDetailArticle;
+
+        return $this;
+    }
+
+    public function getPointDeVente(): ?PointDeVente
+    {
+        return $this->pointDeVente;
+    }
+
+    public function setPointDeVente(?PointDeVente $pointDeVente): self
+    {
+        $this->pointDeVente = $pointDeVente;
 
         return $this;
     }

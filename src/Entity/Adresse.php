@@ -45,11 +45,6 @@ class Adresse
     private $codePostal;
 
     /**
-     * @ORM\OneToMany(targetEntity=Partenaire::class, mappedBy="adresse")
-     */
-    private $partenaire;
-
-    /**
      * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="adresseHome")
      */
     private $utilisateursHome;
@@ -86,6 +81,11 @@ class Adresse
      */
     private $pays;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PointDeVente::class, mappedBy="adresse")
+     */
+    private $pointDeVentes;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -97,6 +97,7 @@ class Adresse
         $this->partenaire = new ArrayCollection();
         $this->utilisateursHome = new ArrayCollection();
         $this->utilisateurDeliver = new ArrayCollection();
+        $this->pointDeVentes = new ArrayCollection();
        
     }
 
@@ -128,37 +129,7 @@ class Adresse
         $this->codePostal = $codePostal;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Partenaire>
-     */
-    public function getPartenaire(): Collection
-    {
-        return $this->partenaire;
-    }
-
-    public function addPartenaire(Partenaire $partenaire): self
-    {
-        if (!$this->partenaire->contains($partenaire)) {
-            $this->partenaire[] = $partenaire;
-            $partenaire->setAdresse($this);
-        }
-
-        return $this;
-    }
-
-    public function removePartenaire(Partenaire $partenaire): self
-    {
-        if ($this->partenaire->removeElement($partenaire)) {
-            // set the owning side to null (unless already changed)
-            if ($partenaire->getAdresse() === $this) {
-                $partenaire->setAdresse(null);
-            }
-        }
-
-        return $this;
-    }
+    }    
 
     /**
      * @return Collection<int, Utilisateur>
@@ -254,6 +225,36 @@ class Adresse
     public function setPays(string $pays): self
     {
         $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PointDeVente>
+     */
+    public function getPointDeVentes(): Collection
+    {
+        return $this->pointDeVentes;
+    }
+
+    public function addPointDeVente(PointDeVente $pointDeVente): self
+    {
+        if (!$this->pointDeVentes->contains($pointDeVente)) {
+            $this->pointDeVentes[] = $pointDeVente;
+            $pointDeVente->setAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removePointDeVente(PointDeVente $pointDeVente): self
+    {
+        if ($this->pointDeVentes->removeElement($pointDeVente)) {
+            // set the owning side to null (unless already changed)
+            if ($pointDeVente->getAdresse() === $this) {
+                $pointDeVente->setAdresse(null);
+            }
+        }
 
         return $this;
     }

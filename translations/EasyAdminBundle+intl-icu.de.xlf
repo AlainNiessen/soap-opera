@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="rSWmi1r" resname="label.form.empty_value">
         <source>label.form.empty_value</source>
-        <target>__label.form.empty_value</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="UoOv6mx" resname="menu.homepage">
         <source>menu.homepage</source>
@@ -964,6 +964,210 @@
       <trans-unit id="5BI5dDp" resname="option.evaluation_utilisateur">
         <source>option.evaluation_utilisateur</source>
         <target>Nutzer</target>
+      </trans-unit>
+      <trans-unit id="Irx1M0o" resname="option.categorie_color">
+        <source>option.categorie_color</source>
+        <target>Farbe für Statistik</target>
+      </trans-unit>
+      <trans-unit id="67GnjCr" resname="menu.pointDeVente">
+        <source>menu.pointDeVente</source>
+        <target>Verkaufsstellen</target>
+      </trans-unit>
+      <trans-unit id="DeSlo_s" resname="menu.tra_pointDeVente">
+        <source>menu.tra_pointDeVente</source>
+        <target>ÜB-Verkaufsstelle</target>
+      </trans-unit>
+      <trans-unit id="9Iu7yTW" resname="option.image_pointDeVente">
+        <source>option.image_pointDeVente</source>
+        <target>Verkaufsstelle</target>
+      </trans-unit>
+      <trans-unit id="2k.yKus" resname="option.newsletter_color">
+        <source>option.newsletter_color</source>
+        <target>Farbe für Statistik</target>
+      </trans-unit>
+      <trans-unit id="cWO9FZj" resname="option.pointDeVente_nom">
+        <source>option.pointDeVente_nom</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="h3rhqu4" resname="option.pointDeVente_adresse">
+        <source>option.pointDeVente_adresse</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="Sw4Zqfs" resname="option.tradPointDeVente_description">
+        <source>option.tradPointDeVente_description</source>
+        <target>Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="IC0Uu7o" resname="option.tradPointDeVente_langue">
+        <source>option.tradPointDeVente_langue</source>
+        <target>Sprache</target>
+      </trans-unit>
+      <trans-unit id="Ml6on5q" resname="option.tradPointDeVente_pointDeVente">
+        <source>option.tradPointDeVente_pointDeVente</source>
+        <target>Verkaufsstelle</target>
+      </trans-unit>
+      <trans-unit id="lFedac1" resname="field.text_editor.view_content">
+        <source>field.text_editor.view_content</source>
+        <target>Inhalt anschauen</target>
+      </trans-unit>
+      <trans-unit id="dhADgSE" resname="action.add_new_item">
+        <source>action.add_new_item</source>
+        <target>Role hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="47Pt8HL" resname="action.remove_item">
+        <source>action.remove_item</source>
+        <target>Role löschen</target>
+      </trans-unit>
+      <trans-unit id="cKnorcr" resname="action.choose_file">
+        <source>action.choose_file</source>
+        <target>Datei wählen</target>
+      </trans-unit>
+      <trans-unit id="hTKWQ6g" resname="action.delete">
+        <source>action.delete</source>
+        <target>Löschen</target>
+      </trans-unit>
+      <trans-unit id=".Mt52Jq" resname="datagrid.no_results">
+        <source>datagrid.no_results</source>
+        <target>Keine Resultate</target>
+      </trans-unit>
+      <trans-unit id="nVUMu1k" resname="paginator.results">
+        <source>paginator.results</source>
+        <target>Resultate</target>
+      </trans-unit>
+      <trans-unit id="oOXdtd2" resname="paginator.previous">
+        <source>paginator.previous</source>
+        <target>zurück</target>
+      </trans-unit>
+      <trans-unit id="rjAecsf" resname="paginator.next">
+        <source>paginator.next</source>
+        <target>vorwärts</target>
+      </trans-unit>
+      <trans-unit id="LmKkqt9" resname="label.null">
+        <source>label.null</source>
+        <target>/</target>
+      </trans-unit>
+      <trans-unit id="r2IGHZo" resname="user.logged_in_as">
+        <source>user.logged_in_as</source>
+        <target>Eingeloggt als</target>
+      </trans-unit>
+      <trans-unit id="odDw0du" resname="action.search">
+        <source>action.search</source>
+        <target>Suche</target>
+      </trans-unit>
+      <trans-unit id="ySqFHqJ" resname="field.code_editor.view_code">
+        <source>field.code_editor.view_code</source>
+        <target>Kode einsehen</target>
+      </trans-unit>
+      <trans-unit id="wCazS.X" resname="action.close">
+        <source>action.close</source>
+        <target>Schliessen</target>
+      </trans-unit>
+      <trans-unit id="vMRdZZB" resname="label.nullable_field">
+        <source>label.nullable_field</source>
+        <target>__label.nullable_field</target>
+      </trans-unit>
+      <trans-unit id="flAoA9y" resname="autocomplete.no-results-found">
+        <source>autocomplete.no-results-found</source>
+        <target>__autocomplete.no-results-found</target>
+      </trans-unit>
+      <trans-unit id="MLS2ZRD" resname="autocomplete.no-more-results">
+        <source>autocomplete.no-more-results</source>
+        <target>__autocomplete.no-more-results</target>
+      </trans-unit>
+      <trans-unit id="hCDMpjH" resname="autocomplete.loading-more-results">
+        <source>autocomplete.loading-more-results</source>
+        <target>__autocomplete.loading-more-results</target>
+      </trans-unit>
+      <trans-unit id="5nxOeVi" resname="form.tab.error_badge_title">
+        <source>form.tab.error_badge_title</source>
+        <target>__form.tab.error_badge_title</target>
+      </trans-unit>
+      <trans-unit id="PX2zfQj" resname="files">
+        <source>files</source>
+        <target>__files</target>
+      </trans-unit>
+      <trans-unit id="oQ9WL.E" resname="batch_action_modal.title">
+        <source>batch_action_modal.title</source>
+        <target>__batch_action_modal.title</target>
+      </trans-unit>
+      <trans-unit id="RHee8F4" resname="batch_action_modal.content">
+        <source>batch_action_modal.content</source>
+        <target>__batch_action_modal.content</target>
+      </trans-unit>
+      <trans-unit id="Qj1ElaL" resname="action.cancel">
+        <source>action.cancel</source>
+        <target>__action.cancel</target>
+      </trans-unit>
+      <trans-unit id="62SZ8Mz" resname="batch_action_modal.action">
+        <source>batch_action_modal.action</source>
+        <target>__batch_action_modal.action</target>
+      </trans-unit>
+      <trans-unit id="MSZG2W6" resname="delete_modal.title">
+        <source>delete_modal.title</source>
+        <target>__delete_modal.title</target>
+      </trans-unit>
+      <trans-unit id="nGU95PH" resname="delete_modal.content">
+        <source>delete_modal.content</source>
+        <target>__delete_modal.content</target>
+      </trans-unit>
+      <trans-unit id="5YZoOIF" resname="filter.button.clear">
+        <source>filter.button.clear</source>
+        <target>__filter.button.clear</target>
+      </trans-unit>
+      <trans-unit id="Rd0n9wc" resname="filter.title">
+        <source>filter.title</source>
+        <target>__filter.title</target>
+      </trans-unit>
+      <trans-unit id="DDfIL9s" resname="filter.button.apply">
+        <source>filter.button.apply</source>
+        <target>__filter.button.apply</target>
+      </trans-unit>
+      <trans-unit id="EThXKJ7" resname="action.entity_actions">
+        <source>action.entity_actions</source>
+        <target>__action.entity_actions</target>
+      </trans-unit>
+      <trans-unit id="oZzSf3Q" resname="datagrid.hidden_results">
+        <source>datagrid.hidden_results</source>
+        <target>__datagrid.hidden_results</target>
+      </trans-unit>
+      <trans-unit id="K01rrqF" resname="page_title.exception">
+        <source>page_title.exception</source>
+        <target>__page_title.exception</target>
+      </trans-unit>
+      <trans-unit id="vJgsw67" resname="label.empty">
+        <source>label.empty</source>
+        <target>__label.empty</target>
+      </trans-unit>
+      <trans-unit id="rZ.VJa_" resname="label.inaccessible.explanation">
+        <source>label.inaccessible.explanation</source>
+        <target>__label.inaccessible.explanation</target>
+      </trans-unit>
+      <trans-unit id="2Kyr_vG" resname="label.inaccessible">
+        <source>label.inaccessible</source>
+        <target>__label.inaccessible</target>
+      </trans-unit>
+      <trans-unit id="xxVfXla" resname="user.anonymous">
+        <source>user.anonymous</source>
+        <target>__user.anonymous</target>
+      </trans-unit>
+      <trans-unit id="4J45.H4" resname="login_page.username">
+        <source>login_page.username</source>
+        <target>__login_page.username</target>
+      </trans-unit>
+      <trans-unit id="V56_FDR" resname="login_page.password">
+        <source>login_page.password</source>
+        <target>__login_page.password</target>
+      </trans-unit>
+      <trans-unit id="iWZtM1U" resname="login_page.forgot_password">
+        <source>login_page.forgot_password</source>
+        <target>__login_page.forgot_password</target>
+      </trans-unit>
+      <trans-unit id="eHA8HYd" resname="login_page.remember_me">
+        <source>login_page.remember_me</source>
+        <target>__login_page.remember_me</target>
+      </trans-unit>
+      <trans-unit id="W0jkiQG" resname="login_page.sign_in">
+        <source>login_page.sign_in</source>
+        <target>__login_page.sign_in</target>
       </trans-unit>
     </body>
   </file>

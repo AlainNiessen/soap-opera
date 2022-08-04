@@ -35,19 +35,10 @@ class Langue
     private $traductionCategories;
 
     /**
-     * @ORM\OneToMany(targetEntity=TraductionTypeEvent::class, mappedBy="langue")
-     */
-    private $traductionTypeEvents;
-
-    /**
      * @ORM\OneToMany(targetEntity=TraductionNewsletter::class, mappedBy="langue")
      */
     private $traductionNewsletters;
 
-    /**
-     * @ORM\OneToMany(targetEntity=TraductionPartenaire::class, mappedBy="langue")
-     */
-    private $traductionPartenaires;
 
     /**
      * @ORM\OneToMany(targetEntity=TraductionPromotion::class, mappedBy="langue")
@@ -58,11 +49,6 @@ class Langue
      * @ORM\OneToMany(targetEntity=TraductionArticle::class, mappedBy="langue")
      */
     private $traductionArticles;
-
-    /**
-     * @ORM\OneToMany(targetEntity=TraductionEvent::class, mappedBy="langue")
-     */
-    private $traductionEvents;
 
     /**
      * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="langue")
@@ -99,6 +85,11 @@ class Langue
      */
     private $traductionNewsletterCategories;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TraductionPointDeVente::class, mappedBy="langue")
+     */
+    private $traductionPointDeVentes;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -111,12 +102,9 @@ class Langue
     public function __construct()
     {
         $this->traductionCategories = new ArrayCollection();
-        $this->traductionTypeEvents = new ArrayCollection();
         $this->traductionNewsletters = new ArrayCollection();
-        $this->traductionPartenaires = new ArrayCollection();
         $this->traductionPromotions = new ArrayCollection();
         $this->traductionArticles = new ArrayCollection();
-        $this->traductionEvents = new ArrayCollection();
         $this->utilisateurs = new ArrayCollection();
         $this->traductionOdeurs = new ArrayCollection();
         $this->traductionHuiles = new ArrayCollection();
@@ -124,6 +112,7 @@ class Langue
         $this->traductionBeurres = new ArrayCollection();
         $this->traductionIngredientSupplementaires = new ArrayCollection();
         $this->traductionNewsletterCategories = new ArrayCollection();
+        $this->traductionPointDeVentes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,37 +172,7 @@ class Langue
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, TraductionTypeEvent>
-     */
-    public function getTraductionTypeEvents(): Collection
-    {
-        return $this->traductionTypeEvents;
-    }
-
-    public function addTraductionTypeEvent(TraductionTypeEvent $traductionTypeEvent): self
-    {
-        if (!$this->traductionTypeEvents->contains($traductionTypeEvent)) {
-            $this->traductionTypeEvents[] = $traductionTypeEvent;
-            $traductionTypeEvent->setLangue($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTraductionTypeEvent(TraductionTypeEvent $traductionTypeEvent): self
-    {
-        if ($this->traductionTypeEvents->removeElement($traductionTypeEvent)) {
-            // set the owning side to null (unless already changed)
-            if ($traductionTypeEvent->getLangue() === $this) {
-                $traductionTypeEvent->setLangue(null);
-            }
-        }
-
-        return $this;
-    }
+    }    
 
     /**
      * @return Collection<int, TraductionNewsletter>
@@ -239,36 +198,6 @@ class Langue
             // set the owning side to null (unless already changed)
             if ($traductionNewsletter->getLangue() === $this) {
                 $traductionNewsletter->setLangue(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, TraductionPartenaire>
-     */
-    public function getTraductionPartenaires(): Collection
-    {
-        return $this->traductionPartenaires;
-    }
-
-    public function addTraductionPartenaire(TraductionPartenaire $traductionPartenaire): self
-    {
-        if (!$this->traductionPartenaires->contains($traductionPartenaire)) {
-            $this->traductionPartenaires[] = $traductionPartenaire;
-            $traductionPartenaire->setLangue($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTraductionPartenaire(TraductionPartenaire $traductionPartenaire): self
-    {
-        if ($this->traductionPartenaires->removeElement($traductionPartenaire)) {
-            // set the owning side to null (unless already changed)
-            if ($traductionPartenaire->getLangue() === $this) {
-                $traductionPartenaire->setLangue(null);
             }
         }
 
@@ -334,36 +263,6 @@ class Langue
 
         return $this;
     }    
-
-    /**
-     * @return Collection<int, TraductionEvent>
-     */
-    public function getTraductionEvents(): Collection
-    {
-        return $this->traductionEvents;
-    }
-
-    public function addTraductionEvent(TraductionEvent $traductionEvent): self
-    {
-        if (!$this->traductionEvents->contains($traductionEvent)) {
-            $this->traductionEvents[] = $traductionEvent;
-            $traductionEvent->setLangue($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTraductionEvent(TraductionEvent $traductionEvent): self
-    {
-        if ($this->traductionEvents->removeElement($traductionEvent)) {
-            // set the owning side to null (unless already changed)
-            if ($traductionEvent->getLangue() === $this) {
-                $traductionEvent->setLangue(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Utilisateur>
@@ -569,6 +468,36 @@ class Langue
             // set the owning side to null (unless already changed)
             if ($traductionNewsletterCategory->getLangue() === $this) {
                 $traductionNewsletterCategory->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TraductionPointDeVente>
+     */
+    public function getTraductionPointDeVentes(): Collection
+    {
+        return $this->traductionPointDeVentes;
+    }
+
+    public function addTraductionPointDeVente(TraductionPointDeVente $traductionPointDeVente): self
+    {
+        if (!$this->traductionPointDeVentes->contains($traductionPointDeVente)) {
+            $this->traductionPointDeVentes[] = $traductionPointDeVente;
+            $traductionPointDeVente->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraductionPointDeVente(TraductionPointDeVente $traductionPointDeVente): self
+    {
+        if ($this->traductionPointDeVentes->removeElement($traductionPointDeVente)) {
+            // set the owning side to null (unless already changed)
+            if ($traductionPointDeVente->getLangue() === $this) {
+                $traductionPointDeVente->setLangue(null);
             }
         }
 

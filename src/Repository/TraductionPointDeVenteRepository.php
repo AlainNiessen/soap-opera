@@ -2,30 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionPartenaire;
+use App\Entity\TraductionPointDeVente;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method TraductionPartenaire|null find($id, $lockMode = null, $lockVersion = null)
- * @method TraductionPartenaire|null findOneBy(array $criteria, array $orderBy = null)
- * @method TraductionPartenaire[]    findAll()
- * @method TraductionPartenaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends ServiceEntityRepository<TraductionPointDeVente>
+ *
+ * @method TraductionPointDeVente|null find($id, $lockMode = null, $lockVersion = null)
+ * @method TraductionPointDeVente|null findOneBy(array $criteria, array $orderBy = null)
+ * @method TraductionPointDeVente[]    findAll()
+ * @method TraductionPointDeVente[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TraductionPartenaireRepository extends ServiceEntityRepository
+class TraductionPointDeVenteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TraductionPartenaire::class);
+        parent::__construct($registry, TraductionPointDeVente::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(TraductionPartenaire $entity, bool $flush = true): void
+    public function add(TraductionPointDeVente $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +39,7 @@ class TraductionPartenaireRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(TraductionPartenaire $entity, bool $flush = true): void
+    public function remove(TraductionPointDeVente $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +48,7 @@ class TraductionPartenaireRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return TraductionPartenaire[] Returns an array of TraductionPartenaire objects
+    //  * @return TraductionPointDeVente[] Returns an array of TraductionPointDeVente objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +65,7 @@ class TraductionPartenaireRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TraductionPartenaire
+    public function findOneBySomeField($value): ?TraductionPointDeVente
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
