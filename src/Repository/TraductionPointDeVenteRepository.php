@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionPointDeVente;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
+use App\Entity\PointDeVente;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionPointDeVente;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<TraductionPointDeVente>
@@ -47,22 +49,19 @@ class TraductionPointDeVenteRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TraductionPointDeVente[] Returns an array of TraductionPointDeVente objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findTraductionPointDeVente(PointDeVente $pointDeVente, Langue $langue)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        
+        return $this    -> createQueryBuilder('tp')                    
+                        -> andWhere('tp.langue = :langue')
+                        -> setParameter('langue', $langue)
+                        -> andWhere('tp.pointDeVente = :pointDeVente')
+                        -> setParameter('pointDeVente', $pointDeVente)                               
+                        -> getQuery()
+                        -> getSingleResult();
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TraductionPointDeVente

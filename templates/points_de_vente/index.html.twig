@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Verkaufsstellen{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-points-de-vente">
+    <div class="wrapper">
+        <h1>{% trans %}Unsere Verkaufsstellen{% endtrans %}</h1>
+        <div class="m-points-de-vente-list">
+        {% for traductionPointsDeVente in traductionsPointsDeVente %}
+            <h3>{{ traductionPointsDeVente.pointDeVente.nom }}</h3>
+            <p>{{ traductionPointsDeVente.description|raw }}</p>
+
+
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

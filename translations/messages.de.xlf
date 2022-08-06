@@ -1101,6 +1101,14 @@
         <source>Aktualisieren</source>
         <target>Aktualisieren</target>
       </trans-unit>
+      <trans-unit id="qS4ZKkp" resname="Verkaufsstellen">
+        <source>Verkaufsstellen</source>
+        <target>Verkaufsstellen</target>
+      </trans-unit>
+      <trans-unit id="nkDpk1X" resname="Unsere Verkaufsstellen">
+        <source>Unsere Verkaufsstellen</source>
+        <target>Unsere Verkaufsstellen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

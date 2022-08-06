@@ -789,6 +789,14 @@
         <source>Aktualisieren</source>
         <target>Update</target>
       </trans-unit>
+      <trans-unit id="qS4ZKkp" resname="Verkaufsstellen">
+        <source>Verkaufsstellen</source>
+        <target>points of sale</target>
+      </trans-unit>
+      <trans-unit id="nkDpk1X" resname="Unsere Verkaufsstellen">
+        <source>Unsere Verkaufsstellen</source>
+        <target>Our points of sale</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

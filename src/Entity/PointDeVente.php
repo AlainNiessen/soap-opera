@@ -41,6 +41,12 @@ class PointDeVente
      */
     private $traductionPointDeVentes;
 
+    // AFFICHAGE DANS INTERFACE ADMIN
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->image = new ArrayCollection();
