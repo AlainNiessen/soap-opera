@@ -30,13 +30,28 @@ class PointsDeVenteController extends AbstractController
         // fonction de requête sur base de données récupérées       
         $pointsDeVente = $repositoryPointsDeVente -> findAll();  
         
-        $tabTraductionPointsDeVente = [];
+        $tabTraductionPointsDeVente = [];        
+        $tabCoord = [];
         //définition repository article
         $repositoryTraductionPointsDeVente = $entityManager -> getRepository(TraductionPointDeVente::class);
-        foreach($pointsDeVente as $pointDeVente):
+
+        foreach($pointsDeVente as $pointDeVente):           
+           
             $traductionPointDeVente = $repositoryTraductionPointsDeVente -> findTraductionPointDeVente($pointDeVente, $langue);
             $tabTraductionPointsDeVente[] = $traductionPointDeVente;
+
+            //traitement adresse sur map via API mapbox
+            //La fonction urlencode() est une fonction intégrée à PHP qui est utilisée pour encoder l'url (avec des caractéres spéciaux)
+            $urlencode = urlencode($pointDeVente->getAdresse()->getNumeroRue().' '. $pointDeVente->getAdresse()->getRue().' '.$pointDeVente->getAdresse()->getCodePostal().' '.$pointDeVente->getAdresse()->getVille().' '.$pointDeVente->getAdresse()->getPays());
+            //récupération latitude et longtitude sur base de l'adresse réelle du prestataire.
+            $json = file_get_contents('https://api.mapbox.com/geocoding/v5/mapbox.places/'.$urlencode.'.json?access_token=pk.eyJ1IjoiYWxhaW4xOTc5IiwiYSI6ImNsMDU3ejZvejBvc3kzZHBkd2trODl5d24ifQ.ewy0L_R1PnylQtpX21Su3w');
+            $obj = json_decode($json);
+            $latitude = $obj->features[0]->geometry->coordinates[0];
+            $longitude = $obj->features[0]->geometry->coordinates[1];
+            $pointDeVente -> setLatitude($latitude);
+            $pointDeVente -> setLongitude($longitude);
         endforeach;
+       
               
         return $this->render('points_de_vente/index.html.twig', [
             'traductionsPointsDeVente' => $tabTraductionPointsDeVente,

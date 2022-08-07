@@ -9,15 +9,16 @@
 
 <section class="m-points-de-vente">
     <div class="wrapper">
-        <h1>{% trans %}Unsere Verkaufsstellen{% endtrans %}</h1>
-        <div class="m-points-de-vente-list">
+        <h1>{% trans %}Unsere Verkaufsstellen{% endtrans %}</h1>        
         {% for traductionPointsDeVente in traductionsPointsDeVente %}
+        <div class="m-points-de-vente-list">            
             <h3>{{ traductionPointsDeVente.pointDeVente.nom }}</h3>
             <p>{{ traductionPointsDeVente.description|raw }}</p>
-
-
-        {% endfor %}
+            <p>{{ traductionPointsDeVente.pointDeVente.adresse}}</p>
+            <div id ="map-{{ traductionPointsDeVente.id }}" class="map" data-long="{{ traductionPointsDeVente.pointDeVente.longitude }}" data-lat="{{ traductionPointsDeVente.pointDeVente.latitude }}"></div>
+            <hr>
         </div>
+        {% endfor %}        
     </div>
 </section>
 

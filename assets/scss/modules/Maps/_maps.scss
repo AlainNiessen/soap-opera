@@ -1,0 +1,22 @@
+.m-points-de-vente {
+    text-align: center;
+    color: map-get($map: $colors, $key: 'text');
+    .m-points-de-vente-list {
+        width: 100%;
+        max-width: 70%;
+        margin: 2rem auto;
+    }
+}
+.map {
+    width: 100%;
+    height: 12rem;
+}
+
+//media query
+@media screen and (min-width: 576px) {    
+    .map {
+        max-width: 80%;
+        margin: 0 auto;
+        height: 16rem;
+    }
+}
