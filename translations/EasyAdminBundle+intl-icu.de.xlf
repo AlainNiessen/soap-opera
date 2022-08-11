@@ -1169,6 +1169,18 @@
         <source>login_page.sign_in</source>
         <target>__login_page.sign_in</target>
       </trans-unit>
+      <trans-unit id="afQa65n" resname="menu.philosophie">
+        <source>menu.philosophie</source>
+        <target>Philosophie</target>
+      </trans-unit>
+      <trans-unit id=".BoQ37w" resname="option.philosophie_philosophie">
+        <source>option.philosophie_philosophie</source>
+        <target>Philosophie</target>
+      </trans-unit>
+      <trans-unit id="trh1GUG" resname="option.philosophie_langue">
+        <source>option.philosophie_langue</source>
+        <target>Sprache</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

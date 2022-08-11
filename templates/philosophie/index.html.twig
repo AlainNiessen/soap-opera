@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Philosophie{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-philosophie">
+    <div class="wrapper">
+        <h1>{% trans %}Unsere Philosophie{% endtrans %}</h1>      
+        <div class="m-philosophie-text">  
+            {{ philosophie|raw }}           
+        </div>            
+        <div class="m-philosophie-atelier">  
+            <p>{% trans %}Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!{% endtrans %}</p>
+            <a href="{{ path('contact') }}" class="btn btn-outline-info">{% trans %}Zum Kontaktformular{% endtrans %}</a>
+        </div>            
+    </div>
+                    
+</section>
+
+{% endblock %}

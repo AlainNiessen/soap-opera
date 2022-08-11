@@ -35,7 +35,7 @@ class ArticleController extends AbstractController
     {   
         //récupération de la pagination
         $interPag = intval($pagBar);
-        
+                
         //check si la barre de recherche a été utilisé
         // si oui => 
         if(isset($_GET['mots'])):
@@ -51,7 +51,7 @@ class ArticleController extends AbstractController
             //récupération du tableau stocké dans la Session
             $session = $request->getSession();
             $tabWords = $session -> get('tabWords');
-        endif;
+        endif;        
         
         //récupération langue
         $lang = $request-> getLocale();
@@ -64,34 +64,44 @@ class ArticleController extends AbstractController
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // récupération des articles      
-        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
+        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);       
 
         //récupération des informations sur les articles dans la langue
         $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
-        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue);
-
+        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue);        
           
         // récupération du nombre des articles
-        $nombreArticles = count($resultTraductionArticles);
+        $nombreArticles = count($resultTraductionArticles);        
 
         // définition nombre des articles par page
-        $limit = 6;
+        $limit = 4;
         
         //définition start and end pour le tableau à transférer pour la pagination
-        $startCount = $interPag * $limit - $limit;
-
-        if($interPag * $limit >= count($resultTraductionArticles)):
-            $endCount = count($resultTraductionArticles);
-        else:
-            $endCount = $interPag * $limit;
-        endif;
+        $startCount = $interPag * $limit - $limit;         
 
         //nombre de pages de résultat
         $nombreLiens = ceil($nombreArticles / $limit);
         //définition limite affichage pagination
-        $limitPagination = $interPag + 2;      
-      
-        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);      
+        $limitPagination = $interPag + 2;  
+        
+        $pagination = array_slice($resultTraductionArticles, $startCount, $limit);       
+        
+        
+        // si il s'agit d'une requête AJAX
+        // re-rendering le contenu et la navigation sans rechargement du site
+        if($request -> isXmlHttpRequest()) {             
+            return new JsonResponse([
+                'content' => $this -> renderView('article/_articles.html.twig', [
+                    'traductionArticles' => $pagination,                
+                ]),
+                'navigationBar' => $this -> renderView('article/_navigationBar.html.twig', [
+                    'traductionArticles' => $pagination,
+                    'nombreLiens' => $nombreLiens,
+                    'pagBar'=> $interPag,
+                    'limitPagination' => $limitPagination
+                ])
+            ]);
+        }               
             
         
         return $this->render('article/list.html.twig', [
@@ -133,23 +143,17 @@ class ArticleController extends AbstractController
         $nombreArticles = count($resultTraductionArticles);
 
         // définition nombre des articles par page
-        $limit = 6;
+        $limit = 4;
         
         //définition start and end pour le tableau à transférer pour la pagination
         $startCount = $interPag * $limit - $limit;
-
-        if($interPag * $limit >= count($resultTraductionArticles)):
-            $endCount = count($resultTraductionArticles);
-        else:
-            $endCount = $interPag * $limit;
-        endif;
 
         //nombre de pages de résultat
         $nombreLiens = ceil($nombreArticles / $limit);
         //définition limite affichage pagination
         $limitPagination = $interPag + 2;      
       
-        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
+        $pagination = array_slice($resultTraductionArticles, $startCount, $limit);
 
         // si il s'agit d'une requête AJAX
         // re-rendering le contenu et la navigation sans rechargement du site
@@ -227,23 +231,17 @@ class ArticleController extends AbstractController
         $nombreArticles = count($resultTraductionArticles);
 
         // définition nombre des articles par page
-        $limit = 6;
+        $limit = 4;
         
         //définition start and end pour le tableau à transférer pour la pagination
         $startCount = $interPag * $limit - $limit;
-
-        if($interPag * $limit >= count($resultTraductionArticles)):
-            $endCount = count($resultTraductionArticles);
-        else:
-            $endCount = $interPag * $limit;
-        endif;
 
         //nombre de pages de résultat
         $nombreLiens = ceil($nombreArticles / $limit);
         //définition limite affichage pagination
         $limitPagination = $interPag + 2;      
       
-        $pagination = array_slice($resultTraductionArticles, $startCount, $endCount);
+        $pagination = array_slice($resultTraductionArticles, $startCount, $limit);
 
         // si il s'agit d'une requête AJAX
         // re-rendering le contenu et la navigation sans rechargement du site

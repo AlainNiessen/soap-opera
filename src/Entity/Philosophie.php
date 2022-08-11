@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PhilosophieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,7 +20,7 @@ class Philosophie
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $philosophie;
 
@@ -56,4 +58,6 @@ class Philosophie
 
         return $this;
     }
+
+    
 }

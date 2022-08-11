@@ -797,6 +797,18 @@
         <source>Unsere Verkaufsstellen</source>
         <target>Nos points de vente</target>
       </trans-unit>
+      <trans-unit id="GUk4NoD" resname="Philosophie">
+        <source>Philosophie</source>
+        <target>Philosophie</target>
+      </trans-unit>
+      <trans-unit id="umglrEG" resname="Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!">
+        <source>Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!</source>
+        <target>Nous proposons également des ateliers réguliers. Chez toi aussi ! Des questions? Alors contactes-nous !</target>
+      </trans-unit>
+      <trans-unit id="RBTIrsb" resname="Zum Kontaktformular">
+        <source>Zum Kontaktformular</source>
+        <target>Formulaire de contact</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

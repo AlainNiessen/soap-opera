@@ -19,6 +19,7 @@ use App\Entity\Evaluation;
 use App\Entity\Newsletter;
 use App\Entity\Partenaire;
 use App\Entity\Commentaire;
+use App\Entity\Philosophie;
 use App\Entity\Reservation;
 use App\Entity\Utilisateur;
 use App\Entity\PointDeVente;
@@ -217,6 +218,9 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::subMenu(new TranslatableMessage('menu.image', [], 'EasyAdminBundle')) -> setSubItems([
                         MenuItem::linkToCrud(new TranslatableMessage('menu.image', [], 'EasyAdminBundle'), 'fas fa-image', Image::class),
                         MenuItem::linkToCrud(new TranslatableMessage('menu.pos_image', [], 'EasyAdminBundle'), 'fas fa-image', PositionImage::class)    
+                ]),
+                MenuItem::subMenu(new TranslatableMessage('menu.philosophie', [], 'EasyAdminBundle')) -> setSubItems([
+                        MenuItem::linkToCrud(new TranslatableMessage('menu.philosophie', [], 'EasyAdminBundle'), 'fas fa-image', Philosophie::class)                            
                 ])
             ]; 
         elseif ($this->isGranted('ROLE_FINANCE_ADMIN')):

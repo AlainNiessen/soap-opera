@@ -56,7 +56,11 @@ class ArticleRepository extends ServiceEntityRepository
         //préparation lier les tables 
         $queryBuilder =  $this  ->createQueryBuilder('a')
                                 ->leftJoin('a.traductionArticles', 'at')
-                                ->addSelect('at')
+                                ->addSelect('at')                                
+                                ->leftJoin('a.categorie', 'c')
+                                ->addSelect('c')
+                                ->leftJoin('c.traductionCategories', 'ct')
+                                ->addSelect('ct')
                                 ->leftJoin('a.odeur', 'o')
                                 ->addSelect('o')
                                 ->leftJoin('o.traductionOdeurs', 'ot')
@@ -85,6 +89,8 @@ class ArticleRepository extends ServiceEntityRepository
             foreach($keywords as $keyword) {                          
                 $arr[] = $queryBuilder->expr()->orX("at.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("at.description LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("ct.nom LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("ct.description LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ot.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ht.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("het.nom LIKE '%".$keyword."%'");

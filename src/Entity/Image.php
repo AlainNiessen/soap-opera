@@ -72,6 +72,7 @@ class Image
      */
     private $pointDeVente;
 
+
     public function getId(): ?int
     {
         return $this->id;

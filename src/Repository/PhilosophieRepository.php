@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Langue;
 use App\Entity\Philosophie;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Philosophie>
@@ -47,22 +48,20 @@ class PhilosophieRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Philosophie[] Returns an array of Philosophie objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findPhilosophie(Langue $langue)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        //récupération de ID langue
+        $langueID = $langue -> getId();
+
+        return $this    -> createQueryBuilder('p')
+                        -> select('p.philosophie')                    
+                        -> andWhere('p.langue = :langueID')
+                        -> setParameter('langueID', $langueID)                              
+                        -> getQuery()
+                        -> getSingleResult();
+           
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Philosophie
