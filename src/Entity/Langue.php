@@ -90,6 +90,11 @@ class Langue
      */
     private $traductionPointDeVentes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Philosophie::class, mappedBy="langue")
+     */
+    private $philosophies;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -113,6 +118,7 @@ class Langue
         $this->traductionIngredientSupplementaires = new ArrayCollection();
         $this->traductionNewsletterCategories = new ArrayCollection();
         $this->traductionPointDeVentes = new ArrayCollection();
+        $this->philosophies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -498,6 +504,36 @@ class Langue
             // set the owning side to null (unless already changed)
             if ($traductionPointDeVente->getLangue() === $this) {
                 $traductionPointDeVente->setLangue(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Philosophie>
+     */
+    public function getPhilosophies(): Collection
+    {
+        return $this->philosophies;
+    }
+
+    public function addPhilosophy(Philosophie $philosophy): self
+    {
+        if (!$this->philosophies->contains($philosophy)) {
+            $this->philosophies[] = $philosophy;
+            $philosophy->setLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhilosophy(Philosophie $philosophy): self
+    {
+        if ($this->philosophies->removeElement($philosophy)) {
+            // set the owning side to null (unless already changed)
+            if ($philosophy->getLangue() === $this) {
+                $philosophy->setLangue(null);
             }
         }
 
