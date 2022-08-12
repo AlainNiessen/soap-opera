@@ -70,7 +70,7 @@ class TraductionArticleRepository extends ServiceEntityRepository
     * @return TraductionArticle[] Returns an an array of objects of TraductionArticle
     */
     
-    public function findTraductionArticles($articles, Langue $langue)
+    public function findTraductionArticles($articles, Langue $langue, $offset = null, $limit = null)
     {
         //récupération de ID langue
         $langueID = $langue -> getId();
@@ -89,6 +89,13 @@ class TraductionArticleRepository extends ServiceEntityRepository
                                 }
                                 $queryBuilder->andWhere(join(' OR ', $arr));
                             }   
+
+                            if($offset):
+                                $queryBuilder->setFirstResult($offset);
+                            endif;
+                            if($limit):
+                                $queryBuilder->setMaxResults($limit);
+                            endif;
                 
                 
                             return $queryBuilder 
