@@ -13,6 +13,24 @@
         <div class="m-philosophie-text">  
             {{ philosophie|raw }}           
         </div>            
+        <div class="m-philosophie-diaporama"> 
+            <!-- Création div pour chaque image -->  
+            {% for image in images %}             
+            <div class="mySlides fade">
+                <img src="{{ asset('/uploads/images/'~image.nom) }}">
+            </div>
+            {% endfor %}
+            <!-- Next and previous buttons -->
+            <a class="prev" id="prev">&#10094;</a>
+            <a class="next" id="next">&#10095;</a>
+        </div> 
+        <br>
+        <!-- The dots/circles -->
+        <div class="m-philosophie-diaporama-dots">
+            {% for image in images %} 
+                <span class="dot"></span>
+            {% endfor %}
+        </div>           
         <div class="m-philosophie-atelier">  
             <p>{% trans %}Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!{% endtrans %}</p>
             <a href="{{ path('contact') }}" class="btn btn-outline-info">{% trans %}Zum Kontaktformular{% endtrans %}</a>

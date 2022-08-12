@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Philosophie;
+use App\Entity\PositionImage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,9 +31,14 @@ class PhilosophieController extends AbstractController
         $philosophie = $repositoryPhilosophie -> findPhilosophie($langue);
         $philosophieText = $philosophie['philosophie'];
 
-        
+        //récupération des images pour le diaporama
+        $repositoryPositionImage = $entityManager -> getRepository(PositionImage::class);
+        $position = $repositoryPositionImage -> findOneBy(['position' => 'Slider Philosophie']);
+        $images = $position -> getImages();
+               
         return $this->render('philosophie/index.html.twig', [
             'philosophie' => $philosophieText,
+            'images' => $images
         ]);
     }
 }
