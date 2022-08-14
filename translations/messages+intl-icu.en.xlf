@@ -809,6 +809,300 @@
         <source>Zum Kontaktformular</source>
         <target>To contact form</target>
       </trans-unit>
+      <trans-unit id="59E_6Pn" resname="Design in Kooperation mit">
+        <source>Design in Kooperation mit</source>
+        <target>Design in cooperation with</target>
+      </trans-unit>
+      <trans-unit id="uKYFGSP" resname="Impressum">
+        <source>Impressum</source>
+        <target>Imprint</target>
+      </trans-unit>
+      <trans-unit id="6xrOq1c" resname="Copyright - Alle Rechte vorbehalten">
+        <source>Copyright - Alle Rechte vorbehalten</source>
+        <target>Copyright - All rights reserved</target>
+      </trans-unit>
+      <trans-unit id="czSAgcc" resname="Verantwortlicher Herausgeber:">
+        <source>Verantwortlicher Herausgeber:</source>
+        <target>Responsible editor:</target>
+      </trans-unit>
+      <trans-unit id="tCOQrHY" resname="Auf unseren Seiten können Sie Links zu anderen Websites im Internet finden. Wir übernehmen keine Verantwortung für die Richtigkeit der auf diesen Websites bereitgestellten Informationen, was auch für weiterführende Links von dort gilt. Wir stimmen nicht in jedem Fall mit den dort vertretenen Meinungen überein. Diese Erklärung gilt für alle auf unserer Homepage angegebenen Links und sämtliche Inhalte der Seiten, zu denen diese Links führen.">
+        <source>Auf unseren Seiten können Sie Links zu anderen Websites im Internet finden. Wir übernehmen keine Verantwortung für die Richtigkeit der auf diesen Websites bereitgestellten Informationen, was auch für weiterführende Links von dort gilt. Wir stimmen nicht in jedem Fall mit den dort vertretenen Meinungen überein. Diese Erklärung gilt für alle auf unserer Homepage angegebenen Links und sämtliche Inhalte der Seiten, zu denen diese Links führen.</source>
+        <target>On our pages you can find links to other websites on the Internet. We assume no responsibility for the accuracy of the information provided on these websites, which also applies to further links from there. We do not always agree with the opinions expressed there. This declaration applies to all links provided on our homepage and all content of the pages to which these links lead.</target>
+      </trans-unit>
+      <trans-unit id="ARkgK7c" resname="Text, Bilder, Grafiken, Sound, Animationen und Videos sowie deren Anordnung auf dieser Website unterliegen dem Schutz des Urheberrechts und anderer Schutzgesetze. Der Inhalt dieser Website darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden.">
+        <source>Text, Bilder, Grafiken, Sound, Animationen und Videos sowie deren Anordnung auf dieser Website unterliegen dem Schutz des Urheberrechts und anderer Schutzgesetze. Der Inhalt dieser Website darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden.</source>
+        <target>Text, pictures, graphics, sound, animation and videos as well as their arrangement on this website are subject to protection by copyright and other protective legislation. It is forbidden by third parties to reproduce, transmit, modify or make the contents of this website accessible for commercial purposes. In addition the website contains pictures which are subject to third party copyright.</target>
+      </trans-unit>
+      <trans-unit id="bZPziO7" resname="Diese Website wurde mit größtmöglicher Sorgfalt zusammengestellt. Trotzdem können der verantwortliche Herausgeber und die Produzenten für die Fehlerfreiheit und Genauigkeit der enthaltenen Informationen nicht garantieren. Sie schließen jegliche Haftung für Schäden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus.">
+        <source>Diese Website wurde mit größtmöglicher Sorgfalt zusammengestellt. Trotzdem können der verantwortliche Herausgeber und die Produzenten für die Fehlerfreiheit und Genauigkeit der enthaltenen Informationen nicht garantieren. Sie schließen jegliche Haftung für Schäden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus.</source>
+        <target>As much care as possible has been taken in compiling this website. Despite this the responsible editor and the publishers cannot guarantee that information contained herein is free from errors and inaccuracies. We do not accept any liability for damages which may occur due to direct or indirect use of this website.</target>
+      </trans-unit>
+      <trans-unit id="v_NGUtf" resname="Das in der Website enthaltene geistige Eigentum ist geschützt. Durch die Veröffentlichung dieser Website erteilen die Produzenten keine Lizenz zur Nutzung dieses Eigentums an Dritte.">
+        <source>Das in der Website enthaltene geistige Eigentum ist geschützt. Durch die Veröffentlichung dieser Website erteilen die Produzenten keine Lizenz zur Nutzung dieses Eigentums an Dritte.</source>
+        <target>The intellectual property in this website is protected. The publishing of this website by the producers does not grant third parties a licence to use it’s content.</target>
+      </trans-unit>
+      <trans-unit id=".BtKrji" resname="Datenschutz-Bestimmungen">
+        <source>Datenschutz-Bestimmungen</source>
+        <target>__Datenschutz-Bestimmungen</target>
+      </trans-unit>
+      <trans-unit id="mLe0ofk" resname="Grundlegendes">
+        <source>Grundlegendes</source>
+        <target>__Grundlegendes</target>
+      </trans-unit>
+      <trans-unit id="yBF6eRi" resname="Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:">
+        <source>Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:</source>
+        <target>__Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:</target>
+      </trans-unit>
+      <trans-unit id="hIAUEdD" resname="Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.">
+        <source>Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.</source>
+        <target>__Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.</target>
+      </trans-unit>
+      <trans-unit id="LO5WwPG" resname="Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.">
+        <source>Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.</source>
+        <target>__Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.</target>
+      </trans-unit>
+      <trans-unit id="Ltm8fMk" resname="Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.">
+        <source>Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.</source>
+        <target>__Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.</target>
+      </trans-unit>
+      <trans-unit id="Y6_Vaml" resname="Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.">
+        <source>Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.</source>
+        <target>__Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.</target>
+      </trans-unit>
+      <trans-unit id="hftFXWm" resname="Datenlöschung und Speicherdauer">
+        <source>Datenlöschung und Speicherdauer</source>
+        <target>__Datenlöschung und Speicherdauer</target>
+      </trans-unit>
+      <trans-unit id="CwVLyxD" resname="Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.">
+        <source>Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.</source>
+        <target>__Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.</target>
+      </trans-unit>
+      <trans-unit id="N2PWfBf" resname="Zugriffsdaten">
+        <source>Zugriffsdaten</source>
+        <target>__Zugriffsdaten</target>
+      </trans-unit>
+      <trans-unit id="mxLP0A2" resname="Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:">
+        <source>Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:</source>
+        <target>__Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:</target>
+      </trans-unit>
+      <trans-unit id="veY_ECu" resname="Besuchte Website">
+        <source>Besuchte Website</source>
+        <target>__Besuchte Website</target>
+      </trans-unit>
+      <trans-unit id="bGratvO" resname="Uhrzeit zum Zeitpunkt des Zugriffes">
+        <source>Uhrzeit zum Zeitpunkt des Zugriffes</source>
+        <target>__Uhrzeit zum Zeitpunkt des Zugriffes</target>
+      </trans-unit>
+      <trans-unit id="aMO03yG" resname="Menge der gesendeten Daten in Byte">
+        <source>Menge der gesendeten Daten in Byte</source>
+        <target>__Menge der gesendeten Daten in Byte</target>
+      </trans-unit>
+      <trans-unit id="hqH75d6" resname="Quelle/Verweis, von welchem Sie auf die Seite gelangten">
+        <source>Quelle/Verweis, von welchem Sie auf die Seite gelangten</source>
+        <target>__Quelle/Verweis, von welchem Sie auf die Seite gelangten</target>
+      </trans-unit>
+      <trans-unit id="h2RVlxr" resname="Verwendeter Browser">
+        <source>Verwendeter Browser</source>
+        <target>__Verwendeter Browser</target>
+      </trans-unit>
+      <trans-unit id="O9GuRH1" resname="Verwendetes Betriebssystem">
+        <source>Verwendetes Betriebssystem</source>
+        <target>__Verwendetes Betriebssystem</target>
+      </trans-unit>
+      <trans-unit id="7fOff1a" resname="Verwendete IP-Adresse">
+        <source>Verwendete IP-Adresse</source>
+        <target>__Verwendete IP-Adresse</target>
+      </trans-unit>
+      <trans-unit id="KdrFukz" resname="Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.">
+        <source>Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.</source>
+        <target>__Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.</target>
+      </trans-unit>
+      <trans-unit id="S6f_Gms" resname="Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.">
+        <source>Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.</source>
+        <target>__Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.</target>
+      </trans-unit>
+      <trans-unit id="535sXRB" resname="Reichweitenmessung &amp; Cookies">
+        <source>Reichweitenmessung &amp; Cookies</source>
+        <target><![CDATA[__Reichweitenmessung & Cookies]]></target>
+      </trans-unit>
+      <trans-unit id="h_mc.sO" resname="Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.">
+        <source>Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</source>
+        <target>__Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</target>
+      </trans-unit>
+      <trans-unit id="8hGBYWQ" resname="Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:">
+        <source>Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:</source>
+        <target>__Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:</target>
+      </trans-unit>
+      <trans-unit id="_lvpSE8" resname="Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:">
+        <source>Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:</source>
+        <target>__Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:</target>
+      </trans-unit>
+      <trans-unit id="4yipXK1" resname="Cookie-Deaktivierungsseite der US-amerikanischen Website:">
+        <source>Cookie-Deaktivierungsseite der US-amerikanischen Website:</source>
+        <target>__Cookie-Deaktivierungsseite der US-amerikanischen Website:</target>
+      </trans-unit>
+      <trans-unit id="azRwnzQ" resname="Cookie-Deaktivierungsseite der europäischen Website:">
+        <source>Cookie-Deaktivierungsseite der europäischen Website:</source>
+        <target>__Cookie-Deaktivierungsseite der europäischen Website:</target>
+      </trans-unit>
+      <trans-unit id="Mf.mGIh" resname="Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.">
+        <source>Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.</source>
+        <target>__Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.</target>
+      </trans-unit>
+      <trans-unit id="EBhRo7w" resname="Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.">
+        <source>Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.</source>
+        <target>__Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.</target>
+      </trans-unit>
+      <trans-unit id="kUtmM9p" resname="In den Cookies werden dabei folgende Daten gespeichert und übermittelt:">
+        <source>In den Cookies werden dabei folgende Daten gespeichert und übermittelt:</source>
+        <target>__In den Cookies werden dabei folgende Daten gespeichert und übermittelt:</target>
+      </trans-unit>
+      <trans-unit id="eC_taPI" resname="Spracheinstellungen">
+        <source>Spracheinstellungen</source>
+        <target>__Spracheinstellungen</target>
+      </trans-unit>
+      <trans-unit id="utxoUrV" resname="Artikel in einem Warenkorb">
+        <source>Artikel in einem Warenkorb</source>
+        <target>__Artikel in einem Warenkorb</target>
+      </trans-unit>
+      <trans-unit id="vH9RxXd" resname="Log-In-Informationen">
+        <source>Log-In-Informationen</source>
+        <target>__Log-In-Informationen</target>
+      </trans-unit>
+      <trans-unit id="8I5qWR9" resname="Erfassung und Verarbeitung personenbezogener Daten">
+        <source>Erfassung und Verarbeitung personenbezogener Daten</source>
+        <target>__Erfassung und Verarbeitung personenbezogener Daten</target>
+      </trans-unit>
+      <trans-unit id="hr4.a7D" resname="Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.">
+        <source>Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.</source>
+        <target>__Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.</target>
+      </trans-unit>
+      <trans-unit id="Rb4dybb" resname="Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.">
+        <source>Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.</source>
+        <target>__Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.</target>
+      </trans-unit>
+      <trans-unit id="fUQFNGY" resname="Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.">
+        <source>Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.</source>
+        <target>__Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.</target>
+      </trans-unit>
+      <trans-unit id="We5qgSs" resname="&lt;span class=&quot;bold&quot;&gt;Welche?&lt;span&gt; – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.">
+        <source>&lt;span class="bold"&gt;Welche?&lt;span&gt; – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.</source>
+        <target><![CDATA[__<span class="bold">Welche?<span> – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.]]></target>
+      </trans-unit>
+      <trans-unit id="Kno3jjc" resname="&lt;span class=&quot;bold&quot;&gt;Wie?&lt;span&gt; – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.">
+        <source>&lt;span class="bold"&gt;Wie?&lt;span&gt; – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.</source>
+        <target><![CDATA[__<span class="bold">Wie?<span> – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.]]></target>
+      </trans-unit>
+      <trans-unit id="tvBB8Cl" resname="&lt;span class=&quot;bold&quot;&gt;Warum?&lt;span&gt; – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.">
+        <source>&lt;span class="bold"&gt;Warum?&lt;span&gt; – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.</source>
+        <target><![CDATA[__<span class="bold">Warum?<span> – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.]]></target>
+      </trans-unit>
+      <trans-unit id="vYS5WNk" resname="Kontaktformular und E-Mail-Kontakt">
+        <source>Kontaktformular und E-Mail-Kontakt</source>
+        <target>__Kontaktformular und E-Mail-Kontakt</target>
+      </trans-unit>
+      <trans-unit id="uK7Iube" resname="Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.">
+        <source>Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.</source>
+        <target>__Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.</target>
+      </trans-unit>
+      <trans-unit id="dCBwlEz" resname="Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.">
+        <source>Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.</source>
+        <target>__Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.</target>
+      </trans-unit>
+      <trans-unit id="QPUhw2f" resname="Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.">
+        <source>Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.</source>
+        <target>__Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.</target>
+      </trans-unit>
+      <trans-unit id="xH9ZaqA" resname="Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.">
+        <source>Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.</source>
+        <target>__Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.</target>
+      </trans-unit>
+      <trans-unit id="uZllNpf" resname="Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.">
+        <source>Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.</source>
+        <target>__Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.</target>
+      </trans-unit>
+      <trans-unit id="fb84HJi" resname="Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.&#10;                    Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.">
+        <source>Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.
+                    Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.</source>
+        <target>__Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.
+                    Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.</target>
+      </trans-unit>
+      <trans-unit id="yznsrLC" resname="Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.">
+        <source>Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.</source>
+        <target>__Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.</target>
+      </trans-unit>
+      <trans-unit id="qH3.GqC" resname="Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.">
+        <source>Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.</source>
+        <target>__Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.</target>
+      </trans-unit>
+      <trans-unit id=".KXSW0u" resname="Onlineshop">
+        <source>Onlineshop</source>
+        <target>__Onlineshop</target>
+      </trans-unit>
+      <trans-unit id="3aQU9VZ" resname="Kunden">
+        <source>Kunden</source>
+        <target>__Kunden</target>
+      </trans-unit>
+      <trans-unit id="x35nZN6" resname="Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen">
+        <source>Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen</source>
+        <target>__Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen</target>
+      </trans-unit>
+      <trans-unit id="f1f9alO" resname="Bestellvorgang">
+        <source>Bestellvorgang</source>
+        <target>__Bestellvorgang</target>
+      </trans-unit>
+      <trans-unit id="bejJu9U" resname="Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:">
+        <source>Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:</source>
+        <target>__Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:</target>
+      </trans-unit>
+      <trans-unit id="yCfL96N" resname="Name und Vorname">
+        <source>Name und Vorname</source>
+        <target>__Name und Vorname</target>
+      </trans-unit>
+      <trans-unit id="wvl2WtX" resname="E-Mail-Adresse">
+        <source>E-Mail-Adresse</source>
+        <target>__E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="eeXPIN4" resname="Adresse">
+        <source>Adresse</source>
+        <target>__Adresse</target>
+      </trans-unit>
+      <trans-unit id="0MO3JWs" resname="Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:">
+        <source>Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:</source>
+        <target>__Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:</target>
+      </trans-unit>
+      <trans-unit id="PeXKCZg" resname="Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode">
+        <source>Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode</source>
+        <target>__Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode</target>
+      </trans-unit>
+      <trans-unit id="rIccwG8" resname="Weitere Informationen zum Datenschutz bei Stripe:">
+        <source>Weitere Informationen zum Datenschutz bei Stripe:</source>
+        <target>__Weitere Informationen zum Datenschutz bei Stripe:</target>
+      </trans-unit>
+      <trans-unit id="PwoH3ni" resname="Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.">
+        <source>Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.</source>
+        <target>__Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.</target>
+      </trans-unit>
+      <trans-unit id="V.UuKul" resname="SOZIALE MEDIEN, PLUGINS &amp; TOOLS">
+        <source>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</source>
+        <target><![CDATA[__SOZIALE MEDIEN, PLUGINS & TOOLS]]></target>
+      </trans-unit>
+      <trans-unit id="V5GOkrb" resname="Einbindung von Diensten und Inhalten (Plugins) Dritter">
+        <source>Einbindung von Diensten und Inhalten (Plugins) Dritter</source>
+        <target>__Einbindung von Diensten und Inhalten (Plugins) Dritter</target>
+      </trans-unit>
+      <trans-unit id="qhX9p57" resname="Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.">
+        <source>Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.</source>
+        <target>__Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.</target>
+      </trans-unit>
+      <trans-unit id="OUOKH2z" resname="Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.">
+        <source>Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.</source>
+        <target>__Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.</target>
+      </trans-unit>
+      <trans-unit id="tQD4KIZ" resname="Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.">
+        <source>Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.</source>
+        <target>__Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

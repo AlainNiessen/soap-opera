@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Impressum{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-mentions-legales">
+    <div class="wrapper">
+        <h1>{% trans %}Impressum{% endtrans %}</h1>        
+        <p>{% trans %}Copyright - Alle Rechte vorbehalten{% endtrans %}</p>
+        <div class="m-mentions-legales-box">
+            <p>{% trans %}Verantwortlicher Herausgeber:{% endtrans %}</p>
+            <p>Julia Hoelscher</p>
+        </div>
+        <div class="m-mentions-legales-box">
+            <p>Soap-Opera</p>
+            <p>Adresse</p>
+        </div>
+        <div class="m-mentions-legales-box">
+            <p>Tel</p>
+            <p>Email</p>
+            <p>Mehrwertsteuernummer</p>
+        </div>        
+        <div class="m-mentions-legales-box">
+            <p>{% trans %}Auf unseren Seiten können Sie Links zu anderen Websites im Internet finden. Wir übernehmen keine Verantwortung für die Richtigkeit der auf diesen Websites bereitgestellten Informationen, was auch für weiterführende Links von dort gilt. Wir stimmen nicht in jedem Fall mit den dort vertretenen Meinungen überein. Diese Erklärung gilt für alle auf unserer Homepage angegebenen Links und sämtliche Inhalte der Seiten, zu denen diese Links führen.{% endtrans %}</p>
+        </div>
+        <div class="m-mentions-legales-box">
+            <p>{% trans %}Text, Bilder, Grafiken, Sound, Animationen und Videos sowie deren Anordnung auf dieser Website unterliegen dem Schutz des Urheberrechts und anderer Schutzgesetze. Der Inhalt dieser Website darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden.{% endtrans %}</p>
+        </div>
+        <div class="m-mentions-legales-box">
+            <p>{% trans %}Diese Website wurde mit größtmöglicher Sorgfalt zusammengestellt. Trotzdem können der verantwortliche Herausgeber und die Produzenten für die Fehlerfreiheit und Genauigkeit der enthaltenen Informationen nicht garantieren. Sie schließen jegliche Haftung für Schäden, die direkt oder indirekt aus der Benutzung dieser Website entstehen, aus.{% endtrans %}</p>
+        </div>
+        <div class="m-mentions-legales-box">
+            <p>{% trans %}Das in der Website enthaltene geistige Eigentum ist geschützt. Durch die Veröffentlichung dieser Website erteilen die Produzenten keine Lizenz zur Nutzung dieses Eigentums an Dritte.{% endtrans %}</p>         
+        </div>        
+    </div>
+</section>
+
+{% endblock %}
