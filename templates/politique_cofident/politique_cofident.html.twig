@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PolitiqueCofidentController!{% endblock %}
+{% block title %}{% trans %}Datenschutz-Bestimmungen{% endtrans %}{% endblock %}
 
 {% block body %}
 {# rendering fragment recherche #}
@@ -108,9 +108,9 @@
             </div>
             <div class="m-mentions-legales-box-unit">
                 <ol>
-                    <li>{% trans %}<span class="bold">Welche?<span> – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.{% endtrans %}</li> 
-                    <li>{% trans %}<span class="bold">Wie?<span> – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.{% endtrans %}</li>
-                    <li>{% trans %}<span class="bold">Warum?<span> – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.{% endtrans %}</li>
+                    <li><span class="bold">{% trans %}Welche?{% endtrans %}<span>{% trans %} – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.{% endtrans %}</li> 
+                    <li><span class="bold">{% trans %}Wie?{% endtrans %}<span>{% trans %} – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.{% endtrans %}</li>
+                    <li><span class="bold">{% trans %}Warum?{% endtrans %}<span>{% trans %} – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.{% endtrans %}</li>
                 </ol>
             </div> 
         </div>                 

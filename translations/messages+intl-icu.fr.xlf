@@ -843,265 +843,404 @@
       </trans-unit>
       <trans-unit id=".BtKrji" resname="Datenschutz-Bestimmungen">
         <source>Datenschutz-Bestimmungen</source>
-        <target>__Datenschutz-Bestimmungen</target>
+        <target>Politique de confidentialité</target>
       </trans-unit>
       <trans-unit id="mLe0ofk" resname="Grundlegendes">
         <source>Grundlegendes</source>
-        <target>__Grundlegendes</target>
+        <target>Informations de base</target>
       </trans-unit>
       <trans-unit id="yBF6eRi" resname="Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:">
         <source>Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:</source>
-        <target>__Verantwortlicher für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:</target>
+        <target>Responsable de la collecte, du traitement et de l’utilisation de vos données personnelles au sens de l’article 4 n ° 7 du RGPD</target>
       </trans-unit>
       <trans-unit id="hIAUEdD" resname="Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.">
         <source>Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.</source>
-        <target>__Sofern Sie der Erhebung, Verarbeitung oder Nutzung Ihrer Daten durch uns nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen wollen, können Sie Ihren Widerspruch an den Verantwortlichen richten.</target>
+        <target>Si vous souhaitez vous opposer à la collecte, le traitement ou l’utilisation de vos informations par nous conformément à la présente Politique de confidentialité dans son ensemble ou pour des mesures individuelles, vous pouvez adresser votre objection à la personne responsable.</target>
       </trans-unit>
       <trans-unit id="LO5WwPG" resname="Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.">
         <source>Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.</source>
-        <target>__Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren.</target>
+        <target>Cette politique de confidentialité est destinée à informer les utilisateurs de ce site Web sur la nature, la portée et le but de la collecte et l’utilisation de données personnelles par l’opérateur du site.</target>
       </trans-unit>
       <trans-unit id="Ltm8fMk" resname="Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.">
         <source>Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.</source>
-        <target>__Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien und die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen wieder durchzulesen.</target>
+        <target>L’opérateur du site Web prend votre vie privée très au sérieux et traitera vos informations personnelles de manière confidentielle et conformément à la loi. Étant donné que des modifications à cette politique de confidentialité peuvent être apportées par le biais de nouvelles technologies et de l’évolution continue de ce site, nous vous encourageons à consulter régulièrement la politique de confidentialité.</target>
       </trans-unit>
       <trans-unit id="Y6_Vaml" resname="Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.">
         <source>Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.</source>
-        <target>__Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.</target>
+        <target>Les définitions des termes utilisés (par exemple “données personnelles” ou “traitement”) se trouvent dans l’article 4 du RGPD.</target>
       </trans-unit>
       <trans-unit id="hftFXWm" resname="Datenlöschung und Speicherdauer">
         <source>Datenlöschung und Speicherdauer</source>
-        <target>__Datenlöschung und Speicherdauer</target>
+        <target>Effacement des données et durée de stockage</target>
       </trans-unit>
       <trans-unit id="CwVLyxD" resname="Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.">
         <source>Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.</source>
-        <target>__Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.</target>
+        <target>Les données personnelles de la personne concernée seront supprimées ou bloquées dès que l’objectif du stockage sera supprimé. En outre, un tel stockage peut être prévu par le législateur européen ou national dans les règlements, lois ou autres réglementations de l’UE auxquels le contrôleur est soumis. Le blocage ou la suppression des données intervient également lorsqu’une période de stockage prescrite par les normes mentionnées expire, à moins qu’il ne soit nécessaire de conserver les données pour la conclusion d’un contrat ou l’exécution du contrat..</target>
       </trans-unit>
       <trans-unit id="N2PWfBf" resname="Zugriffsdaten">
         <source>Zugriffsdaten</source>
-        <target>__Zugriffsdaten</target>
+        <target>Données d’accès</target>
       </trans-unit>
       <trans-unit id="mxLP0A2" resname="Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:">
         <source>Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:</source>
-        <target>__Wir, der Websitebetreiber bzw. Seitenprovider, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. f. DSGVO) Daten über Zugriffe auf die Website und speichern diese als “Server-Logfiles” auf dem Server der Website ab. Folgende Daten werden so protokolliert:</target>
+        <target>Nous, l’opérateur de site Web ou fournisseur de site, élevons à cause de notre intérêt légitime (art. Art. 6 par. 1, point f. RGPD) des données sur l’accès au site et l’enregistrer comme un « logs du serveur » sur le serveur du site à partir. Les données suivantes sont consignées:</target>
       </trans-unit>
       <trans-unit id="veY_ECu" resname="Besuchte Website">
         <source>Besuchte Website</source>
-        <target>__Besuchte Website</target>
+        <target>Site visité</target>
       </trans-unit>
       <trans-unit id="bGratvO" resname="Uhrzeit zum Zeitpunkt des Zugriffes">
         <source>Uhrzeit zum Zeitpunkt des Zugriffes</source>
-        <target>__Uhrzeit zum Zeitpunkt des Zugriffes</target>
+        <target>Heure au moment de l’accès</target>
       </trans-unit>
       <trans-unit id="aMO03yG" resname="Menge der gesendeten Daten in Byte">
         <source>Menge der gesendeten Daten in Byte</source>
-        <target>__Menge der gesendeten Daten in Byte</target>
+        <target>Quantité de données envoyées en octets</target>
       </trans-unit>
       <trans-unit id="hqH75d6" resname="Quelle/Verweis, von welchem Sie auf die Seite gelangten">
         <source>Quelle/Verweis, von welchem Sie auf die Seite gelangten</source>
-        <target>__Quelle/Verweis, von welchem Sie auf die Seite gelangten</target>
+        <target>Source / référence à partir de laquelle vous êtes arrivé sur la page</target>
       </trans-unit>
       <trans-unit id="h2RVlxr" resname="Verwendeter Browser">
         <source>Verwendeter Browser</source>
-        <target>__Verwendeter Browser</target>
+        <target>Navigateur utilisé</target>
       </trans-unit>
       <trans-unit id="O9GuRH1" resname="Verwendetes Betriebssystem">
         <source>Verwendetes Betriebssystem</source>
-        <target>__Verwendetes Betriebssystem</target>
+        <target>Système d’exploitation utilisé</target>
       </trans-unit>
       <trans-unit id="7fOff1a" resname="Verwendete IP-Adresse">
         <source>Verwendete IP-Adresse</source>
-        <target>__Verwendete IP-Adresse</target>
+        <target>Adresse IP utilisée</target>
       </trans-unit>
       <trans-unit id="KdrFukz" resname="Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.">
         <source>Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.</source>
-        <target>__Die Server-Logfiles werden für maximal 180 Tage gespeichert und anschließend gelöscht. Die Speicherung der Daten erfolgt aus Sicherheitsgründen, um z. B. Missbrauchsfälle aufklären zu können. Müssen Daten aus Beweisgründen aufgehoben werden, sind sie solange von der Löschung ausgenommen bis der Vorfall endgültig geklärt ist.</target>
+        <target>Les fichiers log du serveur sont stockés pendant un maximum de 180 jours, puis supprimés. Le stockage des données est fait pour des raisons de sécurité, pour clarifier les cas d’abus. Si les données doivent être révoquées pour des raisons de preuve, elles sont exclues de la suppression jusqu’à ce que l’incident ait été définitivement clarifié.</target>
       </trans-unit>
       <trans-unit id="S6f_Gms" resname="Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.">
         <source>Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.</source>
-        <target>__Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Daten in Logfiles ist für den Betrieb der Internetseite zwingend erforderlich. Es besteht folglich seitens des Nutzers keine Widerspruchsmöglichkeit.</target>
+        <target>La collecte de données pour la mise à disposition du site Web et le stockage des données dans des fichiers log est essentielle pour le fonctionnement du site Web. Il n’y a donc aucune contradiction de la part de l’utilisateur.</target>
       </trans-unit>
       <trans-unit id="535sXRB" resname="Reichweitenmessung &amp; Cookies">
         <source>Reichweitenmessung &amp; Cookies</source>
-        <target><![CDATA[__Reichweitenmessung & Cookies]]></target>
+        <target><![CDATA[Mesure de portée & cookies]]></target>
       </trans-unit>
       <trans-unit id="h_mc.sO" resname="Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.">
         <source>Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</source>
-        <target>__Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</target>
+        <target>Ce site utilise des cookies pour la mesure de portée pseudonymisée, qui sont transmis depuis notre serveur ou le serveur tiers vers le navigateur de l’utilisateur. Les cookies sont de petits fichiers stockés sur votre appareil. Votre navigateur accède à ces fichiers. L’utilisation de cookies augmente la convivialité et la sécurité de ce site.</target>
       </trans-unit>
       <trans-unit id="8hGBYWQ" resname="Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:">
         <source>Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:</source>
-        <target>__Falls Sie nicht möchten, dass Cookies zur Reichweitenmessung auf Ihrem Endgerät gespeichert werden, können Sie dem Einsatz dieser Dateien hier widersprechen:</target>
+        <target>Si vous ne souhaitez pas enregistrer de cookies de mesure de distance sur votre appareil, vous pouvez vous opposer à l’utilisation de ces fichiers ici:</target>
       </trans-unit>
       <trans-unit id="_lvpSE8" resname="Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:">
         <source>Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:</source>
-        <target>__Cookie-Deaktivierungsseite der Netzwerkwerbeinitiative:</target>
+        <target>La page de désactivation des cookies de la Network Advertising Initiative:</target>
       </trans-unit>
       <trans-unit id="4yipXK1" resname="Cookie-Deaktivierungsseite der US-amerikanischen Website:">
         <source>Cookie-Deaktivierungsseite der US-amerikanischen Website:</source>
-        <target>__Cookie-Deaktivierungsseite der US-amerikanischen Website:</target>
+        <target>La page de désactivation des cookies du site web américain:</target>
       </trans-unit>
       <trans-unit id="azRwnzQ" resname="Cookie-Deaktivierungsseite der europäischen Website:">
         <source>Cookie-Deaktivierungsseite der europäischen Website:</source>
-        <target>__Cookie-Deaktivierungsseite der europäischen Website:</target>
+        <target>La page de désactivation des cookies du site web européen:</target>
       </trans-unit>
       <trans-unit id="Mf.mGIh" resname="Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.">
         <source>Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.</source>
-        <target>__Gängige Browser bieten die Einstellungsoption, Cookies nicht zuzulassen. Hinweis: Es ist nicht gewährleistet, dass Sie auf alle Funktionen dieser Website ohne Einschränkungen zugreifen können, wenn Sie entsprechende Einstellungen vornehmen.</target>
+        <target>Les navigateurs populaires offrent l’option de ne pas autoriser les cookies. Note: Il n’y a aucune garantie que vous serez en mesure d’accéder à toutes les fonctions de ce site sans restrictions si vous faites les réglages appropriés.</target>
       </trans-unit>
       <trans-unit id="EBhRo7w" resname="Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.">
         <source>Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.</source>
-        <target>__Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.</target>
+        <target>Nous utilisons des cookies pour rendre notre site Web plus convivial. Certains éléments de notre site requièrent que le navigateur appelant soit identifié même après un saut de page.</target>
       </trans-unit>
       <trans-unit id="kUtmM9p" resname="In den Cookies werden dabei folgende Daten gespeichert und übermittelt:">
         <source>In den Cookies werden dabei folgende Daten gespeichert und übermittelt:</source>
-        <target>__In den Cookies werden dabei folgende Daten gespeichert und übermittelt:</target>
+        <target>Les données suivantes sont stockées et transmises dans les cookies:</target>
       </trans-unit>
       <trans-unit id="eC_taPI" resname="Spracheinstellungen">
         <source>Spracheinstellungen</source>
-        <target>__Spracheinstellungen</target>
+        <target>Les paramètres de langue</target>
       </trans-unit>
       <trans-unit id="utxoUrV" resname="Artikel in einem Warenkorb">
         <source>Artikel in einem Warenkorb</source>
-        <target>__Artikel in einem Warenkorb</target>
+        <target>Article dans un panier</target>
       </trans-unit>
       <trans-unit id="vH9RxXd" resname="Log-In-Informationen">
         <source>Log-In-Informationen</source>
-        <target>__Log-In-Informationen</target>
+        <target>Informations de connexion</target>
       </trans-unit>
       <trans-unit id="8I5qWR9" resname="Erfassung und Verarbeitung personenbezogener Daten">
         <source>Erfassung und Verarbeitung personenbezogener Daten</source>
-        <target>__Erfassung und Verarbeitung personenbezogener Daten</target>
+        <target>Collecte et traitement des données personnelles</target>
       </trans-unit>
       <trans-unit id="hr4.a7D" resname="Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.">
         <source>Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.</source>
-        <target>__Der Websitebetreiber erhebt, nutzt und gibt Ihre personenbezogenen Daten nur dann weiter, wenn dies im gesetzlichen Rahmen erlaubt ist oder Sie in die Datenerhebung einwilligen.</target>
+        <target>L’opérateur du site recueille, utilise et transfère vos données personnelles uniquement si cela est autorisé par la loi ou si vous consentez à la collecte de données.</target>
       </trans-unit>
       <trans-unit id="Rb4dybb" resname="Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.">
         <source>Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.</source>
-        <target>__Als personenbezogene Daten gelten sämtliche Informationen, welche dazu dienen, Ihre Person zu bestimmen und welche zu Ihnen zurückverfolgt werden können – also beispielsweise Ihr Name, Ihre E-Mail-Adresse und Telefonnummer.</target>
+        <target>Les informations personnelles désignent toutes les informations utilisées pour identifier votre personne et qui peuvent vous être attribuées, telles que votre nom, votre adresse e-mail et votre numéro de téléphone.</target>
       </trans-unit>
       <trans-unit id="fUQFNGY" resname="Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.">
         <source>Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.</source>
-        <target>__Diese Website können Sie auch besuchen, ohne Angaben zu Ihrer Person zu machen. Zur Verbesserung unseres Online-Angebotes speichern wir jedoch (ohne Personenbezug) Ihre Zugriffsdaten auf diese Website. Zu diesen Zugriffsdaten gehören z. B. die von Ihnen angeforderte Datei oder der Name Ihres Internet-Providers. Durch die Anonymisierung der Daten sind Rückschlüsse auf Ihre Person nicht möglich.</target>
-      </trans-unit>
-      <trans-unit id="We5qgSs" resname="&lt;span class=&quot;bold&quot;&gt;Welche?&lt;span&gt; – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.">
-        <source>&lt;span class="bold"&gt;Welche?&lt;span&gt; – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.</source>
-        <target><![CDATA[__<span class="bold">Welche?<span> – Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.]]></target>
-      </trans-unit>
-      <trans-unit id="Kno3jjc" resname="&lt;span class=&quot;bold&quot;&gt;Wie?&lt;span&gt; – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.">
-        <source>&lt;span class="bold"&gt;Wie?&lt;span&gt; – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.</source>
-        <target><![CDATA[__<span class="bold">Wie?<span> – Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.]]></target>
-      </trans-unit>
-      <trans-unit id="tvBB8Cl" resname="&lt;span class=&quot;bold&quot;&gt;Warum?&lt;span&gt; – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.">
-        <source>&lt;span class="bold"&gt;Warum?&lt;span&gt; – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.</source>
-        <target><![CDATA[__<span class="bold">Warum?<span> – Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.]]></target>
+        <target>Vous pouvez également visiter ce site sans donner aucune information personnelle. Pour améliorer notre offre en ligne, cependant, nous (sans référence personnelle) stockons vos données d’accès sur ce site. Ces données d’accès incluent z. Par exemple, le fichier que vous avez demandé ou le nom de votre fournisseur de services Internet. En raison de l’anonymisation des données, les conclusions sur votre personne ne sont pas possibles.</target>
       </trans-unit>
       <trans-unit id="vYS5WNk" resname="Kontaktformular und E-Mail-Kontakt">
         <source>Kontaktformular und E-Mail-Kontakt</source>
-        <target>__Kontaktformular und E-Mail-Kontakt</target>
+        <target>Formulaire de contact et contact par e-mail</target>
       </trans-unit>
       <trans-unit id="uK7Iube" resname="Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.">
         <source>Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.</source>
-        <target>__Auf unserer Internetseite ist ein Kontaktformular vorhanden, welches für die elektronische Kontaktaufnahme genutzt werden kann. Nimmt ein Nutzer diese Möglichkeit wahr, so werden die in der Eingabemaske eingegeben Daten an uns übermittelt und gespeichert.</target>
+        <target>Sur notre site Web est un formulaire de contact disponible, qui peut être utilisé pour un contact électronique. Si un utilisateur utilise cette option, les données saisies dans le masque de saisie nous seront transmises et sauvegardées.</target>
       </trans-unit>
       <trans-unit id="dCBwlEz" resname="Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.">
         <source>Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.</source>
-        <target>__Alternativ ist eine Kontaktaufnahme über die bereitgestellte E-Mail-Adresse möglich. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten des Nutzers gespeichert.</target>
+        <target>Alternativement, le contact via l’adresse e-mail fournie est possible. Dans ce cas, les données personnelles de l’utilisateur transmises par e-mail seront stockées.</target>
       </trans-unit>
       <trans-unit id="QPUhw2f" resname="Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.">
         <source>Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.</source>
-        <target>__Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.</target>
+        <target>Dans ce contexte, il n’y a pas de divulgation des données à des tiers. Les données sont utilisées exclusivement pour le traitement de la conversation.</target>
       </trans-unit>
       <trans-unit id="xH9ZaqA" resname="Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.">
         <source>Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.</source>
-        <target>__Rechtsgrundlage für die Verarbeitung der Daten ist bei Vorliegen einer Einwilligung des Nutzers Art. 6 Abs. 1 lit. a DSGVO.</target>
+        <target>La base juridique pour le traitement des données est en présence du consentement de l’utilisateur Art 6 paragraphe 1 lit. un GDPR.</target>
       </trans-unit>
       <trans-unit id="uZllNpf" resname="Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.">
         <source>Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.</source>
-        <target>__Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO. Zielt der E-Mail-Kontakt auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO.</target>
+        <target>La base juridique pour le traitement des données transmises lors de l’envoi d’un e-mail est l’article 6 (1) allumé. f GDPR. Si le contact par e-mail vise à conclure un contrat, la base juridique supplémentaire pour le traitement est l’article 6, paragraphe 1, lit. b GDPR.</target>
       </trans-unit>
       <trans-unit id="fb84HJi" resname="Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.&#10;                    Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.">
         <source>Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.
                     Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.</source>
-        <target>__Die Verarbeitung der personenbezogenen Daten aus der Eingabemaske dient uns allein zur Bearbeitung der Kontaktaufnahme. Im Falle einer Kontaktaufnahme per E-Mail liegt hieran auch das erforderliche berechtigte Interesse an der Verarbeitung der Daten.
-                    Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen.</target>
+        <target>Le traitement des données personnelles à partir du masque de saisie ne nous sert qu’à traiter le contact. Dans le cas d’un contact par e-mail, cela inclut également l’intérêt légitime requis dans le traitement des données. Les autres données personnelles traitées au cours du processus d’envoi servent à empêcher une utilisation abusive du formulaire de contact et à assurer la sécurité de nos systèmes informatiques.</target>
       </trans-unit>
       <trans-unit id="yznsrLC" resname="Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.">
         <source>Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.</source>
-        <target>__Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für die personenbezogenen Daten aus der Eingabemaske des Kontaktformulars und diejenigen, die per E-Mail übersandt wurden, ist dies dann der Fall, wenn die jeweilige Konversation mit dem Nutzer beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist.</target>
+        <target>Les données seront supprimées dès qu’elles ne seront plus nécessaires aux fins de leur collecte. Pour les données personnelles du formulaire de saisie du formulaire de contact et celles envoyées par e-mail, c’est le cas lorsque la conversation respective avec l’utilisateur est terminée. La conversation est terminée lorsqu’il peut être déduit des circonstances que les faits pertinents ont été finalement clarifiés.</target>
       </trans-unit>
       <trans-unit id="qH3.GqC" resname="Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.">
         <source>Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.</source>
-        <target>__Der Nutzer hat jederzeit die Möglichkeit, seine Einwilligung zur Verarbeitung der personenbezogenen Daten zu widerrufen. Nimmt der Nutzer per E-Mail Kontakt mit uns auf, so kann er der Speicherung seiner personenbezogenen Daten jederzeit widersprechen. In einem solchen Fall kann die Konversation nicht fortgeführt werden.</target>
+        <target>L’utilisateur a la possibilité à tout moment de révoquer son consentement au traitement des données personnelles. Si l’utilisateur nous contacte par e-mail, il peut s’opposer au stockage de ses données personnelles à tout moment. Dans un tel cas, la conversation ne peut pas continuer.</target>
       </trans-unit>
       <trans-unit id=".KXSW0u" resname="Onlineshop">
         <source>Onlineshop</source>
-        <target>__Onlineshop</target>
+        <target>Magasin en ligne</target>
       </trans-unit>
       <trans-unit id="3aQU9VZ" resname="Kunden">
         <source>Kunden</source>
-        <target>__Kunden</target>
+        <target>Clientèle</target>
       </trans-unit>
       <trans-unit id="x35nZN6" resname="Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen">
         <source>Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen</source>
-        <target>__Wir, der Shopbetreiber, erheben aufgrund unseres berechtigten Interesses (s. Art. 6 Abs. 1 lit. b DSGVO) Daten über über die Kunden die Bestellungen in unserem Shop tätigen</target>
+        <target>En tant qu’exploitant du magasin, nous collectons, en raison de notre intérêt légitime (voir art. 6, al. 1, let. b GDPR), des données sur les clients qui passent commande dans notre magasin.</target>
       </trans-unit>
       <trans-unit id="f1f9alO" resname="Bestellvorgang">
         <source>Bestellvorgang</source>
-        <target>__Bestellvorgang</target>
+        <target>Procédure de commande</target>
       </trans-unit>
       <trans-unit id="bejJu9U" resname="Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:">
         <source>Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:</source>
-        <target>__Daten, welche im Rahmen einer Bestellabwicklung von den Kunden eingegeben werden, werden auf www.soap-opera.com.be gespeichert. Dazu gehören:</target>
+        <target>Les données saisies par le client dans le cadre du traitement des commandes sont enregistrées sur www.soap-opera.be. Cela inclut :</target>
       </trans-unit>
       <trans-unit id="yCfL96N" resname="Name und Vorname">
         <source>Name und Vorname</source>
-        <target>__Name und Vorname</target>
+        <target>Nom, prénom</target>
       </trans-unit>
       <trans-unit id="wvl2WtX" resname="E-Mail-Adresse">
         <source>E-Mail-Adresse</source>
-        <target>__E-Mail-Adresse</target>
+        <target>Adresse électronique</target>
       </trans-unit>
       <trans-unit id="eeXPIN4" resname="Adresse">
         <source>Adresse</source>
-        <target>__Adresse</target>
+        <target>Adresse</target>
       </trans-unit>
       <trans-unit id="0MO3JWs" resname="Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:">
         <source>Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:</source>
-        <target>__Jene Daten, welche zur Auslieferung oder Auftragsabwicklung zwingend notwendig sind, werden an die Firma Stripe  (https://www.stripe.com) weitergegeben. Weiterhin werden die Zahlungsinformationen der gewählten Zahlart an Stripe übermittelt:</target>
+        <target>Ces données, qui sont impérativement nécessaires à la distribution ou à la liquidation des commandes, sont transmises à la société Stripe (https://www.stripe.com). De plus, les informations de paiement du mode de paiement sélectionné seront transmises à Stripe :</target>
       </trans-unit>
       <trans-unit id="PeXKCZg" resname="Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode">
         <source>Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode</source>
-        <target>__Kartennummer und -inhaber, Ablaufdatum und Sicherheitscode</target>
+        <target>Numéro et titulaire de la carte, date d’expiration et code de sécurité</target>
       </trans-unit>
       <trans-unit id="rIccwG8" resname="Weitere Informationen zum Datenschutz bei Stripe:">
         <source>Weitere Informationen zum Datenschutz bei Stripe:</source>
-        <target>__Weitere Informationen zum Datenschutz bei Stripe:</target>
+        <target>Plus d’informations sur la protection des données chez Stripe :</target>
       </trans-unit>
       <trans-unit id="PwoH3ni" resname="Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.">
         <source>Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.</source>
-        <target>__Sowie die Aufbewahrung Ihrer Daten nicht mehr erforderlich oder gesetzlich geboten ist, werden diese gelöscht. Kundenkonten und die dazugehörigen Daten werden auf Anfrage gelöscht.</target>
+        <target>Dès que le stockage de vos données n’est plus nécessaire ou n’est plus légalement requis, elles seront effacées. Les comptes clients et les données associées seront supprimés sur demande.</target>
       </trans-unit>
       <trans-unit id="V.UuKul" resname="SOZIALE MEDIEN, PLUGINS &amp; TOOLS">
         <source>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</source>
-        <target><![CDATA[__SOZIALE MEDIEN, PLUGINS & TOOLS]]></target>
+        <target><![CDATA[MÉDIAS SOCIAUX, PLUGINS & OUTILS]]></target>
       </trans-unit>
       <trans-unit id="V5GOkrb" resname="Einbindung von Diensten und Inhalten (Plugins) Dritter">
         <source>Einbindung von Diensten und Inhalten (Plugins) Dritter</source>
-        <target>__Einbindung von Diensten und Inhalten (Plugins) Dritter</target>
+        <target>Intégration de services et de contenus tiers (plugins)</target>
       </trans-unit>
       <trans-unit id="qhX9p57" resname="Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.">
         <source>Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.</source>
-        <target>__Wir setzen innerhalb unseres Onlineangebotes auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb und im Interesse einer ansprechenden Darstellung unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Inhalts- oder Serviceangebote von Drittanbietern ein, um deren Inhalte und Services, wie z.B. Videos oder Beiträge einzubinden. Eine entsprechende Einbindung setzt immer voraus, dass die Drittanbieter dieser Inhalte, Deine IP-Adresse wahrnehmen, da sie ohne die IP-Adresse die Inhalte nicht an Deinen Browser senden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich.</target>
+        <target>Nous fixons dans notre offre en ligne sur la base de nos intérêts légitimes (c’est-à-dire l’intérêt pour l’analyse, l’optimisation et l’exploitation économique et dans l’intérêt d’une présentation attrayante de notre offre en ligne au sens de l’art. 6 al. 1 lit. f. DSGVO), nous utilisons des offres de contenus ou de services de tiers pour intégrer leurs contenus et services, tels que des vidéos ou des contributions. Une telle intégration exige toujours que les fournisseurs tiers de ces contenus connaissent votre adresse IP, car ils ne peuvent pas envoyer les contenus à votre navigateur sans l’adresse IP. L’adresse IP est donc nécessaire pour afficher ce contenu.</target>
       </trans-unit>
       <trans-unit id="OUOKH2z" resname="Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.">
         <source>Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.</source>
-        <target>__Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter Deine IP-Adresse lediglich zur Auslieferung der Inhalte verwenden.</target>
+        <target>Nous nous efforçons de n’utiliser que des contenus dont les fournisseurs n’utilisent votre adresse IP que pour livrer le contenu.</target>
       </trans-unit>
       <trans-unit id="tQD4KIZ" resname="Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.">
         <source>Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.</source>
-        <target>__Drittanbieter können ferner so genannte Pixel-Tags (unsichtbare Grafiken, auch als “Web Beacons” bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die “Pixel-Tags” können Informationen, wie der Besucherverkehr auf den Seiten dieser Website ausgewertet werden. Die pseudonymen Informationen können ferner in Cookies auf Deinem Gerät gespeichert werden und unter anderem technische Informationen zu Deinem Browser und Betriebssystem, verweisende Webseiten, Besuchszeit sowie weitere Angaben zu Deiner Nutzung unseres Onlineangebotes enthalten, als auch mit solchen Informationen aus anderen Quellen verbunden werden.</target>
+        <target> Les tiers peuvent également utiliser des pixels invisibles (graphiques invisibles, également appelés “balises web”) à des fins statistiques ou commerciales. Les “pixels invisibles” peuvent être utilisés pour analyser des informations telles que le trafic des visiteurs sur les pages de ce site web. Les informations pseudonymes peuvent également être stockées dans des cookies sur votre appareil et peuvent contenir des informations techniques sur votre navigateur et votre système d’exploitation, les pages web de référence, le temps de visite et d’autres détails sur votre utilisation de nos services en ligne, ainsi qu’être liées à ces informations provenant d’autres sources.</target>
+      </trans-unit>
+      <trans-unit id="5Vv.f5Y" resname="Welche?">
+        <source>Welche?</source>
+        <target>Quoi?</target>
+      </trans-unit>
+      <trans-unit id="gIpVMjo" resname="– Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.">
+        <source>– Wir verarbeiten personenbezogene Daten wie Vorname, Nachname, IP-Adresse, E-Mail-Adresse, Wohnort, Postleitzahl und Inhaltsangaben aus dem Kontaktformular.</source>
+        <target>– Nous traitons les données personnelles telles que le prénom, le nom, l’adresse IP, l’adresse e-mail, le lieu de résidence, le code postal et le contenu du formulaire de contact.</target>
+      </trans-unit>
+      <trans-unit id="op_H4U7" resname="Wie?">
+        <source>Wie?</source>
+        <target>Comment?</target>
+      </trans-unit>
+      <trans-unit id="lCS3R8Z" resname="– Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.">
+        <source>– Wir verarbeiten personenbezogene Daten nur nach ausdrücklicher Erlaubnis der betreffenden Nutzer und unter Einhaltung der geltenden Datenschutzbestimmungen.</source>
+        <target>– Nous traitons les données personnelles uniquement avec l’autorisation expresse des utilisateurs concernés et conformément aux réglementations applicables en matière de protection des données.</target>
+      </trans-unit>
+      <trans-unit id="DM73ulw" resname="Warum?">
+        <source>Warum?</source>
+        <target>Pourquoi?</target>
+      </trans-unit>
+      <trans-unit id="zxkg6_I" resname="– Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.">
+        <source>– Die Verarbeitung der personenbezogenen Daten erfolgt aufgrund unseres berechtigten Interesses zur Erfüllung unserer vertraglich vereinbarten Leistungen und zur Optimierung unseres Online-Angebotes.</source>
+        <target>– Le traitement des données personnelles est basé sur notre intérêt légitime à remplir nos services contractuellement convenus et à optimiser nos services en ligne.</target>
+      </trans-unit>
+      <trans-unit id="mGZk_jP" resname="Allgemeine Geschäftsbedingungen">
+        <source>Allgemeine Geschäftsbedingungen</source>
+        <target>Conditions générales de vente</target>
+      </trans-unit>
+      <trans-unit id="7w.oc7t" resname="AGB">
+        <source>AGB</source>
+        <target>CGV</target>
+      </trans-unit>
+      <trans-unit id="IfPKiTF" resname="Artikel 1 – Angebot – Bestellung">
+        <source>Artikel 1 – Angebot – Bestellung</source>
+        <target>Article 1 – Offre – Commande</target>
+      </trans-unit>
+      <trans-unit id="DY806xV" resname="Die in unseren Angeboten, Katalogen, Broschüren oder Preislisten jeglicher Art enthaltenen Angaben sind unverbindlich und die Bestellung ist nur nach unserer ausdrücklichen Zustimmung bindend.">
+        <source>Die in unseren Angeboten, Katalogen, Broschüren oder Preislisten jeglicher Art enthaltenen Angaben sind unverbindlich und die Bestellung ist nur nach unserer ausdrücklichen Zustimmung bindend.</source>
+        <target>Les indications contenues dans nos offres, catalogues, prospectus ou tarifs de quelque ordre qu’elles soient, sont données sans engagement de notre part.La commande ne nous engage qu’après accord exprès de notre part.</target>
+      </trans-unit>
+      <trans-unit id="c1yJmZs" resname="Artikel 2 – Lieferung – Bedingungen und Konditionen">
+        <source>Artikel 2 – Lieferung – Bedingungen und Konditionen</source>
+        <target>Article 2 – Livraison – Modalités</target>
+      </trans-unit>
+      <trans-unit id="wobidz6" resname="Die Güter reisen auf Risiko und Gefahr des Empfängers; es liegt in der Verantwortung des Empfängers, alle Reservierungen bei den Transportunternehmen vorzunehmen. Wir lehnen jede Verantwortung für Schäden ab, die von Transportunternehmen und ihren Mitarbeitern am Eigentum des Käufers oder am Käufer selbst und seinen Mitarbeitern verursacht werden. Keine Verzögerung während dieser Vorgänge berechtigt den Käufer, die Erfüllung seiner Verpflichtungen aufzuschieben. In jedem Fall behalten wir uns das Recht vor, kleine Bestellungen über unsere Vertriebspartner zu liefern.">
+        <source>Die Güter reisen auf Risiko und Gefahr des Empfängers; es liegt in der Verantwortung des Empfängers, alle Reservierungen bei den Transportunternehmen vorzunehmen. Wir lehnen jede Verantwortung für Schäden ab, die von Transportunternehmen und ihren Mitarbeitern am Eigentum des Käufers oder am Käufer selbst und seinen Mitarbeitern verursacht werden. Keine Verzögerung während dieser Vorgänge berechtigt den Käufer, die Erfüllung seiner Verpflichtungen aufzuschieben. In jedem Fall behalten wir uns das Recht vor, kleine Bestellungen über unsere Vertriebspartner zu liefern.</source>
+        <target>Les marchandises voyagent aux risques et périls du destinataire; il incombe à ce dernier de faire toutes réserves auprès des transporteurs. Nous déclinons toutes responsabilités pour les dégâts qui seraient causé par les entreprises de transports et leur personnel à la propriété de l’acheteur ou à l’acheteur lui-même et à son personnel. Aucun retard au cours de ces opérations n’autorise l’acheteur à différer l’exécution de ses obligations. En tout cas, nous nous réservons le droit de livrer les petites commandes par l’intermédiaire de nos distributeurs.</target>
+      </trans-unit>
+      <trans-unit id="zpkKKw7" resname="Artikel 3 – Lieferung – Frist">
+        <source>Artikel 3 – Lieferung – Frist</source>
+        <target>Article 3 – Livraison – Délai</target>
+      </trans-unit>
+      <trans-unit id="aoYq4MN" resname="Außer in Fällen höherer Gewalt beginnt die Lieferfrist mit dem Tag der Annahme der Bestellung durch unser Unternehmen oder zu jedem anderen Zeitpunkt, der zwischen den Parteien vereinbart werden kann. Sie wird als Hinweis gegeben, und ihre Überschreitung verpflichtet unser Unternehmen nicht zur Verantwortung: Der Käufer verzichtet auf das Recht, aus diesem Grund Stornierung oder Schadenersatz zu verlangen. Die Überschreitung der angegebenen Frist um mehr als 2 Monate berechtigt den Käufer jedoch dazu, ohne gerichtliches Einschreiten und ohne Anspruch auf Schadenersatz von der Vertragsauflösung zu profitieren.">
+        <source>Außer in Fällen höherer Gewalt beginnt die Lieferfrist mit dem Tag der Annahme der Bestellung durch unser Unternehmen oder zu jedem anderen Zeitpunkt, der zwischen den Parteien vereinbart werden kann. Sie wird als Hinweis gegeben, und ihre Überschreitung verpflichtet unser Unternehmen nicht zur Verantwortung: Der Käufer verzichtet auf das Recht, aus diesem Grund Stornierung oder Schadenersatz zu verlangen. Die Überschreitung der angegebenen Frist um mehr als 2 Monate berechtigt den Käufer jedoch dazu, ohne gerichtliches Einschreiten und ohne Anspruch auf Schadenersatz von der Vertragsauflösung zu profitieren.</source>
+        <target>Sauf cas de force majeure, le délai de livraison prend cours au jour de l’acceptation de la commande par notre société ou tout autre moment qui sera convenu entre les parties. Il est donné à titre indicatif et son dépassement n’engage pas la responsabilité de notre société: l’acheteur renonce à demander la résolution ou des dommages-intérêt pour ce motif. Toutefois, le dépassement de plus de 2 mois du délai indiqué autorise l’acheteur à se prévaloir de la résolution du contrat sans intervention judiciaire et sans qu’il ait droit à des dommages-intérêt.</target>
+      </trans-unit>
+      <trans-unit id="bPFtW8A" resname="Artikel 4 – Aggregierung">
+        <source>Artikel 4 – Aggregierung</source>
+        <target>Article 4 – Agrégation</target>
+      </trans-unit>
+      <trans-unit id="pnaZVB5" resname="Die Zusammenführung der Waren erfolgt zum Zeitpunkt der Lieferung an die Wohnung des Käufers oder innerhalb von acht Tagen danach. Kann die Lieferung aufgrund des Verschuldens des Käufers nicht erfolgen, oder, wenn die Lieferung nicht frei Haus erfolgt, wird die Ware dem Käufer innerhalb von acht Tagen nach dem Datum des Versands oder der Zustellung der Rechnung oder des Versandscheins bei uns zur Zusammenstellung zur Verfügung gestellt, wobei letztere Dokumente als Nachweis der Verfügbarkeit gelten. Reklamationen sind innerhalb von acht Tagen per Einschreiben zu erheben; Schweigen des Käufers während dieser Frist gilt als vorbehaltlose Zusammenfassung und macht jede Reklamation wegen offensichtlicher Mängel, mangelnder Konformität der Waren oder fehlender Gegenstände unzulässig.">
+        <source>Die Zusammenführung der Waren erfolgt zum Zeitpunkt der Lieferung an die Wohnung des Käufers oder innerhalb von acht Tagen danach. Kann die Lieferung aufgrund des Verschuldens des Käufers nicht erfolgen, oder, wenn die Lieferung nicht frei Haus erfolgt, wird die Ware dem Käufer innerhalb von acht Tagen nach dem Datum des Versands oder der Zustellung der Rechnung oder des Versandscheins bei uns zur Zusammenstellung zur Verfügung gestellt, wobei letztere Dokumente als Nachweis der Verfügbarkeit gelten. Reklamationen sind innerhalb von acht Tagen per Einschreiben zu erheben; Schweigen des Käufers während dieser Frist gilt als vorbehaltlose Zusammenfassung und macht jede Reklamation wegen offensichtlicher Mängel, mangelnder Konformität der Waren oder fehlender Gegenstände unzulässig.</source>
+        <target>L’agrégation des marchandises a lieu au moment de la livraison au domicile de l’acheteur ou dans les huit jours qui suivent. Si la livraison ne peut avoir lieu par la faute de l’acheteur, ou, lorsque la livraison n’a pas lieu franco domicile, les marchandises sont mises à la disponsition de l’acheteur en nos locaux pour agrégation dans les huits jours suivant la date d’expédition ou de remise de la facture ou la note d’envoi, ces derniers documents faisant preuve de la mise à disposition. Les réclamations se font par lettre recommandée dans le délai de huit jours ; le silence gardé par l’acheteur pendant ce délai vaut agrégation sans réserve et rend irrecevable toutes réclamation pour vices apparents, défauts de conformité des marchandises ou manquants.</target>
+      </trans-unit>
+      <trans-unit id="IHga7dU" resname="Im Hinblick auf mögliche Anmerkungen des Kunden, die auf einem Fehler beruhen, der nach dem Druck entdeckt wurde, wenn die Proofs und/oder Zeichnungen genehmigt wurden und die Waren diesen entsprechen, wird keine Reklamation zugelassen. Im Falle einer berechtigten Beanstandung sind wir unter Ausschluss jeglicher Entschädigung nur verpflichtet, die fehlerhaften Gegenstände innerhalb der erforderlichen Frist zu ersetzen. Umgekehrt gilt bei Waren, die nicht in unseren Katalogen oder Broschüren erwähnt und ausdrücklich zugunsten des Käufers bestellt wurden, die Lieferung an den Käufer als Genehmigung, ohne dass die Qualität oder Nützlichkeit der Waren in Frage gestellt wird.">
+        <source>Im Hinblick auf mögliche Anmerkungen des Kunden, die auf einem Fehler beruhen, der nach dem Druck entdeckt wurde, wenn die Proofs und/oder Zeichnungen genehmigt wurden und die Waren diesen entsprechen, wird keine Reklamation zugelassen. Im Falle einer berechtigten Beanstandung sind wir unter Ausschluss jeglicher Entschädigung nur verpflichtet, die fehlerhaften Gegenstände innerhalb der erforderlichen Frist zu ersetzen. Umgekehrt gilt bei Waren, die nicht in unseren Katalogen oder Broschüren erwähnt und ausdrücklich zugunsten des Käufers bestellt wurden, die Lieferung an den Käufer als Genehmigung, ohne dass die Qualität oder Nützlichkeit der Waren in Frage gestellt wird.</source>
+        <target> Il ne sera admis aucune réclamation, en ce qui concerne d’éventuelles remarques de client, fondées sur une erreur constatée après l’impression lorsque les épreuves et/ou dessins ont été approuvés et que la marchandise y est conforme. En cas de réclamation fondée, dans les délais requis, nous serons uniquement tenus de remplacer les articles défectueux, à l’exclusion d’un quelconque dédommagement. À l’inverse, pour les marchandises non visées dans nos catalogues ou prospectus, et expressément commandées au profit de l’acheteur, la livraison à ce dernier vaudra agréation sans que la qualité ou l’utilité des marchandises ne puisse être remise en cause.</target>
+      </trans-unit>
+      <trans-unit id="7nD1m8P" resname="Artikel 5 – Rücksendung von Waren.">
+        <source>Artikel 5 – Rücksendung von Waren.</source>
+        <target>Article 5 – Retours de marchandises.</target>
+      </trans-unit>
+      <trans-unit id="8wG04Qh" resname="Die in Übereinstimmung mit der Bestellung versandten Waren werden nicht zurückgenommen oder umgetauscht.">
+        <source>Die in Übereinstimmung mit der Bestellung versandten Waren werden nicht zurückgenommen oder umgetauscht.</source>
+        <target>La marchandise envoyée conformément à la commande ne sera ni reprise, ni échangée.</target>
+      </trans-unit>
+      <trans-unit id="nPZ01N_" resname="Artikel 6 – Gewährleistung.">
+        <source>Artikel 6 – Gewährleistung.</source>
+        <target>Article 6 – Garantie..</target>
+      </trans-unit>
+      <trans-unit id="25VFpqK" resname="Die gewährte Garantie ist die Garantie für versteckte Mängel. Der Käufer kann sich nur drei Monate lang ab Lieferung oder Verfügbarkeit im Sinne von Artikel 4 dieser allgemeinen Bedingungen darauf berufen. Er ist verpflichtet, innerhalb von 15 Tagen nach der Entdeckung des Mangels per Einschreiben davon Gebrauch zu machen, um den versteckten Mangel nachzuweisen und unserem Unternehmen die Möglichkeit zu geben, die Realität des Mangels zu überprüfen. Im Falle einer berechtigten Reklamation ist unser Unternehmen lediglich verpflichtet, die fehlerhaften Artikel innerhalb der erforderlichen Frist zu ersetzen, unter Ausschluss jeglicher Entschädigung.">
+        <source>Die gewährte Garantie ist die Garantie für versteckte Mängel. Der Käufer kann sich nur drei Monate lang ab Lieferung oder Verfügbarkeit im Sinne von Artikel 4 dieser allgemeinen Bedingungen darauf berufen. Er ist verpflichtet, innerhalb von 15 Tagen nach der Entdeckung des Mangels per Einschreiben davon Gebrauch zu machen, um den versteckten Mangel nachzuweisen und unserem Unternehmen die Möglichkeit zu geben, die Realität des Mangels zu überprüfen. Im Falle einer berechtigten Reklamation ist unser Unternehmen lediglich verpflichtet, die fehlerhaften Artikel innerhalb der erforderlichen Frist zu ersetzen, unter Ausschluss jeglicher Entschädigung.</source>
+        <target>La garantie accordée est la garantie des vices cachés. L’acheteur ne peut s’en prévaloir que pendant trois mois à partir de la livraison ou de la mise à disposition telle que définie à l’article 4 des présentes conditions générales. Il est tenu de s’en prévaloir, par lettre recommandée dans les 15 jours de la découverte du vice, de rapporter la preuve du vice caché et de laisser à notre société la possibilité d’en contrôler la réalité. Notre société ne sera tenue, en cas de réclamation fondée, introduite dans les délais requis, qu’au remplacement des articles défectueux, à l’exclusion d’un quelconque dédommagement.</target>
+      </trans-unit>
+      <trans-unit id="XzaXT2." resname="Artikel 7- Höhere Gewalt">
+        <source>Artikel 7- Höhere Gewalt</source>
+        <target>Article 7 - Force majeure</target>
+      </trans-unit>
+      <trans-unit id="PuIeiqw" resname="Fälle höherer Gewalt, je nachdem, ob sie ein vorübergehendes oder dauerhaftes Hindernis für die Vertragserfüllung darstellen, setzen unsere Verpflichtungen automatisch aus oder erlöschen und entbinden uns vollständig von unserer Haftung. Dauert dieses Hindernis länger als einen Monat an, hat jede der Parteien das Recht, die Vereinbarung von Rechts wegen und ohne Entschädigung zu kündigen. gelten als Fälle höherer Gewalt, Ereignisse außerhalb unserer Kontrolle, die die Ausführung des Abkommens verhindern, insbesondere bei Krieg, Feuer, Überschwemmung, Transportschwierigkeiten, Frost und anderen ungünstigen klimatischen Bedingungen, Krankheit und Maßnahmen der Behörden, insbesondere im Hinblick auf Import-Export, Schwierigkeiten bei der Versorgung mit Rohstoffen, Energie oder Betriebsmitteln, einschließlich des Ausfalls von Zulieferern, von denen wir abhängig wären, General- oder Nicht-Generalstreiks, Aussperrung, Arbeitsunruhen, Aufruhr, Mängel oder Schäden an Waren sowie alle anderen Störungen in unserem Betrieb, einschließlich der Umstände, die unserem Personal zuzuschreiben sind.">
+        <source>Fälle höherer Gewalt, je nachdem, ob sie ein vorübergehendes oder dauerhaftes Hindernis für die Vertragserfüllung darstellen, setzen unsere Verpflichtungen automatisch aus oder erlöschen und entbinden uns vollständig von unserer Haftung. Dauert dieses Hindernis länger als einen Monat an, hat jede der Parteien das Recht, die Vereinbarung von Rechts wegen und ohne Entschädigung zu kündigen. gelten als Fälle höherer Gewalt, Ereignisse außerhalb unserer Kontrolle, die die Ausführung des Abkommens verhindern, insbesondere bei Krieg, Feuer, Überschwemmung, Transportschwierigkeiten, Frost und anderen ungünstigen klimatischen Bedingungen, Krankheit und Maßnahmen der Behörden, insbesondere im Hinblick auf Import-Export, Schwierigkeiten bei der Versorgung mit Rohstoffen, Energie oder Betriebsmitteln, einschließlich des Ausfalls von Zulieferern, von denen wir abhängig wären, General- oder Nicht-Generalstreiks, Aussperrung, Arbeitsunruhen, Aufruhr, Mängel oder Schäden an Waren sowie alle anderen Störungen in unserem Betrieb, einschließlich der Umstände, die unserem Personal zuzuschreiben sind.</source>
+        <target>Les cas de force majeure, selon qu’ils créent un obstacle temporaire ou définitif à l’exécution du contrat, suspendent ou éteignent de plein droit nos obligations et dégagent entièrement notre responsabilité. Si cet obstacle dure plus d’un mois, chacune des parties a le droit de mettre fin de plein droit et sans indemnité à la convention. Sont considérés comme des cas de forces majeure, les évènements indépendants de notre volonté qui empêchent l’exécution de la convention et notamment en cas de guerre, incendie, inondation, difficultés de transport, gel et autres conditions climatiques défavorables, maladie et mesures prises par les autorités et notamment en matière d’import-export, difficultés d’approvisionnement en matières premières, énergie ou articles d’exploitation y compris la carence de fournisseurs dont nous serions tributaires, grève générales ou non, lock-out, troubles sociaux, émeutes, défaut ou endommagement de marchandises, de même que toute autre perturbation dans notre entreprise, y compris les circonstances imputables à notre personnel.</target>
+      </trans-unit>
+      <trans-unit id="B3XOENj" resname="Artikel 8- Zahlungsbedingungen">
+        <source>Artikel 8- Zahlungsbedingungen</source>
+        <target>Article 8 – Prix - Modalités de paiement</target>
+      </trans-unit>
+      <trans-unit id="m8ZBfkY" resname="Sofern auf der Rechnung nicht ausdrücklich anders angegeben, muss die Zahlung innerhalb von 30 Tagen nach Rechnungsdatum erfolgen. Jeder Zahlungsverzug berechtigt uns zur Ausübung eines Zurückbehaltungsrechts an allen Gegenständen des Käufers, die in unseren Besitz gebracht oder in unserem Besitz gelassen werden. Bei Nichtzahlung am Fälligkeitstag werden automatisch und ohne Inverzugsetzung Verzugszinsen in Höhe von 15&amp;#37; pro Jahr fällig. Wenn der Rechnungsbetrag nicht innerhalb von 8 Tagen nach einer per Einschreiben versandten Mahnung bezahlt wird, wird der Rechnungsbetrag um 15&amp;#37; erhöht, mindestens jedoch um 40 Euro, um die durch diese Verzögerung verursachten zusätzlichen Kosten zu decken.">
+        <source>Sofern auf der Rechnung nicht ausdrücklich anders angegeben, muss die Zahlung innerhalb von 30 Tagen nach Rechnungsdatum erfolgen. Jeder Zahlungsverzug berechtigt uns zur Ausübung eines Zurückbehaltungsrechts an allen Gegenständen des Käufers, die in unseren Besitz gebracht oder in unserem Besitz gelassen werden. Bei Nichtzahlung am Fälligkeitstag werden automatisch und ohne Inverzugsetzung Verzugszinsen in Höhe von 15&amp;#37; pro Jahr fällig. Wenn der Rechnungsbetrag nicht innerhalb von 8 Tagen nach einer per Einschreiben versandten Mahnung bezahlt wird, wird der Rechnungsbetrag um 15&amp;#37; erhöht, mindestens jedoch um 40 Euro, um die durch diese Verzögerung verursachten zusätzlichen Kosten zu decken.</source>
+        <target>Sauf indication contraire expresse sur la facture, le paiement doit être effectué dans les 30 jours suivant la date de facturation. Tout retard de paiement nous donne le droit d'exercer un droit de rétention sur tous les objets de l'acheteur qui sont mis en notre possession ou laissés en notre possession. Le non-paiement à l'échéance entraînera de plein droit des intérêts moratoires de 15% l'an, sans mise en demeure. A défaut de paiement du montant de la facture dans les 8 jours suivant un rappel envoyé par courrier recommandé, le montant de la facture sera majoré de 15%, avec un minimum de 40 euros, pour couvrir les surcoûts occasionnés par ce retard.</target>
+      </trans-unit>
+      <trans-unit id="bLRveXm" resname="Artikel 9-Eigentumsvorbehalt">
+        <source>Artikel 9-Eigentumsvorbehalt</source>
+        <target>Article 9 - Réserve de propriété</target>
+      </trans-unit>
+      <trans-unit id="Bkudp9y" resname="Alle von uns gelieferten Artikel bleiben unser Eigentum, bis der Käufer den Kaufpreis und die Kosten des Verkaufs vollständig bezahlt hat.">
+        <source>Alle von uns gelieferten Artikel bleiben unser Eigentum, bis der Käufer den Kaufpreis und die Kosten des Verkaufs vollständig bezahlt hat.</source>
+        <target>Tous les articles livrés par nous restent notre propriété jusqu’au moment où l’acheteur a acquitté complètement le prix d’achat et les frais de la vente.</target>
+      </trans-unit>
+      <trans-unit id="a_A7Kz3" resname="Artikel 10- Bedingungen für den Wiederverkauf">
+        <source>Artikel 10- Bedingungen für den Wiederverkauf</source>
+        <target>Article 10 - Conditions de revente</target>
+      </trans-unit>
+      <trans-unit id="BTX8i9B" resname="Der Käufer darf, sofern nicht ausdrücklich und schriftlich von uns genehmigt, unsere Artikel nur in unserer eigenen Verpackung zum Verkauf anbieten oder verkaufen, noch darf er unsere Artikel, ob kostenlos oder nicht, in Verbindung mit anderen spezifizierten Produkten oder Dienstleistungen anbieten, außer in dem gesetzlich zugelassenen Fall.">
+        <source>Der Käufer darf, sofern nicht ausdrücklich und schriftlich von uns genehmigt, unsere Artikel nur in unserer eigenen Verpackung zum Verkauf anbieten oder verkaufen, noch darf er unsere Artikel, ob kostenlos oder nicht, in Verbindung mit anderen spezifizierten Produkten oder Dienstleistungen anbieten, außer in dem gesetzlich zugelassenen Fall.</source>
+        <target>L’acheteur ne peut, sauf autorisation contraire expresse et écrite de notre part, offrir en vente ou vendre nos articles que présentés dans notre propre emballage, ni offrir nos articles, gratuitement ou non, conjointement à d’autres produits ou services déterminés si ce n’est dans le cas que la loi autorise.</target>
+      </trans-unit>
+      <trans-unit id="0InevwK" resname="Artikel 11- Ausnahmen von der Haftung">
+        <source>Artikel 11- Ausnahmen von der Haftung</source>
+        <target>Article 11 - Exonérations de responsabilité</target>
+      </trans-unit>
+      <trans-unit id="2GBPjYj" resname="Die in diesen allgemeinen Verkaufsbedingungen enthaltenen Haftungsausschlüsse gelten für jedes Verschulden, einschließlich grober Fahrlässigkeit, jedoch nicht für Diebstahl.">
+        <source>Die in diesen allgemeinen Verkaufsbedingungen enthaltenen Haftungsausschlüsse gelten für jedes Verschulden, einschließlich grober Fahrlässigkeit, jedoch nicht für Diebstahl.</source>
+        <target>Les exonérations de responsabilité comprises dans les présentes conditions générales de vente couvrent toute faute, en ce compris la faute lourde, mais pas le vol.</target>
+      </trans-unit>
+      <trans-unit id="S2bMegB" resname="Artikel 12- Anwendung der allgemeinen Bedingungen">
+        <source>Artikel 12- Anwendung der allgemeinen Bedingungen</source>
+        <target>Articles 12 - Application des conditions générales</target>
+      </trans-unit>
+      <trans-unit id="Qdv6cf4" resname="Sofern nicht ausdrücklich anders angegeben, erfolgen alle unsere Angebote und Lieferungen gemäß diesen allgemeinen Geschäftsbedingungen, die Vorrang vor den allgemeinen oder besonderen Bedingungen, gedruckt oder nicht, des Käufers haben. Es wird davon ausgegangen, dass der Käufer durch Unterzeichnung des Bestellformulars auf sein Recht verzichtet hat, sich auf seine eigenen Bedingungen zu berufen.">
+        <source>Sofern nicht ausdrücklich anders angegeben, erfolgen alle unsere Angebote und Lieferungen gemäß diesen allgemeinen Geschäftsbedingungen, die Vorrang vor den allgemeinen oder besonderen Bedingungen, gedruckt oder nicht, des Käufers haben. Es wird davon ausgegangen, dass der Käufer durch Unterzeichnung des Bestellformulars auf sein Recht verzichtet hat, sich auf seine eigenen Bedingungen zu berufen.</source>
+        <target>Sauf stipulation contraire expresse, toutes nos offres et fournitures sont faites conformément aux présentes conditions générales qui prévalent sur les conditions générales ou particulières, imprimées ou non de l’acheteur. L’acheteur est présumé avoir renoncé à invoquer ses propres conditions par la signature du bon de commande.</target>
+      </trans-unit>
+      <trans-unit id="Eb9.atb" resname="Artikel 13 – Anwendbares Recht">
+        <source>Artikel 13 – Anwendbares Recht</source>
+        <target>Article 13 - Loi applicable</target>
+      </trans-unit>
+      <trans-unit id="v_a9h_F" resname="Die Beziehungen zwischen dem Käufer und dem Verkäufer unterliegen belgischem Recht.">
+        <source>Die Beziehungen zwischen dem Käufer und dem Verkäufer unterliegen belgischem Recht.</source>
+        <target>Les relations entre l’acheteur et le vendeur sont régies par la loi belge.</target>
+      </trans-unit>
+      <trans-unit id="1Qx23Va" resname="Artikel 14- Gerichtsbarkeit">
+        <source>Artikel 14- Gerichtsbarkeit</source>
+        <target>Article 14 - Juridiction</target>
+      </trans-unit>
+      <trans-unit id="3xLnfqs" resname="Für jeden Streitfall vereinbaren die Parteien, die Zuständigkeit den Gerichten des Gerichtsbezirks Namur zuzuweisen. Unser Unternehmen behält sich jedoch das Recht vor, nur das Domizil und/oder den tatsächlichen Sitz des Käufers zu berücksichtigen.">
+        <source>Für jeden Streitfall vereinbaren die Parteien, die Zuständigkeit den Gerichten des Gerichtsbezirks Namur zuzuweisen. Unser Unternehmen behält sich jedoch das Recht vor, nur das Domizil und/oder den tatsächlichen Sitz des Käufers zu berücksichtigen.</source>
+        <target>Pour tout litige, les parties conviennent d’attribuer compétence aux juridictions de l’arrondissement judiciaire de Namur. Notre société se réserve cependant de ne considérer que le domicile et/ou le siège réel de l’acheteur.</target>
+      </trans-unit>
+      <trans-unit id="85CdcIY" resname="Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.">
+        <source>Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.</source>
+        <target>Nos prix sont ceux du tarif au jour de la commande. Nous nous réservons le droit de les modifier sans préavis jusqu’au jour de la livraison en cas de changement de nos tarifs dû à des fluctuations de salaires, charges sociales, ou toute autre cause indépendante de notre volonté. Seront en outre à charge de l’acheteur, la T.V.A, les frais de transport, d’assurance du transport, les frais d’encaissement et agios éventuels, Postplus et la cotisation environnementale éventuelle.</target>
       </trans-unit>
     </body>
   </file>

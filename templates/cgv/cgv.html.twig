@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}AGB{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# rendering fragment recherche #}
+{{ render(path('recherche')) }}
+
+<section class="m-cgv">
+    <div class="wrapper">
+        <h1>{% trans %}Allgemeine Geschäftsbedingungen{% endtrans %}</h1>        
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 1 – Angebot – Bestellung{% endtrans %}</h2>
+            <p>{% trans %}Die in unseren Angeboten, Katalogen, Broschüren oder Preislisten jeglicher Art enthaltenen Angaben sind unverbindlich und die Bestellung ist nur nach unserer ausdrücklichen Zustimmung bindend.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 2 – Lieferung – Bedingungen und Konditionen{% endtrans %}</h2>
+            <p>{% trans %}Die Güter reisen auf Risiko und Gefahr des Empfängers; es liegt in der Verantwortung des Empfängers, alle Reservierungen bei den Transportunternehmen vorzunehmen. Wir lehnen jede Verantwortung für Schäden ab, die von Transportunternehmen und ihren Mitarbeitern am Eigentum des Käufers oder am Käufer selbst und seinen Mitarbeitern verursacht werden. Keine Verzögerung während dieser Vorgänge berechtigt den Käufer, die Erfüllung seiner Verpflichtungen aufzuschieben. In jedem Fall behalten wir uns das Recht vor, kleine Bestellungen über unsere Vertriebspartner zu liefern.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 3 – Lieferung – Frist{% endtrans %}</h2>
+            <p>{% trans %}Außer in Fällen höherer Gewalt beginnt die Lieferfrist mit dem Tag der Annahme der Bestellung durch unser Unternehmen oder zu jedem anderen Zeitpunkt, der zwischen den Parteien vereinbart werden kann. Sie wird als Hinweis gegeben, und ihre Überschreitung verpflichtet unser Unternehmen nicht zur Verantwortung: Der Käufer verzichtet auf das Recht, aus diesem Grund Stornierung oder Schadenersatz zu verlangen. Die Überschreitung der angegebenen Frist um mehr als 2 Monate berechtigt den Käufer jedoch dazu, ohne gerichtliches Einschreiten und ohne Anspruch auf Schadenersatz von der Vertragsauflösung zu profitieren.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 4 – Aggregierung{% endtrans %}</h2>
+            <p>{% trans %}Die Zusammenführung der Waren erfolgt zum Zeitpunkt der Lieferung an die Wohnung des Käufers oder innerhalb von acht Tagen danach. Kann die Lieferung aufgrund des Verschuldens des Käufers nicht erfolgen, oder, wenn die Lieferung nicht frei Haus erfolgt, wird die Ware dem Käufer innerhalb von acht Tagen nach dem Datum des Versands oder der Zustellung der Rechnung oder des Versandscheins bei uns zur Zusammenstellung zur Verfügung gestellt, wobei letztere Dokumente als Nachweis der Verfügbarkeit gelten. Reklamationen sind innerhalb von acht Tagen per Einschreiben zu erheben; Schweigen des Käufers während dieser Frist gilt als vorbehaltlose Zusammenfassung und macht jede Reklamation wegen offensichtlicher Mängel, mangelnder Konformität der Waren oder fehlender Gegenstände unzulässig.{% endtrans %}</p>
+            <p>{% trans %}Im Hinblick auf mögliche Anmerkungen des Kunden, die auf einem Fehler beruhen, der nach dem Druck entdeckt wurde, wenn die Proofs und/oder Zeichnungen genehmigt wurden und die Waren diesen entsprechen, wird keine Reklamation zugelassen. Im Falle einer berechtigten Beanstandung sind wir unter Ausschluss jeglicher Entschädigung nur verpflichtet, die fehlerhaften Gegenstände innerhalb der erforderlichen Frist zu ersetzen. Umgekehrt gilt bei Waren, die nicht in unseren Katalogen oder Broschüren erwähnt und ausdrücklich zugunsten des Käufers bestellt wurden, die Lieferung an den Käufer als Genehmigung, ohne dass die Qualität oder Nützlichkeit der Waren in Frage gestellt wird.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 5 – Rücksendung von Waren.{% endtrans %}</h2>
+            <p>{% trans %}Die in Übereinstimmung mit der Bestellung versandten Waren werden nicht zurückgenommen oder umgetauscht.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 6 – Gewährleistung.{% endtrans %}</h2>
+            <p>{% trans %}Die gewährte Garantie ist die Garantie für versteckte Mängel. Der Käufer kann sich nur drei Monate lang ab Lieferung oder Verfügbarkeit im Sinne von Artikel 4 dieser allgemeinen Bedingungen darauf berufen. Er ist verpflichtet, innerhalb von 15 Tagen nach der Entdeckung des Mangels per Einschreiben davon Gebrauch zu machen, um den versteckten Mangel nachzuweisen und unserem Unternehmen die Möglichkeit zu geben, die Realität des Mangels zu überprüfen. Im Falle einer berechtigten Reklamation ist unser Unternehmen lediglich verpflichtet, die fehlerhaften Artikel innerhalb der erforderlichen Frist zu ersetzen, unter Ausschluss jeglicher Entschädigung.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 7- Höhere Gewalt{% endtrans %}</h2>
+            <p>{% trans %}Fälle höherer Gewalt, je nachdem, ob sie ein vorübergehendes oder dauerhaftes Hindernis für die Vertragserfüllung darstellen, setzen unsere Verpflichtungen automatisch aus oder erlöschen und entbinden uns vollständig von unserer Haftung. Dauert dieses Hindernis länger als einen Monat an, hat jede der Parteien das Recht, die Vereinbarung von Rechts wegen und ohne Entschädigung zu kündigen. gelten als Fälle höherer Gewalt, Ereignisse außerhalb unserer Kontrolle, die die Ausführung des Abkommens verhindern, insbesondere bei Krieg, Feuer, Überschwemmung, Transportschwierigkeiten, Frost und anderen ungünstigen klimatischen Bedingungen, Krankheit und Maßnahmen der Behörden, insbesondere im Hinblick auf Import-Export, Schwierigkeiten bei der Versorgung mit Rohstoffen, Energie oder Betriebsmitteln, einschließlich des Ausfalls von Zulieferern, von denen wir abhängig wären, General- oder Nicht-Generalstreiks, Aussperrung, Arbeitsunruhen, Aufruhr, Mängel oder Schäden an Waren sowie alle anderen Störungen in unserem Betrieb, einschließlich der Umstände, die unserem Personal zuzuschreiben sind.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 8- Zahlungsbedingungen{% endtrans %}</h2>
+            <p>{% trans %}Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.{% endtrans %}</p>
+            <p>{% trans %}Sofern auf der Rechnung nicht ausdrücklich anders angegeben, muss die Zahlung innerhalb von 30 Tagen nach Rechnungsdatum erfolgen. Jeder Zahlungsverzug berechtigt uns zur Ausübung eines Zurückbehaltungsrechts an allen Gegenständen des Käufers, die in unseren Besitz gebracht oder in unserem Besitz gelassen werden. Bei Nichtzahlung am Fälligkeitstag werden automatisch und ohne Inverzugsetzung Verzugszinsen in Höhe von 15&#37; pro Jahr fällig. Wenn der Rechnungsbetrag nicht innerhalb von 8 Tagen nach einer per Einschreiben versandten Mahnung bezahlt wird, wird der Rechnungsbetrag um 15&#37; erhöht, mindestens jedoch um 40 Euro, um die durch diese Verzögerung verursachten zusätzlichen Kosten zu decken.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 9-Eigentumsvorbehalt{% endtrans %}</h2>
+            <p>{% trans %}Alle von uns gelieferten Artikel bleiben unser Eigentum, bis der Käufer den Kaufpreis und die Kosten des Verkaufs vollständig bezahlt hat.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 10- Bedingungen für den Wiederverkauf{% endtrans %}</h2>
+            <p>{% trans %}Der Käufer darf, sofern nicht ausdrücklich und schriftlich von uns genehmigt, unsere Artikel nur in unserer eigenen Verpackung zum Verkauf anbieten oder verkaufen, noch darf er unsere Artikel, ob kostenlos oder nicht, in Verbindung mit anderen spezifizierten Produkten oder Dienstleistungen anbieten, außer in dem gesetzlich zugelassenen Fall.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 11- Ausnahmen von der Haftung{% endtrans %}</h2>
+            <p>{% trans %}Die in diesen allgemeinen Verkaufsbedingungen enthaltenen Haftungsausschlüsse gelten für jedes Verschulden, einschließlich grober Fahrlässigkeit, jedoch nicht für Diebstahl.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 12- Anwendung der allgemeinen Bedingungen{% endtrans %}</h2>
+            <p>{% trans %}Sofern nicht ausdrücklich anders angegeben, erfolgen alle unsere Angebote und Lieferungen gemäß diesen allgemeinen Geschäftsbedingungen, die Vorrang vor den allgemeinen oder besonderen Bedingungen, gedruckt oder nicht, des Käufers haben. Es wird davon ausgegangen, dass der Käufer durch Unterzeichnung des Bestellformulars auf sein Recht verzichtet hat, sich auf seine eigenen Bedingungen zu berufen.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 13 – Anwendbares Recht{% endtrans %}</h2>
+            <p>{% trans %}Die Beziehungen zwischen dem Käufer und dem Verkäufer unterliegen belgischem Recht.{% endtrans %}</p>
+        </div>
+        <div class="m-cgv-box">
+            <h2>{% trans %}Artikel 14- Gerichtsbarkeit{% endtrans %}</h2>
+            <p>{% trans %}Für jeden Streitfall vereinbaren die Parteien, die Zuständigkeit den Gerichten des Gerichtsbezirks Namur zuzuweisen. Unser Unternehmen behält sich jedoch das Recht vor, nur das Domizil und/oder den tatsächlichen Sitz des Käufers zu berücksichtigen.{% endtrans %}</p>
+        </div>               
+    </div>
+</section>
+
+{% endblock %}
