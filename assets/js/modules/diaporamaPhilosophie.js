@@ -1,4 +1,4 @@
-let diaporama = document.getElementsByClassName("m-philosophie-diaporama");
+let diaporama = document.querySelector(".m-philosophie-diaporama");
 let slides = document.querySelectorAll(".mySlides");
 let btnNext = document.getElementById("next");
 let btnPrev = document.getElementById("prev");
@@ -6,7 +6,7 @@ let dots = document.querySelectorAll('.dot');
 let n;
 
 if(diaporama) {
-
+    
     let slideIndex = 1;
     showSlides(slideIndex);
 
@@ -37,7 +37,6 @@ if(diaporama) {
         let i;
         
         if (n > slides.length) {
-            console.log('hello');
             slideIndex = 1;
         }
 

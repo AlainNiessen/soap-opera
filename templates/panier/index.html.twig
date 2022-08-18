@@ -29,17 +29,17 @@
                             <td>{{ element.traduction.nom }}</td>
                             <td class="text-start">{{ element.prixHorsTva }} €</td>
                             <td class="text-start">{{ element.prixTva }} €</td>
-                            <td class="text-start" >{{ element.prixTotal }} €</td>
+                            <td class="text-start" id="prix-unique">{{ element.prixTotal }} €</td>
                             <td class="quantite-management">
                                 <a title="{% trans %}Artikel abziehen{% endtrans %}" href="{{ path('remove_panier', {id: element.article.id})}}" class="btn btn-outline-info size-btn articleminus">
                                     <i class="fa fa-minus"></i>
-                                </a>
-                                <span>{{ element.quantite }}</span>
+                                </a> 
+                                <span>{{ element.quantite }}</span>                               
                                 <a title="{% trans %}Artikel hinzufügen{% endtrans %}" href="{{ path('add_panier', {id: element.article.id})}}" class="btn btn-outline-info size-btn articleplus">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </td>
-                            <td class="text-start">{{ element.prixTotalQuantite }} €</td>
+                            <td class="text-start prix-total" id="prix-total">{{ element.prixTotalQuantite }} €</td>
                             <td>
                                 <a title="{% trans %}Artikel komplett löschen{% endtrans %}" href="{{ path('delete_panier', {id: element.article.id})}}" class="btn btn-danger-size btn-danger" onclick="return confirm('{% trans %}Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?{% endtrans %}')">
                                     <i class="fas fa-trash"></i>
@@ -59,15 +59,15 @@
                             {% trans %}Lieferkosten{% endtrans %}
                             <p class="livraison-info">{% trans %}Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!{% endtrans %}</p>
                         </td>
-                        <td class="text-start">{{ fraisLivraison }} €</td>
-                        <td class="text-start">{{ fraisTVALivraison }} €</td>
-                        <td class="text-start">{{ fraisTotalLivraison }} €</td>
+                        <td class="text-start" id="livraisonBase">{{ fraisLivraison }} €</td>
+                        <td class="text-start" id="livraisonTVA">{{ fraisTVALivraison }} €</td>
+                        <td class="text-start" id="livraisonTotal">{{ fraisTotalLivraison }} €</td>
                         <td class="text-start"></td>
-                        <td class="text-start">{{ fraisTotalLivraison }} €</td>
+                        <td class="text-start" id="livraison">{{ fraisTotalLivraison }} €</td>
                     </tr>
                     <tr>
                         <td colspan="5">Total</td>
-                        <td class="text-start" id='prix-total'>{{ total }} €</td>
+                        <td class="text-start" id="prix-end-total">{{ total }} €</td>
                         <td>
                             <form action="{{ path('paiement', {total: total}) }}" method="POST">
                                 <button type="submit" class="btn btn-outline-info">{% trans %}Bezahlen{% endtrans %}</button>
