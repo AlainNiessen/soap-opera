@@ -1563,6 +1563,10 @@
         <source>Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.</source>
         <target>Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.</target>
       </trans-unit>
+      <trans-unit id="o6pCL2L" resname="Fotos von">
+        <source>Fotos von</source>
+        <target>Fotos von</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -242,16 +242,28 @@ class PaiementController extends AbstractController
         $session -> set('panier', []);
         $session -> set('nombreArticles', 0);
 
-        return $this -> render('paiement/succes.html.twig');
+        // ajout d'un message de réussite
+        $message = $translator -> trans('Vielen Dank! Deine Bezahlung ist bestätigt!');
+        $this -> addFlash('success', $message);
+
+        return $this -> render('utilisateur/profile.html.twig', [
+            'id' => $this -> getUser() -> getId()
+        ]);
     }
 
     /**
      * @Route("/cancel", name="cancel")
      */
-    public function cancel(): Response
+    public function cancel(TranslatorInterface $translator): Response
     {        
 
-        return $this -> render('paiement/cancel.html.twig');
+        // ajout d'un message de réussite
+        $message = $translator -> trans('Irgendwas ist leider schiefgegangen! Bitt erversuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!');
+        $this -> addFlash('error', $message);
+
+        return $this -> render('utilisateur/profile.html.twig', [
+            'id' => $this -> getUser() -> getId()
+        ]);
     }
 
     function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)

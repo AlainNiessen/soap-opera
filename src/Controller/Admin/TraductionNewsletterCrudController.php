@@ -37,7 +37,8 @@ class TraductionNewsletterCrudController extends AbstractCrudController
 
     
     public function configureFields(string $pageName): iterable
-    {       
+    {   
+          
         yield TextField::new('titre', new TranslatableMessage('option.tradNewsletter_nom', [], 'EasyAdminBundle'));
         yield TextEditorField::new('description', new TranslatableMessage('option.tradNewsletter_description', [], 'EasyAdminBundle'));           
         yield TextField::new('documentPDF', new TranslatableMessage('option.tradNewsletter_documentPDF', [], 'EasyAdminBundle'))                           

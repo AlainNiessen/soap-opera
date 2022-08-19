@@ -1242,6 +1242,10 @@
         <source>Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.</source>
         <target>Nos prix sont ceux du tarif au jour de la commande. Nous nous réservons le droit de les modifier sans préavis jusqu’au jour de la livraison en cas de changement de nos tarifs dû à des fluctuations de salaires, charges sociales, ou toute autre cause indépendante de notre volonté. Seront en outre à charge de l’acheteur, la T.V.A, les frais de transport, d’assurance du transport, les frais d’encaissement et agios éventuels, Postplus et la cotisation environnementale éventuelle.</target>
       </trans-unit>
+      <trans-unit id="o6pCL2L" resname="Fotos von">
+        <source>Fotos von</source>
+        <target>Images from</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

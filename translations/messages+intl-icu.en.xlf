@@ -1242,6 +1242,10 @@
         <source>Unsere Preise sind die der Preisliste am Tag der Bestellung. Wir behalten uns das Recht vor, sie ohne vorherige Ankündigung bis zum Tag der Lieferung zu ändern, falls sich unsere Tarife aufgrund von Gehaltsschwankungen, Sozialabgaben oder anderen Gründen, die sich unserer Kontrolle entziehen, ändern. Darüber hinaus trägt der Käufer Mehrwertsteuer, Transportkosten, Transportversicherung, Inkassokosten und allfällige Prämien, Postplus und allfälligen Umweltbeitrag.</source>
         <target>Our prices are those of the price list on the day of the order. We reserve the right to modify them without prior notice until the day of delivery in the event of a change in our rates due to fluctuations in salaries, social charges, or any other cause beyond our control. In addition, the buyer will be responsible for VAT, transport costs, transport insurance, collection costs and possible premiums, Postplus and possible environmental contribution.</target>
       </trans-unit>
+      <trans-unit id="o6pCL2L" resname="Fotos von">
+        <source>Fotos von</source>
+        <target>Images de</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -3,7 +3,7 @@
         <section class="m-recherche-categories">
             <div class="row">
                 {% for traductionCategorie in traductionCategories %}
-                    <div class=" col-4 col-sm-4 col-md-2">
+                    <div class=" col-6 col-sm-4 col-md-4 col-lg-2">
                         <a href="{{ path('article_recherche_cat', {id: traductionCategorie.categorie.id, pagCat: 1}) }}">
                             <div class="m-recherche-categorie-box">
                                 <div class="deco-point">
