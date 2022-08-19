@@ -791,7 +791,7 @@
       </trans-unit>
       <trans-unit id="qS4ZKkp" resname="Verkaufsstellen">
         <source>Verkaufsstellen</source>
-        <target>points of sale</target>
+        <target>Points of sale</target>
       </trans-unit>
       <trans-unit id="nkDpk1X" resname="Unsere Verkaufsstellen">
         <source>Unsere Verkaufsstellen</source>
@@ -1244,7 +1244,15 @@
       </trans-unit>
       <trans-unit id="o6pCL2L" resname="Fotos von">
         <source>Fotos von</source>
-        <target>Images de</target>
+        <target>Images from</target>
+      </trans-unit>
+      <trans-unit id="R92Opvu" resname="Vielen Dank! Deine Bezahlung ist bestätigt!">
+        <source>Vielen Dank! Deine Bezahlung ist bestätigt!</source>
+        <target>Thanks very much! Your payment is confirmed!</target>
+      </trans-unit>
+      <trans-unit id="qcumGZC" resname="Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!">
+        <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
+        <target>Unfortunately something went wrong! Please try again or contact us via the contact form!</target>
       </trans-unit>
     </body>
   </file>

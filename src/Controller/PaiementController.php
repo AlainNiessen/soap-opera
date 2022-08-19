@@ -246,9 +246,7 @@ class PaiementController extends AbstractController
         $message = $translator -> trans('Vielen Dank! Deine Bezahlung ist bestätigt!');
         $this -> addFlash('success', $message);
 
-        return $this -> render('utilisateur/profile.html.twig', [
-            'id' => $this -> getUser() -> getId()
-        ]);
+        return $this->redirectToRoute('home');
     }
 
     /**
@@ -258,12 +256,10 @@ class PaiementController extends AbstractController
     {        
 
         // ajout d'un message de réussite
-        $message = $translator -> trans('Irgendwas ist leider schiefgegangen! Bitt erversuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!');
+        $message = $translator -> trans('Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!');
         $this -> addFlash('error', $message);
 
-        return $this -> render('utilisateur/profile.html.twig', [
-            'id' => $this -> getUser() -> getId()
-        ]);
+        return $this->redirectToRoute('home');
     }
 
     function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)

@@ -1567,6 +1567,14 @@
         <source>Fotos von</source>
         <target>Fotos von</target>
       </trans-unit>
+      <trans-unit id="R92Opvu" resname="Vielen Dank! Deine Bezahlung ist bestätigt!">
+        <source>Vielen Dank! Deine Bezahlung ist bestätigt!</source>
+        <target>Vielen Dank! Deine Bezahlung ist bestätigt!</target>
+      </trans-unit>
+      <trans-unit id="qcumGZC" resname="Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!">
+        <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
+        <target>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

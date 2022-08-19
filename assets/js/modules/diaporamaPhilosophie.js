@@ -30,7 +30,7 @@ if(diaporama) {
 
 
     function currentSlide(n) {
-        showSlides(n);
+        showSlides(slideIndex = n);
     }
 
     function showSlides(n) {

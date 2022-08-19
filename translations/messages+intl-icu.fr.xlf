@@ -1244,7 +1244,15 @@
       </trans-unit>
       <trans-unit id="o6pCL2L" resname="Fotos von">
         <source>Fotos von</source>
-        <target>Images from</target>
+        <target>Images de</target>
+      </trans-unit>
+      <trans-unit id="R92Opvu" resname="Vielen Dank! Deine Bezahlung ist bestätigt!">
+        <source>Vielen Dank! Deine Bezahlung ist bestätigt!</source>
+        <target>Merci beaucoup! Ton paiement est confirmé !</target>
+      </trans-unit>
+      <trans-unit id="qcumGZC" resname="Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!">
+        <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
+        <target>Malheureusement, quelque chose s'est mal passé ! Veuilles-tu réessayer ou contactes-nous via le formulaire de contact !</target>
       </trans-unit>
     </body>
   </file>
