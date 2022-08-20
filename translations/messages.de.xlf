@@ -1235,7 +1235,7 @@
       </trans-unit>
       <trans-unit id="535sXRB" resname="Reichweitenmessung &amp; Cookies">
         <source>Reichweitenmessung &amp; Cookies</source>
-        <target><![CDATA[__Reichweitenmessung & Cookies]]></target>
+        <target>Reichweitenmessung &amp; Cookies</target>
       </trans-unit>
       <trans-unit id="h_mc.sO" resname="Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.">
         <source>Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</source>
@@ -1393,7 +1393,7 @@
       </trans-unit>
       <trans-unit id="V.UuKul" resname="SOZIALE MEDIEN, PLUGINS &amp; TOOLS">
         <source>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</source>
-        <target><![CDATA[__SOZIALE MEDIEN, PLUGINS & TOOLS]]></target>
+        <target>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</target>
       </trans-unit>
       <trans-unit id="V5GOkrb" resname="Einbindung von Diensten und Inhalten (Plugins) Dritter">
         <source>Einbindung von Diensten und Inhalten (Plugins) Dritter</source>
