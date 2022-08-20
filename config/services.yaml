@@ -8,7 +8,7 @@ parameters:
     images_directory: '%kernel.project_dir%/public/uploads'
     app.path.image_nom: /uploads/images
     app.path.newsletter_documentPDF: /uploads/newsletterPDF
-    app.path.event_documentPDF: /uploads/eventPDF
+    app.path.facture_documentPDF: /uploads/facturePDF
     # définition des langues
     app.locales: [de, fr, en]
 

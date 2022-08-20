@@ -23,6 +23,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class PaiementController extends AbstractController
 {
@@ -217,7 +219,53 @@ class PaiementController extends AbstractController
         // envoie d'un mail de confirmation de l'achat à l'utilisateur connecté
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés dans le Mail comme résumé
         $tabInfos = $this->infoArticlePanier($panier, $entityManager, $request);
-         
+
+        // création PDF pour l'annexe
+        // Configuration des options
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'AvenirNext LT Pro');
+
+        // Instanciation Dompdf avec les options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Récipération du HTML généré dans un fichier TWIG
+        $html = $this->renderView('emails/facturePDF.html.twig', [
+            'nom' => $this -> getUser() -> getPrenom(),
+            'infosPanier' => $tabInfos[0],
+            'total' => $tabInfos[1],
+            'fraisLivraison' => $tabInfos[2],
+            'fraisTVALivraison' => $tabInfos[3],
+            'fraisTotalLivraison' => $tabInfos[4]
+        ]);
+
+        // Chargement HTML vers Dompdf
+        $dompdf->loadHtml($html);
+
+        // Définition taille
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render le HTML comme PDF
+        $dompdf->render();
+
+        // Output et attribution à la facture dans la base de données
+        $output = $dompdf->output();
+        $facture -> setDocumentPDF('facture-'.$facture -> getId().'.pdf');
+        //préparation insertion dans la BD
+        $entityManager -> persist($facture);
+        //insertion BD
+        $entityManager -> flush();
+    
+        
+        // Définiton direction public
+        $publicDirectory = $this->getParameter('kernel.project_dir') . '\public\uploads\facturePDF';
+        // e.g /var/www/project/public/mypdf.pdf
+        $pdfFilepath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';
+        
+        // Enregistrement du PDF sur le chemin souhaité
+        file_put_contents($pdfFilepath, $output);
+        
+
+
         //sujet à traduire
         $messageSubject = $translator -> trans('Kaufbestätigung - Rechnung Nr.');
         //validation par mail après enregistrement de l'utilisateur
@@ -225,6 +273,7 @@ class PaiementController extends AbstractController
         ->from('alain_niessen@hotmail.com') //de qui
         ->to(new Address($this -> getUser() -> getEmail())) //vers adresse mail du utilisateur
         ->subject($messageSubject.' '. $facture->getId()) //sujet
+        ->attachFromPath('../public/uploads/facturePDF/'.$facture->getDocumentPDF())
         ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
         ->context([
             //passage des informations au template twig (token)

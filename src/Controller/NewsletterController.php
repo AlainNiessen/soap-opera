@@ -62,7 +62,8 @@ class NewsletterController extends AbstractController
                     ->context([
                         //passage des informations au template twig 
                         'message' => $resultTraductionNewsletter -> getDescription(), 
-                        'salutation' => $utilisateur -> getPrenom()           
+                        'nom' => $utilisateur -> getPrenom(),
+                        'salutation' => $salutation           
                     ]);
                 else:
                     $email = (new TemplatedEmail())

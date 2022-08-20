@@ -1,5 +1,5 @@
 {# AFFICHGE DU PDF DANS INTERFACE ADMIN LISTE SOUS FORME LIEN #}
-{# vérification si il existe un PDF pour le Newsletter #}
+{# vérification si il existe un PDF #}
 {% if entity.instance.documentPDF %}
     <a href="{{ field.customOption('base_path') ~ '/' ~ entity.instance.documentPDF}}">Download PDF</a>
 {% else %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />        
+    </head>
+    <body>
+        <div>
+            <h2>{% trans %}Hallo{% endtrans %} {{ nom }}</h2>
+            <p>{% trans %}Hier findest du einen Überblick über deine Bestellung.{% endtrans %}</p>  
+        </div>
+              
+        <table cellspacing="1" cellpadding="2" width="640" border="1">
+            <thead align="center">
+                <tr>
+                    <th>{% trans %}Artikel{% endtrans %}</th>
+                    <th>{% trans %}Preis (ohne MwSt){% endtrans %}</th>
+                    <th>{% trans %}MwSt-Betrag{% endtrans %}</th>
+                    <th>{% trans %}Preis (inkl. MwSt){% endtrans %}</th>
+                    <th>{% trans %}Anzahl{% endtrans %}</th>
+                    <th>{% trans %}Total{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tbody align="right">                  
+                {# for else => si on a des éléments dans le tableau => traitement dans le for, sinon traitement dans le else #}
+                {% for element in infosPanier %}
+                    <tr>
+                        <td>{{ element.traduction.nom }}</td>
+                        <td class="text-start">{{ element.prixHorsTva }} €</td>
+                        <td class="text-start">{{ element.prixTva }} €</td>
+                        <td class="text-start" >{{ element.prixTotal }} €</td>
+                        <td class="quantite-management">{{ element.quantite }}</td>
+                        <td class="text-start">{{ element.prixTotalQuantite }} €</td>
+                    </tr>
+                {% endfor %}              
+            </tbody>
+            <tfoot align="right">
+                <tr>
+                    <td>{% trans %}Lieferkosten{% endtrans %}</td>
+                    <td class="text-start">{{ fraisLivraison }} €</td>
+                    <td class="text-start">{{ fraisTVALivraison }} €</td>
+                    <td class="text-start">{{ fraisTotalLivraison }} €</td>
+                    <td class="text-start"></td>
+                    <td class="text-start">{{ fraisTotalLivraison }} €</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Total</td>
+                    <td class="text-start" id='prix-total'>{{ total }} €</td>
+                </tr> 
+            </tfoot>       
+        </table>
+        <div>
+            <p>{% trans %}Der Betrag von {% endtrans %} {{ total }} {% trans %} € wurde beglichen.{% endtrans %}</p>
+            <p>{% trans %}Die Lieferung wird in Kürze erfolgen{% endtrans %}</p>
+        </div>
+        <div style="margin-top: 30px;">
+            <p>{% trans %}Mit freundlichen Grüssen{% endtrans %}</p>            
+            <p>Sarah {% trans %}und{% endtrans %} Julia</p>            
+        </div>        
+    </body>
+</html>
