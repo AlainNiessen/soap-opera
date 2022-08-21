@@ -1235,7 +1235,7 @@
       </trans-unit>
       <trans-unit id="535sXRB" resname="Reichweitenmessung &amp; Cookies">
         <source>Reichweitenmessung &amp; Cookies</source>
-        <target>Reichweitenmessung &amp; Cookies</target>
+        <target><![CDATA[Reichweitenmessung & Cookies]]></target>
       </trans-unit>
       <trans-unit id="h_mc.sO" resname="Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.">
         <source>Diese Website verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Bei Cookies handelt es sich um kleine Dateien, welche auf Ihrem Endgerät gespeichert werden. Ihr Browser greift auf diese Dateien zu. Durch den Einsatz von Cookies erhöht sich die Benutzerfreundlichkeit und Sicherheit dieser Website.</source>
@@ -1393,7 +1393,7 @@
       </trans-unit>
       <trans-unit id="V.UuKul" resname="SOZIALE MEDIEN, PLUGINS &amp; TOOLS">
         <source>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</source>
-        <target>SOZIALE MEDIEN, PLUGINS &amp; TOOLS</target>
+        <target><![CDATA[SOZIALE MEDIEN, PLUGINS & TOOLS]]></target>
       </trans-unit>
       <trans-unit id="V5GOkrb" resname="Einbindung von Diensten und Inhalten (Plugins) Dritter">
         <source>Einbindung von Diensten und Inhalten (Plugins) Dritter</source>
@@ -1574,6 +1574,30 @@
       <trans-unit id="qcumGZC" resname="Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!">
         <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
         <target>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</target>
+      </trans-unit>
+      <trans-unit id="dnpmeip" resname="Tel:">
+        <source>Tel:</source>
+        <target>Tel:</target>
+      </trans-unit>
+      <trans-unit id="F1B9z4R" resname="Email:">
+        <source>Email:</source>
+        <target>Email:</target>
+      </trans-unit>
+      <trans-unit id="78YxKdd" resname="MwSt-Nummer:">
+        <source>MwSt-Nummer:</source>
+        <target>MwSt-Nummer:</target>
+      </trans-unit>
+      <trans-unit id="Ki0nr_z" resname="Rechnung Nr.">
+        <source>Rechnung Nr.</source>
+        <target>Rechnung Nr.</target>
+      </trans-unit>
+      <trans-unit id="NveyaNu" resname="Rechnungsdatum:">
+        <source>Rechnungsdatum:</source>
+        <target>Rechnungsdatum:</target>
+      </trans-unit>
+      <trans-unit id="704pwFZ" resname="Zahlungstag:">
+        <source>Zahlungstag:</source>
+        <target>Zahlungstag:</target>
       </trans-unit>
     </body>
   </file>

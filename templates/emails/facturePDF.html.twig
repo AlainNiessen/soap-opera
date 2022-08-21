@@ -1,60 +1,77 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />        
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />         
     </head>
     <body>
-        <div>
-            <h2>{% trans %}Hallo{% endtrans %} {{ nom }}</h2>
-            <p>{% trans %}Hier findest du einen Überblick über deine Bestellung.{% endtrans %}</p>  
-        </div>
-              
-        <table cellspacing="1" cellpadding="2" width="640" border="1">
-            <thead align="center">
-                <tr>
-                    <th>{% trans %}Artikel{% endtrans %}</th>
-                    <th>{% trans %}Preis (ohne MwSt){% endtrans %}</th>
-                    <th>{% trans %}MwSt-Betrag{% endtrans %}</th>
-                    <th>{% trans %}Preis (inkl. MwSt){% endtrans %}</th>
-                    <th>{% trans %}Anzahl{% endtrans %}</th>
-                    <th>{% trans %}Total{% endtrans %}</th>
-                </tr>
-            </thead>
-            <tbody align="right">                  
-                {# for else => si on a des éléments dans le tableau => traitement dans le for, sinon traitement dans le else #}
-                {% for element in infosPanier %}
+        <section>
+            <div style="margin-bottom:15px;">
+                {% if utilisateur.numeroTVA %}
+                    <h3 style="margin-bottom:5px;">{{ utilisateur.nomEntreprise}}</h3>
+                {% else %}
+                    <h3 style="margin-bottom:5px;">{{ utilisateur.nom}} {{ utilisateur.prenom }}</h3>
+                {% endif %}
+                <p style="margin:0;">{{ utilisateur.adresseHome.rue}} {{ utilisateur.adresseHome.numeroRue }}</p>   
+                <p style="margin:0;">{{ utilisateur.adresseHome.pays}} - {{ utilisateur.adresseHome.codePostal}} {{ utilisateur.adresseHome.ville }}</p>   
+                {% if utilisateur.numeroTVA %}
+                    <p style="margin-bottom:0px;">{% trans %}Mwst-Nummer: {% endtrans %}{{ utilisateur.numeroTVA}}</p>
+                {% endif %}
+            </div>
+            <div style="margin-bottom:15px;">
+                <h3 style="margin-bottom:5px;">Soap-Opera</h3>
+                <p style="margin:0;">Strasse</p>   
+                <p style="margin:0;">Land-Ort</p>   
+                <p style="margin:0;">{% trans %}Tel: {% endtrans %}</p>  
+                <p style="margin:0;">{% trans %}Email: {% endtrans %}</p>  
+                <p style="margin:0;">{% trans %}MwSt-Nummer: {% endtrans %}</p>   
+            </div>
+            <div style="margin-bottom:15px;">
+                <h2>{% trans %}Rechnung Nr.{% endtrans %} {{ facture.id }}</h2>
+                <p>{% trans %}Rechnungsdatum: {% endtrans %} {{ facture.dateFacture | date('d.m.Y')}} 
+            </div>                
+            <table cellspacing="1" cellpadding="2" width="490" border="0">
+                <thead align="center">
                     <tr>
-                        <td>{{ element.traduction.nom }}</td>
-                        <td class="text-start">{{ element.prixHorsTva }} €</td>
-                        <td class="text-start">{{ element.prixTva }} €</td>
-                        <td class="text-start" >{{ element.prixTotal }} €</td>
-                        <td class="quantite-management">{{ element.quantite }}</td>
-                        <td class="text-start">{{ element.prixTotalQuantite }} €</td>
+                        <th>{% trans %}Artikel{% endtrans %}</th>
+                        <th>{% trans %}Preis (ohne MwSt){% endtrans %}</th>
+                        <th>{% trans %}MwSt-Betrag{% endtrans %}</th>
+                        <th>{% trans %}Preis (inkl. MwSt){% endtrans %}</th>
+                        <th>{% trans %}Anzahl{% endtrans %}</th>
+                        <th>{% trans %}Total{% endtrans %}</th>
                     </tr>
-                {% endfor %}              
-            </tbody>
-            <tfoot align="right">
-                <tr>
-                    <td>{% trans %}Lieferkosten{% endtrans %}</td>
-                    <td class="text-start">{{ fraisLivraison }} €</td>
-                    <td class="text-start">{{ fraisTVALivraison }} €</td>
-                    <td class="text-start">{{ fraisTotalLivraison }} €</td>
-                    <td class="text-start"></td>
-                    <td class="text-start">{{ fraisTotalLivraison }} €</td>
-                </tr>
-                <tr>
-                    <td colspan="5">Total</td>
-                    <td class="text-start" id='prix-total'>{{ total }} €</td>
-                </tr> 
-            </tfoot>       
-        </table>
-        <div>
-            <p>{% trans %}Der Betrag von {% endtrans %} {{ total }} {% trans %} € wurde beglichen.{% endtrans %}</p>
-            <p>{% trans %}Die Lieferung wird in Kürze erfolgen{% endtrans %}</p>
-        </div>
-        <div style="margin-top: 30px;">
-            <p>{% trans %}Mit freundlichen Grüssen{% endtrans %}</p>            
-            <p>Sarah {% trans %}und{% endtrans %} Julia</p>            
-        </div>        
+                </thead>
+                <tbody align="right">                  
+                    {# for else => si on a des éléments dans le tableau => traitement dans le for, sinon traitement dans le else #}
+                    {% for element in infosPanier %}
+                        <tr>
+                            <td>{{ element.traduction.nom }}</td>
+                            <td>{{ element.prixHorsTva }} €</td>
+                            <td>{{ element.prixTva }} €</td>
+                            <td>{{ element.prixTotal }} €</td>
+                            <td>{{ element.quantite }}</td>
+                            <td>{{ element.prixTotalQuantite }} €</td>
+                        </tr>
+                    {% endfor %}              
+                </tbody>
+                <tfoot align="right">
+                    <tr>
+                        <td>{% trans %}Lieferkosten{% endtrans %}</td>
+                        <td>{{ fraisLivraison }} €</td>
+                        <td>{{ fraisTVALivraison }} €</td>
+                        <td>{{ fraisTotalLivraison }} €</td>
+                        <td></td>
+                        <td>{{ fraisTotalLivraison }} €</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">Total</td>
+                        <td>{{ total }} €</td>
+                    </tr> 
+                </tfoot>       
+            </table>
+            <div>
+                <p>{% trans %}Der Betrag von {% endtrans %} {{ total }} {% trans %} € wurde beglichen.{% endtrans %}</p>               
+                <p>{% trans %}Zahlungstag: {% endtrans %} {{ facture.dateFacture | date('d.m.Y') }}</p>               
+            </div>            
+        </section>         
     </body>
 </html>

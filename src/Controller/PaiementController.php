@@ -230,7 +230,8 @@ class PaiementController extends AbstractController
 
         // Récipération du HTML généré dans un fichier TWIG
         $html = $this->renderView('emails/facturePDF.html.twig', [
-            'nom' => $this -> getUser() -> getPrenom(),
+            'utilisateur' => $this -> getUser(),
+            'facture' => $facture,
             'infosPanier' => $tabInfos[0],
             'total' => $tabInfos[1],
             'fraisLivraison' => $tabInfos[2],

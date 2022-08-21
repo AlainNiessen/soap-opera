@@ -1254,6 +1254,30 @@
         <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
         <target>Malheureusement, quelque chose s'est mal passé ! Veuilles-tu réessayer ou contactes-nous via le formulaire de contact !</target>
       </trans-unit>
+      <trans-unit id="dnpmeip" resname="Tel:">
+        <source>Tel:</source>
+        <target>Tel:</target>
+      </trans-unit>
+      <trans-unit id="F1B9z4R" resname="Email:">
+        <source>Email:</source>
+        <target>Email:</target>
+      </trans-unit>
+      <trans-unit id="78YxKdd" resname="MwSt-Nummer:">
+        <source>MwSt-Nummer:</source>
+        <target>Numéro de TVA:</target>
+      </trans-unit>
+      <trans-unit id="Ki0nr_z" resname="Rechnung Nr.">
+        <source>Rechnung Nr.</source>
+        <target>Numéro de facture</target>
+      </trans-unit>
+      <trans-unit id="NveyaNu" resname="Rechnungsdatum:">
+        <source>Rechnungsdatum:</source>
+        <target>Date de facture:</target>
+      </trans-unit>
+      <trans-unit id="704pwFZ" resname="Zahlungstag:">
+        <source>Zahlungstag:</source>
+        <target>Date de paiement:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
