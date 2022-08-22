@@ -1,4 +1,12 @@
-<h2>{% trans %}Hallo {% endtrans %}{{ salutation }}</h2>
-<p>{% trans %}Wir bitten dich, deine Einschreibung mit dem unteren Link zu bestätigen!{% endtrans %}</p>
-{# ici on n'utilise pas path mais url#}
-<a href="{{ url('validation_registration', {"token": token}) }}">{% trans %}Bestätigung{% endtrans %}</a>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />        
+    </head>
+    <body>
+        <h2>{% trans %}Hallo {% endtrans %}{{ salutation }}</h2>
+        <p>{% trans %}Wir bitten dich, deine Einschreibung mit dem unteren Link zu bestätigen!{% endtrans %}</p>
+        {# ici on n'utilise pas path mais url#}
+        <a href="{{ url('validation_registration', {"token": token}) }}">{% trans %}Bestätigung{% endtrans %}</a>
+    </body>       
+</html>

@@ -1,3 +1,11 @@
-<h2>{{ salutation }} {{ nom }}</h2>
-{# raw => effacer les balises HTML (div) #}  
-<p>{{ message|raw }}</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />        
+    </head>
+    <body>
+        <h2>{{ salutation }} {{ nom }}</h2>
+        {# raw => effacer les balises HTML (div) #}  
+        <p>{{ message|raw }}</p>
+    </body>       
+</html>
