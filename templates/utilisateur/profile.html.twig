@@ -104,7 +104,7 @@
                             <thead>
                                 <tr>
                                     <th>{% trans %}Bild{% endtrans %}</th>
-                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Artikelbeschreibung{% endtrans %}</th>                                
                                     <th>{% trans %}Aktionen{% endtrans %}</th>
                                 </tr>
                             </thead>
@@ -116,7 +116,7 @@
                                                 <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ favori.nom }}" title="{{ favori.nom }}"></td>                        
                                             {% endif %}
                                         {% endfor %} 
-                                        <td>{{ favori.nom }}</td>                                   
+                                        <td><a href="{{ path('article_detail', {'id': favori.article.id}) }}" class="btn-outline-info btn">{{ favori.nom }}</a></td>                                   
                                         <td>
                                             <div class="favoris-actions">
                                                 <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: favori.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
@@ -149,7 +149,7 @@
                             <thead>
                                 <tr>
                                     <th>{% trans %}Bild{% endtrans %}</th>
-                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Artikelbeschreibung{% endtrans %}</th>                                
                                     <th>{% trans %}Aktionen{% endtrans %}</th>
                                 </tr>
                             </thead>
@@ -161,7 +161,7 @@
                                                 <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ achat.nom }}" title="{{ achat.nom }}"></td>                        
                                             {% endif %}
                                         {% endfor %} 
-                                        <td>{{ achat.nom }}</td>                                   
+                                        <td><a href="{{ path('article_detail', {'id': achat.article.id}) }}" class="btn-outline-info btn">{{ achat.nom }}</a></td>                                   
                                         <td>
                                             <div class="achats-actions">
                                                 <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: achat.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
@@ -191,7 +191,7 @@
                             <thead>
                                 <tr>
                                     <th>{% trans %}Bild{% endtrans %}</th>
-                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Artikelbeschreibung{% endtrans %}</th>                                
                                     <th>{% trans %}Kommentar{% endtrans %}</th>                                
                                     <th>{% trans %}Aktionen{% endtrans %}</th>
                                 </tr>
@@ -210,11 +210,11 @@
                                                     <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ nomArticle }}" title="{{ nomArticle }}"></td>                        
                                                 {% endif %}
                                             {% endfor %} 
-                                            <td>{{ nomArticle }}</td>                                   
+                                            <td><a href="{{ path('article_detail', {'id': commentaire.article.id}) }}" class="btn-outline-info btn">{{ nomArticle }}</a></td>                                   
                                             <td>"{{ commentaire.contenu }}"</td>                                   
                                             <td>
                                                 <div class="commentaire-actions">
-                                                    <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}"class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: commentaire.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                                                    <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}" class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: commentaire.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
                                                         <div class="action-icon">
                                                             <i class="fas fa-cart-arrow-down"></i>
                                                         </div>
@@ -266,7 +266,7 @@
                             <thead>
                                 <tr>
                                     <th>{% trans %}Bild{% endtrans %}</th>
-                                    <th>{% trans %}Artikel{% endtrans %}</th>                                
+                                    <th>{% trans %}Artikelbeschreibung{% endtrans %}</th>                                
                                     <th>{% trans %}Bewertung{% endtrans %}</th>                                
                                     <th>{% trans %}Aktionen{% endtrans %}</th>
                                 </tr>
@@ -275,7 +275,7 @@
                                 {% set comptEvaluation = 1 %}                            
                                 {% for evaluation in evaluations %}  
                                     <tr> 
-                                    {# récupération du nom de l'Article traduit concernant le commantaire#}
+                                    {# récupération du nom de l'Article traduit concernant l'évaluation#}
                                     {% for articleEvaluations in articlesEvaluations %}
                                         {% if articleEvaluations.article.id == evaluation.article.id %}                                         
                                             {% set nomArticle = articleEvaluations.nom %}                                        
@@ -285,7 +285,7 @@
                                                     <td><img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ nomArticle }}" title="{{ nomArticle }}"></td>                        
                                                 {% endif %}
                                             {% endfor %} 
-                                            <td>{{ nomArticle }}</td>                                   
+                                            <td><a href="{{ path('article_detail', {'id': evaluation.article.id}) }}" class="btn-outline-info btn">{{ nomArticle }}</a></td>                                   
                                             <td>{{ evaluation.nombreEtoiles }} {% trans %}von 5{% endtrans %}</td>                                   
                                             <td>
                                                 <div class="evaluation-actions">

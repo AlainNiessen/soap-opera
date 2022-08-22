@@ -715,7 +715,7 @@
       </trans-unit>
       <trans-unit id="rVgxxf6" resname="Deine kommentierten Artikel">
         <source>Deine kommentierten Artikel</source>
-        <target>Your annotated articles</target>
+        <target>Your commented articles</target>
       </trans-unit>
       <trans-unit id="Eqmac5c" resname="Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.">
         <source>Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.</source>
@@ -1277,6 +1277,14 @@
       <trans-unit id="704pwFZ" resname="Zahlungstag:">
         <source>Zahlungstag:</source>
         <target>Payment day:</target>
+      </trans-unit>
+      <trans-unit id="6CmwMlK" resname="Mwst-Nummer:">
+        <source>Mwst-Nummer:</source>
+        <target>VAT number:</target>
+      </trans-unit>
+      <trans-unit id="EME1r.k" resname="Artikelbeschreibung">
+        <source>Artikelbeschreibung</source>
+        <target>Article description</target>
       </trans-unit>
     </body>
   </file>

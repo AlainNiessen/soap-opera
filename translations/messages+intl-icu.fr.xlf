@@ -1278,6 +1278,14 @@
         <source>Zahlungstag:</source>
         <target>Date de paiement:</target>
       </trans-unit>
+      <trans-unit id="6CmwMlK" resname="Mwst-Nummer:">
+        <source>Mwst-Nummer:</source>
+        <target>Numéro de TVA:</target>
+      </trans-unit>
+      <trans-unit id="EME1r.k" resname="Artikelbeschreibung">
+        <source>Artikelbeschreibung</source>
+        <target>Descriptif de l'article</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

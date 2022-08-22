@@ -397,7 +397,7 @@ class PaiementController extends AbstractController
             // Calculs
             $fraisLivraison = round($fraisLivraison, 2);
             // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+            if($this -> getUser() -> getAdresseHome() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
                 $montantTvaLivraison = 0;
             else:
                 $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);

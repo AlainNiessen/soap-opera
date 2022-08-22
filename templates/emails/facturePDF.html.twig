@@ -14,7 +14,7 @@
                 <p style="margin:0;">{{ utilisateur.adresseHome.rue}} {{ utilisateur.adresseHome.numeroRue }}</p>   
                 <p style="margin:0;">{{ utilisateur.adresseHome.pays}} - {{ utilisateur.adresseHome.codePostal}} {{ utilisateur.adresseHome.ville }}</p>   
                 {% if utilisateur.numeroTVA %}
-                    <p style="margin-bottom:0px;">{% trans %}Mwst-Nummer: {% endtrans %}{{ utilisateur.numeroTVA}}</p>
+                    <p style="margin:0px;">{% trans %}Mwst-Nummer: {% endtrans %} {{ utilisateur.numeroTVA}}</p>
                 {% endif %}
             </div>
             <div style="margin-bottom:15px;">

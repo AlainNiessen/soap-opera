@@ -1599,6 +1599,14 @@
         <source>Zahlungstag:</source>
         <target>Zahlungstag:</target>
       </trans-unit>
+      <trans-unit id="6CmwMlK" resname="Mwst-Nummer:">
+        <source>Mwst-Nummer:</source>
+        <target>Mwst-Nummer:</target>
+      </trans-unit>
+      <trans-unit id="EME1r.k" resname="Artikelbeschreibung">
+        <source>Artikelbeschreibung</source>
+        <target>Artikelbeschreibung</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
