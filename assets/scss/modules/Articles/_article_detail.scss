@@ -9,7 +9,10 @@
         display: flex;    
         justify-content: center;
         align-items: center;  
-        margin-bottom: 1rem;  
+        margin-bottom: 1rem; 
+        img {
+            width: 70%;
+        } 
     }
 }
 
@@ -263,11 +266,6 @@
 @media screen and (min-width: 768px) {    
     .m-article-detail-intro {
         margin: 5rem 0 2rem 0;
-        .m-article-detail-intro-img {
-            img {
-                width: 70%;
-            }
-        }
     }
 }  
 

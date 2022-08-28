@@ -1,0 +1,22 @@
+.m-points-de-vente-list {
+    h3 {
+        font-weight: bolder;
+    }
+}
+
+.m-points-de-vente-list-img {
+    width: 100%;
+    max-width: 60%;
+    margin: 0 auto;
+    height: auto;
+    img {
+        width: 100%;
+        height: inherit;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .m-points-de-vente-list-img {        
+        max-width: 40%;        
+    }
+}

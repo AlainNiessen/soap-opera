@@ -13,6 +13,11 @@
         {% for traductionPointsDeVente in traductionsPointsDeVente %}
         <div class="m-points-de-vente-list">            
             <h3>{{ traductionPointsDeVente.pointDeVente.nom }}</h3>
+            <div class="m-points-de-vente-list-img">
+                {% for image in traductionPointsDeVente.pointDeVente.image %}                                              
+                    <img src="{{ asset('/uploads/images/'~image.nom) }}" alt="{{ traductionPointsDeVente.pointDeVente.nom }}" title="{{ traductionPointsDeVente.pointDeVente.nom }}">                            
+                {% endfor %}
+            </div>
             <p>{{ traductionPointsDeVente.description|raw }}</p>
             <p>{{ traductionPointsDeVente.pointDeVente.adresse}}</p>
             <div id ="map-{{ traductionPointsDeVente.id }}" class="map" data-long="{{ traductionPointsDeVente.pointDeVente.longitude }}" data-lat="{{ traductionPointsDeVente.pointDeVente.latitude }}"></div>
