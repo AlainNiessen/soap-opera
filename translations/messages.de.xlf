@@ -1607,6 +1607,18 @@
         <source>Artikelbeschreibung</source>
         <target>Artikelbeschreibung</target>
       </trans-unit>
+      <trans-unit id="eZ6ezc9" resname="Es wurden keine Artikel unter diesen Kriterien gefunden.">
+        <source>Es wurden keine Artikel unter diesen Kriterien gefunden.</source>
+        <target>Es wurden keine Artikel unter diesen Kriterien gefunden.</target>
+      </trans-unit>
+      <trans-unit id="mTuH6fg" resname="Unter dieser Kategorie gibt es zur Zeit keine Artikel.">
+        <source>Unter dieser Kategorie gibt es zur Zeit keine Artikel.</source>
+        <target>Unter dieser Kategorie gibt es zur Zeit keine Artikel.</target>
+      </trans-unit>
+      <trans-unit id="zX2e.YM" resname="Zur Zeit gibt es keine Artikel in Sonderangebot.">
+        <source>Zur Zeit gibt es keine Artikel in Sonderangebot.</source>
+        <target>Zur Zeit gibt es keine Artikel in Sonderangebot.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
