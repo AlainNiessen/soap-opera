@@ -128,13 +128,26 @@
                 </div>
                 <div class="m-article-detail-info-box">
                     <h3>{% trans %}Preis:{% endtrans %}</h3>
-                    {% if traductionArticle.article.promotion or traductionArticle.article.categorie.promotion %}
-                        <div class="promo-box">
-                            <p class="barre">{{ prix }}</p>
-                            <p class="promo">{{ prixPromo }}</p>
-                        </div>
-                    {% else %}                        
-                        <p>{{ prix }}</p> 
+                    {% if traductionArticle.article.promotion %}  
+                        {# date d'affichage#}
+                        {% if traductionArticle.article.promotion.dateStart < date('now') and traductionArticle.article.promotion.dateEnd > date('now') %}
+                            <div class="promo-box">
+                                <p class="barre">{{ prix }}</p>
+                                <p class="promo">{{ prixPromo }}</p>
+                            </div>
+                        {% else %}                        
+                            <p>{{ prix }}</p> 
+                        {% endif %}
+                    {% elseif traductionArticle.article.categorie.promotion %}
+                        {# date d'affichage#}
+                        {% if traductionArticle.article.categorie.promotion.dateStart < date('now') and traductionArticle.article.categorie.promotion.dateEnd > date('now') %}
+                            <div class="promo-box">
+                                <p class="barre">{{ prix }}</p>
+                                <p class="promo">{{ prixPromo }}</p>
+                            </div>
+                        {% else %}                        
+                            <p>{{ prix }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>  
                 <div class="m-article-detail-info-box">

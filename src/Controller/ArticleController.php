@@ -31,7 +31,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/recherche/page={pagBar}", name="article_recherche", methods={"GET", "POST"})
      */
-    public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager): Response
+    public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {   
         //récupération de la pagination
         $interPag = intval($pagBar);
@@ -65,27 +65,36 @@ class ArticleController extends AbstractController
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // récupération des articles      
         $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
-        // récupération du nombre des articles
-        $nombreArticles = count($tabArticles);        
 
-        // définition nombre des articles par page
-        $limit = 4;
-        
-        //définition start and end pour le tableau à transférer pour la pagination
-        $startCount = $interPag * $limit - $limit;
-        
-        //récupération des informations sur les articles dans la langue
-        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);       
-        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue, $startCount, $limit);              
+        if($tabArticles):
+            // récupération du nombre des articles
+            $nombreArticles = count($tabArticles);        
 
-        //nombre de pages de résultat
-        $nombreLiens = ceil($nombreArticles / $limit);
-                
-        return $this->render('article/list.html.twig', [
-            'traductionArticles' => $resultTraductionArticles,
-            'nombreLiens' => $nombreLiens,
-            'pagBar'=> $interPag
-        ]);
+            // définition nombre des articles par page
+            $limit = 4;
+            
+            //définition start and end pour le tableau à transférer pour la pagination
+            $startCount = $interPag * $limit - $limit;
+            
+            //récupération des informations sur les articles dans la langue
+            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);       
+            $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue, $startCount, $limit);              
+
+            //nombre de pages de résultat
+            $nombreLiens = ceil($nombreArticles / $limit);
+                    
+            return $this->render('article/list.html.twig', [
+                'traductionArticles' => $resultTraductionArticles,
+                'nombreLiens' => $nombreLiens,
+                'pagBar'=> $interPag
+            ]);
+        else:
+            // ajout d'un message de warning
+            $message = $translator -> trans('Es wurden keine Artikel unter diesen Kriterien gefunden.');
+            $this -> addFlash('notice', $message);
+
+            return $this->redirectToRoute('home');
+        endif;
     }
     
     //----------------------------------------------
@@ -94,7 +103,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/recherche/categorie-{id}/page={pagCat}", name="article_recherche_cat")
      */
-    public function requestArticleCategory($id, $pagCat, Request $request, EntityManagerInterface $entityManager): Response
+    public function requestArticleCategory($id, $pagCat, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         //récupération de la pagination
         $interPag = intval($pagCat);
@@ -109,29 +118,38 @@ class ArticleController extends AbstractController
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articlesCat = $repositoryArticle -> findArticlesByCategory($id);       
-
-        // récupération du nombre des articles
-        $nombreArticles = count($articlesCat);
-
-        // définition nombre des articles par page
-        $limit = 4;
+        $articlesCat = $repositoryArticle -> findArticlesByCategory($id); 
         
-        //définition start and end pour le tableau à transférer pour la pagination
-        $startCount = $interPag * $limit - $limit;
-        //récupération des informations sur les articles dans la langue
-        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
-        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($articlesCat, $langue, $startCount, $limit);
+        if($articlesCat):
+            // récupération du nombre des articles
+            $nombreArticles = count($articlesCat);
 
-        //nombre de pages de résultat
-        $nombreLiens = ceil($nombreArticles / $limit);
-              
-        return $this->render('article/list.html.twig', [
-            'traductionArticles' => $resultTraductionArticles,
-            'nombreLiens' => $nombreLiens,
-            'pagCat'=> $interPag,
-            'id' => $id
-        ]);
+            // définition nombre des articles par page
+            $limit = 4;
+            
+            //définition start and end pour le tableau à transférer pour la pagination
+            $startCount = $interPag * $limit - $limit;
+            //récupération des informations sur les articles dans la langue
+            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+            $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($articlesCat, $langue, $startCount, $limit);
+
+            //nombre de pages de résultat
+            $nombreLiens = ceil($nombreArticles / $limit);
+                
+            return $this->render('article/list.html.twig', [
+                'traductionArticles' => $resultTraductionArticles,
+                'nombreLiens' => $nombreLiens,
+                'pagCat'=> $interPag,
+                'id' => $id
+            ]);
+        else:
+            // ajout d'un message de warning
+            $message = $translator -> trans('Unter dieser Kategorie gibt es zur Zeit keine Artikel.');
+            $this -> addFlash('notice', $message);
+
+            return $this->redirectToRoute('home');
+
+        endif;
     }
 
     //----------------------------------------------
@@ -140,7 +158,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/promotions/page={pagPromo}", name="article_recherche_promo")
      */
-    public function requestArticlePromotion($pagPromo, Request $request, EntityManagerInterface $entityManager): Response
+    public function requestArticlePromotion($pagPromo, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         //récupération de la pagination
         $interPag = intval($pagPromo);
@@ -155,7 +173,8 @@ class ArticleController extends AbstractController
         //définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         // fonction de requête sur base de données récupérées       
-        $articlesPromotions = $repositoryArticle -> findArticlesInPromotion();  
+        $articlesPromotions = $repositoryArticle -> findArticlesInPromotion(); 
+        
         //définition repository categorie
         $repositoryCategorie = $entityManager -> getRepository(Categorie::class);
         // fonction de requête sur base de données récupérées       
@@ -173,29 +192,39 @@ class ArticleController extends AbstractController
             foreach($articles as $article):
                 array_push($tabPromo, $article);
             endforeach;
-        endforeach;       
-
-        // récupération du nombre des articles
-        $nombreArticles = count($tabPromo);        
-
-        // définition nombre des articles par page
-        $limit = 4;
+        endforeach;   
         
-        //définition start and end pour le tableau à transférer pour la pagination
-        $startCount = $interPag * $limit - $limit;
-
-        //récupération des informations sur les articles dans la langue
-        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
-        $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabPromo, $langue, $startCount, $limit);
-
-        //nombre de pages de résultat
-        $nombreLiens = ceil($nombreArticles / $limit);
         
-        return $this->render('article/list.html.twig', [
-            'traductionArticles' => $resultTraductionArticles,
-            'nombreLiens' => $nombreLiens,
-            'pagPromo'=> $interPag
-        ]);
+        if($tabPromo):
+            // récupération du nombre des articles
+            $nombreArticles = count($tabPromo);        
+
+            // définition nombre des articles par page
+            $limit = 4;
+            
+            //définition start and end pour le tableau à transférer pour la pagination
+            $startCount = $interPag * $limit - $limit;
+
+            //récupération des informations sur les articles dans la langue
+            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+            $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabPromo, $langue, $startCount, $limit);
+
+            //nombre de pages de résultat
+            $nombreLiens = ceil($nombreArticles / $limit);
+            
+            return $this->render('article/list.html.twig', [
+                'traductionArticles' => $resultTraductionArticles,
+                'nombreLiens' => $nombreLiens,
+                'pagPromo'=> $interPag
+            ]);
+        else:
+            // ajout d'un message de warning
+            $message = $translator -> trans('Zur Zeit gibt es keine Artikel in Sonderangebot.');
+            $this -> addFlash('notice', $message);
+
+            return $this->redirectToRoute('home');
+        endif;
+
     }
 
     //----------------------------------------------

@@ -24,8 +24,18 @@
                     </div>
                     <h3>{{ traductionArticle.nom }}</h3>
                     {# si il y a une promotion #}
-                    {% if traductionArticle.article.promotion or traductionArticle.article.categorie.promotion %}
-                        <p class="promo">% {% trans %}Sonderangebot{% endtrans %} %</p>
+                    {% if traductionArticle.article.promotion %}  
+                        {# date d'affichage#}
+                        {% if traductionArticle.article.promotion.dateStart < date('now') and traductionArticle.article.promotion.dateEnd > date('now') %}
+                            <p class="promo">{% trans %}Sonderangebot{% endtrans %}</p>
+                            <p class="promo promo-date">{{ traductionArticle.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                        {% endif %}
+                    {% elseif traductionArticle.article.categorie.promotion %}
+                        {# date d'affichage#}
+                        {% if traductionArticle.article.categorie.promotion.dateStart < date('now') and traductionArticle.article.categorie.promotion.dateEnd > date('now') %}
+                            <p class="promo">{% trans %}Sonderangebot{% endtrans %}</p>
+                            <p class="promo promo-date">{{ traductionArticle.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                        {% endif %}
                     {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>
                     <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>

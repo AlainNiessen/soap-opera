@@ -110,14 +110,23 @@ class PaiementController extends AbstractController
           // si il y a une réduction sur le prix
           if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
             if($article -> getPromotion()):
-                $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();                    
+                // contrôle des dates d'affichage
+                if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                    $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+                else:
+                    $reduction = 0;
+                endif;                   
             elseif($article -> getCategorie() -> getPromotion()):
-                $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                    $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                else:
+                    $reduction = 0;
+                endif;
             endif;
             $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
-          else:
+        else:
             $prixHorsTva = $article -> getMontantHorsTva();                    
-          endif;
+        endif;
 
           $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
           // condition si utilisateur est une entreprise allemande avec numéro TVA

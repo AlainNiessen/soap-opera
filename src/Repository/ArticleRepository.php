@@ -172,7 +172,10 @@ class ArticleRepository extends ServiceEntityRepository
         //préparation lier les tables 
         return $this    -> createQueryBuilder('a')
                         -> innerJoin('a.promotion', 'pa')
-                        -> addSelect('pa')                                                                                      
+                        -> addSelect('pa') 
+                        -> andWhere('pa.dateStart < :now')
+                        -> andWhere('pa.dateEnd > :now')
+                        -> setParameter('now', new \DateTime('now'))                                                                                 
                         -> getQuery()
                         -> getResult();
         ;       

@@ -22,8 +22,6 @@ class PromotionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('nomBackend', new TranslatableMessage('option.promotion_nomBackend', [], 'EasyAdminBundle'));
-        yield DateTimeField::new('dateAffichageStart', new TranslatableMessage('option.promotion_dateAffichageStart', [], 'EasyAdminBundle'));
-        yield DateTimeField::new('dateAffichageEnd', new TranslatableMessage('option.promotion_dateAffichageEnd', [], 'EasyAdminBundle'));
         yield DateTimeField::new('dateStart', new TranslatableMessage('option.promotion_dateStart', [], 'EasyAdminBundle'));
         yield DateTimeField::new('dateEnd', new TranslatableMessage('option.promotion_dateEnd', [], 'EasyAdminBundle'));
         yield PercentField::new('Pourcentage', new TranslatableMessage('option.promotion_pourcentage', [], 'EasyAdminBundle'))

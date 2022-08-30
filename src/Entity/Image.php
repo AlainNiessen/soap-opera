@@ -48,11 +48,6 @@ class Image
     private $article;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $layoutWebsite;
-
-    /**
      * @ORM\ManyToOne(targetEntity=PositionImage::class, inversedBy="images")
      */
     private $positionImage;
@@ -110,18 +105,6 @@ class Image
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
-
-        return $this;
-    }
-
-    public function getLayoutWebsite(): ?bool
-    {
-        return $this->layoutWebsite;
-    }
-
-    public function setLayoutWebsite(bool $layoutWebsite): self
-    {
-        $this->layoutWebsite = $layoutWebsite;
 
         return $this;
     }

@@ -55,7 +55,10 @@ class CategorieRepository extends ServiceEntityRepository
         //préparation lier les tables 
         return $this    -> createQueryBuilder('c')
                         -> innerJoin('c.promotion', 'pc')
-                        -> addSelect('pc')                                                                                      
+                        -> addSelect('pc') 
+                        -> andWhere('pc.dateStart < :now')
+                        -> andWhere('pc.dateEnd > :now')
+                        -> setParameter('now', new \DateTime('now'))                                                                                     
                         -> getQuery()
                         -> getResult();
         ;       

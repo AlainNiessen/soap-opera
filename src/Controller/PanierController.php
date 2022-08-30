@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Langue;
 use App\Entity\Article;
 use App\Entity\Livraison;
@@ -292,9 +293,18 @@ class PanierController extends AbstractController
             // si il y a une réduction sur le prix
             if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
                 if($article -> getPromotion()):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();                    
+                    // contrôle des dates d'affichage
+                    if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+                    else:
+                        $reduction = 0;
+                    endif;                   
                 elseif($article -> getCategorie() -> getPromotion()):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                    if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                    else:
+                        $reduction = 0;
+                    endif;
                 endif;
                 $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
             else:

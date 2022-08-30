@@ -23,17 +23,6 @@ class Promotion
     /**
      * @ORM\Column(type="datetime")
      */
-    private $dateAffichageStart;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\GreaterThan(propertyPath="dateAffichageStart", message = "promotion.dateAffichageEnd.greaterThan")
-     */
-    private $dateAffichageEnd;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
     private $dateStart;
 
     /**
@@ -81,30 +70,6 @@ class Promotion
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDateAffichageStart(): ?\DateTimeInterface
-    {
-        return $this->dateAffichageStart;
-    }
-
-    public function setDateAffichageStart(\DateTimeInterface $dateAffichageStart): self
-    {
-        $this->dateAffichageStart = $dateAffichageStart;
-
-        return $this;
-    }
-
-    public function getDateAffichageEnd(): ?\DateTimeInterface
-    {
-        return $this->dateAffichageEnd;
-    }
-
-    public function setDateAffichageEnd(\DateTimeInterface $dateAffichageEnd): self
-    {
-        $this->dateAffichageEnd = $dateAffichageEnd;
-
-        return $this;
     }
 
     public function getDateStart(): ?\DateTimeInterface
