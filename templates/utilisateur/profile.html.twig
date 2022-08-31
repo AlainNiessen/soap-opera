@@ -38,6 +38,7 @@
                         <h2>{% trans %}Deine persönlichen Daten{% endtrans %}</h2>
                         <p class="modif-link">{% trans %}Möchtest du deine persönlichen Daten anpassen?{% endtrans %} <a href="{{ path('modif', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Daten anpassen{% endtrans %}" title="{% trans %}Daten anpassen{% endtrans %}"></i></a></p>
                         <p class="modif-link">{% trans %}Möchtest du dein Passwort anpassen?{% endtrans %} <a href="{{ path('validation_password_reset', {'id': utilisateur.id}) }}"><i class="fas fa-pencil-alt pencil" alt="{% trans %}Passwort anpassen{% endtrans %}" title="{% trans %}Passwort anpassen{% endtrans %}"></i></a></p>
+                        <p class="modif-link">{% trans %}Möchtest du dein Konto löschen?{% endtrans %} <a href="{{ path('delete-utilisateur', {'id': utilisateur.id}) }}" onclick="return confirm('{% trans %}Möchtest du wirklich dein Konto löschen?{% endtrans %}')"><i class="fas fa-trash trash" alt="{% trans %}Konto löschen{% endtrans %}" title="{% trans %}Konto löschen{% endtrans %}"></i></a></p>
                         {% if utilisateur.nomEntreprise is defined and utilisateur.nomEntreprise is not null and utilisateur.nomEntreprise is not empty %}
                         <div class="utilisateur-info-box">
                             <h3>{% trans %}Firmenname{% endtrans %}</h3>

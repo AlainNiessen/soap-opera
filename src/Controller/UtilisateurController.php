@@ -296,7 +296,7 @@ class UtilisateurController extends AbstractController
 
         // action delete
         $utilisateur -> removeArticle($article);
-        //préparation insertion suppression service dans la BD
+        //préparation insertion dans la BD
         $entityManager -> persist($utilisateur);
         //insertion
         $entityManager -> flush();
@@ -308,6 +308,23 @@ class UtilisateurController extends AbstractController
         return $this->redirectToRoute('profile', [
             'id' => $utilisateurID
         ]);
+    }
+
+    /**
+     * @Route("/delete-utilisateur/{id}", name="delete-utilisateur")
+     */
+    public function deleteUtilisateur(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    { 
+        //préparation supprimer l'utilisateur
+        $entityManager -> remove($utilisateur);
+        //insertion
+        $entityManager -> flush();
+
+        //ajout d'un message de réussite (avec paramétre nom de l'article)
+        $message = $translator -> trans('Schade, dass du gehst, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!');
+        $this -> addFlash('success', $message);
+
+        return $this->redirectToRoute('home');
     }
         
     
