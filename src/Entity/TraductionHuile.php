@@ -24,13 +24,13 @@ class TraductionHuile
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionHuiles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=Huile::class, inversedBy="traductionHuiles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $huile;
 

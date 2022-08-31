@@ -26,7 +26,7 @@ class Philosophie
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="philosophies")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 

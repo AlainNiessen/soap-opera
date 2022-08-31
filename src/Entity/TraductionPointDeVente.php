@@ -24,13 +24,13 @@ class TraductionPointDeVente
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionPointDeVentes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=PointDeVente::class, inversedBy="traductionPointDeVentes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $pointDeVente;
 

@@ -29,13 +29,13 @@ class TraductionPromotion
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionPromotions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="traductionPromotions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $promotion;
 

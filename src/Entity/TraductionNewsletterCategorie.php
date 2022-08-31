@@ -24,13 +24,13 @@ class TraductionNewsletterCategorie
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionNewsletterCategories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=NewsletterCategorie::class, inversedBy="traductionNewsletterCategories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $newsletterCategories;
 

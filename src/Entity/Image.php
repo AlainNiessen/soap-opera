@@ -39,16 +39,19 @@ class Image
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="images")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="images")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $article;
 
     /**
      * @ORM\ManyToOne(targetEntity=PositionImage::class, inversedBy="images")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $positionImage;
 
@@ -64,6 +67,7 @@ class Image
 
     /**
      * @ORM\ManyToOne(targetEntity=PointDeVente::class, inversedBy="image")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $pointDeVente;
 

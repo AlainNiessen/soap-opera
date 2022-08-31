@@ -24,13 +24,13 @@ class TraductionOdeur
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionOdeurs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=Odeur::class, inversedBy="traductionOdeurs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $odeur;
 

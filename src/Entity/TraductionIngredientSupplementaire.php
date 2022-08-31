@@ -24,13 +24,13 @@ class TraductionIngredientSupplementaire
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionIngredientSupplementaires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=IngredientSupplementaire::class, inversedBy="traductionIngredientSupplementaires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $ingredientSupplementaire;
 

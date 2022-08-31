@@ -24,13 +24,13 @@ class Evaluation
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="evaluations")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $article;
 
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="evaluations")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $utilisateur;
 

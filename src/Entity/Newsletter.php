@@ -41,7 +41,7 @@ class Newsletter
 
     /**
      * @ORM\ManyToOne(targetEntity=NewsletterCategorie::class, inversedBy="newsletters")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $newsletterCategories;
 

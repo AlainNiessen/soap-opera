@@ -24,7 +24,7 @@ class DetailCommandeArticle
 
     /**
      * @ORM\ManyToOne(targetEntity=Facture::class, inversedBy="detailCommandeArticles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $facture;
 
@@ -35,7 +35,7 @@ class DetailCommandeArticle
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="detailCommandeArticles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $article;
 

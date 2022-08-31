@@ -32,6 +32,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="articles")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $categorie;
 

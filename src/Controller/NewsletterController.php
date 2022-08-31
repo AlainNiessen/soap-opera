@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Newsletter;
+use App\Entity\Utilisateur;
+use App\Entity\NewsletterCategorie;
 use Symfony\Component\Mime\Address;
 use App\Entity\TraductionNewsletter;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,7 +22,7 @@ class NewsletterController extends AbstractController
     /**
      * @Route("/newsletter/{id}", name="newsletter_send")
      */
-    public function index(EntityManagerInterface $entityManager, Request $request, Newsletter $newsletter, MailerInterface $mailer, TranslatorInterface $translator): Response
+    public function send(EntityManagerInterface $entityManager, Request $request, Newsletter $newsletter, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         // récupération de la catégorie du Newsletter
         $categorie = $newsletter -> getNewsletterCategories();
@@ -33,10 +35,19 @@ class NewsletterController extends AbstractController
             $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
             if($langueUtilisateur === 'de'):
                 $salutation = "Hallo ";
+                $messageCancel = "Möchtest du den Newsletter nicht mehr erhalten? Du hast auf deinem Profil die Möglichkeit, die Newsletter anzupassen oder zu kündigen.";
+                $salutationsDist = "Mit freundlichen Grüssen";
+                $noms = "Sarah und Julia";
             elseif ($langueUtilisateur === "en"):
                 $salutation = "Hello ";
+                $messageCancel = "Do you no longer wish to receive the newsletter? You have the option to adjust or cancel the newsletter on your profile.";
+                $salutationsDist = "Kind regards";
+                $noms = "Sarah and Julia";
             elseif ($langueUtilisateur === "fr"):
                 $salutation = "Salut ";
+                $messageCancel = "Tu ne souhaites plus recevoir la newsletter ? Tu as la possibilité d'ajuster ou d'annuler la newsletter sur ton profil.";
+                $salutationsDist = "Salutations distinguées";
+                $noms = "Sarah et Julia";
             endif;
             //définition repository langue
             $repositoryLangue = $entityManager -> getRepository(Langue::class);           
@@ -63,7 +74,12 @@ class NewsletterController extends AbstractController
                         //passage des informations au template twig 
                         'message' => $resultTraductionNewsletter -> getDescription(), 
                         'nom' => $utilisateur -> getPrenom(),
-                        'salutation' => $salutation           
+                        'salutation' => $salutation,
+                        'newsletterCategorieId' =>  $categorie -> getID(),
+                        'utilisateurId' => $utilisateur -> getId(),
+                        'messageCancel' => $messageCancel,
+                        'salutationsDist' => $salutationsDist,         
+                        'noms' => $noms        
                     ]);
                 else:
                     $email = (new TemplatedEmail())
@@ -75,7 +91,12 @@ class NewsletterController extends AbstractController
                         //passage des informations au template twig 
                         'message' => $resultTraductionNewsletter -> getDescription(), 
                         'nom' => $utilisateur -> getPrenom(),
-                        'salutation' => $salutation         
+                        'salutation' => $salutation,
+                        'newsletterCategorieId' =>  $categorie -> getID(),
+                        'utilisateurId' => $utilisateur -> getId(),
+                        'messageCancel' => $messageCancel,
+                        'salutationsDist' => $salutationsDist,         
+                        'noms' => $noms          
                     ]);
                 endif;
                 // envoi du mail
@@ -92,5 +113,5 @@ class NewsletterController extends AbstractController
             
         // redirect vers la liste de newsletter avec message
         return $this->redirect($request -> headers -> get('referer'));
-    }
+    }    
 }

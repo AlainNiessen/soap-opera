@@ -34,7 +34,7 @@ class Facture
 
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="factures")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $utilisateur;
 

@@ -35,7 +35,7 @@ class NewsletterCategorie
     private $traductionNewsletterCategories;
 
     /**
-     * @ORM\OneToMany(targetEntity=Newsletter::class, mappedBy="newsletterCategories", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Newsletter::class, mappedBy="newsletterCategories")
      */
     private $newsletters;
 

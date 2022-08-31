@@ -29,13 +29,13 @@ class TraductionCategorie
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionCategories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="traductionCategories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $categorie;
 

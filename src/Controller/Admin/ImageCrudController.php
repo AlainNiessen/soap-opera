@@ -29,8 +29,7 @@ class ImageCrudController extends AbstractCrudController
 
         $image = ImageField::new('nom', new TranslatableMessage('option.image_nom', [], 'EasyAdminBundle'))
                             ->setBasePath('/uploads/images');        
-        $fields = [                
-            BooleanField::new('layoutWebsite', new TranslatableMessage('option.image_layoutWebsite', [], 'EasyAdminBundle')),            
+        $fields = [                            
             AssociationField::new('positionImage', new TranslatableMessage('option.image_positionImage', [], 'EasyAdminBundle')),
             AssociationField::new('categorie', new TranslatableMessage('option.image_categorie', [], 'EasyAdminBundle')),
             AssociationField::new('pointDeVente', new TranslatableMessage('option.image_pointDeVente', [], 'EasyAdminBundle')),

@@ -4,10 +4,11 @@
         <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />        
     </head>
     <body>
-        <p>{{ message }}</p>
+        <h2>{{ salutation }} {{ nom }}</h2>        
+        <p>{{ message }}</p>        
         <div style="margin-top: 30px;">
-            <p>{% trans %}Mit freundlichen Grüssen{% endtrans %}</p>            
-            <p>Sarah {% trans %}und{% endtrans %} Julia</p>            
+            <p>{{ salutationsDist }}</p>            
+            <p>{{ noms }}</p>            
         </div> 
     </body>       
 </html>

@@ -24,13 +24,13 @@ class TraductionBeurre
 
     /**
      * @ORM\ManyToOne(targetEntity=Langue::class, inversedBy="traductionBeurres")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $langue;
 
     /**
      * @ORM\ManyToOne(targetEntity=Beurre::class, inversedBy="traductionBeurres")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $beurre;
 
