@@ -1619,6 +1619,22 @@
         <source>Zur Zeit gibt es keine Artikel in Sonderangebot.</source>
         <target>Zur Zeit gibt es keine Artikel in Sonderangebot.</target>
       </trans-unit>
+      <trans-unit id="RfFsI_i" resname="Möchtest du dein Konto löschen?">
+        <source>Möchtest du dein Konto löschen?</source>
+        <target>Möchtest du dein Konto löschen?</target>
+      </trans-unit>
+      <trans-unit id="ok2z_Jp" resname="Möchtest du wirklich dein Konto löschen?">
+        <source>Möchtest du wirklich dein Konto löschen?</source>
+        <target>Möchtest du wirklich dein Konto löschen?</target>
+      </trans-unit>
+      <trans-unit id="IFCW.bv" resname="Konto löschen">
+        <source>Konto löschen</source>
+        <target>Konto löschen</target>
+      </trans-unit>
+      <trans-unit id="4Gccwtf" resname="Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!">
+        <source>Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!</source>
+        <target>Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

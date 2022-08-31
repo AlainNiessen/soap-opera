@@ -1298,6 +1298,22 @@
         <source>Zur Zeit gibt es keine Artikel in Sonderangebot.</source>
         <target>Il n'y a actuellement aucun article en vente.</target>
       </trans-unit>
+      <trans-unit id="4Gccwtf" resname="Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!">
+        <source>Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!</source>
+        <target>Nous sommes désolés de te voir nous quitter, mais ton compte a été supprimé avec succès. Si tu souhaites utiliser à nouveau nos services à l'avenir, tu dois t'inscrire à nouveau !</target>
+      </trans-unit>
+      <trans-unit id="RfFsI_i" resname="Möchtest du dein Konto löschen?">
+        <source>Möchtest du dein Konto löschen?</source>
+        <target>Veux-tu supprimer ton compte ?</target>
+      </trans-unit>
+      <trans-unit id="ok2z_Jp" resname="Möchtest du wirklich dein Konto löschen?">
+        <source>Möchtest du wirklich dein Konto löschen?</source>
+        <target>Veux-tu vraiment supprimer ton compte ?</target>
+      </trans-unit>
+      <trans-unit id="IFCW.bv" resname="Konto löschen">
+        <source>Konto löschen</source>
+        <target>Suppression compte</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

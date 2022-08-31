@@ -321,7 +321,7 @@ class UtilisateurController extends AbstractController
         $entityManager -> flush();
 
         //ajout d'un message de réussite (avec paramétre nom de l'article)
-        $message = $translator -> trans('Schade, dass du gehst, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!');
+        $message = $translator -> trans('Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!');
         $this -> addFlash('success', $message);
 
         return $this->redirectToRoute('home');
