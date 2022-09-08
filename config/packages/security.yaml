@@ -34,8 +34,7 @@ security:
 
             
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # qui a accès à l'interface admin
     access_control:
         - { path: ^/admin_s_op, roles: [ROLE_SUPER_ADMIN, ROLE_FINANCE_ADMIN] }
         # - { path: ^/profile, roles: ROLE_USER }

@@ -41,54 +41,69 @@ class RegistrationController extends AbstractController
             //récupération des données du formulaire
             $utilisateur = $formInscription -> getData();
 
-            $newsletterUtilisateur = $formInscription -> getData('newsletterCategorie');
-            if(!empty($newsletterUtilisateur)):
-                foreach($newsletterUtilisateur as $newsletter):
-                    $utilisateur -> addNewsletterCategory($newsletter);
-                endforeach;
-            endif;
-            // hasher the plain password
-            $utilisateur->setPassword(
-                $encoder->hashPassword(
-                    $utilisateur,
-                    $formInscription->get('plainPassword')->getData()
-                )
-            );
-
-            //appel à la fonction privée generateToken pour générer le Token et l'attribuer à l'utilisateur créé dans le formulaire
-            $utilisateur -> setInscriptionToken($this -> generateToken());  
-
-            // vérification si il y en a des adresses dans la BD
-            // appel de deux fonctions de vérification pour les deux adresses
-            $this -> checkAdressesHome($utilisateur, $entityManager);
-            $this -> checkAdressesDeliver($utilisateur, $entityManager);
+            $homeAdresseCodePostal = $utilisateur -> getAdresseHome() -> getCodePostal();
+            $homeAdressePays = $utilisateur -> getAdresseHome() -> getPays();
+            $deliverAdresseCodePostal = $utilisateur -> getAdresseDeliver() -> getCodePostal();
+            $deliverAdressePays = $utilisateur -> getAdresseHome() -> getPays();
             
-            //préparation insertion dans la BD
-            $entityManager -> persist($utilisateur);
-            //insertion BD
-            $entityManager -> flush();
+            if(((strlen($homeAdresseCodePostal) == 4 && $homeAdressePays == "BE") || (strlen($homeAdresseCodePostal) == 5 && $homeAdressePays == "DE")) && ((strlen($deliverAdresseCodePostal) == 4 && $deliverAdressePays == "BE") || (strlen($deliverAdresseCodePostal) == 5 && $deliverAdressePays == "DE"))):
+                $newsletterUtilisateur = $formInscription -> getData('newsletterCategorie');
+                if(!empty($newsletterUtilisateur)):
+                    foreach($newsletterUtilisateur as $newsletter):
+                        $utilisateur -> addNewsletterCategory($newsletter);
+                    endforeach;
+                endif;
+                // hasher the plain password
+                $utilisateur->setPassword(
+                    $encoder->hashPassword(
+                        $utilisateur,
+                        $formInscription->get('plainPassword')->getData()
+                    )
+                );
 
-            //sujet à traduire
-            $messageSubject = $translator -> trans('Einschreibungsbestätigung');
-            //validation par mail après enregistrement de l'utilisateur
-            $email = (new TemplatedEmail())
-            ->from('alain_niessen@hotmail.com') //de qui
-            ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
-            ->subject($messageSubject) //sujet
-            ->htmlTemplate('emails/signup.html.twig') //création template email signup
-            ->context([
-                //passage des informations au template twig (token)
-                'token' => $utilisateur -> getInscriptionToken(),
-                'salutation' => $utilisateur -> getPrenom()               
-            ]);
-            // envoi du mail
-            $mailer -> send($email);  
+                //appel à la fonction privée generateToken pour générer le Token et l'attribuer à l'utilisateur créé dans le formulaire
+                $utilisateur -> setInscriptionToken($this -> generateToken());  
 
-            //ajout d'un message de réussite
-            $messageEnvoiMail = $translator -> trans('Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!');
-            $this -> addFlash('success', $messageEnvoiMail); 
+                // vérification si il y en a des adresses dans la BD
+                // appel de deux fonctions de vérification pour les deux adresses
+                $this -> checkAdressesHome($utilisateur, $entityManager);
+                $this -> checkAdressesDeliver($utilisateur, $entityManager);
                 
-            return $this->redirectToRoute('home');
+                //préparation insertion dans la BD
+                $entityManager -> persist($utilisateur);
+                //insertion BD
+                $entityManager -> flush();
+
+                //sujet à traduire
+                $messageSubject = $translator -> trans('Einschreibungsbestätigung');
+                //validation par mail après enregistrement de l'utilisateur
+                $email = (new TemplatedEmail())
+                ->from('alain_niessen@hotmail.com') //de qui
+                ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
+                ->subject($messageSubject) //sujet
+                ->htmlTemplate('emails/signup.html.twig') //création template email signup
+                ->context([
+                    //passage des informations au template twig (token)
+                    'token' => $utilisateur -> getInscriptionToken(),
+                    'salutation' => $utilisateur -> getPrenom()               
+                ]);
+                // envoi du mail
+                $mailer -> send($email);  
+
+                //ajout d'un message de réussite
+                $messageEnvoiMail = $translator -> trans('Gut gemacht! Du wirst in Kürze eine Email erhalten, in der wir dich bitten, deine Einschreibung zu bestätigen!');
+                $this -> addFlash('success', $messageEnvoiMail); 
+                    
+                return $this->redirectToRoute('home');
+            else: 
+                //ajout d'un message de faute 
+                $message = $translator -> trans('Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.');
+                $this -> addFlash('error', $message);
+
+                return $this->render('registration/inscriptionUtilisateur.html.twig', [
+                    'formInscription' => $formInscription -> createView()
+                ]);            
+            endif;
         endif;       
 
        return $this->render('registration/inscriptionUtilisateur.html.twig', [

@@ -100,7 +100,7 @@ const formulaire_evaluation = document.getElementById('evaluation');
 acces_formulaires.forEach(item => {
     // eventListener click
     item.addEventListener('click', function() {
-        if(this.id == 'submit-commentaire' || this.id == 'modif-commentaire') {
+        if(this.id == 'submit-commentaire') {
             showFormulaire(formulaire_commentaire);
         } else if (this.id == 'submit-evaluation') {
             showFormulaire(formulaire_evaluation);

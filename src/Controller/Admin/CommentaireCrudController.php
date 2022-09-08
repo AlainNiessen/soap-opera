@@ -21,6 +21,15 @@ class CommentaireCrudController extends AbstractCrudController
         return Commentaire::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par date de facture
+            ->setDefaultSort(['dateCommentaire' => 'DESC'])
+            
+        ;
+    }
+
     
     public function configureFields(string $pageName): iterable
     {

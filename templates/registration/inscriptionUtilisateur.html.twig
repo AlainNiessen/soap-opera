@@ -11,6 +11,11 @@
                 {{ message }}
             </div>
         {% endfor %}  
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger message">
+                {{ message }}
+            </div>
+        {% endfor %}  
         <div class="info-box-inscription">
             <h1>{% trans %}Einschreibung{% endtrans %}</h1>        
             <p>{% trans %}Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.{% endtrans %}</p>
@@ -46,13 +51,14 @@
             </div>
             {{ form_row(formInscription.adresseHome.pays) }}
         </div>
-            <div class="form-container">
-            <h3>{% trans %}Lieferadresse{% endtrans %}</h3>
+        <div class="form-container">
+            <h3>{% trans %}Lieferadresse{% endtrans %}</h3> 
             <div class="form-flex-container">
                 {{ form_row(formInscription.adresseDeliver.rue) }}
                 {{ form_row(formInscription.adresseDeliver.numeroRue) }}
             </div>
             <div class="form-flex-container">
+             
                 {{ form_row(formInscription.adresseDeliver.codePostal) }}
                 {{ form_row(formInscription.adresseDeliver.ville) }}
             </div>

@@ -44,8 +44,7 @@ class TraductionNewsletterCrudController extends AbstractCrudController
         yield TextField::new('documentPDF', new TranslatableMessage('option.tradNewsletter_documentPDF', [], 'EasyAdminBundle'))                           
                 ->setTemplatePath('admin/pdf.html.twig')                    
                 ->setCustomOption('base_path', $this->params->get('app.path.newsletter_documentPDF'))
-                ->onlyOnIndex(); 
-        
+                ->onlyOnIndex();         
         yield Field::new('documentFile', new TranslatableMessage('option.tradNewsletter_documentFile', [], 'EasyAdminBundle'))
                 ->setFormType(VichFileType::class)                          
                 ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'Download PDF'])
