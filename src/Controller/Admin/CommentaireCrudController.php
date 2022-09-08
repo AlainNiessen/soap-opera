@@ -45,7 +45,7 @@ class CommentaireCrudController extends AbstractCrudController
     {
         $actionPublier = Action::new('Publier', new TranslatableMessage('option.commentaire_publier', [], 'EasyAdminBundle'))
             ->displayIf(static function ($entity) {
-                // action sera uniquement affiché si le statutLivraison est sur false
+                // action sera uniquement affiché si le statutPublication est sur false
                 return !$entity->getPublication();
             })
             ->linkToRoute('publier', function ($entity): array {
