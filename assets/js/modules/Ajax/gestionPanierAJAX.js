@@ -26,9 +26,7 @@ async function changeQuantiteArticlePanier(url) {
 
 function changeQuantite() {
     let tdBoutonsPlus = document.querySelectorAll('.articleplus');
-    let tdBoutonsMinus = document.querySelectorAll('.articleminus');
-   
-    
+    let tdBoutonsMinus = document.querySelectorAll('.articleminus');   
 
     if(tdBoutonsPlus) {
         for(tdBoutonPlus of tdBoutonsPlus) {
@@ -48,6 +46,5 @@ function changeQuantite() {
                 changeQuantiteArticlePanier(url);                                                       
             })
         }  
-    }
-    
+    }    
 }

@@ -278,7 +278,7 @@ class PaiementController extends AbstractController
 
         //sujet à traduire
         $messageSubject = $translator -> trans('Kaufbestätigung - Rechnung Nr.');
-        //validation par mail après enregistrement de l'utilisateur
+        //e-mail vers utilisateur
         $email = (new TemplatedEmail())
         ->from('alain_niessen@hotmail.com') //de qui
         ->to(new Address($this -> getUser() -> getEmail())) //vers adresse mail du utilisateur
@@ -296,6 +296,24 @@ class PaiementController extends AbstractController
         ]);
         // envoi du mail
         $mailer -> send($email);  
+        //e-mail vers soap-opera
+        $email2 = (new TemplatedEmail())
+        ->from('alain_niessen@hotmail.com') //de qui
+        ->to('julialeohoelscher@hotmail.com') //vers adresse mail du utilisateur
+        ->subject($messageSubject.' '. $facture->getId()) //sujet
+        ->attachFromPath('../public/uploads/facturePDF/'.$facture->getDocumentPDF())
+        ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
+        ->context([
+            //passage des informations au template twig (token)
+            'nom' => $this -> getUser() -> getPrenom(),
+            'infosPanier' => $tabInfos[0],
+            'total' => $tabInfos[1],
+            'fraisLivraison' => $tabInfos[2],
+            'fraisTVALivraison' => $tabInfos[3],
+            'fraisTotalLivraison' => $tabInfos[4]          
+        ]);
+        // envoi du mail
+        $mailer -> send($email2);  
 
         // reste du panier et nombre total des articles dans le panier
         $session -> set('panier', []);
