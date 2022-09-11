@@ -46,6 +46,7 @@ class RegistrationController extends AbstractController
             $deliverAdresseCodePostal = $utilisateur -> getAdresseDeliver() -> getCodePostal();
             $deliverAdressePays = $utilisateur -> getAdresseHome() -> getPays();
             
+            // contrôle supplémentaire sur la relation code postal - pays
             if(((strlen($homeAdresseCodePostal) == 4 && $homeAdressePays == "BE") || (strlen($homeAdresseCodePostal) == 5 && $homeAdressePays == "DE")) && ((strlen($deliverAdresseCodePostal) == 4 && $deliverAdressePays == "BE") || (strlen($deliverAdresseCodePostal) == 5 && $deliverAdressePays == "DE"))):
                 $newsletterUtilisateur = $formInscription -> getData('newsletterCategorie');
                 if(!empty($newsletterUtilisateur)):

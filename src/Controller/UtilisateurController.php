@@ -203,28 +203,40 @@ class UtilisateurController extends AbstractController
             $ville = $formAdresse -> get('ville') -> getData();
             $pays = $formAdresse -> get('pays') -> getData();
 
-            //attribution des valeurs à la nouvelle adresse
-            $adresse -> setNumeroRue($numeroRue);
-            $adresse -> setRue($rue);
-            $adresse -> setCodePostal($codePostal);
-            $adresse -> setVille($ville);
-            $adresse -> setPays($pays);
+            // contrôle supplémentaire sur la relation code postal - pays
+            if((strlen($codePostal) == 4 && $pays == "BE") || (strlen($codePostal) == 5 && $pays == "DE")):
+                //attribution des valeurs à la nouvelle adresse
+                $adresse -> setNumeroRue($numeroRue);
+                $adresse -> setRue($rue);
+                $adresse -> setCodePostal($codePostal);
+                $adresse -> setVille($ville);
+                $adresse -> setPays($pays);
 
-            // check dans la base de données
-            $this -> checkAdresseBD($utilisateur, $adresse, $type, $entityManager);
+                // check dans la base de données
+                $this -> checkAdresseBD($utilisateur, $adresse, $type, $entityManager);
 
-            // préparation update
-            $entityManager -> persist($utilisateur);
-            // insertion BD du update
-            $entityManager -> flush();
+                // préparation update
+                $entityManager -> persist($utilisateur);
+                // insertion BD du update
+                $entityManager -> flush();
 
-            //ajout d'un message de réussite (avec paramétre nom de l'article)
-            $message = $translator -> trans('Die Änderungen wurden erfolgreich registriert');
-            $this -> addFlash('success', $message);
+                //ajout d'un message de réussite (avec paramétre nom de l'article)
+                $message = $translator -> trans('Die Änderungen wurden erfolgreich registriert');
+                $this -> addFlash('success', $message);
 
-            return $this->redirectToRoute('profile', [
-                'id' => $utilisateur -> getId()
-            ]);
+                return $this->redirectToRoute('profile', [
+                    'id' => $utilisateur -> getId()
+                ]);
+            else:
+                //ajout d'un message de faute 
+                $message = $translator -> trans('Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.');
+                $this -> addFlash('error', $message);
+
+                return $this->render('utilisateur/form_modif_adresse.html.twig', [
+                    'formAdresse' => $formAdresse -> createView(),
+                    'titre' => $titre
+                ]); 
+            endif;           
             
         endif;
 
