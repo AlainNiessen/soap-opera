@@ -1,3 +1,8 @@
+// ----------------------------
+// DIAPORAMA PHILOSOPHIE
+// ---------------------------- 
+
+//récupération des éléments
 let diaporama = document.querySelector(".m-philosophie-diaporama");
 let slides = document.querySelectorAll(".mySlides");
 let btnNext = document.getElementById("next");

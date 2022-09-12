@@ -1,3 +1,7 @@
+// ----------------------------
+// MAP OPENSTREETMAP
+// ----------------------------
+
 //si la carte est présent dans le DOM
 let maps = document.querySelectorAll('.map');
 

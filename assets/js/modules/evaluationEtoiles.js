@@ -1,3 +1,6 @@
+// ----------------------------
+// EVALUATION ETOILES
+// ----------------------------
 
 // récupération de toutes les étoiles    
 const etoiles = document.querySelectorAll('.la-star');

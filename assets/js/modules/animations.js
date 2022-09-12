@@ -1,5 +1,5 @@
 // ----------------------------
-// Animation NAVBAR
+// ANIMATION NAVBAR
 // ----------------------------
 
 let hamburger = document.getElementById('l-topbar-hamburger');
@@ -14,7 +14,7 @@ if(hamburger) {
 
 
 // ----------------------------
-// Animation Barre de recherche 
+// ANIMATION BARRE DE RECHERCHE
 // ----------------------------
 
 let barreForm = document.getElementById('m-recherche-barre-form');
@@ -39,7 +39,7 @@ if(input) {
 
 
 // ----------------------------
-// Animation ONGLET DETAIL ARTICLE
+// ANIMATION ONGLETS DETAIL ARTICLE
 // ----------------------------
 
 //récupération des tous les onglets et contenus
@@ -86,7 +86,7 @@ onglets.forEach(onglet => {
 })
 
 // ----------------------------
-// Animation formulaires pop-up
+// ANIMATION FORMULAIRES POP-UP
 // ---------------------------- 
 
 //récupération des actions pour accéder les formulaires et pour fermer les formulaires
@@ -129,7 +129,7 @@ function removeFormulaire (element) {
 }
 
 // ----------------------------
-// Animation formulaires pop-up profile utilisateur
+// ANIMATION FORMULAIRES POP-UP PROFIL
 // ---------------------------- 
 
 // récupération des boutons
