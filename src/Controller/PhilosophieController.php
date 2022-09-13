@@ -13,25 +13,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PhilosophieController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE PHILOSOPHIE
+    //----------------------------------------------
     /**
      * @Route("/philosophie", name="philosophie")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function philosophie(Request $request, EntityManagerInterface $entityManager): Response
     {
-
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);    
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
-        //récupération des informations sur les articles dans la langue
+        //récupération de la traduction de philosophie via PhilosophieRepository
         $repositoryPhilosophie = $entityManager -> getRepository(Philosophie::class);
         $philosophie = $repositoryPhilosophie -> findPhilosophie($langue);
+        // récupération du text
         $philosophieText = $philosophie['philosophie'];
 
-        //récupération des images pour le diaporama
+        //récupération des images pour le diaporama via PositionImageRepository
         $repositoryPositionImage = $entityManager -> getRepository(PositionImage::class);
         $position = $repositoryPositionImage -> findOneBy(['position' => 'Slider Philosophie']);
         $images = $position -> getImages();

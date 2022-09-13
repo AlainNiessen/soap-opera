@@ -15,7 +15,6 @@ class TraductionCategorieCrudController extends AbstractCrudController
     {
         return TraductionCategorie::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

@@ -47,7 +47,7 @@ class TraductionNewsletterCategorieRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
+    // fonction de recherche de traduction pour une catégorie de Newsletter spécifique dans une langue spécifique
     public function findTraduction(NewsletterCategorie $newsletterCategorie, $langue)
     {
         return $this    ->  createQueryBuilder('tnc')
@@ -63,16 +63,4 @@ class TraductionNewsletterCategorieRepository extends ServiceEntityRepository
                         ->  getSingleResult()
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionNewsletterCategorie
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

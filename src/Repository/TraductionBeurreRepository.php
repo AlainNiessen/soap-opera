@@ -50,7 +50,7 @@ class TraductionBeurreRepository extends ServiceEntityRepository
     /**
     * @return TraductionBeurre[] Returns an array of TraductionBeurre objects
     */
-    
+    // fonction de recherche de traduction pour plusieurs beurres dans une langue spécifique
     public function findTraductionBeurre($beurres, Langue $langue)
     {
         //récupération de ID langue
@@ -77,17 +77,4 @@ class TraductionBeurreRepository extends ServiceEntityRepository
            
         ;
     }
-    
-
-    /*
-    public function findOneBySomeField($value): ?TraductionBeurre
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

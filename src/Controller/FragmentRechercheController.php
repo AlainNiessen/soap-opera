@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Langue;
-use App\Entity\Categorie;
 use App\Entity\TraductionCategorie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,26 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FragmentRechercheController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE POUR AFFICHER LES CATEGORIES DANS LA SECTION RECHERCHE PAR CATEGORIE
+    //----------------------------------------------
     /**
      * @Route("/fragment/recherche", name="recherche")
      */
     public function requestAllCategories(EntityManagerInterface $entityManager, Request $request): Response
     {
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
         
-        //définition repository categorie
-        $repositoryCategorie = $entityManager -> getRepository(Categorie::class);
-        // fonction de requête => tous les categories dans la langue défini        
-        $allCategories = $repositoryCategorie -> findAll();
-
-        //récupération des informations sur les articles dans la langue
+        // récupération de la traductions
         $repositoryTraductionCategorie = $entityManager -> getRepository(TraductionCategorie::class);
-        $resultTraductionCategories = $repositoryTraductionCategorie -> findTraductionCategories($allCategories, $langue);
+        $resultTraductionCategories = $repositoryTraductionCategorie -> findTraductionCategories($langue);
         
         return $this->render('fragment_recherche/_recherche.html.twig', [
             'traductionCategories' => $resultTraductionCategories

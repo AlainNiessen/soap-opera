@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Adresse;
 use App\Entity\Article;
-use App\Form\AdresseType;
 use App\Entity\Evaluation;
 use App\Entity\Commentaire;
 use App\Entity\Utilisateur;
@@ -21,45 +20,48 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UtilisateurController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE PROFILE UTILISATEUR
+    //----------------------------------------------
     /**
      * @Route("/profile/{id}", name="profile")
      */
     public function profile(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        
-
-        // récupération de la langue 
+    {   
+        // récupération langue via LangueRepository
         $codeLangue = $utilisateur -> getLangue() -> getCodeLangue();
-        $langue = $utilisateur -> getLangue();
-       
+        $langue = $utilisateur -> getLangue();       
         
-        //récupération des informations sur les articles dans la langue
+        // récupération TraductionArticleRepository
         $repositoryTradArticles = $entityManager -> getRepository(TraductionArticle::class);
         // récupération des favoris
         $favoris = $utilisateur -> getArticles();
         $tabFavoris = [];
+        // boucle sur les favoris
         foreach($favoris as $favori):
             $favoriID = $favori -> getId();
-            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            // récupération de la traduction des favoris via TraductionArticleRepository
             $trad = $repositoryTradArticles -> findTraductionArticle($favoriID, $langue);             
-            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            
+            // push traduction dans le tableau
             array_push($tabFavoris, $trad);
         endforeach;
         
-        // récupération des catégories des Newsletter
-        //connection au repository TraductionNewsletterCategorie
+        // récupération TraductionNewsletterCategorie
         $repositoryTradCategorie = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
+        // récupération des categories
         $categories = $utilisateur -> getNewsletterCategories();
         $tabNomsCategories = [];
         foreach($categories as $categorie):
-            //appel à la fonction findTraduction pour trouver la traduction de NewsletterCategorie 
+            // récupération de la traduction des categories Newsletter via TraductionNewsletterCategorieRepository
             $trad = $repositoryTradCategorie -> findTraduction($categorie, $codeLangue);                
             //récupération du nom de la catégorie dans la langue de l'utilisateur
             $categorieNom = $trad -> getNom();
+            // push nom traduit dans le tableau
             array_push($tabNomsCategories, $categorieNom);
         endforeach;
 
-        // récupération des articles achetés
+        // Récupération des articles achetés
         $tabAchats = [];
         $factures = $utilisateur -> getFactures();
         foreach($factures as $facture):
@@ -69,45 +71,40 @@ class UtilisateurController extends AbstractController
                 array_push($tabAchats, $article);       
             endforeach;
         endforeach;
-
         // Éliminer les articles répétitifs
         $tabAchatsUniques = array_unique($tabAchats); 
         $tabAchatsUniquesTrad = [];
         foreach($tabAchatsUniques as $achat):
             $achatID = $achat -> getId();
-            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            // récupération de la traduction des articles achetés via TraductionArticleRepository
             $trad = $repositoryTradArticles -> findTraductionArticle($achatID, $langue);             
-            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            // push article acheté dans le tableau
             array_push($tabAchatsUniquesTrad, $trad);
         endforeach; 
         
-        // récupération des commentaires validés par l'administrateur (publication = true)
-        // définition repository commentaires
+        // récupération des commentaires validés par l'administrateur (publication = true) via CommentaireRepository
         $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
-        // récupération des commentaires sur l'article 
         $resultCommentaires = $repositoryCommentaires -> findCommentairesUtilisateur($utilisateur);
         $tabCommentairesArticles = [];
         foreach($resultCommentaires as $commentaire):
             $articleCommentID = $commentaire -> getArticle() -> getId();
-            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            // récupération de la traduction des articles commentés via TraductionArticleRepository
             $trad = $repositoryTradArticles -> findTraductionArticle($articleCommentID, $langue);             
-            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            // push article commenté dans le tableau
             array_push($tabCommentairesArticles, $trad);
         endforeach;  
         // effacer les doublons des articles commentés       
         $tabCommentairesArticlesUniques = array_unique($tabCommentairesArticles, SORT_REGULAR);
 
-        // récupération des evaluation
-        // définition repository commentaires
+        // récupération des evaluations via EvaluationRepository
         $repositoryEvaluations = $entityManager -> getRepository(Evaluation::class);
-        // récupération des commentaires sur l'article 
         $resultEvaluations = $repositoryEvaluations -> findEvaluationsUtilisateur($utilisateur);        
         $tabEvaluationsArticles = [];
         foreach($resultEvaluations as $evaluation):
             $articleEvaluationID = $evaluation -> getArticle() -> getId();
-            //appel à la fonction findTraductionArticle pour trouver la traduction de favoris
+            // récupération de la traduction des articles évalués via TraductionArticleRepository
             $trad = $repositoryTradArticles -> findTraductionArticle($articleEvaluationID, $langue);             
-            //récupération du nom de la catégorie dans la langue de l'utilisateur
+            // push article évalué dans le tableau
             array_push($tabEvaluationsArticles, $trad);
         endforeach;  
         
@@ -123,6 +120,9 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE MODIFICATION UTILISATEUR
+    //----------------------------------------------
     /**
      * @Route("/modif-utilisateur/{id}", name="modif")
      */
@@ -131,20 +131,18 @@ class UtilisateurController extends AbstractController
         // récupération du formulaire info utilisateur     
         $formUtilisateurInfo = $this->createForm(InfoUtilisateurType::class, $utilisateur);        
         $formUtilisateurInfo -> handleRequest($request);
-
         
         //si le formulaire est submit et valide
         if($formUtilisateurInfo -> isSubmitted() && $formUtilisateurInfo -> isValid()):           
 
-            // préparation update
+            // insertion dans la base de données
             $entityManager -> persist($utilisateur);
-            // insertion BD du update
             $entityManager -> flush();
 
             // rechange de la langue dans la Session
             $request -> getSession() -> set('_locale', $utilisateur -> getLangue() -> getCodeLangue());
             
-            //ajout d'un message de réussite (avec paramétre nom de l'article)
+            // ajout d'un message de réussite (avec paramétre nom de l'article)
             $message = $translator -> trans('Die Änderungen wurden erfolgreich registriert');
             $this -> addFlash('success', $message);
 
@@ -161,13 +159,16 @@ class UtilisateurController extends AbstractController
 
     }
 
+    //----------------------------------------------
+    // ROUTE MODIFICATION ADRESSES DE UTILISATEUR
+    //----------------------------------------------
     /**
      * @Route("/modif-adresse/{id}/{type}", name="modif_adresse")
      */
     public function modifAdresse(Utilisateur $utilisateur, $type, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         // check sur type pour titre dans le formulaire
-        // récupération de la langue 
+        // récupération de la langue de l'utilisateur
         $langue = $utilisateur -> getLangue() -> getCodeLangue();
         if($type === "home"):
             if($langue === "de"):
@@ -215,9 +216,8 @@ class UtilisateurController extends AbstractController
                 // check dans la base de données
                 $this -> checkAdresseBD($utilisateur, $adresse, $type, $entityManager);
 
-                // préparation update
+                // insertion dans la base de données
                 $entityManager -> persist($utilisateur);
-                // insertion BD du update
                 $entityManager -> flush();
 
                 //ajout d'un message de réussite (avec paramétre nom de l'article)
@@ -246,17 +246,18 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
-    // fonction qui va contrôler si une adresse existe déjà dans la base de données
-    // si oui => attribution directe à l'utilisateur
-    // si non => création et attribution par aprés
+    //----------------------------------------------
+    // FONCTION DE CONTRÔLE SI ADRESSE EXISTE DEJA DANS LA BASE DE DONNEES (DIFFERENCE ENTRE ADRESSE HOME ET DELIVER FAITE PAR UN TYPE)
+    // SI OUI => ATTRIBUTION DIRECTE A UTILISATEUR
+    // SI NON => CREATION ADRESSE DANS LA BASE DE DONNEES ET ATTRIBUTION PAR APRES A UTILISATEUR
+    //----------------------------------------------
     public function checkAdresseBD(Utilisateur $utilisateur, Adresse $adresse, $type, EntityManagerInterface $entityManager) {
-        //définition repository adresse
-        $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
-        // fonction de requête sur base de données récupérées       
+        
+        // récupération de toutes les adresses via AdresseRepository
+        $repositoryAdresse = $entityManager -> getRepository(Adresse::class);   
         $adresses = $repositoryAdresse -> findAll();
-        // tableau de réfèrence
-        $tabAdresses = [];  
-            
+
+        $tabAdresses = [];              
         // boucle sur les adresses stockées dans la base de données        
         foreach($adresses as $adresseBD):
             // vérification si l'adresse home existe déjà
@@ -293,24 +294,25 @@ class UtilisateurController extends AbstractController
         endif;
     }
 
+    //----------------------------------------------
+    // ROUTE SUPPRIMER FAVORI
+    //----------------------------------------------
     /**
      * @Route("/delete-favori/{utilisateurID}/{articleID}", name="delete_favori")
      */
     public function deleteFavori($utilisateurID, $articleID, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {  
-        // récupération de l'utilisateur et l'article
-        //définition repository utilisateur et article
+        // récupération utilisateur + article via UtilisateurRepository + ArticleRepository
         $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        // récupération des éléments    
         $utilisateur = $repositoryUtilisateur -> findOneBy(['id' => $utilisateurID]);
         $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
 
-        // action delete
+        // supprimer le favori
         $utilisateur -> removeArticle($article);
-        //préparation insertion dans la BD
+
+        // insertion dan sla base de données
         $entityManager -> persist($utilisateur);
-        //insertion
         $entityManager -> flush();
 
         //ajout d'un message de réussite (avec paramétre nom de l'article)
@@ -322,14 +324,16 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE SUPPRIMER UTILISATEUR
+    //----------------------------------------------
     /**
      * @Route("/delete-utilisateur/{id}", name="delete-utilisateur")
      */
     public function deleteUtilisateur(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     { 
-        //préparation supprimer l'utilisateur
+        // remove de la base de données
         $entityManager -> remove($utilisateur);
-        //insertion
         $entityManager -> flush();
 
         //ajout d'un message de réussite (avec paramétre nom de l'article)

@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Event;
 use App\Entity\Huile;
 use App\Entity\Image;
 use App\Entity\Odeur;
@@ -14,18 +13,14 @@ use App\Entity\Facture;
 use App\Entity\Categorie;
 use App\Entity\Livraison;
 use App\Entity\Promotion;
-use App\Entity\TypeEvent;
 use App\Entity\Evaluation;
 use App\Entity\Newsletter;
-use App\Entity\Partenaire;
 use App\Entity\Commentaire;
 use App\Entity\Philosophie;
-use App\Entity\Reservation;
 use App\Entity\Utilisateur;
 use App\Entity\PointDeVente;
 use App\Entity\PositionImage;
 use App\Entity\HuileEssentiel;
-use App\Entity\TraductionEvent;
 use App\Entity\TraductionHuile;
 use App\Entity\TraductionOdeur;
 use App\Entity\TraductionBeurre;
@@ -33,9 +28,7 @@ use App\Entity\TraductionArticle;
 use App\Entity\NewsletterCategorie;
 use App\Entity\TraductionCategorie;
 use App\Entity\TraductionPromotion;
-use App\Entity\TraductionTypeEvent;
 use App\Entity\TraductionNewsletter;
-use App\Entity\TraductionPartenaire;
 use App\Entity\DetailCommandeArticle;
 use App\Entity\TraductionPointDeVente;
 use App\Entity\IngredientSupplementaire;
@@ -48,7 +41,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RequestStack;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -56,79 +48,84 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {  
+    // ----------------------------
+    // ROUTE POUR INTERFACE ADMINISTRATION
+    // ----------------------------
+
     /**
      * @Route("/admin_s_op", name="admin_s_op")
      */
     public function interface(Request $request, EntityManagerInterface $entityManager): Response
     {
-        //récupération langue
+        //récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository langue
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);      
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
         // récupération des informations pour les statistiques générales
-        // définition repository utilisateur
+        // récupération du nombre des utilisateurs via UtilisateurRepository
         $repositoryUtilisateur = $entityManager -> getRepository(Utilisateur::class);
-        // fonction de requête sur base de données récupérées 
         $nombreUtilisateurs = $repositoryUtilisateur -> countUtilisateurs();
-        // définition repository article
+        // récupération du nombre des articles et nombre des articles vendus via ArticleRepository
         $repositoryArticles = $entityManager -> getRepository(Article::class);
-        // fonction de requête sur base de données récupérées 
         $nombreArticles = $repositoryArticles -> countArticles();
-        // fonction de requête sur base de données récupérées 
         $nombreArticlesVendus = $repositoryArticles -> countArticlesVendus();
-        // définition repository facture
+        // récupération du nombre des factures via FactureRepository
         $repositoryFactures = $entityManager -> getRepository(Facture::class);
-        // fonction de requête sur base de données récupérées 
         $nombreFactures = $repositoryFactures -> countFactures();
                 
-        // récupération de toutes les catégories de Newsletter
-        // définition repository evaluation
+        // récupération de toutes les catégories de Newsletter via NewsletterCategorieRepository
         $repositoryCategorieNewsletter = $entityManager -> getRepository(NewsletterCategorie::class);
-        $repositoryTraductionCategorieNewsletter = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
-        // fonction de requête sur base de données récupérées 
         $categoriesNewsletter = $repositoryCategorieNewsletter -> findAll();
-        
+        // récupération du Repository TraductionCategorieNewsletter
+        $repositoryTraductionCategorieNewsletter = $entityManager -> getRepository(TraductionNewsletterCategorie::class);
+              
+        // préparation des informations
         $tabNombreUtilisateurs = [];
         $tabNomsCategorieNewsletter = [];
         $tabColorCategorieNewsletter = [];
+        // boucle sur les catégories de Newsletter
         foreach($categoriesNewsletter as $categorieNewsletter):
+            // récupération du nombre des utilisateur par catégorie de Newsletter
             $utilisateurs = $categorieNewsletter -> getUtilisateurs();
+            $nombreUtilisateursCategorieNewsletter = count($utilisateurs);
+            // récupération de la couleur pour les statistiques
             $couleurCategorieNewsletter = $categorieNewsletter -> getCouleur();
-            $nombreUtilisateursCategorieNewsletter = count($utilisateurs);            
-            $traductionNewsletter = $repositoryTraductionCategorieNewsletter -> findTraduction($categorieNewsletter, $lang);            
+            // récupération de la traduction de la catégorie de Newsletter basée sur la langue stockée dans la Session
+            $traductionNewsletter = $repositoryTraductionCategorieNewsletter -> findTraduction($categorieNewsletter, $lang); 
+            // collection des informations pour construire la statistique           
             $tabNomsCategorieNewsletter[] = $traductionNewsletter->getNom();
             $tabNombreUtilisateurs[] = $nombreUtilisateursCategorieNewsletter;
             $tabColorCategorieNewsletter[] = $couleurCategorieNewsletter;
         endforeach;
 
-        // récupération de toutes les catégories des articles
-        // définition repository 
+        // récupération de toutes les catégories des articles via CategorieRepository
         $repositoryCategorieArticle = $entityManager -> getRepository(Categorie::class);
-        $repositoryTraductionCategorieArticle = $entityManager -> getRepository(TraductionCategorie::class);
-        // fonction de requête sur base de données récupérées 
         $categoriesArticle = $repositoryCategorieArticle -> findAll();
-                
+        // récupération du Repository TraductionCategorie
+        $repositoryTraductionCategorieArticle = $entityManager -> getRepository(TraductionCategorie::class);
+             
+        // préparation des informations       
         $tabNombreVentes = [];
         $tabNomsCategorieArticle = [];
         $tabColorCategorieArticle = [];
-
+        // boucle sur les catégories de Newsletter
         foreach($categoriesArticle as $categorieArticle):
+            // récupération du nombre des articles par catégorie
             $nombreVentesCategorie =  $repositoryArticles -> countArticlesCategorie($categorieArticle);
-            $couleurCategorieArticle = $categorieArticle -> getCouleur();
-            $nombreUtilisateursCategorieNewsletter = count($utilisateurs);  
-
-            $traductionCategorie = $repositoryTraductionCategorieArticle -> findTraductionCategorie($categorieArticle, $langue);            
+            // récupération de la couleur pour les statistiques
+            $couleurCategorieArticle = $categorieArticle -> getCouleur();            
+            // récupération de la traduction de la catégorie basée sur la langue stockée dans la Session
+            $traductionCategorie = $repositoryTraductionCategorieArticle -> findTraductionCategorie($categorieArticle, $langue);
+            // collection des informations pour construire la statistique
             $tabNomsCategorieArticle[] = $traductionCategorie->getNom();
-
             $tabNombreVentes[] = $nombreVentesCategorie;
             $tabColorCategorieArticle[] = $couleurCategorieArticle;
         endforeach;
        
-        // si il s'agit d'une requête AJAX
-        if($request -> isXmlHttpRequest()) {            
+        // actualisation des statistiques via une requête AJAX
+        if($request -> isXmlHttpRequest()) {  
+            // réponse avec toutes les informations pour actualiser les statistiques          
             return new JsonResponse(array(
                 'langue' => $lang,
                 'nombreArticles' => $nombreArticles,
@@ -159,12 +156,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        // si l'administrateur avec le rôle SUPER_ADMIN se connecte
         if ($this->isGranted('ROLE_SUPER_ADMIN')):
             return [
                 MenuItem::linkToRoute('Dashboard', 'fa fa-home', 'admin_s_op'),
-                // RETOUR A LA PAGE ACCUEIL
+                // retour à la page d'accueil
                 MenuItem::linktoRoute(new TranslatableMessage('menu.homepage', [], 'EasyAdminBundle'), 'fas fa-home', 'home'),
-                    // POINTS DE MENU TRIÉS PAR SUBMENUS
+                // points de menus avec des sous-menus
                 MenuItem::subMenu(new TranslatableMessage('menu.utilisateur', [], 'EasyAdminBundle')) -> setSubItems([
                     MenuItem::linkToCrud(new TranslatableMessage('menu.utilisateur', [], 'EasyAdminBundle'), 'fas fa-user', Utilisateur::class),
                     MenuItem::linkToCrud(new TranslatableMessage('menu.adresse', [], 'EasyAdminBundle'), 'fas fa-address-card', Adresse::class),                                        
@@ -223,6 +221,7 @@ class DashboardController extends AbstractDashboardController
                         MenuItem::linkToCrud(new TranslatableMessage('menu.philosophie', [], 'EasyAdminBundle'), 'fas fa-image', Philosophie::class)                            
                 ])
             ]; 
+        // si l'administrateur avec le rôle FINANCE_ADMIN se connecte
         elseif ($this->isGranted('ROLE_FINANCE_ADMIN')):
             return [
                 MenuItem::linkToRoute('Dashboard', 'fa fa-home', 'admin_s_op'),
@@ -238,6 +237,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureAssets(): Assets
     {
+        // ajout des ENTRYPOINTS pour pouvoir utiliser WebpackEncore pour l'interface administrateur
         return Assets::new()
         ->addWebpackEncoreEntry('js/app')
         ->addWebpackEncoreEntry('css/app');

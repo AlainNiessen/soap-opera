@@ -13,7 +13,6 @@ class OdeurCrudController extends AbstractCrudController
     {
         return Odeur::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

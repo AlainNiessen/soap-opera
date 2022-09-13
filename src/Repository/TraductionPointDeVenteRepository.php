@@ -49,6 +49,7 @@ class TraductionPointDeVenteRepository extends ServiceEntityRepository
         }
     }
 
+    // fonction de recherche de traduction pour un point de vente spécifique dans une langue spécifique
     public function findTraductionPointDeVente(PointDeVente $pointDeVente, Langue $langue)
     {
         
@@ -62,16 +63,4 @@ class TraductionPointDeVenteRepository extends ServiceEntityRepository
            
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionPointDeVente
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

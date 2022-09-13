@@ -22,7 +22,7 @@ class GoogleController extends AbstractController
     {
         // va rediriger vers Google
         return $clientRegistry
-            ->getClient('google') // key used in config/packages/knpu_oauth2_client.yaml
+            ->getClient('google') // clé dans config/packages/knpu_oauth2_client.yaml
             ->redirect();
     }
 
@@ -37,8 +37,7 @@ class GoogleController extends AbstractController
      */
     public function connectCheckAction(Request $request, ClientRegistry $clientRegistry)
     {
-        // test si il y a un utilisateur
-        // le vrai traitement dans GoogleAuthenticator 
+        // test si il y a un utilisateur (voir GoogleAuthenticator)
         if(!$this -> getUser()):
             return new JsonResponse(['status' => false, "message" => 'hello']);
         else:

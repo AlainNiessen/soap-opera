@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MentionsLegalesController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE MENTIONS LEGALES
+    //----------------------------------------------
     /**
      * @Route("/mentions/legales", name="mentions_legales")
      */

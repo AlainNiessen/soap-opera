@@ -15,7 +15,6 @@ class TraductionPointDeVenteCrudController extends AbstractCrudController
     {
         return TraductionPointDeVente::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

@@ -13,30 +13,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PointsDeVenteController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE POINT DE VENTE
+    //----------------------------------------------
     /**
      * @Route("/points-de-vente", name="points_de_vente")
      */
     public function pointsDeVente(Request $request, EntityManagerInterface $entityManager): Response
     {
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);      
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
-        //définition repository article
-        $repositoryPointsDeVente = $entityManager -> getRepository(PointDeVente::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération de tous les points de vente via PointDeVenteRepository
+        $repositoryPointsDeVente = $entityManager -> getRepository(PointDeVente::class);    
         $pointsDeVente = $repositoryPointsDeVente -> findAll();  
         
+        // préparation traductions points de vente
         $tabTraductionPointsDeVente = [];        
-        $tabCoord = [];
-        //définition repository article
+        // définition repository article
         $repositoryTraductionPointsDeVente = $entityManager -> getRepository(TraductionPointDeVente::class);
 
         foreach($pointsDeVente as $pointDeVente):           
-           
+            // récupération de la traduction des points de vente basée sur la langue dans la Session via TraductionPointDeVenteRepository
             $traductionPointDeVente = $repositoryTraductionPointsDeVente -> findTraductionPointDeVente($pointDeVente, $langue);
             $tabTraductionPointsDeVente[] = $traductionPointDeVente;
 
@@ -50,6 +50,10 @@ class PointsDeVenteController extends AbstractController
             $longitude = $obj->features[0]->geometry->coordinates[1];
             $pointDeVente -> setLatitude($latitude);
             $pointDeVente -> setLongitude($longitude);
+
+            //insertion dans la base de données
+            $entityManager -> persist($pointDeVente);
+            $entityManager -> flush();
         endforeach;
        
               

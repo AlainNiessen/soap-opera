@@ -38,19 +38,25 @@ class GoogleAuthenticator extends SocialAuthenticator
         $this->router = $router;
     }
 
+    //----------------------------------------------
+    // FONCTION QUI CONTRÖLE LA BONNE ROUTE DE REDIRECTION
+    //----------------------------------------------
     public function supports(Request $request)
     {
-        // check la bonne route de redirection
         return $request->attributes->get('_route') === 'connect_google_check' && $request -> isMethod('GET');
     }
 
+    //----------------------------------------------
+    // FONCTION QUI EST UNIQUEMENT APPÉLE SI LA FONCTION SUPPORTS() RETURN TRUE
+    //----------------------------------------------
     public function getCredentials(Request $request)
     {
-        // cette method est uniquement appéle si supports() return true
         return $this->fetchAccessToken($this->getGoogleClient());
     }
 
-    
+    //----------------------------------------------
+    // FONCTION QUI VA RECUPERER L'UTILISATEUR ET QUI CONTRÖLE SI LE EMAIL DE CET UTILISATEUR EXISTE DANS LA BASE DE DONNEES
+    //----------------------------------------------
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var GoogleUser $googleUser */
@@ -77,6 +83,9 @@ class GoogleAuthenticator extends SocialAuthenticator
             ->getClient('google');
     }
 
+    //----------------------------------------------
+    // FONCTION EN CAS SI UTILISATEUR EXISTE DANS LA BASE DE DONNEES
+    //----------------------------------------------
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {    
         // récupération de l'utilisateur connecté 
@@ -95,6 +104,9 @@ class GoogleAuthenticator extends SocialAuthenticator
         return new RedirectResponse($url);
     }
 
+    //----------------------------------------------
+    // FONCTION EN CAS SI UTILISATEUR N'EXISTE PAS DANS LA BASE DE DONNEES
+    //----------------------------------------------
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         // message d'erreur

@@ -13,7 +13,6 @@ class IngredientSupplementaireCrudController extends AbstractCrudController
     {
         return IngredientSupplementaire::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

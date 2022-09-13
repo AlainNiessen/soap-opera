@@ -19,6 +19,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SecurityController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE LOGIN
+    //----------------------------------------------
     /**
      * @Route("/login", name="login")
      */
@@ -43,13 +46,16 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE RESET MOT DE PASSE (OPTION SUR LE FORMULAIRE INSCRIPTION)
+    //----------------------------------------------
     /**
      * @Route("/reset_password/email", name="reset_password", methods="GET|POST")
      */
     public function resetPasswordEmail(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         
-        //création formulaire 
+        //création formulaire pour rentrer son e-mail
         $formPasswordResetEmail = $this->createForm(EmailConfirmationType::class);
         $formPasswordResetEmail -> handleRequest($request);      
 
@@ -103,13 +109,16 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE RESET MOT DE PASSE VALIDATION
+    //----------------------------------------------
     /**
      * @Route("/reset_password/validation/{id}", name="validation_password_reset")
      */
     public function resetPasswordValidation(Utilisateur $utilisateur, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder, TranslatorInterface $translator): Response
     {
         
-        //création formulaire 
+        //création formulaire pour changer le mot de passe
         $formPasswordReset = $this->createForm(PasswordResetType::class, $utilisateur);
         $formPasswordReset -> handleRequest($request);
 
@@ -123,9 +132,8 @@ class SecurityController extends AbstractController
                     $formPasswordReset->get('plainPassword')->getData()
                 )
             );
-            //préparation insertion dans la BD
+            // insertion dans la base de données
             $entityManager -> persist($utilisateur);
-            //insertion BD
             $entityManager -> flush();
 
             //ajout d'un message de réussite 
@@ -137,10 +145,10 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('profile', [
                     'id' => $utilisateur -> getID()
                 ]);
+            // sinon redirect vers home 
             else:
                 return $this->redirectToRoute('home');
             endif;
-
         endif;
 
         return $this->render('security/passwordReset.html.twig', [
@@ -148,6 +156,9 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE ACCES REFUSE POUR INTERFACE ADMINISTRATION
+    //----------------------------------------------
     /**
      * @Route("/login/no_acces", name="no_acces")
      */
@@ -161,6 +172,9 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute('home');       
     }
 
+    //----------------------------------------------
+    // ROUTE LOGOUT
+    //----------------------------------------------
     /**
      * @Route("/logout", name="logout")
      */

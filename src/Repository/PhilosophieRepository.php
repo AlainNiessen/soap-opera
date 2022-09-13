@@ -48,6 +48,7 @@ class PhilosophieRepository extends ServiceEntityRepository
         }
     }
 
+    // fonction de recherche pour trouver une traduction pour philosophie dans une langue spécifique
     public function findPhilosophie(Langue $langue)
     {
         //récupération de ID langue
@@ -62,16 +63,4 @@ class PhilosophieRepository extends ServiceEntityRepository
            
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?Philosophie
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -13,6 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE FORMULAIRE DE CONTACT
+    //----------------------------------------------
     /**
      * @Route("/contact", name="contact")
      */
@@ -31,6 +34,9 @@ class ContactController extends AbstractController
         ]);        
     }
 
+    //----------------------------------------------
+    // ROUTE TRAITEMENT DU FORMULAIRE DE CONTACT
+    //----------------------------------------------
     /**
      * @Route("/contact/email", name="contact_email", methods="GET|POST")
      */
@@ -42,8 +48,8 @@ class ContactController extends AbstractController
         $sujet    = $request -> request -> get('sujet');
         $message  = $request -> request -> get('message');
         
+        // si les vérifications sur les champs sont positives
         if(!empty($nom) && !empty($email) && !empty($sujet) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)):
-            
             //envoie du email
             $emailSend = (new TemplatedEmail())
                 ->from("alain_niessen@hotmail.com") //de qui
@@ -63,31 +69,34 @@ class ContactController extends AbstractController
             $this -> addFlash('success', $messageEnvoiMail); 
                        
             //redirect vers la page où on a cliqué sur contact
-            return $this->redirectToRoute('home');          
-        else:
-            
-            // définition des messages d'erreur pour chaque champs + message d'erreur global
-
+            return $this->redirectToRoute('home');
+        // définition des messages d'erreur pour chaque champs + message d'erreur global          
+        else:           
+            // pour le nom
             if(empty($nom)):
                 //ajout d'un message d'erreur
                 $messageErrorNoName = $translator -> trans('Dieses Feld darf nicht leer bleiben');
                 $this -> addFlash('errorNoName', $messageErrorNoName); 
             endif;
+            // pour le e-mail pas vide
             if(empty($email)):
                 //ajout d'un message d'erreur
                 $messageErrorNoEmail = $translator -> trans('Dieses Feld darf nicht leer bleiben');
                 $this -> addFlash('errorNoEmail', $messageErrorNoEmail); 
             endif;
+            // pour le e-mail format
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
                 //ajout d'un message d'erreur
                 $messageErrorInvalidEmail = $translator -> trans('Bitte gib eine korrekte Email an');
                 $this -> addFlash('errorInvalidEmail', $messageErrorInvalidEmail); 
             endif;
+            // pour le sujet
             if(empty($sujet)):
                 //ajout d'un message d'erreur
                 $messageErrorNoSubject = $translator -> trans('Dieses Feld darf nicht leer bleiben');
                 $this -> addFlash('errorNoSubject', $messageErrorNoSubject); 
             endif;
+            //pour le message
             if(empty($message)):
                 //ajout d'un message d'erreur
                 $messageErrorNoMessage = $translator -> trans('Dieses Feld darf nicht leer bleiben');

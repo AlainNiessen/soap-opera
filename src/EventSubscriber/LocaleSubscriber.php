@@ -6,6 +6,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
+//----------------------------------------------
+// Ce "SUBSCRIBER" est destiné à contrôler à chaque requête
+// la langue dans la Session. Si il y en a une langue stockée dans la Session, 
+// elle sera appliqué, sinon c'est la langue par défault qui sera appliqué (de)
+//----------------------------------------------
 class LocaleSubscriber implements EventSubscriberInterface
 {
     private $defaultLocale;

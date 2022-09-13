@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CGVController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE CONDITIONS GENERALES DE VENTE (CGV)
+    //----------------------------------------------
     /**
      * @Route("/cgv", name="cgv")
      */

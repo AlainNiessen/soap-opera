@@ -49,11 +49,11 @@ class ArticleRepository extends ServiceEntityRepository
     /**
     * @return Article[] Returns an array of Article objects
     */    
-    //fonction de recherche articles via barre de recherche
+    // fonction de recherche articles via barre de recherche
     public function findArticlesSearchBar($keywords = [])
     {
        
-        //préparation lier les tables 
+        // préparation lier les tables 
         $queryBuilder =  $this  ->createQueryBuilder('a')
                                 ->leftJoin('a.traductionArticles', 'at')
                                 ->addSelect('at')                                
@@ -89,6 +89,7 @@ class ArticleRepository extends ServiceEntityRepository
             foreach($keywords as $keyword) {                          
                 $arr[] = $queryBuilder->expr()->orX("at.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("at.description LIKE '%".$keyword."%'");
+                $arr[] = $queryBuilder->expr()->orX("at.slogan LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ct.nom LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ct.description LIKE '%".$keyword."%'");
                 $arr[] = $queryBuilder->expr()->orX("ot.nom LIKE '%".$keyword."%'");
@@ -101,7 +102,7 @@ class ArticleRepository extends ServiceEntityRepository
             
         }     
 
-        //si rien a été rempli => pas des if => return automatique des tous les articles 
+        // si rien a été rempli => pas des if => return automatique des tous les articles 
         return $queryBuilder 
                     ->getQuery()
                     ->getResult();                                   
@@ -114,10 +115,10 @@ class ArticleRepository extends ServiceEntityRepository
     * @return Article[] Returns an array of Article objects
     */
     
-    //fonction de recherche articles par categorie
+    // fonction de recherche articles par categorie
     public function findArticlesByCategory($idCategorie)
     {
-        //préparation lier les tables 
+        // préparation lier les tables 
         $queryBuilder =  $this  ->createQueryBuilder('a')
                                 ->leftJoin('a.categorie', 'c')
                                 ->addSelect('c')
@@ -134,10 +135,10 @@ class ArticleRepository extends ServiceEntityRepository
     * @return Article[] Returns an array of Article objects
     */
     
-    //fonction de recherche articles par categorie
+    // fonction de recherche 3 Bestseller
     public function findArticlesBestseller($value)
     {
-        //préparation lier les tables 
+        // préparation lier les tables 
         return $this -> createQueryBuilder('a')
                      -> orderBy('a.nombreVentes', 'DESC')
                      -> setMaxResults($value) 
@@ -150,10 +151,10 @@ class ArticleRepository extends ServiceEntityRepository
     * @return Article[] Returns an array of Article objects
     */
     
-    //fonction de recherche articles par categorie
+    // fonction de recherche articles 6 nouveautés
     public function findNewArticles($value)
     {
-        //préparation lier les tables 
+        // préparation lier les tables 
         return $this -> createQueryBuilder('a')
                      -> orderBy('a.dateCreation', 'DESC')
                      -> setMaxResults($value) 
@@ -166,10 +167,10 @@ class ArticleRepository extends ServiceEntityRepository
     * @return Article[] Returns an array of Article objects
     */
     
-    //fonction de recherche articles par categorie
+    //fonction de recherche articles en promotion
     public function findArticlesInPromotion()
     {
-        //préparation lier les tables 
+        // préparation lier les tables 
         return $this    -> createQueryBuilder('a')
                         -> innerJoin('a.promotion', 'pa')
                         -> addSelect('pa') 
@@ -181,6 +182,7 @@ class ArticleRepository extends ServiceEntityRepository
         ;       
     }
 
+    // fonction pour récupérer le nombre total des articles
     public function countArticles()
     {
         return $this->createQueryBuilder('a')
@@ -190,6 +192,7 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
 
+    // fonction pour récupérer le nombre total des articles vendus
     public function countArticlesVendus()
     {
         return $this->createQueryBuilder('a')
@@ -199,6 +202,7 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
 
+    // fonction pour récupérer le nombre total des articles par catégorie
     public function countArticlesCategorie(Categorie $categorie)
     {
         return $this->createQueryBuilder('a')
@@ -209,17 +213,4 @@ class ArticleRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
         ;
     }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Article
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -50,7 +50,7 @@ class TraductionHuileRepository extends ServiceEntityRepository
     /**
     * @return TraductionHuile[] Returns an array of TraductionHuile objects
     */
-    
+    // fonction de recherche de traduction pour plusieurs huiles dans une langue spécifique
     public function findTraductionHuile($huiles, Langue $langue)
     {
         //récupération de ID langue        
@@ -78,16 +78,4 @@ class TraductionHuileRepository extends ServiceEntityRepository
            
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionHuile
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

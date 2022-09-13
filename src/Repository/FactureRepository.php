@@ -45,6 +45,7 @@ class FactureRepository extends ServiceEntityRepository
         }
     }
 
+    // facture de recherche pour le nombre total des factures
     public function countFactures()
     {
         return $this->createQueryBuilder('f')
@@ -53,16 +54,4 @@ class FactureRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?Facture
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

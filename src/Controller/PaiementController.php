@@ -11,7 +11,6 @@ use App\Entity\Livraison;
 use Stripe\Checkout\Session;
 use App\Entity\TraductionArticle;
 use Symfony\Component\Mime\Address;
-use App\Controller\PanierController;
 use App\Entity\DetailCommandeArticle;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -28,10 +27,13 @@ use Dompdf\Options;
 
 class PaiementController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE PAIEMENT
+    //----------------------------------------------
     /**
      * @Route("/paiement/{total}", name="paiement", methods="post|get")
      */
-    //injection de la clé secret de STRIPE défini dans services.yaml et .env
+    // injection de la clé secret de STRIPE défini dans services.yaml et .env
     public function paiement($total, $stripeSK, TranslatorInterface $translator): Response
     {
         // remplacement des "," par des "." (pour le float)
@@ -69,13 +71,17 @@ class PaiementController extends AbstractController
           return $this -> redirect($session -> url, 303);
     }
 
+    //----------------------------------------------
+    // ROUTE PAIEMENT REUSSI 
+    //----------------------------------------------
     /**
      * @Route("/succes", name="succes")
      */
     public function succes(SessionInterface $session, EntityManagerInterface $entityManager, TranslatorInterface $translator, MailerInterface $mailer, Request $request): Response
     {
+        // 1) INSERTION DES DONNEES DANS LA BASE DE DONNEES
 
-        // création facture
+        // création nouvelle facture
         $facture = new Facture();
         $facture -> setDateFacture(new DateTime());
         $facture -> setStatutPaiement(true);
@@ -84,97 +90,97 @@ class PaiementController extends AbstractController
         $facture -> setMontantTotalHorsTva(0.00);
         $facture -> setMontantTotalTva(0.00);
         $facture -> setMontantTotal(0.00);
-        //préparation insertion dans la BD
+
+        // insertion dans la base de données
         $entityManager -> persist($facture);
-        //insertion BD
         $entityManager -> flush();
         
         // on récupére le panier actuel de la Session
-        // on boucle sur le panier pour créer des détails de commandes par article dasn le panier
+        // on boucle sur le panier pour créer des détails de commandes par article dans le panier
         $panier = $session -> get('panier', []);
-        foreach($panier as $id => $quantite):            
-          // récupération de l'article via son ID
-          // définition repository article
-          $repositoryArticle = $entityManager -> getRepository(Article::class);
-          $article = $repositoryArticle -> findOneBy(['id' => $id]);
 
-          //actualisation de la quantité de ventes par article dans l'entité article
-          $nombreVentes = $article -> getNombreVentes();
-          $nombreVentes += $quantite;
-          $article -> setNombreVentes($nombreVentes);
-          //préparation insertion dans la BD
-          $entityManager -> persist($article);
-          //insertion BD
-          $entityManager -> flush();
+        foreach($panier as $id => $quantite):         
+            // récupération de l'article via son ID via ArticleRepository
+            $repositoryArticle = $entityManager -> getRepository(Article::class);
+            $article = $repositoryArticle -> findOneBy(['id' => $id]);
 
-          // si il y a une réduction sur le prix
-          if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
-            if($article -> getPromotion()):
-                // contrôle des dates d'affichage
-                if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
-                else:
-                    $reduction = 0;
-                endif;                   
-            elseif($article -> getCategorie() -> getPromotion()):
-                if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
-                else:
-                    $reduction = 0;
+            //actualisation de la quantité de ventes par article dans l'entité article
+            $nombreVentes = $article -> getNombreVentes();
+            $nombreVentes += $quantite;
+            $article -> setNombreVentes($nombreVentes);
+
+            // insertion dans la base de données
+            $entityManager -> persist($article);
+            $entityManager -> flush();
+
+            // calcul des montants
+            // si il y a une réduction sur le prix
+            if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+                if($article -> getPromotion()):
+                    // contrôle des dates d'affichage
+                    if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+                    else:
+                        $reduction = 0;
+                    endif;                   
+                elseif($article -> getCategorie() -> getPromotion()):
+                    if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                    else:
+                        $reduction = 0;
+                    endif;
                 endif;
+                $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
+            else:
+                $prixHorsTva = $article -> getMontantHorsTva();                    
             endif;
-            $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
-        else:
-            $prixHorsTva = $article -> getMontantHorsTva();                    
-        endif;
 
-          $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
-          // condition si utilisateur est une entreprise allemande avec numéro TVA
-          if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-            $prixTotalTva = 0;
-          else:
-            $prixTva = intval(round(round(($prixHorsTva * $article -> getTauxTva()), 2)), 0);
-            $prixTotalTva = $prixTva * $quantite;
-          endif;
-          
-          
-          $prixTotalArticle = $prixTotalHorsTva + $prixTotalTva;      
+            $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
+
+            // condition si utilisateur est une entreprise allemande avec numéro TVA
+            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                $prixTotalTva = 0;
+            else:
+                $prixTva = intval(round(round(($prixHorsTva * $article -> getTauxTva()), 2)), 0);
+                $prixTotalTva = $prixTva * $quantite;
+            endif;          
+            
+            $prixTotalArticle = $prixTotalHorsTva + $prixTotalTva;      
           
 
-          //création détail de commande par article dans le panier
-          $commande = new DetailCommandeArticle();
-          $commande -> setQuantite($quantite);
-          $commande -> setArticle($article);
-          $commande -> setMontantTotalHorsTva($prixTotalHorsTva);
-          $commande -> setMontantTva($prixTotalTva);
-          $commande -> setMontantTotal($prixTotalArticle);
-          $commande -> setFacture($facture);
-          // ajout des totaux à la facture correspondante
-          $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
-          $factMontantTotalHorsTva += $commande -> getMontantTotalHorsTva();
-          $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
+            //création détail de commande par article dans le panier
+            $commande = new DetailCommandeArticle();
+            $commande -> setQuantite($quantite);
+            $commande -> setArticle($article);
+            $commande -> setMontantTotalHorsTva($prixTotalHorsTva);
+            $commande -> setMontantTva($prixTotalTva);
+            $commande -> setMontantTotal($prixTotalArticle);
+            $commande -> setFacture($facture);
 
-          $factMontantTotalTva = $facture -> getMontantTotalTva();
-          $factMontantTotalTva += $commande -> getMontantTva();
-          $facture -> setMontantTotalTva($factMontantTotalTva);
+            // ajout des totaux à la facture correspondante
+            $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
+            $factMontantTotalHorsTva += $commande -> getMontantTotalHorsTva();
+            $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
 
-          $factMontantTotal = $facture -> getMontantTotal();
-          $factMontantTotal += $commande -> getMontantTotal();
-          $facture -> setMontantTotal($factMontantTotal);
+            $factMontantTotalTva = $facture -> getMontantTotalTva();
+            $factMontantTotalTva += $commande -> getMontantTva();
+            $facture -> setMontantTotalTva($factMontantTotalTva);
 
-          //préparation insertion dans la BD
-          $entityManager -> persist($commande);
-          $entityManager -> persist($facture);
-          //insertion BD
-          $entityManager -> flush();      
+            $factMontantTotal = $facture -> getMontantTotal();
+            $factMontantTotal += $commande -> getMontantTotal();
+            $facture -> setMontantTotal($factMontantTotal);
+
+            // insertion dans la base de données
+            $entityManager -> persist($commande);
+            $entityManager -> persist($facture);
+            $entityManager -> flush();      
 
         endforeach;
+
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
-        // récupération du montant des frais de livraison
-        // définition repository langue
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération du montant des frais de livraison via LivraisonRepository
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);     
         $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
         
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison 
@@ -199,31 +205,24 @@ class PaiementController extends AbstractController
         endif;
 
         
-
+        // ajout des frais de livraison aux totaux de la facture
         $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
         $factMontantTotalHorsTva += $fraisLivraison;
         $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
 
         $factMontantTotalTva = $facture -> getMontantTotalTva();
-        //dd($factMontantTotalTva);
         $factMontantTotalTva += $montantTvaLivraison;
-        $facture -> setMontantTotalTva($factMontantTotalTva);
-        
+        $facture -> setMontantTotalTva($factMontantTotalTva);        
         
         $factMontantTotal = $facture -> getMontantTotal();
         $factMontantTotal += $montantTotalLivraison;
         $facture -> setMontantTotal($factMontantTotal);       
        
-        //préparation insertion dans la BD
+        // insertion dans la base de données
         $entityManager -> persist($facture);
-        //insertion BD
         $entityManager -> flush(); 
 
-        // Affichage
-        $fraisLivraison = number_format($fraisLivraison, 2, ',', '.');
-        $montantTvaLivraison = number_format($montantTvaLivraison, 2, ',', '.');
-        $montantTotalLivraison = number_format($montantTotalLivraison, 2, ',', '.');        
-        $prixTotal = number_format($factMontantTotal, 2, ',', '.');
+        // 2) ENVOI MAIL DE CONFIRMATION AVEC PDF EN ANNEXE
 
         // envoie d'un mail de confirmation de l'achat à l'utilisateur connecté
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés dans le Mail comme résumé
@@ -237,7 +236,7 @@ class PaiementController extends AbstractController
         // Instanciation Dompdf avec les options
         $dompdf = new Dompdf($pdfOptions);
 
-        // Récipération du HTML généré dans un fichier TWIG
+        // Récupération du HTML généré dans un fichier TWIG
         $html = $this->renderView('emails/facturePDF.html.twig', [
             'utilisateur' => $this -> getUser(),
             'facture' => $facture,
@@ -259,22 +258,18 @@ class PaiementController extends AbstractController
 
         // Output et attribution à la facture dans la base de données
         $output = $dompdf->output();
+
+        // pour les factures le PDF va recevoir un nom unique défini par moi-même
         $facture -> setDocumentPDF('facture-'.$facture -> getId().'.pdf');
-        //préparation insertion dans la BD
+        // insertion dans la base de données
         $entityManager -> persist($facture);
-        //insertion BD
-        $entityManager -> flush();
-    
+        $entityManager -> flush();    
         
         // Définiton direction public
         $publicDirectory = $this->getParameter('kernel.project_dir') . '\public\uploads\facturePDF';
-        // e.g /var/www/project/public/mypdf.pdf
-        $pdfFilepath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';
-        
+        $pdfFilepath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';        
         // Enregistrement du PDF sur le chemin souhaité
         file_put_contents($pdfFilepath, $output);
-        
-
 
         //sujet à traduire
         $messageSubject = $translator -> trans('Kaufbestätigung - Rechnung Nr.');
@@ -296,6 +291,7 @@ class PaiementController extends AbstractController
         ]);
         // envoi du mail
         $mailer -> send($email);  
+
         //e-mail vers soap-opera
         $email2 = (new TemplatedEmail())
         ->from('alain_niessen@hotmail.com') //de qui
@@ -315,7 +311,7 @@ class PaiementController extends AbstractController
         // envoi du mail
         $mailer -> send($email2);  
 
-        // reste du panier et nombre total des articles dans le panier
+        // reset du panier et nombre total des articles dans le panier
         $session -> set('panier', []);
         $session -> set('nombreArticles', 0);
 
@@ -326,19 +322,25 @@ class PaiementController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
+    //----------------------------------------------
+    // ROUTE PAIEMENT PAS REUSSI
+    //----------------------------------------------
     /**
      * @Route("/cancel", name="cancel")
      */
     public function cancel(TranslatorInterface $translator): Response
     {        
 
-        // ajout d'un message de réussite
+        // ajout d'un message d'erreur
         $message = $translator -> trans('Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!');
         $this -> addFlash('error', $message);
 
         return $this->redirectToRoute('home');
     }
 
+    //----------------------------------------------
+    // FONCTION POUR CREATION PDF ET MAIL DE CONFIRMATION
+    //----------------------------------------------
     function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)
     {
         // initialisation des variables
@@ -346,21 +348,17 @@ class PaiementController extends AbstractController
         $prixTotal = 0;
         $infoComplete = [];
 
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository langue
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);    
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
         // boucle sur le panier
         foreach($panier as $id => $quantite):
             
-            // récupération de l'article via son ID
-            // définition repository article
+            // récupération de l'article via son ID via ArticleRepository
             $repositoryArticle = $entityManager -> getRepository(Article::class);
             $article = $repositoryArticle -> findOneBy(['id' => $id]);
-
             
             // prix final du article + prix final de tous les articles
             // si il y a une réduction sur le prix
@@ -393,7 +391,7 @@ class PaiementController extends AbstractController
             $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
             $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
 
-            //récupération de la traduction de l'article           
+            //récupération de la traduction de l'article via TraductionArticleRepository          
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
             $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
             
@@ -411,10 +409,8 @@ class PaiementController extends AbstractController
 
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
-        // récupération du montant des frais de livraison
-        // définition repository langue
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération du montant des frais de livraison dépendant du pays via LivraisonRepository
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class); 
         $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
         // frais de livraison
         $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;

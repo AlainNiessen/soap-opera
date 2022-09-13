@@ -63,28 +63,14 @@ class UtilisateurRepository extends ServiceEntityRepository implements PasswordU
         $this->_em->flush();
     }
 
-    
+    // fonction de recherche pour le nombre total des utilisateurs inscrits
     public function countUtilisateurs()
     {
         return $this->createQueryBuilder('u')
             ->select('COUNT(u) as nombreUtilisateur')
+            -> andWhere('u.inscriptionValide = true')            
             ->getQuery()
             ->getSingleScalarResult();
         ;
     }
-
-    
-   
-
-    /*
-    public function findOneBySomeField($value): ?Utilisateur
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

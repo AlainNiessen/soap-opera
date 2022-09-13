@@ -3,8 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Beurre;
-use App\Entity\Langue;
-use App\Entity\Article;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -45,40 +43,5 @@ class BeurreRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
-    }
-
-    /**
-    * @return Beurre[] Returns an array of Beurre objects
-    */
-    
-    public function findBeurreFromArticle(Article $article, Langue $langue)
-    {
-        $langueID = $langue -> getId();
-        return $this    -> createQueryBuilder('b')
-                        -> join('b.traductionBeurres', 'bt')
-                        -> addSelect('bt')
-                        -> addSelect('bt.nom')
-                        -> join('bt.langue', 'btl')
-                        -> addSelect('btl')
-                        -> andWhere(':article MEMBER OF b.articles')
-                        -> setParameter('article', $article)
-                        -> andWhere('bt.langue = :langue')
-                        -> setParameter('langue', $langueID)            
-                        -> getQuery()
-                        -> getResult()
-        ;
-    }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Beurre
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    }    
 }

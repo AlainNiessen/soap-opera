@@ -47,10 +47,7 @@ class TraductionCategorieRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-    * @return TraductionCategorie Returns an object of TraductionCategorie
-    */
-    
+    // fonction de recherche de traduction pour une catégorie spécifique dans une langue spécifique
     public function findTraductionCategorie($categorieID, Langue $langue)
     {
         //récupération de ID langue
@@ -67,47 +64,18 @@ class TraductionCategorieRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-    * @return Categorie[] Returns an array of Categorie objects
-    */
-    
-    //fonction de récupération des noms des catégories pour construire le menu de recherche
-    public function findTraductionCategories($categories, Langue $langue)
+       
+    // fonction de recherche de traduction pour toutes les catégories dans une langue spécifique
+    public function findTraductionCategories(Langue $langue)
     {
         //récupération de ID langue
         $langueID = $langue -> getId();
 
-        $queryBuilder =  $this  -> createQueryBuilder('tc')                    
-                                -> andWhere('tc.langue = :langueID')
-                                -> setParameter('langueID', $langueID);
-
-                            if(count($categories) > 0) {
-                                $arr = []; 
-                                foreach($categories as $categorie) {
-                                    //récupération de ID huile
-                                    $categorieID = $categorie -> getId();
-
-                                    $arr[] = $queryBuilder->expr()->orX("tc.categorie = $categorieID");                                    
-                                }
-                                $queryBuilder->andWhere(join(' OR ', $arr));
-                            }   
-                
-                
-                            return $queryBuilder 
-                            ->getQuery()
-                            ->getResult(); 
+        return  $this   -> createQueryBuilder('tc')                    
+                        -> andWhere('tc.langue = :langueID')
+                        -> setParameter('langueID', $langueID)                            
+                        -> getQuery()
+                        -> getResult(); 
         ;       
-    }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionCategorie
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    }    
 }

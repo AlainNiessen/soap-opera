@@ -14,7 +14,6 @@ class PointDeVenteCrudController extends AbstractCrudController
     {
         return PointDeVente::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

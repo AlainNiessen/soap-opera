@@ -49,7 +49,7 @@ class EvaluationRepository extends ServiceEntityRepository
         }
     }
 
-       
+    // fonction de recherche pour le nombre total des étoiles pour un article spécifique
     public function countStars(Article $article)
     {
         return $this->createQueryBuilder('e')
@@ -61,6 +61,7 @@ class EvaluationRepository extends ServiceEntityRepository
         ;
     }
     
+    // fonction de recherche pour le nombre total des évaluations
     public function countEvaluations(Article $article)
     {
         return $this->createQueryBuilder('e')
@@ -72,6 +73,7 @@ class EvaluationRepository extends ServiceEntityRepository
         ;
     }
 
+    // fonction de recherche des évaluations pour un utilisateur spécifique
     public function findEvaluationsUtilisateur(Utilisateur $utilisateur)
     {
         return $this->createQueryBuilder('e')
@@ -81,17 +83,4 @@ class EvaluationRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Evaluation
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

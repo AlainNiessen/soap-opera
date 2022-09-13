@@ -13,7 +13,6 @@ class LangueCrudController extends AbstractCrudController
     {
         return Langue::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

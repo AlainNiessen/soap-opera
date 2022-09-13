@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Langue;
-use App\Form\AdresseType;
 use App\Entity\Utilisateur;
 use App\Entity\NewsletterCategorie;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,8 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
 
 class InfoUtilisateurType extends AbstractType
 {
@@ -89,12 +87,10 @@ class InfoUtilisateurType extends AbstractType
             'class' => NewsletterCategorie::class,
             'label' => new TranslatableMessage('formInscription.newsletterCategorie', [], 'Form'),
             'choice_label' => function (NewsletterCategorie $newsletterCategorie) {
-                
                 //récupération de la langue dans la Session
                 $langue = $this -> request -> getLocale();
-                //connection au repository TraductionNewsletterCategorie
+                // récupération de la traduction des catégories Newsletter via TraductionNewsletterCategorieRepository
                 $repository = $this -> entityManager -> getRepository(TraductionNewsletterCategorie::class);
-                //appel à la fonction findTraduction pour trouver la traduction de NewsletterCategorie 
                 $trad = $repository -> findTraduction($newsletterCategorie, $langue);                
                 //récupération du nom de la catégorie dans la langue stockée dans la Session
                 $categorieNom = $trad -> getNom();

@@ -83,7 +83,6 @@ class FactureCrudController extends AbstractCrudController
 
             
         return $actions
-            // ...
             ->add(Crud::PAGE_INDEX, $actionDelivrer);
     }
 }

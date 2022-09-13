@@ -33,6 +33,9 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         $this->utilisateurRepository = $utilisateurRepository;
     }
 
+    //----------------------------------------------
+    // FONCTION DE AUTHENTIFICATION AVEC CHANGEMENT DE LA LANGUE
+    //----------------------------------------------
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
@@ -66,6 +69,9 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
+    //----------------------------------------------
+    // FONCTION EN CAS SI UTILISATEUR EXISTE
+    //----------------------------------------------
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
@@ -80,6 +86,9 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
+    //----------------------------------------------
+    // FONCTION POUR RECUPERER URL DE LOGIN
+    //----------------------------------------------
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);

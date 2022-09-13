@@ -18,6 +18,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PanierController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE PANIER
+    //----------------------------------------------
     /**
      * @Route("/panier", name="panier")
      */
@@ -39,6 +42,9 @@ class PanierController extends AbstractController
         ]);
     }
 
+    //----------------------------------------------
+    // ROUTE AJOUTER ARTICLE 
+    //----------------------------------------------
     /**
      * @Route("/panier/add/{id}", name="add_panier")
      */
@@ -48,15 +54,13 @@ class PanierController extends AbstractController
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);
         // récupération de l'URL pour rediriger par aprés sur différents routes (soit vers détial article soit vers profile utilisateur)
-        $url = $request->headers->get('referer');
-        
+        $url = $request->headers->get('referer');        
 
         // on récupére le nombre des articles dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
         $nombreArticles = $session -> get('nombreArticles', 0);
 
-        // récupération de l'article via son ID
-        // définition repository article
+        // récupération de l'article via son ID via ArticleRepository
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         $article = $repositoryArticle -> findOneBy(['id' => $id]);          
 
@@ -78,8 +82,7 @@ class PanierController extends AbstractController
             $session -> set('panier', $panier);
             $session -> set('nombreArticles', $nombreArticles);
 
-            // si il s'agit d'une requête AJAX
-            // re-rendering le contenu et la navigation sans rechargement du site
+            // manipulation de la quantité de l'article via une requête AJAX
             if($request -> isXmlHttpRequest()) {
                 // même traitement que sur la route "panier" pour actualiser le contenu sans rafraichissement de la page
 
@@ -127,6 +130,9 @@ class PanierController extends AbstractController
         endif;
     }
 
+    //----------------------------------------------
+    // ROUTE RETIRER ARTICLE 
+    //----------------------------------------------
     /**
      * @Route("/panier/remove/{id}", name="remove_panier")
      */
@@ -165,8 +171,7 @@ class PanierController extends AbstractController
             $session -> set('panier', $panier);
             $session -> set('nombreArticles', $nombreArticles);
 
-            // si il s'agit d'une requête AJAX
-            // re-rendering le contenu et la navigation sans rechargement du site
+            // manipulation de la quantité de l'article via une requête AJAX
             if($request -> isXmlHttpRequest()) {
                 // même traitement que sur la route "panier" pour actualiser le contenu sans rafraichissement de la page
 
@@ -206,7 +211,11 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('home'); 
 
         endif;
-    }    
+    }  
+    
+    //----------------------------------------------
+    // ROUTE SUPPRIMER ARTICLE 
+    //----------------------------------------------
     /**
      * @Route("/panier/delete/{id}", name="delete_panier")
      */
@@ -241,8 +250,7 @@ class PanierController extends AbstractController
 
             // récupération du panier avec toutes les informations
             // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
-            $panier = $session -> get('panier', []);
-            
+            $panier = $session -> get('panier', []);            
 
             // appel à la fonction qui traite toutes les informations pour les afficher par aprés
             $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
@@ -265,6 +273,9 @@ class PanierController extends AbstractController
         endif;
     }   
     
+    //----------------------------------------------
+    // FONCTION CREATION PANIER
+    //----------------------------------------------
     function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)
     {
         // initialisation des variables
@@ -272,22 +283,16 @@ class PanierController extends AbstractController
         $prixTotal = 0;
         $infoComplete = [];
 
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository langue
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
-        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);      
-        
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
+        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);       
         
         // boucle sur le panier
-        foreach($panier as $id => $quantite):
-            
-            // récupération de l'article via son ID
-            // définition repository article
+        foreach($panier as $id => $quantite):            
+            // récupération de l'article via son ID via ArticleRepository
             $repositoryArticle = $entityManager -> getRepository(Article::class);
             $article = $repositoryArticle -> findOneBy(['id' => $id]);
-
             
             // prix final du article + prix final de tous les articles
             // si il y a une réduction sur le prix
@@ -330,7 +335,7 @@ class PanierController extends AbstractController
             $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
             $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
 
-            //récupération de la traduction de l'article           
+            //récupération de la traduction de l'article via TraductionArticleRepository         
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
             $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
             
@@ -348,16 +353,16 @@ class PanierController extends AbstractController
 
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
-        // récupération du montant des frais de livraison
-        // définition repository langue
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération du montant des frais de livraison dépendant du pays via LivraisonRepository
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);     
         $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        // frais de livraison
+        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
         
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
         if($prixTotal < 100):
             // Calculs
-            $fraisLivraison = round($livraison -> getMontantHorsTva() / 100, 2);
+            $fraisLivraison = round($fraisLivraison, 2);
             // condition si utilisateur est une entreprise allemande avec numéro TVA
             if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
                 $montantTvaLivraison = 0;

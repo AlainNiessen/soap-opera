@@ -50,7 +50,7 @@ class CommentaireRepository extends ServiceEntityRepository
     // /**
     //  * @return Commentaire[] Returns an array of Commentaire objects
     //  */
-    
+    // fonction de recherche commentaires pour un article spécifique
     public function findCommentaires(Article $article)
     {
         return $this->createQueryBuilder('c')
@@ -63,6 +63,7 @@ class CommentaireRepository extends ServiceEntityRepository
         ;
     }
 
+    // fonction de recherche commentaires pour un utilisateur spécifique
     public function findCommentairesUtilisateur(Utilisateur $utilisateur)
     {
         return $this->createQueryBuilder('c')
@@ -74,17 +75,4 @@ class CommentaireRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Commentaire
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

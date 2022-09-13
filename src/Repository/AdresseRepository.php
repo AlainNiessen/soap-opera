@@ -43,20 +43,5 @@ class AdresseRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
-    }
-
-    
-
-    /*
-    public function findOneBySomeField($value): ?Adresse
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-    
+    }    
 }

@@ -14,7 +14,6 @@ class TraductionIngredientSupplementaireCrudController extends AbstractCrudContr
     {
         return TraductionIngredientSupplementaire::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

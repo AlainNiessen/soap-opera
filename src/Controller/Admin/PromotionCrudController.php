@@ -17,7 +17,6 @@ class PromotionCrudController extends AbstractCrudController
     {
         return Promotion::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

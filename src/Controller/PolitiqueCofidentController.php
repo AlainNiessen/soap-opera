@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PolitiqueCofidentController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE POLITIQUE CONFIDENT
+    //----------------------------------------------
     /**
      * @Route("/politique/cofident", name="politique_cofident")
      */

@@ -7,7 +7,6 @@ use App\Entity\Article;
 use App\Entity\Categorie;
 use App\Entity\Evaluation;
 use App\Entity\Commentaire;
-use App\Entity\Utilisateur;
 use App\Entity\TraductionHuile;
 use App\Entity\TraductionBeurre;
 use App\Entity\TraductionArticle;
@@ -18,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TraductionIngredientSupplementaire;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -33,54 +31,50 @@ class ArticleController extends AbstractController
      */
     public function requestArticleSearchBar($pagBar, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {   
-        //récupération de la pagination
+        // récupération de la pagination en int
         $interPag = intval($pagBar);
                 
-        //check si la barre de recherche a été utilisé
+        // check si la barre de recherche a été utilisé
         // si oui => 
         if(isset($_GET['mots'])):
             //récupération des données rentrées dans le fomulaire
             $mots = $request -> query -> get('mots');
-            //transform string en tableau
+            // transform string en tableau
             $tabWords = explode(" ", trim($mots));  
-            //stockage du tableau dans la session
+            // stockage du tableau dans la session
             $session = $request->getSession();
             $session -> set('tabWords', $tabWords);
-        // si non (par exemple en utilisant la pagination) =>
+        // si non (par exemple en utilisant la pagination) 
         else:
-            //récupération du tableau stocké dans la Session
+            // récupération du tableau stocké dans la Session
             $session = $request->getSession();
             $tabWords = $session -> get('tabWords');
         endif;        
         
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository langue
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
-        // récupération des articles        
-        //définition repository article
-        $repositoryArticle = $entityManager -> getRepository(Article::class);
-        // récupération des articles      
+        // récupération des articles sur base des mots de clé via ArticleRepository        
+        $repositoryArticle = $entityManager -> getRepository(Article::class);     
         $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
 
+        // s'il y a des articles
         if($tabArticles):
+            // préparation de la pagination
             // récupération du nombre des articles
-            $nombreArticles = count($tabArticles);        
-
+            $nombreArticles = count($tabArticles);
             // définition nombre des articles par page
-            $limit = 4;
-            
-            //définition start and end pour le tableau à transférer pour la pagination
+            $limit = 4;            
+            // définition start and end pour le tableau à transférer pour la pagination
             $startCount = $interPag * $limit - $limit;
             
-            //récupération des informations sur les articles dans la langue
+            // récupération de la traduction des articles basée sur la langue stockée dans la Session en respectant le début et la fin de la pagination
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);       
             $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue, $startCount, $limit);              
 
-            //nombre de pages de résultat
+            // nombre de pages de résultat
             $nombreLiens = ceil($nombreArticles / $limit);
                     
             return $this->render('article/list.html.twig', [
@@ -88,6 +82,7 @@ class ArticleController extends AbstractController
                 'nombreLiens' => $nombreLiens,
                 'pagBar'=> $interPag
             ]);
+        // s'il n'y a pas des articles
         else:
             // ajout d'un message de warning
             $message = $translator -> trans('Es wurden keine Artikel unter diesen Kriterien gefunden.');
@@ -105,35 +100,33 @@ class ArticleController extends AbstractController
      */
     public function requestArticleCategory($id, $pagCat, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        //récupération de la pagination
+        // récupération de la pagination en int
         $interPag = intval($pagCat);
 
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);       
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
-        //définition repository article
-        $repositoryArticle = $entityManager -> getRepository(Article::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération des articles par categorie via ArticleRepository + ID de la catégorie (passée en URL)
+        $repositoryArticle = $entityManager -> getRepository(Article::class);     
         $articlesCat = $repositoryArticle -> findArticlesByCategory($id); 
         
+        // s'il y a des articles
         if($articlesCat):
+            // préparation de la pagination
             // récupération du nombre des articles
             $nombreArticles = count($articlesCat);
-
             // définition nombre des articles par page
-            $limit = 4;
-            
-            //définition start and end pour le tableau à transférer pour la pagination
+            $limit = 4;            
+            // définition start and end pour le tableau à transférer pour la pagination
             $startCount = $interPag * $limit - $limit;
-            //récupération des informations sur les articles dans la langue
+
+            // récupération de la traduction des articles basée sur la langue stockée dans la Session en respectant le début et la fin de la pagination
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
             $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($articlesCat, $langue, $startCount, $limit);
 
-            //nombre de pages de résultat
+            // nombre de pages de résultat
             $nombreLiens = ceil($nombreArticles / $limit);
                 
             return $this->render('article/list.html.twig', [
@@ -142,6 +135,7 @@ class ArticleController extends AbstractController
                 'pagCat'=> $interPag,
                 'id' => $id
             ]);
+        // s'il n'y a pas des articles
         else:
             // ajout d'un message de warning
             $message = $translator -> trans('Unter dieser Kategorie gibt es zur Zeit keine Artikel.');
@@ -160,33 +154,29 @@ class ArticleController extends AbstractController
      */
     public function requestArticlePromotion($pagPromo, Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        //récupération de la pagination
+        // récupération de la pagination en int
         $interPag = intval($pagPromo);
 
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
         
-        //définition repository article
-        $repositoryArticle = $entityManager -> getRepository(Article::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération des articles en promotion via ArticleRepository
+        $repositoryArticle = $entityManager -> getRepository(Article::class);      
         $articlesPromotions = $repositoryArticle -> findArticlesInPromotion(); 
         
-        //définition repository categorie
-        $repositoryCategorie = $entityManager -> getRepository(Categorie::class);
-        // fonction de requête sur base de données récupérées       
+        // récupération des catégories en promotion via CategorieRepository
+        $repositoryCategorie = $entityManager -> getRepository(Categorie::class);      
         $categoriePromotions = $repositoryCategorie -> findcategorieInPromotion();  
         
-        //création tableau avec tous les articles en promo
+        // création tableau avec tous les articles en promo
         $tabPromo = [];
-        //push articles en promotion dans le tableau
+        // push articles en promotion dans le tableau
         foreach($articlesPromotions as $articlesPromotion):
             array_push($tabPromo, $articlesPromotion);
         endforeach;
-        //push articles de la categorie en promotion dans le tableau
+        // push articles de la categorie en promotion dans le tableau
         foreach($categoriePromotions as $categoriePromotion):
             $articles = $categoriePromotion -> getArticles();
             foreach($articles as $article):
@@ -194,18 +184,17 @@ class ArticleController extends AbstractController
             endforeach;
         endforeach;   
         
-        
+        // s'il y des articles en promotion
         if($tabPromo):
+            // préparation de la pagination
             // récupération du nombre des articles
-            $nombreArticles = count($tabPromo);        
-
+            $nombreArticles = count($tabPromo);
             // définition nombre des articles par page
-            $limit = 4;
-            
-            //définition start and end pour le tableau à transférer pour la pagination
+            $limit = 4;            
+            // définition start and end pour le tableau à transférer pour la pagination
             $startCount = $interPag * $limit - $limit;
 
-            //récupération des informations sur les articles dans la langue
+            // récupération de la traduction des articles basée sur la langue stockée dans la Session en respectant le début et la fin de la pagination
             $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
             $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabPromo, $langue, $startCount, $limit);
 
@@ -217,6 +206,7 @@ class ArticleController extends AbstractController
                 'nombreLiens' => $nombreLiens,
                 'pagPromo'=> $interPag
             ]);
+        // s'il n'y a pas des articles en promotion
         else:
             // ajout d'un message de warning
             $message = $translator -> trans('Zur Zeit gibt es keine Artikel in Sonderangebot.');
@@ -235,44 +225,38 @@ class ArticleController extends AbstractController
      */
     public function requestArticleDetail(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {   
-        //récupération de l'article via la requété automatique et son ID passé dans la route 
+        // récupération de l'article via la requété automatique et son ID passé dans la route 
         
-        //récupération langue
+        // récupération langue via LangueRepository
         $lang = $request-> getLocale();
-        //définition repository beurre
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);
-        // fonction de requête sur base de données récupérées       
+        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
 
-        //récupération des informations sur article dans la langue
+        // récupération de la traduction des informations sur article basée sur la langue stockée dans la Session via TraductionArticleRepository
         $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
         $resultTraductionArticle = $repositoryTraductionArticle -> findTraductionArticle($article -> getId(), $langue);
 
-        //récupération categorie de l'article dans la langue
+        //récupération de la traduction de la categorie de l'article basée sur la langue stockée dans la Session via TraductionCategorieRepository
         $categorieArticle = $article -> getCategorie();
         $repositoryTraductionCategorie = $entityManager -> getRepository(TraductionCategorie::class);
-        $resultTraductionCategorie = $repositoryTraductionCategorie -> findTraductionCategorie($categorieArticle -> getId(), $langue);
-        
+        $resultTraductionCategorie = $repositoryTraductionCategorie -> findTraductionCategorie($categorieArticle -> getId(), $langue);        
 
         //récupération des ingrédients de l'article
         //1) beurre
         $beurres = $article-> getBeurre();        
         if(!$beurres -> isEmpty()):
-            //définition repository traduction beurre
+            //récupération de la traduction de la beurre basée sur la langue stockée dans la Session via TraductionBeurreRepository
             $repositoryTraductionBeurre = $entityManager -> getRepository(TraductionBeurre::class);
-            // fonction de requête sur base de données récupérées 
             $resultTraductionBeurres = $repositoryTraductionBeurre -> findTraductionBeurre($beurres, $langue);
         else:
             $resultTraductionBeurres = [];
-        endif;  
-         
+        endif;           
         
         //2) huiles
         $huiles = $article -> getHuile();
         if(!$huiles -> isEmpty()):
-            //définition repository traduction huile
+            //récupération de la traduction de l'huile basée sur la langue stockée dans la Session via TraductionHuileRepository
             $repositoryTraductionHuile = $entityManager -> getRepository(TraductionHuile::class);
-            // fonction de requête sur base de données récupérées 
             $resultTraductionHuiles = $repositoryTraductionHuile -> findTraductionHuile($huiles, $langue);
         else:
             $resultTraductionHuiles = [];
@@ -281,9 +265,8 @@ class ArticleController extends AbstractController
         //3) huiles essentiels
         $huilesEss = $article -> getHuileEssentiell();
         if(!$huilesEss -> isEmpty()):
-            //définition repository traduction huile essentiel
+            //récupération de la traduction de l'huile essentiel basée sur la langue stockée dans la Session via TraductionHuileEssentielRepository
             $repositoryTraductionHuileEss = $entityManager -> getRepository(TraductionHuileEssentiel::class);
-            // fonction de requête sur base de données récupérées 
             $resultTraductionHuilesEss = $repositoryTraductionHuileEss -> findTraductionHuileEss($huilesEss, $langue);    
         else:
             $resultTraductionHuilesEss = [];
@@ -292,7 +275,7 @@ class ArticleController extends AbstractController
         //4) ingrédients supplémentaires
         $ingredientsSupp = $article -> getIngredientSupplementaire();
         if(!$ingredientsSupp -> isEmpty()):
-            //définition repository traduction huile essentiel
+            //récupération de la traduction de l'ingrédient supplémentaire basée sur la langue stockée dans la Session via TraductionIngredientSupplementaireRepository
             $repositoryIngredientsSupp = $entityManager -> getRepository(TraductionIngredientSupplementaire::class);
             // fonction de requête sur base de données récupérées 
             $resultTraductionIngredientsSupp = $repositoryIngredientsSupp -> findTraductionIngredientSupp($ingredientsSupp, $langue);
@@ -300,11 +283,11 @@ class ArticleController extends AbstractController
             $resultTraductionIngredientsSupp = [];
         endif;              
 
-        //calcul du prix
+        // récupération + calcul + affichage (number_format) des montants
         $prixArticle = (($article -> getMontantHorsTva() + ($article -> getMontantHorsTva() * $article -> getTauxTva())) / 100);
         $prixArticle = number_format($prixArticle, 2, ',', '.').' €';
         $prixArticlePromo = 0;
-        // si il y a une réduction sur le prix
+        // si il y a une promotion
         if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
             if($article -> getPromotion()):
                 $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
@@ -316,29 +299,22 @@ class ArticleController extends AbstractController
         endif; 
 
         // récupération des évaluations sur l'article en question
-        // définition repository evaluation
+        // récupération du nombre des évaluations sur un article et le total du nombre des étoiles pour l'article
         $repositoryEvaluations = $entityManager -> getRepository(Evaluation::class);
-        // récupération du nombre des évaluations sur l'article
         $nombreEvaluations = $repositoryEvaluations -> countEvaluations($article);
-        // récupération nombre total des étoiles sur l'article
         $nombreEtoiles = $repositoryEvaluations -> countStars($article);
-        // définition notations moyenne
+        // calcul de la moyenne des étoiles pour l'article
         if($nombreEvaluations != 0):
             $notationMoyenne = round($nombreEtoiles / $nombreEvaluations, 1);
         else:
             $notationMoyenne = 0;
-        endif;
-        
+        endif;        
                
-        // récupération des commentaires validés par l'administrateur (publication = true)
-        // définition repository commentaires
+        // récupération des commentaires validés par l'administrateur (publication = true) via CommentaireRepository
         $repositoryCommentaires = $entityManager -> getRepository(Commentaire::class);
-        // récupération des commentaires sur l'article 
         $resultCommentaires = $repositoryCommentaires -> findCommentaires($article); 
-            
-
-
-        //redirect vers le detail de l'article
+        
+        //redirect vers le detail de l'article avec toutes les informations récupéréés
         return $this->render('article/detail.html.twig', [
             'traductionArticle' => $resultTraductionArticle,
             'traductionCategorie' => $resultTraductionCategorie,
@@ -362,8 +338,9 @@ class ArticleController extends AbstractController
      */
     public function commentaire(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
+        // vérification s'il y a un commentaire passé via le formulaire
         if(isset($_POST['commentaire']) && !empty($_POST['commentaire'])):
-
+            // création nouveau commentaire
             $commentaire = new Commentaire();
             $commentaire -> setDateCommentaire(new \Datetime());
             $commentaire -> setPublication(false); // va être publié après vérification de l'administrateur
@@ -371,9 +348,8 @@ class ArticleController extends AbstractController
             $commentaire -> setUtilisateur($this->getUser());
             $commentaire -> setContenu($_POST['commentaire']);
 
-            //préparation insertion dans la BD
+            // insertion dans la base de données
             $entityManager -> persist($commentaire);
-            //insertion BD
             $entityManager -> flush();
 
             //ajout d'un message de réussite
@@ -390,6 +366,7 @@ class ArticleController extends AbstractController
             'id' => $article->getId()
         ]); 
     }
+
     //----------------------------------------------
     // ROUTE EVALUATION ARTICLE
     //----------------------------------------------
@@ -398,12 +375,11 @@ class ArticleController extends AbstractController
      */
     public function evaluation(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        // contrôle si l'utilisateur actuellement connecté a déjà évalué l'atricle en question
-        // définition repository evaluation
+        // contrôle si l'utilisateur actuellement connecté a déjà évalué l'atricle en question via EvaluationRepository
         $repositoryEvaluation = $entityManager -> getRepository(Evaluation::class);
-        // fonction de requête sur base de données récupérées 
         $resultEvaluation = $repositoryEvaluation -> findBy(['article' => $article, 'utilisateur' => $this->getUser()]);
         
+        // s'il n'y a pas d'évaluation fait par l'utilisateur sur l'article en question
         if(empty($resultEvaluation)):
             //Création nouvelle évaluation
             $evaluation = new Evaluation();
@@ -411,9 +387,8 @@ class ArticleController extends AbstractController
             $evaluation -> setArticle($article); 
             $evaluation -> setUtilisateur($this->getUser());           
 
-            //préparation insertion dans la BD
+            // insertion dans la base de données
             $entityManager -> persist($evaluation);
-            //insertion BD
             $entityManager -> flush();
 
             //ajout d'un message de réussite
@@ -431,6 +406,7 @@ class ArticleController extends AbstractController
             'id' => $article->getId()
         ]); 
     }
+
     //----------------------------------------------
     // ROUTE ARTICLE COMME FAVORI
     //----------------------------------------------
@@ -440,16 +416,18 @@ class ArticleController extends AbstractController
     public function favori(Article $article, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         // contrôle si l'utilisateur connecté a déjà ajouté cet article comme favori
-        // récupération des favoris de l'utilisateur actuellement connecté
         $favoris = $this->getUser()->getArticles();
+
         // check si l'article en question fait déjà partie des favoris de l'utilisateur
         // si non => création nouveau favori
         if(!$favoris->contains($article)):
+            // ajout favori à l'utilisateur
             $this->getUser()->addArticle($article);
-            //préparation insertion dans la BD
+
+            // insertion dans la base de données
             $entityManager -> persist($this->getUser());
-            //insertion BD
             $entityManager -> flush();
+            
             //ajout d'un message de réussite (avec paramétre nom de l'article)
             $message = $translator -> trans('Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!');
             $this -> addFlash('success', $message); 

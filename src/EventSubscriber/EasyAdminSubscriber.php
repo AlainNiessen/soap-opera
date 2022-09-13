@@ -11,7 +11,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-
+//----------------------------------------------
+// Ce "SUBSCRIBER" est destiné à stocker le mot de passe saisi 
+// sous forme hachée dans la base de données lors de la création 
+// d'un utilisateur via l'interface d'administration.
+//----------------------------------------------
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
 

@@ -14,7 +14,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LivraisonController extends AbstractController
-{
+{   
+    //----------------------------------------------
+    // ROUTE LIVRAISON MARCHANDISE VIA ACTION DELIVRER DANS INTERFACE ADMINISTRATION
+    //----------------------------------------------
     /**
      * @Route("/livraison/{id}", name="livraison")
      */
@@ -24,6 +27,7 @@ class LivraisonController extends AbstractController
         $utilisateur = $facture -> getUtilisateur();
         // Récupération de la langue de l'utilisateur
         $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
+
         // préparation des textes correspondant à la langue
         if($langueUtilisateur === 'de'):
             $salutation = "Hallo ";
@@ -63,7 +67,7 @@ class LivraisonController extends AbstractController
         // envoi du mail
         $mailer -> send($email);
 
-        // actualisation statut de livraison pour la facture
+        // actualisation statut de livraison pour la facture + insertion dans la base de données
         $facture -> setStatutLivraison(true);
         $entityManager -> persist($facture);
         $entityManager -> flush();

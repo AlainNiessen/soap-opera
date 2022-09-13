@@ -16,7 +16,6 @@ class LivraisonCrudController extends AbstractCrudController
     {
         return Livraison::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

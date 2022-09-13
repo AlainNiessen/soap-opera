@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Newsletter;
-use App\Entity\Utilisateur;
-use App\Entity\NewsletterCategorie;
 use Symfony\Component\Mime\Address;
 use App\Entity\TraductionNewsletter;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,19 +17,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NewsletterController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE ENVOYER NEWSLETTER VIA ACTION ENVOYER DANS INTERFACE ADMINISTRATION
+    //----------------------------------------------
     /**
      * @Route("/newsletter/{id}", name="newsletter_send")
      */
     public function send(EntityManagerInterface $entityManager, Request $request, Newsletter $newsletter, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
-        // récupération de la catégorie du Newsletter
+        // récupération de la catégorie du Newsletter 
         $categorie = $newsletter -> getNewsletterCategories();
+        // récupération des utilisateurs qui ont choisi la catégorie
         $utilisateurs = $categorie -> getUtilisateurs();
         
         //boucle sur les utilisateurs
         foreach($utilisateurs as $utilisateur):
 
-            // 1) Récupération de la langue de l'utilisateur
+            // récupération de la langue de l'utilisateur + préparation des textes
             $langueUtilisateur = $utilisateur -> getLangue() -> getCodeLangue();
             if($langueUtilisateur === 'de'):
                 $salutation = "Hallo ";
@@ -49,12 +51,12 @@ class NewsletterController extends AbstractController
                 $salutationsDist = "Salutations distinguées";
                 $noms = "Sarah et Julia";
             endif;
-            //définition repository langue
-            $repositoryLangue = $entityManager -> getRepository(Langue::class);           
-            // fonction de requête sur base de données récupérées       
+
+            // récupération langue via LangueRepository
+            $repositoryLangue = $entityManager -> getRepository(Langue::class);                 
             $langue = $repositoryLangue -> findOneBy(['codeLangue' => $langueUtilisateur]); 
 
-            //récupération des textes dans la langue de l'utilisateur
+            //récupération des textes dans la langue de l'utilisateur via TraductionNewsletterRepository
             $repositoryTraductionNewsletter = $entityManager -> getRepository(TraductionNewsletter::class);
             $resultTraductionNewsletter = $repositoryTraductionNewsletter -> findTraductionNewsletter($newsletter, $langue);
 
@@ -81,6 +83,7 @@ class NewsletterController extends AbstractController
                         'salutationsDist' => $salutationsDist,         
                         'noms' => $noms        
                     ]);
+                // sinon sans PDF
                 else:
                     $email = (new TemplatedEmail())
                     ->from('alain_niessen@hotmail.com') //de qui
@@ -103,10 +106,12 @@ class NewsletterController extends AbstractController
                 $mailer -> send($email);
             endif;
         endforeach;
-        // actualisation statut envoie du Newsletter dans la base de données
+
+        // actualisation statut envoie du Newsletter dans la base de données + insertion dans la base de données
         $newsletter -> setStatutEnvoie(true);
         $entityManager -> persist($newsletter);
         $entityManager -> flush();
+
         // ajout d'un message de réussite
         $messageEnvoiMail = $translator -> trans('Der Newsletter ist erfolgreich versendet');
         $this -> addFlash('success', $messageEnvoiMail); 

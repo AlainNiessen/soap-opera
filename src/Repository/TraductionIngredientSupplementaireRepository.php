@@ -50,6 +50,7 @@ class TraductionIngredientSupplementaireRepository extends ServiceEntityReposito
     /**
     * @return TraductionIngredientSupplementaire[] Returns an array of TraductionIngredientSupplementaire objects
     */
+    // fonction de recherche de traduction pour plusieurs ingrédients supplémentaires dans une langue spécifique
     public function findTraductionIngredientSupp($ingredientsSupp, Langue $langue)
     {
         //récupération de ID langue       
@@ -76,16 +77,4 @@ class TraductionIngredientSupplementaireRepository extends ServiceEntityReposito
                                 ->getResult();           
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionIngredientSupplementaire
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

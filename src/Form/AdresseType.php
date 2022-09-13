@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Adresse;
-use Symfony\Component\Intl\Countries;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Regex;
@@ -19,8 +18,8 @@ class AdresseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // les messages de contraintes font références aux messages de contraintes définis dans les entités dans les annotation
-        // les tradcution se font dans les fichiers validators.xlf
+        // IMPORTANT: les contraintes doivent être rédéfinies, parce que ce formulaire va être ajouté au formulaire d'inscription,
+        // qui se base sur utilisateur, pas sur adresse
 
         $supportedCountries = ['BE', 'DE'];
 

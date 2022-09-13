@@ -6,7 +6,6 @@ use App\Entity\NewsletterCategorie;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use Symfony\Component\Translation\TranslatableMessage;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class NewsletterCategorieCrudController extends AbstractCrudController
@@ -15,7 +14,6 @@ class NewsletterCategorieCrudController extends AbstractCrudController
     {
         return NewsletterCategorie::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

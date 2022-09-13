@@ -50,6 +50,7 @@ class TraductionHuileEssentielRepository extends ServiceEntityRepository
     /**
     * @return TraductionHuileEssentiel[] Returns an array of TraductionHuileEssentiel objects
     */
+    // fonction de recherche de traduction pour plusieurs huiles essentiels dans une langue spécifique
     public function findTraductionHuileEss($huilesEss, Langue $langue)
     {
         //récupération de ID langue        
@@ -77,16 +78,4 @@ class TraductionHuileEssentielRepository extends ServiceEntityRepository
                                             ->getResult();           
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionHuileEssentiel
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

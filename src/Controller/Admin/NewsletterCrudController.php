@@ -51,7 +51,6 @@ class NewsletterCrudController extends AbstractCrudController
 
             
         return $actions
-            // ...
             ->add(Crud::PAGE_INDEX, $actionSendNewsletter);
     }
 }

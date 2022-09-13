@@ -14,7 +14,6 @@ class PhilosophieCrudController extends AbstractCrudController
     {
         return Philosophie::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

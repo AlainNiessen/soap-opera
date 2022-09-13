@@ -13,7 +13,6 @@ class HuileEssentielCrudController extends AbstractCrudController
     {
         return HuileEssentiel::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

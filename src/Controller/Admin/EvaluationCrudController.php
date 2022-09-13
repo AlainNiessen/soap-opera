@@ -14,7 +14,6 @@ class EvaluationCrudController extends AbstractCrudController
     {
         return Evaluation::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

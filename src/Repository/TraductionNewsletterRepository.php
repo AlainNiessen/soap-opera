@@ -49,7 +49,7 @@ class TraductionNewsletterRepository extends ServiceEntityRepository
     /**
     * @return TraductionNewsletter Returns an object of TraductionNewsletter
     */
-    
+    // fonction de recherche de traduction pour un Newsletter spécifique dans une langue spécifique
     public function findTraductionNewsletter($newsletterID, Langue $langue)
     {
         //récupération de ID langue
@@ -65,16 +65,4 @@ class TraductionNewsletterRepository extends ServiceEntityRepository
            
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionNewsletter
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -49,7 +49,7 @@ class CategorieRepository extends ServiceEntityRepository
     * @return Categorie[] Returns an array of Categorie objects
     */
     
-    //fonction de recherche articles par categorie
+    //fonction de recherche catégorie en promotion
     public function findcategorieInPromotion()
     {
         //préparation lier les tables 
@@ -63,18 +63,4 @@ class CategorieRepository extends ServiceEntityRepository
                         -> getResult();
         ;       
     }
-    
-    
-
-    /*
-    public function findOneBySomeField($value): ?Categorie
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

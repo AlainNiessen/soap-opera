@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LocaleController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE CHANGEMENT DE LA LANGUE
+    //----------------------------------------------
     /**
      * @Route("/locale/{locale}", name="locale")
      */

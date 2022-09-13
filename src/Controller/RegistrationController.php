@@ -20,10 +20,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
+    //----------------------------------------------
+    // ROUTE REGISTRATION
+    //----------------------------------------------
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager, MailerInterface $mailer, TranslatorInterface $translator): Response
+    public function registration(Request $request, UserPasswordHasherInterface $encoder, EntityManagerInterface $entityManager, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         //création nouveau utilisateur
         $utilisateur = new Utilisateur();
@@ -48,6 +51,7 @@ class RegistrationController extends AbstractController
             
             // contrôle supplémentaire sur la relation code postal - pays
             if(((strlen($homeAdresseCodePostal) == 4 && $homeAdressePays == "BE") || (strlen($homeAdresseCodePostal) == 5 && $homeAdressePays == "DE")) && ((strlen($deliverAdresseCodePostal) == 4 && $deliverAdressePays == "BE") || (strlen($deliverAdresseCodePostal) == 5 && $deliverAdressePays == "DE"))):
+                // ajout de la catégorie Newsletter so l'utilisateur a choisi une
                 $newsletterUtilisateur = $formInscription -> getData('newsletterCategorie');
                 if(!empty($newsletterUtilisateur)):
                     foreach($newsletterUtilisateur as $newsletter):
@@ -70,9 +74,8 @@ class RegistrationController extends AbstractController
                 $this -> checkAdressesHome($utilisateur, $entityManager);
                 $this -> checkAdressesDeliver($utilisateur, $entityManager);
                 
-                //préparation insertion dans la BD
+                // insertion dans la base de données
                 $entityManager -> persist($utilisateur);
-                //insertion BD
                 $entityManager -> flush();
 
                 //sujet à traduire
@@ -96,6 +99,7 @@ class RegistrationController extends AbstractController
                 $this -> addFlash('success', $messageEnvoiMail); 
                     
                 return $this->redirectToRoute('home');
+            // si la relation codePostal et Pays ne correspond pas
             else: 
                 //ajout d'un message de faute 
                 $message = $translator -> trans('Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.');
@@ -112,11 +116,16 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    //fonction de génération TOKEN
+    //----------------------------------------------
+    // ROUTE REGISTRATION
+    //----------------------------------------------
     private function generateToken() {        
         return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
     }
 
+    //----------------------------------------------
+    // ROUTE REGISTRATION VALIDATION
+    //----------------------------------------------
     /**
      * @Route("/registration/validation/{token}", name="validation_registration")
      */
@@ -132,9 +141,8 @@ class RegistrationController extends AbstractController
             //remettre pour l'utilisateur le token à null et la confirmation de l'inscription à true dans la BD
             $utilisateur->setInscriptionToken(null);
             $utilisateur->setInscriptionValide(true);
-            //préparation insertion changement utilisateur 
+            // insertion dans la base de données
             $entityManager -> persist($utilisateur);
-            //insertion danas la BD
             $entityManager -> flush();
                         
             //ajout d'un message de réussite 
@@ -150,9 +158,11 @@ class RegistrationController extends AbstractController
         }
     }
 
-    // fonction qui va contrôler si une adresse existe déjà dans la base de données
-    // si oui => attribution directe à l'utilisateur
-    // si non => création et attribution par aprés
+    //----------------------------------------------
+    // FONCTION DE CONTRÔLE SI ADRESSE HOME EXISTE DEJA DANS LA BASE DE DONNEES
+    // SI OUI => ATTRIBUTION DIRECTE A UTILISATEUR
+    // SI NON => CREATION ADRESSE DANS LA BASE DE DONNEES ET ATTRIBUTION PAR APRES A UTILISATEUR
+    //----------------------------------------------
     public function checkAdressesHome(Utilisateur $utilisateur, EntityManagerInterface $entityManager) {
         //définition repository adresse
         $repositoryAdresse = $entityManager -> getRepository(Adresse::class);
@@ -208,6 +218,11 @@ class RegistrationController extends AbstractController
         endif;
     }
 
+    //----------------------------------------------
+    // FONCTION DE CONTRÔLE SI ADRESSE DELIVER EXISTE DEJA DANS LA BASE DE DONNEES
+    // SI OUI => ATTRIBUTION DIRECTE A UTILISATEUR
+    // SI NON => CREATION ADRESSE DANS LA BASE DE DONNEES ET ATTRIBUTION PAR APRES A UTILISATEUR
+    //----------------------------------------------
     public function checkAdressesDeliver(Utilisateur $utilisateur, EntityManagerInterface $entityManager) {
         //définition repository adresse
         $repositoryAdresse = $entityManager -> getRepository(Adresse::class);

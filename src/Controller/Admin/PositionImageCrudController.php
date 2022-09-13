@@ -13,7 +13,6 @@ class PositionImageCrudController extends AbstractCrudController
     {
         return PositionImage::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

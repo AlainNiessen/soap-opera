@@ -18,7 +18,6 @@ class UtilisateurCrudController extends AbstractCrudController
     {
         return Utilisateur::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {

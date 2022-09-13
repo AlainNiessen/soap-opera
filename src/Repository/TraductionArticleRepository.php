@@ -49,7 +49,7 @@ class TraductionArticleRepository extends ServiceEntityRepository
     /**
     * @return TraductionArticle Returns an object of TraductionArticle
     */
-    
+    // fonction de recherche de traduction pour un article spécifique dans une langue spécifique
     public function findTraductionArticle($articleID, Langue $langue)
     {
         //récupération de ID langue
@@ -69,7 +69,7 @@ class TraductionArticleRepository extends ServiceEntityRepository
     /**
     * @return TraductionArticle[] Returns an an array of objects of TraductionArticle
     */
-    
+    // fonction de recherche de traduction pour plusieurs articles dans une langue spécifique + offset et limit (par définition sur NULL, si on mets des valeurs => pagination)
     public function findTraductionArticles($articles, Langue $langue, $offset = null, $limit = null)
     {
         //récupération de ID langue
@@ -104,16 +104,4 @@ class TraductionArticleRepository extends ServiceEntityRepository
            
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?TraductionArticle
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
