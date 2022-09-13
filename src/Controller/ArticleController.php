@@ -51,17 +51,17 @@ class ArticleController extends AbstractController
             $tabWords = $session -> get('tabWords');
         endif;        
         
-        // récupération langue via LangueRepository
-        $lang = $request-> getLocale();
-        $repositoryLangue = $entityManager -> getRepository(Langue::class);     
-        $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
-        
-        // récupération des articles sur base des mots de clé via ArticleRepository        
-        $repositoryArticle = $entityManager -> getRepository(Article::class);     
-        $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
-
-        // s'il y a des articles
-        if($tabArticles):
+        // s'il y a des mots rentrés
+        if(!$tabWords[0] == ""):
+           // récupération langue via LangueRepository
+            $lang = $request-> getLocale();
+            $repositoryLangue = $entityManager -> getRepository(Langue::class);     
+            $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]); 
+            
+            // récupération des articles sur base des mots de clé via ArticleRepository        
+            $repositoryArticle = $entityManager -> getRepository(Article::class);     
+            $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
+       
             // préparation de la pagination
             // récupération du nombre des articles
             $nombreArticles = count($tabArticles);
@@ -81,8 +81,8 @@ class ArticleController extends AbstractController
                 'traductionArticles' => $resultTraductionArticles,
                 'nombreLiens' => $nombreLiens,
                 'pagBar'=> $interPag
-            ]);
-        // s'il n'y a pas des articles
+            ]);        
+        // s'il n'y a pas des mots rentrés
         else:
             // ajout d'un message de warning
             $message = $translator -> trans('Es wurden keine Artikel unter diesen Kriterien gefunden.');
