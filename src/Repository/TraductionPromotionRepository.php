@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\TraductionPromotion;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Langue;
+use App\Entity\Promotion;
 use Doctrine\ORM\ORMException;
+use App\Entity\TraductionPromotion;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method TraductionPromotion|null find($id, $lockMode = null, $lockVersion = null)

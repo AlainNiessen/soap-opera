@@ -38,6 +38,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $promotion;
 
