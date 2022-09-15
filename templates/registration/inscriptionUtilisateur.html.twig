@@ -18,7 +18,7 @@
         {% endfor %}  
         <div class="info-box-inscription">
             <h1>{% trans %}Einschreibung{% endtrans %}</h1>        
-            <p>{% trans %}Bitte füllen Sie alle Felder aus. Anschliessend werden Sie eine Mail erhalten, in dem Sie Ihre Einschreibug bestätigen müssen.{% endtrans %}</p>
+            <p>{% trans %}Alle Felder mit einem * sind obligatorisch. Anschliessend wirst du eine E-mail erhalten, in der du deine Einschreibung bestätigen musst.{% endtrans %}</p>
         </div>    
         {{ form_start(formInscription, {'attr': {'novalidate': 'novalidate'}}) }}
         
@@ -65,13 +65,12 @@
             {{ form_row(formInscription.adresseDeliver.pays) }}
         </div>
         <div class="form-container">
-            <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
-            <p>{% trans %}Der Newsletter ist nicht obligatorisch.{% endtrans %}</p>
-            <p>{% trans %}Sie können eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
+            <h3>{% trans %}Möchtest du einen Newsletter abonnieren?{% endtrans %}</h3>
+            <p>{% trans %}Du kannst eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
             {{ form_row(formInscription.newsletterCategories) }}
         </div>
         <div class="form-container">
-            <h3>{% trans %}Wählen Sie eine Sprache aus{% endtrans %}</h3>
+            <h3>{% trans %}Wähle deine Sprache aus!{% endtrans %}</h3>
             {{ form_row(formInscription.langue) }}
         </div>
         {{ form_row(formInscription.submit) }}

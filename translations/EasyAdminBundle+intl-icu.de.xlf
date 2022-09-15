@@ -17,14 +17,6 @@
         <source>menu.utilisateur</source>
         <target>Nutzer</target>
       </trans-unit>
-      <trans-unit id="NEppOCi" resname="menu.partenaire">
-        <source>menu.partenaire</source>
-        <target>Partner</target>
-      </trans-unit>
-      <trans-unit id="hQgNJSE" resname="menu.tra_partenaire">
-        <source>menu.tra_partenaire</source>
-        <target>ÜB-Partner</target>
-      </trans-unit>
       <trans-unit id="LcfkpeT" resname="menu.adresse">
         <source>menu.adresse</source>
         <target>Adressen</target>
@@ -109,22 +101,6 @@
         <source>menu.tra_ingredient</source>
         <target>ÜB-Sonstiges</target>
       </trans-unit>
-      <trans-unit id="NFs1_eO" resname="menu.event">
-        <source>menu.event</source>
-        <target>Verantstaltungen</target>
-      </trans-unit>
-      <trans-unit id="qoQng4T" resname="menu.tra_event">
-        <source>menu.tra_event</source>
-        <target>ÜB-Veranstaltung</target>
-      </trans-unit>
-      <trans-unit id="zMWaza0" resname="menu.typ">
-        <source>menu.typ</source>
-        <target>Veranstaltungstypen</target>
-      </trans-unit>
-      <trans-unit id="O41vRil" resname="menu.tra_typ">
-        <source>menu.tra_typ</source>
-        <target>ÜB-Veranstaltungstyp</target>
-      </trans-unit>
       <trans-unit id="JKmIIwO" resname="menu.comptabilite">
         <source>menu.comptabilite</source>
         <target>Buchhaltung</target>
@@ -132,10 +108,6 @@
       <trans-unit id="mF3CLVb" resname="menu.detail_commande">
         <source>menu.detail_commande</source>
         <target>Bestellungen</target>
-      </trans-unit>
-      <trans-unit id="5YG35.I" resname="menu.reservation">
-        <source>menu.reservation</source>
-        <target>Reservierungen</target>
       </trans-unit>
       <trans-unit id="zB1B.9a" resname="menu.facture">
         <source>menu.facture</source>
@@ -281,42 +253,6 @@
         <source>option.commande_facture</source>
         <target>Rechnung</target>
       </trans-unit>
-      <trans-unit id="EcmVmIZ" resname="option.event_nomBackend">
-        <source>option.event_nomBackend</source>
-        <target>Name für Adminbereich</target>
-      </trans-unit>
-      <trans-unit id="e2TvWoZ" resname="option.event_dateAffichageStart">
-        <source>option.event_dateAffichageStart</source>
-        <target>Start Anzeige Webseite</target>
-      </trans-unit>
-      <trans-unit id="dgS2qoL" resname="option.event_dateAffichageEnd">
-        <source>option.event_dateAffichageEnd</source>
-        <target>Ende Anzeige Webseite</target>
-      </trans-unit>
-      <trans-unit id="Ul6_mAf" resname="option.event_dateStart">
-        <source>option.event_dateStart</source>
-        <target>Start Veranstaltung</target>
-      </trans-unit>
-      <trans-unit id="nL.AcvN" resname="option.event_dateEnd">
-        <source>option.event_dateEnd</source>
-        <target>Ende Veranstaltung</target>
-      </trans-unit>
-      <trans-unit id="gDk6xZh" resname="option.event_montantHorsTva">
-        <source>option.event_montantHorsTva</source>
-        <target>Betrag ohne MwSt</target>
-      </trans-unit>
-      <trans-unit id="UzgJaR9" resname="option.event_tauxTva">
-        <source>option.event_tauxTva</source>
-        <target>MwSt-Satz</target>
-      </trans-unit>
-      <trans-unit id="Ez9Q5F3" resname="option.event_nombreLimit">
-        <source>option.event_nombreLimit</source>
-        <target>Maximale Teilnehmeranzahl</target>
-      </trans-unit>
-      <trans-unit id="DIkfj21" resname="option.event_typeEvent">
-        <source>option.event_typeEvent</source>
-        <target>Veranstaltungstyp</target>
-      </trans-unit>
       <trans-unit id="SgyjD0v" resname="option.facture_dateFacture">
         <source>option.facture_dateFacture</source>
         <target>Datum Rechnung</target>
@@ -381,14 +317,6 @@
         <source>option.image_coverDetailArticle</source>
         <target>Handelt es sich um Bild für das Artikeldetail?</target>
       </trans-unit>
-      <trans-unit id="d9Etqdc" resname="option.image_partenaire">
-        <source>option.image_partenaire</source>
-        <target>Partner</target>
-      </trans-unit>
-      <trans-unit id="1lITLHV" resname="option.image_event">
-        <source>option.image_event</source>
-        <target>Veranstaltung</target>
-      </trans-unit>
       <trans-unit id="PRX2mTO" resname="option.ingredients_nomBackend">
         <source>option.ingredients_nomBackend</source>
         <target>Name für Adminbereich</target>
@@ -412,14 +340,6 @@
       <trans-unit id="oKGhV8B" resname="option.odeur_nomBackend">
         <source>option.odeur_nomBackend</source>
         <target>Name für Adminbereich</target>
-      </trans-unit>
-      <trans-unit id="BOZyJpV" resname="option.partenaire_nom">
-        <source>option.partenaire_nom</source>
-        <target>Name Partner</target>
-      </trans-unit>
-      <trans-unit id="tysOZyz" resname="option.partenaire_adresse">
-        <source>option.partenaire_adresse</source>
-        <target>Adresse</target>
       </trans-unit>
       <trans-unit id="qhMCw.4" resname="option.positionImage_position">
         <source>option.positionImage_position</source>
@@ -456,30 +376,6 @@
       <trans-unit id="veRFTG_" resname="option.promotion_categorie">
         <source>option.promotion_categorie</source>
         <target>Kategorie</target>
-      </trans-unit>
-      <trans-unit id="_C3kZ.x" resname="option.reservation_dateReservation">
-        <source>option.reservation_dateReservation</source>
-        <target>Datum Reservierung</target>
-      </trans-unit>
-      <trans-unit id="UZZ0H9d" resname="option.reservation_montantTotalHorsTva">
-        <source>option.reservation_montantTotalHorsTva</source>
-        <target>Gesamtbetrag ohne MwSt</target>
-      </trans-unit>
-      <trans-unit id="oJGXZq3" resname="option.reservation_montantTva">
-        <source>option.reservation_montantTva</source>
-        <target>Betrag MwSt</target>
-      </trans-unit>
-      <trans-unit id="AFftfMt" resname="option.reservation_montantTotal">
-        <source>option.reservation_montantTotal</source>
-        <target>Gesamtbetrag</target>
-      </trans-unit>
-      <trans-unit id="H4E_Vpw" resname="option.reservation_event">
-        <source>option.reservation_event</source>
-        <target>Veranstaltung</target>
-      </trans-unit>
-      <trans-unit id="S9F0GlJ" resname="option.reservation_facture">
-        <source>option.reservation_facture</source>
-        <target>Rechnung</target>
       </trans-unit>
       <trans-unit id="8x8P2EO" resname="option.tradArticle_nom">
         <source>option.tradArticle_nom</source>
@@ -528,34 +424,6 @@
       <trans-unit id="kwN3RZo" resname="option.tradCategorie_categorie">
         <source>option.tradCategorie_categorie</source>
         <target>Kategorie</target>
-      </trans-unit>
-      <trans-unit id="B0U_kPr" resname="option.tradEvent_titre">
-        <source>option.tradEvent_titre</source>
-        <target>Name</target>
-      </trans-unit>
-      <trans-unit id="WWmtzaY" resname="option.tradEvent_description">
-        <source>option.tradEvent_description</source>
-        <target>Beschreibung</target>
-      </trans-unit>
-      <trans-unit id="4whGkZ6" resname="option.tradEvent_documentPDF">
-        <source>option.tradEvent_documentPDF</source>
-        <target>PDF anzeigen</target>
-      </trans-unit>
-      <trans-unit id="Y5XYMY6" resname="option.tradEvent_documentFile">
-        <source>option.tradEvent_documentFile</source>
-        <target>PDF hinzufügen</target>
-      </trans-unit>
-      <trans-unit id="iuBcM5_" resname="option.tradEvent_downloadPDF">
-        <source>option.tradEvent_downloadPDF</source>
-        <target>PDF anzeigen</target>
-      </trans-unit>
-      <trans-unit id=".YRALpd" resname="option.tradEvent_langue">
-        <source>option.tradEvent_langue</source>
-        <target>Sprache</target>
-      </trans-unit>
-      <trans-unit id="GEgLhZx" resname="option.tradEvent_event">
-        <source>option.tradEvent_event</source>
-        <target>Veranstaltung</target>
       </trans-unit>
       <trans-unit id="E21VSu." resname="option.tradHuile_nom">
         <source>option.tradHuile_nom</source>
@@ -661,22 +529,6 @@
         <source>option.tradPromotion_promotion</source>
         <target>Ermässigung</target>
       </trans-unit>
-      <trans-unit id="C9cAEEr" resname="option.tradTypeEvent_nom">
-        <source>option.tradTypeEvent_nom</source>
-        <target>Name</target>
-      </trans-unit>
-      <trans-unit id="0Qg223M" resname="option.tradTypeEvent_langue">
-        <source>option.tradTypeEvent_langue</source>
-        <target>Sprache</target>
-      </trans-unit>
-      <trans-unit id="qLEheod" resname="option.tradtypeEvent_typeEvent">
-        <source>option.tradtypeEvent_typeEvent</source>
-        <target>Veranstaltungsart</target>
-      </trans-unit>
-      <trans-unit id=".bRSibZ" resname="option.typeEvent_nomBackend">
-        <source>option.typeEvent_nomBackend</source>
-        <target>Name für Adminbereich</target>
-      </trans-unit>
       <trans-unit id="cjR4c_n" resname="option.utilisateur_email">
         <source>option.utilisateur_email</source>
         <target>Email</target>
@@ -757,10 +609,6 @@
         <source>DetailCommandeArticle</source>
         <target>Bestellungen</target>
       </trans-unit>
-      <trans-unit id="Th9Jqci" resname="Event">
-        <source>Event</source>
-        <target>Veranstaltungen</target>
-      </trans-unit>
       <trans-unit id="e6lvCKC" resname="Facture">
         <source>Facture</source>
         <target>Rechnungen</target>
@@ -777,17 +625,9 @@
         <source>NewsletterCategorie</source>
         <target>Kategorien Newsletter</target>
       </trans-unit>
-      <trans-unit id="HDML1Pn" resname="Partenaire">
-        <source>Partenaire</source>
-        <target>Partner</target>
-      </trans-unit>
       <trans-unit id="86DGV0l" resname="PositionImage">
         <source>PositionImage</source>
         <target>Positionen Foto</target>
-      </trans-unit>
-      <trans-unit id="tFbm1a5" resname="Reservation">
-        <source>Reservation</source>
-        <target>Reservierungen</target>
       </trans-unit>
       <trans-unit id="lP6AAO." resname="TraductionArticle">
         <source>TraductionArticle</source>
@@ -800,10 +640,6 @@
       <trans-unit id="WY3x5Cc" resname="TraductionCategorie">
         <source>TraductionCategorie</source>
         <target>Übersetzungen Kategorie</target>
-      </trans-unit>
-      <trans-unit id="_EW3Nt8" resname="TraductionEvent">
-        <source>TraductionEvent</source>
-        <target>Übersetzungen Veranstaltung</target>
       </trans-unit>
       <trans-unit id="vizQb47" resname="TraductionHuile">
         <source>TraductionHuile</source>
@@ -837,17 +673,21 @@
         <source>TraductionPromotion</source>
         <target>Übersetzungen Promotion</target>
       </trans-unit>
-      <trans-unit id="mgc0j5." resname="TraductionTypeEvent">
-        <source>TraductionTypeEvent</source>
-        <target>Übersetzungen Veranstaltungsart</target>
-      </trans-unit>
-      <trans-unit id="ua..mGn" resname="TypeEvent">
-        <source>TypeEvent</source>
-        <target>Veranstaltungsarten</target>
-      </trans-unit>
       <trans-unit id="ch5bKau" resname="Utilisateur">
         <source>Utilisateur</source>
         <target>Nutzer</target>
+      </trans-unit>
+      <trans-unit id="pRRcqm2" resname="PointDeVente">
+        <source>PointDeVente</source>
+        <target>Verkaufsstellen</target>
+      </trans-unit>
+      <trans-unit id="knRLiop" resname="TraductionPointDeVente">
+        <source>TraductionPointDeVente</source>
+        <target>Übersetzungen Verkaufsstelle</target>
+      </trans-unit>
+      <trans-unit id="GUk4NoD" resname="Philosophie">
+        <source>Philosophie</source>
+        <target>Philosophie</target>
       </trans-unit>
       <trans-unit id="grajkTI" resname="option.article_promotion">
         <source>option.article_promotion</source>

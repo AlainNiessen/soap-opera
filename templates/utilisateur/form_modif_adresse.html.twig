@@ -21,7 +21,8 @@
             </div>
         {% endfor %}  
         <div class="info-box-modification">
-            <h1>{% trans %}Anpassung der{% endtrans %} {{ titre }}</h1>        
+            <h1>{% trans %}Anpassung der{% endtrans %} {{ titre }}</h1>
+            <p>{% trans %}Alle Felder mit einem * sind obligatorisch.{% endtrans %}</p>        
         </div>    
         {{ form_start(formAdresse, {'attr': {'novalidate': 'novalidate'}}) }}
         <div class="form-container">

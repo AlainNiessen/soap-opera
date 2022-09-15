@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="s89YWMu" resname="formInscription.dateDeNaissance">
         <source>formInscription.dateDeNaissance</source>
-        <target>Geburtsdatum</target>
+        <target>Geburtsdatum *</target>
       </trans-unit>
       <trans-unit id="5gL_Kp9" resname="formInscription.adresseResi">
         <source>formInscription.adresseResi</source>

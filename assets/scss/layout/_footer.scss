@@ -3,7 +3,7 @@
 // ----------------------------
 
 .l-footer {
-    background-color: map-get($map: $colors, $key: 'bg-2');    
+    background-color: map-get($map: $colors, $key: 'main2');    
     width: 100%;
     height: auto;
     display: flex;
@@ -11,22 +11,45 @@
     align-items: center;
     .l-footer-text {
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        color: map-get($map: $colors, $key: 'text');
-        padding: 1rem 0;
-        p {
-            a {
-                color: map-get($map: $colors, $key: 'main1');
-                font-size: 1.1rem;
-                &:hover {
-                    color: map-get($map: $colors, $key: 'text');
+        .l-footer-text-box {
+            width: 100%;
+            max-width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: map-get($map: $colors, $key: 'main1');
+            padding: 1rem 0;
+            font-size: .9rem;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            p {
+                a {
+                    color: map-get($map: $colors, $key: 'bg-2');
+                    font-size: .9rem;
+                    &:hover {
+                        color: map-get($map: $colors, $key: 'main1');
+                    }
                 }
             }
+            .l-footer-link {
+                margin-bottom: .5rem;
+                width: 100%;
+            }
         }
-        .l-footer-link {
-            margin-bottom: 0;
-        }
+        
     }
+}
+
+//MEDIA QUERY 
+@media screen and (min-width: 992px) {
+    .l-footer {
+        .l-footer-text {      
+            .l-footer-text-box {
+                transform: translateX(-25%);
+            }
+        }
+    }    
 }

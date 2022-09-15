@@ -253,29 +253,25 @@
         <source>Kontaktformular</source>
         <target>Formulaire de contact</target>
       </trans-unit>
-      <trans-unit id="B._PH62" resname="Jedes Feld muss ausgefüllt werden.">
-        <source>Jedes Feld muss ausgefüllt werden.</source>
-        <target>Chaque champ doit être rempli.</target>
-      </trans-unit>
       <trans-unit id="CQsXVvw" resname="Dein Name">
         <source>Dein Name</source>
-        <target>Ton nom</target>
+        <target>Votre nom *</target>
       </trans-unit>
       <trans-unit id="Qk1OVjN" resname="Deine Email">
         <source>Deine Email</source>
-        <target>Ton email</target>
+        <target>Votre email *</target>
       </trans-unit>
       <trans-unit id="1c4_NKO" resname="Dein Betreff">
         <source>Dein Betreff</source>
-        <target>Ton sujet</target>
+        <target>Votre sujet *</target>
       </trans-unit>
       <trans-unit id="P6NlaF8" resname="Deine Nachricht">
         <source>Deine Nachricht</source>
-        <target>Ton message</target>
+        <target>Votre message *</target>
       </trans-unit>
       <trans-unit id="B5vvTiM" resname="Senden">
         <source>Senden</source>
-        <target>Envoyer</target>
+        <target>Envoyer </target>
       </trans-unit>
       <trans-unit id="LooBR9J" resname="Dieses Feld darf nicht leer bleiben">
         <source>Dieses Feld darf nicht leer bleiben</source>
@@ -291,7 +287,7 @@
       </trans-unit>
       <trans-unit id="ua1WdC1" resname="Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!">
         <source>Deine Email ist erfolgreich versendet. Du wirst in Kürze Antwort erhalten!</source>
-        <target>Ton e-mail a été envoyé avec succès. Tu recevras une réponse sous peu!</target>
+        <target>Votre e-mail a été envoyé avec succès. Vous recevrez une réponse sous peu!</target>
       </trans-unit>
       <trans-unit id="OzoCJRM" resname="Möchten Sie einen Newsletter abonnieren?">
         <source>Möchten Sie einen Newsletter abonnieren?</source>
@@ -431,7 +427,7 @@
       </trans-unit>
       <trans-unit id="pCMtMhX" resname="Dein Warenkorb">
         <source>Dein Warenkorb</source>
-        <target>Ton panier</target>
+        <target>Votre panier</target>
       </trans-unit>
       <trans-unit id="RDX8wud" resname="Artikel">
         <source>Artikel</source>
@@ -483,7 +479,7 @@
       </trans-unit>
       <trans-unit id="PLQNfKn" resname="Deine Bestellung">
         <source>Deine Bestellung</source>
-        <target>Ta commande</target>
+        <target>Votre commande</target>
       </trans-unit>
       <trans-unit id="5kaCp1A" resname="Bezahlen">
         <source>Bezahlen</source>
@@ -547,43 +543,43 @@
       </trans-unit>
       <trans-unit id="snERRNm" resname="Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.">
         <source>Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.</source>
-        <target>Ici, tu peux apporter des modifications à tes données personnelles.</target>
+        <target>Ici, vous pouvez apporter des modifications à tes données personnelles.</target>
       </trans-unit>
       <trans-unit id="moRIpRf" resname="Willkommen auf deinem Profil">
         <source>Willkommen auf deinem Profil</source>
-        <target>Bienvenue sur ton profil</target>
+        <target>Bienvenue sur votre profil</target>
       </trans-unit>
       <trans-unit id="Z0nVU8C" resname="Deine persönlichen Daten">
         <source>Deine persönlichen Daten</source>
-        <target>Tes données personnelles</target>
+        <target>Vos données personnelles</target>
       </trans-unit>
       <trans-unit id="_eOWaL8" resname="Deine vollständiger Name">
         <source>Deine vollständiger Name</source>
-        <target>Ton nom complet</target>
+        <target>Votre nom complet</target>
       </trans-unit>
       <trans-unit id="JVDZYuU" resname="E-mail">
         <source>E-mail</source>
-        <target>E-mail</target>
+        <target> VotreE-mail</target>
       </trans-unit>
       <trans-unit id="kLhSynD" resname="Dein Geburtsdatum">
         <source>Dein Geburtsdatum</source>
-        <target>Ta date de naissance</target>
+        <target>Votre date de naissance</target>
       </trans-unit>
       <trans-unit id="u4jSVsd" resname="Deine Sprache">
         <source>Deine Sprache</source>
-        <target>Ta langue</target>
+        <target>Votre langue</target>
       </trans-unit>
       <trans-unit id="7ndEqNK" resname="Deine Wohnadresse">
         <source>Deine Wohnadresse</source>
-        <target>Ton adresse résidentielle</target>
+        <target>Votre adresse résidentielle</target>
       </trans-unit>
       <trans-unit id="nOVc9Q9" resname="Deine Lieferadresse">
         <source>Deine Lieferadresse</source>
-        <target>Ton adresse de livraison</target>
+        <target>Votre adresse de livraison</target>
       </trans-unit>
       <trans-unit id="XiJnWBA" resname="Möchtest du deine persönlichen Daten anpassen?">
         <source>Möchtest du deine persönlichen Daten anpassen?</source>
-        <target>Souhaites-tu modifier tes données personnelles ?</target>
+        <target>Souhaitez-vous modifier vos données personnelles ?</target>
       </trans-unit>
       <trans-unit id="VnQ.tdc" resname="Anpassen">
         <source>Anpassen</source>
@@ -591,7 +587,7 @@
       </trans-unit>
       <trans-unit id="L_9CAgu" resname="Möchtest du dein Passwort ändern??">
         <source>Möchtest du dein Passwort ändern??</source>
-        <target>Veux-tu changer ton mot de passe?</target>
+        <target>Voulez-vous changer votre mot de passe?</target>
       </trans-unit>
       <trans-unit id="6l40F6q" resname="Ändern">
         <source>Ändern</source>
@@ -611,11 +607,11 @@
       </trans-unit>
       <trans-unit id="84thlAj" resname="Deine gewählten Newsletter-Kategorien">
         <source>Deine gewählten Newsletter-Kategorien</source>
-        <target>Les catégories de newsletter que tu as choisie</target>
+        <target>Les catégories de newsletter que vous avez choisi</target>
       </trans-unit>
       <trans-unit id="2UrGdgn" resname="Du hast keine Newsletter-Kategorie ausgewählt.">
         <source>Du hast keine Newsletter-Kategorie ausgewählt.</source>
-        <target>Tu n'as pas sélectionné de catégorie de newsletter.</target>
+        <target>Vous n'avez pas sélectionné de catégorie de newsletter.</target>
       </trans-unit>
       <trans-unit id="JWxlYuy" resname="Wohnadresse anpassen">
         <source>Wohnadresse anpassen</source>
@@ -623,7 +619,7 @@
       </trans-unit>
       <trans-unit id="MGBZYzH" resname="Deine Adressen">
         <source>Deine Adressen</source>
-        <target>Tes adresses</target>
+        <target>Vos adresses</target>
       </trans-unit>
       <trans-unit id="4BtqX.8" resname="Lieferadresse anpassen">
         <source>Lieferadresse anpassen</source>
@@ -635,7 +631,7 @@
       </trans-unit>
       <trans-unit id="JYpKpun" resname="Vielen Dank für deine neue Bewertung. Sie wird ebenfalls in die Gesamtbewertung einfliessen.">
         <source>Vielen Dank für deine neue Bewertung. Sie wird ebenfalls in die Gesamtbewertung einfliessen.</source>
-        <target>Merci pour ton nouvel avis. Il sera également inclus dans la note globale</target>
+        <target>Merci pour votre nouvel avis. Il sera également inclus dans la note globale</target>
       </trans-unit>
       <trans-unit id="LGcUFc1" resname="Der Favorit wurde erfolgreich gelöscht!">
         <source>Der Favorit wurde erfolgreich gelöscht!</source>
@@ -643,7 +639,7 @@
       </trans-unit>
       <trans-unit id="S6J7vAn" resname="Deine Daten">
         <source>Deine Daten</source>
-        <target>Tes données</target>
+        <target>Vos données</target>
       </trans-unit>
       <trans-unit id="xvCTlBP" resname="Hier kannst du deine persönlichen Informationen anpassen.">
         <source>Hier kannst du deine persönlichen Informationen anpassen.</source>
@@ -651,7 +647,7 @@
       </trans-unit>
       <trans-unit id="_pHWD_6" resname="Möchtest du dein Passwort anpassen?">
         <source>Möchtest du dein Passwort anpassen?</source>
-        <target>Veux-tu changer ton mot de passe ?</target>
+        <target>Voulez-vous changer votre mot de passe ?</target>
       </trans-unit>
       <trans-unit id="q4i3T40" resname="Passwort anpassen">
         <source>Passwort anpassen</source>
@@ -667,19 +663,19 @@
       </trans-unit>
       <trans-unit id="988XOVZ" resname="Möchtest du deine Wohnadresse anpassen?">
         <source>Möchtest du deine Wohnadresse anpassen?</source>
-        <target>Souhaites-tu changer l'adresse de ton domicile ?</target>
+        <target>Souhaitez-vous changer l'adresse de votre domicile ?</target>
       </trans-unit>
       <trans-unit id="B282DCx" resname="Möchtest du deine Lieferadresse anpassen?">
         <source>Möchtest du deine Lieferadresse anpassen?</source>
-        <target>Souhaites-tu changer ton adresse de livraison ?</target>
+        <target>Souhaitez-vous changer votre adresse de livraison ?</target>
       </trans-unit>
       <trans-unit id="ZCf_2FT" resname="Deine Favoriten">
         <source>Deine Favoriten</source>
-        <target>Tes favoris</target>
+        <target>Vos favoris</target>
       </trans-unit>
       <trans-unit id="ZcSMKpf" resname="Hier kannst du deine Favoriten einsehen, sie direkt dem Warenkorb hinzufügen oder löschen.">
         <source>Hier kannst du deine Favoriten einsehen, sie direkt dem Warenkorb hinzufügen oder löschen.</source>
-        <target>Ici, tu peux voir tes favoris, les ajouter directement au panier ou les supprimer.</target>
+        <target>Ici, vous pouvez voir vos favoris, les ajouter directement au panier ou les supprimer.</target>
       </trans-unit>
       <trans-unit id="N16EA0u" resname="Bild">
         <source>Bild</source>
@@ -695,11 +691,11 @@
       </trans-unit>
       <trans-unit id="F5O10O_" resname="Willst du diesen Favoriten wirklich entfernen?">
         <source>Willst du diesen Favoriten wirklich entfernen?</source>
-        <target>Veux-tu vraiment supprimer ce favori ?</target>
+        <target>Voulez-vous vraiment supprimer ce favori ?</target>
       </trans-unit>
       <trans-unit id="h8_I8R3" resname="Du hast im Moment noch keine Favoriten">
         <source>Du hast im Moment noch keine Favoriten</source>
-        <target>Tu n'as pas de favoris pour le moment</target>
+        <target>Vous n'avez pas de favoris pour le moment</target>
       </trans-unit>
       <trans-unit id="aQ2INKK" resname="Deine gekauften Artikel">
         <source>Deine gekauften Artikel</source>
@@ -707,19 +703,19 @@
       </trans-unit>
       <trans-unit id="FG5_xsc" resname="Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.">
         <source>Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.</source>
-        <target>Ici, tu peux voir tes articles précédemment achetés et les ajouter directement au panier.</target>
+        <target>Ici, vous pouvez voir vos articles précédemment achetés et les ajouter directement au panier.</target>
       </trans-unit>
       <trans-unit id="_LwMb_z" resname="Du hast im Moment noch keine Artikel gekauft">
         <source>Du hast im Moment noch keine Artikel gekauft</source>
-        <target>Tu n'as pas acheté d'articles pour le moment</target>
+        <target>Vous n'avez pas acheté d'articles pour le moment</target>
       </trans-unit>
       <trans-unit id="rVgxxf6" resname="Deine kommentierten Artikel">
         <source>Deine kommentierten Artikel</source>
-        <target>Tes articles commentés</target>
+        <target>Vos articles commentés</target>
       </trans-unit>
       <trans-unit id="Eqmac5c" resname="Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.">
         <source>Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.</source>
-        <target>Ici, tu peux voir tes articles précédemment commentés, les modifier ou les supprimer</target>
+        <target>Ici, vous pouvez voir vos articles précédemment commentés, les modifier ou les supprimer</target>
       </trans-unit>
       <trans-unit id="coQifWg" resname="Kommentar">
         <source>Kommentar</source>
@@ -731,7 +727,7 @@
       </trans-unit>
       <trans-unit id="HRRgPQg" resname="Willst du diesen Kommentar wirklich entfernen?">
         <source>Willst du diesen Kommentar wirklich entfernen?</source>
-        <target>Veux tu vraiment supprimer ce commentaire ?</target>
+        <target>Voulez-vous vraiment supprimer ce commentaire ?</target>
       </trans-unit>
       <trans-unit id="azggcHb" resname="Kommentar ändern">
         <source>Kommentar ändern</source>
@@ -739,19 +735,19 @@
       </trans-unit>
       <trans-unit id="YKwqWhn" resname="Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!">
         <source>Hast du deine Meinung geändert? Dann teile sie uns mit!  Der Kommentar wird nach Überprüfung freigeschaltet!</source>
-        <target>As-tu changé d'avis ? Alors dites-nous ! Le commentaire sera activé après vérification !</target>
+        <target>Avez-vous changé d'avis ? Alors ditez-nous ! Le commentaire sera activé après vérification !</target>
       </trans-unit>
       <trans-unit id="MichX5u" resname="Du hast im Moment noch keine Kommentare abgegeben.">
         <source>Du hast im Moment noch keine Kommentare abgegeben.</source>
-        <target>Tu n'as fait aucun commentaire pour le moment.</target>
+        <target>Vous n'avez fait aucun commentaire pour le moment.</target>
       </trans-unit>
       <trans-unit id="n0KVAda" resname="Deine bewerteten Artikel">
         <source>Deine bewerteten Artikel</source>
-        <target>Tes articles évalués</target>
+        <target>Vos articles évalués</target>
       </trans-unit>
       <trans-unit id="U9dXkd1" resname="Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.">
         <source>Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.</source>
-        <target>Ici, tu peux voir tes articles précédemment notés, les modifier ou les supprimer.</target>
+        <target>Ici, vous pouvez voir vos articles précédemment notés, les modifier ou les supprimer.</target>
       </trans-unit>
       <trans-unit id="XJjOklj" resname="Bewertung">
         <source>Bewertung</source>
@@ -771,11 +767,11 @@
       </trans-unit>
       <trans-unit id="1JSbcMR" resname="Hier kannst du eine neue Bewertung abgeben!">
         <source>Hier kannst du eine neue Bewertung abgeben!</source>
-        <target>Tu peux soumettre une nouvelle évaluation ici!</target>
+        <target>Vous pouvez soumettre une nouvelle évaluation ici!</target>
       </trans-unit>
       <trans-unit id="VOaRgLC" resname="Du hast im Moment noch keine Bewertungen abgegeben.">
         <source>Du hast im Moment noch keine Bewertungen abgegeben.</source>
-        <target>Tu n'as soumis aucun avis pour le moment</target>
+        <target>Vous n'avez soumis aucune évaluation pour le moment</target>
       </trans-unit>
       <trans-unit id="_uNEIgU" resname="Der Bewertung wurde erfolgreich gelöscht!">
         <source>Der Bewertung wurde erfolgreich gelöscht!</source>
@@ -803,7 +799,7 @@
       </trans-unit>
       <trans-unit id="umglrEG" resname="Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!">
         <source>Wir bieten ebenfalls regelmäßige Workshops an. Auch bei dir zu Hause! Fragen? Dann kontaktiere uns doch einfach!</source>
-        <target>Nous proposons également des ateliers réguliers. Chez toi aussi ! Des questions? Alors contactes-nous !</target>
+        <target>Nous proposons également des ateliers réguliers. Chez vous aussi ! Des questions? Alors contactez-nous !</target>
       </trans-unit>
       <trans-unit id="RBTIrsb" resname="Zum Kontaktformular">
         <source>Zum Kontaktformular</source>
@@ -1248,11 +1244,11 @@
       </trans-unit>
       <trans-unit id="R92Opvu" resname="Vielen Dank! Deine Bezahlung ist bestätigt!">
         <source>Vielen Dank! Deine Bezahlung ist bestätigt!</source>
-        <target>Merci beaucoup! Ton paiement est confirmé !</target>
+        <target>Merci beaucoup! Votre paiement est confirmé!</target>
       </trans-unit>
       <trans-unit id="qcumGZC" resname="Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!">
         <source>Irgendwas ist leider schiefgegangen! Bitte versuche es erneut oder nimm über das Kontaktformular mit uns Kontakt auf!</source>
-        <target>Malheureusement, quelque chose s'est mal passé ! Veuilles-tu réessayer ou contactes-nous via le formulaire de contact !</target>
+        <target>Malheureusement, quelque chose s'est mal passé! Veuillez réessayer ou contactez-nous via le formulaire de contact!</target>
       </trans-unit>
       <trans-unit id="dnpmeip" resname="Tel:">
         <source>Tel:</source>
@@ -1300,19 +1296,47 @@
       </trans-unit>
       <trans-unit id="4Gccwtf" resname="Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!">
         <source>Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!</source>
-        <target>Nous sommes désolés de te voir nous quitter, mais ton compte a été supprimé avec succès. Si tu souhaites utiliser à nouveau nos services à l'avenir, tu dois t'inscrire à nouveau !</target>
+        <target>Nous sommes désolés de vous voir nous quitter, mais votre compte a été supprimé avec succès. Si vous souhaitez utiliser à nouveau nos services à l'avenir, vous devez vous inscrire à nouveau !</target>
       </trans-unit>
       <trans-unit id="RfFsI_i" resname="Möchtest du dein Konto löschen?">
         <source>Möchtest du dein Konto löschen?</source>
-        <target>Veux-tu supprimer ton compte ?</target>
+        <target>Voulez-vous supprimer votre compte ?</target>
       </trans-unit>
       <trans-unit id="ok2z_Jp" resname="Möchtest du wirklich dein Konto löschen?">
         <source>Möchtest du wirklich dein Konto löschen?</source>
-        <target>Veux-tu vraiment supprimer ton compte ?</target>
+        <target>Voulez-vous vraiment supprimer votre compte ?</target>
       </trans-unit>
       <trans-unit id="IFCW.bv" resname="Konto löschen">
         <source>Konto löschen</source>
         <target>Suppression compte</target>
+      </trans-unit>
+      <trans-unit id="o3ZEm8B" resname="Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.">
+        <source>Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.</source>
+        <target>La longueur du code postal pour les villes belges est exactement 4 et pour les villes allemandes, elle est exactement 5.</target>
+      </trans-unit>
+      <trans-unit id="GVi3qPe" resname="Alle Felder mit einem * sind obligatorisch. Anschliessend wirst du eine E-mail erhalten, in der du deine Einschreibung bestätigen musst.">
+        <source>Alle Felder mit einem * sind obligatorisch. Anschliessend wirst du eine E-mail erhalten, in der du deine Einschreibung bestätigen musst.</source>
+        <target>Tous les champs avec un * sont obligatoires. Vous recevrez alors un e-mail dans lequel vous devrez confirmer votre inscription.</target>
+      </trans-unit>
+      <trans-unit id="2ekNEjq" resname="Du kannst eine oder mehrere Kategorien anwählen.">
+        <source>Du kannst eine oder mehrere Kategorien anwählen.</source>
+        <target>Vous pouvez sélectionner une ou plusieurs catégories.</target>
+      </trans-unit>
+      <trans-unit id=".oRRwOk" resname="Wähle deine Sprache aus!">
+        <source>Wähle deine Sprache aus!</source>
+        <target>Choisissez votre langue!</target>
+      </trans-unit>
+      <trans-unit id="hWRTXA8" resname="Möchtest du einen Newsletter abonnieren?">
+        <source>Möchtest du einen Newsletter abonnieren?</source>
+        <target>Souhaitez-vous vous inscrire à une newsletter ?</target>
+      </trans-unit>
+      <trans-unit id="_2sxjuc" resname="Hier kannst du Änderungen an deinen persönlichen Daten vornehmen. Alle Felder mit einem * sind obligatorisch.">
+        <source>Hier kannst du Änderungen an deinen persönlichen Daten vornehmen. Alle Felder mit einem * sind obligatorisch.</source>
+        <target>Ici, vous pouvez apporter des modifications à vos données personnelles. Tous les champs avec un * sont obligatoires.</target>
+      </trans-unit>
+      <trans-unit id="csS.S0F" resname="Alle Felder mit einem * sind obligatorisch.">
+        <source>Alle Felder mit einem * sind obligatorisch.</source>
+        <target>Tous les champs avec un * sont obligatoires.</target>
       </trans-unit>
     </body>
   </file>

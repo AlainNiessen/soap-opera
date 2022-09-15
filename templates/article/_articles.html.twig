@@ -27,14 +27,18 @@
                     {% if traductionArticle.article.promotion %}  
                         {# date d'affichage#}
                         {% if traductionArticle.article.promotion.dateStart < date('now') and traductionArticle.article.promotion.dateEnd > date('now') %}
-                            <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.promotion.Pourcentage * 100 }}%</p>
-                            <p class="promo promo-date">{{ traductionArticle.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                            <div class="promo-info-box">
+                                <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.promotion.Pourcentage * 100 }}%</p>
+                                <p class="promo promo-date">{{ traductionArticle.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                            </div>
                         {% endif %}
                     {% elseif traductionArticle.article.categorie.promotion %}
                         {# date d'affichage#}
                         {% if traductionArticle.article.categorie.promotion.dateStart < date('now') and traductionArticle.article.categorie.promotion.dateEnd > date('now') %}
-                            <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.categorie.promotion.Pourcentage * 100 }}%</p>
-                            <p class="promo promo-date">{{ traductionArticle.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                            <div class="promo-info-box">
+                                <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.categorie.promotion.Pourcentage * 100 }}%</p>
+                                <p class="promo promo-date">{{ traductionArticle.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                            </div>
                         {% endif %}
                     {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>

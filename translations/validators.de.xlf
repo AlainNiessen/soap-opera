@@ -613,22 +613,6 @@
         <source>utilisateur.plainPassword.regex</source>
         <target>Das Passwort muss mindestens 1 Buchstaben, 1 Zahl und 1 Sonderzeichen enthalten!</target>
       </trans-unit>
-      <trans-unit id=".0kR5FP" resname="event.dateAffichageEnd.greaterThan">
-        <source>event.dateAffichageEnd.greaterThan</source>
-        <target>Das Enddatum der Anzeige muss später als das Startdatum der Anzeige sein!</target>
-      </trans-unit>
-      <trans-unit id="GXDVgny" resname="event.dateEnd.greaterThan">
-        <source>event.dateEnd.greaterThan</source>
-        <target>Das Enddatum der Veranstaltung muss später als das Startdatum der Veranstaltung sein!</target>
-      </trans-unit>
-      <trans-unit id="ya639k6" resname="promotion.dateAffichageEnd.greaterThan">
-        <source>promotion.dateAffichageEnd.greaterThan</source>
-        <target>Das Enddatum der Anzeige muss später als das Startdatum der Anzeige sein!</target>
-      </trans-unit>
-      <trans-unit id="37pKtY." resname="promotion.dateEnd.greaterThan">
-        <source>promotion.dateEnd.greaterThan</source>
-        <target>Das Enddatum des Sonderangebotes muss später als das Startdatum des Sonderangebotes sein!</target>
-      </trans-unit>
       <trans-unit id="s1NTnNy" resname="formResetPassword.passwordInvalidIdent">
         <source>formResetPassword.passwordInvalidIdent</source>
         <target>Beide Passwörter müssen identisch sein!</target>

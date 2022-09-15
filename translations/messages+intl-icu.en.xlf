@@ -249,25 +249,21 @@
         <source>Kontaktformular</source>
         <target>Contact form</target>
       </trans-unit>
-      <trans-unit id="B._PH62" resname="Jedes Feld muss ausgefüllt werden.">
-        <source>Jedes Feld muss ausgefüllt werden.</source>
-        <target>Each field must be filled out.</target>
-      </trans-unit>
       <trans-unit id="CQsXVvw" resname="Dein Name">
         <source>Dein Name</source>
-        <target>Your name</target>
+        <target>Your name *</target>
       </trans-unit>
       <trans-unit id="Qk1OVjN" resname="Deine Email">
         <source>Deine Email</source>
-        <target>Your email</target>
+        <target>Your email *</target>
       </trans-unit>
       <trans-unit id="1c4_NKO" resname="Dein Betreff">
         <source>Dein Betreff</source>
-        <target>Your subject</target>
+        <target>Your subject *</target>
       </trans-unit>
       <trans-unit id="P6NlaF8" resname="Deine Nachricht">
         <source>Deine Nachricht</source>
-        <target>Your message</target>
+        <target>Your message *</target>
       </trans-unit>
       <trans-unit id="B5vvTiM" resname="Senden">
         <source>Senden</source>
@@ -1313,6 +1309,34 @@
       <trans-unit id="IFCW.bv" resname="Konto löschen">
         <source>Konto löschen</source>
         <target>Deleting account</target>
+      </trans-unit>
+      <trans-unit id="o3ZEm8B" resname="Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.">
+        <source>Die Länge der Postleitzahl für belgische Städte ist genau 4 und für deutsche Städte genau 5.</source>
+        <target>The length of the postal code for Belgian cities is exactly 4 and for German cities it is exactly 5</target>
+      </trans-unit>
+      <trans-unit id="GVi3qPe" resname="Alle Felder mit einem * sind obligatorisch. Anschliessend wirst du eine E-mail erhalten, in der du deine Einschreibung bestätigen musst.">
+        <source>Alle Felder mit einem * sind obligatorisch. Anschliessend wirst du eine E-mail erhalten, in der du deine Einschreibung bestätigen musst.</source>
+        <target>All fields with a * are mandatory. You will then receive an e-mail in which you must confirm your registration.</target>
+      </trans-unit>
+      <trans-unit id="2ekNEjq" resname="Du kannst eine oder mehrere Kategorien anwählen.">
+        <source>Du kannst eine oder mehrere Kategorien anwählen.</source>
+        <target>You can select one or more categories..</target>
+      </trans-unit>
+      <trans-unit id=".oRRwOk" resname="Wähle deine Sprache aus!">
+        <source>Wähle deine Sprache aus!</source>
+        <target>Choose your language!</target>
+      </trans-unit>
+      <trans-unit id="hWRTXA8" resname="Möchtest du einen Newsletter abonnieren?">
+        <source>Möchtest du einen Newsletter abonnieren?</source>
+        <target>Would you like to subscribe to a newsletter?</target>
+      </trans-unit>
+      <trans-unit id="_2sxjuc" resname="Hier kannst du Änderungen an deinen persönlichen Daten vornehmen. Alle Felder mit einem * sind obligatorisch.">
+        <source>Hier kannst du Änderungen an deinen persönlichen Daten vornehmen. Alle Felder mit einem * sind obligatorisch.</source>
+        <target>Here you can make changes to your personal data. All fields with a * are mandatory.</target>
+      </trans-unit>
+      <trans-unit id="csS.S0F" resname="Alle Felder mit einem * sind obligatorisch.">
+        <source>Alle Felder mit einem * sind obligatorisch.</source>
+        <target>All fields with a * are mandatory.</target>
       </trans-unit>
     </body>
   </file>

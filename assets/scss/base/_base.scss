@@ -129,7 +129,10 @@ td > .text-end {
     width: 8rem;
 }
 
-
+// étoile rouge pour les champs obgligatoires
+label.required:after {
+    content: " *";
+}
 
 //MEDIA QUERY 
 @media screen and (min-width: 576px) {

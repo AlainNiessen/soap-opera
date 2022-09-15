@@ -17,7 +17,7 @@
         {% endfor %}  
         <div class="info-box-modification">
             <h1>{% trans %}Anpassung der persönlichen Informationen{% endtrans %}</h1>        
-            <p>{% trans %}Hier kannst du Änderungen an deinen persönlichen Daten vornehmen.{% endtrans %}</p>
+            <p>{% trans %}Hier kannst du Änderungen an deinen persönlichen Daten vornehmen. Alle Felder mit einem * sind obligatorisch.{% endtrans %}</p>
         </div>    
         {{ form_start(formUtilisateurInfo, {'attr': {'novalidate': 'novalidate'}}) }}
         <div class="form-container">
@@ -36,12 +36,11 @@
         
         <div class="form-container">
             <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
-            <p>{% trans %}Der Newsletter ist nicht obligatorisch.{% endtrans %}</p>
-            <p>{% trans %}Sie können eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
+            <p>{% trans %}Du kannst eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
             {{ form_row(formUtilisateurInfo.newsletterCategories) }}
         </div>
         <div class="form-container">
-            <h3>{% trans %}Wählen Sie eine Sprache aus{% endtrans %}</h3>
+            <h3>{% trans %}Wähle deine Sprache aus!{% endtrans %}</h3>
             {{ form_row(formUtilisateurInfo.langue) }}
         </div>
         {{ form_row(formUtilisateurInfo.submit) }}
