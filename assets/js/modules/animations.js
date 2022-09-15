@@ -17,9 +17,7 @@ if(hamburger) {
 // ANIMATION BARRE DE RECHERCHE
 // ----------------------------
 
-let barreForm = document.getElementById('m-recherche-barre-form');
 let input = document.getElementById('mots');
-let button = document.getElementById('submit-rech-btn');
 
 if(input) {
     input.addEventListener('click', (e) => {

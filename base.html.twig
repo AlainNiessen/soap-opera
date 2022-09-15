@@ -43,19 +43,19 @@
                         {# app.request.pathInfo POUR SOULIGNER MEU ACTIF #}
                             <ul>                
                                 <li> 
-                                    <a href="{{ path('home') }}" class="l-menu-list-element {% if app.request.pathInfo == '/' %} activeElement {% endif %}">{% trans %}Home{% endtrans %}</a>
+                                    <a href="{{ path('home') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('home')) %} activeElement {% endif %}">{% trans %}Home{% endtrans %}</a>
                                 </li>                                
                                 <li >
-                                    <a href="{{ path('article_recherche_promo', {pagPromo: 1}) }}" class="l-menu-list-element {% if '/article/promotions' in app.request.pathInfo %} activeElement {% endif %}">{% trans %}Sonderangebote{% endtrans %}</a>
+                                    <a href="{{ path('article_recherche_promo', {pagPromo: 1}) }}" class="l-menu-list-element {% if (app.request.pathInfo == path('article_recherche_promo', {pagPromo: 1})) %} activeElement {% endif %}">{% trans %}Sonderangebote{% endtrans %}</a>
                                 </li>
                                 <li >
-                                    <a href="{{ path('points_de_vente') }}" class="l-menu-list-element {% if app.request.pathInfo == '/points-de-vente' %} activeElement {% endif %}">{% trans %}Verkaufsstellen{% endtrans %}</a>
+                                    <a href="{{ path('points_de_vente') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('points_de_vente')) %} activeElement {% endif %}">{% trans %}Verkaufsstellen{% endtrans %}</a>
                                 </li>
                                 <li >
-                                    <a href="{{ path('philosophie') }}" class="l-menu-list-element {% if app.request.pathInfo == '/philosophie' %} activeElement {% endif %}">{% trans %}Unsere Philosophie{% endtrans %}</a>
+                                    <a href="{{ path('philosophie') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('philosophie')) %} activeElement {% endif %}">{% trans %}Unsere Philosophie{% endtrans %}</a>
                                 </li>                           
                                 <li > 
-                                    <a href="{{ path('contact') }}" class="l-menu-list-element {% if app.request.pathInfo == '/contact' %} activeElement {% endif %}">{% trans %}Kontakt{% endtrans %}</a>
+                                    <a href="{{ path('contact') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('contact')) %} activeElement {% endif %}">{% trans %}Kontakt{% endtrans %}</a>
                                 </li>
                                 {% if is_granted('ROLE_USER') and (is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_FINANCE_ADMIN')) %}
                                 <li > 
@@ -66,19 +66,19 @@
                                 </li>
                                 {% elseif is_granted('ROLE_USER')%} 
                                 <li > 
-                                    <a href="{{ path('profile', {'id': app.user.id}) }}" class="l-menu-list-element {% if 'profile' in app.request.pathInfo %} activeElement {% endif %}">{% trans %}Eigener Bereich{% endtrans %}</a>
+                                    <a href="{{ path('profile', {'id': app.user.id}) }}" class="l-menu-list-element {% if (app.request.pathInfo == path('profile', {'id': app.user.id})) %} activeElement {% endif %}">{% trans %}Eigener Bereich{% endtrans %}</a>
                                 </li>
                                 <li >
                                     <a href="{{ path('logout') }}" class="l-menu-list-element">{% trans %}Abmelden{% endtrans %}</a>
                                 </li>
                                 {% else %}
                                 <li >
-                                    <a href="{{ path('registration') }}" class="l-menu-list-element {% if app.request.pathInfo == '/registration' %} activeElement {% endif %}">{% trans %}Registrierung{% endtrans %}</a>
+                                    <a href="{{ path('registration') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('registration')) %} activeElement {% endif %}">{% trans %}Registrierung{% endtrans %}</a>
                                 </li>                                                     
                                 <li >
-                                    <a href="{{ path('login') }}" class="l-menu-list-element {% if app.request.pathInfo == '/login' %} activeElement {% endif %}">{% trans %}Anmeldung{% endtrans %}</a>
+                                    <a href="{{ path('login') }}" class="l-menu-list-element {% if (app.request.pathInfo == path('login')) %} activeElement {% endif %}">{% trans %}Anmeldung{% endtrans %}</a>
                                 </li> 
-                                {% endif %}
+                                {% endif %} 
                                 {# systéme d'affichage de drapeaux #}
                                 <li class="l-menu-list-flags">
                                 {% for locale in locales %} 
