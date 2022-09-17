@@ -52,9 +52,9 @@ La commande **yarn run encore prod** va vous compiler un CSS et JS minifié pour
 
 ## 5) Base de données
 
-### a) Lier la abse de données avec le projet
+### a) Lier la base de données avec le projet
 
-Les informations de connexion à la base de données sont stockées dans une variable d'environnement appelée DATABASE_URL. Pour le développement, vous pouvez trouver et personnaliser ceci dans **.env** :
+Les informations de connexion à la base de données sont stockées dans une variable d'environnement appelée DATABASE_URL. Vous pouvez trouver et personnaliser ceci dans **.env** :
 
 1. Nom utilisateur
 2. Mot de passe
