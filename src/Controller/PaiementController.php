@@ -267,9 +267,9 @@ class PaiementController extends AbstractController
         
         // Définiton direction public
         $publicDirectory = $this->getParameter('kernel.project_dir') . '\public\uploads\facturePDF';
-        $pdfFilepath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';        
+        $pdfFilePath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';        
         // Enregistrement du PDF sur le chemin souhaité
-        file_put_contents($pdfFilepath, $output);
+        file_put_contents($pdfFilePath, $output);
 
         //sujet à traduire
         $messageSubject = $translator -> trans('Kaufbestätigung - Rechnung Nr.');
@@ -278,7 +278,7 @@ class PaiementController extends AbstractController
         ->from('alain_niessen@hotmail.com') //de qui
         ->to(new Address($this -> getUser() -> getEmail())) //vers adresse mail du utilisateur
         ->subject($messageSubject.' '. $facture->getId()) //sujet
-        ->attachFromPath('../public/uploads/facturePDF/'.$facture->getDocumentPDF())
+        ->attachFromPath($pdfFilePath)
         ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
         ->context([
             //passage des informations au template twig (token)
@@ -297,7 +297,7 @@ class PaiementController extends AbstractController
         ->from('alain_niessen@hotmail.com') //de qui
         ->to('julialeohoelscher@hotmail.com') //vers adresse mail du utilisateur
         ->subject($messageSubject.' '. $facture->getId()) //sujet
-        ->attachFromPath('../public/uploads/facturePDF/'.$facture->getDocumentPDF())
+        ->attachFromPath($pdfFilePath)
         ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
         ->context([
             //passage des informations au template twig (token)
