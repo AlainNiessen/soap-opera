@@ -119,4 +119,4 @@ Le traitement des paiements se font dans le PaimentController et le traitement e
 
 **STRIPE_SK_TEST=XXX**
 
-C'est une clé pour pouvoir effectuer des paiements en mode de test. Pour récevoir ce clé, il faut créer un compte sur le site de Stripe en tant que développeur. 
+C'est une clé pour pouvoir effectuer des paiements en mode de test. Pour récevoir ce clé, il faut créer un compte sur le site de Stripe en tant que développeur et y créer un projet. La clé sera réprésentant pour ce projet et doit être défini dans le fichier **.env**. Pour passer à des vrais paiement, il faut activer le projet et sortir du mode de test.
