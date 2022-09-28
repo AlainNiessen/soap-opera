@@ -91,6 +91,7 @@ Télécharger la bibliothèque client Google: **composer require league/oauth2-g
 Configurer le fournisseur:<br>
 
 **config/packages/knpu_oauth2_client.yaml**
+
 knpu_oauth2_client:<br>
     clients:<br>
         google:<br>
