@@ -1339,6 +1339,18 @@
         <source>Alle Felder mit einem * sind obligatorisch.</source>
         <target>Alle Felder mit einem * sind obligatorisch.</target>
       </trans-unit>
+      <trans-unit id="eeXPIN4" resname="Adresse">
+        <source>Adresse</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="OzoCJRM" resname="Möchten Sie einen Newsletter abonnieren?">
+        <source>Möchten Sie einen Newsletter abonnieren?</source>
+        <target>Möchten Sie einen Newsletter abonnieren?</target>
+      </trans-unit>
+      <trans-unit id="XTFCSV1" resname="Deine E-mail">
+        <source>Deine E-mail</source>
+        <target>Deine E-mail</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

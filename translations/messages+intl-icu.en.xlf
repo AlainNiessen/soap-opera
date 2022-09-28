@@ -1338,6 +1338,10 @@
         <source>Alle Felder mit einem * sind obligatorisch.</source>
         <target>All fields with a * are mandatory.</target>
       </trans-unit>
+      <trans-unit id="XTFCSV1" resname="Deine E-mail">
+        <source>Deine E-mail</source>
+        <target>Your e-mail</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

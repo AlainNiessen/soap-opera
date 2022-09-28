@@ -1001,6 +1001,18 @@
         <source>option.philosophie_langue</source>
         <target>Langue</target>
       </trans-unit>
+      <trans-unit id="0PsF4as" resname="option.tradPartenaire_description">
+        <source>option.tradPartenaire_description</source>
+        <target>__option.tradPartenaire_description</target>
+      </trans-unit>
+      <trans-unit id="syjjWX9" resname="option.tradPartenaire_langue">
+        <source>option.tradPartenaire_langue</source>
+        <target>__option.tradPartenaire_langue</target>
+      </trans-unit>
+      <trans-unit id="0QsDM18" resname="option.tradPartenaire_partenaire">
+        <source>option.tradPartenaire_partenaire</source>
+        <target>__option.tradPartenaire_partenaire</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -81,3 +81,40 @@ Pour pouvoir envoyer des mails depuis le projet, il faut aller dans le fichier *
 
 **MAILER_DSN=smtp://user:pass@smtp.example.com:port**
 
+## 7) Authentification avec Google
+
+### a) Installation et configuration
+
+Installation du bundle: **composer require knpuniversity/oauth2-client-bundle**
+Télécharger la bibliothèque client Google: **composer require league/oauth2-google**
+
+Configurer le fournisseur:
+
+**config/packages/knpu_oauth2_client.yaml**
+knpu_oauth2_client:
+    clients:
+        google:
+            # activation du type GOOGLE
+            type: google
+            # variables globales définies dans le fichier .env
+            client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
+            # nom du redirect route
+            redirect_route: connect_google_check
+            redirect_params: {}
+
+**.env**
+OAUTH_GOOGLE_CLIENT_ID="XXX"
+OAUTH_GOOGLE_CLIENT_SECRET="XXX"
+
+### b) Création projet et récupération des identifiants
+
+Pour pouvoir définir le **OAUTH_GOOGLE_CLIENT_ID** et **OAUTH_GOOGLE_CLIENT_SECRET**, il faut créer un compte sur **https://console.cloud.google.com/** et y créer un projet. Aprés avoir créer un projet, on réçoit des identifiants pour ce projet. Les identifiants seront défini par aprés dans le fichier **.env**.
+
+## Les paiements via Stripe
+
+Le traitement des paiements se font dans le PaimentController et le traitement est déjà défini (par exemple les routes de redirection en cas d'un paiement réussi). Pour garantir le bon fonctionnement, il faut définir une clé dans le fichier **.env**.
+
+**STRIPE_SK_TEST=XXX**
+
+C'est une clé pour pouvoir effectuer des paiements en mode de test. Pour récevoir ce clé, il faut créer un compte sur le site de Stripe en tant que développeur. 
