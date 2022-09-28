@@ -85,27 +85,28 @@ Pour pouvoir envoyer des mails depuis le projet, il faut aller dans le fichier *
 
 ### a) Installation et configuration
 
-Installation du bundle: **composer require knpuniversity/oauth2-client-bundle**
-Télécharger la bibliothèque client Google: **composer require league/oauth2-google**
+Installation du bundle: **composer require knpuniversity/oauth2-client-bundle**<br>
+Télécharger la bibliothèque client Google: **composer require league/oauth2-google**<br>
 
-Configurer le fournisseur:
+Configurer le fournisseur:<br>
 
 **config/packages/knpu_oauth2_client.yaml**
-knpu_oauth2_client:
-    clients:
-        google:
-            # activation du type GOOGLE
-            type: google
-            # variables globales définies dans le fichier .env
-            client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
-            client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
-            # nom du redirect route
-            redirect_route: connect_google_check
-            redirect_params: {}
+knpu_oauth2_client:<br>
+    clients:<br>
+        google:<br>
+            # activation du type GOOGLE<br>
+            type: google<br>
+            # variables globales définies dans le fichier .env<br>
+            client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'<br>
+            client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'<br>
+            # nom du redirect route<br>
+            redirect_route: connect_google_check<br>
+            redirect_params: {}<br>
 
 **.env**
-OAUTH_GOOGLE_CLIENT_ID="XXX"
-OAUTH_GOOGLE_CLIENT_SECRET="XXX"
+
+OAUTH_GOOGLE_CLIENT_ID="XXX"<br>
+OAUTH_GOOGLE_CLIENT_SECRET="XXX"<br>
 
 ### b) Création projet et récupération des identifiants
 
