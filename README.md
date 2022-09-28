@@ -113,7 +113,7 @@ OAUTH_GOOGLE_CLIENT_SECRET="XXX"<br>
 
 Pour pouvoir définir le **OAUTH_GOOGLE_CLIENT_ID** et **OAUTH_GOOGLE_CLIENT_SECRET**, il faut créer un compte sur **https://console.cloud.google.com/** et y créer un projet. Aprés avoir créer un projet, on réçoit des identifiants pour ce projet. Les identifiants seront défini par aprés dans le fichier **.env**.
 
-## Les paiements via Stripe
+## 8) Les paiements via Stripe
 
 Le traitement des paiements se font dans le PaimentController et le traitement est déjà défini (par exemple les routes de redirection en cas d'un paiement réussi). Pour garantir le bon fonctionnement, il faut définir une clé dans le fichier **.env**.
 
