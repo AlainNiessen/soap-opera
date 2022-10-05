@@ -1342,6 +1342,10 @@
         <source>Deine E-mail</source>
         <target>Your e-mail</target>
       </trans-unit>
+      <trans-unit id="E7Q5VWd" resname="Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.">
+        <source>Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.</source>
+        <target>You can buy this item, add it as a favorite, comment or rate it. For that, you need to be logged in.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

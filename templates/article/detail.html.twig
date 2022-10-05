@@ -108,6 +108,10 @@
                 </div>
             </div>
         </section> 
+        {% else %}
+        <section class="m-article-detail-navbar-actions text-center">
+            <p>{% trans %}Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.{% endtrans %}</p>
+        </section> 
         {% endif %}
         <section class="m-article-detail-info">        
             <div class="container-onglets">
