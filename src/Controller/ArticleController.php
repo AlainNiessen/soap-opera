@@ -62,26 +62,37 @@ class ArticleController extends AbstractController
             $repositoryArticle = $entityManager -> getRepository(Article::class);     
             $tabArticles = $repositoryArticle -> findArticlesSearchBar($tabWords);
        
-            // préparation de la pagination
-            // récupération du nombre des articles
-            $nombreArticles = count($tabArticles);
-            // définition nombre des articles par page
-            $limit = 4;            
-            // définition start and end pour le tableau à transférer pour la pagination
-            $startCount = $interPag * $limit - $limit;
+            //si il y a un résultat
+            if($tabArticles):            
+                // préparation de la pagination
+                // récupération du nombre des articles
+                $nombreArticles = count($tabArticles);
             
-            // récupération de la traduction des articles basée sur la langue stockée dans la Session en respectant le début et la fin de la pagination
-            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);       
-            $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue, $startCount, $limit);              
+                // définition nombre des articles par page
+                $limit = 4;            
+                // définition start and end pour le tableau à transférer pour la pagination
+                $startCount = $interPag * $limit - $limit;
+                
+                // récupération de la traduction des articles basée sur la langue stockée dans la Session en respectant le début et la fin de la pagination
+                $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);       
+                $resultTraductionArticles = $repositoryTraductionArticle -> findTraductionArticles($tabArticles, $langue, $startCount, $limit);              
 
-            // nombre de pages de résultat
-            $nombreLiens = ceil($nombreArticles / $limit);
-                    
-            return $this->render('article/list.html.twig', [
-                'traductionArticles' => $resultTraductionArticles,
-                'nombreLiens' => $nombreLiens,
-                'pagBar'=> $interPag
-            ]);        
+                // nombre de pages de résultat
+                $nombreLiens = ceil($nombreArticles / $limit);
+                        
+                return $this->render('article/list.html.twig', [
+                    'traductionArticles' => $resultTraductionArticles,
+                    'nombreLiens' => $nombreLiens,
+                    'pagBar'=> $interPag
+                ]);  
+            // si il n'y a pas de résultat    
+            else:  
+                // ajout d'un message de warning
+                $message = $translator -> trans('Es wurden keine Artikel unter diesen Kriterien gefunden.');
+                $this -> addFlash('notice', $message);
+
+                return $this->redirectToRoute('home');
+            endif;
         // s'il n'y a pas des mots rentrés
         else:
             // ajout d'un message de warning
