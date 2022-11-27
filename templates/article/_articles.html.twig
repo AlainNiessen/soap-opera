@@ -25,21 +25,33 @@
                     <h3>{{ traductionArticle.nom }}</h3>
                     {# si il y a une promotion #}
                     {% if traductionArticle.article.promotion %}  
+                        {# définition réduction sur base de pourcentage #}
+                        {% set reduction = traductionArticle.article.montantHorsTva  * traductionArticle.article.promotion.pourcentage %}  
                         {# date d'affichage#}
                         {% if traductionArticle.article.promotion.dateStart < date('now') and traductionArticle.article.promotion.dateEnd > date('now') %}
                             <div class="promo-info-box">
-                                <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.promotion.Pourcentage * 100 }}%</p>
+                                <p class="barre">{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                <p class="promo">{{ (((traductionArticle.article.montantHorsTva - reduction) + ((traductionArticle.article.montantHorsTva - reduction) * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                 <p class="promo promo-date">{{ traductionArticle.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.promotion.dateEnd|date('d/m/Y')}}</p>
                             </div>
+                        {% else %}                        
+                            <p>{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                         {% endif %}
                     {% elseif traductionArticle.article.categorie.promotion %}
+                        {# définition réduction sur base de pourcentage #}
+                        {% set reduction = traductionArticle.article.montantHorsTva  * traductionArticle.article.categorie.promotion.pourcentage %}  
                         {# date d'affichage#}
                         {% if traductionArticle.article.categorie.promotion.dateStart < date('now') and traductionArticle.article.categorie.promotion.dateEnd > date('now') %}
                             <div class="promo-info-box">
-                                <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticle.article.categorie.promotion.Pourcentage * 100 }}%</p>
+                                <p class="barre">{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                <p class="promo">{{ (((traductionArticle.article.montantHorsTva - reduction) + ((traductionArticle.article.montantHorsTva - reduction) * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                 <p class="promo promo-date">{{ traductionArticle.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticle.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
                             </div>
+                        {% else %}                        
+                            <p>{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                         {% endif %}
+                    {% else %}                        
+                        <p>{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                     {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>
                     <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
