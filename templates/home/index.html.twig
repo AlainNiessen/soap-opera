@@ -54,17 +54,33 @@
                                 <h3>{{ traductionArticleBestseller.nom }}</h3>
                                 {# si il y a une promotion #}
                                 {% if traductionArticleBestseller.article.promotion %}  
+                                    {# définition réduction sur base de pourcentage #}
+                                    {% set reduction = traductionArticleBestseller.article.montantHorsTva  * traductionArticleBestseller.article.promotion.pourcentage %}  
                                     {# date d'affichage#}
                                     {% if traductionArticleBestseller.article.promotion.dateStart < date('now') and traductionArticleBestseller.article.promotion.dateEnd > date('now') %}
-                                        <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticleBestseller.article.promotion.Pourcentage * 100 }}%</p>
-                                        <p class="promo promo-date">{{ traductionArticleBestseller.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleBestseller.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        <div class="promo-info-box">
+                                            <p class="barre">{{ ((traductionArticleBestseller.article.montantHorsTva + (traductionArticleBestseller.article.montantHorsTva * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo">{{ (((traductionArticleBestseller.article.montantHorsTva - reduction) + ((traductionArticleBestseller.article.montantHorsTva - reduction) * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo promo-date">{{ traductionArticleBestseller.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleBestseller.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        </div>
+                                    {% else %}                      
+                                        <p>{{ ((traductionArticleBestseller.article.montantHorsTva + (traductionArticleBestseller.article.montantHorsTva * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                     {% endif %}
                                 {% elseif traductionArticleBestseller.article.categorie.promotion %}
+                                    {# définition réduction sur base de pourcentage #}
+                                    {% set reduction = traductionArticleBestseller.article.montantHorsTva  * traductionArticleBestseller.article.categorie.promotion.pourcentage %}  
                                     {# date d'affichage#}
                                     {% if traductionArticleBestseller.article.categorie.promotion.dateStart < date('now') and traductionArticleBestseller.article.categorie.promotion.dateEnd > date('now') %}
-                                        <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticleBestseller.article.categorie.promotion.Pourcentage * 100 }}%</p>
-                                        <p class="promo promo-date">{{ traductionArticleBestseller.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleBestseller.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        <div class="promo-info-box">
+                                            <p class="barre">{{ ((traductionArticleBestseller.article.montantHorsTva + (traductionArticleBestseller.article.montantHorsTva * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo">{{ (((traductionArticleBestseller.article.montantHorsTva - reduction) + ((traductionArticleBestseller.article.montantHorsTva - reduction) * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo promo-date">{{ traductionArticleBestseller.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleBestseller.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        </div>
+                                    {% else %}                        
+                                        <p>{{ ((traductionArticleBestseller.article.montantHorsTva + (traductionArticleBestseller.article.montantHorsTva * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                     {% endif %}
+                                {% else %}                        
+                                    <p>{{ ((traductionArticleBestseller.article.montantHorsTva + (traductionArticleBestseller.article.montantHorsTva * traductionArticleBestseller.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                 {% endif %}
                                 <p>{{ traductionArticleBestseller.slogan }}</p>
                                 <a href="{{ path('article_detail', {id: traductionArticleBestseller.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
@@ -107,17 +123,33 @@
                                 <h3>{{ traductionArticleNew.nom }}</h3>
                                 {# si il y a une promotion #}
                                 {% if traductionArticleNew.article.promotion %}  
+                                    {# définition réduction sur base de pourcentage #}
+                                    {% set reduction = traductionArticleNew.article.montantHorsTva  * traductionArticleNew.article.promotion.pourcentage %}  
                                     {# date d'affichage#}
                                     {% if traductionArticleNew.article.promotion.dateStart < date('now') and traductionArticleNew.article.promotion.dateEnd > date('now') %}
-                                        <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticleNew.article.promotion.Pourcentage * 100 }}%</p>
-                                        <p class="promo promo-date">{{ traductionArticleNew.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleNew.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        <div class="promo-info-box">
+                                            <p class="barre">{{ ((traductionArticleNew.article.montantHorsTva + (traductionArticleNew.article.montantHorsTva * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo">{{ (((traductionArticleNew.article.montantHorsTva - reduction) + ((traductionArticleNew.article.montantHorsTva - reduction) * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo promo-date">{{ traductionArticleNew.article.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleNew.article.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        </div>
+                                    {% else %}                      
+                                        <p>{{ ((traductionArticleNew.article.montantHorsTva + (traductionArticleNew.article.montantHorsTva * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                     {% endif %}
                                 {% elseif traductionArticleNew.article.categorie.promotion %}
+                                    {# définition réduction sur base de pourcentage #}
+                                    {% set reduction = traductionArticleNew.article.montantHorsTva  * traductionArticleNew.article.categorie.promotion.pourcentage %}  
                                     {# date d'affichage#}
                                     {% if traductionArticleNew.article.categorie.promotion.dateStart < date('now') and traductionArticleNew.article.categorie.promotion.dateEnd > date('now') %}
-                                        <p class="promo">{% trans %}Sonderangebot{% endtrans %} -{{ traductionArticleNew.article.categorie.promotion.Pourcentage * 100 }}%</p>
-                                        <p class="promo promo-date">{{ traductionArticleNew.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleNew.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        <div class="promo-info-box">
+                                            <p class="barre">{{ ((traductionArticleNew.article.montantHorsTva + (traductionArticleNew.article.montantHorsTva * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo">{{ (((traductionArticleNew.article.montantHorsTva - reduction) + ((traductionArticleNew.article.montantHorsTva - reduction) * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
+                                            <p class="promo promo-date">{{ traductionArticleNew.article.categorie.promotion.dateStart|date('d/m/Y') }} - {{ traductionArticleNew.article.categorie.promotion.dateEnd|date('d/m/Y')}}</p>
+                                        </div>
+                                    {% else %}                        
+                                        <p>{{ ((traductionArticleNew.article.montantHorsTva + (traductionArticleNew.article.montantHorsTva * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                     {% endif %}
+                                {% else %}                        
+                                    <p>{{ ((traductionArticleNew.article.montantHorsTva + (traductionArticleNew.article.montantHorsTva * traductionArticleNew.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                                 {% endif %}
                                 <p>{{ traductionArticleNew.slogan }}</p>
                                 <a href="{{ path('article_detail', {id: traductionArticleNew.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
