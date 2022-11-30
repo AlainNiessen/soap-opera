@@ -54,7 +54,20 @@
                         <p>{{ ((traductionArticle.article.montantHorsTva + (traductionArticle.article.montantHorsTva * traductionArticle.article.tauxTva)) / 100)|number_format(2, ',', '.') }} €</p>
                     {% endif %}
                     <p>{{ traductionArticle.slogan }}</p>
-                    <a href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
+                    {% if (app.user) %}
+                        <div class="container-bouton">
+                            <a title="{% trans %}Zum Detail{% endtrans %}" href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
+                            <a title="{% trans %}Dem Warenkorb hinzufügen{% endtrans %}" class="btn-outline-info btn btn-add-panier" href="{{ path('add_panier', {id: traductionArticle.article.id}) }}" onclick='return confirm("{% trans %}Möchtest du diesen Artikel dem Warenkorb hinzufügen?{% endtrans %}")'>       
+                                <div class="action-icon">
+                                    <i class="fas fa-cart-arrow-down"></i>
+                                </div>
+                            </a> 
+                        </div>
+                    {% else %} 
+                        <div>
+                            <a title="{% trans %}Zum Detail{% endtrans %}" href="{{ path('article_detail', {id: traductionArticle.article.id})}}" class="btn btn-outline-info detail-btn"><i class="fas fa-info"></i></a>
+                        </div>
+                    {% endif %}
                 </div> 
             </div>                   
         </div>

@@ -1355,6 +1355,10 @@
         <source>Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.</source>
         <target>Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.</target>
       </trans-unit>
+      <trans-unit id=".myMigI" resname="Zum Detail">
+        <source>Zum Detail</source>
+        <target>Zum Detail</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

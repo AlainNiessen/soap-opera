@@ -1346,6 +1346,10 @@
         <source>Du kannst diesen Artikel kaufen, als Favorit hinzufügen, kommentieren oder bewerten. Dafür musst du eingeloggt sein.</source>
         <target>You can buy this item, add it as a favorite, comment or rate it. For that, you need to be logged in.</target>
       </trans-unit>
+      <trans-unit id=".myMigI" resname="Zum Detail">
+        <source>Zum Detail</source>
+        <target>To the details</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

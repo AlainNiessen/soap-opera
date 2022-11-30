@@ -90,6 +90,13 @@
     }
 }
 
+//connecté comme utilisateur => bouton ajouter au panier
+.container-bouton {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 //media query
 @media screen and (min-width: 400px) {
     .m-list-articles {
@@ -102,10 +109,13 @@
                 }
                 .m-article-info {
                     width: 16rem;
-                    height: 16rem;
+                    height: 18rem;
                 }
             }
         }
+    }
+    .container-bouton {
+        width: 80%;
     }
 } 
 
@@ -116,15 +126,18 @@
                 max-width: 32rem;
                 flex-direction: row;
                 img {
-                    width: 16rem;
-                    height: 17rem;
+                    width: 18rem;
+                    height: 19rem;
                 }
                 .m-article-info {
-                    width: 16rem;
-                    height: 17rem;
+                    width: 18rem;
+                    height: 19rem;
                 }
             }
         }
+    }
+    .container-bouton {
+        width: 100%;
     }
 }  
 
@@ -148,4 +161,7 @@
     h4, a {
         font-size: .8rem;
     } 
+    .container-bouton {
+        width: 60%;
+    }
 }    
