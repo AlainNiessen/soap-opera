@@ -8,6 +8,11 @@
 
 <section class="m-politique-cofident">
     <div class="wrapper">
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h1>{% trans %}Datenschutz-Bestimmungen{% endtrans %}</h1>        
         <div class="m-politique-confident-box">
             <h2>{% trans %}Grundlegendes{% endtrans %}</h2>

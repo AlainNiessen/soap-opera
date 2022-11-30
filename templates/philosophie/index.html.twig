@@ -9,6 +9,11 @@
 
 <section class="m-philosophie">
     <div class="wrapper">
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h1>{% trans %}Unsere Philosophie{% endtrans %}</h1>      
         <div class="m-philosophie-text">  
             {{ philosophie|raw }}           

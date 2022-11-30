@@ -10,6 +10,11 @@
                 {{ message }}
             </div>
         {% endfor %}
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h2>{% trans %}Kontaktformular{% endtrans %}</h2>
         <p>{% trans %}Alle Felder mit einem * sind obligatorisch.{% endtrans %}</p>
         <form action="{{ path('contact_email') }}" class="formContactBox" id="formContactBox" method="POST" novalidate>

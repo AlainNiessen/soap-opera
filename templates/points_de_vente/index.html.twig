@@ -9,6 +9,11 @@
 
 <section class="m-points-de-vente">
     <div class="wrapper">
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h1>{% trans %}Unsere Verkaufsstellen{% endtrans %}</h1>        
         {% for traductionPointsDeVente in traductionsPointsDeVente %}
         <div class="m-points-de-vente-list">            

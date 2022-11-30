@@ -9,6 +9,11 @@
 
 <section class="m-mentions-legales">
     <div class="wrapper">
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h1>{% trans %}Impressum{% endtrans %}</h1>        
         <p>{% trans %}Copyright - Alle Rechte vorbehalten{% endtrans %}</p>
         <div class="m-mentions-legales-box">

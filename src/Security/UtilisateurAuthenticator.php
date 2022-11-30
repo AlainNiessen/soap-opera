@@ -11,6 +11,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
@@ -26,11 +27,13 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
 
     private UrlGeneratorInterface $urlGenerator;
     private UtilisateurRepository $utilisateurRepository;
+    private $flash;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, UtilisateurRepository $utilisateurRepository)
+    public function __construct(UrlGeneratorInterface $urlGenerator, FlashBagInterface $flash, UtilisateurRepository $utilisateurRepository)
     {
         $this->urlGenerator = $urlGenerator;
         $this->utilisateurRepository = $utilisateurRepository;
+        $this->flash = $flash;
     }
 
     //----------------------------------------------
@@ -77,6 +80,17 @@ class UtilisateurAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
+
+        $lang = $request -> getSession() -> get('_locale');
+        if($lang === "de"):
+            $message = "Hallo ".$token->getUser()->getPrenom()."! Sie sind nun angemeldet!";
+        elseif($lang === "fr"):
+            $message = "Bonjour ".$token->getUser()->getPrenom()."! Vous êtes maintenant connecté!";
+        elseif($lang === "en"):
+            $message = "Hello ".$token->getUser()->getPrenom()."! You are now connected!";
+        endif;
+              
+        $this->flash->add('connexion', $message);
 
         // récupération de la page où on a cliqué sur se connecter
         $url = $request->getSession()->get('referer');

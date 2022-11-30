@@ -9,6 +9,11 @@
 
 <section class="m-cgv">
     <div class="wrapper">
+        {% for message in app.flashes('connexion') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         <h1>{% trans %}Allgemeine Geschäftsbedingungen{% endtrans %}</h1>        
         <div class="m-cgv-box">
             <h2>{% trans %}Artikel 1 – Angebot – Bestellung{% endtrans %}</h2>
