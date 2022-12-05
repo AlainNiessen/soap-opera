@@ -1350,6 +1350,10 @@
         <source>Zum Detail</source>
         <target>Vers les détails</target>
       </trans-unit>
+      <trans-unit id="0PZE_f5" resname="Fotos und Design von">
+        <source>Fotos und Design von</source>
+        <target>Images et conception par</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
