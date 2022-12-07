@@ -20,6 +20,11 @@
                 {{ message }}
             </div>
         {% endfor %}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+        {% endfor %}
         {% if traductionArticles is defined and traductionArticles is not null and traductionArticles is not empty %}
             <div class="m-list-articles-result" id="js-list-content">
                 {% include 'article/_articles.html.twig' %}                   

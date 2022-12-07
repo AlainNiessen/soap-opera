@@ -113,10 +113,12 @@ class PanierController extends AbstractController
                 return $this->redirectToRoute('profile', [
                     'id' => $this -> getUser() -> getId()
                 ]);
-            else:
+            elseif(str_contains($url, 'detail')):
                 return $this->redirectToRoute('article_detail', [
                     'id' => $article->getId()
                 ]);
+            else:
+                return $this->redirect($url);
             endif;
             
         else: 
