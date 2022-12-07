@@ -18,12 +18,16 @@
                 {% endif %}
             </div>
             <div style="margin-bottom:15px;">
-                <h3 style="margin-bottom:5px;">Soap-Opera</h3>
-                <p style="margin:0;">Strasse</p>   
-                <p style="margin:0;">Land-Ort</p>   
-                <p style="margin:0;">{% trans %}Tel: {% endtrans %}</p>  
-                <p style="margin:0;">{% trans %}Email: {% endtrans %}</p>  
-                <p style="margin:0;">{% trans %}MwSt-Nummer: {% endtrans %}</p>   
+                <div style="margin-bottom:5px;">
+                    <h3 style="margin-bottom:2px;">Production Associée</h3>
+                    <p style="margin:0;">Rue Coenraets 72</p>   
+                    <p style="margin:0;">BE - 1060 Saint Gilles</p>
+                </div>
+                <div>
+                    <p style="margin:0;">{% trans %}Tel: {% endtrans %}0031/621652519</p>  
+                    <p style="margin:0;">{% trans %}Email: {% endtrans %}info@soapopera.be</p>  
+                    <p style="margin:0;">{% trans %}MwSt-Nummer: {% endtrans %}BE0869.755.397</p>  
+                </div>
             </div>
             <div style="margin-bottom:15px;">
                 <h2>{% trans %}Rechnung Nr.{% endtrans %} {{ facture.id }}</h2>
