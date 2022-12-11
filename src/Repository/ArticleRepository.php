@@ -213,4 +213,18 @@ class ArticleRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
         ;
     }
+
+    // fonction pour récupérer les bestseller par catégorie
+    public function findBestsellerParCategorie(Categorie $categorie)
+    {
+        return $this->createQueryBuilder('a')
+                    ->innerJoin('a.categorie', 'c')
+                    ->addSelect('c')
+                    ->andWhere('c = :categorie')
+                    ->setParameter('categorie', $categorie)
+                    ->orderBy('a.nombreVentes', 'DESC')
+                    ->getQuery()
+                    ->getResult();
+        ;
+    }
 }

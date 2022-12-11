@@ -75,7 +75,9 @@ class TraductionArticleRepository extends ServiceEntityRepository
         //récupération de ID langue
         $langueID = $langue -> getId();
 
-        $queryBuilder =  $this   -> createQueryBuilder('ta')                    
+        $queryBuilder =  $this  -> createQueryBuilder('ta')  
+                                -> innerJoin('ta.article', 'a')
+                                -> addSelect('a')                  
                                 -> andWhere('ta.langue = :langueID')
                                 -> setParameter('langueID', $langueID);
 
@@ -99,8 +101,9 @@ class TraductionArticleRepository extends ServiceEntityRepository
                 
                 
                             return $queryBuilder 
-                            ->getQuery()
-                            ->getResult(); 
+                            -> orderBy('a.dateCreation', 'DESC')
+                            -> getQuery()
+                            -> getResult(); 
            
         ;
     }

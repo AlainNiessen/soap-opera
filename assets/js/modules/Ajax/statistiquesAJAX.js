@@ -54,6 +54,7 @@ window.onload = () => {
         let titleNombArticlesVendus = '';
         let titleNombFactures = '';
         let titleNombVentesParCategorie = '';
+        let titleBestseller = "";
         // récupération de la langue
         if(data.langue == "de") {            
             titleStatCatNews = 'Anzahl Nutzer der verschiedenen Kategorien der Newsletter';
@@ -62,6 +63,7 @@ window.onload = () => {
             titleNombArticlesVendus = 'Anzahl Verkäufe';
             titleNombFactures = 'Anzahl Rechnungen';
             titleNombVentesParCategorie = 'Anzahl Verkäufe pro Artikelkategorie';
+            titleBestseller = 'Bestseller pro Kategorie';
         } else if(data.langue == "fr") {
             titleStatCatNews = 'Nombre d\'utilisateurs des différentes catégories de la newsletter';
             titleNombUtilisateur = 'Nombre d\'utilisateurs enregistrés';
@@ -69,12 +71,14 @@ window.onload = () => {
             titleNombArticlesVendus = 'Nombre de ventes';
             titleNombFactures = 'Nombre de factures';
             titleNombVentesParCategorie = 'Nombre de ventes par catégorie d\'article';
+            titleBestseller = 'Bestseller par catégorie';
         } else if(data.langue == "en") {
             titleStatCatNews = 'Number of users of the different categories of the newsletter';
             titleNombUtilisateur = 'Number of registered users';
             titleNombArticles = 'Number of articles';
             titleNombArticlesVendus = 'Number of sells';
             titleNombVentesParCategorie = 'Number of sales per article category';
+            titleBestseller = 'Bestseller of categories';
         }
         
         // build des statistiques générales
@@ -163,5 +167,243 @@ window.onload = () => {
                 }
             }
         })
+
+        let chartBest = [];
+        let canvasBest = [];
+        let titreBest = [];
+        let statBest = [];
+
+        let titreBestsellerText = document.getElementById('titreBestseller');
+        titreBestsellerText.textContent = titleBestseller;
+
+        for(let i = 0; i < data.bestseller.length; i++) {
+        // ckeck statut of chart
+        chartBest[i+1] = Chart.getChart('bestsellerCat'+ (i+1)); // <canvas> id
+        // si le statut est undefined => il n'existe pas
+        // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        if (chartBest[i+1] != undefined) {
+        chartBest[i+1].destroy();
+        }
+
+        canvasBest[i+1] = document.getElementById('bestsellerCat' + (i+1));
+        titreBest[i+1] = document.getElementById('titreCat' + (i+1));        
+
+        titreBest[i+1].textContent = data.nomsCategoriesArticle[i];
+        statBest[i+1] = new Chart(canvasBest[i+1], {
+            type: "bar",
+            data: {
+                labels: data.bestseller[i][0],
+                datasets: [{
+                    data: data.bestseller[i][1],
+                    backgroundColor: data.couleurCategorieArticle[i]
+                }]
+            },
+            options: {  
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        })
+        }
+
+        // // build statistique Bestseller par catégorie
+
+        // // ckeck statut of chart
+        // let chartBest1 = Chart.getChart('bestsellerCat1'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest1 != undefined) {
+        // chartBest1.destroy();
+        // }
+        // let canvasBest1 = document.getElementById('bestsellerCat1');
+        // let titreBest1 = document.getElementById('titreCat1');
+
+        
+
+        // titreBest1.textContent = data.nomsCategoriesArticle[0];
+        // let statBest1 = new Chart(canvasBest1, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[0][0],
+        //         datasets: [{
+        //             data: data.bestseller[0][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+       
+        // // ckeck statut of chart
+        // let chartBest2 = Chart.getChart('bestsellerCat2'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest2 != undefined) {
+        // chartBest2.destroy();
+        // }
+        // let canvasBest2 = document.getElementById('bestsellerCat2');
+        // let titreBest2 = document.getElementById('titreCat2');
+
+        
+
+        // titreBest2.textContent = data.nomsCategoriesArticle[1];
+        // let statBest2 = new Chart(canvasBest2, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[1][0],
+        //         datasets: [{
+        //             data: data.bestseller[1][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+     
+        // // ckeck statut of chart
+        // let chartBest3 = Chart.getChart('bestsellerCat3'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest3 != undefined) {
+        // chartBest3.destroy();
+        // }
+        // let canvasBest3 = document.getElementById('bestsellerCat3');
+        // let titreBest3 = document.getElementById('titreCat3');
+
+        
+
+        // titreBest3.textContent = data.nomsCategoriesArticle[2];
+        // let statBest3 = new Chart(canvasBest3, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[2][0],
+        //         datasets: [{
+        //             data: data.bestseller[2][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+
+        // // ckeck statut of chart
+        // let chartBest4 = Chart.getChart('bestsellerCat4'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest4 != undefined) {
+        // chartBest4.destroy();
+        // }
+        // let canvasBest4 = document.getElementById('bestsellerCat4');
+        // let titreBest4 = document.getElementById('titreCat4');
+
+        
+
+        // titreBest4.textContent = data.nomsCategoriesArticle[3];
+        // let statBest4 = new Chart(canvasBest4, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[3][0],
+        //         datasets: [{
+        //             data: data.bestseller[3][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+
+        // // ckeck statut of chart
+        // let chartBest5 = Chart.getChart('bestsellerCat5'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest5 != undefined) {
+        // chartBest5.destroy();
+        // }
+        // let canvasBest5 = document.getElementById('bestsellerCat5');
+        // let titreBest5 = document.getElementById('titreCat5');
+
+        
+
+        // titreBest5.textContent = data.nomsCategoriesArticle[4];
+        // let statBest5 = new Chart(canvasBest5, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[4][0],
+        //         datasets: [{
+        //             data: data.bestseller[4][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+
+        // // ckeck statut of chart
+        // let chartBest6 = Chart.getChart('bestsellerCat6'); // <canvas> id
+        // // si le statut est undefined => il n'existe pas
+        // // si le statut n'est pas undefined => il existe déjà et va être détruit pour que la requete AJAX peut reconstruire un nouveau CHART
+        // if (chartBest6 != undefined) {
+        // chartBest6.destroy();
+        // }
+        // let canvasBest6 = document.getElementById('bestsellerCat6');
+        // let titreBest6 = document.getElementById('titreCat6');
+
+        
+
+        // titreBest5.textContent = data.nomsCategoriesArticle[5];
+        // let statBest6 = new Chart(canvasBest6, {
+        //     type: "bar",
+        //     data: {
+        //         labels: data.bestseller[5][0],
+        //         datasets: [{
+        //             data: data.bestseller[5][1],
+        //             //backgroundColor: data.couleurCategorieArticle
+        //         }]
+        //     },
+        //     options: {  
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
+        
+        
+
     }
 }

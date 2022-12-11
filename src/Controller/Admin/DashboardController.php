@@ -102,16 +102,23 @@ class DashboardController extends AbstractDashboardController
         // récupération de toutes les catégories des articles via CategorieRepository
         $repositoryCategorieArticle = $entityManager -> getRepository(Categorie::class);
         $categoriesArticle = $repositoryCategorieArticle -> findAll();
-        // récupération du Repository TraductionCategorie
+        
+        // récupération du Repository TraductionCategorie et TraductionArticle
         $repositoryTraductionCategorieArticle = $entityManager -> getRepository(TraductionCategorie::class);
+        $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
              
         // préparation des informations       
         $tabNombreVentes = [];
         $tabNomsCategorieArticle = [];
         $tabColorCategorieArticle = [];
-        // boucle sur les catégories de Newsletter
+        $tabBestsellerParCategorie = [];
+        $tabGeneralBestseller = []; 
+
+        // boucle sur les catégories de Articles
         foreach($categoriesArticle as $categorieArticle):
-            // récupération du nombre des articles par catégorie
+            // récupération des articles par catégories dans l'ordre des nombres de ventes
+            $bestseller = $repositoryArticles -> findBestsellerParCategorie($categorieArticle);
+            // récupération du nombre des articles par catégorie            
             $nombreVentesCategorie =  $repositoryArticles -> countArticlesCategorie($categorieArticle);
             // récupération de la couleur pour les statistiques
             $couleurCategorieArticle = $categorieArticle -> getCouleur();            
@@ -119,10 +126,42 @@ class DashboardController extends AbstractDashboardController
             $traductionCategorie = $repositoryTraductionCategorieArticle -> findTraductionCategorie($categorieArticle, $langue);
             // collection des informations pour construire la statistique
             $tabNomsCategorieArticle[] = $traductionCategorie->getNom();
+            
             $tabNombreVentes[] = $nombreVentesCategorie;
             $tabColorCategorieArticle[] = $couleurCategorieArticle;
+            $tabBestsellerParCategorie[] = $bestseller;
         endforeach;
        
+        // boucle sur les Bestseller par catégorie pour récupérer les noms et le nombre de vente des articles
+        foreach($tabBestsellerParCategorie as $bestSellerParCategorie):
+            // tableau par catégorie qui sera toujours vidé pour la nouvelle catégorie
+            $tabParCategorie = [];
+            // tableau pour stocker le nom et le nombre de ventes par article
+            $tabInfoNoms = [];
+            $tabInfoNombre = [];
+            foreach($bestSellerParCategorie as $bestsellerArticle):                
+                // récupération de l'ID de l'article
+                $idArticle = $bestsellerArticle -> getId();
+                // récupération du nombre de vente par article
+                $nombreVenteArticle = $bestsellerArticle -> getNombreVentes();
+                // récupération du nom de l'article dans la langue correspondante
+                $traductionArticle = $repositoryTraductionArticle -> findTraductionArticle($idArticle, $langue);
+                
+                if($traductionArticle):
+                    $nomBestseller = $traductionArticle -> getNom();
+                    // stockage des infos dans le tableau
+                    $tabInfoNoms[] = $nomBestseller;
+                    $tabInfoNombre[] = $nombreVenteArticle;
+                endif;                             
+            endforeach;
+            //stockage du tableau avec des infos dans un tableau par catégorie
+            $tabParCategorie[] = $tabInfoNoms; 
+            $tabParCategorie[] = $tabInfoNombre; 
+            // stockage du tableau par catégorie dans le tableau général
+            $tabGeneralBestseller[] = $tabParCategorie;
+        endforeach;
+        
+        
         // actualisation des statistiques via une requête AJAX
         if($request -> isXmlHttpRequest()) {  
             // réponse avec toutes les informations pour actualiser les statistiques          
@@ -137,7 +176,8 @@ class DashboardController extends AbstractDashboardController
                 'couleurCategorieArticle' => $tabColorCategorieArticle,
                 'nomsCategoriesNewsletter' => $tabNomsCategorieNewsletter,
                 'nombreUtilisateursCategorieNewsletter' => $tabNombreUtilisateurs,
-                'couleurCategorieNewsletter' => $tabColorCategorieNewsletter
+                'couleurCategorieNewsletter' => $tabColorCategorieNewsletter,
+                'bestseller' => $tabGeneralBestseller
                 
             ));
         } 

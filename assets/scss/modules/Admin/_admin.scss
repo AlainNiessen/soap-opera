@@ -49,6 +49,15 @@
     padding: .5rem;
     h2 {
         margin-bottom: .5rem;
-    }
-   
+    }   
+}
+
+.titre-stats {
+    color: map-get($map: $colors, $key: 'text');
+    text-align: center;
+    margin: 0;
+}
+
+.margintop {
+    margin-top: 1rem;
 }
