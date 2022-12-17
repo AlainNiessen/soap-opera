@@ -75,6 +75,11 @@ a {
     width: 5rem;
 }
 
+.slider-btn {
+    font-size: .5rem;
+    background-color: map-get($map: $colors, $key: 'main1');
+}
+
 .btn-favori-delete, .btn-add-panier, .btn-commentaire-delete, .btn-commentaire-modif, .btn-evaluation-modif, .btn-evaluation-delete {
     width: 2.5rem;
     display: flex;
@@ -143,7 +148,18 @@ label.required:after {
             flex: 0 0 45%;
         }
     }
+    .slider-btn {
+        font-size: .7rem;        
+    }
 }
+
+//MEDIA QUERY 
+@media screen and (min-width: 768px) {
+    .slider-btn {
+        font-size: .9rem;        
+    }
+}
+
 @media screen and (min-width: 1400px) {
     .wrapper {
         max-width: 1200px;

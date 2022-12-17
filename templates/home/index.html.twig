@@ -25,6 +25,51 @@
             {{ message }}
         </div>
     {% endfor %}
+    <div class="m-philosophie-diaporama"> 
+            <!-- Création div pour chaque image -->  
+            {% set compt = 1 %}
+            {% for image in images %}             
+                <div class="mySlides fade">
+                    <img src="{{ asset('/uploads/images/'~image.nom) }}">
+                    {% if compt == 1 %}
+                    <div class="text">
+                        <p>
+                            {% trans %}Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.{% endtrans %}
+                        </p>
+                        <a title="{% trans %}Zum Einschreibeformular{% endtrans %}" href="{{ path('registration') }}" class="btn btn-outline-info slider-btn">{% trans %}Registrierung{% endtrans %}</a>
+                    </div>
+                {% elseif compt == 2 %}
+                    <div class="text">
+                        <p>
+                            {% trans %}Du möchtest mehr über uns erfahren?{% endtrans %}
+                        </p>
+                        <a title="{% trans %}Zur Philosophie{% endtrans %}" href="{{ path('philosophie') }}" class="btn btn-outline-info slider-btn">{% trans %}Philosophie{% endtrans %}</a>
+                    </div>
+                {% elseif compt == 3 %}
+                    <div class="text">
+                        <p>
+                            {% trans %}Du hast eine Frage oder eine Anmerkung?{% endtrans %}
+                        </p>
+                        <a title="{% trans %}Zur Kontaktformular{% endtrans %}" href="{{ path('contact') }}" class="btn btn-outline-info slider-btn">{% trans %}Kontakt{% endtrans %}</a>
+                    </div>
+                {% endif %}
+                </div>
+                
+                {% set compt = compt + 1 %}
+
+            {% endfor %}
+            <!-- Next and previous buttons -->
+            <a class="prev" id="prev">&#10094;</a>
+            <a class="next" id="next">&#10095;</a>
+        </div> 
+        <br>
+        <!-- The dots/circles -->
+        <div class="m-philosophie-diaporama-dots">
+            {% for image in images %} 
+                <span class="dot"></span>
+            {% endfor %}
+        </div>
+    </div>
     <h1>{% trans %}Unsere Bestseller{% endtrans %}</h1>
         <div class="m-list-articles-result">
             <div class="row">

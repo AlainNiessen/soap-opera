@@ -23,7 +23,7 @@
 /* Container diaporama */
 .m-philosophie-diaporama {
     width: 100%;  
-    max-width: 75%;  
+    max-width: 80%;  
     position: relative;
     margin: 0 auto;
     img {      
@@ -41,7 +41,8 @@
     display: none;
 }
 .show {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 /* Next & previous boutons */
@@ -59,6 +60,26 @@
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
+
+/* Text pour slider home */
+.text {
+    color: map-get($map: $colors, $key: 'main1');
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: .5rem;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    text-align: center;
+    transform: translate(0, 50%);
+    p {
+        width: 75%;
+    }
+  }
 
 /* poitioner le next bouton à droit */
 .next {
@@ -97,4 +118,23 @@ animation-duration: 1.5s;
 from {opacity: .4}
 to {opacity: 1}
 }
-  
+
+//MEDIA QUERY 
+@media screen and (min-width: 576px) {
+    .m-philosophie-diaporama {
+        max-width: 70%;
+    }
+    .text {
+        font-size: .7rem;
+    }
+}
+
+//MEDIA QUERY 
+@media screen and (min-width: 768px) {
+    .m-philosophie-diaporama {
+        max-width: 70%;
+    }
+    .text {
+        font-size: 1rem;
+    }
+}

@@ -1363,6 +1363,30 @@
         <source>Fotos und Design von</source>
         <target>Fotos und Design von</target>
       </trans-unit>
+      <trans-unit id="gEFM6FE" resname="Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.">
+        <source>Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.</source>
+        <target>Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.</target>
+      </trans-unit>
+      <trans-unit id="aL8dhe7" resname="Zum Einschreibeformular">
+        <source>Zum Einschreibeformular</source>
+        <target>Zum Einschreibeformular</target>
+      </trans-unit>
+      <trans-unit id="P8fweyN" resname="Du möchtest mehr über uns erfahren?">
+        <source>Du möchtest mehr über uns erfahren?</source>
+        <target>Du möchtest mehr über uns erfahren?</target>
+      </trans-unit>
+      <trans-unit id="wvLan1B" resname="Zur Philosophie">
+        <source>Zur Philosophie</source>
+        <target>Zur Philosophie</target>
+      </trans-unit>
+      <trans-unit id="Gj.PsgN" resname="Du hast eine Frage oder eine Anmerkung?">
+        <source>Du hast eine Frage oder eine Anmerkung?</source>
+        <target>Du hast eine Frage oder eine Anmerkung?</target>
+      </trans-unit>
+      <trans-unit id="t31ET63" resname="Zur Kontaktformular">
+        <source>Zur Kontaktformular</source>
+        <target>Zur Kontaktformular</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

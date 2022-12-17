@@ -1354,6 +1354,30 @@
         <source>Fotos und Design von</source>
         <target>Images et conception par</target>
       </trans-unit>
+      <trans-unit id="gEFM6FE" resname="Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.">
+        <source>Du möchtest einen Artikel kaufen? Ihn bewerten oder kommentieren? Dafür musst du bei uns registriert sein.</source>
+        <target>Vous souhaitez acheter un article? Le noter ou commenter? Pour cela, vous devez être enregistré chez nous.</target>
+      </trans-unit>
+      <trans-unit id="aL8dhe7" resname="Zum Einschreibeformular">
+        <source>Zum Einschreibeformular</source>
+        <target>Vers le formulaire d'inscription</target>
+      </trans-unit>
+      <trans-unit id="P8fweyN" resname="Du möchtest mehr über uns erfahren?">
+        <source>Du möchtest mehr über uns erfahren?</source>
+        <target>Vous souhaitez en savoir plus sur nous?</target>
+      </trans-unit>
+      <trans-unit id="wvLan1B" resname="Zur Philosophie">
+        <source>Zur Philosophie</source>
+        <target>Vers la philosophie</target>
+      </trans-unit>
+      <trans-unit id="Gj.PsgN" resname="Du hast eine Frage oder eine Anmerkung?">
+        <source>Du hast eine Frage oder eine Anmerkung?</source>
+        <target>Avez-vous une question ou un commentaire?</target>
+      </trans-unit>
+      <trans-unit id="t31ET63" resname="Zur Kontaktformular">
+        <source>Zur Kontaktformular</source>
+        <target>Vers le formulaire de contact</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

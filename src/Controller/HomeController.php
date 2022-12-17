@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Langue;
 use App\Entity\Article;
+use App\Entity\PositionImage;
 use App\Entity\TraductionArticle;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,10 +43,16 @@ class HomeController extends AbstractController
         $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
         $resultTraductionArticlesNew = $repositoryTraductionArticle -> findTraductionArticles($tabNewArticles, $langue);
 
+        //récupération des images pour le diaporama via PositionImageRepository
+        $repositoryPositionImage = $entityManager -> getRepository(PositionImage::class);
+        $position = $repositoryPositionImage -> findOneBy(['position' => 'Slider Home']);
+        $images = $position -> getImages();
+
 
         return $this->render('home/index.html.twig', [
             'traductionArticlesBestseller' => $resultTraductionArticlesBest,
             'traductionArticlesNew' => $resultTraductionArticlesNew,
+            'images' => $images
         ]);
     }
 }
