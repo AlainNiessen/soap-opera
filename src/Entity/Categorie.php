@@ -31,6 +31,7 @@ class Categorie
 
     /**
      * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="categories")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $promotion;
 

@@ -14,7 +14,7 @@ final class Version20220913215900 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Ajout onDelete SET NULL';
+        return 'Ajout onDelete SET NULL pour articles';
     }
 
     public function up(Schema $schema): void

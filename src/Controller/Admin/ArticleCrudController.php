@@ -29,18 +29,26 @@ class ArticleCrudController extends AbstractCrudController
         yield MoneyField::new('montantHorsTva', new TranslatableMessage('option.article_montantHorsTva', [], 'EasyAdminBundle'))
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)
-                            ->setStoredAsCents();        
+                            ->setStoredAsCents()
+                            ->onlyOnForms();          
         yield PercentField::new('tauxTva', new TranslatableMessage('option.article_tauxTva', [], 'EasyAdminBundle'))
                             ->setNumDecimals(2)
-                            ->setStoredAsFractional(true);        
+                            ->setStoredAsFractional(true)
+                            ->onlyOnForms();          
         yield BooleanField::new('enAvant', new TranslatableMessage('option.article_enAvant', [], 'EasyAdminBundle'));
         yield IntegerField::new('nombreVentes', new TranslatableMessage('option.article_nombreVentes', [], 'EasyAdminBundle'));  
-        yield AssociationField::new('categorie', new TranslatableMessage('option.article_categorie', [], 'EasyAdminBundle'));
-        yield AssociationField::new('odeur', new TranslatableMessage('option.article_odeur', [], 'EasyAdminBundle'));
-        yield AssociationField::new('beurre', new TranslatableMessage('option.article_beurre', [], 'EasyAdminBundle'));
-        yield AssociationField::new('huile', new TranslatableMessage('option.article_huile', [], 'EasyAdminBundle'));
-        yield AssociationField::new('huileEssentiell', new TranslatableMessage('option.article_huileEss', [], 'EasyAdminBundle'));
-        yield AssociationField::new('ingredientSupplementaire', new TranslatableMessage('option.articleIng', [], 'EasyAdminBundle'));
+        yield AssociationField::new('categorie', new TranslatableMessage('option.article_categorie', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();
+        yield AssociationField::new('odeur', new TranslatableMessage('option.article_odeur', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();  
+        yield AssociationField::new('beurre', new TranslatableMessage('option.article_beurre', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();  
+        yield AssociationField::new('huile', new TranslatableMessage('option.article_huile', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();  
+        yield AssociationField::new('huileEssentiell', new TranslatableMessage('option.article_huileEss', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();  
+        yield AssociationField::new('ingredientSupplementaire', new TranslatableMessage('option.articleIng', [], 'EasyAdminBundle'))
+                            ->onlyOnForms();  
         yield AssociationField::new('promotion', new TranslatableMessage('option.article_promotion', [], 'EasyAdminBundle'));
     }   
 }
