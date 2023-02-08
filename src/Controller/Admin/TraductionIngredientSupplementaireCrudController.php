@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use App\Entity\TraductionIngredientSupplementaire;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -13,6 +14,15 @@ class TraductionIngredientSupplementaireCrudController extends AbstractCrudContr
     public static function getEntityFqcn(): string
     {
         return TraductionIngredientSupplementaire::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['ingredientSupplementaire' => 'DESC'])
+            
+        ;
     }
     
     public function configureFields(string $pageName): iterable

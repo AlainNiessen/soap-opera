@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\TraductionCategorie;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -14,6 +15,15 @@ class TraductionCategorieCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return TraductionCategorie::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['categorie' => 'DESC'])
+            
+        ;
     }
     
     public function configureFields(string $pageName): iterable

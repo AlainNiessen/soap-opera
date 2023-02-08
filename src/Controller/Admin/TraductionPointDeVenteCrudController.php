@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\TraductionPointDeVente;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -13,6 +14,15 @@ class TraductionPointDeVenteCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return TraductionPointDeVente::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['pointDeVente' => 'DESC'])
+            
+        ;
     }
     
     public function configureFields(string $pageName): iterable

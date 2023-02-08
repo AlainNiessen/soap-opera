@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\TraductionNewsletter;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -24,6 +25,15 @@ class TraductionNewsletterCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return TraductionNewsletter::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['newsletter' => 'DESC'])
+            
+        ;
     }
 
     

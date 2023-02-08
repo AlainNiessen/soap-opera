@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\TraductionNewsletterCategorie;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -13,6 +14,15 @@ class TraductionNewsletterCategorieCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return TraductionNewsletterCategorie::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['newsletterCategories' => 'DESC'])
+            
+        ;
     }
     
     public function configureFields(string $pageName): iterable

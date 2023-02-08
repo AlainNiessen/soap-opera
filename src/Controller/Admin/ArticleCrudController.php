@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Article;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -19,6 +20,15 @@ class ArticleCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Article::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['dateCreation' => 'DESC'])
+            
+        ;
     }
 
        

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\TraductionHuile;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -13,6 +14,15 @@ class TraductionHuileCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return TraductionHuile::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // rangé par facture
+            ->setDefaultSort(['huile' => 'DESC'])
+            
+        ;
     }
     
     public function configureFields(string $pageName): iterable
