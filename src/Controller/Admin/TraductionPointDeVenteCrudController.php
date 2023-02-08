@@ -27,9 +27,10 @@ class TraductionPointDeVenteCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        yield AssociationField::new('pointDeVente', new TranslatableMessage('option.tradPointDeVente_pointDeVente', [], 'EasyAdminBundle'));
         yield TextEditorField::new('description', new TranslatableMessage('option.tradPointDeVente_description', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.tradPointDeVente_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('pointDeVente', new TranslatableMessage('option.tradPointDeVente_pointDeVente', [], 'EasyAdminBundle'));
+        
     }
     
 }

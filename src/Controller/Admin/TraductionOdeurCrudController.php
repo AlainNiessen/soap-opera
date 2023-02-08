@@ -27,9 +27,10 @@ class TraductionOdeurCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        yield AssociationField::new('odeur', new TranslatableMessage('option.tradOdeur_odeur', [], 'EasyAdminBundle'));
         yield TextField::new('nom', new TranslatableMessage('option.tradOdeur_nom', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.tradOdeur_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('odeur', new TranslatableMessage('option.tradOdeur_odeur', [], 'EasyAdminBundle'));
+        
     }
     
 }

@@ -27,10 +27,11 @@ class TraductionPromotionCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        yield AssociationField::new('promotion', new TranslatableMessage('option.tradPromotion_promotion', [], 'EasyAdminBundle'));
         yield TextField::new('titre', new TranslatableMessage('option.tradPromotion_titre', [], 'EasyAdminBundle'));
         yield TextField::new('description', new TranslatableMessage('option.tradPromotion_description', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.tradPromotion_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('promotion', new TranslatableMessage('option.tradPromotion_promotion', [], 'EasyAdminBundle'));
+        
     }
     
 }

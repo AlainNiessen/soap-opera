@@ -27,9 +27,10 @@ class TraductionBeurreCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        yield AssociationField::new('beurre', new TranslatableMessage('option.tradBeurre_beurre', [], 'EasyAdminBundle'));
         yield TextField::new('nom', new TranslatableMessage('option.tradBeurre_nom', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.tradBeurre_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('beurre', new TranslatableMessage('option.tradBeurre_beurre', [], 'EasyAdminBundle'));
+       
     }
     
 }

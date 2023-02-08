@@ -34,8 +34,8 @@ class ArticleCrudController extends AbstractCrudController
        
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nomBackend', new TranslatableMessage('option.article_nomBackend', [], 'EasyAdminBundle'));
         yield DateTimeField::new('dateCreation', new TranslatableMessage('option.article_dateCreation', [], 'EasyAdminBundle'));
+        yield TextField::new('nomBackend', new TranslatableMessage('option.article_nomBackend', [], 'EasyAdminBundle'));        
         yield MoneyField::new('montantHorsTva', new TranslatableMessage('option.article_montantHorsTva', [], 'EasyAdminBundle'))
                             ->setCurrency('EUR')
                             ->setNumDecimals(2)

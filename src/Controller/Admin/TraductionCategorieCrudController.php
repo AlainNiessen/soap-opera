@@ -28,10 +28,11 @@ class TraductionCategorieCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        yield AssociationField::new('categorie', new TranslatableMessage('option.tradCategorie_categorie', [], 'EasyAdminBundle'));
         yield TextField::new('nom', new TranslatableMessage('option.tradCategorie_nom', [], 'EasyAdminBundle'));
         yield TextEditorField::new('description', new TranslatableMessage('option.tradCategorie_description', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.tradcategorie_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('categorie', new TranslatableMessage('option.tradCategorie_categorie', [], 'EasyAdminBundle'));
+        
     }
     
 }

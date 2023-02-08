@@ -40,6 +40,7 @@ class TraductionNewsletterCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {   
           
+        yield AssociationField::new('newsletter', new TranslatableMessage('option.tradNewsletter_newsletter', [], 'EasyAdminBundle'));
         yield TextField::new('titre', new TranslatableMessage('option.tradNewsletter_nom', [], 'EasyAdminBundle'));
         yield TextEditorField::new('description', new TranslatableMessage('option.tradNewsletter_description', [], 'EasyAdminBundle'));
         // possibilité de télécharger le PDF sur la page index           
@@ -53,6 +54,6 @@ class TraductionNewsletterCrudController extends AbstractCrudController
                 ->setFormTypeOptions(['attr' => ['accept' => 'application/pdf'], 'download_label' => 'Download PDF'])
                 ->onlyOnForms();
         yield AssociationField::new('langue', new TranslatableMessage('option.tradnewsletter_langue', [], 'EasyAdminBundle'));
-        yield AssociationField::new('newsletter', new TranslatableMessage('option.tradNewsletter_newsletter', [], 'EasyAdminBundle'));
+        
     }     
 }
