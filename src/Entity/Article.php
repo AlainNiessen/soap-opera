@@ -117,6 +117,11 @@ class Article
      */
     private $evaluations;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $stock;
+
      // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -125,7 +130,6 @@ class Article
 
     public function __construct()
     {
-        $this->promotions = new ArrayCollection();
         $this->utilisateurs = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->traductionArticles = new ArrayCollection();
@@ -520,6 +524,18 @@ class Article
                 $evaluation->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(?int $stock): self
+    {
+        $this->stock = $stock;
 
         return $this;
     }

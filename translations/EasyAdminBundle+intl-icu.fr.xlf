@@ -1013,6 +1013,10 @@
         <source>option.tradPartenaire_partenaire</source>
         <target>__option.tradPartenaire_partenaire</target>
       </trans-unit>
+      <trans-unit id="f8QWM7i" resname="option.article_stock">
+        <source>option.article_stock</source>
+        <target>Stock</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -62,22 +62,40 @@ class PanierController extends AbstractController
 
         // récupération de l'article via son ID via ArticleRepository
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+        $article = $repositoryArticle -> findOneBy(['id' => $id]);
+        $stock = $article -> getStock();             
 
         // on vérifie si l'article existe
         if($article):
             // on regarde si l'article avec son ID existe dans le panier
-            // si il existe déjà, on incrémente
+            // si il existe déjà, on incrémente en respectant le stock de l'article
             if(!empty($panier[$id])):
-                $panier[$id]++;
+                if($panier[$id] < $session -> get('stock')):
+                    $panier[$id]++;
+                    // actualisation du stock dans la base de données
+                    $stock -= 1;
+                    $article -> setStock($stock);
+                    // insertion dans la base de données
+                    $entityManager -> persist($article);
+                    $entityManager -> flush();
+                else:
+                    $panier[$id] = $session -> get('stock');
+                endif;
             // si il n'existe pas, on le crée
             else:
+                // premier ajout => recup du stock de la base de données
+                $session -> set('stock', $stock);
                 $panier[$id] = 1;
+                // actualisation du stock dans la base de données
+                $stock -= 1;
+                $article -> setStock($stock);
+                // insertion dans la base de données
+                $entityManager -> persist($article);
+                $entityManager -> flush();
             endif;
             
             $nombreArticles = array_sum($panier);
             
-
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
             $session -> set('nombreArticles', $nombreArticles);
@@ -151,7 +169,8 @@ class PanierController extends AbstractController
         // récupération de l'article via son ID
         // définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+        $article = $repositoryArticle -> findOneBy(['id' => $id]);  
+        $stock = $article -> getStock();          
 
         // on vérifie si l'article existe
         if($article):
@@ -161,6 +180,12 @@ class PanierController extends AbstractController
                 //vérification supplémentaire si le nombre est plus grand que 1
                 if($panier[$id] > 1):
                     $panier[$id]--;
+                    // actualisation du stock dans la base de données
+                    $stock += 1;
+                    $article -> setStock($stock);
+                    // insertion dans la base de données
+                    $entityManager -> persist($article);
+                    $entityManager -> flush();
                 else:
                     $panier[$id] = 1;
                 endif;
@@ -242,6 +267,13 @@ class PanierController extends AbstractController
             // si le panier n'est pas vide => on le supprime
             if(!empty($panier[$id])):
                 unset($panier[$id]);
+                // récup du stock de base
+                $stock = $session -> get('stock');
+                // actualisation du stock dans la base de données
+                $article -> setStock($stock);
+                // insertion dans la base de données
+                $entityManager -> persist($article);
+                $entityManager -> flush();
             endif;
             
             $nombreArticles = array_sum($panier);            

@@ -46,7 +46,8 @@ class ArticleCrudController extends AbstractCrudController
                             ->setStoredAsFractional(true)
                             ->onlyOnForms();          
         yield BooleanField::new('enAvant', new TranslatableMessage('option.article_enAvant', [], 'EasyAdminBundle'));
-        yield IntegerField::new('nombreVentes', new TranslatableMessage('option.article_nombreVentes', [], 'EasyAdminBundle'));  
+        yield IntegerField::new('nombreVentes', new TranslatableMessage('option.article_nombreVentes', [], 'EasyAdminBundle'));
+        yield IntegerField::new('stock', new TranslatableMessage('option.article_stock', [], 'EasyAdminBundle'));  
         yield AssociationField::new('categorie', new TranslatableMessage('option.article_categorie', [], 'EasyAdminBundle'))
                             ->onlyOnForms();
         yield AssociationField::new('odeur', new TranslatableMessage('option.article_odeur', [], 'EasyAdminBundle'))
