@@ -71,19 +71,42 @@ class PanierController extends AbstractController
             // si il existe déjà, on incrémente en respectant le stock de l'article
             if(!empty($panier[$id])):
                 if($panier[$id] < $session -> get('stock')):
+                    $stockSession = $session -> get('stock');
                     $panier[$id]++;
                     // actualisation du stock dans la base de données
                     $stock -= 1;
+                    
                     $article -> setStock($stock);
                     // insertion dans la base de données
                     $entityManager -> persist($article);
                     $entityManager -> flush();
+                    // contrôle si on a ajouté des articles au panier
+                    $newStock = $article -> getStock();
+                    if($newStock + $panier[$id] != $stockSession):
+                            $session -> set('stock', $newStock + $panier[$id]);
+                    endif;
+                elseif($panier[$id] == $session -> get('stock')):
+                    if($stock > 0):
+                        $stockSession = $session -> get('stock');
+                        $panier[$id]++;
+                        // actualisation du stock dans la base de données
+                        $stock -= 1;
+                        
+                        $article -> setStock($stock);
+                        // insertion dans la base de données
+                        $entityManager -> persist($article);
+                        $entityManager -> flush();
+                        // contrôle si on a ajouté des articles au panier
+                        $newStock = $article -> getStock();
+                        if($newStock + $panier[$id] != $stockSession):
+                                $session -> set('stock', $newStock + $panier[$id]);
+                        endif;
+                    endif;
                 else:
                     $panier[$id] = $session -> get('stock');
                 endif;
             // si il n'existe pas, on le crée
             else:
-                // premier ajout => recup du stock de la base de données
                 $session -> set('stock', $stock);
                 $panier[$id] = 1;
                 // actualisation du stock dans la base de données

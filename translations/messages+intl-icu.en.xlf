@@ -1738,6 +1738,10 @@
         <source>7.11 Der Verkäufer gibt auf der Website die Bedingungen, die Frist und die Bedingungen des Widerrufsrechts sowie das &lt;a href="https://economie.fgov.be/fr/themes/ventes/reglementation/delais-de-retractation/droit-de-retractation-lors-de"&gt;Muster-Widerrufsformular&lt;/a&gt; an.</source>
         <target><![CDATA[7.11. The seller indicates on the website the conditions, deadline and procedures that apply to the right of withdrawal as well as <a href="https://economie.fgov.be/fr/themes/ventes/reglementation/delais-de-retractation/droit-de-retractation-lors-de">the model form for withdrawa</a>.]]></target>
       </trans-unit>
+      <trans-unit id="dgwg7_x" resname="Dieser Artikel ist momentan nicht vorrätig!">
+        <source>Dieser Artikel ist momentan nicht vorrätig!</source>
+        <target>This article is currently out of stock!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
