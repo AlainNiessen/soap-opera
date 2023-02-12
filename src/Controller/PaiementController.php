@@ -99,92 +99,107 @@ class PaiementController extends AbstractController
         // on boucle sur le panier pour créer des détails de commandes par article dans le panier
         $panier = $session -> get('panier', []);
 
-        foreach($panier as $id => $quantite):         
-            // récupération de l'article via son ID via ArticleRepository
-            $repositoryArticle = $entityManager -> getRepository(Article::class);
-            $article = $repositoryArticle -> findOneBy(['id' => $id]);
+        foreach($panier as $article ): 
+            $articleID = key($article);
+            $quantite = reset($article);
+            if ($articleID && $quantite):         
+                // récupération de l'article via son ID via ArticleRepository
+                $repositoryArticle = $entityManager -> getRepository(Article::class);
+                $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
 
-            //actualisation de la quantité de ventes par article dans l'entité article
-            $nombreVentes = $article -> getNombreVentes();
-            $nombreVentes += $quantite;
-            $article -> setNombreVentes($nombreVentes);
+                //actualisation de la quantité de ventes par article dans l'entité article
+                $nombreVentes = $article -> getNombreVentes();
+                $nombreVentes += $quantite;
+                $article -> setNombreVentes($nombreVentes);
 
-            // insertion dans la base de données
-            $entityManager -> persist($article);
-            $entityManager -> flush();
+                // insertion dans la base de données
+                $entityManager -> persist($article);
+                $entityManager -> flush();
 
-            // calcul des montants
-            // si il y a une réduction sur le prix
-            if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
-                if($article -> getPromotion()):
-                    // contrôle des dates d'affichage
-                    if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                        $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
-                    else:
-                        $reduction = 0;
-                    endif;                   
-                elseif($article -> getCategorie() -> getPromotion()):
-                    if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                        $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
-                    else:
-                        $reduction = 0;
+                // calcul des montants
+                // si il y a une réduction sur le prix
+                if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+                    if($article -> getPromotion()):
+                        // contrôle des dates d'affichage
+                        if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                            $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+                        else:
+                            $reduction = 0;
+                        endif;                   
+                    elseif($article -> getCategorie() -> getPromotion()):
+                        if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                            $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                        else:
+                            $reduction = 0;
+                        endif;
                     endif;
+                    $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
+                else:
+                    $prixHorsTva = $article -> getMontantHorsTva();                    
                 endif;
-                $prixHorsTva = ($article -> getMontantHorsTva()) - $reduction;                
-            else:
-                $prixHorsTva = $article -> getMontantHorsTva();                    
-            endif;
 
-            $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
+                $prixTotalHorsTva = intval($prixHorsTva) * $quantite;
 
-            // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $prixTotalTva = 0;
-            else:
-                $prixTva = intval(round(round(($prixHorsTva * $article -> getTauxTva()), 2)), 0);
-                $prixTotalTva = $prixTva * $quantite;
-            endif;          
+                // condition si utilisateur est une entreprise allemande avec numéro TVA
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $prixTotalTva = 0;
+                else:
+                    $prixTva = intval(round(round(($prixHorsTva * $article -> getTauxTva()), 2)), 0);
+                    $prixTotalTva = $prixTva * $quantite;
+                endif;          
+                
+                $prixTotalArticle = $prixTotalHorsTva + $prixTotalTva;      
             
-            $prixTotalArticle = $prixTotalHorsTva + $prixTotalTva;      
-          
 
-            //création détail de commande par article dans le panier
-            $commande = new DetailCommandeArticle();
-            $commande -> setQuantite($quantite);
-            $commande -> setArticle($article);
-            $commande -> setMontantTotalHorsTva($prixTotalHorsTva);
-            $commande -> setMontantTva($prixTotalTva);
-            $commande -> setMontantTotal($prixTotalArticle);
-            $commande -> setFacture($facture);
+                //création détail de commande par article dans le panier
+                $commande = new DetailCommandeArticle();
+                $commande -> setQuantite($quantite);
+                $commande -> setArticle($article);
+                $commande -> setMontantTotalHorsTva($prixTotalHorsTva);
+                $commande -> setMontantTva($prixTotalTva);
+                $commande -> setMontantTotal($prixTotalArticle);
+                $commande -> setFacture($facture);
 
-            // ajout des totaux à la facture correspondante
-            $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
-            $factMontantTotalHorsTva += $commande -> getMontantTotalHorsTva();
-            $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
+                // ajout des totaux à la facture correspondante
+                $factMontantTotalHorsTva = $facture -> getMontantTotalHorsTva();
+                $factMontantTotalHorsTva += $commande -> getMontantTotalHorsTva();
+                $facture -> setMontantTotalHorsTva($factMontantTotalHorsTva);
 
-            $factMontantTotalTva = $facture -> getMontantTotalTva();
-            $factMontantTotalTva += $commande -> getMontantTva();
-            $facture -> setMontantTotalTva($factMontantTotalTva);
+                $factMontantTotalTva = $facture -> getMontantTotalTva();
+                $factMontantTotalTva += $commande -> getMontantTva();
+                $facture -> setMontantTotalTva($factMontantTotalTva);
 
-            $factMontantTotal = $facture -> getMontantTotal();
-            $factMontantTotal += $commande -> getMontantTotal();
-            $facture -> setMontantTotal($factMontantTotal);
+                $factMontantTotal = $facture -> getMontantTotal();
+                $factMontantTotal += $commande -> getMontantTotal();
+                $facture -> setMontantTotal($factMontantTotal);
 
-            // insertion dans la base de données
-            $entityManager -> persist($commande);
-            $entityManager -> persist($facture);
-            $entityManager -> flush();      
-
+                // insertion dans la base de données
+                $entityManager -> persist($commande);
+                $entityManager -> persist($facture);
+                $entityManager -> flush();
+            endif;
         endforeach;
 
+        // récupération du poid total
+        $poidsTotal = $session -> get('poidsTotal'); 
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
         // récupération du montant des frais de livraison via LivraisonRepository
-        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);     
-        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        $repositoryLivraison = $entityManager -> getRepository(Livraison::class);            
+        $livraisons = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        foreach($livraisons as $livraison):
+            if($poidsTotal >= 2000):
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 2]);
+            else:
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 1]);
+            endif;
+        endforeach;
+        
+        // frais de livraison
+        $fraisLivraison = ($liv -> getMontantHorsTva()) / 100;
         
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison 
-        $prixTotal = $factMontantTotal / 100;  
+        $prixTotal = $factMontantTotal / 100; 
             
         if($prixTotal < 100):
             // Calculs
@@ -226,7 +241,7 @@ class PaiementController extends AbstractController
 
         // envoie d'un mail de confirmation de l'achat à l'utilisateur connecté
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés dans le Mail comme résumé
-        $tabInfos = $this->infoArticlePanier($panier, $entityManager, $request);
+        $tabInfos = $this->infoArticlePanier($panier, $poidsTotal, $entityManager, $request);
 
         // création PDF pour l'annexe
         // Configuration des options
@@ -341,7 +356,7 @@ class PaiementController extends AbstractController
     //----------------------------------------------
     // FONCTION POUR CREATION PDF ET MAIL DE CONFIRMATION
     //----------------------------------------------
-    function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)
+    function infoArticlePanier($panier, $poidsTotal, EntityManagerInterface $entityManager, Request $request)
     {
         // initialisation des variables
         $infosPanier = [];
@@ -354,66 +369,78 @@ class PaiementController extends AbstractController
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);
 
         // boucle sur le panier
-        foreach($panier as $id => $quantite):
+        foreach($panier as $article ): 
+            $articleID = key($article);
+            $quantite = reset($article);
+            if ($articleID && $quantite):
             
-            // récupération de l'article via son ID via ArticleRepository
-            $repositoryArticle = $entityManager -> getRepository(Article::class);
-            $article = $repositoryArticle -> findOneBy(['id' => $id]);
-            
-            // prix final du article + prix final de tous les articles
-            // si il y a une réduction sur le prix
-            if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
-                if($article -> getPromotion()):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();                    
-                elseif($article -> getCategorie() -> getPromotion()):
-                    $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                // récupération de l'article via son ID via ArticleRepository
+                $repositoryArticle = $entityManager -> getRepository(Article::class);
+                $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
+                
+                // prix final du article + prix final de tous les articles
+                // si il y a une réduction sur le prix
+                if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+                    if($article -> getPromotion()):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();                    
+                    elseif($article -> getCategorie() -> getPromotion()):
+                        $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                    endif;
+                    $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
+                else:
+                    $prixNette = $article -> getMontantHorsTva();                    
                 endif;
-                $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
-            else:
-                $prixNette = $article -> getMontantHorsTva();                    
-            endif;
 
-            // calculs sur base du prix nette
-            $prixHorsTva = round($prixNette / 100, 2);
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $prixTva = 0;
-            else:
-                $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
-            endif;
-            
-            $prixTotalArticle = $prixHorsTva + $prixTva;
-            $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
-            $prixTotal += $prixTotalArticleQuantite;
+                // calculs sur base du prix nette
+                $prixHorsTva = round($prixNette / 100, 2);
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $prixTva = 0;
+                else:
+                    $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
+                endif;
+                
+                $prixTotalArticle = $prixHorsTva + $prixTva;
+                $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
+                $prixTotal += $prixTotalArticleQuantite;
 
-            // formats d'affichage
-            $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
-            $prixTva = number_format($prixTva, 2, ',', '.');
-            $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
-            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
+                // formats d'affichage
+                $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
+                $prixTva = number_format($prixTva, 2, ',', '.');
+                $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
+                $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
 
-            //récupération de la traduction de l'article via TraductionArticleRepository          
-            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
-            $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
-            
-            //stockage de article + son quantité dans le tableau infosPanier
-            $infosPanier[] = [
-                "article" => $article,
-                "prixHorsTva" => $prixHorsTva,
-                "prixTva" => $prixTva,
-                "prixTotal" => $prixTotalArticle,
-                "prixTotalQuantite" => $prixTotalArticleQuantite,
-                "traduction" => $resultTraduction,
-                "quantite" => $quantite
-            ];                      
+                //récupération de la traduction de l'article via TraductionArticleRepository          
+                $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+                $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
+                
+                //stockage de article + son quantité dans le tableau infosPanier
+                $infosPanier[] = [
+                    "article" => $article,
+                    "prixHorsTva" => $prixHorsTva,
+                    "prixTva" => $prixTva,
+                    "prixTotal" => $prixTotalArticle,
+                    "prixTotalQuantite" => $prixTotalArticleQuantite,
+                    "traduction" => $resultTraduction,
+                    "quantite" => $quantite
+                ];
+            endif;                      
         endforeach;
 
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
         // récupération du montant des frais de livraison dépendant du pays via LivraisonRepository
         $repositoryLivraison = $entityManager -> getRepository(Livraison::class); 
-        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        $livraisons = $repositoryLivraison -> findBy(['pays' => $paysLivraison]);
+        foreach($livraisons as $livraison):
+            if($poidsTotal >= 2000):
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 2]);
+            else:
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 1]);
+            endif;
+        endforeach;
+        
         // frais de livraison
-        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
+        $fraisLivraison = ($liv -> getMontantHorsTva()) / 100;
 
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
         if($prixTotal < 100):

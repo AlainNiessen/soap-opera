@@ -32,6 +32,11 @@ class Livraison
      */
     private $tauxTva;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $niveau;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Livraison
     public function setTauxTva(float $tauxTva): self
     {
         $this->tauxTva = $tauxTva;
+
+        return $this;
+    }
+
+    public function getNiveau(): ?int
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(?int $niveau): self
+    {
+        $this->niveau = $niveau;
 
         return $this;
     }

@@ -122,6 +122,11 @@ class Article
      */
     private $stock;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $poids;
+
      // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -536,6 +541,18 @@ class Article
     public function setStock(?int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getPoids(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(?int $poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }

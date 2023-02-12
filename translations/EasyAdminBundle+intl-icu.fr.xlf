@@ -1017,6 +1017,14 @@
         <source>option.article_stock</source>
         <target>Stock</target>
       </trans-unit>
+      <trans-unit id="3eayzFn" resname="option.article_poids">
+        <source>option.article_poids</source>
+        <target>Poids</target>
+      </trans-unit>
+      <trans-unit id="SPr4zQk" resname="option.livraison_niveau">
+        <source>option.livraison_niveau</source>
+        <target>Niveau de poids</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

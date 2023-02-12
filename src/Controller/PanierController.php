@@ -26,12 +26,21 @@ class PanierController extends AbstractController
      */
     public function index(SessionInterface $session, EntityManagerInterface $entityManager, Request $request): Response
     {
-        // récupération du panier avec toutes les informations
+        // récupération du panier avec toutes les informations + poids total pour le calcul des frais de livraison
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);
         
+        //si le panier est vide => poids Total et nombres total Articles remis sur 0
+        if(empty($panier)):
+            $nombreArticles = 0;
+            $poidsTotal = 0;
+            $session -> set('nombresArticles', $nombreArticles);
+            $session -> set('poidsTotal', $poidsTotal);
+        endif;
+        $poidsTotal = $session -> get('poidsTotal', 0);
+        
         // appel à la fonction qui traite toutes les informations pour les afficher par aprés
-        $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request);      
+        $tabInfos = $this -> infoArticlePanier($panier, $poidsTotal, $entityManager, $request);      
                     
         return $this->render('panier/index.html.twig', [
             'infosPanier' => $tabInfos[0],
@@ -53,75 +62,89 @@ class PanierController extends AbstractController
         // on récupére le panier actuel de la Session
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);
+
+        //si le panier est vide => poids Total et nombres total Articles remis sur 0
+        if(empty($panier)):
+            $nombreArticles = 0;
+            $poidsTotal = 0;
+            $session -> set('nombresArticles', $nombreArticles);
+            $session -> set('poidsTotal', $poidsTotal);
+        endif;
+
         // récupération de l'URL pour rediriger par aprés sur différents routes (soit vers détial article soit vers profile utilisateur)
         $url = $request->headers->get('referer');        
 
-        // on récupére le nombre des articles dans le panier
+        // on récupére le nombre des articles et le poids total dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
         $nombreArticles = $session -> get('nombreArticles', 0);
+        $poidsTotal = $session -> get('poidsTotal', 0);
 
         // récupération de l'article via son ID via ArticleRepository
         $repositoryArticle = $entityManager -> getRepository(Article::class);
         $article = $repositoryArticle -> findOneBy(['id' => $id]);
-        $stock = $article -> getStock();             
+        // récup du poids de l'article
+        $poids = $article -> getPoids();             
 
         // on vérifie si l'article existe
         if($article):
             // on regarde si l'article avec son ID existe dans le panier
             // si il existe déjà, on incrémente en respectant le stock de l'article
-            if(!empty($panier[$id])):
-                if($panier[$id] < $session -> get('stock')):
-                    $stockSession = $session -> get('stock');
-                    $panier[$id]++;
-                    // actualisation du stock dans la base de données
-                    $stock -= 1;
-                    
-                    $article -> setStock($stock);
+            if(!empty($panier[$id][$id])):
+
+                // quand le stock varie (actualisation par admin) => actualisation du nouveau stock
+                $stockActuel = $article -> getStock();
+                if($stockActuel != $panier[$id]['stockStart']):
+                    $panier[$id]['stockStart'] = $stockActuel + $panier[$id][$id];
+                endif;
+
+                if($panier[$id][$id] < $panier[$id]['stockStart']):                   
+                    $panier[$id][$id]++;                    
+                    // actualisation du poids total
+                    $poidsTotal += $poids;
+                    // actualisation du stock dans la base de données                   
+                    $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
                     // insertion dans la base de données
                     $entityManager -> persist($article);
                     $entityManager -> flush();
-                    // contrôle si on a ajouté des articles au panier
-                    $newStock = $article -> getStock();
-                    if($newStock + $panier[$id] != $stockSession):
-                            $session -> set('stock', $newStock + $panier[$id]);
-                    endif;
-                elseif($panier[$id] == $session -> get('stock')):
-                    if($stock > 0):
-                        $stockSession = $session -> get('stock');
-                        $panier[$id]++;
-                        // actualisation du stock dans la base de données
-                        $stock -= 1;
-                        
-                        $article -> setStock($stock);
+                    // actualisation nombre articles
+                    $nombreArticles++;                    
+                elseif($panier[$id][$id] == $panier[$id]['stockStart']):
+                    if($article -> getStock() > 0):                        
+                        $panier[$id][$id]++;
+                        // actualisation du poids total
+                        $poidsTotal += $poids;
+                        // actualisation du stock dans la base de données                     
+                        $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
                         // insertion dans la base de données
                         $entityManager -> persist($article);
                         $entityManager -> flush();
-                        // contrôle si on a ajouté des articles au panier
-                        $newStock = $article -> getStock();
-                        if($newStock + $panier[$id] != $stockSession):
-                                $session -> set('stock', $newStock + $panier[$id]);
-                        endif;
+                        // actualisation nombre articles
+                        $nombreArticles++;
                     endif;
                 else:
-                    $panier[$id] = $session -> get('stock');
+                    $panier[$id][$id] = $session -> get('stockStart');                    
                 endif;
             // si il n'existe pas, on le crée
             else:
-                $session -> set('stock', $stock);
-                $panier[$id] = 1;
-                // actualisation du stock dans la base de données
-                $stock -= 1;
-                $article -> setStock($stock);
+                //récup du stock de départ
+                $stockStart = $article -> getStock();
+                // attribution des valeurs               
+                $panier[$id][$id] = 1;
+                $panier[$id]['stockStart'] = $stockStart;
+                // actualisation du poids total et du stock
+                $poidsTotal += $poids;                
+                $article -> setStock($stockStart - 1);
                 // insertion dans la base de données
                 $entityManager -> persist($article);
                 $entityManager -> flush();
+                // actualisation nombre articles
+                $nombreArticles++;
             endif;
-            
-            $nombreArticles = array_sum($panier);
             
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
             $session -> set('nombreArticles', $nombreArticles);
+            $session -> set('poidsTotal', $poidsTotal);  
 
             // manipulation de la quantité de l'article via une requête AJAX
             if($request -> isXmlHttpRequest()) {
@@ -132,7 +155,7 @@ class PanierController extends AbstractController
                 $panier = $session -> get('panier', []);
 
                 // appel à la fonction qui traite toutes les informations pour les afficher par aprés
-                $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+                $tabInfos = $this -> infoArticlePanier($panier, $poidsTotal, $entityManager, $request); 
                 
                 return new JsonResponse([
                     'content' => $this -> renderView('panier/index.html.twig', [
@@ -185,41 +208,44 @@ class PanierController extends AbstractController
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);        
 
-        // on récupére le nombre des articles dans le panier
+        // on récupére le nombre des articles et le poids total dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
         $nombreArticles = $session -> get('nombreArticles', 0);
+        $poidsTotal = $session -> get('poidsTotal', 0);
 
         // récupération de l'article via son ID
         // définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);  
-        $stock = $article -> getStock();          
+        $article = $repositoryArticle -> findOneBy(['id' => $id]); 
+        // récup du poids de l'article        
+        $poids = $article -> getPoids();          
 
         // on vérifie si l'article existe
         if($article):
             // on regarde si l'article avec son ID existe dans le panier
             // si il existe déjà, on diminue 
-            if(!empty($panier[$id])):
+            if(!empty($panier[$id][$id])):
                 //vérification supplémentaire si le nombre est plus grand que 1
-                if($panier[$id] > 1):
-                    $panier[$id]--;
+                if($panier[$id][$id] > 1):
+                    $panier[$id][$id]--;
+                    // actualisation du poids total
+                    $poidsTotal -= $poids;
                     // actualisation du stock dans la base de données
-                    $stock += 1;
-                    $article -> setStock($stock);
+                    $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
                     // insertion dans la base de données
                     $entityManager -> persist($article);
                     $entityManager -> flush();
+                    // actualisation nombre articles
+                    $nombreArticles--;
                 else:
-                    $panier[$id] = 1;
+                    $panier[$id][$id] = 1;
                 endif;
-            endif;
-            
-            $nombreArticles = array_sum($panier);
-            
+            endif;             
 
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
             $session -> set('nombreArticles', $nombreArticles);
+            $session -> set('poidsTotal', $poidsTotal);
 
             // manipulation de la quantité de l'article via une requête AJAX
             if($request -> isXmlHttpRequest()) {
@@ -230,7 +256,7 @@ class PanierController extends AbstractController
                 $panier = $session -> get('panier', []);
 
                 // appel à la fonction qui traite toutes les informations pour les afficher par aprés
-                $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+                $tabInfos = $this -> infoArticlePanier($panier, $poidsTotal, $entityManager, $request); 
 
                 return new JsonResponse([
                     'content' => $this -> renderView('panier/index.html.twig', [
@@ -275,42 +301,45 @@ class PanierController extends AbstractController
         // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
         $panier = $session -> get('panier', []);        
 
-        // on récupére le nombre des articles dans le panier
+        // on récupére le nombre des articles et le poids total dans le panier
         // si il y en a des articles, c'est le premier paramétre, sinon c'est 0 (deuxiéme paramétre)
         $nombreArticles = $session -> get('nombreArticles', 0);
+        $poidsTotal = $session -> get('poidsTotal', 0);
 
         // récupération de l'article via son ID
         // définition repository article
         $repositoryArticle = $entityManager -> getRepository(Article::class);
-        $article = $repositoryArticle -> findOneBy(['id' => $id]);          
+        $article = $repositoryArticle -> findOneBy(['id' => $id]); 
+        $poids = $article -> getPoids();          
 
         // on vérifie si l'article existe
         if($article):
             // on regarde si l'article avec son ID existe dans le panier
             // si le panier n'est pas vide => on le supprime
-            if(!empty($panier[$id])):
-                unset($panier[$id]);
-                // récup du stock de base
-                $stock = $session -> get('stock');
-                // actualisation du stock dans la base de données
-                $article -> setStock($stock);
+            if(!empty($panier[$id][$id])):
+                // actualisation du poids total et nombre total
+                $poidsTotal -= $panier[$id][$id] * $poids;
+                $nombreArticles -= $panier[$id][$id];
+                unset($panier[$id][$id]);                
+                // actualisation du stock dans la base de données                
+                $article -> setStock($panier[$id]['stockStart']);
+                unset($panier[$id]['stockStart']);
                 // insertion dans la base de données
                 $entityManager -> persist($article);
-                $entityManager -> flush();
-            endif;
-            
-            $nombreArticles = array_sum($panier);            
+                $entityManager -> flush();                
+            endif;             
 
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
-            $session -> set('nombreArticles', $nombreArticles);            
+            $session -> set('nombreArticles', $nombreArticles); 
+            $session -> set('poidsTotal', $poidsTotal);             
 
             // récupération du panier avec toutes les informations
             // si il y a un panier, c'est le premier paramétre, sinon c'est un tableau vide (deuxiéme paramétre)
             $panier = $session -> get('panier', []);            
 
             // appel à la fonction qui traite toutes les informations pour les afficher par aprés
-            $tabInfos = $this -> infoArticlePanier($panier, $entityManager, $request); 
+            $tabInfos = $this -> infoArticlePanier($panier, $poidsTotal, $entityManager, $request); 
                         
             return $this->render('panier/index.html.twig', [
                 'infosPanier' => $tabInfos[0],
@@ -333,7 +362,7 @@ class PanierController extends AbstractController
     //----------------------------------------------
     // FONCTION CREATION PANIER
     //----------------------------------------------
-    function infoArticlePanier($panier, EntityManagerInterface $entityManager, Request $request)
+    function infoArticlePanier($panier, $poidsTotal, EntityManagerInterface $entityManager, Request $request)
     {
         // initialisation des variables
         $infosPanier = [];
@@ -346,75 +375,87 @@ class PanierController extends AbstractController
         $langue = $repositoryLangue -> findOneBy(['codeLangue' => $lang]);       
         
         // boucle sur le panier
-        foreach($panier as $id => $quantite):            
-            // récupération de l'article via son ID via ArticleRepository
-            $repositoryArticle = $entityManager -> getRepository(Article::class);
-            $article = $repositoryArticle -> findOneBy(['id' => $id]);
-            
-            // prix final du article + prix final de tous les articles
-            // si il y a une réduction sur le prix
-            if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
-                if($article -> getPromotion()):
-                    // contrôle des dates d'affichage
-                    if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                        $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
-                    else:
-                        $reduction = 0;
-                    endif;                   
-                elseif($article -> getCategorie() -> getPromotion()):
-                    if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
-                        $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
-                    else:
-                        $reduction = 0;
+        foreach($panier as $article ): 
+            $articleID = key($article);
+            $quantite = reset($article);
+            if ($articleID && $quantite):          
+                // récupération de l'article via son ID via ArticleRepository
+                $repositoryArticle = $entityManager -> getRepository(Article::class);
+                $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
+                
+                // prix final du article + prix final de tous les articles
+                // si il y a une réduction sur le prix
+                if($article -> getPromotion() || $article -> getCategorie() -> getPromotion()):
+                    if($article -> getPromotion()):
+                        // contrôle des dates d'affichage
+                        if($article -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                            $reduction = $article -> getMontantHorsTva() * $article -> getPromotion() -> getPourcentage();
+                        else:
+                            $reduction = 0;
+                        endif;                   
+                    elseif($article -> getCategorie() -> getPromotion()):
+                        if($article -> getCategorie() -> getPromotion() -> getDateStart() < new DateTime('now') && $article -> getCategorie() -> getPromotion() -> getDateEnd() > new DateTime('now')):
+                            $reduction = $article -> getMontantHorsTva() * $article -> getCategorie() -> getPromotion() -> getPourcentage();
+                        else:
+                            $reduction = 0;
+                        endif;
                     endif;
+                    $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
+                else:
+                    $prixNette = $article -> getMontantHorsTva();                    
                 endif;
-                $prixNette = ($article -> getMontantHorsTva()) - $reduction;                
-            else:
-                $prixNette = $article -> getMontantHorsTva();                    
-            endif;
 
-            // calculs sur base du prix nette
-            $prixHorsTva = round($prixNette / 100, 2);
-            // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $prixTva = 0;
-            else:
-                $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
-            endif;
+                // calculs sur base du prix nette
+                $prixHorsTva = round($prixNette / 100, 2);
+                // condition si utilisateur est une entreprise allemande avec numéro TVA
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $prixTva = 0;
+                else:
+                    $prixTva = round(($prixHorsTva * $article -> getTauxTva()), 2);
+                endif;
 
-            $prixTotalArticle = $prixHorsTva + $prixTva;
-            $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
-            $prixTotal += $prixTotalArticleQuantite;
+                $prixTotalArticle = $prixHorsTva + $prixTva;
+                $prixTotalArticleQuantite = $prixTotalArticle * $quantite;            
+                $prixTotal += $prixTotalArticleQuantite;
 
-            // formats d'affichage
-            $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
-            $prixTva = number_format($prixTva, 2, ',', '.');
-            $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
-            $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
+                // formats d'affichage
+                $prixHorsTva = number_format($prixHorsTva, 2, ',', '.');
+                $prixTva = number_format($prixTva, 2, ',', '.');
+                $prixTotalArticle = number_format($prixTotalArticle, 2, ',', '.');
+                $prixTotalArticleQuantite = number_format($prixTotalArticleQuantite, 2, ',', '.');           
 
-            //récupération de la traduction de l'article via TraductionArticleRepository         
-            $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
-            $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
-            
-            //stockage de article + son quantité dans le tableau infosPanier
-            $infosPanier[] = [
-                "article" => $article,
-                "prixHorsTva" => $prixHorsTva,
-                "prixTva" => $prixTva,
-                "prixTotal" => $prixTotalArticle,
-                "prixTotalQuantite" => $prixTotalArticleQuantite,
-                "traduction" => $resultTraduction,
-                "quantite" => $quantite
-            ];                      
+                //récupération de la traduction de l'article via TraductionArticleRepository         
+                $repositoryTraductionArticle = $entityManager -> getRepository(TraductionArticle::class);
+                $resultTraduction = $repositoryTraductionArticle -> findOneBy(['langue' => $langue, 'article' => $article]);
+                
+                //stockage de article + son quantité dans le tableau infosPanier
+                $infosPanier[] = [
+                    "article" => $article,
+                    "prixHorsTva" => $prixHorsTva,
+                    "prixTva" => $prixTva,
+                    "prixTotal" => $prixTotalArticle,
+                    "prixTotalQuantite" => $prixTotalArticleQuantite,
+                    "traduction" => $resultTraduction,
+                    "quantite" => $quantite
+                ];
+            endif;                      
         endforeach;
 
         // récupération du pays de l'adresse de livraison de l'utilisateur connecté pour calculer les frais de livraison
         $paysLivraison = $this -> getUser() -> getAdresseDeliver() -> getPays();
         // récupération du montant des frais de livraison dépendant du pays via LivraisonRepository
         $repositoryLivraison = $entityManager -> getRepository(Livraison::class);     
-        $livraison = $repositoryLivraison -> findOneBy(['pays' => $paysLivraison]);
+        $livraisons = $repositoryLivraison -> findBy(['pays' => $paysLivraison]);
+        foreach($livraisons as $livraison):
+            if($poidsTotal >= 2000):
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 2]);
+            else:
+                $liv = $repositoryLivraison -> findOneBy(['niveau' => 1]);
+            endif;
+        endforeach;
+        
         // frais de livraison
-        $fraisLivraison = ($livraison -> getMontantHorsTva()) / 100;
+        $fraisLivraison = ($liv -> getMontantHorsTva()) / 100;
         
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
         if($prixTotal < 100):

@@ -6,6 +6,7 @@ use App\Entity\Livraison;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use Symfony\Component\Translation\TranslatableMessage;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -33,6 +34,7 @@ class LivraisonCrudController extends AbstractCrudController
                         ->setFormTypeOptions(['choice_filter' => function ($countryName) use ($supportedCountries) {
                             return in_array($countryName, $supportedCountries, true);
                         }]);  
+        yield IntegerField::new('niveau', new TranslatableMessage('option.livraison_niveau', [], 'EasyAdminBundle')); 
         
     }
     
