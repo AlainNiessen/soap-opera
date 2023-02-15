@@ -34,41 +34,95 @@ class PaiementController extends AbstractController
      * @Route("/paiement/{total}", name="paiement", methods="post|get")
      */
     // injection de la clé secret de STRIPE défini dans services.yaml et .env
-    public function paiement($total, $stripeSK, TranslatorInterface $translator): Response
+    public function paiement($total, $stripeSK, TranslatorInterface $translator, SessionInterface $session, EntityManagerInterface $entityManager): Response
     {
-        // remplacement des "," par des "." (pour le float)
-        $total = str_replace(',', '.', $total);        
-        // changement du montant en float et total en centimes
-        $total = floatval($total) * 100;
-        // changement du float vers int
-        $total = intval($total);    
-        
-        // définition de la clé de l'API
-        // => clé secret passé par la platform Stripe
-        Stripe::setApiKey($stripeSK);
+        // récupération du panier pour contrôle quantité
+        $panier = $session -> get('panier', []);
+        $nombreArticles = $session -> get('nombreArticles', 0);
+        $poidsTotal = $session -> get('poidsTotal', 0);
+        // initiation variable pour contrôle
+        $checkPaiement = 0;
+        foreach($panier as $article ): 
+            $articleID = key($article);
+            $quantite = reset($article);
+            if ($articleID && $quantite):         
+                // récupération de l'article via son ID via ArticleRepository
+                $repositoryArticle = $entityManager -> getRepository(Article::class);
+                $article = $repositoryArticle -> findOneBy(['id' => $articleID]);
+                $stockArticle = $article -> getStock();
+                $poidsArticle = $article -> getPoids();
+                
+                //contrôle stock avant paiement
+                if($stockArticle >= $quantite):
+                    $checkPaiement++;
+                elseif($stockArticle < $quantite && $stockArticle > 0):
+                    // actualisation quantité 
+                    $panier[$articleID][$articleID] = $stockArticle;
+                    $panier[$articleID]["stockStart"] = $stockArticle;
+                    $session -> set('panier', $panier); 
+                    // actualisation poids
+                    $poidsTotal -= $poidsArticle * $quantite;
+                    $poidsTotal += $poidsArticle * $stockArticle;
+                    $session -> set('poidsTotal', $poidsTotal); 
+                    // actualisation nombre total des articles dans le panier
+                    $nombreArticles -= $quantite;
+                    $nombreArticles +=$stockArticle;
+                    $session -> set('nombreArticles', $nombreArticles);
+                elseif($stockArticle == 0):
+                    // supprimer de l'article car stock est 0
+                    unset($panier[$articleID]);
+                    $session -> set('panier', $panier);
+                    // actualisation poids
+                    $poidsTotal -= $poidsArticle * $quantite;
+                    $session -> set('poidsTotal', $poidsTotal);
+                    // actualisation nombre total des articles dans le panier
+                    $nombreArticles -= $quantite;
+                    $session -> set('nombreArticles', $nombreArticles);                    
+                endif;
+            endif;
+        endforeach;  
+               
+        if($checkPaiement == count($panier)):
+            // remplacement des "," par des "." (pour le float)
+            $total = str_replace(',', '.', $total);        
+            // changement du montant en float et total en centimes
+            $total = floatval($total) * 100;
+            // changement du float vers int
+            $total = intval($total);    
+            
+            // définition de la clé de l'API
+            // => clé secret passé par la platform Stripe
+            Stripe::setApiKey($stripeSK);
 
-        // nom pour la commande
-        $nom = $translator -> trans('Deine Bestellung');
+            // nom pour la commande
+            $nom = $translator -> trans('Deine Bestellung');
 
-        //transfer des données de la transaction à Stripe
-        $session = Session::create([
-            'line_items' => [[
-              'price_data' => [
-                'currency' => 'eur', // Dans quelle devise le paiement doit-il être effectué ?
-                'product_data' => [
-                  'name' => $nom, // Nom pour les données du produit => dans mon cas => juste "Ta commande"
+            //transfer des données de la transaction à Stripe
+            $session = Session::create([
+                'line_items' => [[
+                'price_data' => [
+                    'currency' => 'eur', // Dans quelle devise le paiement doit-il être effectué ?
+                    'product_data' => [
+                    'name' => $nom, // Nom pour les données du produit => dans mon cas => juste "Ta commande"
+                    ],
+                    'unit_amount' => $total, // Montant total transféré par l'URL, transformé d'abord en float * 100, aprés en integer (exemple: "20,50" => 2050)
                 ],
-                'unit_amount' => $total, // Montant total transféré par l'URL, transformé d'abord en float * 100, aprés en integer (exemple: "20,50" => 2050)
-              ],
-              'quantity' => 1,
-            ]],
-            'mode' => 'payment',
-            'success_url' => $this -> generateUrl('succes', [], UrlGeneratorInterface::ABSOLUTE_URL), // redirection de Stripe en cas de succés (URL complét (ABSOLUTE) car redirection viens de Stripe)
-            'cancel_url' => $this -> generateUrl('cancel', [], UrlGeneratorInterface::ABSOLUTE_URL), // redirection de Stripe en cas de échec (URL complét (ABSOLUTE) car redirection viens de Stripe)
-          ]);
-        
-          // redirect vers l'interface de Stripe avec code 303 pour redirect
-          return $this -> redirect($session -> url, 303);
+                'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => $this -> generateUrl('succes', [], UrlGeneratorInterface::ABSOLUTE_URL), // redirection de Stripe en cas de succés (URL complét (ABSOLUTE) car redirection viens de Stripe)
+                'cancel_url' => $this -> generateUrl('cancel', [], UrlGeneratorInterface::ABSOLUTE_URL), // redirection de Stripe en cas de échec (URL complét (ABSOLUTE) car redirection viens de Stripe)
+            ]);
+            
+            // redirect vers l'interface de Stripe avec code 303 pour redirect
+            return $this -> redirect($session -> url, 303);        
+        else:
+            // ajout d'un message de réussite
+            $message = $translator -> trans('Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!');
+            $this -> addFlash('notice', $message);
+
+            return $this->redirectToRoute('panier');
+        endif;
     }
 
     //----------------------------------------------

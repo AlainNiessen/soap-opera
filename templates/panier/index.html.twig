@@ -6,6 +6,12 @@
 {# rendering fragment recherche #}
 {{ render(path('recherche')) }}
 
+{% for message in app.flashes('notice') %}
+        <div class="alert alert-warning message">
+            {{ message }}
+        </div>
+{% endfor %}
+
 <section class="m-panier">
     <div class="wrapper">
         <h2>{% trans %}Dein Warenkorb{% endtrans %}</h2>

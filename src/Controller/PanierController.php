@@ -90,39 +90,17 @@ class PanierController extends AbstractController
             // on regarde si l'article avec son ID existe dans le panier
             // si il existe déjà, on incrémente en respectant le stock de l'article
             if(!empty($panier[$id][$id])):
-
                 // quand le stock varie (actualisation par admin) => actualisation du nouveau stock
                 $stockActuel = $article -> getStock();
-                if($stockActuel != $panier[$id]['stockStart']):
-                    $panier[$id]['stockStart'] = $stockActuel + $panier[$id][$id];
-                endif;
+                $panier[$id]['stockStart'] = $stockActuel;                
 
                 if($panier[$id][$id] < $panier[$id]['stockStart']):                   
                     $panier[$id][$id]++;                    
-                    // actualisation du poids total
+                    // actualisation du poids total et du nombre total des articles dans le panier
                     $poidsTotal += $poids;
-                    // actualisation du stock dans la base de données                   
-                    $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
-                    // insertion dans la base de données
-                    $entityManager -> persist($article);
-                    $entityManager -> flush();
-                    // actualisation nombre articles
                     $nombreArticles++;                    
-                elseif($panier[$id][$id] == $panier[$id]['stockStart']):
-                    if($article -> getStock() > 0):                        
-                        $panier[$id][$id]++;
-                        // actualisation du poids total
-                        $poidsTotal += $poids;
-                        // actualisation du stock dans la base de données                     
-                        $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
-                        // insertion dans la base de données
-                        $entityManager -> persist($article);
-                        $entityManager -> flush();
-                        // actualisation nombre articles
-                        $nombreArticles++;
-                    endif;
                 else:
-                    $panier[$id][$id] = $session -> get('stockStart');                    
+                    $panier[$id][$id] = $panier[$id]['stockStart'];                    
                 endif;
             // si il n'existe pas, on le crée
             else:
@@ -131,15 +109,10 @@ class PanierController extends AbstractController
                 // attribution des valeurs               
                 $panier[$id][$id] = 1;
                 $panier[$id]['stockStart'] = $stockStart;
-                // actualisation du poids total et du stock
+                // actualisation du poids total et du nombre total des articles dans le panier 
                 $poidsTotal += $poids;                
-                $article -> setStock($stockStart - 1);
-                // insertion dans la base de données
-                $entityManager -> persist($article);
-                $entityManager -> flush();
-                // actualisation nombre articles
                 $nombreArticles++;
-            endif;
+            endif;          
             
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
@@ -228,19 +201,13 @@ class PanierController extends AbstractController
                 //vérification supplémentaire si le nombre est plus grand que 1
                 if($panier[$id][$id] > 1):
                     $panier[$id][$id]--;
-                    // actualisation du poids total
+                    // actualisation du poids total et du nombre total des articles dans le panier
                     $poidsTotal -= $poids;
-                    // actualisation du stock dans la base de données
-                    $article -> setStock($panier[$id]['stockStart'] - $panier[$id][$id]);
-                    // insertion dans la base de données
-                    $entityManager -> persist($article);
-                    $entityManager -> flush();
-                    // actualisation nombre articles
                     $nombreArticles--;
                 else:
                     $panier[$id][$id] = 1;
                 endif;
-            endif;             
+            endif;            
 
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
@@ -317,17 +284,11 @@ class PanierController extends AbstractController
             // on regarde si l'article avec son ID existe dans le panier
             // si le panier n'est pas vide => on le supprime
             if(!empty($panier[$id][$id])):
-                // actualisation du poids total et nombre total
+                // actualisation du poids total et du nombre total des articles dans le panier
                 $poidsTotal -= $panier[$id][$id] * $poids;
                 $nombreArticles -= $panier[$id][$id];
-                unset($panier[$id][$id]);                
-                // actualisation du stock dans la base de données                
-                $article -> setStock($panier[$id]['stockStart']);
-                unset($panier[$id]['stockStart']);
-                // insertion dans la base de données
-                $entityManager -> persist($article);
-                $entityManager -> flush();                
-            endif;             
+                unset($panier[$id]);                           
+            endif;              
 
             // on sauvgarde dans la Session
             $session -> set('panier', $panier);
