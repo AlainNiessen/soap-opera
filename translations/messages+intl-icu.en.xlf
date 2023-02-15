@@ -1742,6 +1742,10 @@
         <source>Dieser Artikel ist momentan nicht vorrätig!</source>
         <target>This article is currently out of stock!</target>
       </trans-unit>
+      <trans-unit id="nZYNYuZ" resname="Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!">
+        <source>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</source>
+        <target>Your shopping cart has been adjusted to the current stock!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

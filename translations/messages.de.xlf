@@ -1755,6 +1755,10 @@
         <source>Dieser Artikel ist momentan nicht vorrätig!</source>
         <target>Dieser Artikel ist momentan nicht vorrätig!</target>
       </trans-unit>
+      <trans-unit id="nZYNYuZ" resname="Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!">
+        <source>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</source>
+        <target>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
