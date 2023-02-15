@@ -42,6 +42,7 @@ class PaiementController extends AbstractController
         $poidsTotal = $session -> get('poidsTotal', 0);
         // initiation variable pour contrôle
         $checkPaiement = 0;
+        
         foreach($panier as $article ): 
             $articleID = key($article);
             $quantite = reset($article);
@@ -52,8 +53,9 @@ class PaiementController extends AbstractController
                 $stockArticle = $article -> getStock();
                 $poidsArticle = $article -> getPoids();
                 
+                
                 //contrôle stock avant paiement
-                if($stockArticle >= $quantite):
+                if($stockArticle >= $quantite && $stockArticle > 0):
                     $checkPaiement++;
                 elseif($stockArticle < $quantite && $stockArticle > 0):
                     // actualisation quantité 
@@ -69,6 +71,7 @@ class PaiementController extends AbstractController
                     $nombreArticles +=$stockArticle;
                     $session -> set('nombreArticles', $nombreArticles);
                 elseif($stockArticle == 0):
+                    $checkPaiement--;
                     // supprimer de l'article car stock est 0
                     unset($panier[$articleID]);
                     $session -> set('panier', $panier);
@@ -80,9 +83,9 @@ class PaiementController extends AbstractController
                     $session -> set('nombreArticles', $nombreArticles);                    
                 endif;
             endif;
-        endforeach;  
-               
-        if($checkPaiement == count($panier)):
+        endforeach;         
+              
+        if($checkPaiement == count($panier) && !empty($panier)):
             // remplacement des "," par des "." (pour le float)
             $total = str_replace(',', '.', $total);        
             // changement du montant en float et total en centimes
