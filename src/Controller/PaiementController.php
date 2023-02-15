@@ -169,6 +169,11 @@ class PaiementController extends AbstractController
                 $nombreVentes += $quantite;
                 $article -> setNombreVentes($nombreVentes);
 
+                //actualisation de la quantité du stock réel de l'article
+                $ancienStock = $article -> getStock();
+                $newStock = $ancienStock - $quantite;
+                $article -> setStock($newStock);
+
                 // insertion dans la base de données
                 $entityManager -> persist($article);
                 $entityManager -> flush();
