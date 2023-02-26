@@ -79,11 +79,11 @@
       </trans-unit>
       <trans-unit id="3ppnmMI" resname="Dieser Artikel enhält:">
         <source>Dieser Artikel enhält:</source>
-        <target>This article contains:</target>
+        <target>This item contains:</target>
       </trans-unit>
       <trans-unit id="tbRwWCF" resname="Liste Artikel">
         <source>Liste Artikel</source>
-        <target>List articles</target>
+        <target>List items</target>
       </trans-unit>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
@@ -315,7 +315,7 @@
       </trans-unit>
       <trans-unit id="CmJikwt" resname="Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!">
         <source>Teile uns deine Meinung zu diesem Artikel mit! Der Kommentar wird nach Überprüfung freigeschaltet!</source>
-        <target>Let us know what you think about this article! The comment will be published after verification!</target>
+        <target>Let us know what you think about this item! The comment will be published after verification!</target>
       </trans-unit>
       <trans-unit id="IuHFUTo" resname="Absenden">
         <source>Absenden</source>
@@ -367,7 +367,7 @@
       </trans-unit>
       <trans-unit id="RggHyqN" resname="Für diesen Artikel hast du schon eine Bewertung abgegeben.">
         <source>Für diesen Artikel hast du schon eine Bewertung abgegeben.</source>
-        <target>You have already submitted a rating for this article.</target>
+        <target>You have already submitted a rating for this item.</target>
       </trans-unit>
       <trans-unit id="zc0DaCo" resname="Anzahl Bewertungen:">
         <source>Anzahl Bewertungen:</source>
@@ -383,31 +383,31 @@
       </trans-unit>
       <trans-unit id="nN1RV7Z" resname="Möchtest du diesen Artikel als Favorit hinzufügen?">
         <source>Möchtest du diesen Artikel als Favorit hinzufügen?</source>
-        <target>Would you like to add this article to your favorites?</target>
+        <target>Would you like to add this item to your favorites?</target>
       </trans-unit>
       <trans-unit id="5ayjJUN" resname="Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!">
         <source>Du hast diesen Artikel erfolgreich als Favorit hinzugefügt!</source>
-        <target>You have successfully added this article to your favorites!</target>
+        <target>You have successfully added this item to your favorites!</target>
       </trans-unit>
       <trans-unit id="AatD6Z8" resname="Diesen Artikel hast du schon als Favorit gewählt">
         <source>Diesen Artikel hast du schon als Favorit gewählt</source>
-        <target>You have already selected this article as a favorite</target>
+        <target>You have already selected this item as a favorite</target>
       </trans-unit>
       <trans-unit id="xv2yKoT" resname="Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt">
         <source>Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt</source>
-        <target>The article has been successfully added to your shopping cart</target>
+        <target>The item has been successfully added to your shopping cart</target>
       </trans-unit>
       <trans-unit id="Euf_F4d" resname="Ein Artikel mit dieser ID existiert nicht">
         <source>Ein Artikel mit dieser ID existiert nicht</source>
-        <target>An article with this ID does not exist</target>
+        <target>An item with this ID does not exist</target>
       </trans-unit>
       <trans-unit id="_dVCacV" resname="Der Artikel wurde erfolgreich deinem Warenkorb abgezogen">
         <source>Der Artikel wurde erfolgreich deinem Warenkorb abgezogen</source>
-        <target>The article has been successfully removed from your shopping cart</target>
+        <target>The item has been successfully removed from your shopping cart</target>
       </trans-unit>
       <trans-unit id="DCdwNKy" resname="Möchtest du diesen Artikel dem Warenkorb hinzufügen?">
         <source>Möchtest du diesen Artikel dem Warenkorb hinzufügen?</source>
-        <target>Do you want to add this article to the shopping cart?</target>
+        <target>Do you want to add this item to the shopping cart?</target>
       </trans-unit>
       <trans-unit id="MDGDtxh" resname="deutsch">
         <source>deutsch</source>
@@ -427,7 +427,7 @@
       </trans-unit>
       <trans-unit id="RDX8wud" resname="Artikel">
         <source>Artikel</source>
-        <target>Article</target>
+        <target>Item</target>
       </trans-unit>
       <trans-unit id="jTLIzFN" resname="Preis (ohne MwSt)">
         <source>Preis (ohne MwSt)</source>
@@ -455,15 +455,15 @@
       </trans-unit>
       <trans-unit id="yWjFeZ9" resname="Artikel abziehen">
         <source>Artikel abziehen</source>
-        <target>subtract article</target>
+        <target>subtract item</target>
       </trans-unit>
       <trans-unit id="YichaCp" resname="Artikel hinzufügen">
         <source>Artikel hinzufügen</source>
-        <target>add article</target>
+        <target>add item</target>
       </trans-unit>
       <trans-unit id="raoVKN1" resname="Artikel komplett löschen">
         <source>Artikel komplett löschen</source>
-        <target>Delete article completely</target>
+        <target>Delete item completely</target>
       </trans-unit>
       <trans-unit id="1acypNc" resname="Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?">
         <source>Willst du diesen Artikel wirklich aus deinem Warenkorb entfernen?</source>
@@ -471,7 +471,7 @@
       </trans-unit>
       <trans-unit id="UpXDFg." resname="Keine Artikel im Warenkorb">
         <source>Keine Artikel im Warenkorb</source>
-        <target>No articles in the shopping cart</target>
+        <target>No items in the shopping cart</target>
       </trans-unit>
       <trans-unit id="PLQNfKn" resname="Deine Bestellung">
         <source>Deine Bestellung</source>
@@ -699,23 +699,23 @@
       </trans-unit>
       <trans-unit id="aQ2INKK" resname="Deine gekauften Artikel">
         <source>Deine gekauften Artikel</source>
-        <target>Your purchased articles</target>
+        <target>Your purchased items</target>
       </trans-unit>
       <trans-unit id="FG5_xsc" resname="Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.">
         <source>Hier kannst du deine bisher gekauften Artikel einsehen und sie direkt wieder dem Warenkorb hinzufügen.</source>
-        <target>Here you can view your previously purchased articles and add them directly to the shopping cart.</target>
+        <target>Here you can view your previously purchased items and add them directly to the shopping cart.</target>
       </trans-unit>
       <trans-unit id="_LwMb_z" resname="Du hast im Moment noch keine Artikel gekauft">
         <source>Du hast im Moment noch keine Artikel gekauft</source>
-        <target>You have not purchased any articles at the moment</target>
+        <target>You have not purchased any items at the moment</target>
       </trans-unit>
       <trans-unit id="rVgxxf6" resname="Deine kommentierten Artikel">
         <source>Deine kommentierten Artikel</source>
-        <target>Your commented articles</target>
+        <target>Your commented items</target>
       </trans-unit>
       <trans-unit id="Eqmac5c" resname="Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.">
         <source>Hier kannst du deine bisher kommentierten Artikel einsehen, sie anpassen oder sie löschen.</source>
-        <target>Here you can view your previously commented articles, edit them or delete them.</target>
+        <target>Here you can view your previously commented items, edit them or delete them.</target>
       </trans-unit>
       <trans-unit id="coQifWg" resname="Kommentar">
         <source>Kommentar</source>
@@ -743,11 +743,11 @@
       </trans-unit>
       <trans-unit id="n0KVAda" resname="Deine bewerteten Artikel">
         <source>Deine bewerteten Artikel</source>
-        <target>Your rated articles</target>
+        <target>Your rated items</target>
       </trans-unit>
       <trans-unit id="U9dXkd1" resname="Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.">
         <source>Hier kannst du deine bisher bewerteten Artikel einsehen, sie anpassen oder sie löschen.</source>
-        <target>Here you can view your previously rated articles, edit them or delete them.</target>
+        <target>Here you can view your previously rated items, edit them or delete them.</target>
       </trans-unit>
       <trans-unit id="XJjOklj" resname="Bewertung">
         <source>Bewertung</source>
@@ -959,7 +959,7 @@
       </trans-unit>
       <trans-unit id="utxoUrV" resname="Artikel in einem Warenkorb">
         <source>Artikel in einem Warenkorb</source>
-        <target>Articles in a shopping cart</target>
+        <target>Items in a shopping cart</target>
       </trans-unit>
       <trans-unit id="vH9RxXd" resname="Log-In-Informationen">
         <source>Log-In-Informationen</source>
@@ -1280,19 +1280,19 @@
       </trans-unit>
       <trans-unit id="EME1r.k" resname="Artikelbeschreibung">
         <source>Artikelbeschreibung</source>
-        <target>Article description</target>
+        <target>Item description</target>
       </trans-unit>
       <trans-unit id="eZ6ezc9" resname="Es wurden keine Artikel unter diesen Kriterien gefunden.">
         <source>Es wurden keine Artikel unter diesen Kriterien gefunden.</source>
-        <target>No articles were found under these criteria.</target>
+        <target>No items were found under these criteria.</target>
       </trans-unit>
       <trans-unit id="mTuH6fg" resname="Unter dieser Kategorie gibt es zur Zeit keine Artikel.">
         <source>Unter dieser Kategorie gibt es zur Zeit keine Artikel.</source>
-        <target>There are currently no articles in this category.</target>
+        <target>There are currently no items in this category.</target>
       </trans-unit>
       <trans-unit id="zX2e.YM" resname="Zur Zeit gibt es keine Artikel in Sonderangebot.">
         <source>Zur Zeit gibt es keine Artikel in Sonderangebot.</source>
-        <target>There are currently no articles on sale.</target>
+        <target>There are currently no items on sale.</target>
       </trans-unit>
       <trans-unit id="4Gccwtf" resname="Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!">
         <source>Schade, dass du uns verlässt, aber dein Konto wurde erfolgreich gelöscht. Falls du in Zukunft nochmal unsere Dienste in Anspruch nehmen möchtest, musst du dich wieder einschreiben!</source>
@@ -1745,6 +1745,10 @@
       <trans-unit id="nZYNYuZ" resname="Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!">
         <source>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</source>
         <target>Your shopping cart has been adjusted to the current stock!</target>
+      </trans-unit>
+      <trans-unit id="1w1qrSw" resname="Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!">
+        <source>Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!</source>
+        <target>The last item in stock has been successfully added. This article can no longer be added to the shopping cart for the time being.</target>
       </trans-unit>
     </body>
   </file>

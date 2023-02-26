@@ -1759,6 +1759,10 @@
         <source>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</source>
         <target>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</target>
       </trans-unit>
+      <trans-unit id="1w1qrSw" resname="Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!">
+        <source>Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!</source>
+        <target>Der letzte Artikel aus dem Lagerbestand wurde erfolgreich hinzugefügt. Dieser Artikel kann vorläufig nicht mehr dem Warenkorb hinzugefügt werden.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

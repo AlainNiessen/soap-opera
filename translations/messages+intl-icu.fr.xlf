@@ -1746,6 +1746,10 @@
         <source>Ihr Warenkorb wurde dem aktuellen Lagerbestand angepasst!</source>
         <target>Votre panier a été ajusté au stock actuel!</target>
       </trans-unit>
+      <trans-unit id="1w1qrSw" resname="Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!">
+        <source>Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!</source>
+        <target>Le dernier article en stock a été ajouté avec succès. Cet article ne peut plus être ajouté au panier pour le moment.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

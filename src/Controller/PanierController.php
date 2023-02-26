@@ -141,9 +141,15 @@ class PanierController extends AbstractController
                 ]);
             }       
                     
-            //ajout d'un message de réussite
-            $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt');
-            $this -> addFlash('success', $message); 
+            if($panier[$id][$id] === $article -> getStock()):
+                //ajout d'un message de notice
+                $message = $translator -> trans('Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!');
+                $this -> addFlash('notice', $message); 
+            else:
+                //ajout d'un message de réussite
+                $message = $translator -> trans('Der Artikel wurde erfolgreich deinem Warenkorb hinzugefügt');
+                $this -> addFlash('success', $message); 
+            endif; 
 
             //redirect vers le détail de l'article ou vers le profile d'utilisateur
             if(str_contains($url, 'profile')):
