@@ -1750,6 +1750,10 @@
         <source>Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!</source>
         <target>Le dernier article en stock a été ajouté avec succès. Cet article ne peut plus être ajouté au panier pour le moment.</target>
       </trans-unit>
+      <trans-unit id="gOvAkfz" resname="Zahlungsbestätigung">
+        <source>Zahlungsbestätigung</source>
+        <target>Confirmation de paiment</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

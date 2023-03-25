@@ -336,25 +336,27 @@ class PaiementController extends AbstractController
         // Output et attribution à la facture dans la base de données
         $output = $dompdf->output();
 
+        //sujet à traduire
+        $messageSubject = $translator -> trans('Zahlungsbestätigung');  
+
         // pour les factures le PDF va recevoir un nom unique défini par moi-même
-        $facture -> setDocumentPDF('facture-'.$facture -> getId().'.pdf');
+        $facture -> setDocumentPDF($messageSubject.'-'.$facture -> getId().'.pdf');
         // insertion dans la base de données
         $entityManager -> persist($facture);
         $entityManager -> flush();    
         
         // Définiton direction public
         $publicDirectory = $this->getParameter('kernel.project_dir') . '\public\uploads\facturePDF';
-        $pdfFilePath =  $publicDirectory . '\facture-'.$facture -> getId().'.pdf';        
+        $pdfFilePath =  $publicDirectory.'\\'.$messageSubject.'-'.$facture -> getId().'.pdf';        
         // Enregistrement du PDF sur le chemin souhaité
         file_put_contents($pdfFilePath, $output);
 
-        //sujet à traduire
-        $messageSubject = $translator -> trans('Kaufbestätigung - Rechnung Nr.');
+        
         //e-mail vers utilisateur
         $email = (new TemplatedEmail())
         ->from('alain_niessen@hotmail.com') //de qui
         ->to(new Address($this -> getUser() -> getEmail())) //vers adresse mail du utilisateur
-        ->subject($messageSubject.' '. $facture->getId()) //sujet
+        ->subject($messageSubject) //sujet
         ->attachFromPath($pdfFilePath)
         ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
         ->context([
@@ -373,7 +375,7 @@ class PaiementController extends AbstractController
         $email2 = (new TemplatedEmail())
         ->from('alain_niessen@hotmail.com') //de qui
         ->to('julialeohoelscher@hotmail.com') //vers adresse mail du utilisateur
-        ->subject($messageSubject.' '. $facture->getId()) //sujet
+        ->subject($messageSubject) //sujet
         ->attachFromPath($pdfFilePath)
         ->htmlTemplate('emails/confirmationAchat.html.twig') //création template email confirmationAchat
         ->context([

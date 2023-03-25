@@ -1763,6 +1763,10 @@
         <source>Der letzte Artikel aus dem Warenbestand wurde erfolgreich hinzugefügt. Weitere Artikel können nicht hinzugefügt werden.!</source>
         <target>Der letzte Artikel aus dem Lagerbestand wurde erfolgreich hinzugefügt. Dieser Artikel kann vorläufig nicht mehr dem Warenkorb hinzugefügt werden.</target>
       </trans-unit>
+      <trans-unit id="gOvAkfz" resname="Zahlungsbestätigung">
+        <source>Zahlungsbestätigung</source>
+        <target>Zahlungsbestätigung</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
