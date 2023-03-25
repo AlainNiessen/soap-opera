@@ -31,20 +31,20 @@ class LivraisonController extends AbstractController
         // préparation des textes correspondant à la langue
         if($langueUtilisateur === 'de'):
             $salutation = "Hallo ";
-            $sujet = "Lieferbestätigung - Rechnung Nr";
-            $confirmation = "Die Artikel bezüglich der Rechnung Nr. ".$facture -> getId()." wurden soeben an deine Lieferadresse verschickt";
+            $sujet = "Lieferbestätigung";
+            $confirmation = "Die von dir kürzlich erworbenen Artikel wurden soeben an deine Lieferadresse verschickt";
             $salutationsDist = "Mit freundlichen Grüssen";
             $noms = "Sarah und Julia";
         elseif ($langueUtilisateur === "en"):
             $salutation = "Hello ";
-            $sujet = "Delivery confirmation - invoice no.";
-            $confirmation = "The articles related to invoice no. ".$facture -> getId()." have just been shipped to your shipping address";
+            $sujet = "Delivery confirmation";
+            $confirmation = "The items you recently purchased have just been shipped to your delivery address";
             $salutationsDist = "Kind regards";
             $noms = "Sarah and Julia";
         elseif ($langueUtilisateur === "fr"):
             $salutation = "Salut ";
-            $sujet = "Confirmation livraison - facture nr";
-            $confirmation = "Les éléments liés à la facture nr. ".$facture -> getId()." viennent d'être expédiés à votre adresse de livraison";
+            $sujet = "Confirmation livraison";
+            $confirmation = "Les articles que vous avez récemment achetés viennent d'être expédiés à votre adresse de livraison";
             $salutationsDist = "Salutations distinguées";
             $noms = "Sarah et Julia";
         endif;

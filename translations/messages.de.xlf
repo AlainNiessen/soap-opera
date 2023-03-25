@@ -1765,6 +1765,10 @@
       </trans-unit>
       <trans-unit id="gOvAkfz" resname="Zahlungsbestätigung">
         <source>Zahlungsbestätigung</source>
+        <target>Zahlungsbestatigung</target>
+      </trans-unit>
+      <trans-unit id="vwU9_UY" resname="ZahlungsbestätigungRechnung">
+        <source>ZahlungsbestätigungRechnung</source>
         <target>Zahlungsbestätigung</target>
       </trans-unit>
     </body>

@@ -1752,6 +1752,10 @@
       </trans-unit>
       <trans-unit id="gOvAkfz" resname="Zahlungsbestätigung">
         <source>Zahlungsbestätigung</source>
+        <target>ConfirmationDePaiment</target>
+      </trans-unit>
+      <trans-unit id="vwU9_UY" resname="ZahlungsbestätigungRechnung">
+        <source>ZahlungsbestätigungRechnung</source>
         <target>Confirmation de paiment</target>
       </trans-unit>
     </body>
