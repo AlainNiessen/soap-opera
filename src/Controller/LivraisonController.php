@@ -53,7 +53,7 @@ class LivraisonController extends AbstractController
         $email = (new TemplatedEmail())
         ->from('alain_niessen@hotmail.com') //de qui
         ->to(new Address($utilisateur -> getEmail())) //vers adresse mail du utilisateur
-        ->subject($sujet.' '.$facture -> getId()) //sujet                        
+        ->subject($sujet) //sujet                        
         ->htmlTemplate('emails/confirmationLivraison.html.twig') //création template email confirmationLivraison
         ->context([
             //passage des informations au template twig 
