@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -106,6 +107,10 @@ class InscriptionUtilisateurType extends AbstractType
         ])
         ->add('adresseDeliver', AdresseType::class, [
             'label' => new TranslatableMessage('formInscription.adresseLivraison', [], 'Form'),
+        ])
+        ->add('ramassage', CheckboxType::class, [
+            'label'    => new TranslatableMessage('formInscription.rammassage', [], 'Form'),
+            'required' => false,
         ])
         ->add('newsletterCategories', EntityType::class, [
             'class' => NewsletterCategorie::class,

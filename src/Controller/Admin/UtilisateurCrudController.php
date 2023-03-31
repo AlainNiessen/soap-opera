@@ -35,6 +35,7 @@ class UtilisateurCrudController extends AbstractCrudController
         yield BooleanField::new('inscriptionValide', new TranslatableMessage('option.utilisateur_inscriptionValide', [], 'EasyAdminBundle'));
         yield AssociationField::new('langue', new TranslatableMessage('option.utilisateur_langue', [], 'EasyAdminBundle'));                      
         yield AssociationField::new('adresseHome', new TranslatableMessage('option.utilisateur_adresseHome', [], 'EasyAdminBundle'));                      
-        yield AssociationField::new('adresseDeliver', new TranslatableMessage('option.utilisateur_adresseDeliver', [], 'EasyAdminBundle'));                      
+        yield AssociationField::new('adresseDeliver', new TranslatableMessage('option.utilisateur_adresseDeliver', [], 'EasyAdminBundle'));
+        yield BooleanField::new('ramassage', new TranslatableMessage('option.utilisateur_ramassage', [], 'EasyAdminBundle'));                      
     }    
 }

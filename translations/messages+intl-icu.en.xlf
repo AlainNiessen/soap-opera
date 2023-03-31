@@ -1758,6 +1758,22 @@
         <source>ZahlungsbestätigungRechnung</source>
         <target>Payment Confirmation</target>
       </trans-unit>
+      <trans-unit id="BfvWwz0" resname="Möchtest du den Abholservice aktivieren?">
+        <source>Möchtest du den Abholservice aktivieren?</source>
+        <target>Would you like to activate the pick-up service?</target>
+      </trans-unit>
+      <trans-unit id="z8kIOI6" resname="Abholservice">
+        <source>Abholservice</source>
+        <target>Pick-up service</target>
+      </trans-unit>
+      <trans-unit id="rLJ7u_X" resname="aktiviert">
+        <source>aktiviert</source>
+        <target>activated</target>
+      </trans-unit>
+      <trans-unit id="Nri9xa3" resname="nicht aktiviert">
+        <source>nicht aktiviert</source>
+        <target>not activated</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

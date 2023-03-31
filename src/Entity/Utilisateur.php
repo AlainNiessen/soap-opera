@@ -152,6 +152,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $numeroTVA;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ramassage = false;
+
     // AFFICHAGE DANS INTERFACE ADMIN
     public function __toString(): string
     {
@@ -535,6 +540,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNumeroTVA(?string $numeroTVA): self
     {
         $this->numeroTVA = $numeroTVA;
+
+        return $this;
+    }
+
+    public function getRamassage(): ?bool
+    {
+        return $this->ramassage;
+    }
+
+    public function setRamassage(?bool $ramassage): self
+    {
+        $this->ramassage = $ramassage;
 
         return $this;
     }

@@ -1758,6 +1758,22 @@
         <source>ZahlungsbestätigungRechnung</source>
         <target>Confirmation de paiment</target>
       </trans-unit>
+      <trans-unit id="BfvWwz0" resname="Möchtest du den Abholservice aktivieren?">
+        <source>Möchtest du den Abholservice aktivieren?</source>
+        <target>Souhaitez-vous activer le service de ramassage?</target>
+      </trans-unit>
+      <trans-unit id="z8kIOI6" resname="Abholservice">
+        <source>Abholservice</source>
+        <target>Service de ramassage</target>
+      </trans-unit>
+      <trans-unit id="rLJ7u_X" resname="aktiviert">
+        <source>aktiviert</source>
+        <target>activé</target>
+      </trans-unit>
+      <trans-unit id="Nri9xa3" resname="nicht aktiviert">
+        <source>nicht aktiviert</source>
+        <target>non activé</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

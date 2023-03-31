@@ -1045,6 +1045,10 @@
         <source>option.livraison_niveau</source>
         <target>Weight level</target>
       </trans-unit>
+      <trans-unit id="vVISglP" resname="option.utilisateur_ramassage">
+        <source>option.utilisateur_ramassage</source>
+        <target>Pick-up service</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

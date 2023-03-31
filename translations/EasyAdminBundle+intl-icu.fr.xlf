@@ -1025,6 +1025,10 @@
         <source>option.livraison_niveau</source>
         <target>Niveau de poids</target>
       </trans-unit>
+      <trans-unit id="vVISglP" resname="option.utilisateur_ramassage">
+        <source>option.utilisateur_ramassage</source>
+        <target>Service de ramassage</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

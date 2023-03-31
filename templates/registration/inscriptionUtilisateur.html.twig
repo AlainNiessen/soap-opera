@@ -65,6 +65,10 @@
             {{ form_row(formInscription.adresseDeliver.pays) }}
         </div>
         <div class="form-container">
+            <h3>{% trans %}Möchtest du den Abholservice aktivieren?{% endtrans %}</h3>
+            {{ form_row(formInscription.ramassage) }}
+        </div>
+        <div class="form-container">
             <h3>{% trans %}Möchtest du einen Newsletter abonnieren?{% endtrans %}</h3>
             <p>{% trans %}Du kannst eine oder mehrere Kategorien anwählen.{% endtrans %}</p>
             {{ form_row(formInscription.newsletterCategories) }}

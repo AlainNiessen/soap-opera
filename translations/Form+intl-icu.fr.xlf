@@ -97,6 +97,10 @@
         <source>formInscription.numeroTVA</source>
         <target>Numéro de TVA</target>
       </trans-unit>
+      <trans-unit id="deaRBC6" resname="formInscription.rammassage">
+        <source>formInscription.rammassage</source>
+        <target>Ici, vous pouvez activer le service de ramassage. Cela signifie qu'il n'y a pas de frais de livraison et que vous pouvez récupérer la marchandise à l'adresse suivante : adresse. Vous pouvez personnaliser cette option plus tard dans votre propre espace.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

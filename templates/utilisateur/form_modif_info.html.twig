@@ -33,7 +33,10 @@
             {{ form_row(formUtilisateurInfo.email) }}
             {{ form_row(formUtilisateurInfo.dateNaissance) }}
         </div>
-        
+        <div class="form-container">
+            <h3>{% trans %}Möchtest du den Abholservice aktivieren?{% endtrans %}</h3>
+            {{ form_row(formUtilisateurInfo.ramassage) }}
+        </div>
         <div class="form-container">
             <h3>{% trans %}Möchten Sie einen Newsletter abonnieren?{% endtrans %}</h3>
             <p>{% trans %}Du kannst eine oder mehrere Kategorien anwählen.{% endtrans %}</p>

@@ -76,7 +76,15 @@
                             {% else %}
                                 <p>{% trans %}Du hast keine Newsletter-Kategorie ausgewählt.{% endtrans %}</p>
                             {% endif %}
-                        </div>                                
+                        </div> 
+                        <div class="utilisateur-info-box">
+                            <h3>{% trans %}Abholservice{% endtrans %}</h3>
+                            {% if utilisateur.ramassage == true %}                                 
+                                <p>{% trans %}aktiviert{% endtrans %}</p>                                 
+                            {% else %}
+                                <p>{% trans %}nicht aktiviert{% endtrans %}</p>
+                            {% endif %}
+                        </div>                                 
                     </div>                                   
                     <div class="utilisateur-adresses">
                         <h2>{% trans %}Deine Adressen{% endtrans %}</h2>

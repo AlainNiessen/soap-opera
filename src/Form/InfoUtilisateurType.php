@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
 class InfoUtilisateurType extends AbstractType
@@ -82,6 +83,10 @@ class InfoUtilisateurType extends AbstractType
                 'class'=>'form-control',
             ]
         ])
+        ->add('ramassage', CheckboxType::class, [
+            'label'    => new TranslatableMessage('formInscription.rammassage', [], 'Form'),
+            'required' => false,
+        ]) 
         
         ->add('newsletterCategories', EntityType::class, [
             'class' => NewsletterCategorie::class,
