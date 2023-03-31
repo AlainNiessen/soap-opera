@@ -423,23 +423,29 @@ class PanierController extends AbstractController
         
         // frais de livraison
         $fraisLivraison = ($liv -> getMontantHorsTva()) / 100;
-        
-        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
-        if($prixTotal < 100):
-            // Calculs
-            $fraisLivraison = round($fraisLivraison, 2);
-            // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $montantTvaLivraison = 0;
-            else:
-                $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
-            endif;
-            
-            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
-        else:
+        // condition si l'utilisateur a activé le service de ramassage
+        if($this->getUser()->getRamassage() == true):
             $fraisLivraison = 0;
             $montantTvaLivraison = 0;
-            $montantTotalLivraison = 0;            
+            $montantTotalLivraison = 0;
+        else:
+            // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
+            if($prixTotal < 100):
+                // Calculs
+                $fraisLivraison = round($fraisLivraison, 2);
+                // condition si utilisateur est une entreprise allemande avec numéro TVA
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $montantTvaLivraison = 0;
+                else:
+                    $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+                endif;
+                
+                $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+            else:
+                $fraisLivraison = 0;
+                $montantTvaLivraison = 0;
+                $montantTotalLivraison = 0;            
+            endif;
         endif;
 
         $prixTotal += $montantTotalLivraison;

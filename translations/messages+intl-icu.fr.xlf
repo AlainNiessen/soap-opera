@@ -1774,6 +1774,10 @@
         <source>nicht aktiviert</source>
         <target>non activé</target>
       </trans-unit>
+      <trans-unit id="q2MRL1r" resname="Der Abholservice ist aktiviert">
+        <source>Der Abholservice ist aktiviert</source>
+        <target>Le service de ramassage est activé</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

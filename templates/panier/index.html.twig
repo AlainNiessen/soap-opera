@@ -63,7 +63,11 @@
                     <tr>
                         <td>
                             {% trans %}Lieferkosten{% endtrans %}
-                            <p class="livraison-info">{% trans %}Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!{% endtrans %}</p>
+                            {% if app.user.ramassage == true %}
+                                <p class="livraison-info">{% trans %}Der Abholservice ist aktiviert{% endtrans %}</p>
+                            {% else %}
+                                <p class="livraison-info">{% trans %}Ab einem Warenwert von 100 Euro entfallen die Lieferkosten!{% endtrans %}</p>
+                            {% endif %}
                         </td>
                         <td class="text-start" id="livraisonBase">{{ fraisLivraison }} €</td>
                         <td class="text-start" id="livraisonTVA">{{ fraisTVALivraison }} €</td>

@@ -263,23 +263,31 @@ class PaiementController extends AbstractController
         // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison 
         $prixTotal = $factMontantTotal / 100; 
             
-        if($prixTotal < 100):
-            // Calculs
-            $fraisLivraison = $livraison -> getMontantHorsTva();
-                   
-            // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $montantTvaLivraison = 0;
-            else:
-                $montantTvaLivraison  = intval(round(round(($fraisLivraison * $livraison -> getTauxTva()), 2)), 0);
-            endif;  
-              
-            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
-        else:
+        // condition si l'utilisateur a activé le service de ramassage
+        if($this->getUser()->getRamassage() == true):
             $fraisLivraison = 0;
             $montantTvaLivraison = 0;
-            $montantTotalLivraison = 0;            
+            $montantTotalLivraison = 0;
+        else:
+            // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
+            if($prixTotal < 100):
+                // Calculs
+                $fraisLivraison = round($fraisLivraison, 2);
+                // condition si utilisateur est une entreprise allemande avec numéro TVA
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $montantTvaLivraison = 0;
+                else:
+                    $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+                endif;
+                
+                $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+            else:
+                $fraisLivraison = 0;
+                $montantTvaLivraison = 0;
+                $montantTotalLivraison = 0;            
+            endif;
         endif;
+
 
         
         // ajout des frais de livraison aux totaux de la facture
@@ -506,23 +514,31 @@ class PaiementController extends AbstractController
         // frais de livraison
         $fraisLivraison = ($liv -> getMontantHorsTva()) / 100;
 
-        // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
-        if($prixTotal < 100):
-            // Calculs
-            $fraisLivraison = round($fraisLivraison, 2);
-            // condition si utilisateur est une entreprise allemande avec numéro TVA
-            if($this -> getUser() -> getAdresseHome() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
-                $montantTvaLivraison = 0;
-            else:
-                $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
-            endif;
-            
-            $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
-        else:
+        // condition si l'utilisateur a activé le service de ramassage
+        if($this->getUser()->getRamassage() == true):
             $fraisLivraison = 0;
             $montantTvaLivraison = 0;
-            $montantTotalLivraison = 0;            
+            $montantTotalLivraison = 0;
+        else:
+            // condition si le prix total est supérieur de 100 Euro, pas de frais de livraison        
+            if($prixTotal < 100):
+                // Calculs
+                $fraisLivraison = round($fraisLivraison, 2);
+                // condition si utilisateur est une entreprise allemande avec numéro TVA
+                if($this -> getUser() -> getAdresseDeliver() -> getPays() === "DE" && $this -> getUser() -> getNumeroTVA()):
+                    $montantTvaLivraison = 0;
+                else:
+                    $montantTvaLivraison = round(($fraisLivraison * $livraison -> getTauxTva()), 2);
+                endif;
+                
+                $montantTotalLivraison = $fraisLivraison + $montantTvaLivraison; 
+            else:
+                $fraisLivraison = 0;
+                $montantTvaLivraison = 0;
+                $montantTotalLivraison = 0;            
+            endif;
         endif;
+
 
         $prixTotal += $montantTotalLivraison;
 

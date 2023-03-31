@@ -1774,6 +1774,10 @@
         <source>nicht aktiviert</source>
         <target>not activated</target>
       </trans-unit>
+      <trans-unit id="q2MRL1r" resname="Der Abholservice ist aktiviert">
+        <source>Der Abholservice ist aktiviert</source>
+        <target>The pick-up service is activated</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
