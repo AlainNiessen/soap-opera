@@ -370,6 +370,7 @@ class PaiementController extends AbstractController
         ->context([
             //passage des informations au template twig (token)
             'nom' => $this -> getUser() -> getPrenom(),
+            'ramassage' => $this -> getUser() -> getRamassage(),
             'infosPanier' => $tabInfos[0],
             'total' => $tabInfos[1],
             'fraisLivraison' => $tabInfos[2],
@@ -389,6 +390,7 @@ class PaiementController extends AbstractController
         ->context([
             //passage des informations au template twig (token)
             'nom' => $this -> getUser() -> getPrenom(),
+            'ramassage' => $this -> getUser() -> getRamassage(),
             'infosPanier' => $tabInfos[0],
             'total' => $tabInfos[1],
             'fraisLivraison' => $tabInfos[2],

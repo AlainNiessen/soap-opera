@@ -50,7 +50,11 @@
         </table>
         <div>
             <p>{% trans %}Der Betrag von {% endtrans %} {{ total }} {% trans %} € wurde beglichen.{% endtrans %}</p>
-            <p>{% trans %}Die Lieferung wird in Kürze erfolgen{% endtrans %}</p>
+            {% if ramassage == true %}
+                <p>{% trans %}Da du den Abholservice aktiviert hast, kannst du die Ware an folgender Adresse abholen kommen: Aachener Straße 67 | B - 4728 Hergenrath.{% endtrans %}</p>
+            {% else %}
+                <p>{% trans %}Die Lieferung wird in Kürze erfolgen{% endtrans %}</p>
+            {% endif %}
         </div>
         <div style="margin-top: 30px;">
             <p>{% trans %}Mit freundlichen Grüssen{% endtrans %}</p>            

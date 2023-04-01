@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="deaRBC6" resname="formInscription.rammassage">
         <source>formInscription.rammassage</source>
-        <target>Hier kannst du den Abholservice aktivieren. Das bedeutet, dass keine Lieferkosten anfallen und du die Ware an folgende Adresse abholen kannst: Adresse. Du kannst diese Option später in deinem eigenen Bereich anpassen.</target>
+        <target>Hier kannst du den Abholservice aktivieren. Das bedeutet, dass keine Lieferkosten anfallen und du die Ware an folgende Adresse abholen kannst: Aachener Straße 67 | B - 4728 Hergenrath. Du kannst diese Option jederzeit in deinem eigenen Bereich anpassen.</target>
       </trans-unit>
     </body>
   </file>

@@ -32,19 +32,31 @@ class LivraisonController extends AbstractController
         if($langueUtilisateur === 'de'):
             $salutation = "Hallo ";
             $sujet = "Lieferbestätigung";
-            $confirmation = "Die von dir kürzlich erworbenen Artikel wurden soeben an deine Lieferadresse verschickt";
+            if($utilisateur -> getRamassage() == true):
+                $confirmation = "Die von dir kürzlich erworbenen Artikel wurden soeben abgeholt.";
+            else:
+                $confirmation = "Die von dir kürzlich erworbenen Artikel wurden soeben an die Lieferadresse verschickt.";
+            endif;
             $salutationsDist = "Mit freundlichen Grüssen";
             $noms = "Sarah und Julia";
         elseif ($langueUtilisateur === "en"):
             $salutation = "Hello ";
             $sujet = "Delivery confirmation";
-            $confirmation = "The items you recently purchased have just been shipped to your delivery address";
+            if($utilisateur -> getRamassage() == true):
+                $confirmation = "The items you recently purchased have just been picked up.";
+            else:
+                $confirmation = "The items you recently purchased have just been sent to the delivery address.";
+            endif;
             $salutationsDist = "Kind regards";
             $noms = "Sarah and Julia";
         elseif ($langueUtilisateur === "fr"):
             $salutation = "Salut ";
             $sujet = "Confirmation livraison";
-            $confirmation = "Les articles que vous avez récemment achetés viennent d'être expédiés à votre adresse de livraison";
+            if($utilisateur -> getRamassage() == true):
+                $confirmation = "Les articles que vous avez récemment achetés viennent d'être récupérés.";
+            else:
+                $confirmation = "Les articles que vous avez récemment achetés viennent d'être envoyés à l'adresse de livraison.";
+            endif;
             $salutationsDist = "Salutations distinguées";
             $noms = "Sarah et Julia";
         endif;

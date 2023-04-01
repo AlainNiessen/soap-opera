@@ -1778,6 +1778,10 @@
         <source>Der Abholservice ist aktiviert</source>
         <target>The pick-up service is activated</target>
       </trans-unit>
+      <trans-unit id="c10tGvg" resname="Da du den Abholservice aktiviert hast, kannst du die Ware an folgender Adresse abholen kommen: Aachener Straße 67 | B - 4728 Hergenrath.">
+        <source>Da du den Abholservice aktiviert hast, kannst du die Ware an folgender Adresse abholen kommen: Aachener Straße 67 | B - 4728 Hergenrath.</source>
+        <target>Since you have activated the pick-up service, you can pick up the goods at the following address: Aachener Straße 67 | B - 4728 Hergenrath.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

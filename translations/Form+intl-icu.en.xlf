@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="deaRBC6" resname="formInscription.rammassage">
         <source>formInscription.rammassage</source>
-        <target>Here you can activate the pick-up service. This means that there are no delivery costs and you can pick up the items at the following address: address. You can customize this option later in your own space.</target>
+        <target>Here you can activate the pick-up service. This means that there are no delivery costs and you can pick up the items at the following address: Aachener Straße 67 | B - 4728 Hergenrath. You can customize this option at any time in your own space.</target>
       </trans-unit>
     </body>
   </file>
